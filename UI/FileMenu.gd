@@ -1,5 +1,13 @@
 extends MenuButton
 
+const CSV_HEADER := PoolStringArray([
+	"StageId",
+	"LayerNo",
+	"GroupId",
+	"SubGroupId",
+	"EnemyId"
+])
+
 export (NodePath) var file_dialog: NodePath
 export (NodePath) var enemy_tree: NodePath
 
@@ -40,6 +48,13 @@ func _do_load(file_path: String):
 	var file := File.new()
 	file.open(file_path, File.READ)
 	
+	# Check header
+	var header := file.get_csv_line()
+	for i in header.size():
+		if header[i] != CSV_HEADER[i]:
+			printerr("Invalid CSV file. Header doesn't have a valid format ", file_path, " ", header)
+			return
+	
 	# First clean current data
 	for node in get_tree().get_nodes_in_group("EnemyPlacemark"):
 		if node is EnemySetPlacemark:
@@ -49,7 +64,7 @@ func _do_load(file_path: String):
 	# Then load it from the file
 	while !file.eof_reached():
 		var csv_line := file.get_csv_line()
-		if csv_line.size() >= 6:
+		if csv_line.size() >= 5:
 			# Inefficient af, but i can't be assed
 			# Storing the CSV data in a hashmap first or similar would be better
 			for node in get_tree().get_nodes_in_group("EnemyPlacemark"):
