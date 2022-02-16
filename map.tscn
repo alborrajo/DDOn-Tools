@@ -1,13 +1,14 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://UI/Camera.gd" type="Script" id=1]
-[ext_resource path="res://resources/maps/hidell plains.png" type="Texture" id=2]
+[ext_resource path="res://resources/maps/field000_m00.png" type="Texture" id=2]
 [ext_resource path="res://UI/UILayer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/EnemySetPlacemark.tscn" type="PackedScene" id=4]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["camera"]]
+position = Vector2( -810, -287 )
 current = true
 script = ExtResource( 1 )
 map = NodePath("../Map")
@@ -16,382 +17,386 @@ map = NodePath("../Map")
 position = Vector2( 17, 39 )
 texture = ExtResource( 2 )
 
-[node name="Path" parent="Map" instance=ExtResource( 4 )]
+[node name="Hidell Plains" type="Node2D" parent="Map"]
+
+[node name="Path" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -507.0
+margin_top = -226.0
+margin_right = -484.0
+margin_bottom = -215.0
 stage_id = 1
 
-[node name="Plains" parent="Map" instance=ExtResource( 4 )]
-margin_left = -191.0
-margin_top = -240.0
-margin_right = -168.0
-margin_bottom = -229.0
+[node name="Plains" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -523.0
+margin_top = -183.0
+margin_right = -500.0
+margin_bottom = -172.0
 stage_id = 1
 group_id = 1
 
-[node name="Plains2" parent="Map" instance=ExtResource( 4 )]
-margin_left = -155.0
-margin_top = -232.0
-margin_right = -132.0
-margin_bottom = -221.0
+[node name="Plains2" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -487.0
+margin_top = -175.0
+margin_right = -464.0
+margin_bottom = -164.0
 stage_id = 1
 group_id = 2
 
-[node name="Plains3" parent="Map" instance=ExtResource( 4 )]
-margin_left = -148.0
-margin_top = -163.0
-margin_right = -125.0
-margin_bottom = -152.0
+[node name="Plains3" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -480.0
+margin_top = -106.0
+margin_right = -457.0
+margin_bottom = -95.0
 stage_id = 1
 group_id = 3
 
-[node name="Plains4" parent="Map" instance=ExtResource( 4 )]
-margin_left = -107.0
-margin_top = -97.0
-margin_right = -84.0
-margin_bottom = -86.0
+[node name="Plains4" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -439.0
+margin_top = -40.0
+margin_right = -416.0
+margin_bottom = -29.0
 stage_id = 1
 group_id = 4
 
-[node name="Plains5" parent="Map" instance=ExtResource( 4 )]
-margin_left = -60.0
-margin_top = -56.0
-margin_right = -37.0
-margin_bottom = -45.0
+[node name="Plains5" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -392.0
+margin_top = 1.0
+margin_right = -369.0
+margin_bottom = 12.0
 stage_id = 1
 group_id = 5
 
-[node name="BreyaPath" parent="Map" instance=ExtResource( 4 )]
-margin_left = -67.0
-margin_top = 41.0
-margin_right = -44.0
-margin_bottom = 52.0
+[node name="BreyaPath" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -399.0
+margin_top = 98.0
+margin_right = -376.0
+margin_bottom = 109.0
 stage_id = 1
 group_id = 6
 
-[node name="BreyaPath2" parent="Map" instance=ExtResource( 4 )]
-margin_left = -76.0
-margin_top = 109.0
-margin_right = -53.0
-margin_bottom = 120.0
+[node name="BreyaPath2" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -408.0
+margin_top = 166.0
+margin_right = -385.0
+margin_bottom = 177.0
 stage_id = 1
 group_id = 7
 
-[node name="BreyaPath3" parent="Map" instance=ExtResource( 4 )]
-margin_left = -139.0
-margin_top = 151.0
-margin_right = -116.0
-margin_bottom = 162.0
+[node name="BreyaPath3" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -471.0
+margin_top = 208.0
+margin_right = -448.0
+margin_bottom = 219.0
 stage_id = 1
 group_id = 8
 
-[node name="BreyaPath4" parent="Map" instance=ExtResource( 4 )]
-margin_left = -195.0
-margin_top = 162.0
-margin_right = -172.0
-margin_bottom = 173.0
+[node name="BreyaPath4" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -527.0
+margin_top = 219.0
+margin_right = -504.0
+margin_bottom = 230.0
 stage_id = 1
 group_id = 9
 
-[node name="BreyaPath5" parent="Map" instance=ExtResource( 4 )]
-margin_left = -255.0
-margin_top = 171.0
-margin_right = -232.0
-margin_bottom = 182.0
+[node name="BreyaPath5" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -587.0
+margin_top = 228.0
+margin_right = -564.0
+margin_bottom = 239.0
 stage_id = 1
 group_id = 10
 
-[node name="BreyaPath6" parent="Map" instance=ExtResource( 4 )]
-margin_left = -294.0
-margin_top = 156.0
-margin_right = -271.0
-margin_bottom = 167.0
+[node name="BreyaPath6" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -626.0
+margin_top = 213.0
+margin_right = -603.0
+margin_bottom = 224.0
 stage_id = 1
 group_id = 11
 
-[node name="TheKnightsBitterEnemy" parent="Map" instance=ExtResource( 4 )]
-margin_left = -18.0
-margin_top = 90.0
-margin_right = 5.0
-margin_bottom = 101.0
+[node name="TheKnightsBitterEnemy" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -350.0
+margin_top = 147.0
+margin_right = -327.0
+margin_bottom = 158.0
 stage_id = 1
 group_id = 12
 
-[node name="Tel" parent="Map" instance=ExtResource( 4 )]
-margin_left = 43.0
-margin_top = 27.0
-margin_right = 66.0
-margin_bottom = 38.0
+[node name="Tel" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -289.0
+margin_top = 84.0
+margin_right = -266.0
+margin_bottom = 95.0
 stage_id = 1
 group_id = 13
 
-[node name="Tel2" parent="Map" instance=ExtResource( 4 )]
-margin_left = 109.0
-margin_top = 26.0
-margin_right = 132.0
-margin_bottom = 37.0
+[node name="Tel2" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -223.0
+margin_top = 83.0
+margin_right = -200.0
+margin_bottom = 94.0
 stage_id = 1
 group_id = 14
 
-[node name="Tel3" parent="Map" instance=ExtResource( 4 )]
-margin_left = 171.0
-margin_top = 54.0
-margin_right = 194.0
-margin_bottom = 65.0
+[node name="Tel3" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -161.0
+margin_top = 111.0
+margin_right = -138.0
+margin_bottom = 122.0
 stage_id = 1
 group_id = 15
 
-[node name="River" parent="Map" instance=ExtResource( 4 )]
-margin_left = 244.0
-margin_top = 47.0
-margin_right = 267.0
-margin_bottom = 58.0
+[node name="River" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -88.0
+margin_top = 104.0
+margin_right = -65.0
+margin_bottom = 115.0
 stage_id = 1
 group_id = 16
 
-[node name="Bridge" parent="Map" instance=ExtResource( 4 )]
-margin_left = 231.0
-margin_top = 144.0
-margin_right = 254.0
-margin_bottom = 155.0
+[node name="Bridge" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -101.0
+margin_top = 201.0
+margin_right = -78.0
+margin_bottom = 212.0
 stage_id = 1
 group_id = 17
 
-[node name="Church" parent="Map" instance=ExtResource( 4 )]
-margin_left = 277.0
-margin_top = 196.0
-margin_right = 300.0
-margin_bottom = 207.0
+[node name="Church" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -55.0
+margin_top = 253.0
+margin_right = -32.0
+margin_bottom = 264.0
 stage_id = 1
 group_id = 18
 
-[node name="Church2" parent="Map" instance=ExtResource( 4 )]
-margin_left = 349.0
-margin_top = 224.0
-margin_right = 372.0
-margin_bottom = 235.0
+[node name="Church2" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = 17.0
+margin_top = 281.0
+margin_right = 40.0
+margin_bottom = 292.0
 stage_id = 1
 group_id = 19
 
-[node name="Church3" parent="Map" instance=ExtResource( 4 )]
-margin_left = 291.0
-margin_top = 160.0
-margin_right = 314.0
-margin_bottom = 171.0
+[node name="Church3" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -41.0
+margin_top = 217.0
+margin_right = -18.0
+margin_bottom = 228.0
 stage_id = 1
 group_id = 20
 
-[node name="Church4" parent="Map" instance=ExtResource( 4 )]
-margin_left = 368.0
-margin_top = 173.0
-margin_right = 391.0
-margin_bottom = 184.0
+[node name="Church4" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = 36.0
+margin_top = 230.0
+margin_right = 59.0
+margin_bottom = 241.0
 stage_id = 1
 group_id = 21
 
-[node name="Church5" parent="Map" instance=ExtResource( 4 )]
-margin_left = 369.0
-margin_top = 144.0
-margin_right = 392.0
-margin_bottom = 155.0
+[node name="Church5" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = 37.0
+margin_top = 201.0
+margin_right = 60.0
+margin_bottom = 212.0
 stage_id = 1
 group_id = 22
 
-[node name="RiverOtherSide" parent="Map" instance=ExtResource( 4 )]
-margin_left = 331.0
-margin_top = 14.0
-margin_right = 354.0
-margin_bottom = 25.0
+[node name="RiverOtherSide" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -1.0
+margin_top = 71.0
+margin_right = 22.0
+margin_bottom = 82.0
 stage_id = 1
 group_id = 23
 
-[node name="RiverOtherSide2" parent="Map" instance=ExtResource( 4 )]
-margin_left = 376.0
-margin_top = -90.0
-margin_right = 399.0
-margin_bottom = -79.0
+[node name="RiverOtherSide2" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = 44.0
+margin_top = -33.0
+margin_right = 67.0
+margin_bottom = -22.0
 stage_id = 1
 group_id = 24
 
-[node name="RiverOtherSide3" parent="Map" instance=ExtResource( 4 )]
-margin_left = 332.0
-margin_top = -73.0
-margin_right = 355.0
-margin_bottom = -62.0
+[node name="RiverOtherSide3" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = 0.0
+margin_top = -16.0
+margin_right = 23.0
+margin_bottom = -5.0
 stage_id = 1
 group_id = 25
 
-[node name="RiverOtherSide4" parent="Map" instance=ExtResource( 4 )]
-margin_left = 288.0
-margin_top = -71.0
-margin_right = 311.0
-margin_bottom = -60.0
+[node name="RiverOtherSide4" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -44.0
+margin_top = -14.0
+margin_right = -21.0
+margin_bottom = -3.0
 stage_id = 1
 group_id = 26
 
-[node name="RiverOtherSide5" parent="Map" instance=ExtResource( 4 )]
-margin_left = 205.0
-margin_top = -119.0
-margin_right = 228.0
-margin_bottom = -108.0
+[node name="RiverOtherSide5" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -127.0
+margin_top = -62.0
+margin_right = -104.0
+margin_bottom = -51.0
 stage_id = 1
 group_id = 27
 
-[node name="RiverOtherSide6" parent="Map" instance=ExtResource( 4 )]
-margin_left = 292.0
-margin_top = -147.0
-margin_right = 315.0
-margin_bottom = -136.0
+[node name="RiverOtherSide6" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -40.0
+margin_top = -90.0
+margin_right = -17.0
+margin_bottom = -79.0
 stage_id = 1
 group_id = 28
 
-[node name="RiverOtherSide7" parent="Map" instance=ExtResource( 4 )]
-margin_left = 228.0
-margin_top = -180.0
-margin_right = 251.0
-margin_bottom = -169.0
+[node name="RiverOtherSide7" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -104.0
+margin_top = -123.0
+margin_right = -81.0
+margin_bottom = -112.0
 stage_id = 1
 group_id = 29
 
-[node name="RiverOtherSide8" parent="Map" instance=ExtResource( 4 )]
-margin_left = 210.0
-margin_top = -211.0
-margin_right = 233.0
-margin_bottom = -200.0
+[node name="RiverOtherSide8" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -122.0
+margin_top = -154.0
+margin_right = -99.0
+margin_bottom = -143.0
 stage_id = 1
 group_id = 30
 
-[node name="GrittenFort" parent="Map" instance=ExtResource( 4 )]
-margin_left = 256.0
-margin_top = -317.0
-margin_right = 279.0
-margin_bottom = -306.0
+[node name="GrittenFort" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -76.0
+margin_top = -260.0
+margin_right = -53.0
+margin_bottom = -249.0
 stage_id = 1
 group_id = 31
 
-[node name="SmallCaveTombs" parent="Map" instance=ExtResource( 4 )]
-margin_left = 106.0
-margin_top = -292.0
-margin_right = 129.0
-margin_bottom = -281.0
+[node name="SmallCaveTombs" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -226.0
+margin_top = -235.0
+margin_right = -203.0
+margin_bottom = -224.0
 stage_id = 1
 group_id = 32
 
-[node name="PathToGrittenFort" parent="Map" instance=ExtResource( 4 )]
-margin_left = 104.0
-margin_top = -233.0
-margin_right = 127.0
-margin_bottom = -222.0
+[node name="PathToGrittenFort" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -228.0
+margin_top = -176.0
+margin_right = -205.0
+margin_bottom = -165.0
 stage_id = 1
 group_id = 33
 
-[node name="PathToGrittenFort2" parent="Map" instance=ExtResource( 4 )]
-margin_left = 107.0
-margin_top = -177.0
-margin_right = 130.0
-margin_bottom = -166.0
+[node name="PathToGrittenFort2" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -225.0
+margin_top = -120.0
+margin_right = -202.0
+margin_bottom = -109.0
 stage_id = 1
 group_id = 34
 
-[node name="River2" parent="Map" instance=ExtResource( 4 )]
-margin_left = 157.0
-margin_top = -36.0
-margin_right = 180.0
-margin_bottom = -25.0
+[node name="River2" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_top = 21.0
+margin_bottom = 32.0
 stage_id = 1
 group_id = 35
 
-[node name="Plains6" parent="Map" instance=ExtResource( 4 )]
-margin_left = 68.0
-margin_top = -138.0
-margin_right = 91.0
-margin_bottom = -127.0
+[node name="Plains6" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -264.0
+margin_top = -81.0
+margin_right = -241.0
+margin_bottom = -70.0
 stage_id = 1
 group_id = 36
 
-[node name="Plains7" parent="Map" instance=ExtResource( 4 )]
-margin_left = 57.0
-margin_top = -90.0
-margin_right = 80.0
-margin_bottom = -79.0
+[node name="Plains7" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -275.0
+margin_top = -33.0
+margin_right = -252.0
+margin_bottom = -22.0
 stage_id = 1
 group_id = 37
 
-[node name="Plains8" parent="Map" instance=ExtResource( 4 )]
-margin_left = -8.0
-margin_top = -103.0
-margin_right = 15.0
-margin_bottom = -92.0
+[node name="Plains8" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -340.0
+margin_top = -46.0
+margin_right = -317.0
+margin_bottom = -35.0
 stage_id = 1
 group_id = 38
 
-[node name="Plains9" parent="Map" instance=ExtResource( 4 )]
-margin_left = -7.0
-margin_top = -148.0
-margin_right = 16.0
-margin_bottom = -137.0
+[node name="Plains9" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -339.0
+margin_top = -91.0
+margin_right = -316.0
+margin_bottom = -80.0
 stage_id = 1
 group_id = 39
 
-[node name="Plains10" parent="Map" instance=ExtResource( 4 )]
-margin_left = -86.0
-margin_top = -182.0
-margin_right = -63.0
-margin_bottom = -171.0
+[node name="Plains10" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -418.0
+margin_top = -125.0
+margin_right = -395.0
+margin_bottom = -114.0
 stage_id = 1
 group_id = 40
 
-[node name="TrainingChapel" parent="Map" instance=ExtResource( 4 )]
-margin_left = -96.0
-margin_top = -301.0
-margin_right = -73.0
-margin_bottom = -290.0
+[node name="TrainingChapel" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -428.0
+margin_top = -244.0
+margin_right = -405.0
+margin_bottom = -233.0
 stage_id = 1
 group_id = 41
 
-[node name="TrainingChapel2" parent="Map" instance=ExtResource( 4 )]
-margin_left = -71.0
-margin_top = -273.0
-margin_right = -48.0
-margin_bottom = -262.0
+[node name="TrainingChapel2" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -403.0
+margin_top = -216.0
+margin_right = -380.0
+margin_bottom = -205.0
 stage_id = 1
 group_id = 42
 
-[node name="Plains11" parent="Map" instance=ExtResource( 4 )]
-margin_left = -33.0
-margin_top = -197.0
-margin_right = -10.0
-margin_bottom = -186.0
+[node name="Plains11" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -365.0
+margin_top = -140.0
+margin_right = -342.0
+margin_bottom = -129.0
 stage_id = 1
 group_id = 43
 
-[node name="Plains12" parent="Map" instance=ExtResource( 4 )]
-margin_left = 1.0
-margin_top = -203.0
-margin_right = 24.0
-margin_bottom = -192.0
+[node name="Plains12" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -331.0
+margin_top = -146.0
+margin_right = -308.0
+margin_bottom = -135.0
 stage_id = 1
 group_id = 44
 
-[node name="Plains13" parent="Map" instance=ExtResource( 4 )]
-margin_left = 65.0
-margin_top = -179.0
-margin_right = 88.0
-margin_bottom = -168.0
+[node name="Plains13" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -267.0
+margin_top = -122.0
+margin_right = -244.0
+margin_bottom = -111.0
 stage_id = 1
 group_id = 45
 
-[node name="Plains14" parent="Map" instance=ExtResource( 4 )]
-margin_left = 65.0
-margin_top = -220.0
-margin_right = 88.0
-margin_bottom = -209.0
+[node name="Plains14" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -267.0
+margin_top = -163.0
+margin_right = -244.0
+margin_bottom = -152.0
 stage_id = 1
 group_id = 46
 
-[node name="Plains15" parent="Map" instance=ExtResource( 4 )]
-margin_left = 41.0
-margin_top = -247.0
-margin_right = 64.0
-margin_bottom = -236.0
+[node name="Plains15" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -291.0
+margin_top = -190.0
+margin_right = -268.0
+margin_bottom = -179.0
 stage_id = 1
 group_id = 47
 
