@@ -12,21 +12,21 @@ _global_script_classes=[ {
 "base": "Resource",
 "class": "Enemy",
 "language": "GDScript",
-"path": "res://Enemy.gd"
+"path": "res://Entities/Enemy.gd"
 }, {
-"base": "Label",
-"class": "EnemyPlacemark",
+"base": "PanelContainer",
+"class": "EnemySetPlacemark",
 "language": "GDScript",
-"path": "res://EnemyPlacemark.gd"
+"path": "res://UI/EnemySetPlacemark.gd"
 }, {
 "base": "Tree",
 "class": "EnemyTree",
 "language": "GDScript",
-"path": "res://EnemyTree.gd"
+"path": "res://UI/EnemyTree.gd"
 } ]
 _global_script_class_icons={
 "Enemy": "",
-"EnemyPlacemark": "",
+"EnemySetPlacemark": "",
 "EnemyTree": ""
 }
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hidell plains.png-b9df43f1cf9ccea5fd9a1193f978f9c7.stex"
+path="res://.import/hidell plains.png-9f1e487f75e9bda3b18ce7808af19376.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://hidell plains.png"
-dest_files=[ "res://.import/hidell plains.png-b9df43f1cf9ccea5fd9a1193f978f9c7.stex" ]
+source_file="res://resources/maps/hidell plains.png"
+dest_files=[ "res://.import/hidell plains.png-9f1e487f75e9bda3b18ce7808af19376.stex" ]
 
 [params]
 

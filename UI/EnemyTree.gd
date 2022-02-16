@@ -23,16 +23,16 @@ func _ready():
 			enemy_item.set_metadata(0, enemy)
 	file.close()
 
-func _input(event):
+func _on_gui_input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and not event.is_pressed() and _dragging:
 		_dragging = false;
 		print_debug("dragging", _dragging)
 		
 		for node in get_tree().get_nodes_in_group("EnemyPlacemark"):
-			if node is EnemyPlacemark and node.get_scaled_global_rect().has_point(node.get_global_mouse_position()):
-				var placemark := node as EnemyPlacemark
+			if node is EnemySetPlacemark and EnemySetPlacemark.get_scaled_global_rect(node).has_point(node.get_global_mouse_position()):
+				var placemark := node as EnemySetPlacemark
 				var selected_enemy := get_selected().get_metadata(get_selected_column()) as Enemy
-				placemark.set_enemy(selected_enemy)
+				placemark.add_enemy(selected_enemy)
 				print_debug("selected enemy", selected_enemy)
 				break
 

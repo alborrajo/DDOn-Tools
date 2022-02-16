@@ -42,9 +42,9 @@ func _do_load(file_path: String):
 	
 	# First clean current data
 	for node in get_tree().get_nodes_in_group("EnemyPlacemark"):
-		if node is EnemyPlacemark:
-			var placemark := node as EnemyPlacemark
-			placemark.set_enemy(null)
+		if node is EnemySetPlacemark:
+			var placemark := node as EnemySetPlacemark
+			placemark.clear_enemies()
 	
 	# Then load it from the file
 	while !file.eof_reached():
@@ -53,10 +53,10 @@ func _do_load(file_path: String):
 			# Inefficient af, but i can't be assed
 			# Storing the CSV data in a hashmap first or similar would be better
 			for node in get_tree().get_nodes_in_group("EnemyPlacemark"):
-				if node is EnemyPlacemark:
-					var placemark := node as EnemyPlacemark
-					if placemark.stage_id == int(csv_line[0]) and placemark.layer_no == int(csv_line[1]) and placemark.group_id == int(csv_line[2]) and placemark.subgroup_id == int(csv_line[3]) and placemark.position_index == int(csv_line[4]):
-						placemark.set_enemy(enemy_tree_node.get_enemy_by_id(csv_line[5]))
+				if node is EnemySetPlacemark:
+					var placemark := node as EnemySetPlacemark
+					if placemark.stage_id == int(csv_line[0]) and placemark.layer_no == int(csv_line[1]) and placemark.group_id == int(csv_line[2]) and placemark.subgroup_id == int(csv_line[3]):
+						placemark.add_enemy(enemy_tree_node.get_enemy_by_id(csv_line[4]))
 						break
 	file.close()
 	
@@ -75,10 +75,10 @@ func _do_save(file_path: String):
 	var file := File.new()
 	file.open(file_path, File.WRITE)
 	for node in get_tree().get_nodes_in_group("EnemyPlacemark"):
-		if node is EnemyPlacemark:
-			var placemark := node as EnemyPlacemark
-			if placemark.enemy_id != "":
-				file.store_csv_line([placemark.stage_id, placemark.layer_no, placemark.group_id, placemark.subgroup_id, placemark.position_index, placemark.enemy_id])
+		if node is EnemySetPlacemark:
+			var placemark := node as EnemySetPlacemark
+			for enemy in placemark.get_enemies():
+				file.store_csv_line([placemark.stage_id, placemark.layer_no, placemark.group_id, placemark.subgroup_id, enemy.id])
 	file.close()
 
 	_file_path = file_path

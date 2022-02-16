@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Camera.gd" type="Script" id=1]
-[ext_resource path="res://hidell plains.png" type="Texture" id=2]
-[ext_resource path="res://EnemyTree.gd" type="Script" id=3]
-[ext_resource path="res://EnemyPlacemark.gd" type="Script" id=4]
-[ext_resource path="res://FileMenu.gd" type="Script" id=5]
+[ext_resource path="res://UI/Camera.gd" type="Script" id=1]
+[ext_resource path="res://resources/maps/hidell plains.png" type="Texture" id=2]
+[ext_resource path="res://UI/EnemyTree.gd" type="Script" id=3]
+[ext_resource path="res://UI/EnemySetPlacemark.tscn" type="PackedScene" id=4]
+[ext_resource path="res://UI/FileMenu.gd" type="Script" id=5]
 
 [node name="Node2D" type="Node2D"]
 
@@ -14,159 +14,11 @@ script = ExtResource( 1 )
 map = NodePath("../Map")
 
 [node name="Map" type="Sprite" parent="."]
+position = Vector2( 17, 39 )
 texture = ExtResource( 2 )
 
-[node name="Path" type="Position2D" parent="Map"]
-
-[node name="EnemyPlacemark" type="Label" parent="Map/Path" groups=["EnemyPlacemark"]]
-margin_left = -162.0
-margin_top = -271.0
-margin_right = -128.0
-margin_bottom = -257.0
-text = "None"
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Path" parent="Map" instance=ExtResource( 4 )]
 stage_id = 1
-
-[node name="EnemyPlacemark2" type="Label" parent="Map/Path" groups=["EnemyPlacemark"]]
-margin_left = -168.0
-margin_top = -273.0
-margin_right = -134.0
-margin_bottom = -259.0
-text = "None"
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-stage_id = 1
-position_index = 1
-
-[node name="EnemyPlacemark3" type="Label" parent="Map/Path" groups=["EnemyPlacemark"]]
-margin_left = -176.0
-margin_top = -280.0
-margin_right = -142.0
-margin_bottom = -266.0
-text = "None"
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-stage_id = 1
-position_index = 2
-
-[node name="EnemyPlacemark4" type="Label" parent="Map/Path" groups=["EnemyPlacemark"]]
-margin_left = -179.0
-margin_top = -290.0
-margin_right = -145.0
-margin_bottom = -276.0
-text = "None"
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-stage_id = 1
-position_index = 3
-
-[node name="EnemyPlacemark5" type="Label" parent="Map/Path" groups=["EnemyPlacemark"]]
-margin_left = -168.0
-margin_top = -295.0
-margin_right = -134.0
-margin_bottom = -281.0
-text = "None"
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-stage_id = 1
-position_index = 4
-
-[node name="Outskirts" type="Position2D" parent="Map"]
-position = Vector2( 4, 128 )
-
-[node name="EnemyPlacemark" type="Label" parent="Map/Outskirts" groups=["EnemyPlacemark"]]
-margin_left = -125.0
-margin_top = -236.0
-margin_right = -91.0
-margin_bottom = -222.0
-text = "None"
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-stage_id = 1
-group_id = 14
-
-[node name="EnemyPlacemark2" type="Label" parent="Map/Outskirts" groups=["EnemyPlacemark"]]
-margin_left = -104.0
-margin_top = -229.0
-margin_right = -63.0
-margin_bottom = -215.0
-text = "None"
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-stage_id = 1
-group_id = 14
-position_index = 1
-
-[node name="EnemyPlacemark3" type="Label" parent="Map/Outskirts" groups=["EnemyPlacemark"]]
-margin_left = -109.0
-margin_top = -247.0
-margin_right = -68.0
-margin_bottom = -233.0
-text = "None"
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-stage_id = 1
-group_id = 14
-position_index = 2
-
-[node name="EnemyPlacemark4" type="Label" parent="Map/Outskirts" groups=["EnemyPlacemark"]]
-margin_left = -107.0
-margin_top = -241.0
-margin_right = -66.0
-margin_bottom = -227.0
-text = "None"
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-stage_id = 1
-group_id = 14
-position_index = 3
-
-[node name="EnemyPlacemark5" type="Label" parent="Map/Outskirts" groups=["EnemyPlacemark"]]
-margin_left = -106.0
-margin_top = -235.0
-margin_right = -65.0
-margin_bottom = -221.0
-text = "None"
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-stage_id = 1
-group_id = 14
-position_index = 4
-
-[node name="EnemyPlacemark6" type="Label" parent="Map/Outskirts" groups=["EnemyPlacemark"]]
-margin_left = -114.0
-margin_top = -230.0
-margin_right = -73.0
-margin_bottom = -216.0
-text = "None"
-script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-stage_id = 1
-group_id = 14
-position_index = 5
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -219,9 +71,13 @@ margin_left = -312.0
 margin_top = -195.0
 margin_right = 312.0
 margin_bottom = 195.0
+rect_min_size = Vector2( 180, 63 )
 window_title = "Abrir un Archivo"
 mode = 0
 access = 2
 filters = PoolStringArray( "*.csv ; CSV Files" )
-current_dir = "/Users/Laith/Documents/Programacion/Godot/DDOn Tools"
-current_path = "/Users/Laith/Documents/Programacion/Godot/DDOn Tools/"
+show_hidden_files = true
+current_dir = "/home/laith/Documentos/Programacion/Godot/DDOn Tools/DDOn-Tools"
+current_path = "/home/laith/Documentos/Programacion/Godot/DDOn Tools/DDOn-Tools/"
+
+[connection signal="gui_input" from="CanvasLayer/PanelContainer/VBoxContainer/EnemyTree" to="CanvasLayer/PanelContainer/VBoxContainer/EnemyTree" method="_on_gui_input"]
