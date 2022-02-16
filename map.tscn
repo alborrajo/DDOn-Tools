@@ -29,7 +29,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 stage_id = 1
-group_id = 3
 
 [node name="EnemyPlacemark2" type="Label" parent="Map/Path" groups=["EnemyPlacemark"]]
 margin_left = -168.0
@@ -42,7 +41,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 stage_id = 1
-group_id = 3
 position_index = 1
 
 [node name="EnemyPlacemark3" type="Label" parent="Map/Path" groups=["EnemyPlacemark"]]
@@ -56,7 +54,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 stage_id = 1
-group_id = 3
 position_index = 2
 
 [node name="EnemyPlacemark4" type="Label" parent="Map/Path" groups=["EnemyPlacemark"]]
@@ -70,7 +67,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 stage_id = 1
-group_id = 3
 position_index = 3
 
 [node name="EnemyPlacemark5" type="Label" parent="Map/Path" groups=["EnemyPlacemark"]]
@@ -84,7 +80,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 stage_id = 1
-group_id = 3
 position_index = 4
 
 [node name="Outskirts" type="Position2D" parent="Map"]
