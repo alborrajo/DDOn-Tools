@@ -5,7 +5,25 @@ const CSV_HEADER := PoolStringArray([
 	"LayerNo",
 	"GroupId",
 	"SubGroupId",
-	"EnemyId"
+	"EnemyId",
+	"NamedEnemyParamsId",
+	"RaidBossId",
+	"Scale",
+	"Lv",
+	"HmPresetNo",
+	"StartThinkTblNo",
+	"RepopNum",
+	"RepopCount",
+	"EnemyTargetTypesId",
+	"MontageFixNo",
+	"SetType",
+	"InfectionType",
+	"IsBossGauge",
+	"IsBossBGM",
+	"IsManualSet",
+	"IsAreaBoss",
+	"IsBloodEnemy",
+	"Unk0"
 ])
 
 export (NodePath) var file_dialog: NodePath
@@ -50,7 +68,7 @@ func _do_load(file_path: String):
 	
 	# Check header
 	var header := file.get_csv_line()
-	for i in header.size():
+	for i in min(header.size(), CSV_HEADER.size()):
 		if header[i] != CSV_HEADER[i]:
 			printerr("Invalid CSV file. Header doesn't have a valid format ", file_path, " ", header)
 			return
@@ -89,11 +107,37 @@ func _do_save(file_path: String):
 	
 	var file := File.new()
 	file.open(file_path, File.WRITE)
+	file.store_csv_line(CSV_HEADER)
 	for node in get_tree().get_nodes_in_group("EnemyPlacemark"):
 		if node is EnemySetPlacemark:
 			var placemark := node as EnemySetPlacemark
 			for enemy in placemark.get_enemies():
-				file.store_csv_line([placemark.stage_id, placemark.layer_no, placemark.group_id, placemark.subgroup_id, enemy.id])
+				var csv_data := []
+				csv_data.append(placemark.stage_id)
+				csv_data.append(placemark.layer_no)
+				csv_data.append(placemark.group_id)
+				csv_data.append(placemark.subgroup_id)
+				csv_data.append(enemy.id)
+				# TODO: Replace placeholder values
+				csv_data.append(0x8FA)
+				csv_data.append(0)
+				csv_data.append(100)
+				csv_data.append(10)
+				csv_data.append(0)
+				csv_data.append(0)
+				csv_data.append(0)
+				csv_data.append(0)
+				csv_data.append(1)
+				csv_data.append(0)
+				csv_data.append(0)
+				csv_data.append(0)
+				csv_data.append(false)
+				csv_data.append(false)
+				csv_data.append(false)
+				csv_data.append(false)
+				csv_data.append(false)
+				csv_data.append(false)
+				file.store_csv_line(csv_data)
 	file.close()
 
 	_file_path = file_path
