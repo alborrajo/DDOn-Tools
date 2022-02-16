@@ -1,7 +1,5 @@
 extends MenuButton
 
-const CSV_HEADER := "StageId,LayerNo,GroupId,SubgroupId,PositionIndex,EnemyId"
-
 export (NodePath) var file_dialog: NodePath
 export (NodePath) var enemy_tree: NodePath
 
@@ -41,11 +39,6 @@ func _do_load(file_path: String):
 	
 	var file := File.new()
 	file.open(file_path, File.READ)
-	var csv_header := file.get_line()
-	if csv_header != CSV_HEADER:
-		print_debug("Invalid CSV file, header doesn't match")
-		file.close()
-		return
 	
 	# First clean current data
 	for node in get_tree().get_nodes_in_group("EnemyPlacemark"):
@@ -81,7 +74,6 @@ func _do_save(file_path: String):
 	
 	var file := File.new()
 	file.open(file_path, File.WRITE)
-	file.store_line(CSV_HEADER)
 	for node in get_tree().get_nodes_in_group("EnemyPlacemark"):
 		if node is EnemyPlacemark:
 			var placemark := node as EnemyPlacemark
