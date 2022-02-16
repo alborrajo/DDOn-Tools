@@ -10,8 +10,8 @@ var _enemies := []
 
 onready var _original_scale := rect_scale
 
-func _on_gui_input(event):
-	if event is InputEventMouseButton and event.button_index == BUTTON_RIGHT and event.is_pressed():
+func _on_gui_input(event: InputEvent):
+	if event is InputEventMouseButton and (event as InputEventMouseButton).button_index == BUTTON_RIGHT and (event as InputEventMouseButton).is_pressed():
 		for child in $VBoxContainer.get_children():
 			if child is Control and get_scaled_global_rect(child).has_point(get_global_mouse_position()):
 				# Right click on the placemark
@@ -45,6 +45,6 @@ func get_enemies() -> Array:
 func _process(delta):
 	rect_scale = _original_scale * get_tree().get_nodes_in_group("camera")[0].zoom.x
 
-static func get_scaled_global_rect(control: Control):
+static func get_scaled_global_rect(control: Control) -> Rect2:
 	var global_rect := control.get_global_rect()
 	return Rect2(global_rect.position, global_rect.size*control.rect_scale)

@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/EnemyTree.gd" type="Script" id=1]
+[ext_resource path="res://UI/FileMenu.gd" type="Script" id=2]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 311.0
+margin_bottom = -4.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 300.0
+margin_bottom = 585.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+margin_right = 293.0
+margin_bottom = 20.0
+
+[node name="MenuButton" type="MenuButton" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+margin_right = 35.0
+margin_bottom = 20.0
+focus_mode = 2
+text = "File"
+items = [ "Load", null, 0, false, false, 0, 0, null, "", false, "Save", null, 0, false, false, 1, 0, null, "", false ]
+script = ExtResource( 2 )
+file_dialog = NodePath("../../../../FileDialog")
+enemy_tree = NodePath("../../EnemyTree")
+
+[node name="EnemyTree" type="Tree" parent="PanelContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 293.0
+margin_bottom = 578.0
+size_flags_vertical = 3
+allow_reselect = true
+script = ExtResource( 1 )
+
+[node name="FileDialog" type="FileDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -312.0
+margin_top = -195.0
+margin_right = 312.0
+margin_bottom = 195.0
+rect_min_size = Vector2( 180, 63 )
+window_title = "Abrir un Archivo"
+mode = 0
+access = 2
+filters = PoolStringArray( "*.csv ; CSV Files" )
+show_hidden_files = true
+current_dir = "/home/laith/Documentos/Programacion/Godot/DDOn Tools/DDOn-Tools"
+current_path = "/home/laith/Documentos/Programacion/Godot/DDOn Tools/DDOn-Tools/"
+
+[connection signal="gui_input" from="PanelContainer/VBoxContainer/EnemyTree" to="PanelContainer/VBoxContainer/EnemyTree" method="_on_gui_input"]
