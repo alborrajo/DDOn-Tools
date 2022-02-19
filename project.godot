@@ -9,11 +9,6 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Resource",
-"class": "Enemy",
-"language": "GDScript",
-"path": "res://Entities/Enemy.gd"
-}, {
 "base": "PanelContainer",
 "class": "EnemySetPlacemark",
 "language": "GDScript",
@@ -23,11 +18,22 @@ _global_script_classes=[ {
 "class": "EnemyTree",
 "language": "GDScript",
 "path": "res://UI/EnemyTree.gd"
+}, {
+"base": "Resource",
+"class": "EnemyType",
+"language": "GDScript",
+"path": "res://Entities/EnemyType.gd"
+}, {
+"base": "PopupPanel",
+"class": "NotificationPopup",
+"language": "GDScript",
+"path": "res://UI/NotificationPopup.gd"
 } ]
 _global_script_class_icons={
-"Enemy": "",
 "EnemySetPlacemark": "",
-"EnemyTree": ""
+"EnemyTree": "",
+"EnemyType": "",
+"NotificationPopup": ""
 }
 
 [application]

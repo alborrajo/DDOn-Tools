@@ -18,14 +18,14 @@ func _on_gui_input(event: InputEvent):
 				remove_enemy(child.get_meta("enemy"))
 				break
 
-func add_enemy(enemy: Enemy) -> void:
+func add_enemy(enemy: EnemyType) -> void:
 	_enemies.append(enemy)
 	var label := Label.new()
 	label.text = enemy.name
 	label.set_meta("enemy", enemy)
 	$VBoxContainer.add_child(label)
 	
-func remove_enemy(enemy_to_remove: Enemy) -> void:
+func remove_enemy(enemy_to_remove: EnemyType) -> void:
 	for i in _enemies.size():
 		if _enemies[i] == enemy_to_remove:
 			_enemies.remove(i)
@@ -38,6 +38,9 @@ func remove_enemy(enemy_to_remove: Enemy) -> void:
 
 func clear_enemies() -> void:
 	_enemies.clear()
+	
+	for child in $VBoxContainer.get_children():
+		child.queue_free()
 
 func get_enemies() -> Array:
 	return _enemies

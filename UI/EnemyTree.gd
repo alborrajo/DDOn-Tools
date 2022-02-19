@@ -17,7 +17,7 @@ func _ready():
 	while !file.eof_reached():
 		var csv_line := file.get_csv_line()
 		if csv_line.size() >= 2:
-			var enemy := Enemy.new(csv_line[0], csv_line[1])
+			var enemy := EnemyType.new(csv_line[0].hex_to_int(), csv_line[1])
 			var enemy_item := create_item(root)
 			enemy_item.set_text(0, enemy.name)
 			enemy_item.set_metadata(0, enemy)
@@ -31,7 +31,7 @@ func _on_gui_input(event):
 		for node in get_tree().get_nodes_in_group("EnemyPlacemark"):
 			if node is EnemySetPlacemark and EnemySetPlacemark.get_scaled_global_rect(node).has_point(node.get_global_mouse_position()):
 				var placemark := node as EnemySetPlacemark
-				var selected_enemy := get_selected().get_metadata(get_selected_column()) as Enemy
+				var selected_enemy := get_selected().get_metadata(get_selected_column()) as EnemyType
 				placemark.add_enemy(selected_enemy)
 				print_debug("selected enemy", selected_enemy)
 				break
@@ -40,11 +40,11 @@ func _on_item_selected():
 	_dragging = true
 	print_debug("dragging", _dragging)
 
-func get_enemy_by_id(id: String) -> Enemy:
+func get_enemy_by_id(id: int) -> EnemyType:
 	# Also inefficient af
 	var child := get_root().get_children()
 	while child != null:
-		var enemy := child.get_metadata(0) as Enemy
+		var enemy := child.get_metadata(0) as EnemyType
 		if enemy.id == id:
 			return enemy
 		child = child.get_next()

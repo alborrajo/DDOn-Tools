@@ -28,11 +28,13 @@ const CSV_HEADER := PoolStringArray([
 
 export (NodePath) var file_dialog: NodePath
 export (NodePath) var enemy_tree: NodePath
+export (NodePath) var notification_popup: NodePath
 
 var _file_path: String
 
 onready var file_dialog_node: FileDialog = get_node(file_dialog)
 onready var enemy_tree_node: EnemyTree = get_node(enemy_tree)
+onready var notification_popup_node: NotificationPopup = get_node(notification_popup)
 
 func _unhandled_input(event: InputEvent):
 	if Input.is_key_pressed(KEY_CONTROL) and event.is_pressed() and event is InputEventKey:
@@ -70,7 +72,9 @@ func _do_load(file_path: String):
 	var header := file.get_csv_line()
 	for i in min(header.size(), CSV_HEADER.size()):
 		if header[i] != CSV_HEADER[i]:
-			printerr("Invalid CSV file. Header doesn't have a valid format ", file_path, " ", header)
+			var err_message := "Invalid CSV file. Header doesn't have a valid format "
+			printerr(err_message, file_path, " ", header)
+			notification_popup_node.notify(err_message)
 			return
 	
 	# First clean current data
@@ -89,12 +93,14 @@ func _do_load(file_path: String):
 				if node is EnemySetPlacemark:
 					var placemark := node as EnemySetPlacemark
 					if placemark.stage_id == int(csv_line[0]) and placemark.layer_no == int(csv_line[1]) and placemark.group_id == int(csv_line[2]) and placemark.subgroup_id == int(csv_line[3]):
-						placemark.add_enemy(enemy_tree_node.get_enemy_by_id(csv_line[4]))
+						placemark.add_enemy(enemy_tree_node.get_enemy_by_id(csv_line[4].hex_to_int()))
 						break
 	file.close()
 	
 	_file_path = file_path
 	OS.set_window_title("DDOn Tools - "+file_path)
+	
+	notification_popup_node.notify("Loaded file "+file_path)
 	
 func _on_save():
 	file_dialog_node.mode = FileDialog.MODE_SAVE_FILE
@@ -117,9 +123,9 @@ func _do_save(file_path: String):
 				csv_data.append(placemark.layer_no)
 				csv_data.append(placemark.group_id)
 				csv_data.append(placemark.subgroup_id)
-				csv_data.append(enemy.id)
+				csv_data.append("0x%X" % enemy.id)
 				# TODO: Replace placeholder values
-				csv_data.append(0x8FA)
+				csv_data.append("0x%X" % 0x8FA)
 				csv_data.append(0)
 				csv_data.append(100)
 				csv_data.append(10)
@@ -142,3 +148,5 @@ func _do_save(file_path: String):
 
 	_file_path = file_path
 	OS.set_window_title("DDOn Tools - "+file_path)
+	
+	notification_popup_node.notify("Saved file "+file_path)
