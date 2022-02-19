@@ -34,11 +34,11 @@ margin_bottom = -172.0
 stage_id = 1
 group_id = 1
 
-[node name="Plains2" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
-margin_left = -487.0
-margin_top = -175.0
-margin_right = -464.0
-margin_bottom = -164.0
+[node name="Path2" parent="Map/Hidell Plains" instance=ExtResource( 4 )]
+margin_left = -418.0
+margin_top = -145.0
+margin_right = -395.0
+margin_bottom = -134.0
 stage_id = 1
 group_id = 2
 
