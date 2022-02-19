@@ -42,4 +42,4 @@ margin_bottom = -164.0
 stage_id = 1
 group_id = 2
 
-[node name="CanvasLayer" parent="." instance=ExtResource( 3 )]
+[node name="UILayer" parent="." instance=ExtResource( 3 )]

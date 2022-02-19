@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://UI/EnemySetPlacemark.gd" type="Script" id=1]
+[ext_resource path="res://UI/EnemyPlacemark.tscn" type="PackedScene" id=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -11,10 +12,8 @@ border_width_bottom = 4
 border_color = Color( 1, 0.333333, 0.333333, 1 )
 
 [node name="EnemySetPlacemark" type="PanelContainer" groups=["EnemyPlacemark"]]
-margin_left = -175.0
-margin_top = -283.0
-margin_right = -152.0
-margin_bottom = -272.0
+margin_right = 23.0
+margin_bottom = 11.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 1 )
@@ -22,6 +21,7 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+enemy_placemark = ExtResource( 2 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 4.0
