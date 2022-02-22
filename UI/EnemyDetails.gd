@@ -15,7 +15,7 @@ static func get_instance(tree: SceneTree) -> EnemyDetails:
 func _set_enemy(em: Enemy) -> void:
 	enemy = em
 	if em != null:
-		$ScrollContainer/VBoxContainer/GridContainer/NamedEnemyParamsIdLineEdit.value = em.named_enemy_params_id
+		$ScrollContainer/VBoxContainer/NamedEnemyParamsIdOptionButton.select($ScrollContainer/VBoxContainer/NamedEnemyParamsIdOptionButton.get_item_index(em.named_enemy_params_id))
 		$ScrollContainer/VBoxContainer/GridContainer/RaidBossIdLineEdit.value = em.raid_boss_id
 		$ScrollContainer/VBoxContainer/GridContainer/ScaleLineEdit.value = em.scale
 		$ScrollContainer/VBoxContainer/GridContainer/LevelLineEdit.value = em.lv
@@ -38,8 +38,8 @@ func _set_enemy(em: Enemy) -> void:
 	emit_signal("enemy_set", em)
 
 
-func _on_NamedEnemyParamsIdLineEdit_value_changed(value):
-	enemy.named_enemy_params_id = int(value)
+func _on_NamedEnemyParamsIdOptionButton_item_selected(index):
+	enemy.named_enemy_params_id = $ScrollContainer/VBoxContainer/NamedEnemyParamsIdOptionButton.get_item_id(index)
 
 func _on_RaidBossIdLineEdit_value_changed(value):
 	enemy.raid_boss_id = int(value)
