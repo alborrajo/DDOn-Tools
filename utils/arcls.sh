@@ -20,7 +20,7 @@ do
     # Generate arc contents list
     "$1" -ddo -pc -tex -v 7 -l "$arc"
 
-    awk -v "ARC=$arc" 'BEGIN { FS="\=" } /Path=/{PATH=$2} /correctExt=/{ CRC=$2; printf "%s,%s,%s\n", ARC, PATH, CRC }' "$arc.verbose.txt" >> arcls.out.csv
+    awk -v "ARC=$arc" 'BEGIN { FS="\=" } /Path=/{PATH=$2} /filenameHash=/{ CRC=$2; printf "%s,%s,%X\n", ARC, PATH, CRC }' "$arc.verbose.txt" >> arcls.out.csv
 
     # Clean up
     rm "$arc.verbose.txt"
