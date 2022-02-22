@@ -10,7 +10,7 @@ fi
 
 cd "$(dirname "$0")"
 
-echo "arc,file" > arcls.out.csv
+echo "arc,file,crc32" > arcls.out.csv
 
 # Copy map files and list them
 for arc in "$2"/*/**/*.arc
@@ -20,10 +20,7 @@ do
     # Generate arc contents list
     "$1" -ddo -pc -tex -v 7 -l "$arc"
 
-    for file in $(sed -n "s/Path\=\(.*\)/\1/p" "$arc.verbose.txt")
-    do
-        echo "$arc,$file" >> arcls.out.csv
-    done
+    awk -v "ARC=$arc" 'BEGIN { FS="\=" } /Path=/{PATH=$2} /correctExt=/{ CRC=$2; printf "%s,%s,%s\n", ARC, PATH, CRC }' "$arc.verbose.txt" >> arcls.out.csv
 
     # Clean up
     rm "$arc.verbose.txt"
