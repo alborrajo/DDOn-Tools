@@ -19,11 +19,11 @@ func set_player(var player):
 	set_pos(X, Z)
 
 func set_pos(var x, var z):
-	var x1 = x / 200
-	var z1 = z / 190
+	#var x1 = x / 200
+	#var z1 = z / 190
 	
-	position.x = x1
-	position.y = z1
+	position.x = x
+	position.y = z
 
 
 # 0,0 center
