@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://UI/Camera.gd" type="Script" id=1]
 [ext_resource path="res://resources/maps/field000_m00.png" type="Texture" id=2]
 [ext_resource path="res://UI/UILayer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://UI/EnemySetPlacemark.tscn" type="PackedScene" id=4]
+[ext_resource path="res://map.gd" type="Script" id=5]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource( 5 )
 
 [node name="Camera2D" type="Camera2D" parent="." groups=["camera"]]
 position = Vector2( -810, -287 )
@@ -43,3 +45,9 @@ stage_id = 1
 group_id = 2
 
 [node name="UILayer" parent="." instance=ExtResource( 3 )]
+
+[node name="rpc_timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="rpc_timer" to="." method="_on_rpc_timer_timeout"]
