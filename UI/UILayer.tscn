@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://UI/EnemyTree.gd" type="Script" id=1]
 [ext_resource path="res://UI/FileMenu.gd" type="Script" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://UI/NotificationPopup.gd" type="Script" id=4]
 [ext_resource path="res://UI/EnemyDetails.gd" type="Script" id=5]
 [ext_resource path="res://UI/NamedEnemyParamsIdOptionButton.gd" type="Script" id=6]
+
+[sub_resource type="GDScript" id=2]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends PanelContainer
@@ -21,6 +23,7 @@ func _on_EnemyDetails_enemy_set(enemy):
 "
 
 [node name="UILayer" type="CanvasLayer"]
+script = SubResource( 2 )
 
 [node name="Left Panel" type="PanelContainer" parent="."]
 anchor_bottom = 1.0
@@ -374,13 +377,13 @@ margin_top = -195.0
 margin_right = 312.0
 margin_bottom = 195.0
 rect_min_size = Vector2( 180, 63 )
-window_title = "Abrir un Archivo"
+window_title = "Open a File"
 mode = 0
 access = 2
 filters = PoolStringArray( "*.csv ; CSV Files" )
 show_hidden_files = true
-current_dir = "/Users/Laith/Documents/Programacion/Godot/DDOn Tools"
-current_path = "/Users/Laith/Documents/Programacion/Godot/DDOn Tools/"
+current_dir = "/Users/railgun/dev/DDOn-Tools"
+current_path = "/Users/railgun/dev/DDOn-Tools/"
 
 [node name="NotificationPopup" type="PopupPanel" parent="."]
 anchor_left = 1.0
