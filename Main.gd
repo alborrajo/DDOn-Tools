@@ -17,15 +17,14 @@ func _ready():
 	coordinates_label = get_node("ui/status_view/container/coordinates")
 	players_on_ui = get_node("ui/left/tab/player")
 	players_on_map = Node2D.new()
-	map_sprite.add_child(players_on_map)
+	add_child(players_on_map)
 	players_on_ui_root= players_on_ui.create_item();
 	players_on_ui.hide_root = true
 	
 func _input(event):
 	if event is InputEventMouseMotion:
-		var map_sprite_pos : Vector2 = map_sprite.get_local_mouse_position();
-		if map_sprite.get_rect().has_point(map_sprite_pos):
-			coordinates_label.text = "X:%s Y:%s" % [map_sprite_pos.x, map_sprite_pos.y]
+		var mouse_pos : Vector2 = get_local_mouse_position();
+		coordinates_label.text = "X:%s Y:%s" % [mouse_pos.x, mouse_pos.y]
 
 func _on_rpc_timer_timeout():
 	update_info()
@@ -44,7 +43,7 @@ func update_info():
 		if !exists:
 			# remove players on map, that have no info
 			players_on_map.remove_child(n)
-			n.queue_free()	
+			n.queue_free()
 	
 	var item = false
 	if players_on_ui.get_root():
@@ -83,7 +82,7 @@ func update_info():
 			players_on_map.add_child(player)
 			
 		# on ui
-		var text : String = "%s (X:%s Y:%s)" % [p.FirstName, p.X, p.Y]
+		var text : String = "%s %s" % [p.FirstName, p.get_map_position()]
 		var existing_ui : TreeItem
 		item = false
 		if players_on_ui.get_root():
@@ -102,7 +101,7 @@ func update_info():
 
 func create_tree_entry(var player : Player):
 	var item = players_on_ui.create_item(players_on_ui_root)
-	var text : String = "%s (X:%s Y:%s)" % [player.FirstName, player.X, player.Y]
+	var text : String = "%s %s" % [player.FirstName, player.get_map_position()]
 	item.set_text(0, text)
 	item.set_metadata(0, player)
 
