@@ -54,10 +54,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UI/Marker/PlayerMarker.gd"
 }, {
-"base": "Node",
+"base": "Reference",
 "class": "RpcClient",
 "language": "GDScript",
-"path": "res://RpcClient/rpc_client.gd"
+"path": "res://RpcClient/RpcClient.gd"
 } ]
 _global_script_class_icons={
 "Enemy": "",
@@ -75,7 +75,7 @@ _global_script_class_icons={
 [application]
 
 config/name="DDOn Tools"
-run/main_scene="res://map.tscn"
+run/main_scene="res://Main.tscn"
 config/icon="res://puala.png"
 
 [physics]
