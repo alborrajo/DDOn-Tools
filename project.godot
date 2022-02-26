@@ -49,6 +49,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UI/NotificationPopup.gd"
 }, {
+"base": "Resource",
+"class": "Player",
+"language": "GDScript",
+"path": "res://Entities/Player.gd"
+}, {
 "base": "Node2D",
 "class": "PlayerMarker",
 "language": "GDScript",
@@ -68,6 +73,7 @@ _global_script_class_icons={
 "EnemyType": "",
 "NamedEnemyParamsIdOptionButton": "",
 "NotificationPopup": "",
+"Player": "",
 "PlayerMarker": "",
 "RpcClient": ""
 }

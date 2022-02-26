@@ -6,21 +6,16 @@ export var xDiv = 1
 export var zDiv = 1 
 export var pause : bool = false 
 
-var X : int
-var Y : int
-var Z : int
-var CharacterId : int
-var FirstName : String
-var LastName : String
 
-func set_player(var player):
-	X = player["X"]
-	Y = player["Y"]
-	Z = player["Z"]
-	CharacterId = player["CharacterId"]
-	FirstName = player["FirstName"]
-	LastName = player["LastName"]
-	set_pos(X, Z)
+var player : Player
+
+func set_player_json(var json : Dictionary):
+	player = Player.new(json)
+	set_pos(player.X, player.Z)
+
+func set_player(var p_player : Player):
+	player = p_player
+	set_pos(player.X, player.Z)
 
 func set_pos(var x, var z):
 	if pause:
