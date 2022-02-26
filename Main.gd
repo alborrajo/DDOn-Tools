@@ -31,6 +31,7 @@ func update_info():
 	var remove : Array
 	var add : Array
 	var infos : Array = rpc_client.get_info()
+	players_on_ui.clear()
 	
 	for n in players_on_map.get_children():
 		var exists = false
@@ -53,6 +54,9 @@ func update_info():
 		if existing:
 			# update existing player
 			existing.set_player(p)
+			var item = players_on_ui.create_item()
+			item.set_text(0, p.FirstName)
+			item.set_metadata(0, p)
 		else:
 			# create new player
 			var player : PlayerMarker = PlayerMarkerScene.instance()
