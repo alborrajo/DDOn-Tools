@@ -22,10 +22,10 @@ func _on_EnemyDetails_enemy_set(enemy):
 	_update_visibility()
 "
 
-[node name="UILayer" type="CanvasLayer"]
+[node name="root" type="CanvasLayer"]
 script = SubResource( 2 )
 
-[node name="Left Panel" type="PanelContainer" parent="."]
+[node name="left" type="PanelContainer" parent="."]
 anchor_bottom = 1.0
 margin_left = 10.0
 margin_top = 45.0
@@ -35,54 +35,55 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Left Panel"]
+[node name="tab" type="TabContainer" parent="left"]
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 303.0
 margin_bottom = 544.0
+tab_align = 0
+
+[node name="enemy" type="VBoxContainer" parent="left/tab"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Left Panel/VBoxContainer"]
-margin_right = 296.0
-margin_bottom = 20.0
-
-[node name="MenuButton" type="MenuButton" parent="Left Panel/VBoxContainer/HBoxContainer"]
-margin_right = 35.0
+[node name="MenuButton" type="MenuButton" parent="left/tab/enemy"]
+margin_right = 288.0
 margin_bottom = 20.0
 focus_mode = 2
 text = "File"
+align = 0
 items = [ "Load", null, 0, false, false, 0, 0, null, "", false, "Save", null, 0, false, false, 1, 0, null, "", false ]
 script = ExtResource( 4 )
 file_dialog = NodePath("../../../../FileDialog")
-enemy_tree = NodePath("../../EnemyTree")
+enemy_tree = NodePath("../EnemyTree")
 notification_popup = NodePath("../../../../NotificationPopup")
 
-[node name="VSeparator" type="VSeparator" parent="Left Panel/VBoxContainer/HBoxContainer"]
-margin_left = 39.0
-margin_right = 275.0
-margin_bottom = 20.0
-size_flags_horizontal = 3
-
-[node name="Minimize" type="Button" parent="Left Panel/VBoxContainer/HBoxContainer"]
-margin_left = 279.0
-margin_right = 296.0
-margin_bottom = 20.0
-text = "-"
-script = ExtResource( 5 )
-control_to_minimize = NodePath("../../..")
-
-[node name="EnemyTree" type="Tree" parent="Left Panel/VBoxContainer"]
+[node name="EnemyTree" type="Tree" parent="left/tab/enemy"]
 margin_top = 24.0
-margin_right = 296.0
-margin_bottom = 537.0
+margin_right = 288.0
+margin_bottom = 501.0
 size_flags_vertical = 3
 allow_reselect = true
 script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="player" type="Tree" parent="left/tab"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
 
 [node name="Right Panel" type="PanelContainer" parent="."]
 anchor_left = 1.0
@@ -419,19 +420,21 @@ margin_top = 7.0
 margin_right = 997.0
 margin_bottom = 27.0
 
-[node name="menu" type="MenuButton" parent="status_view/container"]
-margin_right = 39.0
+[node name="minimize" type="Button" parent="status_view/container"]
+margin_right = 17.0
 margin_bottom = 20.0
-text = "Test"
+text = "-"
+script = ExtResource( 5 )
+control_to_minimize = NodePath("../../../left")
 
 [node name="coordinates" type="Label" parent="status_view/container"]
-margin_left = 43.0
+margin_left = 21.0
 margin_top = 3.0
-margin_right = 119.0
+margin_right = 97.0
 margin_bottom = 17.0
 text = "Coordinates"
 
-[connection signal="gui_input" from="Left Panel/VBoxContainer/EnemyTree" to="Left Panel/VBoxContainer/EnemyTree" method="_on_gui_input"]
+[connection signal="gui_input" from="left/tab/enemy/EnemyTree" to="left/tab/enemy/EnemyTree" method="_on_gui_input"]
 [connection signal="item_selected" from="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/NamedEnemyParamsIdOptionButton" to="Right Panel/VBoxContainer/EnemyDetails" method="_on_NamedEnemyParamsIdOptionButton_item_selected"]
 [connection signal="value_changed" from="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer/RaidBossIdLineEdit" to="Right Panel/VBoxContainer/EnemyDetails" method="_on_RaidBossIdLineEdit_value_changed"]
 [connection signal="value_changed" from="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer/ScaleLineEdit" to="Right Panel/VBoxContainer/EnemyDetails" method="_on_ScaleLineEdit_value_changed"]

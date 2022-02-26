@@ -2,8 +2,8 @@ extends Node2D
 
 class_name PlayerMarker
 
-export var xDiv = 100 
-export var zDiv = 100 
+export var xDiv = 1 
+export var zDiv = 1 
 export var pause : bool = false 
 
 var X : int
