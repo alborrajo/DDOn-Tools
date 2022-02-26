@@ -1,32 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://resources/maps/field000_m00.png" type="Texture" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
 [ext_resource path="res://UI/Camera.gd" type="Script" id=3]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://UI/EnemySetPlacemark.tscn" type="PackedScene" id=5]
-
-[sub_resource type="GDScript" id=1]
-script/source = "extends Sprite
-
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = \"text\"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-func _input(event):
-	if get_rect().has_point(get_local_mouse_position()):
-		print(get_local_mouse_position())
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-"
 
 [node name="root" type="Node2D"]
 script = ExtResource( 2 )
@@ -38,7 +16,6 @@ map = NodePath("../map")
 
 [node name="map" type="Sprite" parent="."]
 texture = ExtResource( 1 )
-script = SubResource( 1 )
 
 [node name="Hidell Plains" type="Node2D" parent="map"]
 
