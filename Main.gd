@@ -54,14 +54,18 @@ func update_info():
 		if existing:
 			# update existing player
 			existing.set_player(p)
-			var item = players_on_ui.create_item()
-			item.set_text(0, p.FirstName)
-			item.set_metadata(0, p)
+			create_tree_entry(p)
 		else:
 			# create new player
 			var player : PlayerMarker = PlayerMarkerScene.instance()
 			player.set_player(p)
 			players_on_map.add_child(player)
-			var item = players_on_ui.create_item()
-			item.set_text(0, p.FirstName)
-			item.set_metadata(0, p)
+			create_tree_entry(p)
+
+func create_tree_entry(var player : Player):
+	var item = players_on_ui.create_item()
+	var text : String = "%s (X:%s Y:%s)" % [player.FirstName, player.X, player.Y]
+	item.set_text(0, text)
+	item.set_metadata(0, player)
+	
+	
