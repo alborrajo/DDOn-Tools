@@ -7,5 +7,5 @@
 script = ExtResource( 2 )
 
 [node name="player" type="Sprite" parent="."]
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 0.04, 0.04 )
 texture = ExtResource( 1 )

@@ -1,4 +1,4 @@
-extends Node
+extends Reference
 
 class_name RpcClient
 
@@ -41,6 +41,7 @@ func make_request(var host : String, var path : String):
 			OS.delay_msec(HTTP_DELAY_MS)
 		try_count = try_count + 1
 		if try_count >= 10:
+			print("RpcClient: STATUS_CONNECTING try_count >= 10") 
 			return
 			
 	if http.get_status() != HTTPClient.STATUS_CONNECTED:
@@ -55,14 +56,19 @@ func make_request(var host : String, var path : String):
 	if err != OK:
 		print("RpcClient: request failed") 
 		return
-	
+		
+	try_count = 0
 	while http.get_status() == HTTPClient.STATUS_REQUESTING:
 		http.poll()
 		if OS.has_feature("web"):
 			yield(Engine.get_main_loop(), "idle_frame")
 		else:
 			OS.delay_msec(HTTP_DELAY_MS)
-	
+		try_count = try_count + 1
+		if try_count >= 10:
+			print("RpcClient: STATUS_REQUESTING try_count >= 10") 
+			return
+			
 	if http.get_status() != HTTPClient.STATUS_BODY and http.get_status() != HTTPClient.STATUS_CONNECTED:
 		print("RpcClient: failed") 
 		return
@@ -75,7 +81,8 @@ func make_request(var host : String, var path : String):
 	if http.get_response_code() != 200:
 		print("RpcClient: bad response code") 
 		return
-
+		
+	try_count = 0
 	var rb = PoolByteArray()
 	while http.get_status() == HTTPClient.STATUS_BODY:
 		http.poll()
@@ -85,8 +92,13 @@ func make_request(var host : String, var path : String):
 				yield(Engine.get_main_loop(), "idle_frame")
 			else:
 				OS.delay_usec(HTTP_DELAY_MS)
+			try_count = try_count + 1
+			if try_count >= 10:
+				print("RpcClient: STATUS_BODY try_count >= 10") 
+				return
 		else:
 			rb = rb + chunk
+		
 	var body : String = rb.get_string_from_utf8()
 	var json = JSON.parse(body)
 	if json.error != OK:
