@@ -434,6 +434,16 @@ margin_right = 97.0
 margin_bottom = 17.0
 text = "Coordinates"
 
+[node name="marker" type="Label" parent="status_view/container"]
+margin_left = 101.0
+margin_top = 3.0
+margin_right = 145.0
+margin_bottom = 17.0
+text = "Marker"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="gui_input" from="left/tab/enemy/EnemyTree" to="left/tab/enemy/EnemyTree" method="_on_gui_input"]
 [connection signal="enemy_set" from="Right Panel/VBoxContainer/EnemyDetails" to="Right Panel" method="_on_EnemyDetails_enemy_set"]
 [connection signal="item_selected" from="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/NamedEnemyParamsIdOptionButton" to="Right Panel/VBoxContainer/EnemyDetails" method="_on_NamedEnemyParamsIdOptionButton_item_selected"]

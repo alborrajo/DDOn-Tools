@@ -6,6 +6,7 @@ const MapMarkerScene = preload("res://UI/Marker/MapMarker.tscn")
 var rpc_client : RpcClient
 var map_sprite : Sprite
 var coordinates_label : Label
+var marker_label : Label
 var players_on_map : Node2D
 var players_on_ui : Tree
 var players_on_ui_root : TreeItem
@@ -17,6 +18,7 @@ func _ready():
 	map_sprite = get_node("map")
 	coordinates_label = get_node("ui/status_view/container/coordinates")
 	players_on_ui = get_node("ui/left/tab/player")
+	marker_label = get_node("ui/status_view/container/marker")
 	players_on_map = Node2D.new()
 	add_child(players_on_map)
 	players_on_ui_root= players_on_ui.create_item();
@@ -36,8 +38,13 @@ func load_marker():
 	for a in obj[0]["npcs"]:
 		var marker : Marker = Marker.new(a)
 		var m : MapMarker = MapMarkerScene.instance()
+		m.connect("hover", self, "_on_hover_marker")
 		m.set_marker(marker)
 		add_child(m)
+		
+func _on_hover_marker(var map_marker : MapMarker):
+	var marker : Marker = map_marker.marker
+	marker_label.text = "Marker:(Type:%s Id:%s StageNo:%s GrupNo:%s )" % [marker.Type, marker.UniqueId, marker.StageNo, marker.GroupNo]
 		
 func update_info():
 	var remove : Array
