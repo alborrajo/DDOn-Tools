@@ -13,7 +13,7 @@ cd "$(dirname "$0")"
 echo "arc,file,crc32" > arcls.out.csv
 
 # Copy map files and list them
-for arc in "$2"/*/**/*.arc
+for arc in $(find "$2" -name *.arc -type f)
 do
     echo "Listing files in $arc"
 
