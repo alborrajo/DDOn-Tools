@@ -25,6 +25,8 @@ func set_marker(var p_marker : Marker):
 		modulate = Color.blue
 	if marker.Type == "ect":
 		modulate = Color.yellow
+	if marker.Type == "loc":
+		modulate = Color.aqua
 
 func set_pos_vec(var vec: Vector2):
 	set_pos(vec.x, vec.y)

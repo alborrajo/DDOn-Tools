@@ -24,6 +24,7 @@ func _ready():
 	players_on_ui_root= players_on_ui.create_item();
 	players_on_ui.hide_root = true
 	load_marker()
+	load_marker_st0100()
 	
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -37,6 +38,23 @@ func load_marker():
 	var obj = Common.load_json_file("res://resources/npcs.json")
 	for a in obj[0]["npcs"]:
 		var marker : Marker = Marker.new(a)
+		var m : MapMarker = MapMarkerScene.instance()
+		m.connect("hover", self, "_on_hover_marker")
+		m.set_marker(marker)
+		add_child(m)
+		
+func load_marker_st0100():
+	var obj = Common.load_json_file("res://resources/st0100.json")
+	for a in obj:
+		var mD : Dictionary = {}
+		mD["X"] = a["Pos"]["X"]
+		mD["Y"] = a["Pos"]["Y"]
+		mD["Z"] = a["Pos"]["Z"]
+		mD["Type"] = "loc"
+		mD["UniqueId"] = a["MessageNo"]
+		mD["GroupNo"] = a["WarpPointId"]
+		mD["StageNo"] = a["Type"]
+		var marker : Marker = Marker.new(mD)
 		var m : MapMarker = MapMarkerScene.instance()
 		m.connect("hover", self, "_on_hover_marker")
 		m.set_marker(marker)
