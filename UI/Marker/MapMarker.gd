@@ -16,13 +16,13 @@ func set_marker(var p_marker : Marker):
 	marker = p_marker
 	set_pos_vec(marker.get_map_position())
 	if marker.Type == "npc":
-		modulate = Color(0, 0, 1)
+		modulate = Color.red
 	if marker.Type == "sce":
-		modulate = Color(0, 1, 1)
+		modulate = Color.green
 	if marker.Type == "om":
-		modulate = Color(1, 0, 1)
+		modulate = Color.blue
 	if marker.Type == "ect":
-		modulate = Color(1, 1, 1)
+		modulate = Color.yellow
 
 func set_pos_vec(var vec: Vector2):
 	set_pos(vec.x, vec.y)
