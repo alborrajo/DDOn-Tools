@@ -1,5 +1,6 @@
 extends Node2D
 
+const EnemySetPlacemarkScene = preload("res://UI/Marker/EnemySetPlacemark.tscn")
 const PlayerMarkerScene = preload("res://UI/Marker/PlayerMarker.tscn")
 const MapMarkerScene = preload("res://UI/Marker/MapMarker.tscn")
 
@@ -38,10 +39,19 @@ func load_marker():
 	var obj = Common.load_json_file("res://resources/npcs.json")
 	for a in obj[0]["npcs"]:
 		var marker : Marker = Marker.new(a)
-		var m : MapMarker = MapMarkerScene.instance()
-		m.connect("hover", self, "_on_hover_marker")
-		m.set_marker(marker)
-		add_child(m)
+		var instance_node: Node
+		if a["Type"] == "ect":
+			var enemy_set_placemark: EnemySetPlacemark = EnemySetPlacemarkScene.instance()
+			enemy_set_placemark.group_id = marker.GroupNo
+			enemy_set_placemark.stage_id = DataProvider.stage_no_to_stage_id(marker.StageNo)
+			enemy_set_placemark.rect_position = marker.get_map_position()
+			instance_node = enemy_set_placemark
+		else:
+			var m : MapMarker = MapMarkerScene.instance()
+			m.connect("hover", self, "_on_hover_marker")
+			m.set_marker(marker)
+			instance_node = m
+		add_child(instance_node)
 		
 func load_marker_st0100():
 	var obj = Common.load_json_file("res://resources/st0100.json")
@@ -62,7 +72,7 @@ func load_marker_st0100():
 		
 func _on_hover_marker(var map_marker : MapMarker):
 	var marker : Marker = map_marker.marker
-	marker_label.text = "Marker:(Type:%s Id:%s StageNo:%s GrupNo:%s )" % [marker.Type, marker.UniqueId, marker.StageNo, marker.GroupNo]
+	marker_label.text = "Marker:(Type:%s Id:%s StageNo:%s GroupNo:%s )" % [marker.Type, marker.UniqueId, marker.StageNo, marker.GroupNo]
 		
 func update_info():
 	var remove : Array

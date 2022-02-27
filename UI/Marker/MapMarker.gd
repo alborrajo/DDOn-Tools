@@ -1,5 +1,4 @@
-extends Node2D
-
+extends GenericMarker
 class_name MapMarker
 
 signal hover
@@ -27,13 +26,6 @@ func set_marker(var p_marker : Marker):
 		modulate = Color.yellow
 	if marker.Type == "loc":
 		modulate = Color.aqua
-
-func set_pos_vec(var vec: Vector2):
-	set_pos(vec.x, vec.y)
-
-func set_pos(var x, var z):
-	position.x = x
-	position.y = z
 
 func _input(event):
 	if event is InputEventMouseMotion:

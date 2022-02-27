@@ -1,5 +1,4 @@
 extends MapEntity
-
 class_name Marker
 
 var Type : String
@@ -12,5 +11,3 @@ func _init(var marker : Dictionary).(marker):
 	UniqueId = marker["UniqueId"]
 	GroupNo = marker["GroupNo"]
 	StageNo = marker["StageNo"]
-	
-	

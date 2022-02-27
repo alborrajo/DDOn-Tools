@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://resources/maps/field000_m00.png" type="Texture" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
 [ext_resource path="res://UI/Camera.gd" type="Script" id=3]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=4]
-[ext_resource path="res://UI/EnemySetPlacemark.tscn" type="PackedScene" id=5]
 
 [node name="root" type="Node2D"]
 script = ExtResource( 2 )
@@ -13,32 +12,6 @@ script = ExtResource( 2 )
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 1 )
 centered = false
-
-[node name="Hidell Plains" type="Node2D" parent="."]
-position = Vector2( 198, 281 )
-
-[node name="Path" parent="Hidell Plains" instance=ExtResource( 5 )]
-margin_left = -17.0
-margin_top = -22.0
-margin_right = 5.99998
-margin_bottom = -11.0
-stage_id = 1
-
-[node name="Plains" parent="Hidell Plains" instance=ExtResource( 5 )]
-margin_left = -18.0
-margin_top = -16.0
-margin_right = 4.99998
-margin_bottom = -5.0
-stage_id = 1
-group_id = 1
-
-[node name="Path2" parent="Hidell Plains" instance=ExtResource( 5 )]
-margin_left = -9.00002
-margin_top = -13.0
-margin_right = 14.0
-margin_bottom = -2.0
-stage_id = 1
-group_id = 2
 
 [node name="camera" type="Camera2D" parent="." groups=["camera"]]
 position = Vector2( 175, 258 )

@@ -27,12 +27,12 @@ _global_script_classes=[ {
 "base": "Button",
 "class": "EnemyPlacemark",
 "language": "GDScript",
-"path": "res://UI/EnemyPlacemark.gd"
+"path": "res://UI/Marker/EnemyPlacemark.gd"
 }, {
 "base": "PanelContainer",
 "class": "EnemySetPlacemark",
 "language": "GDScript",
-"path": "res://UI/EnemySetPlacemark.gd"
+"path": "res://UI/Marker/EnemySetPlacemark.gd"
 }, {
 "base": "Tree",
 "class": "EnemyTree",
@@ -44,12 +44,17 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Entities/EnemyType.gd"
 }, {
+"base": "Node2D",
+"class": "GenericMarker",
+"language": "GDScript",
+"path": "res://UI/Marker/GenericMarker.gd"
+}, {
 "base": "Resource",
 "class": "MapEntity",
 "language": "GDScript",
 "path": "res://Entities/Map/MapEntity.gd"
 }, {
-"base": "Node2D",
+"base": "GenericMarker",
 "class": "MapMarker",
 "language": "GDScript",
 "path": "res://UI/Marker/MapMarker.gd"
@@ -74,7 +79,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Entities/Map/Player.gd"
 }, {
-"base": "Node2D",
+"base": "GenericMarker",
 "class": "PlayerMarker",
 "language": "GDScript",
 "path": "res://UI/Marker/PlayerMarker.gd"
@@ -92,6 +97,7 @@ _global_script_class_icons={
 "EnemySetPlacemark": "",
 "EnemyTree": "",
 "EnemyType": "",
+"GenericMarker": "",
 "MapEntity": "",
 "MapMarker": "",
 "Marker": "",
@@ -107,6 +113,10 @@ _global_script_class_icons={
 config/name="DDOn Tools"
 run/main_scene="res://Main.tscn"
 config/icon="res://puala.png"
+
+[autoload]
+
+DataProvider="*res://Providers/DataProvider.gd"
 
 [physics]
 
