@@ -1,6 +1,7 @@
 extends Node2D
 
 const PlayerMarkerScene = preload("res://UI/Marker/PlayerMarker.tscn")
+const MapMarkerScene = preload("res://UI/Marker/MapMarker.tscn")
 
 var rpc_client : RpcClient
 var map_sprite : Sprite
@@ -20,6 +21,7 @@ func _ready():
 	add_child(players_on_map)
 	players_on_ui_root= players_on_ui.create_item();
 	players_on_ui.hide_root = true
+	load_marker()
 	
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -29,6 +31,14 @@ func _input(event):
 func _on_rpc_timer_timeout():
 	update_info()
 
+func load_marker():
+	var obj = Common.load_json_file("res://resources/npcs.json")
+	for a in obj[0]["npcs"]:
+		var marker : Marker = Marker.new(a)
+		var m : MapMarker = MapMarkerScene.instance()
+		m.set_marker(marker)
+		add_child(m)
+		
 func update_info():
 	var remove : Array
 	var add : Array
