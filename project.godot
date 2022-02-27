@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Reference",
+"class": "Common",
+"language": "GDScript",
+"path": "res://Common.gd"
+}, {
 "base": "Resource",
 "class": "Enemy",
 "language": "GDScript",
@@ -39,6 +44,21 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Entities/EnemyType.gd"
 }, {
+"base": "Resource",
+"class": "MapEntity",
+"language": "GDScript",
+"path": "res://Entities/Map/MapEntity.gd"
+}, {
+"base": "Node2D",
+"class": "MapMarker",
+"language": "GDScript",
+"path": "res://UI/Marker/MapMarker.gd"
+}, {
+"base": "MapEntity",
+"class": "Marker",
+"language": "GDScript",
+"path": "res://Entities/Map/Marker.gd"
+}, {
 "base": "OptionButton",
 "class": "NamedEnemyParamsIdOptionButton",
 "language": "GDScript",
@@ -49,10 +69,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UI/NotificationPopup.gd"
 }, {
-"base": "Resource",
+"base": "MapEntity",
 "class": "Player",
 "language": "GDScript",
-"path": "res://Entities/Player.gd"
+"path": "res://Entities/Map/Player.gd"
 }, {
 "base": "Node2D",
 "class": "PlayerMarker",
@@ -65,12 +85,16 @@ _global_script_classes=[ {
 "path": "res://RpcClient/RpcClient.gd"
 } ]
 _global_script_class_icons={
+"Common": "",
 "Enemy": "",
 "EnemyDetails": "",
 "EnemyPlacemark": "",
 "EnemySetPlacemark": "",
 "EnemyTree": "",
 "EnemyType": "",
+"MapEntity": "",
+"MapMarker": "",
+"Marker": "",
 "NamedEnemyParamsIdOptionButton": "",
 "NotificationPopup": "",
 "Player": "",
