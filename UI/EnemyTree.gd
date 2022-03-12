@@ -29,7 +29,7 @@ func _on_gui_input(event):
 		print_debug("dragging", _dragging)
 		
 		for node in get_tree().get_nodes_in_group("EnemyPlacemark"):
-			if node is EnemySetPlacemark and EnemySetPlacemark.get_scaled_global_rect(node).has_point(node.get_global_mouse_position()):
+			if node is EnemySetPlacemark and (node as EnemySetPlacemark).is_visible_in_tree() and EnemySetPlacemark.get_scaled_global_rect(node).has_point(node.get_global_mouse_position()):
 				var placemark := node as EnemySetPlacemark
 				var selected_enemy_type := get_selected().get_metadata(get_selected_column()) as EnemyType
 				var enemy := Enemy.new(selected_enemy_type)

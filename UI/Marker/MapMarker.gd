@@ -9,10 +9,6 @@ var sprite : Sprite
 func _ready():
 	sprite = get_node("sprite")
 
-func set_marker_json(var json : Dictionary):
-	marker = Marker.new(json)
-	set_marker(marker)
-
 func set_marker(var p_marker : Marker):
 	marker = p_marker
 	set_pos_vec(marker.get_map_position())

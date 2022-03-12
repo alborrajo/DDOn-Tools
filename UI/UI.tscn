@@ -8,6 +8,13 @@
 [ext_resource path="res://UI/EnemyTree.gd" type="Script" id=6]
 
 [sub_resource type="GDScript" id=2]
+script/source = "extends CanvasLayer
+
+signal map_selected(map_name)
+
+func _on_MapOptionButton_item_selected(index):
+	emit_signal(\"map_selected\", $status_view/container/MapOptionButton.get_item_text(index))
+"
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends PanelContainer
@@ -94,9 +101,6 @@ margin_top = 45.0
 margin_right = -10.0
 margin_bottom = -4.0
 script = SubResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Right Panel"]
 margin_left = 7.0
@@ -378,13 +382,13 @@ margin_top = -195.0
 margin_right = 312.0
 margin_bottom = 195.0
 rect_min_size = Vector2( 180, 63 )
-window_title = "Open a File"
+window_title = "Abrir un Archivo"
 mode = 0
 access = 2
 filters = PoolStringArray( "*.csv ; CSV Files" )
 show_hidden_files = true
-current_dir = "/Users/railgun/dev/DDOn-Tools"
-current_path = "/Users/railgun/dev/DDOn-Tools/"
+current_dir = "/Users/Laith/Documents/Programacion/Godot/DDOn Tools"
+current_path = "/Users/Laith/Documents/Programacion/Godot/DDOn Tools/"
 
 [node name="NotificationPopup" type="PopupPanel" parent="."]
 anchor_left = 1.0
@@ -410,9 +414,6 @@ margin_left = 10.0
 margin_top = 10.0
 margin_right = -10.0
 margin_bottom = 44.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="container" type="HBoxContainer" parent="status_view"]
 margin_left = 7.0
@@ -427,17 +428,25 @@ text = "-"
 script = ExtResource( 5 )
 control_to_minimize = NodePath("../../../left")
 
-[node name="coordinates" type="Label" parent="status_view/container"]
+[node name="MapOptionButton" type="OptionButton" parent="status_view/container"]
 margin_left = 21.0
+margin_right = 103.0
+margin_bottom = 20.0
+text = "Lestania"
+items = [ "Lestania", null, false, 0, null, "Bloodbane Island", null, false, 1, null, "Phindym", null, false, 2, null, "Megadosis", null, false, 3, null ]
+selected = 0
+
+[node name="coordinates" type="Label" parent="status_view/container"]
+margin_left = 107.0
 margin_top = 3.0
-margin_right = 97.0
+margin_right = 183.0
 margin_bottom = 17.0
 text = "Coordinates"
 
 [node name="marker" type="Label" parent="status_view/container"]
-margin_left = 101.0
+margin_left = 187.0
 margin_top = 3.0
-margin_right = 145.0
+margin_right = 231.0
 margin_bottom = 17.0
 text = "Marker"
 __meta__ = {
@@ -464,3 +473,4 @@ __meta__ = {
 [connection signal="pressed" from="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer/IsAreaBoss" to="Right Panel/VBoxContainer/EnemyDetails" method="_on_IsAreaBoss_pressed"]
 [connection signal="pressed" from="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer/IsBloodEnemy" to="Right Panel/VBoxContainer/EnemyDetails" method="_on_IsBloodEnemy_pressed"]
 [connection signal="pressed" from="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer/IsHighOrbEnemy" to="Right Panel/VBoxContainer/EnemyDetails" method="_on_IsHighOrbEnemy_pressed"]
+[connection signal="item_selected" from="status_view/container/MapOptionButton" to="." method="_on_MapOptionButton_item_selected"]

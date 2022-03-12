@@ -5,18 +5,21 @@ const PlayerMarkerScene = preload("res://UI/Marker/PlayerMarker.tscn")
 const MapMarkerScene = preload("res://UI/Marker/MapMarker.tscn")
 
 var rpc_client : RpcClient
-var map_sprite : Sprite
 var coordinates_label : Label
 var marker_label : Label
 var players_on_map : Node2D
 var players_on_ui : Tree
 var players_on_ui_root : TreeItem
+
+onready var land_id_to_node := {
+	"1": $Lestania,
+	"3": $Phindym
+}
 	
 func _init():
 	rpc_client = RpcClient.new()
 	
 func _ready():
-	map_sprite = get_node("map")
 	coordinates_label = get_node("ui/status_view/container/coordinates")
 	players_on_ui = get_node("ui/left/tab/player")
 	marker_label = get_node("ui/status_view/container/marker")
@@ -24,8 +27,7 @@ func _ready():
 	add_child(players_on_map)
 	players_on_ui_root= players_on_ui.create_item();
 	players_on_ui.hide_root = true
-	load_marker()
-	load_marker_st0100()
+	load_npc_markers()
 	
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -35,48 +37,28 @@ func _input(event):
 func _on_rpc_timer_timeout():
 	update_info()
 
-func load_marker():
-	var obj = Common.load_json_file("res://resources/npcs.json")
-	for a in obj[0]["npcs"]:
-		var marker : Marker = Marker.new(a)
-		var instance_node: Node
-		if a["Type"] == "ect":
-			var enemy_set_placemark: EnemySetPlacemark = EnemySetPlacemarkScene.instance()
-			enemy_set_placemark.group_id = marker.GroupNo
-			enemy_set_placemark.stage_id = DataProvider.stage_no_to_stage_id(marker.StageNo)
-			enemy_set_placemark.rect_position = marker.get_map_position()
-			instance_node = enemy_set_placemark
+func load_npc_markers():
+	# Oh no
+	for land_id in DataProvider.repo["Data"]["Lands"].keys():
+		var land_node: Node = land_id_to_node.get(land_id)
+		if land_node == null:
+			printerr("No node found for land id ",land_id)
 		else:
-			var m : MapMarker = MapMarkerScene.instance()
-			m.connect("hover", self, "_on_hover_marker")
-			m.set_marker(marker)
-			instance_node = m
-		add_child(instance_node)
-		
-func load_marker_st0100():
-	var obj = Common.load_json_file("res://resources/st0100.json")
-	for a in obj:
-		var mD : Dictionary = {}
-		mD["X"] = a["Pos"]["X"]
-		mD["Y"] = a["Pos"]["Y"]
-		mD["Z"] = a["Pos"]["Z"]
-		mD["Type"] = "loc"
-		mD["UniqueId"] = a["MessageNo"]
-		mD["GroupNo"] = a["WarpPointId"]
-		mD["StageNo"] = a["Type"]
-		var marker : Marker = Marker.new(mD)
-		var m : MapMarker = MapMarkerScene.instance()
-		m.connect("hover", self, "_on_hover_marker")
-		m.set_marker(marker)
-		add_child(m)
+			for area_id in DataProvider.repo["Data"]["Lands"][land_id]["Areas"].keys():
+				for stage_id in DataProvider.repo["Data"]["Lands"][land_id]["Areas"][area_id]["Stages"].keys():
+					for ect_marker in DataProvider.repo["Data"]["Lands"][land_id]["Areas"][area_id]["Stages"][stage_id]["EctMarker"]:
+						var marker : Marker = Marker.new(ect_marker, land_id)
+						var enemy_set_placemark: EnemySetPlacemark = EnemySetPlacemarkScene.instance()
+						enemy_set_placemark.group_id = marker.GroupNo
+						enemy_set_placemark.stage_id = DataProvider.stage_no_to_stage_id(marker.StageNo)
+						enemy_set_placemark.rect_position = marker.get_map_position()
+						land_node.add_child(enemy_set_placemark)
 		
 func _on_hover_marker(var map_marker : MapMarker):
 	var marker : Marker = map_marker.marker
 	marker_label.text = "Marker:(Type:%s Id:%s StageNo:%s GroupNo:%s )" % [marker.Type, marker.UniqueId, marker.StageNo, marker.GroupNo]
 		
 func update_info():
-	var remove : Array
-	var add : Array
 	var infos : Array = rpc_client.get_info()
 	for n in players_on_map.get_children():
 		var exists = false
@@ -110,7 +92,7 @@ func update_info():
 		item = item.get_next()
 			
 	for info in infos:
-		var p : Player = Player.new(info)
+		var p : Player = Player.new(info, "1") # TODO: Obtain in which land is the Player
 		
 		# on map
 		var existing : PlayerMarker
@@ -127,7 +109,7 @@ func update_info():
 			players_on_map.add_child(player)
 			
 		# on ui
-		var text : String = "%s %s" % [p.FirstName, p.get_map_position()]
+		var text : String = "%s %s %s" % [p.FirstName, p.LastName, p.get_map_position()]
 		var existing_ui : TreeItem
 		item = false
 		if players_on_ui.get_root():
@@ -146,8 +128,17 @@ func update_info():
 
 func create_tree_entry(var player : Player):
 	var item = players_on_ui.create_item(players_on_ui_root)
-	var text : String = "%s %s" % [player.FirstName, player.get_map_position()]
+	var text : String = "%s %s %s" % [player.FirstName, player.LastName, player.get_map_position()]
 	item.set_text(0, text)
 	item.set_metadata(0, player)
 
+
+func _on_ui_map_selected(map_name):
+	$Lestania.visible = false
+	$Phindym.visible = false
 	
+	var map_node := get_node_or_null(map_name)
+	if map_node != null:
+		map_node.visible = true
+	else:
+		printerr("Couldn't find node for map ",map_name)

@@ -1,13 +1,14 @@
 extends Node
 
 export (String, FILE, "*.csv") var stage_list_json := "res://resources/StageList.json"
+export (String, FILE, "*.csv") var repo_json := "res://resources/repo.json"
 
 var stage_list: Array
+var repo: Dictionary
 
 func _ready():
-	var file := File.new()
-	file.open(stage_list_json, File.READ)
-	stage_list = parse_json(file.get_as_text())
+	stage_list = Common.load_json_file(stage_list_json)
+	repo = Common.load_json_file(repo_json)
 	
 func stage_no_to_stage_id(stage_no: int) -> int:
 	for stage in stage_list:
