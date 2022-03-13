@@ -36,18 +36,28 @@ onready var file_dialog_node: FileDialog = get_node(file_dialog)
 onready var enemy_tree_node: EnemyTree = get_node(enemy_tree)
 onready var notification_popup_node: NotificationPopup = get_node(notification_popup)
 
+func _ready():
+	get_popup().connect("id_pressed", self, "_on_menu_id_pressed")
+	
 func _unhandled_input(event: InputEvent):
 	if Input.is_key_pressed(KEY_CONTROL) and event.is_pressed() and event is InputEventKey:
 		var inputEventKey := event as InputEventKey
-		if inputEventKey.scancode == KEY_S and _file_path != "":
-			_do_save(_file_path)
-			get_tree().set_input_as_handled()
-		elif inputEventKey.scancode == KEY_L and _file_path != "":
-			_do_load(_file_path)
-			get_tree().set_input_as_handled()
-
-func _ready():
-	get_popup().connect("id_pressed", self, "_on_menu_id_pressed")
+		if inputEventKey.scancode == KEY_S:
+			if _file_path != "":
+				_do_save(_file_path)
+				get_tree().set_input_as_handled()
+			else:
+				var err_message := "No CSV file loaded. Didn't save."
+				print(err_message)
+				notification_popup_node.notify(err_message)
+		elif inputEventKey.scancode == KEY_L:
+			if _file_path != "":
+				_do_load(_file_path)
+				get_tree().set_input_as_handled()
+			else:
+				var err_message := "No CSV file loaded. Didn't reload."
+				print(err_message)
+				notification_popup_node.notify(err_message)
 
 func _on_menu_id_pressed(id: int) -> void:
 	match id:
