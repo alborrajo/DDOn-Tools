@@ -147,84 +147,84 @@ id,name
 0x010915,Stone Blob
 0x010920,Oil Jelly
 
-0x011000,Empty (No Enemy)
-0x011001,Empty (No Enemy)
-0x011002,Empty (No Enemy)
-0x011003,Empty (No Enemy)
-0x011004,Empty (No Enemy)
-0x011005,Empty (No Enemy)
-0x011006,Empty (No Enemy)
-0x011010,Empty (No Enemy)
-0x011011,Empty (No Enemy)
-0x011012,Empty (No Enemy)
-0x011013,Empty (No Enemy)
-0x011014,Empty (No Enemy)
-0x011015,Empty (No Enemy)
-0x011016,Empty (No Enemy)
-0x011020,Empty (No Enemy)
-0x011021,Empty (No Enemy)
-0x011022,Empty (No Enemy)
-0x011023,Empty (No Enemy)
-0x011024,Empty (No Enemy)
-0x011025,Empty (No Enemy)
-0x011026,Empty (No Enemy)
-0x011027,Empty (No Enemy)
-0x011030,Empty (No Enemy)
-0x011031,Empty (No Enemy)
-0x011032,Empty (No Enemy)
-0x011033,Empty (No Enemy)
-0x011034,Empty (No Enemy)
-0x011040,Empty (No Enemy)
-0x011041,Empty (No Enemy)
-0x011042,Empty (No Enemy)
-0x011043,Empty (No Enemy)
-0x011044,Empty (No Enemy)
+0x011000,Rogue Fighter
+0x011001,Rogue Seeker
+0x011002,Rogue Hunter
+0x011003,Rogue Healer
+0x011004,Rogue Defender
+0x011005,Rogue Mage
+0x011006,Rogue Warrior
+0x011010,Banded Fighter
+0x011011,Banded Seeker
+0x011012,Banded Hunter
+0x011013,Banded Healer
+0x011014,Banded Defender
+0x011015,Banded Mage
+0x011016,Banded Warrior
+0x011020,Mergan Fighter
+0x011021,Mergan Seeker
+0x011022,Mergan Hunter
+0x011023,Mergan Healer
+0x011024,Mergan Defender
+0x011025,Mergan Mage
+0x011026,Mergan Warrior
+0x011027,Mergan Element Archer
+0x011030,Mist Fighter
+0x011031,Mist Hunter
+0x011032,Mist Priest
+0x011033,Mist Sorcerer
+0x011034,Mist Warrior
+0x011040,Iris
+0x011041,Diamantes (Human)
+0x011042,Leo
+0x011043,Hooded Iris (???)
+0x011044,Former Commander Leo (Final Boss)
 
-0x011044_cs01,?
-0x011044_cs02,?
-0x011044_cs03,?
-0x011044_cs04,?
-0x011044_cs05,?
-0x011044_cs06,?
-0x011044_cs07,?
-0x011044_cs08,?
-0x011044_cs09,?
-0x011044_cs10,?
-0x011044_cs11,?
-0x011044_cs12,?
-0x011044_cs13,?
-0x011044_cs14,?
-0x011044_Job, ?
+0x011044_cs01,0x011044_cs01 (No Enemy)
+0x011044_cs02,0x011044_cs02 (No Enemy)
+0x011044_cs03,0x011044_cs03 (No Enemy)
+0x011044_cs04,0x011044_cs04 (No Enemy)
+0x011044_cs05,0x011044_cs05 (No Enemy)
+0x011044_cs06,0x011044_cs06 (No Enemy)
+0x011044_cs07,0x011044_cs07 (No Enemy)
+0x011044_cs08,0x011044_cs08 (No Enemy)
+0x011044_cs09,0x011044_cs09 (No Enemy)
+0x011044_cs10,0x011044_cs10 (No Enemy)
+0x011044_cs11,0x011044_cs11 (No Enemy)
+0x011044_cs12,0x011044_cs12 (No Enemy)
+0x011044_cs13,0x011044_cs13 (No Enemy)
+0x011044_cs14,0x011044_cs14 (No Enemy)
+0x011044_Job,0x011044_Job (No Enemy)
 
-0x011050,Empty (No Enemy)
-0x011051,Empty (No Enemy)
-0x011052,Empty (No Enemy)
-0x011053,Empty (No Enemy)
-0x011054,Empty (No Enemy)
-0x011055,Empty (No Enemy)
-0x011056,Empty (No Enemy)
-0x011057,Empty (No Enemy)
-0x011060,Empty (No Enemy)
-0x011061,Empty (No Enemy)
-0x011062,Empty (No Enemy)
-0x011063,Empty (No Enemy)
-0x011064,Empty (No Enemy)
-0x011065,Empty (No Enemy)
-0x011066,Empty (No Enemy)
-0x011067,Empty (No Enemy)
-0x011068,Empty (No Enemy)
-0x011069,Empty (No Enemy)
-0x011070,Empty (No Enemy)
-0x011071,Empty (No Enemy)
-0x011072,Empty (No Enemy)
-0x011073,Empty (No Enemy)
-0x011074,Empty (No Enemy)
-0x011075,Empty (No Enemy)
-0x011076,Empty (No Enemy)
-0x011080,Empty (No Enemy)
-0x011081,Empty (No Enemy)
-0x011082,Empty (No Enemy)
-0x011083,Empty (No Enemy)
+0x011050,Pawn Fighter
+0x011051,Pawn Seeker
+0x011052,Pawn Hunter
+0x011053,Pawn Healer
+0x011054,Pawn Defender
+0x011055,Pawn Mage
+0x011056,Pawn Warrior
+0x011057,Pawn Element Archer
+0x011060,Phindymian Fighter
+0x011061,Phindymian Seeker
+0x011062,Phindymian Hunter
+0x011063,Phindymian Priest
+0x011064,Phindymian Defender
+0x011065,Phindymian Sorcerer
+0x011066,Phindymian Warrior
+0x011067,Phindymian Element Archer
+0x011068,0x011068 (No Enemy)
+0x011069,0x011069 (No Enemy)
+0x011070,Scarlet Fighter
+0x011071,Scarlet Seeker
+0x011072,Scarlet Hunter
+0x011073,Scarlet Healer
+0x011074,Scarlet Defender
+0x011075,Scarlet Mage
+0x011076,Scarlet Warrior
+0x011080,Megado Guard (Fighter?)
+0x011081,Megado Guard (Seeker?)
+0x011082,Megado Guard (Hunter?)
+0x011083,Megado Guard (Warrior?)
 
 0x011100,Forest Goblin
 0x011101,Forest Goblin Fighter
