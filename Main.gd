@@ -15,7 +15,9 @@ var players_on_ui_root : TreeItem
 
 onready var land_id_to_node := {
 	"1": $Lestania,
-	"3": $Phindym
+	"2": $"Bloodbane Island",
+	"3": $Phindym,
+	"4": $"Acre Selund"
 }
 	
 func _init():
@@ -138,7 +140,9 @@ func create_tree_entry(var player : Player):
 
 func _on_ui_map_selected(map_name):
 	$Lestania.visible = false
+	$"Bloodbane Island".visible = false
 	$Phindym.visible = false
+	$"Acre Selund".visible = false
 	
 	var map_node := get_node_or_null(map_name)
 	if map_node != null:
