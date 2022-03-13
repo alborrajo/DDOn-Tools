@@ -14,6 +14,10 @@ signal map_selected(map_name)
 
 func _on_MapOptionButton_item_selected(index):
 	emit_signal(\"map_selected\", $status_view/container/MapOptionButton.get_item_text(index))
+
+
+func _on_root_markers_loaded():
+	$left/tab/enemy/FileMenu._on_markers_loaded()
 "
 
 [sub_resource type="GDScript" id=1]
@@ -60,7 +64,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MenuButton" type="MenuButton" parent="left/tab/enemy"]
+[node name="FileMenu" type="MenuButton" parent="left/tab/enemy"]
+process_priority = -1
 margin_right = 288.0
 margin_bottom = 20.0
 focus_mode = 2

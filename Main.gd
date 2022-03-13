@@ -1,5 +1,7 @@
 extends Node2D
 
+signal markers_loaded()
+
 const EnemySetPlacemarkScene = preload("res://UI/Marker/EnemySetPlacemark.tscn")
 const PlayerMarkerScene = preload("res://UI/Marker/PlayerMarker.tscn")
 const MapMarkerScene = preload("res://UI/Marker/MapMarker.tscn")
@@ -28,6 +30,7 @@ func _ready():
 	players_on_ui_root= players_on_ui.create_item();
 	players_on_ui.hide_root = true
 	load_npc_markers()
+	emit_signal("markers_loaded")
 	
 func _input(event):
 	if event is InputEventMouseMotion:

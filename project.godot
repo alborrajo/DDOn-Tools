@@ -44,6 +44,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Entities/EnemyType.gd"
 }, {
+"base": "MenuButton",
+"class": "FileMenu",
+"language": "GDScript",
+"path": "res://UI/FileMenu.gd"
+}, {
 "base": "Node2D",
 "class": "GenericMarker",
 "language": "GDScript",
@@ -97,6 +102,7 @@ _global_script_class_icons={
 "EnemySetPlacemark": "",
 "EnemyTree": "",
 "EnemyType": "",
+"FileMenu": "",
 "GenericMarker": "",
 "MapEntity": "",
 "MapMarker": "",
@@ -117,6 +123,7 @@ config/icon="res://puala.png"
 [autoload]
 
 DataProvider="*res://Providers/DataProvider.gd"
+StorageProvider="*res://Providers/StorageProvider.tscn"
 
 [physics]
 

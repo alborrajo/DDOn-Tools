@@ -7,6 +7,7 @@ static func load_json_file(path):
 	var file = File.new()
 	file.open(path, file.READ)
 	var text = file.get_as_text()
+	file.close()
 	var result_json = JSON.parse(text)
 	if result_json.error != OK:
 		print("[load_json_file] Error loading JSON file '" + str(path) + "'.")
@@ -16,3 +17,10 @@ static func load_json_file(path):
 		return null
 	var obj = result_json.result
 	return obj
+
+static func save_json_file(path, contents):
+	"""Saves contents to the given path as JSON."""
+	var file = File.new()
+	file.open(path, file.WRITE)
+	file.store_string(JSON.print(contents))
+	file.close()

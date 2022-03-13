@@ -1,4 +1,7 @@
 extends MenuButton
+class_name FileMenu
+
+const STORAGE_KEY_FILE_PATH := "file_menu.file_path"
 
 const CSV_HEADER := PoolStringArray([
 	"StageId",
@@ -30,7 +33,7 @@ export (NodePath) var file_dialog: NodePath
 export (NodePath) var enemy_tree: NodePath
 export (NodePath) var notification_popup: NodePath
 
-var _file_path: String
+var _file_path: String setget _set_file_path
 
 onready var file_dialog_node: FileDialog = get_node(file_dialog)
 onready var enemy_tree_node: EnemyTree = get_node(enemy_tree)
@@ -39,6 +42,11 @@ onready var notification_popup_node: NotificationPopup = get_node(notification_p
 func _ready():
 	get_popup().connect("id_pressed", self, "_on_menu_id_pressed")
 	
+func _on_markers_loaded():
+	var file_path = StorageProvider.get(STORAGE_KEY_FILE_PATH)
+	if file_path != null:
+		_do_load(file_path)
+
 func _unhandled_input(event: InputEvent):
 	if Input.is_key_pressed(KEY_CONTROL) and event.is_pressed() and event is InputEventKey:
 		var inputEventKey := event as InputEventKey
@@ -127,8 +135,7 @@ func _do_load(file_path: String):
 						break
 	file.close()
 	
-	_file_path = file_path
-	OS.set_window_title("DDOn Tools - "+file_path)
+	self._file_path = file_path
 	
 	notification_popup_node.notify("Loaded file "+file_path)
 	
@@ -175,7 +182,11 @@ func _do_save(file_path: String):
 				file.store_csv_line(csv_data)
 	file.close()
 
-	_file_path = file_path
-	OS.set_window_title("DDOn Tools - "+file_path)
+	self._file_path = file_path
 	
 	notification_popup_node.notify("Saved file "+file_path)
+
+func _set_file_path(file_path: String) -> void:
+	_file_path = file_path
+	OS.set_window_title("DDOn Tools - "+file_path)
+	StorageProvider.set(STORAGE_KEY_FILE_PATH, _file_path)

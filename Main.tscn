@@ -37,5 +37,6 @@ map = NodePath("../Lestania/map")
 wait_time = 5.0
 autostart = true
 
+[connection signal="markers_loaded" from="." to="ui" method="_on_root_markers_loaded"]
 [connection signal="map_selected" from="ui" to="." method="_on_ui_map_selected"]
 [connection signal="timeout" from="rpc_timer" to="." method="_on_rpc_timer_timeout"]
