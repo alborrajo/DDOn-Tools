@@ -23,3 +23,4 @@ var is_highorb_enemy: bool = false
 
 func _init(type: EnemyType):
 	self.enemy_type = type
+	self.hm_preset_no = type.default_hm_preset_no

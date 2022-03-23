@@ -1,592 +1,592 @@
-id,name
-0x010100,Goblin
-0x010101,Goblin Fighter
-0x010102,Shield Goblin
-0x010103,Sling Goblin (Rock)
-0x010104,Goblin Leader
-0x010105,Sling Goblin (Torch)
-0x010110,Hobgoblin
-0x010111,Hobgoblin Fighter
-0x010112,Sling Hobgoblin (Oil Flask)
-0x010113,Hobgoblin Leader
-0x010114,Sling Hobgoblin (Torch)
-0x010120,Grim Goblin
-0x010121,Grim Goblin Fighter
-0x010123,Sling Grim Goblin (Oil Flask)
-0x010124,Grim Goblin Leader
-0x010130,Greater Goblin (Sword)
-0x010131,Greater Goblin (Torch)
-0x010140,Goblin Shaman
-0x010141,Goblin Aid Shaman
-0x010150,Pixie
-0x010151,Pixie Biff
-0x010152,Pixie Din
-0x010153,Pixie Pow
-0x010155,Pixie Jabber
-0x010160,Infected Hobgoblin
-0x010161,Infected Hobgoblin Fighter
-0x010162,Infected Sling Hobgoblin
-0x010170,Severely Infected Pixie
-0x010171,Severely Infected Pixie (Club)
-0x010172,Severely Infected Pixie (Corruption Seeds)
-0x010180,Goblin (Horn)
-0x010190,High Pixie Biff
-0x010191,High Pixie Zolda
-0x010192,High Pixie Pow
-0x010195,Pixie King
+id,name,DefaultHmPresetNo
+0x010100,Goblin,0
+0x010101,Goblin Fighter,0
+0x010102,Shield Goblin,0
+0x010103,Sling Goblin (Rock),0
+0x010104,Goblin Leader,0
+0x010105,Sling Goblin (Torch),0
+0x010110,Hobgoblin,0
+0x010111,Hobgoblin Fighter,0
+0x010112,Sling Hobgoblin (Oil Flask),0
+0x010113,Hobgoblin Leader,0
+0x010114,Sling Hobgoblin (Torch),0
+0x010120,Grim Goblin,0
+0x010121,Grim Goblin Fighter,0
+0x010123,Sling Grim Goblin (Oil Flask),0
+0x010124,Grim Goblin Leader,0
+0x010130,Greater Goblin (Sword),0
+0x010131,Greater Goblin (Torch),0
+0x010140,Goblin Shaman,0
+0x010141,Goblin Aid Shaman,0
+0x010150,Pixie,0
+0x010151,Pixie Biff,0
+0x010152,Pixie Din,0
+0x010153,Pixie Pow,0
+0x010155,Pixie Jabber,0
+0x010160,Infected Hobgoblin,0
+0x010161,Infected Hobgoblin Fighter,0
+0x010162,Infected Sling Hobgoblin,0
+0x010170,Severely Infected Pixie,0
+0x010171,Severely Infected Pixie (Club),0
+0x010172,Severely Infected Pixie (Corruption Seeds),0
+0x010180,Goblin (Horn),0
+0x010190,High Pixie Biff,0
+0x010191,High Pixie Zolda,0
+0x010192,High Pixie Pow,0
+0x010195,Pixie King,0
 
-0x010200,Wolf
-0x010201,Direwolf
-0x010202,Hellhound
-0x010203,Warg 
-0x010205,Grimwarg
-0x010206,Shadow Wolf
-0x010207,Alchemized Wolf
-0x010208,Damned Wolf
-0x010209,Infected Direwolf
-0x010210,Green Guardian
-0x010211,Bolt Grimwarg
-0x010212,Blaze Wolf
-0x010220,Severely Infected Warg
-0x010221,Skeleton Warg
-0x010230,War-Ready Grimwarg (Light Armor)
-0x010240,Valefar
+0x010200,Wolf,0
+0x010201,Direwolf,0
+0x010202,Hellhound,0
+0x010203,Warg ,0
+0x010205,Grimwarg,0
+0x010206,Shadow Wolf,0
+0x010207,Alchemized Wolf,0
+0x010208,Damned Wolf,0
+0x010209,Infected Direwolf,0
+0x010210,Green Guardian,0
+0x010211,Bolt Grimwarg,0
+0x010212,Blaze Wolf,0
+0x010220,Severely Infected Warg,0
+0x010221,Skeleton Warg,0
+0x010230,War-Ready Grimwarg (Light Armor),0
+0x010240,Valefar,0
 
-0x010300,Skeleton
-0x010301,Skeleton Knight
-0x010302,Skeleton Warrior
-0x010303,Skeleton Lord (Abyss)
-0x010306,Living Armor
-0x010307,Skeleton Brute
-0x010308,Skeleton Mage
-0x010309,Skeleton Sorcerer
-0x010310,Death Knight
-0x010311,Ghost Mail
-0x010312,Alchemized Skeleton
-0x010313,Skull Lord
-0x010314,Flame Skeleton
-0x010315,Frost Skeleton
-0x010316,Bolt Skeleton
-0x010317,Lux Skeleton
-0x010318,Dark Skeleton
-0x010320,Flame Skeleton Brute
-0x010321,Frost Skeleton Brute
-0x010322,Bolt Skeleton Brute
-0x010323,Lux Skeleton Brute
-0x010324,Dark Skeleton Brute
+0x010300,Skeleton,0
+0x010301,Skeleton Knight,0
+0x010302,Skeleton Warrior,0
+0x010303,Skeleton Lord (Abyss),0
+0x010306,Living Armor,0
+0x010307,Skeleton Brute,0
+0x010308,Skeleton Mage,0
+0x010309,Skeleton Sorcerer,0
+0x010310,Death Knight,0
+0x010311,Ghost Mail,0
+0x010312,Alchemized Skeleton,0
+0x010313,Skull Lord,0
+0x010314,Flame Skeleton,0
+0x010315,Frost Skeleton,0
+0x010316,Bolt Skeleton,0
+0x010317,Lux Skeleton,0
+0x010318,Dark Skeleton,0
+0x010320,Flame Skeleton Brute,0
+0x010321,Frost Skeleton Brute,0
+0x010322,Bolt Skeleton Brute,0
+0x010323,Lux Skeleton Brute,0
+0x010324,Dark Skeleton Brute,0
 
-0x010400,Saurian
-0x010401,Giant Saurian
-0x010410,Sulfur Saurian
-0x010411,Giant Sulfur Saurian
-0x010420,Geo Saurian
-0x010421,Giant Geo Saurian
-0x010430,Saurian Sage
-0x010431,Giant Saurian Sage
-0x010440,Pyre Saurian (Salamander?)
-0x010450,Rock Saurian
-0x010451,Rock Saurian Spinel
-0x010460,Blue Newt
-0x010461,Large Newt
-0x010470,War-Ready Saurian (Light Armor)
-0x010471,War-Ready Giant Saurian (Light Armor)
-0x010480,Merman
-0x010482,Poison Merman
+0x010400,Saurian,0
+0x010401,Giant Saurian,0
+0x010410,Sulfur Saurian,0
+0x010411,Giant Sulfur Saurian,0
+0x010420,Geo Saurian,0
+0x010421,Giant Geo Saurian,0
+0x010430,Saurian Sage,0
+0x010431,Giant Saurian Sage,0
+0x010440,Pyre Saurian (Salamander?),0
+0x010450,Rock Saurian,0
+0x010451,Rock Saurian Spinel,0
+0x010460,Blue Newt,0
+0x010461,Large Newt,0
+0x010470,War-Ready Saurian (Light Armor),0
+0x010471,War-Ready Giant Saurian (Light Armor),0
+0x010480,Merman,0
+0x010482,Poison Merman,0
 
-0x010500,Undead (Male)
-0x010501,Undead (Female)
-0x010502,Stout Undead
-0x010503,Sword Undead
-0x010504,Warrior Undead
-0x010508,Eliminator
-0x010509,Mudman
-0x010510,Sludgeman
-0x010511,Frost Corpse Punisher
-0x010512,Frost Corpse Torturer
-0x010513,Flame Corpse Punisher
-0x010514,Bolt Corpse Punisher
-0x010515,Lux Corpse Punisher
-0x010516,Dark Corpse Punisher
-0x010517,Flame Corpse Torturer
-0x010518,Bolt Corpse Torturer
-0x010519,Lux Corpse Torturer
-0x010520,Dark Corpse Torturer
-0x010530,Eliminator Slay
+0x010500,Undead (Male),0
+0x010501,Undead (Female),0
+0x010502,Stout Undead,0
+0x010503,Sword Undead,0
+0x010504,Warrior Undead,0
+0x010508,Eliminator,0
+0x010509,Mudman,0
+0x010510,Sludgeman,0
+0x010511,Frost Corpse Punisher,0
+0x010512,Frost Corpse Torturer,0
+0x010513,Flame Corpse Punisher,0
+0x010514,Bolt Corpse Punisher,0
+0x010515,Lux Corpse Punisher,0
+0x010516,Dark Corpse Punisher,0
+0x010517,Flame Corpse Torturer,0
+0x010518,Bolt Corpse Torturer,0
+0x010519,Lux Corpse Torturer,0
+0x010520,Dark Corpse Torturer,0
+0x010530,Eliminator Slay,0
 
-0x010600,Harpy
-0x010601,Snow Harpy
-0x010603,Gargoyle
-0x010605,Siren
-0x010606,Alchemized Harpy
-0x010607,Shadow Harpy
-0x010608,Blaze Harpy
-0x010610,Strix
-0x010611,Stymphalídes
-0x010612,Infected Snow Harpy
-0x010614,Severely Infected Stymphalídes
-0x010621,Ukobach
+0x010600,Harpy,0
+0x010601,Snow Harpy,0
+0x010603,Gargoyle,0
+0x010605,Siren,0
+0x010606,Alchemized Harpy,0
+0x010607,Shadow Harpy,0
+0x010608,Blaze Harpy,0
+0x010610,Strix,0
+0x010611,Stymphalídes,0
+0x010612,Infected Snow Harpy,0
+0x010614,Severely Infected Stymphalídes,0
+0x010621,Ukobach,0
 
-0x010800,Worm
-0x010810,Leech
-0x010820,Armored Insect (Blue)
-0x010821,Armored Insect (Red)
-0x010822,Armored Insect (Red) Passive AI ?
-0x010823,Armored Insect (Red) Passive AI ?
-0x010900,Slime
-0x010901,Deep Slime
-0x010902,Ooze
-0x010903,Glutton Ooze
-0x010904,Aqua Jelly
-0x010905,Pyro Slime
-0x010906,Freezing Slime
-0x010907,Electric Slime
-0x010908,Photon Slime
-0x010909,Dim Slime
-0x010910,Blob
-0x010911,Acid Blob
-0x010915,Stone Blob
-0x010920,Oil Jelly
+0x010800,Worm,0
+0x010810,Leech,0
+0x010820,Armored Insect (Blue),0
+0x010821,Armored Insect (Red),0
+0x010822,Armored Insect (Red) Passive AI ?,0
+0x010823,Armored Insect (Red) Passive AI ?,0
+0x010900,Slime,0
+0x010901,Deep Slime,0
+0x010902,Ooze,0
+0x010903,Glutton Ooze,0
+0x010904,Aqua Jelly,0
+0x010905,Pyro Slime,0
+0x010906,Freezing Slime,0
+0x010907,Electric Slime,0
+0x010908,Photon Slime,0
+0x010909,Dim Slime,0
+0x010910,Blob,0
+0x010911,Acid Blob,0
+0x010915,Stone Blob,0
+0x010920,Oil Jelly,0
 
-0x011000,Rogue Fighter
-0x011001,Rogue Seeker
-0x011002,Rogue Hunter
-0x011003,Rogue Healer
-0x011004,Rogue Defender
-0x011005,Rogue Mage
-0x011006,Rogue Warrior
-0x011010,Banded Fighter
-0x011011,Banded Seeker
-0x011012,Banded Hunter
-0x011013,Banded Healer
-0x011014,Banded Defender
-0x011015,Banded Mage
-0x011016,Banded Warrior
-0x011020,Mergan Fighter
-0x011021,Mergan Seeker
-0x011022,Mergan Hunter
-0x011023,Mergan Healer
-0x011024,Mergan Defender
-0x011025,Mergan Mage
-0x011026,Mergan Warrior
-0x011027,Mergan Element Archer
-0x011030,Mist Fighter
-0x011031,Mist Hunter
-0x011032,Mist Priest
-0x011033,Mist Sorcerer
-0x011034,Mist Warrior
-0x011040,Iris
-0x011041,Diamantes (Human)
-0x011042,Leo
-0x011043,Hooded Iris (???)
-0x011044,Former Commander Leo (Final Boss)
+0x011000,Rogue Fighter,45
+0x011001,Rogue Seeker,46
+0x011002,Rogue Hunter,47
+0x011003,Rogue Healer,48
+0x011004,Rogue Defender,49
+0x011005,Rogue Mage,50
+0x011006,Rogue Warrior,51
+0x011010,Banded Fighter,52
+0x011011,Banded Seeker,53
+0x011012,Banded Hunter,54
+0x011013,Banded Healer,55
+0x011014,Banded Defender,56
+0x011015,Banded Mage,57
+0x011016,Banded Warrior,58
+0x011020,Mergan Fighter,59
+0x011021,Mergan Seeker,60
+0x011022,Mergan Hunter,61
+0x011023,Mergan Healer,62
+0x011024,Mergan Defender,63
+0x011025,Mergan Mage,64
+0x011026,Mergan Warrior,65
+0x011027,Mergan Element Archer,66
+0x011030,Mist Fighter,68
+0x011031,Mist Hunter,69
+0x011032,Mist Priest,70
+0x011033,Mist Sorcerer,71
+0x011034,Mist Warrior,72
+0x011040,Iris,74
+0x011041,Diamantes (Human),75
+0x011042,Leo,76
+0x011043,Hooded Iris (???),86
+0x011044,Former Commander Leo (Final Boss),112
 
-0x011044_cs01,0x011044_cs01 (No Enemy)
-0x011044_cs02,0x011044_cs02 (No Enemy)
-0x011044_cs03,0x011044_cs03 (No Enemy)
-0x011044_cs04,0x011044_cs04 (No Enemy)
-0x011044_cs05,0x011044_cs05 (No Enemy)
-0x011044_cs06,0x011044_cs06 (No Enemy)
-0x011044_cs07,0x011044_cs07 (No Enemy)
-0x011044_cs08,0x011044_cs08 (No Enemy)
-0x011044_cs09,0x011044_cs09 (No Enemy)
-0x011044_cs10,0x011044_cs10 (No Enemy)
-0x011044_cs11,0x011044_cs11 (No Enemy)
-0x011044_cs12,0x011044_cs12 (No Enemy)
-0x011044_cs13,0x011044_cs13 (No Enemy)
-0x011044_cs14,0x011044_cs14 (No Enemy)
-0x011044_Job,0x011044_Job (No Enemy)
+0x011044_cs01,0x011044_cs01 (No Enemy),0
+0x011044_cs02,0x011044_cs02 (No Enemy),0
+0x011044_cs03,0x011044_cs03 (No Enemy),0
+0x011044_cs04,0x011044_cs04 (No Enemy),0
+0x011044_cs05,0x011044_cs05 (No Enemy),0
+0x011044_cs06,0x011044_cs06 (No Enemy),0
+0x011044_cs07,0x011044_cs07 (No Enemy),0
+0x011044_cs08,0x011044_cs08 (No Enemy),0
+0x011044_cs09,0x011044_cs09 (No Enemy),0
+0x011044_cs10,0x011044_cs10 (No Enemy),0
+0x011044_cs11,0x011044_cs11 (No Enemy),0
+0x011044_cs12,0x011044_cs12 (No Enemy),0
+0x011044_cs13,0x011044_cs13 (No Enemy),0
+0x011044_cs14,0x011044_cs14 (No Enemy),0
+0x011044_Job,0x011044_Job (No Enemy),0
 
-0x011050,Pawn Fighter
-0x011051,Pawn Seeker
-0x011052,Pawn Hunter
-0x011053,Pawn Healer
-0x011054,Pawn Defender
-0x011055,Pawn Mage
-0x011056,Pawn Warrior
-0x011057,Pawn Element Archer
-0x011060,Phindymian Fighter
-0x011061,Phindymian Seeker
-0x011062,Phindymian Hunter
-0x011063,Phindymian Priest
-0x011064,Phindymian Defender
-0x011065,Phindymian Sorcerer
-0x011066,Phindymian Warrior
-0x011067,Phindymian Element Archer
-0x011068,0x011068 (No Enemy)
-0x011069,0x011069 (No Enemy)
-0x011070,Scarlet Fighter
-0x011071,Scarlet Seeker
-0x011072,Scarlet Hunter
-0x011073,Scarlet Healer
-0x011074,Scarlet Defender
-0x011075,Scarlet Mage
-0x011076,Scarlet Warrior
-0x011080,Megado Guard (Fighter?)
-0x011081,Megado Guard (Seeker?)
-0x011082,Megado Guard (Hunter?)
-0x011083,Megado Guard (Warrior?)
+0x011050,Pawn Fighter,77
+0x011051,Pawn Seeker,78
+0x011052,Pawn Hunter,79
+0x011053,Pawn Healer,80
+0x011054,Pawn Defender,81
+0x011055,Pawn Mage,82
+0x011056,Pawn Warrior,83
+0x011057,Pawn Element Archer,84
+0x011060,Phindymian Fighter,94
+0x011061,Phindymian Seeker,95
+0x011062,Phindymian Hunter,96
+0x011063,Phindymian Priest,97
+0x011064,Phindymian Defender,98
+0x011065,Phindymian Sorcerer,99
+0x011066,Phindymian Warrior,100
+0x011067,Phindymian Element Archer,101
+0x011068,0x011068 (No Enemy),0
+0x011069,0x011069 (No Enemy),0
+0x011070,Scarlet Fighter,87
+0x011071,Scarlet Seeker,88
+0x011072,Scarlet Hunter,89
+0x011073,Scarlet Healer,90
+0x011074,Scarlet Defender,91
+0x011075,Scarlet Mage,92
+0x011076,Scarlet Warrior,93
+0x011080,Megado Guard (Fighter?),102
+0x011081,Megado Guard (Seeker?),103
+0x011082,Megado Guard (Hunter?),104
+0x011083,Megado Guard (Warrior?),105
 
-0x011100,Forest Goblin
-0x011101,Forest Goblin Fighter
-0x011102,Sling Forest Goblin
-0x011110,Redcap 
-0x011111,Redcap Fighter
-0x011112,Sling Redcap
-0x011120,Alchemized Goblin
-0x011121,Alchemized Goblin Fighter
-0x011122,Alchemized Sling Goblin
-0x011123,Damned Goblin
-0x011124,Damned Sling Goblin (Flask)
-0x011125,Damned Goblin Fighter
-0x011130,Shadow Goblin
-0x011131,Shadow Goblin Fighter
-0x011132,Shadow Sling Goblin 
-0x011140,Goblin King (NPC)
-0x011150,Goblin Bomber
-0x011160,Shadow Goblin Leader
-0x011170,Blaze Goblin
-0x011171,Blaze Goblin (Fighter?)
-0x011172,Blaze Goblin (Sling?)
-0x011173,Blaze Goblin Leader
+0x011100,Forest Goblin,0
+0x011101,Forest Goblin Fighter,0
+0x011102,Sling Forest Goblin,0
+0x011110,Redcap ,0
+0x011111,Redcap Fighter,0
+0x011112,Sling Redcap,0
+0x011120,Alchemized Goblin,0
+0x011121,Alchemized Goblin Fighter,0
+0x011122,Alchemized Sling Goblin,0
+0x011123,Damned Goblin,0
+0x011124,Damned Sling Goblin (Flask),0
+0x011125,Damned Goblin Fighter,0
+0x011130,Shadow Goblin,0
+0x011131,Shadow Goblin Fighter,0
+0x011132,Shadow Sling Goblin ,0
+0x011140,Goblin King (NPC),0
+0x011150,Goblin Bomber,0
+0x011160,Shadow Goblin Leader,0
+0x011170,Blaze Goblin,0
+0x011171,Blaze Goblin (Fighter?),0
+0x011172,Blaze Goblin (Sling?),0
+0x011173,Blaze Goblin Leader,0
 
-0x011200,Killer Bee
-0x011201,Albe (Parasitic Poison)
-0x011210,Moth (Cyan / Sleep)
-0x011211,Moth (Magenta / Poison)
-0x011300,Mandragora
-0x011301,Mandragora (Flower)
-0x011302,Habanero
-0x011400,Maneater
-0x011401,Maneater (Closed)
-0x011410,Tentacle (Evil Eye)
-0x011411,Tentacle (Evil Eye)
-0x011412,Tentacle (Volt Eye)
-0x011413,Tentacle (Volt Eye)
+0x011200,Killer Bee,0
+0x011201,Albe (Parasitic Poison),0
+0x011210,Moth (Cyan / Sleep),0
+0x011211,Moth (Magenta / Poison),0
+0x011300,Mandragora,0
+0x011301,Mandragora (Flower),0
+0x011302,Habanero,0
+0x011400,Maneater,0
+0x011401,Maneater (Closed),0
+0x011410,Tentacle (Evil Eye),0
+0x011411,Tentacle (Evil Eye),0
+0x011412,Tentacle (Volt Eye),0
+0x011413,Tentacle (Volt Eye),0
 
-0x011500,Foot-Biter 
+0x011500,Foot-Biter ,0
 
-0x015000,Cyclops
-0x015001,Cyclops (Club)
-0x015002,Armored Cyclops
-0x015003,Armored Cyclops (Club)
-0x015004,Cyclops (Giant)
-0x015010,Gorecyclops
-0x015012,Infected Gorecyclops
-0x015017,Severely Infected Gorecyclops
-0x015020,Colossus
-0x015030,Grand Ent
-0x015031,Ent
-0x015032,Phindymian Ent
-0x015033,Burned Ent
-0x015040,Troll
-0x015041,Mole Troll
-0x015042,Fodden
-0x015050,Skeleton Cyclops
-0x015051,Skeleton Cyclops (Test)
-0x015052,Frost Skeleton Cyclops
-0x015053,Bolt Skeleton Cyclops
-0x015054,Flame Skeleton Cyclops
-0x015060,War-Ready Gorecyclops (Light Armor)
-0x015061,War-Ready Gorecyclops (Light Armor)
+0x015000,Cyclops,0
+0x015001,Cyclops (Club),0
+0x015002,Armored Cyclops,0
+0x015003,Armored Cyclops (Club),0
+0x015004,Cyclops (Giant),0
+0x015010,Gorecyclops,0
+0x015012,Infected Gorecyclops,0
+0x015017,Severely Infected Gorecyclops,0
+0x015020,Colossus,0
+0x015030,Grand Ent,0
+0x015031,Ent,0
+0x015032,Phindymian Ent,0
+0x015033,Burned Ent,0
+0x015040,Troll,0
+0x015041,Mole Troll,0
+0x015042,Fodden,0
+0x015050,Skeleton Cyclops,0
+0x015051,Skeleton Cyclops (Test),0
+0x015052,Frost Skeleton Cyclops,0
+0x015053,Bolt Skeleton Cyclops,0
+0x015054,Flame Skeleton Cyclops,0
+0x015060,War-Ready Gorecyclops (Light Armor),0
+0x015061,War-Ready Gorecyclops (Light Armor),0
 
-0x015100,Golem
-0x015102,Goliath
-0x015103,Damned Golem
-0x015104,Geo Golem
-0x015105,Goliath + Cyclops (Test)
+0x015100,Golem,0
+0x015102,Goliath,0
+0x015103,Damned Golem,0
+0x015104,Geo Golem,0
+0x015105,Goliath + Cyclops (Test),0
 
-0x015200,Chimera
-0x015201,Gorechimera
-0x015202,White Chimera
-0x015203,Shadow Chimera
-0x015204,Blaze Chimera
+0x015200,Chimera,0
+0x015201,Gorechimera,0
+0x015202,White Chimera,0
+0x015203,Shadow Chimera,0
+0x015204,Blaze Chimera,0
 
-0x015210,Manticore
-0x015211,Goremanticore
-0x015220,War-Ready Goremanticore (Light Armor)
-0x015230,Abaddon
+0x015210,Manticore,0
+0x015211,Goremanticore,0
+0x015220,War-Ready Goremanticore (Light Armor),0
+0x015230,Abaddon,0
 
-0x015300,Griffin
-0x015301,Cockatrice
-0x015302,Sphinx
-0x015303,Black Griffin
-0x015304,Alchemized Griffin
-0x015305,Nightmare
-0x015306,Infected Griffin
-0x015310,Severely Infected Griffin
-0x015320,White Griffin
-0x015321,Bifrest
-0x015330,War-Ready Nightmare (Light Armor)
+0x015300,Griffin,0
+0x015301,Cockatrice,0
+0x015302,Sphinx,0
+0x015303,Black Griffin,0
+0x015304,Alchemized Griffin,0
+0x015305,Nightmare,0
+0x015306,Infected Griffin,0
+0x015310,Severely Infected Griffin,0
+0x015320,White Griffin,0
+0x015321,Bifrest,0
+0x015330,War-Ready Nightmare (Light Armor),0
 
-0x015400,Evil Eye
-0x015401,Vile Eye
-0x015406,Volt Eye
-0x015410,Crystal Eye
-0x015411,Ruby Eye
-0x015412,Lapis Eye
-0x015413,Emerald Eye
-0x015420,Alchemy Eye
+0x015400,Evil Eye,0
+0x015401,Vile Eye,0
+0x015406,Volt Eye,0
+0x015410,Crystal Eye,0
+0x015411,Ruby Eye,0
+0x015412,Lapis Eye,0
+0x015413,Emerald Eye,0
+0x015420,Alchemy Eye,0
 
-0x015500,Ogre
-0x015502,Dread Ape
-0x015503,Ghoul
-0x015504,Brute Ape
-0x015505,Silver Roar
-0x015506,Spineback
-0x015507,Little Spine
-0x015508,Cragger
-0x015509,Little Crag
-0x015510,War-Ready Ogre (Light Armor)
+0x015500,Ogre,0
+0x015502,Dread Ape,0
+0x015503,Ghoul,0
+0x015504,Brute Ape,0
+0x015505,Silver Roar,0
+0x015506,Spineback,0
+0x015507,Little Spine,0
+0x015508,Cragger,0
+0x015509,Little Crag,0
+0x015510,War-Ready Ogre (Light Armor),0
 
-0x015600,Wight
-0x015603,Death
-0x015604,Witch
-0x015605,Empress Ghost
-0x015610,Medusa
-0x015611,Gorgon
-0x015620,Ghost
-0x015621,Misery Ghost
-0x015622,Grudge Ghost
-0x015623,Rage Ghost
+0x015600,Wight,0
+0x015603,Death,0
+0x015604,Witch,0
+0x015605,Empress Ghost,0
+0x015610,Medusa,0
+0x015611,Gorgon,0
+0x015620,Ghost,0
+0x015621,Misery Ghost,0
+0x015622,Grudge Ghost,0
+0x015623,Rage Ghost,0
 
-0x015700,Drake
-0x015701,Wyrm
-0x015706,Cursed Dragon
-0x015707,Lindwurm
-0x015708,Angules
-0x015709,Behemoth
-0x015710,Mist Drake
-0x015711,Mist Wyrm
-0x015712,Infected Behemoth
-0x015717,Severely Infected Behemoth
-0x015718,Lotus Fin
-0x015719,Dagon
-0x015720,Tarasque
-0x015721,Wisened Tarasque
-0x015723,White Tarasque
-0x015730,Catoblepas
-0x015740,Behemoth ("Goblin" Test)
+0x015700,Drake,0
+0x015701,Wyrm,0
+0x015706,Cursed Dragon,0
+0x015707,Lindwurm,0
+0x015708,Angules,0
+0x015709,Behemoth,0
+0x015710,Mist Drake,0
+0x015711,Mist Wyrm,0
+0x015712,Infected Behemoth,0
+0x015717,Severely Infected Behemoth,0
+0x015718,Lotus Fin,0
+0x015719,Dagon,0
+0x015720,Tarasque,0
+0x015721,Wisened Tarasque,0
+0x015723,White Tarasque,0
+0x015730,Catoblepas,0
+0x015740,Behemoth ("Goblin" Test),0
 
-0x015800,Orc Soldier
-0x015801,Orc Aimer
-0x015802,Orc Banger
-0x015810,Orc Battler
-0x015811,Orc Bringer
-0x015812,Orc Trooper
-0x015813,Infected Orc Soldier
-0x015814,Infected Orc Aimer
-0x015815,Infected Orc Banger
+0x015800,Orc Soldier,0
+0x015801,Orc Aimer,0
+0x015802,Orc Banger,0
+0x015810,Orc Battler,0
+0x015811,Orc Bringer,0
+0x015812,Orc Trooper,0
+0x015813,Infected Orc Soldier,0
+0x015814,Infected Orc Aimer,0
+0x015815,Infected Orc Banger,0
 
-0x015820,Captain Orc
-0x015821,Sword Soldier Dwarf Orc
-0x015822,Blunt Soldier Dwarf Orc
-0x015823,Heavy Soldier Dwarf Orc
-0x015824,Ranged Soldier Dwarf Orc
-0x015825,Dwarf Orc (Test?)
-0x015826,Squad Leader Dwarf Orc
-0x015830,General Orc
-0x015831,Ancestor Orc
-0x015832,Ancestor Orc (Fighter)
-0x015833,Ancestor Orc (Different Bones)
-0x015835,Legion
-0x015836,Legion (Fighter)
-0x015837,Legion (Different Bones)
-0x015838,Legion Leader
-0x015839,Captain Ancestor Orc
+0x015820,Captain Orc,0
+0x015821,Sword Soldier Dwarf Orc,0
+0x015822,Blunt Soldier Dwarf Orc,0
+0x015823,Heavy Soldier Dwarf Orc,0
+0x015824,Ranged Soldier Dwarf Orc,0
+0x015825,Dwarf Orc (Test?),0
+0x015826,Squad Leader Dwarf Orc,0
+0x015830,General Orc,0
+0x015831,Ancestor Orc,0
+0x015832,Ancestor Orc (Fighter),0
+0x015833,Ancestor Orc (Different Bones),0
+0x015835,Legion,0
+0x015836,Legion (Fighter),0
+0x015837,Legion (Different Bones),0
+0x015838,Legion Leader,0
+0x015839,Captain Ancestor Orc,0
 
-0x015840,Mogok
-0x015850,Gigant Machina
-0x015851,Frost Machina
-0x015852,Bolt Machina
-0x015860,War Master
-0x015861,Beast Master
-0x015862,Necro Master
-0x015863,Shadow Master (Invulnerable)
-0x015870,Ancestor Origin
+0x015840,Mogok,0
+0x015850,Gigant Machina,0
+0x015851,Frost Machina,0
+0x015852,Bolt Machina,0
+0x015860,War Master,0
+0x015861,Beast Master,0
+0x015862,Necro Master,0
+0x015863,Shadow Master (Invulnerable),0
+0x015870,Ancestor Origin,0
 
-0x015900,Grigori
-0x015910,Severely Infected Demon
-0x015920,Bearded Grigori
-0x015921,Samyaza
-0x015930,Blaze Grigori
-0x015932,Shadow Grigori
+0x015900,Grigori,0
+0x015910,Severely Infected Demon,0
+0x015920,Bearded Grigori,0
+0x015921,Samyaza,0
+0x015930,Blaze Grigori,0
+0x015932,Shadow Grigori,0
 
-0x018000,Rabbit
-0x018100,Bat
-0x018200,Buck
-0x018201,Doe
-0x018300,Ox
-0x018401,Giant Rat
-0x018600,Boar
-0x018601,Pig
-0x018602,Piglet
-0x018603,Pig (Dirty)
-0x018604,Piglet (Dirty)
-0x018700,Snake
-0x018800,Spider
+0x018000,Rabbit,0
+0x018100,Bat,0
+0x018200,Buck,0
+0x018201,Doe,0
+0x018300,Ox,0
+0x018401,Giant Rat,0
+0x018600,Boar,0
+0x018601,Pig,0
+0x018602,Piglet,0
+0x018603,Pig (Dirty),0
+0x018604,Piglet (Dirty),0
+0x018700,Snake,0
+0x018800,Spider,0
 
-0x019000,Chicken (White)
-0x019001,Chicken (Brown)
-0x019100,Goat
-0x019200,Frog (Gold?)
-0x019201,Frog (Blue?)
-0x019300,Wild Boar (Brown)
-0x019301,Wild Boar (Stripes)
+0x019000,Chicken (White),0
+0x019001,Chicken (Brown),0
+0x019100,Goat,0
+0x019200,Frog (Gold?),0
+0x019201,Frog (Blue?),0
+0x019300,Wild Boar (Brown),0
+0x019301,Wild Boar (Stripes),0
 
-0x020402,Zuhl 
-0x020403,Altered Zuhl
-0x020404,Red Zuhl
-0x020500,Diamantes
-0x020601,Scourge
-0x020602,Baphomet
-0x020606,Severely Infected Scourge
+0x020402,Zuhl ,0
+0x020403,Altered Zuhl,0
+0x020404,Red Zuhl,0
+0x020500,Diamantes,0
+0x020601,Scourge,0
+0x020602,Baphomet,0
+0x020606,Severely Infected Scourge,0
 
-0x020700,Black Knight (Dark Only)
-0x020701,Black Knight (Holy/Ice)
-0x020702,Black Knight (Holy/Ice)
-0x020803,Ifrit - 1st Form
-0x020804,Ifrit - 2nd Form
+0x020700,Black Knight (Dark Only),0
+0x020701,Black Knight (Holy/Ice),0
+0x020702,Black Knight (Holy/Ice),0
+0x020803,Ifrit - 1st Form,0
+0x020804,Ifrit - 2nd Form,0
 
-0x021000,White Dragon (NPC)
-0x021001,Elder Dragon
-0x021002,Golgorran
-0x021003,White Dragon
-0x021004,Ushumgal
+0x021000,White Dragon (NPC),0
+0x021001,Elder Dragon,0
+0x021002,Golgorran,0
+0x021003,White Dragon,0
+0x021004,Ushumgal,0
 
-0x022000,Spirit Dragon Willmia
-0x022001,Spirit Dragon Willmia ("Goblin" Test)
+0x022000,Spirit Dragon Willmia,0
+0x022001,Spirit Dragon Willmia ("Goblin" Test),0
 
-0x023000,The Evil Dragon
+0x023000,The Evil Dragon,0
 
-0x024000,Black Dragon - 1st Form
-0x024001,Black Dragon - 2nd Form (Untranslated)
-0x024002,Black Dragon - 2nd Form (Damaged)
+0x024000,Black Dragon - 1st Form,0
+0x024001,Black Dragon - 2nd Form (Untranslated),0
+0x024002,Black Dragon - 2nd Form (Damaged),0
 
-0x030100,Unspeakable Meat
-0x030101,Giant Unspeakable Meat
-0x030104,Dragon Crystal of Praying (Spirit Dragon Willmia WM)
-0x030105,Dragon Crystal of Groaning (Spirit Dragon Willmia WM)
-0x030106,No Enemy (In-Combat)
-0x030107,Dragon Crystal (The Evil Dragon WM) (Untranslated)
-0x030108,No Enemy (In-Combat)
-0x030109,Rock (The Evil Dragon WM)
-0x030110,Totem (Shadow Master WM) (Untranslated)
-0x030111,No Enemy (In-Combat)
-0x030112,Dragon Crystal of Darkness (Invulnerable) (Ground)
-0x030113,Dragon Crystal of Darkness (Invulnerable) (Flying)
-0x030114,Crystal of Blessing
-0x030115,Dragon Crystal of Darkness (Flying) (Untranslated)
-0x030116,Dragon Crystal of Destruction
-0x030117,Dragon Crystal of Binding (Black Dragon)
-0x030118,Black Sword
+0x030100,Unspeakable Meat,0
+0x030101,Giant Unspeakable Meat,0
+0x030104,Dragon Crystal of Praying (Spirit Dragon Willmia WM),0
+0x030105,Dragon Crystal of Groaning (Spirit Dragon Willmia WM),0
+0x030106,No Enemy (In-Combat),0
+0x030107,Dragon Crystal (The Evil Dragon WM) (Untranslated),0
+0x030108,No Enemy (In-Combat),0
+0x030109,Rock (The Evil Dragon WM),0
+0x030110,Totem (Shadow Master WM) (Untranslated),0
+0x030111,No Enemy (In-Combat),0
+0x030112,Dragon Crystal of Darkness (Invulnerable) (Ground),0
+0x030113,Dragon Crystal of Darkness (Invulnerable) (Flying),0
+0x030114,Crystal of Blessing,0
+0x030115,Dragon Crystal of Darkness (Flying) (Untranslated),0
+0x030116,Dragon Crystal of Destruction,0
+0x030117,Dragon Crystal of Binding (Black Dragon),0
+0x030118,Black Sword,0
 
-0x070041,Colossus
-0x070042,Colossus
-0x070050,Gorecyclops
-0x070051,Gorecyclops
-0x070200,Ghoul
-0x070210,Spineback
-0x070211,Spineback
-0x070410,Mole Troll
-0x070510,Grand Ent
-0x070520,Phindymian Ent
+0x070041,Colossus,0
+0x070042,Colossus,0
+0x070050,Gorecyclops,0
+0x070051,Gorecyclops,0
+0x070200,Ghoul,0
+0x070210,Spineback,0
+0x070211,Spineback,0
+0x070410,Mole Troll,0
+0x070510,Grand Ent,0
+0x070520,Phindymian Ent,0
 
-0x070600,Griffin
-0x070610,Black Griffin
-0x070620,White Griffin
-0x070640,Bifrest
-0x070641,Bifrest
-0x070700,Sphinx
-0x070800,Chimera
-0x070810,White Chimera
-0x070820,Gorechimera
-0x070830,Manticore
-0x070900,Drake
-0x070910,Wyrm
-0x070920,Angules
-0x070930,Behemoth
-0x070940,Lindwurm
-0x070950,Tarasque ("Goblin" Test)
+0x070600,Griffin,0
+0x070610,Black Griffin,0
+0x070620,White Griffin,0
+0x070640,Bifrest,0
+0x070641,Bifrest,0
+0x070700,Sphinx,0
+0x070800,Chimera,0
+0x070810,White Chimera,0
+0x070820,Gorechimera,0
+0x070830,Manticore,0
+0x070900,Drake,0
+0x070910,Wyrm,0
+0x070920,Angules,0
+0x070930,Behemoth,0
+0x070940,Lindwurm,0
+0x070950,Tarasque ("Goblin" Test),0
 
-0x071100,Elder Dragon (Epitath Road Trial?)
-0x071101,Black Dragon - 1st Form (Cutscene?)
-0x071102,Black Dragon - 2nd Form (Cutscene?)
-0x071250,Shadow Master (Giant)
-0x071251,War Master
-0x071252,Beast Master
-0x071300,Zuhl
-0x071310,Scourge
-0x071311,Baphomet (Enraged)
-0x071400,Empty (No Enemy)
+0x071100,Elder Dragon (Epitath Road Trial?),0
+0x071101,Black Dragon - 1st Form (Cutscene?),0
+0x071102,Black Dragon - 2nd Form (Cutscene?),0
+0x071250,Shadow Master (Giant),0
+0x071251,War Master,0
+0x071252,Beast Master,0
+0x071300,Zuhl,0
+0x071310,Scourge,0
+0x071311,Baphomet (Enraged),0
+0x071400,Empty (No Enemy),0
 
-0x075120,Skeleton Mage
-0x075121,Skeleton Mage (Different AI?)
-0x075130,Skeleton Sorcerer
-0x075131,Skeleton Sorcerer
-0x075300,Skeleton Sorcerer
-0x075400,The Evil Dragon (Sparks?)
-0x075401,The Evil Dragon
-0x075700,Wight
-0x077000,Albe's Nest
-0x079000,Empty (No Enemy)
+0x075120,Skeleton Mage,0
+0x075121,Skeleton Mage (Different AI?),0
+0x075130,Skeleton Sorcerer,0
+0x075131,Skeleton Sorcerer,0
+0x075300,Skeleton Sorcerer,0
+0x075400,The Evil Dragon (Sparks?),0
+0x075401,The Evil Dragon,0
+0x075700,Wight,0
+0x077000,Albe's Nest,0
+0x079000,Empty (No Enemy),0
 
-0x080000,Elder Dragon
-0x080100,Golgorran
-0x080200,Grand Ent
-0x080300,Zuhl
-0x080400,Spirit Dragon Willmia
+0x080000,Elder Dragon,0
+0x080100,Golgorran,0
+0x080200,Grand Ent,0
+0x080300,Zuhl,0
+0x080400,Spirit Dragon Willmia,0
 
-0x080500,Black Knight Phantom (Clear)
-0x080501,Black Knight
-0x080502,Black Knight (Fan of Swords)
-0x080503,Black Knight Phantom (Opaque)
-0x080504,Arisen of the Black Dragon
-0x080505,Black Sword
-0x080600,Wisened Tarasque
-0x080700,Evil Eye
-0x080800,Abbadon
-0x080801,Albe
-0x080802,Empty (No Enemy)
-0x080900,Baphomet
-0x080901,Baphomet (Glowing Purple)
+0x080500,Black Knight Phantom (Clear),0
+0x080501,Black Knight,0
+0x080502,Black Knight (Fan of Swords),0
+0x080503,Black Knight Phantom (Opaque),0
+0x080504,Arisen of the Black Dragon,0
+0x080505,Black Sword,0
+0x080600,Wisened Tarasque,0
+0x080700,Evil Eye,0
+0x080800,Abbadon,0
+0x080801,Albe,0
+0x080802,Empty (No Enemy),0
+0x080900,Baphomet,0
+0x080901,Baphomet (Glowing Purple),0
 
-0x081000,Black Dragon - 1st Form
-0x081001,Black Dragon - 2nd Form
-0x081002,Black Dragon - 1st Form (Again. EM??)
-0x081003,Black Dragon - 2nd form (Again. EM??)
-0x081004,Dragon Crystal of Destruction / shoots laser rocks
-0x081005,Dragon Crystal of Destruction / sucks you in with magic
-0x081006,Dragon Crystal of Destruction / lots of laser rocks and big explosion
-0x081007,Dragon Crystal of Destruction / sucks you in with magic 
+0x081000,Black Dragon - 1st Form,0
+0x081001,Black Dragon - 2nd Form,0
+0x081002,Black Dragon - 1st Form (Again. EM??),0
+0x081003,Black Dragon - 2nd form (Again. EM??),0
+0x081004,Dragon Crystal of Destruction / shoots laser rocks,0
+0x081005,Dragon Crystal of Destruction / sucks you in with magic,0
+0x081006,Dragon Crystal of Destruction / lots of laser rocks and big explosion,0
+0x081007,Dragon Crystal of Destruction / sucks you in with magic ,0
 
-0x085000,Orc Soldier
-0x085001,Orc Soldier
-0x085002,Orc Soldier
-0x085003,Orc Soldier
-0x085004,Captain Orc
-0x085009,Orc ("Goblin" Test)
-0x085010,Goblin Fighter
-0x085011,Goblin Fighter
-0x085012,Goblin Fighter
-0x085013,Goblin Fighter
-0x085014,Goblin Fighter
-0x085015,Goblin Fighter
-0x085016,Goblin Fighter
-0x085017,Goblin Fighter
-0x085018,Goblin Fighter
-0x085019,Goblin Fighter
-0x085110,Cyclops
-0x085111,Cyclops
-0x085112,Cyclops
-0x085113,Cyclops
-0x085114,Cyclops
+0x085000,Orc Soldier,0
+0x085001,Orc Soldier,0
+0x085002,Orc Soldier,0
+0x085003,Orc Soldier,0
+0x085004,Captain Orc,0
+0x085009,Orc ("Goblin" Test),0
+0x085010,Goblin Fighter,0
+0x085011,Goblin Fighter,0
+0x085012,Goblin Fighter,0
+0x085013,Goblin Fighter,0
+0x085014,Goblin Fighter,0
+0x085015,Goblin Fighter,0
+0x085016,Goblin Fighter,0
+0x085017,Goblin Fighter,0
+0x085018,Goblin Fighter,0
+0x085019,Goblin Fighter,0
+0x085110,Cyclops,0
+0x085111,Cyclops,0
+0x085112,Cyclops,0
+0x085113,Cyclops,0
+0x085114,Cyclops,0
 
-0x095801,Gigant Machina Trinity
-0x095802,Frost Machina Trinity
-0x095803,Bolt Machina Trinity
+0x095801,Gigant Machina Trinity,0
+0x095802,Frost Machina Trinity,0
+0x095803,Bolt Machina Trinity,0
 
-0x100100,Behemoth (Test?)
-0x100101,Zuhl (Passive)
-0x100104,Black Knight (Getting injured / Cutscene?)
-0x100105,Spirit Dragon Willmia (Test?)
-0x100106,Spirit Dragon Willmia (Active)
+0x100100,Behemoth (Test?),0
+0x100101,Zuhl (Passive),0
+0x100104,Black Knight (Getting injured / Cutscene?),0
+0x100105,Spirit Dragon Willmia (Test?),0
+0x100106,Spirit Dragon Willmia (Active),0

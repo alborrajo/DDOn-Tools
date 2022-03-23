@@ -19,5 +19,5 @@ func _on_EnemyPlacemark_pressed():
 	_enemyDetails.enemy = enemy
 	
 func set_enemy(em: Enemy) -> void:
-	text = em.enemy_type.name
+	text = "%s (Lv. %d)" % [em.enemy_type.name, em.lv]
 	enemy = em

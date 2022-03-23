@@ -19,7 +19,7 @@ func _set_enemy(em: Enemy) -> void:
 		$ScrollContainer/VBoxContainer/GridContainer/RaidBossIdLineEdit.value = em.raid_boss_id
 		$ScrollContainer/VBoxContainer/GridContainer/ScaleLineEdit.value = em.scale
 		$ScrollContainer/VBoxContainer/GridContainer/LevelLineEdit.value = em.lv
-		$ScrollContainer/VBoxContainer/GridContainer/HmPresetNoLineEdit.value = em.hm_preset_no
+		$ScrollContainer/VBoxContainer/GridContainer/HmPresetNoOptionButton.select($ScrollContainer/VBoxContainer/GridContainer/HmPresetNoOptionButton.get_item_index(em.hm_preset_no))
 		$ScrollContainer/VBoxContainer/GridContainer/StartThinkTblNoLineEdit.value = em.start_think_tbl_no
 		$ScrollContainer/VBoxContainer/GridContainer/RepopNumLineEdit.value = em.repop_num
 		$ScrollContainer/VBoxContainer/GridContainer/RepopCountLineEdit.value = em.repop_count
@@ -50,8 +50,8 @@ func _on_ScaleLineEdit_value_changed(value):
 func _on_LevelLineEdit_value_changed(value):
 	enemy.lv = int(value)
 
-func _on_HmPresetNoLineEdit_value_changed(value):
-	enemy.hm_preset_no = int(value)
+func _on_HmPresetNoLineEdit_item_selected(index):
+	enemy.hm_preset_no =$ScrollContainer/VBoxContainer/GridContainer/HmPresetNoOptionButton.get_item_id(index)
 
 func _on_StartThinkTblNoLineEdit_value_changed(value):
 	enemy.start_think_tbl_no = int(value)
