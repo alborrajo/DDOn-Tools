@@ -125,12 +125,12 @@ func _do_load(file_path: String):
 						enemy.montage_fix_no = int(csv_line[14])
 						enemy.set_type = int(csv_line[15])
 						enemy.infection_type = int(csv_line[16])
-						enemy.is_boss_gauge = int(csv_line[17])
-						enemy.is_boss_bgm = int(csv_line[18])
-						enemy.is_manual_set = int(csv_line[19])
-						enemy.is_area_boss = int(csv_line[20])
-						enemy.is_blood_enemy = int(csv_line[21])
-						enemy.is_highorb_enemy = int(csv_line[22])
+						enemy.is_boss_gauge = parse_bool(csv_line[17])
+						enemy.is_boss_bgm = parse_bool(csv_line[18])
+						enemy.is_manual_set = parse_bool(csv_line[19])
+						enemy.is_area_boss = parse_bool(csv_line[20])
+						enemy.is_blood_enemy = parse_bool(csv_line[21])
+						enemy.is_highorb_enemy = parse_bool(csv_line[22])
 						placemark.add_enemy(enemy)
 						break
 	file.close()
@@ -190,3 +190,6 @@ func _set_file_path(file_path: String) -> void:
 	_file_path = file_path
 	OS.set_window_title("DDOn Tools - "+file_path)
 	StorageProvider.set(STORAGE_KEY_FILE_PATH, _file_path)
+	
+static func parse_bool(string: String) -> bool:
+	return string.strip_edges().to_lower() == "true"
