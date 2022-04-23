@@ -13,11 +13,13 @@ var players_on_map : Node2D
 var players_on_ui : Tree
 var players_on_ui_root : TreeItem
 
-onready var land_id_to_node := {
+onready var field_id_to_node := {
 	"1": $Lestania,
-	"2": $"Bloodbane Island",
-	"3": $Phindym,
-	"4": $"Acre Selund"
+	"2": $MergodaRuins,
+	"3": $MergodaPalace,
+	"4": $BloodbaneIsland,
+	"5": $Phindym,
+	"6": $AcreSelund
 }
 	
 func _init():
@@ -43,21 +45,30 @@ func _on_rpc_timer_timeout():
 	update_info()
 
 func load_npc_markers():
-	# Oh no
-	for land_id in DataProvider.repo["Data"]["Lands"].keys():
-		var land_node: Node = land_id_to_node.get(land_id)
-		if land_node == null:
-			printerr("No node found for land id ",land_id)
-		else:
-			for area_id in DataProvider.repo["Data"]["Lands"][land_id]["Areas"].keys():
-				for stage_id in DataProvider.repo["Data"]["Lands"][land_id]["Areas"][area_id]["Stages"].keys():
-					for ect_marker in DataProvider.repo["Data"]["Lands"][land_id]["Areas"][area_id]["Stages"][stage_id]["EctMarker"]:
-						var marker : Marker = Marker.new(ect_marker, land_id)
-						var enemy_set_placemark: EnemySetPlacemark = EnemySetPlacemarkScene.instance()
-						enemy_set_placemark.group_id = marker.GroupNo
-						enemy_set_placemark.stage_id = DataProvider.stage_no_to_stage_id(marker.StageNo)
-						enemy_set_placemark.rect_position = marker.get_map_position()
-						land_node.add_child(enemy_set_placemark)
+	# Terribly optimized
+	for stage_id in DataProvider.repo["Data"]["Stages"].keys():
+		var field_id = stage_id_to_belonging_field_id(int(stage_id))
+		if field_id == null:
+			printerr("No field found for stage_id ", stage_id)
+			continue
+			
+		var field_node = field_id_to_node.get(String(field_id))
+		if field_node == null:
+			printerr("No node found for field_id ", field_id)
+			continue
+			
+		for ect_marker in DataProvider.repo["Data"]["Stages"][stage_id]["EctMarker"]:
+			var marker : Marker = Marker.new(ect_marker, String(field_id))
+			var enemy_set_placemark: EnemySetPlacemark = EnemySetPlacemarkScene.instance()
+			enemy_set_placemark.group_id = marker.GroupNo
+			enemy_set_placemark.stage_id = DataProvider.stage_no_to_stage_id(marker.StageNo)
+			enemy_set_placemark.rect_position = marker.get_map_position()
+			field_node.add_child(enemy_set_placemark)
+			
+func stage_id_to_belonging_field_id(stage_id: int):
+	for field_area_info in DataProvider.repo["FieldAreaList"]["FieldAreaInfos"]:
+		if field_area_info["StageNoList"].has(float(stage_id)):
+			return int(field_area_info["FieldAreaId"])
 		
 func _on_hover_marker(var map_marker : MapMarker):
 	var marker : Marker = map_marker.marker
@@ -138,14 +149,14 @@ func create_tree_entry(var player : Player):
 	item.set_metadata(0, player)
 
 
-func _on_ui_map_selected(map_name):
-	$Lestania.visible = false
-	$"Bloodbane Island".visible = false
-	$Phindym.visible = false
-	$"Acre Selund".visible = false
+func _on_ui_map_selected(map_id):
+	# Hide all maps
+	for map in field_id_to_node.values():
+		map.visible = false
 	
-	var map_node := get_node_or_null(map_name)
+	# Show only the selected one
+	var map_node = field_id_to_node.get(String(map_id))
 	if map_node != null:
 		map_node.visible = true
 	else:
-		printerr("Couldn't find node for map ",map_name)
+		printerr("Couldn't find node for map with ID ",map_id)

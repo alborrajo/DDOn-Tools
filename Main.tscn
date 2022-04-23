@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://resources/maps/field000_m00.png" type="Texture" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
@@ -7,21 +7,38 @@
 [ext_resource path="res://resources/maps/field004_m00.png" type="Texture" id=5]
 [ext_resource path="res://resources/maps/field003_m00.png" type="Texture" id=6]
 [ext_resource path="res://resources/maps/field005_m00.png" type="Texture" id=7]
+[ext_resource path="res://resources/maps/field001_m00.png" type="Texture" id=8]
+[ext_resource path="res://resources/maps/field002_m01.png" type="Texture" id=9]
 
 [node name="root" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="Lestania" type="Node2D" parent="."]
+visible = false
 
 [node name="map" type="Sprite" parent="Lestania"]
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 1 )
 centered = false
 
-[node name="Bloodbane Island" type="Node2D" parent="."]
+[node name="MergodaRuins" type="Node2D" parent="."]
+
+[node name="map" type="Sprite" parent="MergodaRuins"]
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 8 )
+centered = false
+
+[node name="MergodaPalace" type="Node2D" parent="."]
+
+[node name="map" type="Sprite" parent="MergodaPalace"]
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 9 )
+centered = false
+
+[node name="BloodbaneIsland" type="Node2D" parent="."]
 visible = false
 
-[node name="map" type="Sprite" parent="Bloodbane Island"]
+[node name="map" type="Sprite" parent="BloodbaneIsland"]
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 6 )
 centered = false
@@ -34,10 +51,10 @@ scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 5 )
 centered = false
 
-[node name="Acre Selund" type="Node2D" parent="."]
+[node name="AcreSelund" type="Node2D" parent="."]
 visible = false
 
-[node name="map" type="Sprite" parent="Acre Selund"]
+[node name="map" type="Sprite" parent="AcreSelund"]
 scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 7 )
 centered = false

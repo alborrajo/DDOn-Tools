@@ -14,7 +14,7 @@ script/source = "extends CanvasLayer
 signal map_selected(map_name)
 
 func _on_MapOptionButton_item_selected(index):
-	emit_signal(\"map_selected\", $status_view/container/MapOptionButton.get_item_text(index))
+	emit_signal(\"map_selected\", $status_view/container/MapOptionButton.get_item_id(index))
 
 
 func _on_root_markers_loaded():
@@ -99,6 +99,51 @@ margin_left = 4.0
 margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
+
+[node name="status_view" type="PanelContainer" parent="."]
+anchor_right = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = 44.0
+
+[node name="container" type="HBoxContainer" parent="status_view"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 997.0
+margin_bottom = 27.0
+
+[node name="minimize" type="Button" parent="status_view/container"]
+margin_right = 17.0
+margin_bottom = 20.0
+text = "-"
+script = ExtResource( 5 )
+control_to_minimize = NodePath("../../../left")
+
+[node name="MapOptionButton" type="OptionButton" parent="status_view/container"]
+margin_left = 21.0
+margin_right = 103.0
+margin_bottom = 20.0
+text = "Lestania"
+items = [ "Lestania", null, false, 1, null, "Mergoda Ruins: Lower Level", null, false, 2, null, "Mergoda Ruins: Royal Palace Level", null, false, 3, null, "Bloodbane Island", null, false, 4, null, "Phindym", null, false, 5, null, "Acre Selund", null, false, 6, null ]
+selected = 0
+
+[node name="coordinates" type="Label" parent="status_view/container"]
+margin_left = 107.0
+margin_top = 3.0
+margin_right = 183.0
+margin_bottom = 17.0
+text = "Coordinates"
+
+[node name="marker" type="Label" parent="status_view/container"]
+margin_left = 187.0
+margin_top = 3.0
+margin_right = 231.0
+margin_bottom = 17.0
+text = "Marker"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Right Panel" type="PanelContainer" parent="."]
 anchor_left = 1.0
@@ -397,8 +442,8 @@ mode = 0
 access = 2
 filters = PoolStringArray( "*.csv ; CSV Files" )
 show_hidden_files = true
-current_dir = "/Users/alborrajo/Documents/Programacion/Godot/DDOn Tools/DDOn-Tools"
-current_path = "/Users/alborrajo/Documents/Programacion/Godot/DDOn Tools/DDOn-Tools/"
+current_dir = "/Users/Laith/Documents/Programacion/Godot/DDOn Tools"
+current_path = "/Users/Laith/Documents/Programacion/Godot/DDOn Tools/"
 
 [node name="NotificationPopup" type="PopupPanel" parent="."]
 anchor_left = 1.0
@@ -418,52 +463,8 @@ margin_right = 240.0
 margin_bottom = 18.0
 text = "Notification"
 
-[node name="status_view" type="PanelContainer" parent="."]
-anchor_right = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = 44.0
-
-[node name="container" type="HBoxContainer" parent="status_view"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 997.0
-margin_bottom = 27.0
-
-[node name="minimize" type="Button" parent="status_view/container"]
-margin_right = 17.0
-margin_bottom = 20.0
-text = "-"
-script = ExtResource( 5 )
-control_to_minimize = NodePath("../../../left")
-
-[node name="MapOptionButton" type="OptionButton" parent="status_view/container"]
-margin_left = 21.0
-margin_right = 103.0
-margin_bottom = 20.0
-text = "Lestania"
-items = [ "Lestania", null, false, 0, null, "Bloodbane Island", null, false, 1, null, "Phindym", null, false, 2, null, "Acre Selund", null, false, 3, null ]
-selected = 0
-
-[node name="coordinates" type="Label" parent="status_view/container"]
-margin_left = 107.0
-margin_top = 3.0
-margin_right = 183.0
-margin_bottom = 17.0
-text = "Coordinates"
-
-[node name="marker" type="Label" parent="status_view/container"]
-margin_left = 187.0
-margin_top = 3.0
-margin_right = 231.0
-margin_bottom = 17.0
-text = "Marker"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [connection signal="gui_input" from="left/tab/enemy/EnemyTree" to="left/tab/enemy/EnemyTree" method="_on_gui_input"]
+[connection signal="item_selected" from="status_view/container/MapOptionButton" to="." method="_on_MapOptionButton_item_selected"]
 [connection signal="enemy_set" from="Right Panel/VBoxContainer/EnemyDetails" to="Right Panel" method="_on_EnemyDetails_enemy_set"]
 [connection signal="item_selected" from="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/NamedEnemyParamsIdOptionButton" to="Right Panel/VBoxContainer/EnemyDetails" method="_on_NamedEnemyParamsIdOptionButton_item_selected"]
 [connection signal="value_changed" from="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer/RaidBossIdLineEdit" to="Right Panel/VBoxContainer/EnemyDetails" method="_on_RaidBossIdLineEdit_value_changed"]
@@ -483,4 +484,3 @@ __meta__ = {
 [connection signal="pressed" from="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer/IsAreaBoss" to="Right Panel/VBoxContainer/EnemyDetails" method="_on_IsAreaBoss_pressed"]
 [connection signal="pressed" from="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer/IsBloodEnemy" to="Right Panel/VBoxContainer/EnemyDetails" method="_on_IsBloodEnemy_pressed"]
 [connection signal="pressed" from="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer/IsHighOrbEnemy" to="Right Panel/VBoxContainer/EnemyDetails" method="_on_IsHighOrbEnemy_pressed"]
-[connection signal="item_selected" from="status_view/container/MapOptionButton" to="." method="_on_MapOptionButton_item_selected"]

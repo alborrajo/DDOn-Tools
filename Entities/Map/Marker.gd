@@ -5,7 +5,7 @@ var UniqueId : int
 var GroupNo : int
 var StageNo : int
 
-func _init(marker : Dictionary, land_id: String).(Vector3(marker["Pos"]["X"],marker["Pos"]["Y"],marker["Pos"]["Z"]), land_id):
+func _init(marker : Dictionary, field_id: String).(Vector3(marker["Pos"]["X"],marker["Pos"]["Y"],marker["Pos"]["Z"]), field_id):
 	UniqueId = marker["UniqueId"]
 	GroupNo = marker["GroupNo"]
 	StageNo = marker["StageNo"]
