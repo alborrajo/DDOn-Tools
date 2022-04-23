@@ -125,6 +125,7 @@ _global_script_class_icons={
 config/name="DDOn Tools"
 run/main_scene="res://Main.tscn"
 config/icon="res://puala.png"
+config/windows_native_icon="res://puala.ico"
 
 [autoload]
 
