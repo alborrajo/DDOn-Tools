@@ -14,7 +14,6 @@
 script = ExtResource( 2 )
 
 [node name="Lestania" type="Node2D" parent="."]
-visible = false
 
 [node name="map" type="Sprite" parent="Lestania"]
 scale = Vector2( 0.1, 0.1 )
@@ -22,6 +21,7 @@ texture = ExtResource( 1 )
 centered = false
 
 [node name="MergodaRuins" type="Node2D" parent="."]
+visible = false
 
 [node name="map" type="Sprite" parent="MergodaRuins"]
 scale = Vector2( 0.1, 0.1 )
@@ -29,6 +29,7 @@ texture = ExtResource( 8 )
 centered = false
 
 [node name="MergodaPalace" type="Node2D" parent="."]
+visible = false
 
 [node name="map" type="Sprite" parent="MergodaPalace"]
 scale = Vector2( 0.1, 0.1 )
