@@ -14,7 +14,7 @@ func _ready():
 
 func get_info() -> Array:
 	print("RpcClient: get_info") 
-	var res = make_request("http://localhost", "/rpc/info")
+	var res = make_request("http://localhost", 52099, "/rpc/info")
 	if typeof(res) != TYPE_ARRAY:
 		print("RpcClient: expected Json Array") 
 		# {} = Dictionary 
@@ -22,10 +22,10 @@ func get_info() -> Array:
 		return Array()
 	return res
 
-func make_request(var host : String, var path : String):
+func make_request(var host : String, var port: int = 80, var path: String = '/'):
 	var err = 0
 	var http = HTTPClient.new()
-	err = http.connect_to_host(host, 80)
+	err = http.connect_to_host(host, port)
 	
 	if err != OK:
 		print("RpcClient: failed to establish connection") 
