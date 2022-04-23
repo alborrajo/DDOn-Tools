@@ -3,8 +3,9 @@ class_name FileMenu
 
 const STORAGE_KEY_FILE_PATH := "file_menu.file_path"
 
+const COMPAT_CSV_HEADER_STAGEID := "StageId"
 const CSV_HEADER := PoolStringArray([
-	"StageId",
+	"#StageId",
 	"LayerNo",
 	"GroupId",
 	"SubGroupId",
@@ -89,7 +90,7 @@ func _do_load(file_path: String):
 	# Check header
 	var header := file.get_csv_line()
 	for i in min(header.size(), CSV_HEADER.size()):
-		if header[i] != CSV_HEADER[i]:
+		if header[i] != CSV_HEADER[i] and (i == 0 and header[i] != COMPAT_CSV_HEADER_STAGEID):
 			var err_message := "Invalid CSV file. Header doesn't have a valid format "
 			printerr(err_message, file_path, " ", header)
 			notification_popup_node.notify(err_message)
@@ -104,35 +105,45 @@ func _do_load(file_path: String):
 	# Then load it from the file
 	while !file.eof_reached():
 		var csv_line := file.get_csv_line()
-		if csv_line.size() >= 5:
-			# Inefficient af, but i can't be assed
-			# Storing the CSV data in a hashmap first or similar would be better
-			for node in get_tree().get_nodes_in_group("EnemyPlacemark"):
-				if node is EnemySetPlacemark:
-					var placemark := node as EnemySetPlacemark
-					if placemark.stage_id == int(csv_line[0]) and placemark.layer_no == int(csv_line[1]) and placemark.group_id == int(csv_line[2]) and placemark.subgroup_id == int(csv_line[3]):
-						var enemyType := enemy_tree_node.get_enemy_by_id(csv_line[4].hex_to_int())
-						var enemy := Enemy.new(enemyType)
-						enemy.named_enemy_params_id = int(csv_line[5])
-						enemy.raid_boss_id = int(csv_line[6])
-						enemy.scale = int(csv_line[7])
-						enemy.lv = int(csv_line[8])
-						enemy.hm_preset_no = int(csv_line[9])
-						enemy.start_think_tbl_no = int(csv_line[10])
-						enemy.repop_num = int(csv_line[11])
-						enemy.repop_count = int(csv_line[12])
-						enemy.enemy_target_types_id = int(csv_line[13])
-						enemy.montage_fix_no = int(csv_line[14])
-						enemy.set_type = int(csv_line[15])
-						enemy.infection_type = int(csv_line[16])
-						enemy.is_boss_gauge = parse_bool(csv_line[17])
-						enemy.is_boss_bgm = parse_bool(csv_line[18])
-						enemy.is_manual_set = parse_bool(csv_line[19])
-						enemy.is_area_boss = parse_bool(csv_line[20])
-						enemy.is_blood_enemy = parse_bool(csv_line[21])
-						enemy.is_highorb_enemy = parse_bool(csv_line[22])
-						placemark.add_enemy(enemy)
-						break
+		
+		# Ignore comments
+		if csv_line[0] != '' and csv_line[0][0] == '#':
+			print("Ignoring comment line ", csv_line)
+			continue
+		
+		if csv_line.size() < 23:
+			print("Ignoring line with incorrect number of columns ", csv_line)
+			continue
+			
+		# Inefficient af, but i can't be assed
+		# Storing the CSV data in a hashmap first or similar would be better
+		for node in get_tree().get_nodes_in_group("EnemyPlacemark"):
+			if node is EnemySetPlacemark:
+				var placemark := node as EnemySetPlacemark
+				if placemark.stage_id == int(csv_line[0]) and placemark.layer_no == int(csv_line[1]) and placemark.group_id == int(csv_line[2]) and placemark.subgroup_id == int(csv_line[3]):
+					var enemyType := enemy_tree_node.get_enemy_by_id(csv_line[4].hex_to_int())
+					var enemy := Enemy.new(enemyType)
+					enemy.named_enemy_params_id = int(csv_line[5])
+					enemy.raid_boss_id = int(csv_line[6])
+					enemy.scale = int(csv_line[7])
+					enemy.lv = int(csv_line[8])
+					enemy.hm_preset_no = int(csv_line[9])
+					enemy.start_think_tbl_no = int(csv_line[10])
+					enemy.repop_num = int(csv_line[11])
+					enemy.repop_count = int(csv_line[12])
+					enemy.enemy_target_types_id = int(csv_line[13])
+					enemy.montage_fix_no = int(csv_line[14])
+					enemy.set_type = int(csv_line[15])
+					enemy.infection_type = int(csv_line[16])
+					enemy.is_boss_gauge = parse_bool(csv_line[17])
+					enemy.is_boss_bgm = parse_bool(csv_line[18])
+					enemy.is_manual_set = parse_bool(csv_line[19])
+					enemy.is_area_boss = parse_bool(csv_line[20])
+					enemy.is_blood_enemy = parse_bool(csv_line[21])
+					enemy.is_highorb_enemy = parse_bool(csv_line[22])
+					placemark.add_enemy(enemy)
+					break
+	
 	file.close()
 	
 	self._file_path = file_path
