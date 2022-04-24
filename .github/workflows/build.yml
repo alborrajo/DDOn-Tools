@@ -23,11 +23,19 @@ jobs:
         id: build
         uses: josephbmanley/build-godot-action@v1.4.1
         with:
-          name: example
+          name: DDOn Tools
           preset: ${{ matrix.platform }}
           debugMode: "false"
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v2
+      - name: Get short SHA
+        id: slug
+        run: echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          name: Client - ${{ matrix.platform }}
-          path: ${{ github.workspace }}/${{ steps.build.outputs.build }}
+          tag_name: release-${{ steps.slug.outputs.sha8 }}
+          release_name: Release ${{ steps.slug.outputs.sha8 }}
+          draft: false
+          prerelease: false
