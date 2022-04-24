@@ -10,8 +10,28 @@ on:
 
 
 jobs:
-  Godot:
+  release:
     runs-on: ubuntu-latest
+    outputs:
+      slug: ${{ steps.slug.outputs.sha8 }}
+      upload_url: ${{ steps.create_release.outputs.upload_url }}
+    steps:
+      - name: Get short SHA
+        id: slug
+        run: echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: release-${{ steps.slug.outputs.sha8 }}
+          release_name: Release ${{ steps.slug.outputs.sha8 }}
+          draft: false
+          prerelease: true
+  build:
+    runs-on: ubuntu-latest
+    needs: release
     strategy:
       matrix:
         platform: [linux, windows, mac]
@@ -26,16 +46,15 @@ jobs:
           name: DDOn Tools
           preset: ${{ matrix.platform }}
           debugMode: "false"
-      - name: Get short SHA
-        id: slug
-        run: echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1.0.0
+      - name: Zip build
+        run: zip -qq -r ${{ matrix.platform }}-${{ steps.slug.outputs.sha8 }}.zip ${{ steps.build.outputs.build }}
+        working-directory: ${{ github.workspace }}
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: release-${{ steps.slug.outputs.sha8 }}
-          release_name: Release ${{ steps.slug.outputs.sha8 }}
-          draft: false
-          prerelease: false
+          upload_url: ${{ needs.release.create_release.outputs.upload_url }}
+          asset_path: ${{ github.workspace }}/${{ matrix.platform }}-${{ steps.slug.outputs.sha8 }}.zip
+          asset_name: ddon-tools_${{ matrix.platform }}-${{ steps.slug.outputs.sha8 }}.zip
+          asset_content_type: application/gzip
