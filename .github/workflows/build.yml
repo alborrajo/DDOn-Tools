@@ -13,7 +13,7 @@ jobs:
   release:
     runs-on: ubuntu-latest
     outputs:
-      slug: ${{ steps.slug.outputs.sha8 }}
+      sha8: ${{ steps.slug.outputs.sha8 }}
       upload_url: ${{ steps.create_release.outputs.upload_url }}
     steps:
       - name: Get short SHA
@@ -52,10 +52,10 @@ jobs:
         run: |
           mkdir renamedBuildOutput
           cp ${{ steps.build.outputs.build }}/* renamedBuildOutput/
-          cp "renamedBuildOutput/DDOn-Tools" "renamedBuildOutput/DDOn-Tools.exe"
+          mv "renamedBuildOutput/DDOn-Tools" "renamedBuildOutput/DDOn-Tools.exe"
       - name: Zip build
         working-directory: ${{ github.workspace }}
-        run: zip -qq -r ${{ matrix.platform }}-${{ needs.release.outputs.sha8 }}.zip renamedBuildOutput
+        run: zip -qq -r ${{ matrix.platform }}-${{ needs.release.outputs.sha8 }}.zip renamedBuildOutput/*
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1.0.1
         env:
