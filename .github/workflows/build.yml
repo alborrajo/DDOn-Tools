@@ -49,7 +49,9 @@ jobs:
       - name: Rename build executable
         if: matrix.platform == 'windows'
         working-directory: ${{ github.workspace }}/${{ steps.build.outputs.build }}
-        run: mv DDOn-Tools DDOn-Tools.exe
+        run: |
+          ls .
+          mv DDOnTools DDOnTools.exe
       - name: Zip build
         working-directory: ${{ github.workspace }}
         run: zip -qq -r ${{ matrix.platform }}-${{ needs.release.outputs.sha8 }}.zip ${{ steps.build.outputs.build }}
