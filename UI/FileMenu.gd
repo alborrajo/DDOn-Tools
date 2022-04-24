@@ -85,6 +85,13 @@ func _do_load(file_path: String):
 	print_debug("Loading file ", file_path)
 	
 	var file := File.new()
+	
+	if not file.file_exists(file_path):
+		var err_message := "File doesn't exist"
+		printerr(err_message, file_path)
+		notification_popup_node.notify(err_message+": "+file_path)
+		return
+	
 	file.open(file_path, File.READ)
 	
 	# Check header
@@ -106,13 +113,13 @@ func _do_load(file_path: String):
 	while !file.eof_reached():
 		var csv_line := file.get_csv_line()
 		
+		if csv_line.size() < 23:
+			print("Ignoring line with incorrect number of columns ", csv_line)
+			continue
+			
 		# Ignore comments
 		if csv_line[0] != '' and csv_line[0][0] == '#':
 			print("Ignoring comment line ", csv_line)
-			continue
-		
-		if csv_line.size() < 23:
-			print("Ignoring line with incorrect number of columns ", csv_line)
 			continue
 			
 		# Inefficient af, but i can't be assed
