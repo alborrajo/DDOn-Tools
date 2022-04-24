@@ -21,11 +21,22 @@ onready var field_id_to_node := {
 	"5": $Phindym,
 	"6": $AcreSelund
 }
+
+onready var field_id_to_texture := {
+	"1": "res://resources/maps/field000_m00.png",
+	"2": "res://resources/maps/field001_m00.png",
+	"3": "res://resources/maps/field002_m01.png",
+	"4": "res://resources/maps/field003_m00.png",
+	"5": "res://resources/maps/field004_m00.png",
+	"6": "res://resources/maps/field005_m00.png"
+}
 	
 func _init():
 	rpc_client = RpcClient.new()
 	
 func _ready():
+	_on_ui_map_selected(1) # Load Lestania map by default
+	
 	coordinates_label = get_node("ui/status_view/container/coordinates")
 	players_on_ui = get_node("ui/left/tab/player")
 	marker_label = get_node("ui/status_view/container/marker")
@@ -149,14 +160,21 @@ func create_tree_entry(var player : Player):
 	item.set_metadata(0, player)
 
 
-func _on_ui_map_selected(map_id):
+func _on_ui_map_selected(field_id):
 	# Hide all maps
 	for map in field_id_to_node.values():
 		map.visible = false
 	
 	# Show only the selected one
-	var map_node = field_id_to_node.get(String(map_id))
+	var map_node = field_id_to_node.get(String(field_id))
 	if map_node != null:
 		map_node.visible = true
 	else:
-		printerr("Couldn't find node for map with ID ",map_id)
+		printerr("Couldn't find node for field ID ",field_id)
+		
+	# Show texture for the selected map
+	var map_texture = field_id_to_texture.get(String(field_id))
+	if map_texture != null:
+		$map.texture = load(map_texture)
+	else:
+		printerr("Couldn't find map texture for field ID ", field_id)
