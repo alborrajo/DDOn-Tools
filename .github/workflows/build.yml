@@ -43,18 +43,22 @@ jobs:
         id: build
         uses: josephbmanley/build-godot-action@v1.4.1
         with:
-          name: DDOn Tools
+          name: DDOn-Tools
           preset: ${{ matrix.platform }}
           debugMode: "false"
+      - name: Rename build executable
+        if: matrix.platform == 'windows'
+        working-directory: ${{ github.workspace }}/${{ steps.build.outputs.build }}
+        run: mv DDOn-Tools DDOn-Tools.exe
       - name: Zip build
-        run: zip -qq -r ${{ matrix.platform }}-${{ steps.slug.outputs.sha8 }}.zip ${{ steps.build.outputs.build }}
         working-directory: ${{ github.workspace }}
+        run: zip -qq -r ${{ matrix.platform }}-${{ needs.release.outputs.sha8 }}.zip ${{ steps.build.outputs.build }}
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.release.outputs.upload_url }}
-          asset_path: ${{ github.workspace }}/${{ matrix.platform }}-${{ steps.slug.outputs.sha8 }}.zip
-          asset_name: ddon-tools_${{ matrix.platform }}-${{ steps.slug.outputs.sha8 }}.zip
+          asset_path: ${{ github.workspace }}/${{ matrix.platform }}-${{ needs.release.outputs.sha8 }}.zip
+          asset_name: ddon-tools_${{ matrix.platform }}-${{ needs.release.outputs.sha8 }}.zip
           asset_content_type: application/gzip
