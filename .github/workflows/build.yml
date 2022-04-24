@@ -34,7 +34,7 @@ jobs:
     needs: release
     strategy:
       matrix:
-        platform: [linux, windows, mac]
+        platform: [windows]
     steps:
       - uses: actions/checkout@v2
         with:
@@ -47,14 +47,17 @@ jobs:
           preset: ${{ matrix.platform }}
           debugMode: "false"
       - name: Rename build executable
-        if: matrix.platform == 'windows'
-        working-directory: ${{ github.workspace }}/${{ steps.build.outputs.build }}
+        id: rename
+        outputs: 
+          build: renamedBuildOutput
+        working-directory: ${{ github.workspace }}
         run: |
-          ls -l .
-          cp "DDOn-Tools" "DDOn-Tools.exe"
+          mkdir renamedBuildOutput
+          cp ${{ steps.build.outputs.build }}/* renamedBuildOutput/
+          cp "renamedBuildOutput/DDOn-Tools" "renamedBuildOutput/DDOn-Tools.exe"
       - name: Zip build
         working-directory: ${{ github.workspace }}
-        run: zip -qq -r ${{ matrix.platform }}-${{ needs.release.outputs.sha8 }}.zip ${{ steps.build.outputs.build }}
+        run: zip -qq -r ${{ matrix.platform }}-${{ needs.release.outputs.sha8 }}.zip ${{ steps.rename.outputs.build }}
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1.0.1
         env:
