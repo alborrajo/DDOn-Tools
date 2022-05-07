@@ -144,7 +144,7 @@ theme/custom_font="res://UI/font.tres"
 
 [locale]
 
-translations=PoolStringArray( "res://resources/internationalization/enemy_name.en.translation", "res://resources/internationalization/enemy_name.ja.translation" )
+translations=PoolStringArray( "res://resources/internationalization/enemy_name.en.translation", "res://resources/internationalization/enemy_name.ja.translation", "res://resources/internationalization/named_param.en.translation", "res://resources/internationalization/named_param.ja.translation" )
 
 [physics]
 
