@@ -130,7 +130,7 @@ func _do_load(file_path: String):
 				if placemark.stage_id == int(csv_line[0]) and placemark.layer_no == int(csv_line[1]) and placemark.group_id == int(csv_line[2]) and placemark.subgroup_id == int(csv_line[3]):
 					var enemyType := enemy_tree_node.get_enemy_by_id(csv_line[4].hex_to_int())
 					var enemy := Enemy.new(enemyType)
-					enemy.named_enemy_params_id = int(csv_line[5])
+					enemy.named_enemy_params_id = csv_line[5].hex_to_int()
 					enemy.raid_boss_id = int(csv_line[6])
 					enemy.scale = int(csv_line[7])
 					enemy.lv = int(csv_line[8])
@@ -179,7 +179,7 @@ func _do_save(file_path: String):
 				csv_data.append(placemark.group_id)
 				csv_data.append(placemark.subgroup_id)
 				csv_data.append("0x%06X" % enemy.enemy_type.id)
-				csv_data.append("0x%06X" % enemy.named_enemy_params_id)
+				csv_data.append("0x%X" % enemy.named_enemy_params_id)
 				csv_data.append(enemy.raid_boss_id)
 				csv_data.append(enemy.scale)
 				csv_data.append(enemy.lv)
