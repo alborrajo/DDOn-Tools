@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://UI/EnemyDetails.gd" type="Script" id=1]
 [ext_resource path="res://UI/NotificationPopup.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://UI/Minimize.gd" type="Script" id=5]
 [ext_resource path="res://UI/EnemyTree.gd" type="Script" id=6]
 [ext_resource path="res://UI/HmPresetNoOptionButton.gd" type="Script" id=7]
+[ext_resource path="res://UI/LanguageOptionButton.gd" type="Script" id=8]
 
 [sub_resource type="GDScript" id=2]
 script/source = "extends CanvasLayer
@@ -58,7 +59,7 @@ tab_align = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
-margin_top = 32.0
+margin_top = 36.0
 margin_right = -4.0
 margin_bottom = -4.0
 __meta__ = {
@@ -67,8 +68,8 @@ __meta__ = {
 
 [node name="FileMenu" type="MenuButton" parent="left/tab/enemy"]
 process_priority = -1
-margin_right = 35.0
-margin_bottom = 20.0
+margin_right = 32.0
+margin_bottom = 24.0
 focus_mode = 2
 size_flags_horizontal = 0
 text = "File"
@@ -81,9 +82,9 @@ enemy_tree = NodePath("../EnemyTree")
 notification_popup = NodePath("../../../../NotificationPopup")
 
 [node name="EnemyTree" type="Tree" parent="left/tab/enemy"]
-margin_top = 24.0
+margin_top = 28.0
 margin_right = 288.0
-margin_bottom = 501.0
+margin_bottom = 497.0
 size_flags_vertical = 3
 allow_reselect = true
 script = ExtResource( 6 )
@@ -111,39 +112,52 @@ margin_bottom = 44.0
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 997.0
-margin_bottom = 27.0
+margin_bottom = 31.0
 
 [node name="minimize" type="Button" parent="status_view/container"]
-margin_right = 17.0
-margin_bottom = 20.0
+margin_right = 16.0
+margin_bottom = 24.0
 text = "-"
 script = ExtResource( 5 )
 control_to_minimize = NodePath("../../../left")
 
 [node name="MapOptionButton" type="OptionButton" parent="status_view/container"]
-margin_left = 21.0
-margin_right = 103.0
-margin_bottom = 20.0
+margin_left = 20.0
+margin_right = 98.0
+margin_bottom = 24.0
 text = "Lestania"
 items = [ "Lestania", null, false, 1, null, "Mergoda Ruins: Lower Level", null, false, 2, null, "Mergoda Ruins: Royal Palace Level", null, false, 3, null, "Bloodbane Island", null, false, 4, null, "Phindym", null, false, 5, null, "Acre Selund", null, false, 6, null ]
 selected = 0
 
 [node name="coordinates" type="Label" parent="status_view/container"]
-margin_left = 107.0
+margin_left = 102.0
 margin_top = 3.0
-margin_right = 183.0
-margin_bottom = 17.0
+margin_right = 171.0
+margin_bottom = 21.0
 text = "Coordinates"
 
 [node name="marker" type="Label" parent="status_view/container"]
-margin_left = 187.0
+margin_left = 175.0
 margin_top = 3.0
-margin_right = 231.0
-margin_bottom = 17.0
+margin_right = 216.0
+margin_bottom = 21.0
 text = "Marker"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Control" type="Control" parent="status_view/container"]
+margin_left = 220.0
+margin_right = 917.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="LanguageOptionButton" type="OptionButton" parent="status_view/container"]
+margin_left = 921.0
+margin_right = 990.0
+margin_bottom = 24.0
+text = "English"
+script = ExtResource( 8 )
 
 [node name="Right Panel" type="PanelContainer" parent="."]
 anchor_left = 1.0
@@ -163,28 +177,28 @@ margin_bottom = 544.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Right Panel/VBoxContainer"]
 margin_right = 296.0
-margin_bottom = 20.0
+margin_bottom = 24.0
 
 [node name="TitleLabel" type="Label" parent="Right Panel/VBoxContainer/HBoxContainer"]
 margin_top = 3.0
-margin_bottom = 17.0
+margin_bottom = 21.0
 
 [node name="VSeparator" type="VSeparator" parent="Right Panel/VBoxContainer/HBoxContainer"]
 margin_left = 4.0
-margin_right = 275.0
-margin_bottom = 20.0
+margin_right = 276.0
+margin_bottom = 24.0
 size_flags_horizontal = 3
 
 [node name="Minimize" type="Button" parent="Right Panel/VBoxContainer/HBoxContainer"]
-margin_left = 279.0
+margin_left = 280.0
 margin_right = 296.0
-margin_bottom = 20.0
+margin_bottom = 24.0
 text = "-"
 script = ExtResource( 5 )
 control_to_minimize = NodePath("../../..")
 
 [node name="EnemyDetails" type="Panel" parent="Right Panel/VBoxContainer" groups=["EnemyDetails"]]
-margin_top = 24.0
+margin_top = 28.0
 margin_right = 296.0
 margin_bottom = 537.0
 size_flags_vertical = 3
@@ -204,12 +218,12 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer"]
 margin_right = 288.0
-margin_bottom = 408.0
+margin_bottom = 462.0
 size_flags_horizontal = 3
 
 [node name="NamedEnemyParamsIdOptionButton" type="OptionButton" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer"]
 margin_right = 288.0
-margin_bottom = 20.0
+margin_bottom = 24.0
 size_flags_horizontal = 3
 text = "- Default name -"
 items = [ "- Default name -", null, false, 2298, null ]
@@ -217,66 +231,66 @@ selected = 0
 script = ExtResource( 3 )
 
 [node name="GridContainer" type="GridContainer" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer"]
-margin_top = 24.0
+margin_top = 28.0
 margin_right = 288.0
-margin_bottom = 408.0
+margin_bottom = 462.0
 columns = 2
 
 [node name="RaidBossId" type="Label" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
 margin_top = 5.0
-margin_right = 132.0
-margin_bottom = 19.0
+margin_right = 120.0
+margin_bottom = 23.0
 text = "RaidBossId"
 
 [node name="RaidBossIdLineEdit" type="SpinBox" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
-margin_left = 136.0
+margin_left = 124.0
 margin_right = 288.0
-margin_bottom = 24.0
+margin_bottom = 28.0
 size_flags_horizontal = 3
 max_value = 4.29497e+09
 rounded = true
 
 [node name="Scale" type="Label" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
-margin_top = 33.0
-margin_right = 132.0
-margin_bottom = 47.0
+margin_top = 37.0
+margin_right = 120.0
+margin_bottom = 55.0
 text = "Scale"
 
 [node name="ScaleLineEdit" type="SpinBox" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
-margin_left = 136.0
-margin_top = 28.0
+margin_left = 124.0
+margin_top = 32.0
 margin_right = 288.0
-margin_bottom = 52.0
+margin_bottom = 60.0
 size_flags_horizontal = 3
 max_value = 4.29497e+09
 rounded = true
 
 [node name="Level" type="Label" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
-margin_top = 61.0
-margin_right = 132.0
-margin_bottom = 75.0
+margin_top = 69.0
+margin_right = 120.0
+margin_bottom = 87.0
 text = "Level"
 
 [node name="LevelLineEdit" type="SpinBox" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
-margin_left = 136.0
-margin_top = 56.0
+margin_left = 124.0
+margin_top = 64.0
 margin_right = 288.0
-margin_bottom = 80.0
+margin_bottom = 92.0
 size_flags_horizontal = 3
 max_value = 4.29497e+09
 rounded = true
 
 [node name="HmPresetNo" type="Label" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
-margin_top = 87.0
-margin_right = 132.0
-margin_bottom = 101.0
+margin_top = 99.0
+margin_right = 120.0
+margin_bottom = 117.0
 text = "HmPresetNo"
 
 [node name="HmPresetNoOptionButton" type="OptionButton" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
-margin_left = 136.0
-margin_top = 84.0
+margin_left = 124.0
+margin_top = 96.0
 margin_right = 288.0
-margin_bottom = 104.0
+margin_bottom = 120.0
 size_flags_horizontal = 3
 text = "- None -"
 items = [ "- None -", null, false, 0, null ]
@@ -284,147 +298,147 @@ selected = 0
 script = ExtResource( 7 )
 
 [node name="StartThinkTblNo" type="Label" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
-margin_top = 113.0
-margin_right = 132.0
-margin_bottom = 127.0
+margin_top = 129.0
+margin_right = 120.0
+margin_bottom = 147.0
 text = "StartThinkTblNo"
 
 [node name="StartThinkTblNoLineEdit" type="SpinBox" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
-margin_left = 136.0
-margin_top = 108.0
+margin_left = 124.0
+margin_top = 124.0
 margin_right = 288.0
-margin_bottom = 132.0
+margin_bottom = 152.0
 size_flags_horizontal = 3
 max_value = 4.29497e+09
 rounded = true
 
 [node name="RepopNum" type="Label" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
-margin_top = 141.0
-margin_right = 132.0
-margin_bottom = 155.0
+margin_top = 161.0
+margin_right = 120.0
+margin_bottom = 179.0
 text = "RepopNum"
 
 [node name="RepopNumLineEdit" type="SpinBox" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
-margin_left = 136.0
-margin_top = 136.0
+margin_left = 124.0
+margin_top = 156.0
 margin_right = 288.0
-margin_bottom = 160.0
+margin_bottom = 184.0
 size_flags_horizontal = 3
 max_value = 4.29497e+09
 rounded = true
 
 [node name="RepopCount" type="Label" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
-margin_top = 169.0
-margin_right = 132.0
-margin_bottom = 183.0
+margin_top = 193.0
+margin_right = 120.0
+margin_bottom = 211.0
 text = "RepopCount"
 
 [node name="RepopCountLineEdit" type="SpinBox" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
-margin_left = 136.0
-margin_top = 164.0
-margin_right = 288.0
-margin_bottom = 188.0
-size_flags_horizontal = 3
-max_value = 4.29497e+09
-rounded = true
-
-[node name="EnemyTargetTypesId" type="Label" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
-margin_top = 197.0
-margin_right = 132.0
-margin_bottom = 211.0
-text = "EnemyTargetTypesId"
-
-[node name="EnemyTargetTypesIdLineEdit" type="SpinBox" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
-margin_left = 136.0
-margin_top = 192.0
+margin_left = 124.0
+margin_top = 188.0
 margin_right = 288.0
 margin_bottom = 216.0
 size_flags_horizontal = 3
 max_value = 4.29497e+09
 rounded = true
 
-[node name="MontageFixNo" type="Label" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
+[node name="EnemyTargetTypesId" type="Label" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
 margin_top = 225.0
-margin_right = 132.0
-margin_bottom = 239.0
+margin_right = 120.0
+margin_bottom = 243.0
+text = "EnemyTargetTypesId"
+
+[node name="EnemyTargetTypesIdLineEdit" type="SpinBox" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
+margin_left = 124.0
+margin_top = 220.0
+margin_right = 288.0
+margin_bottom = 248.0
+size_flags_horizontal = 3
+max_value = 4.29497e+09
+rounded = true
+
+[node name="MontageFixNo" type="Label" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
+margin_top = 257.0
+margin_right = 120.0
+margin_bottom = 275.0
 text = "MontageFixNo"
 
 [node name="MontageFixNoLineEdit" type="SpinBox" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
-margin_left = 136.0
-margin_top = 220.0
+margin_left = 124.0
+margin_top = 252.0
 margin_right = 288.0
-margin_bottom = 244.0
+margin_bottom = 280.0
 size_flags_horizontal = 3
 max_value = 4.29497e+09
 rounded = true
 
 [node name="SetType" type="Label" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
-margin_top = 253.0
-margin_right = 132.0
-margin_bottom = 267.0
+margin_top = 289.0
+margin_right = 120.0
+margin_bottom = 307.0
 text = "SetType"
 
 [node name="SetTypeLineEdit" type="SpinBox" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
-margin_left = 136.0
-margin_top = 248.0
+margin_left = 124.0
+margin_top = 284.0
 margin_right = 288.0
-margin_bottom = 272.0
+margin_bottom = 312.0
 size_flags_horizontal = 3
 max_value = 4.29497e+09
 rounded = true
 
 [node name="InfectionType" type="Label" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
-margin_top = 281.0
-margin_right = 132.0
-margin_bottom = 295.0
+margin_top = 321.0
+margin_right = 120.0
+margin_bottom = 339.0
 text = "InfectionType"
 
 [node name="InfectionTypeLineEdit" type="SpinBox" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
-margin_left = 136.0
-margin_top = 276.0
+margin_left = 124.0
+margin_top = 316.0
 margin_right = 288.0
-margin_bottom = 300.0
+margin_bottom = 344.0
 size_flags_horizontal = 3
 max_value = 4.29497e+09
 rounded = true
 
 [node name="IsBossGauge" type="CheckBox" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
-margin_top = 304.0
-margin_right = 132.0
-margin_bottom = 328.0
+margin_top = 348.0
+margin_right = 120.0
+margin_bottom = 374.0
 text = "IsBossGauge"
 
 [node name="IsBossBGM" type="CheckBox" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
-margin_left = 136.0
-margin_top = 304.0
+margin_left = 124.0
+margin_top = 348.0
 margin_right = 288.0
-margin_bottom = 328.0
+margin_bottom = 374.0
 text = "IsBossBGM"
 
 [node name="IsManualSet" type="CheckBox" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
-margin_top = 332.0
-margin_right = 132.0
-margin_bottom = 356.0
+margin_top = 378.0
+margin_right = 120.0
+margin_bottom = 404.0
 text = "IsManualSet"
 
 [node name="IsAreaBoss" type="CheckBox" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
-margin_left = 136.0
-margin_top = 332.0
+margin_left = 124.0
+margin_top = 378.0
 margin_right = 288.0
-margin_bottom = 356.0
+margin_bottom = 404.0
 text = "IsAreaBoss"
 
 [node name="IsBloodEnemy" type="CheckBox" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
-margin_top = 360.0
-margin_right = 132.0
-margin_bottom = 384.0
+margin_top = 408.0
+margin_right = 120.0
+margin_bottom = 434.0
 text = "IsBloodEnemy"
 
 [node name="IsHighOrbEnemy" type="CheckBox" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
-margin_left = 136.0
-margin_top = 360.0
+margin_left = 124.0
+margin_top = 408.0
 margin_right = 288.0
-margin_bottom = 384.0
+margin_bottom = 434.0
 text = "IsHighOrbEnemy"
 
 [node name="FileDialog" type="FileDialog" parent="."]
@@ -442,8 +456,8 @@ mode = 0
 access = 2
 filters = PoolStringArray( "*.csv ; CSV Files" )
 show_hidden_files = true
-current_dir = "/Users/Laith/Documents/Programacion/Godot/DDOn Tools"
-current_path = "/Users/Laith/Documents/Programacion/Godot/DDOn Tools/"
+current_dir = "/Users/alborrajo/Documents/Programacion/Godot/DDOn Tools/DDOn-Tools"
+current_path = "/Users/alborrajo/Documents/Programacion/Godot/DDOn Tools/DDOn-Tools/"
 
 [node name="NotificationPopup" type="PopupPanel" parent="."]
 anchor_left = 1.0
@@ -460,7 +474,7 @@ script = ExtResource( 2 )
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 240.0
-margin_bottom = 18.0
+margin_bottom = 22.0
 text = "Notification"
 
 [connection signal="gui_input" from="left/tab/enemy/EnemyTree" to="left/tab/enemy/EnemyTree" method="_on_gui_input"]

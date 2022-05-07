@@ -59,6 +59,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UI/HmPresetNoOptionButton.gd"
 }, {
+"base": "OptionButton",
+"class": "LanguageOptionButton",
+"language": "GDScript",
+"path": "res://UI/LanguageOptionButton.gd"
+}, {
 "base": "Resource",
 "class": "MapEntity",
 "language": "GDScript",
@@ -110,6 +115,7 @@ _global_script_class_icons={
 "FileMenu": "",
 "GenericMarker": "",
 "HmPresetNoOptionButton": "",
+"LanguageOptionButton": "",
 "MapEntity": "",
 "MapMarker": "",
 "Marker": "",
@@ -131,6 +137,14 @@ config/windows_native_icon="res://puala.ico"
 
 DataProvider="*res://Providers/DataProvider.gd"
 StorageProvider="*res://Providers/StorageProvider.tscn"
+
+[gui]
+
+theme/custom_font="res://UI/font.tres"
+
+[locale]
+
+translations=PoolStringArray( "res://resources/internationalization/enemy_name.en.translation", "res://resources/internationalization/enemy_name.ja.translation" )
 
 [physics]
 
