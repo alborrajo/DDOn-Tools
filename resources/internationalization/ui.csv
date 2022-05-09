@@ -19,7 +19,7 @@ Save,セーブ,Save
 None,なし,None
 RaidBossId,,RaidBossId
 Scale,スケール,Scale
-Level,レベル,Level
+Level,LV.,Level
 HmPresetNo,人間プリセット,Human Preset
 StartThinkTblNo,,StartThinkTblNo
 RepopNum,,RepopNum
