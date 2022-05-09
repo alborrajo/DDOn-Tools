@@ -1,0 +1,37 @@
+keys,ja,en
+FIELD_AREA_INFO_1,レスタニア,Lestania
+FIELD_AREA_INFO_2,メルゴダ下層,Mergoda Lower Level
+FIELD_AREA_INFO_3,メルゴダ王宮層,Mergoda Royal Palace Level
+FIELD_AREA_INFO_4,魔赤島,Bloodbane Isle
+FIELD_AREA_INFO_5,フィンダム,Phindym
+FIELD_AREA_INFO_6,アッカーシェラン,Acre Selund
+FIELD_AREA_INFO_7,アッカーシェラン[過去],Acre Selund (Past)
+FIELD_AREA_INFO_8,黒呪の迷宮,Bitterblack Maze
+English,English,English
+Japanese,日本語,日本語
+Enemies,エネミー,Enemies
+Players,プレイヤー,Players
+File,ファイル,File
+New,新しいファイル,New
+Load,ロード,Load
+Save,セーブ,Save
+- Default Name -,- デフォルト名 -,- Default Name -
+None,なし,None
+RaidBossId,,RaidBossId
+Scale,スケール,Scale
+Level,LV.,Level
+HmPresetNo,人間プリセット,Human Preset
+StartThinkTblNo,,StartThinkTblNo
+RepopNum,,RepopNum
+RepopCount,,RepopCount
+EnemyTargetTypesId,,EnemyTargetTypesId
+MontageFixNo,,MontageFixNo
+SetType,,SetType
+InfectionType,,InfectionType
+IsBossGauge,ボスゲージ,Boss Gauge
+IsBossBGM,ボスBGM,Boss BGM
+IsManualSet,,IsManualSet
+IsAreaBoss,,IsAreaBoss
+IsBloodEnemy,ブラッドオーブ,Blood Orbs
+IsHighOrbEnemy,ハイオーブ,High Orbs
+

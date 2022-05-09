@@ -32,7 +32,7 @@ func set_enemy(em: Enemy) -> void:
 	_on_enemy_changed()
 	
 func _on_enemy_changed():
-	text = "%s (Lv. %d)" % [enemy.enemy_type.name, enemy.lv]
+	text = enemy.get_display_name()
 	
 	if enemy.is_blood_enemy:
 		modulate = COLOR_BLOOD_ORB

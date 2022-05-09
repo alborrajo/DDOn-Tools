@@ -179,23 +179,6 @@ id,name,DefaultHmPresetNo
 0x011042,Leo,76
 0x011043,Hooded Iris (???),86
 0x011044,Former Commander Leo (Final Boss),112
-
-0x011044_cs01,0x011044_cs01 (No Enemy),0
-0x011044_cs02,0x011044_cs02 (No Enemy),0
-0x011044_cs03,0x011044_cs03 (No Enemy),0
-0x011044_cs04,0x011044_cs04 (No Enemy),0
-0x011044_cs05,0x011044_cs05 (No Enemy),0
-0x011044_cs06,0x011044_cs06 (No Enemy),0
-0x011044_cs07,0x011044_cs07 (No Enemy),0
-0x011044_cs08,0x011044_cs08 (No Enemy),0
-0x011044_cs09,0x011044_cs09 (No Enemy),0
-0x011044_cs10,0x011044_cs10 (No Enemy),0
-0x011044_cs11,0x011044_cs11 (No Enemy),0
-0x011044_cs12,0x011044_cs12 (No Enemy),0
-0x011044_cs13,0x011044_cs13 (No Enemy),0
-0x011044_cs14,0x011044_cs14 (No Enemy),0
-0x011044_Job,0x011044_Job (No Enemy),0
-
 0x011050,Pawn Fighter,77
 0x011051,Pawn Seeker,78
 0x011052,Pawn Hunter,79

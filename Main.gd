@@ -38,7 +38,7 @@ func _ready():
 	_on_ui_map_selected(1) # Load Lestania map by default
 	
 	coordinates_label = get_node("ui/status_view/container/coordinates")
-	players_on_ui = get_node("ui/left/tab/player")
+	players_on_ui = get_node("ui/left/tab/Players")
 	marker_label = get_node("ui/status_view/container/marker")
 	players_on_map = Node2D.new()
 	add_child(players_on_map)

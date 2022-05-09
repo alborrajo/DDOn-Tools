@@ -9,4 +9,7 @@ export.cfg
 .mono/
 data_*/
 
+# MacOS bs that no one likes or wants
+.DS_Store
+
 build/

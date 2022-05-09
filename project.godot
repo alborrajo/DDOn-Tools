@@ -59,6 +59,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UI/HmPresetNoOptionButton.gd"
 }, {
+"base": "OptionButton",
+"class": "LanguageOptionButton",
+"language": "GDScript",
+"path": "res://UI/LanguageOptionButton.gd"
+}, {
 "base": "Resource",
 "class": "MapEntity",
 "language": "GDScript",
@@ -73,6 +78,11 @@ _global_script_classes=[ {
 "class": "Marker",
 "language": "GDScript",
 "path": "res://Entities/Map/Marker.gd"
+}, {
+"base": "Button",
+"class": "Minimize",
+"language": "GDScript",
+"path": "res://UI/UI Buttons/Minimize.gd"
 }, {
 "base": "OptionButton",
 "class": "NamedEnemyParamsIdOptionButton",
@@ -110,9 +120,11 @@ _global_script_class_icons={
 "FileMenu": "",
 "GenericMarker": "",
 "HmPresetNoOptionButton": "",
+"LanguageOptionButton": "",
 "MapEntity": "",
 "MapMarker": "",
 "Marker": "",
+"Minimize": "",
 "NamedEnemyParamsIdOptionButton": "",
 "NotificationPopup": "",
 "Player": "",
@@ -131,6 +143,14 @@ config/windows_native_icon="res://puala.ico"
 
 DataProvider="*res://Providers/DataProvider.gd"
 StorageProvider="*res://Providers/StorageProvider.tscn"
+
+[gui]
+
+theme/custom_font="res://UI/font.tres"
+
+[locale]
+
+translations=PoolStringArray( "res://resources/internationalization/enemy_name.en.translation", "res://resources/internationalization/enemy_name.ja.translation", "res://resources/internationalization/named_param.en.translation", "res://resources/internationalization/named_param.ja.translation", "res://resources/internationalization/HmPresetNo.en.translation", "res://resources/internationalization/HmPresetNo.ja.translation", "res://resources/internationalization/ui.en.translation", "res://resources/internationalization/ui.ja.translation" )
 
 [physics]
 
