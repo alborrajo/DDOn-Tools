@@ -19,7 +19,7 @@ func _on_MapOptionButton_item_selected(index):
 
 
 func _on_root_markers_loaded():
-	$left/tab/enemy/FileMenu._on_markers_loaded()
+	$left/tab/Enemies/FileMenu._on_markers_loaded()
 "
 
 [sub_resource type="GDScript" id=1]
@@ -58,7 +58,7 @@ margin_right = 303.0
 margin_bottom = 544.0
 tab_align = 0
 
-[node name="enemy" type="VBoxContainer" parent="left/tab"]
+[node name="Enemies" type="VBoxContainer" parent="left/tab"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -69,7 +69,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FileMenu" type="MenuButton" parent="left/tab/enemy"]
+[node name="FileMenu" type="MenuButton" parent="left/tab/Enemies"]
 process_priority = -1
 margin_right = 32.0
 margin_bottom = 24.0
@@ -84,7 +84,7 @@ file_dialog = NodePath("../../../../FileDialog")
 enemy_tree = NodePath("../EnemyTree")
 notification_popup = NodePath("../../../../NotificationPopup")
 
-[node name="EnemyTree" type="Tree" parent="left/tab/enemy"]
+[node name="EnemyTree" type="Tree" parent="left/tab/Enemies"]
 margin_top = 28.0
 margin_right = 288.0
 margin_bottom = 497.0
@@ -95,7 +95,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="player" type="Tree" parent="left/tab"]
+[node name="Players" type="Tree" parent="left/tab"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -126,23 +126,23 @@ control_to_minimize = NodePath("../../../left")
 
 [node name="MapOptionButton" type="OptionButton" parent="status_view/container"]
 margin_left = 20.0
-margin_right = 98.0
+margin_right = 168.0
 margin_bottom = 24.0
-text = "Lestania"
-items = [ "Lestania", null, false, 1, null, "Mergoda Ruins: Lower Level", null, false, 2, null, "Mergoda Ruins: Royal Palace Level", null, false, 3, null, "Bloodbane Island", null, false, 4, null, "Phindym", null, false, 5, null, "Acre Selund", null, false, 6, null ]
+text = "FIELD_AREA_INFO_1"
+items = [ "FIELD_AREA_INFO_1", null, false, 1, null, "FIELD_AREA_INFO_2", null, false, 2, null, "FIELD_AREA_INFO_3", null, false, 3, null, "FIELD_AREA_INFO_4", null, false, 4, null, "FIELD_AREA_INFO_5", null, false, 5, null, "FIELD_AREA_INFO_6", null, false, 6, null ]
 selected = 0
 
 [node name="coordinates" type="Label" parent="status_view/container"]
-margin_left = 102.0
+margin_left = 172.0
 margin_top = 3.0
-margin_right = 171.0
+margin_right = 241.0
 margin_bottom = 21.0
 text = "Coordinates"
 
 [node name="marker" type="Label" parent="status_view/container"]
-margin_left = 175.0
+margin_left = 245.0
 margin_top = 3.0
-margin_right = 216.0
+margin_right = 286.0
 margin_bottom = 21.0
 text = "Marker"
 align = 2
@@ -151,7 +151,7 @@ __meta__ = {
 }
 
 [node name="Control" type="Control" parent="status_view/container"]
-margin_left = 220.0
+margin_left = 290.0
 margin_right = 917.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
@@ -484,7 +484,7 @@ margin_right = 240.0
 margin_bottom = 22.0
 text = "Notification"
 
-[connection signal="gui_input" from="left/tab/enemy/EnemyTree" to="left/tab/enemy/EnemyTree" method="_on_gui_input"]
+[connection signal="gui_input" from="left/tab/Enemies/EnemyTree" to="left/tab/Enemies/EnemyTree" method="_on_gui_input"]
 [connection signal="item_selected" from="status_view/container/MapOptionButton" to="." method="_on_MapOptionButton_item_selected"]
 [connection signal="pressed" from="Right Panel/VBoxContainer/HBoxContainer/Close" to="Right Panel" method="_on_Close_pressed"]
 [connection signal="enemy_set" from="Right Panel/VBoxContainer/EnemyDetails" to="Right Panel" method="_on_EnemyDetails_enemy_set"]
