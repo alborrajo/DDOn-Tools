@@ -48,7 +48,7 @@ NAME_0x010211,Bolt Grimwarg,ボルトグリムワーグ
 NAME_0x010212,Blaze Wolf,ブレイズウルフ
 NAME_0x010220,Severely Infected Warg,狂侵ワーグ
 NAME_0x010221,Skeleton Warg,スケルトンワーグ
-NAME_0x010230,War-Ready Grimwarg (Light Armor),戦甲グリムワーグ (Light Armor)
+NAME_0x010230,War-Ready Grimwarg (Light Armor),戦甲グリムワーグ・軽装
 NAME_0x010240,Valefar,ウァレフォル
 NAME_0x010300,Skeleton,スケルトン
 NAME_0x010301,Skeleton Knight,スケルトンナイト
@@ -85,12 +85,12 @@ NAME_0x010450,Rock Saurian,ロックリザード
 NAME_0x010451,Rock Saurian Spinel,ロックリザードスピネル
 NAME_0x010460,Blue Newt,ブルーニュート
 NAME_0x010461,Large Newt,ラージニュート
-NAME_0x010470,War-Ready Saurian (Light Armor),戦甲リザードマン (Light Armor)
-NAME_0x010471,War-Ready Giant Saurian (Light Armor),戦甲ラージリザード (Light Armor)
+NAME_0x010470,War-Ready Saurian (Light Armor),戦甲リザードマン・軽装
+NAME_0x010471,War-Ready Giant Saurian (Light Armor),戦甲ラージリザード・軽装
 NAME_0x010480,Merman,マーマン
 NAME_0x010482,Poison Merman,ポイズンマーマン
-NAME_0x010500,Undead (Male),アンデッド (Male)
-NAME_0x010501,Undead (Female),アンデッド (Female)
+NAME_0x010500,Undead (Male),アンデッド・男性
+NAME_0x010501,Undead (Female),アンデッド・女性
 NAME_0x010502,Stout Undead,ファットアンデッド
 NAME_0x010503,Sword Undead,ソードアンデッド
 NAME_0x010504,Warrior Undead,ウォリアーアンデッド
@@ -258,8 +258,8 @@ NAME_0x015051,Skeleton Cyclops (Test),
 NAME_0x015052,Frost Skeleton Cyclops,スケルトンサイクロプス・フロスト
 NAME_0x015053,Bolt Skeleton Cyclops,スケルトンサイクロプス・ボルト
 NAME_0x015054,Flame Skeleton Cyclops,スケルトンサイクロプス・フレイム
-NAME_0x015060,War-Ready Gorecyclops (Light Armor),戦甲ゴアサイクロプス (Light Armor)
-NAME_0x015061,War-Ready Gorecyclops (Light Armor),戦甲ゴアサイクロプス (Light Armor)
+NAME_0x015060,War-Ready Gorecyclops (Light Armor),戦甲ゴアサイクロプス・軽装
+NAME_0x015061,War-Ready Gorecyclops (Light Armor),戦甲ゴアサイクロプス・軽装
 NAME_0x015100,Golem,ゴーレム
 NAME_0x015102,Goliath,ゴリアテ
 NAME_0x015103,Damned Golem,ダムドゴーレム
@@ -272,7 +272,7 @@ NAME_0x015203,Shadow Chimera,シャドーキメラ
 NAME_0x015204,Blaze Chimera,ブレイズキメラ
 NAME_0x015210,Manticore,マンティコア
 NAME_0x015211,Goremanticore,ゴアマンティコア
-NAME_0x015220,War-Ready Goremanticore (Light Armor),戦甲ゴアマンティコア (Light Armor)
+NAME_0x015220,War-Ready Goremanticore (Light Armor),戦甲ゴアマンティコア・軽装
 NAME_0x015230,Abaddon,アバドーン
 NAME_0x015300,Griffin,グリフィン
 NAME_0x015301,Cockatrice,コカトリス
@@ -284,7 +284,7 @@ NAME_0x015306,Infected Griffin,侵食グリフィン
 NAME_0x015310,Severely Infected Griffin,狂侵グリフィン
 NAME_0x015320,White Griffin,ホワイトグリフィン
 NAME_0x015321,Bifrest,ビフレスト
-NAME_0x015330,War-Ready Nightmare (Light Armor),戦甲ナイトメア (Light Armor)
+NAME_0x015330,War-Ready Nightmare (Light Armor),戦甲ナイトメア・軽装
 NAME_0x015400,Evil Eye,イービルアイ
 NAME_0x015401,Vile Eye,バイルアイ
 NAME_0x015406,Volt Eye,ボルトアイ
@@ -302,7 +302,7 @@ NAME_0x015506,Spineback,スパインバック
 NAME_0x015507,Little Spine,リトルスパイン
 NAME_0x015508,Cragger,クラッガー
 NAME_0x015509,Little Crag,リトルクラッグ
-NAME_0x015510,War-Ready Ogre (Light Armor),戦甲オーガ (Light Armor)
+NAME_0x015510,War-Ready Ogre (Light Armor),戦甲オーガ・軽装
 NAME_0x015600,Wight,ワイト
 NAME_0x015603,Death,デス
 NAME_0x015604,Witch,ウィッチ
@@ -329,7 +329,7 @@ NAME_0x015720,Tarasque,タラスク
 NAME_0x015721,Wisened Tarasque,アドタラスク
 NAME_0x015723,White Tarasque,ホワイトタラスク
 NAME_0x015730,Catoblepas,カトブレパス
-NAME_0x015740,"Behemoth (""Goblin"" Test)","Behemoth (""ゴブリン"" Test)"
+NAME_0x015740,"Behemoth (""Goblin"" Test)","ベヘモット (""ゴブリン"" Test)"
 NAME_0x015800,Orc Soldier,オークソルジャー
 NAME_0x015801,Orc Aimer,オークエイマー
 NAME_0x015802,Orc Banger,オークバンガー
