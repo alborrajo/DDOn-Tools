@@ -40,7 +40,7 @@ HM_PRESET_NO_82,Pawn Mage,ポーンメイジ
 HM_PRESET_NO_83,Pawn Warrior,ポーンウォリアー
 HM_PRESET_NO_84,Pawn Element Archer,ポーンエレメンター
 HM_PRESET_NO_85,Naked male?,
-HM_PRESET_NO_86,Hooded Iris,
+HM_PRESET_NO_86,Hooded Iris,イリス Hooded
 HM_PRESET_NO_87,Scarlet Fighter,スカーレットファイター
 HM_PRESET_NO_88,Scarlet Seeker,スカーレットシーカー
 HM_PRESET_NO_89,Scarlet Hunter,スカーレットハンター
@@ -56,10 +56,10 @@ HM_PRESET_NO_98,Phindymian Defender,フィンドガーダー
 HM_PRESET_NO_99,Phindymian Sorcerer,フィンドソーサラー
 HM_PRESET_NO_100,Phindymian Warrior,フィンドウォリアー
 HM_PRESET_NO_101,Phindymian Element Archer,フィンドエレメンター
-HM_PRESET_NO_102,Megado Guard Fighter,
-HM_PRESET_NO_103,Megado Guard Seeker,
-HM_PRESET_NO_104,Megado Guard Hunter,
-HM_PRESET_NO_105,Megado Guard Warrior,
+HM_PRESET_NO_102,Megado Guard (Fighter),メガド護衛兵 (ファイター)
+HM_PRESET_NO_103,Megado Guard (Seeker),メガド護衛兵 (シーカー)
+HM_PRESET_NO_104,Megado Guard (Hunter),メガド護衛兵 (ハンター)
+HM_PRESET_NO_105,Megado Guard (Warrior),メガド護衛兵 (ウォリアー)
 HM_PRESET_NO_106,Valentines Candy Fighter,
 HM_PRESET_NO_107,Valentines Candy Shield Sage,
 HM_PRESET_NO_108,Valentines Candy Sorcerer?,
