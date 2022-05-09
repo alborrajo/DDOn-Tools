@@ -75,7 +75,7 @@ size_flags_horizontal = 0
 text = "File"
 flat = false
 align = 0
-items = [ "Load", null, 0, false, false, 0, 0, null, "", false, "Save", null, 0, false, false, 1, 0, null, "", false ]
+items = [ "New", null, 0, false, false, 0, 0, null, "", false, "Load", null, 0, false, false, 1, 0, null, "", false, "Save", null, 0, false, false, 2, 0, null, "", false ]
 script = ExtResource( 4 )
 file_dialog = NodePath("../../../../FileDialog")
 enemy_tree = NodePath("../EnemyTree")
@@ -142,6 +142,7 @@ margin_top = 3.0
 margin_right = 216.0
 margin_bottom = 21.0
 text = "Marker"
+align = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
