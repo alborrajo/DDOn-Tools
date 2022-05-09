@@ -25,6 +25,9 @@ func _init(type: EnemyType):
 	self.enemy_type = type
 	self.hm_preset_no = type.default_hm_preset_no
 
+func get_display_name() -> String:
+	return "%s (Lv. %d)" % [enemy_type.name, lv]
+
 func _set_enemy_type(value):
 	enemy_type = value
 	emit_changed()

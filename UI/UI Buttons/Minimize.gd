@@ -1,4 +1,5 @@
 extends Button
+class_name Minimize
 
 export (NodePath) var control_to_minimize: NodePath
 

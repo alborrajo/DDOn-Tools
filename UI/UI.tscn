@@ -4,7 +4,7 @@
 [ext_resource path="res://UI/NotificationPopup.gd" type="Script" id=2]
 [ext_resource path="res://UI/NamedEnemyParamsIdOptionButton.gd" type="Script" id=3]
 [ext_resource path="res://UI/FileMenu.gd" type="Script" id=4]
-[ext_resource path="res://UI/Minimize.gd" type="Script" id=5]
+[ext_resource path="res://UI/UI Buttons/Minimize.gd" type="Script" id=5]
 [ext_resource path="res://UI/EnemyTree.gd" type="Script" id=6]
 [ext_resource path="res://UI/HmPresetNoOptionButton.gd" type="Script" id=7]
 [ext_resource path="res://UI/LanguageOptionButton.gd" type="Script" id=8]
@@ -33,6 +33,9 @@ func _update_visibility() -> void:
 
 func _on_EnemyDetails_enemy_set(enemy):
 	_update_visibility()
+
+func _on_Close_pressed():
+	$VBoxContainer/EnemyDetails.enemy = null
 "
 
 [node name="root" type="CanvasLayer"]
@@ -184,19 +187,25 @@ margin_bottom = 24.0
 margin_top = 3.0
 margin_bottom = 21.0
 
-[node name="VSeparator" type="VSeparator" parent="Right Panel/VBoxContainer/HBoxContainer"]
+[node name="Control" type="Control" parent="Right Panel/VBoxContainer/HBoxContainer"]
 margin_left = 4.0
-margin_right = 276.0
+margin_right = 253.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 
 [node name="Minimize" type="Button" parent="Right Panel/VBoxContainer/HBoxContainer"]
-margin_left = 280.0
-margin_right = 296.0
+margin_left = 257.0
+margin_right = 273.0
 margin_bottom = 24.0
 text = "-"
 script = ExtResource( 5 )
 control_to_minimize = NodePath("../../..")
+
+[node name="Close" type="Button" parent="Right Panel/VBoxContainer/HBoxContainer"]
+margin_left = 277.0
+margin_right = 296.0
+margin_bottom = 24.0
+text = "X"
 
 [node name="EnemyDetails" type="Panel" parent="Right Panel/VBoxContainer" groups=["EnemyDetails"]]
 margin_top = 28.0
@@ -454,8 +463,8 @@ mode = 0
 access = 2
 filters = PoolStringArray( "*.csv ; CSV Files" )
 show_hidden_files = true
-current_dir = "/Users/alborrajo/Documents/Programacion/Godot/DDOn Tools/DDOn-Tools"
-current_path = "/Users/alborrajo/Documents/Programacion/Godot/DDOn Tools/DDOn-Tools/"
+current_dir = "/Users/Laith/Documents/Programacion/Godot/DDOn Tools"
+current_path = "/Users/Laith/Documents/Programacion/Godot/DDOn Tools/"
 
 [node name="NotificationPopup" type="PopupPanel" parent="."]
 anchor_left = 1.0
@@ -477,6 +486,7 @@ text = "Notification"
 
 [connection signal="gui_input" from="left/tab/enemy/EnemyTree" to="left/tab/enemy/EnemyTree" method="_on_gui_input"]
 [connection signal="item_selected" from="status_view/container/MapOptionButton" to="." method="_on_MapOptionButton_item_selected"]
+[connection signal="pressed" from="Right Panel/VBoxContainer/HBoxContainer/Close" to="Right Panel" method="_on_Close_pressed"]
 [connection signal="enemy_set" from="Right Panel/VBoxContainer/EnemyDetails" to="Right Panel" method="_on_EnemyDetails_enemy_set"]
 [connection signal="item_selected" from="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/NamedEnemyParamsIdOptionButton" to="Right Panel/VBoxContainer/EnemyDetails" method="_on_NamedEnemyParamsIdOptionButton_item_selected"]
 [connection signal="value_changed" from="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer/RaidBossIdLineEdit" to="Right Panel/VBoxContainer/EnemyDetails" method="_on_RaidBossIdLineEdit_value_changed"]
