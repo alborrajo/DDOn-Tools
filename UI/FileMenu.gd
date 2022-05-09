@@ -48,33 +48,20 @@ func _ready():
 func _on_markers_loaded():
 	var file_path = StorageProvider.get(STORAGE_KEY_FILE_PATH)
 	if file_path != null and file_path != "":
-		_do_load(file_path)
+		load_file(file_path)
 
 func _unhandled_input(event: InputEvent):
 	if Input.is_key_pressed(KEY_CONTROL) and event.is_pressed() and event is InputEventKey:
 		var inputEventKey := event as InputEventKey
 		if inputEventKey.scancode == KEY_N:
-			# New
-			_do_new()
+			new_file()
 			get_tree().set_input_as_handled()
 		elif inputEventKey.scancode == KEY_S:
-			# Save
-			if _file_path != "":
-				_do_save(_file_path)
-				get_tree().set_input_as_handled()
-			else:
-				var err_message := "No CSV file loaded. Didn't save."
-				print(err_message)
-				notification_popup_node.notify(err_message)
+			resave()
+			get_tree().set_input_as_handled()
 		elif inputEventKey.scancode == KEY_L:
-			# Load
-			if _file_path != "":
-				_do_load(_file_path)
-				get_tree().set_input_as_handled()
-			else:
-				var err_message := "No CSV file loaded. Didn't reload."
-				print(err_message)
-				notification_popup_node.notify(err_message)
+			reload()
+			get_tree().set_input_as_handled()
 
 func _on_menu_id_pressed(id: int) -> void:
 	match id:
@@ -86,20 +73,21 @@ func _on_menu_id_pressed(id: int) -> void:
 			_on_save()
 			
 func _on_new():
-	_do_new()
+	new_file()
 	
-func _do_new():
+func new_file() -> bool:
 	print_debug("New file. Clearing workspace")
 	_clean()
 	self._file_path = ""
+	return true
 
 func _on_load():
 	file_dialog_node.mode = FileDialog.MODE_OPEN_FILE
 	file_dialog_node.popup()
 	yield(file_dialog_node, "file_selected")
-	_do_load(file_dialog_node.current_path)
+	load_file(file_dialog_node.current_path)
 	
-func _do_load(file_path: String):
+func load_file(file_path: String):
 	print_debug("Loading file ", file_path)
 	
 	var file := File.new()
@@ -182,13 +170,23 @@ func _do_load(file_path: String):
 	
 	notification_popup_node.notify("Loaded file "+file_path)
 	
+func reload() -> bool:
+	if _file_path != "":
+		load(_file_path)
+		return true
+	else:
+		var err_message := "No CSV file loaded. Didn't reload."
+		print(err_message)
+		notification_popup_node.notify(err_message)
+		return false
+		
 func _on_save():
 	file_dialog_node.mode = FileDialog.MODE_SAVE_FILE
 	file_dialog_node.popup()
 	yield(file_dialog_node, "file_selected")
-	_do_save(file_dialog_node.current_path)
+	save_file(file_dialog_node.current_path)
 	
-func _do_save(file_path: String):
+func save_file(file_path: String):
 	print_debug("Saving file ", file_path)
 	
 	var file := File.new()
@@ -236,6 +234,15 @@ func _do_save(file_path: String):
 	
 	notification_popup_node.notify("Saved file "+file_path)
 	
+func resave() -> bool:
+	if _file_path != "":
+		save_file(_file_path)
+		return true
+	else:
+		var err_message := "No CSV file loaded. Didn't save."
+		print(err_message)
+		notification_popup_node.notify(err_message)
+		return false
 
 func _clean() -> void:
 	_unknown_stage_layout_sets = []
@@ -254,6 +261,7 @@ func _set_file_path(file_path: String) -> void:
 		OS.set_window_title("DDOn Tools")
 	else:
 		OS.set_window_title("DDOn Tools - "+file_path)
+	
 	
 static func parse_bool(string: String) -> bool:
 	return string.strip_edges().to_lower() == "true"

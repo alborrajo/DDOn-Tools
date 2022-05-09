@@ -13,6 +13,9 @@ func _ready():
 func _on_item_selected(idx: int):
 	TranslationServer.set_locale(get_item_metadata(idx))
 	
-	# Reload everything, lol, lmao, yolo
-	# Yes, this means unsaved changes will get lost
-	get_tree().reload_current_scene()
+	# Autosave to prevent unsaved changes from getting lost
+	var saved_successfully: bool = owner.get_node("left/tab/Enemies/FileMenu").resave()
+	
+	if saved_successfully:
+		# Reload everything, lol, lmao, yolo	
+		get_tree().reload_current_scene()

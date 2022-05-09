@@ -32,6 +32,6 @@ IsBossGauge,ボスゲージ,Boss Gauge
 IsBossBGM,ボスBGM,Boss BGM
 IsManualSet,,IsManualSet
 IsAreaBoss,,IsAreaBoss
-Blood Orbs,ブラッドオーブ,Blood Orbs
-High Orbs,ハイオーブ,High Orbs
+IsBloodEnemy,ブラッドオーブ,Blood Orbs
+IsHighOrbEnemy,ハイオーブ,High Orbs
 
