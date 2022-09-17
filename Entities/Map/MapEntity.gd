@@ -17,7 +17,7 @@ var field_transforms := {
 var pos: Vector3
 var field_id: String
 
-func _init(var pos: Vector3, var field_id: String):
+func _init(var pos: Vector3, var field_id: String = "0"):
 	self.pos = pos
 	self.field_id = field_id
 

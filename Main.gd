@@ -57,10 +57,10 @@ func _on_rpc_timer_timeout():
 
 func load_npc_markers():
 	# Terribly optimized
-	for stage_id in DataProvider.repo["Data"]["Stages"].keys():
-		var field_id = stage_id_to_belonging_field_id(int(stage_id))
+	for stage_no in DataProvider.repo["Data"]["Stages"].keys():
+		var field_id = stage_no_to_belonging_field_id(int(stage_no))
 		if field_id == null:
-			printerr("No field found for stage_id ", stage_id)
+			printerr("No field found for stage_no ", stage_no)
 			continue
 			
 		var field_node = field_id_to_node.get(String(field_id))
@@ -68,7 +68,7 @@ func load_npc_markers():
 			printerr("No node found for field_id ", field_id)
 			continue
 			
-		for ect_marker in DataProvider.repo["Data"]["Stages"][stage_id]["EctMarker"]:
+		for ect_marker in DataProvider.repo["Data"]["Stages"][stage_no]["EctMarker"]:
 			var marker : Marker = Marker.new(ect_marker, String(field_id))
 			var enemy_set_placemark: EnemySetPlacemark = EnemySetPlacemarkScene.instance()
 			enemy_set_placemark.group_id = marker.GroupNo
@@ -76,18 +76,19 @@ func load_npc_markers():
 			enemy_set_placemark.rect_position = marker.get_map_position()
 			field_node.add_child(enemy_set_placemark)
 			
-func stage_id_to_belonging_field_id(stage_id: int):
+func stage_no_to_belonging_field_id(stage_no: int):
 	for field_area_info in DataProvider.repo["FieldAreaList"]["FieldAreaInfos"]:
-		if field_area_info["StageNoList"].has(float(stage_id)):
+		if field_area_info["StageNoList"].has(float(stage_no)):
 			return int(field_area_info["FieldAreaId"])
 		
 func _on_hover_marker(var map_marker : MapMarker):
 	var marker : Marker = map_marker.marker
-	marker_label.text = "Marker:(Type:%s Id:%s StageNo:%s GroupNo:%s )" % [marker.Type, marker.UniqueId, marker.StageNo, marker.GroupNo]
+	marker_label.text = "Marker:(Type:%s Id:%s StageId:%s GroupNo:%s )" % [marker.Type, marker.UniqueId, marker.StageId, marker.GroupNo]
 		
 func update_info():
 	var infos : Array = rpc_client.get_info()
 	for n in players_on_map.get_children():
+		# check if player is still in the server
 		var exists = false
 		for info in infos:
 			var CharacterId : int = info["CharacterId"]
@@ -119,7 +120,12 @@ func update_info():
 		item = item.get_next()
 			
 	for info in infos:
-		var p : Player = Player.new(info, "1") # TODO: Obtain in which land is the Player
+		var p: Player
+		var field_id = stage_no_to_belonging_field_id(info["StageNo"])
+		if field_id == null:
+			p = Player.new(info)
+		else: 
+			p = Player.new(info, String(field_id))
 		
 		# on map
 		var existing : PlayerMarker
@@ -129,14 +135,22 @@ func update_info():
 		if existing:
 			# update existing player
 			existing.set_player(p)
+			existing._on_ui_map_selected($ui.get_selected_map())
 		else:
 			# create new player
 			var player : PlayerMarker = PlayerMarkerScene.instance()
+			$ui.connect("map_selected", player, "_on_ui_map_selected")
 			player.set_player(p)
+			player._on_ui_map_selected($ui.get_selected_map())
 			players_on_map.add_child(player)
 			
 		# on ui
-		var text : String = "%s %s %s" % [p.FirstName, p.LastName, p.get_map_position()]
+		var text: String
+		if field_id_to_node.has(p.field_id):
+			text = "%s %s @ %s %s" % [p.FirstName, p.LastName, tr(str("FIELD_AREA_INFO_",p.field_id)), p.get_map_position().round()]
+		else:
+			text = "%s %s @ StageNo %d %s" % [p.FirstName, p.LastName, p.StageNo, p.get_map_position().round()]
+		
 		var existing_ui : TreeItem
 		item = false
 		if players_on_ui.get_root():
@@ -154,8 +168,13 @@ func update_info():
 			
 
 func create_tree_entry(var player : Player):
+	var text: String
+	if player.field_id != null and field_id_to_node.has(player.field_id):
+		text = "%s %s @ %s %s" % [player.FirstName, player.LastName, tr(str("FIELD_AREA_INFO_",player.field_id)), player.get_map_position().round()]
+	else:
+		text = "%s %s @ StageNo %d %s" % [player.FirstName, player.LastName, player.StageNo, player.get_map_position().round()]
+			
 	var item = players_on_ui.create_item(players_on_ui_root)
-	var text : String = "%s %s %s" % [player.FirstName, player.LastName, player.get_map_position()]
 	item.set_text(0, text)
 	item.set_metadata(0, player)
 
