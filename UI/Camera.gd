@@ -7,7 +7,7 @@ export (NodePath) var map: NodePath
 
 func _on_root_gui_input(event):
 	# Mouse pan
-	if event is InputEventMouseMotion and Input.is_mouse_button_pressed(BUTTON_LEFT):
+	if event is InputEventMouseMotion and Input.is_mouse_button_pressed(BUTTON_LEFT) and not get_tree().root.gui_is_dragging():
 		position -= event.relative
 	
 	# Mouse zoom

@@ -16,8 +16,6 @@ func _gui_input(event):
 			if _enemyDetails.enemy == enemy:
 				_enemyDetails.enemy = null
 			queue_free()
-	else:
-		get_tree().set_input_as_handled()
 
 func _on_EnemyPlacemark_pressed():
 	# Left Click

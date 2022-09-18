@@ -10,7 +10,6 @@ var rpc_client := RpcClient.new()
 onready var camera: Camera2D = $camera
 onready var players_on_map: Node2D = $PlayersOnMap
 onready var coordinates_label: Label = $ui/status_view/container/coordinates
-onready var marker_label: Label = $ui/status_view/container/marker
 onready var players_on_ui: Tree = $ui/left/tab/Players
 onready var players_on_ui_root: TreeItem = players_on_ui.create_item()
 

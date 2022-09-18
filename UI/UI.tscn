@@ -94,6 +94,7 @@ notification_popup = NodePath("../../../../NotificationPopup")
 margin_top = 28.0
 margin_right = 288.0
 margin_bottom = 497.0
+mouse_filter = 1
 size_flags_vertical = 3
 allow_reselect = true
 script = ExtResource( 6 )
@@ -459,6 +460,8 @@ mode = 0
 access = 2
 filters = PoolStringArray( "*.csv ; CSV Files" )
 show_hidden_files = true
+current_dir = "/Users/alborrajo/Documents/Programacion/Godot/DDOn Tools/DDOn-Tools"
+current_path = "/Users/alborrajo/Documents/Programacion/Godot/DDOn Tools/DDOn-Tools/"
 
 [node name="NotificationPopup" type="PopupPanel" parent="."]
 anchor_left = 1.0
@@ -480,7 +483,6 @@ text = "Notification"
 
 [node name="SettingsWindowDialog" parent="." instance=ExtResource( 8 )]
 
-[connection signal="gui_input" from="left/tab/Enemies/EnemyTree" to="left/tab/Enemies/EnemyTree" method="_on_gui_input"]
 [connection signal="item_selected" from="status_view/container/MapOptionButton" to="." method="_on_MapOptionButton_item_selected"]
 [connection signal="pressed" from="status_view/container/SettingsButton" to="status_view/container/SettingsButton" method="_on_SettingsButton_pressed"]
 [connection signal="pressed" from="Right Panel/VBoxContainer/HBoxContainer/Close" to="Right Panel" method="_on_Close_pressed"]

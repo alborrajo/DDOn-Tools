@@ -1,7 +1,7 @@
 extends PanelContainer
 class_name EnemySetPlacemark
 
-export (PackedScene) var enemy_placemark_packed_scene: PackedScene = load("res://UI/Marker/EnemyPlacemark.tscn")
+export (PackedScene) var enemy_placemark_packed_scene: PackedScene = preload("res://UI/Marker/EnemyPlacemark.tscn")
 
 export var stage_id: int
 export var layer_no: int
@@ -28,10 +28,13 @@ func get_enemies() -> Array:
 			enemies.append(enemy_placemark.enemy)
 	return enemies
 
+func can_drop_data(position, data):
+	return data is EnemyType
+	
+func drop_data(position, data):
+	add_enemy(Enemy.new(data))
+	print_debug("Placed %s at %s (%d %d %d %d) " % [tr(data.name), tr(str("STAGE_NAME_",stage_id)), stage_id, layer_no, group_id, subgroup_id])
+
 func _process(_delta):
 	var camera_zoom: float = get_tree().get_nodes_in_group("camera")[0].zoom.x
 	rect_scale = _original_scale * clamp(camera_zoom, 0, _original_zoom)
-
-static func get_scaled_global_rect(control: Control) -> Rect2:
-	var global_rect := control.get_global_rect()
-	return Rect2(global_rect.position, Vector2(global_rect.size.x*control.rect_scale.x, global_rect.size.y*control.rect_scale.y))
