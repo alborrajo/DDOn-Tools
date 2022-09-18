@@ -9,14 +9,15 @@ export (Resource) var enemy: Resource setget set_enemy
 
 onready var _enemyDetails: EnemyDetails = EnemyDetails.get_instance(get_tree()) 
 
-func _on_EnemyPlacemark_gui_input(event):
+func _gui_input(event):
 	if event is InputEventMouseButton:
-		var e := event as InputEventMouseButton
-		if e.button_mask == BUTTON_RIGHT:
+		if (event as InputEventMouseButton).button_mask == BUTTON_RIGHT:
 			# Right Click
 			if _enemyDetails.enemy == enemy:
 				_enemyDetails.enemy = null
 			queue_free()
+	else:
+		get_tree().set_input_as_handled()
 
 func _on_EnemyPlacemark_pressed():
 	# Left Click

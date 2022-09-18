@@ -4,7 +4,9 @@
 [ext_resource path="res://UI/Camera.gd" type="Script" id=3]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=4]
 
-[node name="root" type="Node2D"]
+[node name="root" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 2 )
 
 [node name="map" type="Sprite" parent="."]
@@ -40,10 +42,30 @@ map = NodePath("../map")
 
 [node name="ui" parent="." instance=ExtResource( 4 )]
 
+[node name="FileMenu" parent="ui/left/tab/Enemies" index="0"]
+items = [ "New", null, 0, false, false, 0, 0, null, "", false, "Load", null, 0, false, false, 1, 0, null, "", false, "Save", null, 0, false, false, 2, 0, null, "", false ]
+
+[node name="MapOptionButton" parent="ui/status_view/container" index="1"]
+items = [ "FIELD_AREA_INFO_1", null, false, 1, null, "FIELD_AREA_INFO_2", null, false, 2, null, "FIELD_AREA_INFO_3", null, false, 3, null, "FIELD_AREA_INFO_4", null, false, 4, null, "FIELD_AREA_INFO_5", null, false, 5, null, "FIELD_AREA_INFO_6", null, false, 6, null ]
+
+[node name="NamedEnemyParamsIdOptionButton" parent="ui/Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer" index="0"]
+items = [ "- Default name -", null, false, 2298, null ]
+
+[node name="HmPresetNoOptionButton" parent="ui/Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer" index="7"]
+items = [ "- None -", null, false, 0, null ]
+
+[node name="FileDialog" parent="ui" index="3"]
+current_dir = "/Users/alborrajo/Documents/Programacion/Godot/DDOn Tools/DDOn-Tools"
+current_path = "/Users/alborrajo/Documents/Programacion/Godot/DDOn Tools/DDOn-Tools/"
+
+[node name="SettingsWindowDialog" parent="ui" index="5"]
+visible = false
+
 [node name="rpc_timer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
 
+[connection signal="gui_input" from="." to="camera" method="_on_root_gui_input"]
 [connection signal="markers_loaded" from="." to="ui" method="_on_root_markers_loaded"]
 [connection signal="map_selected" from="ui" to="." method="_on_ui_map_selected"]
 [connection signal="item_activated" from="ui/left/tab/Players" to="." method="_on_Players_item_activated"]

@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 signal markers_loaded()
 
