@@ -29,6 +29,8 @@ visible = false
 [node name="AcreSelund" type="Node2D" parent="."]
 visible = false
 
+[node name="PlayersOnMap" type="Node2D" parent="."]
+
 [node name="camera" type="Camera2D" parent="." groups=["camera"]]
 position = Vector2( 175, 258 )
 current = true
@@ -44,4 +46,7 @@ autostart = true
 
 [connection signal="markers_loaded" from="." to="ui" method="_on_root_markers_loaded"]
 [connection signal="map_selected" from="ui" to="." method="_on_ui_map_selected"]
+[connection signal="item_activated" from="ui/left/tab/Players" to="." method="_on_Players_item_activated"]
 [connection signal="timeout" from="rpc_timer" to="." method="_on_rpc_timer_timeout"]
+
+[editable path="ui"]

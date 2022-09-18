@@ -6,12 +6,13 @@ const EnemySetPlacemarkScene = preload("res://UI/Marker/EnemySetPlacemark.tscn")
 const PlayerMarkerScene = preload("res://UI/Marker/PlayerMarker.tscn")
 const MapMarkerScene = preload("res://UI/Marker/MapMarker.tscn")
 
-var rpc_client : RpcClient
-var coordinates_label : Label
-var marker_label : Label
-var players_on_map : Node2D
-var players_on_ui : Tree
-var players_on_ui_root : TreeItem
+var rpc_client := RpcClient.new()
+onready var camera: Camera2D = $camera
+onready var players_on_map: Node2D = $PlayersOnMap
+onready var coordinates_label: Label = $ui/status_view/container/coordinates
+onready var marker_label: Label = $ui/status_view/container/marker
+onready var players_on_ui: Tree = $ui/left/tab/Players
+onready var players_on_ui_root: TreeItem = players_on_ui.create_item()
 
 onready var field_id_to_node := {
 	"1": $Lestania,
@@ -31,26 +32,20 @@ onready var field_id_to_texture := {
 	"6": "res://resources/maps/field005_m00.png"
 }
 	
-func _init():
-	rpc_client = RpcClient.new()
-	
 func _ready():
-	_on_ui_map_selected(1) # Load Lestania map by default
+	# Load Lestania map by default
+	_on_ui_map_selected(1)
 	
-	coordinates_label = get_node("ui/status_view/container/coordinates")
-	players_on_ui = get_node("ui/left/tab/Players")
-	marker_label = get_node("ui/status_view/container/marker")
-	players_on_map = Node2D.new()
-	add_child(players_on_map)
-	players_on_ui_root= players_on_ui.create_item();
-	players_on_ui.hide_root = true
 	load_npc_markers()
 	emit_signal("markers_loaded")
+	
+	# Request RPC immediately
+	_on_rpc_timer_timeout()
 	
 func _input(event):
 	if event is InputEventMouseMotion:
 		var mouse_pos : Vector2 = get_local_mouse_position();
-		coordinates_label.text = "X:%s Y:%s" % [mouse_pos.x, mouse_pos.y]
+		coordinates_label.text = String(mouse_pos.round())
 
 func _on_rpc_timer_timeout():
 	update_info()
@@ -81,10 +76,6 @@ func stage_no_to_belonging_field_id(stage_no: int):
 		if field_area_info["StageNoList"].has(float(stage_no)):
 			return int(field_area_info["FieldAreaId"])
 		
-func _on_hover_marker(var map_marker : MapMarker):
-	var marker : Marker = map_marker.marker
-	marker_label.text = "Marker:(Type:%s Id:%s StageId:%s GroupNo:%s )" % [marker.Type, marker.UniqueId, marker.StageId, marker.GroupNo]
-		
 func update_info():
 	var infos : Array = rpc_client.get_info()
 	for n in players_on_map.get_children():
@@ -107,7 +98,7 @@ func update_info():
 		var exists = false
 		for info in infos:
 			var CharacterId : int = info["CharacterId"]
-			if item.get_metadata(0).CharacterId == CharacterId:
+			if item.get_metadata(0).player.CharacterId == CharacterId:
 				exists = true
 				break
 		if !exists:
@@ -120,40 +111,40 @@ func update_info():
 		item = item.get_next()
 			
 	for info in infos:
-		var p: Player
+		var player: Player
 		var field_id = stage_no_to_belonging_field_id(info["StageNo"])
 		if field_id == null:
-			p = Player.new(info)
+			player = Player.new(info)
 		else: 
-			p = Player.new(info, String(field_id))
+			player = Player.new(info, String(field_id))
 		
 		# on map
-		var existing : PlayerMarker
+		var player_marker : PlayerMarker
 		for n in players_on_map.get_children():
-			if n.player.CharacterId == p.CharacterId:
-				existing = n
-		if existing:
+			if n.player.CharacterId == player.CharacterId:
+				player_marker = n
+		if player_marker:
 			# update existing player
-			existing.set_player(p)
-			existing._on_ui_map_selected($ui.get_selected_map())
+			player_marker.set_player(player)
+			player_marker._on_ui_map_selected($ui.get_selected_map())
 		else:
 			# create new player
-			var player : PlayerMarker = PlayerMarkerScene.instance()
-			$ui.connect("map_selected", player, "_on_ui_map_selected")
-			player.set_player(p)
-			player._on_ui_map_selected($ui.get_selected_map())
-			players_on_map.add_child(player)
+			player_marker = PlayerMarkerScene.instance()
+			$ui.connect("map_selected", player_marker, "_on_ui_map_selected")
+			player_marker.set_player(player)
+			player_marker._on_ui_map_selected($ui.get_selected_map())
+			players_on_map.add_child(player_marker)
 			
 		# on ui
-		var stage_id := DataProvider.stage_no_to_stage_id(p.StageNo)
-		var text := "%s %s @ %s %s" % [p.FirstName, p.LastName, tr(str("STAGE_NAME_",stage_id)), p.get_map_position().round()]
+		var stage_id := DataProvider.stage_no_to_stage_id(player.StageNo)
+		var text := "%s %s @ %s %s" % [player.FirstName, player.LastName, tr(str("STAGE_NAME_",stage_id)), player.get_map_position().round()]
 		
 		var existing_ui : TreeItem
 		item = false
 		if players_on_ui.get_root():
 			item = players_on_ui.get_root().get_children()
 		while (item):
-			if item.get_metadata(0).CharacterId == p.CharacterId:
+			if item.get_metadata(0).player.CharacterId == player.CharacterId:
 				existing_ui = item
 			item = item.get_next()
 		if existing_ui:
@@ -161,15 +152,15 @@ func update_info():
 			existing_ui.set_text(0, text)
 		else:
 			# create new player
-			create_tree_entry(p)
+			create_tree_entry(player_marker)
 			
 
-func create_tree_entry(var player : Player):
-	var stage_id := DataProvider.stage_no_to_stage_id(player.StageNo)
-	var text := "%s %s @ %s %s" % [player.FirstName, player.LastName, tr(str("STAGE_NAME_",stage_id)), player.get_map_position().round()]
+func create_tree_entry(var player_marker : PlayerMarker):
+	var stage_id := DataProvider.stage_no_to_stage_id(player_marker.player.StageNo)
+	var text := "%s %s @ %s %s" % [player_marker.player.FirstName, player_marker.player.LastName, tr(str("STAGE_NAME_",stage_id)), player_marker.player.get_map_position().round()]
 	var item = players_on_ui.create_item(players_on_ui_root)
 	item.set_text(0, text)
-	item.set_metadata(0, player)
+	item.set_metadata(0, player_marker)
 
 
 func _on_ui_map_selected(field_id):
@@ -190,3 +181,11 @@ func _on_ui_map_selected(field_id):
 		$map.texture = load(map_texture)
 	else:
 		printerr("Couldn't find map texture for field ID ", field_id)
+
+
+func _on_Players_item_activated():
+	# Act only if there's a map for the area the player is in
+	var selected_player_marker: PlayerMarker = players_on_ui.get_selected().get_metadata(0)
+	if field_id_to_node.has(String(selected_player_marker.player.field_id)):
+		_on_ui_map_selected(selected_player_marker.player.field_id)
+		camera.global_position = selected_player_marker.player.get_map_position()

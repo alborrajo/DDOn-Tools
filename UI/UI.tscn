@@ -109,6 +109,7 @@ margin_left = 4.0
 margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
+hide_root = true
 
 [node name="status_view" type="PanelContainer" parent="."]
 anchor_right = 1.0
@@ -145,19 +146,8 @@ margin_right = 241.0
 margin_bottom = 21.0
 text = "Coordinates"
 
-[node name="marker" type="Label" parent="status_view/container"]
-margin_left = 245.0
-margin_top = 3.0
-margin_right = 286.0
-margin_bottom = 21.0
-text = "Marker"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Control" type="Control" parent="status_view/container"]
-margin_left = 290.0
+margin_left = 245.0
 margin_right = 927.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
