@@ -1,0 +1,16 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+
+[deps]
+
+files=[ "res://resources/internationalization/stage_name.ja.translation", "res://resources/internationalization/stage_name.en.translation" ]
+
+source_file="res://resources/internationalization/stage_name.csv"
+dest_files=[ "res://resources/internationalization/stage_name.ja.translation", "res://resources/internationalization/stage_name.en.translation" ]
+
+[params]
+
+compress=true
+delimiter=0

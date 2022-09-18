@@ -145,11 +145,8 @@ func update_info():
 			players_on_map.add_child(player)
 			
 		# on ui
-		var text: String
-		if field_id_to_node.has(p.field_id):
-			text = "%s %s @ %s %s" % [p.FirstName, p.LastName, tr(str("FIELD_AREA_INFO_",p.field_id)), p.get_map_position().round()]
-		else:
-			text = "%s %s @ StageNo %d %s" % [p.FirstName, p.LastName, p.StageNo, p.get_map_position().round()]
+		var stage_id := DataProvider.stage_no_to_stage_id(p.StageNo)
+		var text := "%s %s @ %s %s" % [p.FirstName, p.LastName, tr(str("STAGE_NAME_",stage_id)), p.get_map_position().round()]
 		
 		var existing_ui : TreeItem
 		item = false
@@ -168,12 +165,8 @@ func update_info():
 			
 
 func create_tree_entry(var player : Player):
-	var text: String
-	if player.field_id != null and field_id_to_node.has(player.field_id):
-		text = "%s %s @ %s %s" % [player.FirstName, player.LastName, tr(str("FIELD_AREA_INFO_",player.field_id)), player.get_map_position().round()]
-	else:
-		text = "%s %s @ StageNo %d %s" % [player.FirstName, player.LastName, player.StageNo, player.get_map_position().round()]
-			
+	var stage_id := DataProvider.stage_no_to_stage_id(player.StageNo)
+	var text := "%s %s @ %s %s" % [player.FirstName, player.LastName, tr(str("STAGE_NAME_",stage_id)), player.get_map_position().round()]
 	var item = players_on_ui.create_item(players_on_ui_root)
 	item.set_text(0, text)
 	item.set_metadata(0, player)
