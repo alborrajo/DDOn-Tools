@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "VBoxContainer",
+"class": "Chat",
+"language": "GDScript",
+"path": "res://UI/Chat.gd"
+}, {
 "base": "Reference",
 "class": "Common",
 "language": "GDScript",
@@ -110,6 +115,7 @@ _global_script_classes=[ {
 "path": "res://RpcClient/RpcClient.gd"
 } ]
 _global_script_class_icons={
+"Chat": "",
 "Common": "",
 "Enemy": "",
 "EnemyDetails": "",

@@ -13,6 +13,7 @@ const STORAGE_KEY_RPC_PATH := "path"
 const STORAGE_KEY_RPC_PATH_DEFAULT := "/rpc/"
 
 const RPC_PATH_INFO = "info"
+const RPC_PATH_CHAT = "chat"
 
 func _init():
 	pass
@@ -23,6 +24,13 @@ func _ready():
 
 func get_info() -> Array:
 	return _get_array(RPC_PATH_INFO)
+	
+func get_chat(since_iso_date: String = "") -> Array:
+	if since_iso_date == "":
+		return _get_array(RPC_PATH_CHAT)
+	else:
+		return _get_array(RPC_PATH_CHAT, {"since": since_iso_date})
+	
 func _get_array(relative_path: String, query_params: Dictionary = {}) -> Array:
 	var host = StorageProvider.get_value(STORAGE_SECTION_RPC, STORAGE_KEY_RPC_HOST, STORAGE_KEY_RPC_HOST_DEFAULT)
 	var port = StorageProvider.get_value(STORAGE_SECTION_RPC, STORAGE_KEY_RPC_PORT, STORAGE_KEY_RPC_PORT_DEFAULT)
