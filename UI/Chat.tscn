@@ -8,12 +8,10 @@ margin_bottom = 459.0
 script = ExtResource( 1 )
 
 [node name="ChatLog" type="ItemList" parent="."]
-margin_top = 418.0
 margin_right = 288.0
 margin_bottom = 427.0
 size_flags_horizontal = 3
-size_flags_vertical = 10
-auto_height = true
+size_flags_vertical = 11
 
 [node name="ChatBox" type="HBoxContainer" parent="."]
 margin_top = 431.0
@@ -21,12 +19,15 @@ margin_right = 288.0
 margin_bottom = 459.0
 size_flags_horizontal = 3
 
-[node name="OptionButton" type="OptionButton" parent="ChatBox"]
-margin_right = 29.0
+[node name="MsgTypeOptionButton" type="OptionButton" parent="ChatBox"]
+margin_right = 49.0
 margin_bottom = 28.0
+text = "Say"
+items = [ "Say", null, false, 0, null, "Shout", null, false, 1, null, "Tell", null, false, 2, null, "System", null, false, 3, null, "Party", null, false, 4, null, "ShoutAll", null, false, 5, null, "Group", null, false, 6, null, "Clan", null, false, 7, null, "Entryboard", null, false, 8, null, "ManagementGuideC", null, false, 9, null, "ManagementGuideN", null, false, 10, null, "ManagementAlertC", null, false, 11, null, "ManagementAlertN", null, false, 12, null, "ClanNotice", null, false, 13, null ]
+selected = 0
 
-[node name="LineEdit" type="LineEdit" parent="ChatBox"]
-margin_left = 33.0
+[node name="MessageLineEdit" type="LineEdit" parent="ChatBox"]
+margin_left = 53.0
 margin_right = 288.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
@@ -34,4 +35,6 @@ size_flags_horizontal = 3
 [node name="RPCTimer" type="Timer" parent="."]
 autostart = true
 
+[connection signal="visibility_changed" from="." to="." method="_on_Chat_visibility_changed"]
+[connection signal="text_entered" from="ChatBox/MessageLineEdit" to="." method="_on_MessageLineEdit_text_entered"]
 [connection signal="timeout" from="RPCTimer" to="." method="_on_RPCTimer_timeout"]
