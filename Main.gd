@@ -185,6 +185,8 @@ func _on_ui_map_selected(field_id):
 func _on_Players_item_activated():
 	# Act only if there's a map for the area the player is in
 	var selected_player_marker: PlayerMarker = players_on_ui.get_selected().get_metadata(0)
-	if field_id_to_node.has(String(selected_player_marker.player.field_id)):
-		_on_ui_map_selected(selected_player_marker.player.field_id)
+	if field_id_to_node.has(selected_player_marker.player.field_id):
+		var idx = $ui/status_view/container/MapOptionButton.get_item_index(int(selected_player_marker.player.field_id))
+		$ui/status_view/container/MapOptionButton.select(idx)
+		$ui/status_view/container/MapOptionButton.emit_signal("item_selected", idx)
 		camera.global_position = selected_player_marker.player.get_map_position()
