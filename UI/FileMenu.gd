@@ -1,7 +1,8 @@
 extends MenuButton
 class_name FileMenu
 
-const STORAGE_KEY_FILE_PATH := "file_menu.file_path"
+const STORAGE_SECTION_FILE_MENU = "FileMenu"
+const STORAGE_KEY_FILE_PATH := "file_path"
 
 const COMPAT_CSV_HEADER_STAGEID := "StageId"
 const CSV_HEADER := PoolStringArray([
@@ -46,7 +47,7 @@ func _ready():
 	get_popup().connect("id_pressed", self, "_on_menu_id_pressed")
 	
 func _on_markers_loaded():
-	var file_path = StorageProvider.get(STORAGE_KEY_FILE_PATH)
+	var file_path = StorageProvider.get_value(STORAGE_SECTION_FILE_MENU, STORAGE_KEY_FILE_PATH)
 	if file_path != null and file_path != "":
 		load_file(file_path)
 
@@ -254,7 +255,7 @@ func _clean() -> void:
 
 func _set_file_path(file_path: String) -> void:
 	_file_path = file_path
-	StorageProvider.set(STORAGE_KEY_FILE_PATH, _file_path)
+	StorageProvider.set_value(STORAGE_SECTION_FILE_MENU, STORAGE_KEY_FILE_PATH, _file_path)
 	
 	# TODO: Move this somewhere else to handle the title via signals
 	if file_path == "":

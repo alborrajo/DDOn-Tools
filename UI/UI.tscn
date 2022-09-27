@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://UI/EnemyDetails.gd" type="Script" id=1]
 [ext_resource path="res://UI/NotificationPopup.gd" type="Script" id=2]
@@ -7,19 +7,28 @@
 [ext_resource path="res://UI/UI Buttons/Minimize.gd" type="Script" id=5]
 [ext_resource path="res://UI/EnemyTree.gd" type="Script" id=6]
 [ext_resource path="res://UI/HmPresetNoOptionButton.gd" type="Script" id=7]
-[ext_resource path="res://UI/LanguageOptionButton.gd" type="Script" id=8]
+[ext_resource path="res://UI/Settings.tscn" type="PackedScene" id=8]
 
 [sub_resource type="GDScript" id=2]
 script/source = "extends CanvasLayer
 
-signal map_selected(map_name)
+signal map_selected(map_id)
+
+func get_selected_map() -> int:
+	return $status_view/container/MapOptionButton.get_selected_id()
 
 func _on_MapOptionButton_item_selected(index):
 	emit_signal(\"map_selected\", $status_view/container/MapOptionButton.get_item_id(index))
 
-
 func _on_root_markers_loaded():
 	$left/tab/Enemies/FileMenu._on_markers_loaded()
+"
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends Button
+
+func _on_SettingsButton_pressed():
+	$\"../../../SettingsWindowDialog\".popup_centered()
 "
 
 [sub_resource type="GDScript" id=1]
@@ -47,9 +56,6 @@ margin_left = 10.0
 margin_top = 45.0
 margin_right = 320.0
 margin_bottom = -4.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="tab" type="TabContainer" parent="left"]
 margin_left = 7.0
@@ -88,6 +94,7 @@ notification_popup = NodePath("../../../../NotificationPopup")
 margin_top = 28.0
 margin_right = 288.0
 margin_bottom = 497.0
+mouse_filter = 1
 size_flags_vertical = 3
 allow_reselect = true
 script = ExtResource( 6 )
@@ -103,6 +110,7 @@ margin_left = 4.0
 margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
+hide_root = true
 
 [node name="status_view" type="PanelContainer" parent="."]
 anchor_right = 1.0
@@ -139,29 +147,18 @@ margin_right = 241.0
 margin_bottom = 21.0
 text = "Coordinates"
 
-[node name="marker" type="Label" parent="status_view/container"]
-margin_left = 245.0
-margin_top = 3.0
-margin_right = 286.0
-margin_bottom = 21.0
-text = "Marker"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="Control" type="Control" parent="status_view/container"]
-margin_left = 290.0
-margin_right = 917.0
+margin_left = 245.0
+margin_right = 927.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 
-[node name="LanguageOptionButton" type="OptionButton" parent="status_view/container"]
-margin_left = 921.0
+[node name="SettingsButton" type="Button" parent="status_view/container"]
+margin_left = 931.0
 margin_right = 990.0
 margin_bottom = 24.0
-text = "English"
-script = ExtResource( 8 )
+text = "Settings"
+script = SubResource( 3 )
 
 [node name="Right Panel" type="PanelContainer" parent="."]
 anchor_left = 1.0
@@ -463,8 +460,8 @@ mode = 0
 access = 2
 filters = PoolStringArray( "*.csv ; CSV Files" )
 show_hidden_files = true
-current_dir = "/Users/Laith/Documents/Programacion/Godot/DDOn Tools"
-current_path = "/Users/Laith/Documents/Programacion/Godot/DDOn Tools/"
+current_dir = "/Users/alborrajo/Documents/Programacion/Godot/DDOn Tools/DDOn-Tools"
+current_path = "/Users/alborrajo/Documents/Programacion/Godot/DDOn Tools/DDOn-Tools/"
 
 [node name="NotificationPopup" type="PopupPanel" parent="."]
 anchor_left = 1.0
@@ -484,8 +481,10 @@ margin_right = 240.0
 margin_bottom = 22.0
 text = "Notification"
 
-[connection signal="gui_input" from="left/tab/Enemies/EnemyTree" to="left/tab/Enemies/EnemyTree" method="_on_gui_input"]
+[node name="SettingsWindowDialog" parent="." instance=ExtResource( 8 )]
+
 [connection signal="item_selected" from="status_view/container/MapOptionButton" to="." method="_on_MapOptionButton_item_selected"]
+[connection signal="pressed" from="status_view/container/SettingsButton" to="status_view/container/SettingsButton" method="_on_SettingsButton_pressed"]
 [connection signal="pressed" from="Right Panel/VBoxContainer/HBoxContainer/Close" to="Right Panel" method="_on_Close_pressed"]
 [connection signal="enemy_set" from="Right Panel/VBoxContainer/EnemyDetails" to="Right Panel" method="_on_EnemyDetails_enemy_set"]
 [connection signal="item_selected" from="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/NamedEnemyParamsIdOptionButton" to="Right Panel/VBoxContainer/EnemyDetails" method="_on_NamedEnemyParamsIdOptionButton_item_selected"]

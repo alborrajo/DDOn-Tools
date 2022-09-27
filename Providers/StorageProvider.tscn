@@ -3,22 +3,31 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node
 
-const STORAGE_FILE := \"user://storage.json\"
+const STORAGE_FILE := \"user://config.ini\"
 
-var _state
+var _config = ConfigFile.new()
 
 func _ready():
-	_state = Common.load_json_file(STORAGE_FILE)
-	
-	if _state == null:
-		_state = {}
+	# Load data from a file.
+	var err = _config.load(STORAGE_FILE)
+	if err == OK:
+		pass
+	elif err == ERR_FILE_NOT_FOUND:
+		print(\"Config file not found, a new one will be created\", STORAGE_FILE, err)
+	else:
+		printerr(\"Failed to load config file\", STORAGE_FILE, err)
 
-func get(key: String):
-	return _state.get(key)
+func _init_settings():
+	_config.set_value()
+
+func get_value(section: String, key: String, default = null):
+	return _config.get_value(section, key, default)
 	
-func set(key: String, value):
-	_state[key] = value
-	Common.save_json_file(STORAGE_FILE, _state)
+func set_value(section: String, key: String, value):
+	_config.set_value(section, key, value)
+	var err = _config.save(STORAGE_FILE)
+	if err != OK:
+		printerr(\"Failed to save config file\", STORAGE_FILE, err)
 "
 
 [node name="StorageProvider" type="Node"]

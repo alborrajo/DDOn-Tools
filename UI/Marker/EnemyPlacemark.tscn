@@ -5,9 +5,9 @@
 [node name="EnemyPlacemark" type="Button"]
 margin_right = 40.0
 margin_bottom = 14.0
+mouse_filter = 1
 text = "Placeholder (Lv. 69)"
 flat = true
 script = ExtResource( 1 )
 
-[connection signal="gui_input" from="." to="." method="_on_EnemyPlacemark_gui_input"]
 [connection signal="pressed" from="." to="." method="_on_EnemyPlacemark_pressed"]

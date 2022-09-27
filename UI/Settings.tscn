@@ -1,0 +1,138 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://UI/LanguageOptionButton.gd" type="Script" id=1]
+[ext_resource path="res://UI/Settings.gd" type="Script" id=2]
+[ext_resource path="res://UI/font.tres" type="DynamicFont" id=3]
+
+[node name="SettingsWindowDialog" type="WindowDialog"]
+visible = true
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -135.0
+margin_top = -95.0
+margin_right = 135.0
+margin_bottom = 95.0
+custom_fonts/title_font = ExtResource( 3 )
+window_title = "Settings"
+script = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="LanguageGridContainer" type="GridContainer" parent="VBoxContainer"]
+margin_right = 262.0
+margin_bottom = 24.0
+columns = 2
+
+[node name="LanguageLabel" type="Label" parent="VBoxContainer/LanguageGridContainer"]
+margin_right = 129.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 3 )
+text = "Language"
+
+[node name="LanguageOptionButton" type="OptionButton" parent="VBoxContainer/LanguageGridContainer"]
+margin_left = 133.0
+margin_right = 262.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 1 )
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+margin_top = 28.0
+margin_right = 262.0
+margin_bottom = 32.0
+
+[node name="RPCGridContainer" type="GridContainer" parent="VBoxContainer"]
+margin_top = 36.0
+margin_right = 262.0
+margin_bottom = 128.0
+columns = 2
+
+[node name="RPCHostLabel" type="Label" parent="VBoxContainer/RPCGridContainer"]
+margin_right = 129.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 3 )
+text = "RPC Host"
+
+[node name="RPCHostLineEdit" type="LineEdit" parent="VBoxContainer/RPCGridContainer"]
+margin_left = 133.0
+margin_right = 262.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RPCPortLabel" type="Label" parent="VBoxContainer/RPCGridContainer"]
+margin_top = 32.0
+margin_right = 129.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 3 )
+text = "RPC Port"
+
+[node name="RPCPortSpinBox" type="SpinBox" parent="VBoxContainer/RPCGridContainer"]
+margin_left = 133.0
+margin_top = 32.0
+margin_right = 262.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+max_value = 65535.0
+
+[node name="RPCPathLabel" type="Label" parent="VBoxContainer/RPCGridContainer"]
+margin_top = 64.0
+margin_right = 129.0
+margin_bottom = 92.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 3 )
+text = "RPC Path"
+
+[node name="RPCPathLineEdit" type="LineEdit" parent="VBoxContainer/RPCGridContainer"]
+margin_left = 133.0
+margin_top = 64.0
+margin_right = 262.0
+margin_bottom = 92.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+margin_top = 132.0
+margin_right = 262.0
+margin_bottom = 150.0
+custom_fonts/font = ExtResource( 3 )
+text = "RPC User and Password"
+
+[node name="RPCCredentialsGridContainer" type="GridContainer" parent="VBoxContainer"]
+margin_top = 154.0
+margin_right = 262.0
+margin_bottom = 182.0
+columns = 2
+
+[node name="UserLineEdit" type="LineEdit" parent="VBoxContainer/RPCCredentialsGridContainer"]
+margin_right = 129.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+
+[node name="PassLineEdit2" type="LineEdit" parent="VBoxContainer/RPCCredentialsGridContainer"]
+margin_left = 133.0
+margin_right = 262.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+secret = true
+
+[connection signal="about_to_show" from="." to="." method="_on_SettingsWindowDialog_about_to_show"]
+[connection signal="popup_hide" from="." to="." method="_on_SettingsWindowDialog_popup_hide"]
+[connection signal="item_selected" from="VBoxContainer/LanguageGridContainer/LanguageOptionButton" to="VBoxContainer/LanguageGridContainer/LanguageOptionButton" method="_on_item_selected"]

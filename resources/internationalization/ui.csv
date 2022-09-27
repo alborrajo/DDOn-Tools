@@ -7,8 +7,14 @@ FIELD_AREA_INFO_5,フィンダム,Phindym
 FIELD_AREA_INFO_6,アッカーシェラン,Acre Selund
 FIELD_AREA_INFO_7,アッカーシェラン[過去],Acre Selund (Past)
 FIELD_AREA_INFO_8,黒呪の迷宮,Bitterblack Maze
+Settings,設定,Settings
+Language,言語,Language
 English,English,English
 Japanese,日本語,日本語
+RPC Host,RPC ホスト,RPC Host
+RPC Port,RPC ポート,RPC Port
+RPC Path,RPC パス,RPC Path
+RPC User and Password,RPC ユーザーとパスワード,RPC User and Password
 Enemies,エネミー,Enemies
 Players,プレイヤー,Players
 File,ファイル,File
