@@ -7,11 +7,21 @@ margin_right = 288.0
 margin_bottom = 459.0
 script = ExtResource( 1 )
 
-[node name="ChatLog" type="ItemList" parent="."]
+[node name="ChatLogPanel" type="Panel" parent="."]
+margin_right = 288.0
+margin_bottom = 427.0
+size_flags_vertical = 3
+
+[node name="ChatLogScrollContainer" type="ScrollContainer" parent="ChatLogPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+scroll_horizontal_enabled = false
+
+[node name="ChatLogVBoxContainer" type="VBoxContainer" parent="ChatLogPanel/ChatLogScrollContainer"]
 margin_right = 288.0
 margin_bottom = 427.0
 size_flags_horizontal = 3
-size_flags_vertical = 11
+size_flags_vertical = 3
 
 [node name="ChatBox" type="HBoxContainer" parent="."]
 margin_top = 431.0
@@ -31,6 +41,7 @@ margin_left = 53.0
 margin_right = 288.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
+max_length = 257
 
 [node name="RPCTimer" type="Timer" parent="."]
 autostart = true
