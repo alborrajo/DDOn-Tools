@@ -64,9 +64,9 @@ func _on_MessageLineEdit_text_entered(message: String):
 	$ChatBox/MessageLineEdit.editable = false
 	var chat_message_log_entry := {
 		# DateTime not used
-		# TODO: FirstName
-		# TODO: LastName
 		# TODO: CharacterId
+		"FirstName": "DDOn",
+		"LastName": "Tools",
 		"ChatMessage": {
 			"Type": $ChatBox/MsgTypeOptionButton.get_item_id($ChatBox/MsgTypeOptionButton.selected),
 			"Message": message,
