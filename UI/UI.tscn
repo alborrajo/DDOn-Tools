@@ -222,7 +222,7 @@ margin_bottom = -4.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer"]
 margin_right = 288.0
-margin_bottom = 462.0
+margin_bottom = 458.0
 size_flags_horizontal = 3
 
 [node name="NamedEnemyParamsIdOptionButton" type="OptionButton" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer"]
@@ -237,7 +237,7 @@ script = ExtResource( 3 )
 [node name="GridContainer" type="GridContainer" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer"]
 margin_top = 28.0
 margin_right = 288.0
-margin_bottom = 462.0
+margin_bottom = 458.0
 columns = 2
 
 [node name="RaidBossId" type="Label" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
@@ -402,63 +402,64 @@ max_value = 4.29497e+09
 rounded = true
 
 [node name="InfectionType" type="Label" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
-margin_top = 321.0
+margin_top = 319.0
 margin_right = 120.0
-margin_bottom = 339.0
+margin_bottom = 337.0
 text = "InfectionType"
 
-[node name="InfectionTypeLineEdit" type="SpinBox" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
+[node name="InfectionTypeLineEdit" type="OptionButton" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
 margin_left = 124.0
 margin_top = 316.0
 margin_right = 288.0
-margin_bottom = 344.0
+margin_bottom = 340.0
 hint_tooltip = "InfectionType_tooltip"
 size_flags_horizontal = 3
-max_value = 4.29497e+09
-rounded = true
+text = "InfectionType_value_0"
+items = [ "InfectionType_value_0", null, false, 0, null, "InfectionType_value_1", null, false, 1, null, "InfectionType_value_2", null, false, 2, null, "InfectionType_value_3", null, false, 3, null ]
+selected = 0
 
 [node name="IsBossGauge" type="CheckBox" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
-margin_top = 348.0
+margin_top = 344.0
 margin_right = 120.0
-margin_bottom = 374.0
+margin_bottom = 370.0
 hint_tooltip = "IsBossGauge_tooltip"
 text = "IsBossGauge"
 
 [node name="IsBossBGM" type="CheckBox" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
 margin_left = 124.0
-margin_top = 348.0
+margin_top = 344.0
 margin_right = 288.0
-margin_bottom = 374.0
+margin_bottom = 370.0
 hint_tooltip = "IsBossBGM_tooltip"
 text = "IsBossBGM"
 
 [node name="IsManualSet" type="CheckBox" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
-margin_top = 378.0
+margin_top = 374.0
 margin_right = 120.0
-margin_bottom = 404.0
+margin_bottom = 400.0
 hint_tooltip = "IsManualSet_tooltip"
 text = "IsManualSet"
 
 [node name="IsAreaBoss" type="CheckBox" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
 margin_left = 124.0
-margin_top = 378.0
+margin_top = 374.0
 margin_right = 288.0
-margin_bottom = 404.0
+margin_bottom = 400.0
 hint_tooltip = "IsAreaBoss_tooltip"
 text = "IsAreaBoss"
 
 [node name="IsBloodEnemy" type="CheckBox" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
-margin_top = 408.0
+margin_top = 404.0
 margin_right = 120.0
-margin_bottom = 434.0
+margin_bottom = 430.0
 hint_tooltip = "IsBloodEnemy_tooltip"
 text = "IsBloodEnemy"
 
 [node name="IsHighOrbEnemy" type="CheckBox" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
 margin_left = 124.0
-margin_top = 408.0
+margin_top = 404.0
 margin_right = 288.0
-margin_bottom = 434.0
+margin_bottom = 430.0
 hint_tooltip = "IsHighOrbEnemy_tooltip"
 text = "IsHighOrbEnemy"
 
@@ -513,7 +514,7 @@ text = "Notification"
 [connection signal="value_changed" from="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer/EnemyTargetTypesIdLineEdit" to="Right Panel/VBoxContainer/EnemyDetails" method="_on_EnemyTargetTypesIdLineEdit_value_changed"]
 [connection signal="value_changed" from="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer/MontageFixNoLineEdit" to="Right Panel/VBoxContainer/EnemyDetails" method="_on_MontageFixNoLineEdit_value_changed"]
 [connection signal="value_changed" from="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer/SetTypeLineEdit" to="Right Panel/VBoxContainer/EnemyDetails" method="_on_SetTypeLineEdit_value_changed"]
-[connection signal="value_changed" from="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer/InfectionTypeLineEdit" to="Right Panel/VBoxContainer/EnemyDetails" method="_on_InfectionTypeLineEdit_value_changed"]
+[connection signal="item_selected" from="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer/InfectionTypeLineEdit" to="Right Panel/VBoxContainer/EnemyDetails" method="_on_InfectionTypeLineEdit_item_selected"]
 [connection signal="pressed" from="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer/IsBossGauge" to="Right Panel/VBoxContainer/EnemyDetails" method="_on_IsBossGauge_pressed"]
 [connection signal="pressed" from="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer/IsBossBGM" to="Right Panel/VBoxContainer/EnemyDetails" method="_on_IsBossBGM_pressed"]
 [connection signal="pressed" from="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer/IsManualSet" to="Right Panel/VBoxContainer/EnemyDetails" method="_on_IsManualSet_pressed"]

@@ -44,10 +44,10 @@ MontageFixNo_tooltip,,
 SetType,,SetType
 SetType_tooltip,,
 InfectionType,,Infection/Armor Type
-InfectionType_value_0,,Normal
-InfectionType_value_1,,Slight Corruption
-InfectionType_value_2,,Severe Corruption
-InfectionType_value_3,,Heavy Armor
+InfectionType_value_0,通常,Normal
+InfectionType_value_1,侵食・軽度,Slight Corruption
+InfectionType_value_2,侵食・重度,Severe Corruption
+InfectionType_value_3,侵食・危険 / 重装,Critical Corruption/Heavy Armor
 InfectionType_tooltip,,Determines how much infection or armor the infected/armored enemy has
 IsBossGauge,ボスゲージ,Boss Gauge
 IsBossGauge_tooltip,,If checked this enemy will have a boss health bar
