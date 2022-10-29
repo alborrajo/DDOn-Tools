@@ -43,20 +43,14 @@ map = NodePath("../map")
 
 [node name="ui" parent="." instance=ExtResource( 4 )]
 
-[node name="FileMenu" parent="ui/left/tab/Enemies" index="0"]
-items = [ "New", null, 0, false, false, 0, 0, null, "", false, "Load", null, 0, false, false, 1, 0, null, "", false, "Save", null, 0, false, false, 2, 0, null, "", false ]
-
 [node name="Chat" parent="ui/left/tab" index="2" instance=ExtResource( 1 )]
 visible = false
 
-[node name="MapOptionButton" parent="ui/status_view/container" index="1"]
-items = [ "FIELD_AREA_INFO_1", null, false, 1, null, "FIELD_AREA_INFO_2", null, false, 2, null, "FIELD_AREA_INFO_3", null, false, 3, null, "FIELD_AREA_INFO_4", null, false, 4, null, "FIELD_AREA_INFO_5", null, false, 5, null, "FIELD_AREA_INFO_6", null, false, 6, null ]
+[node name="ScaleLineEdit" parent="ui/Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer" index="3"]
+suffix = "%"
 
-[node name="NamedEnemyParamsIdOptionButton" parent="ui/Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer" index="0"]
-items = [ "- Default name -", null, false, 2298, null ]
-
-[node name="HmPresetNoOptionButton" parent="ui/Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer" index="7"]
-items = [ "- None -", null, false, 0, null ]
+[node name="InfectionTypeLineEdit" parent="ui/Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer" index="21"]
+max_value = 3.0
 
 [node name="SettingsWindowDialog" parent="ui" index="5"]
 visible = false

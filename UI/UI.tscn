@@ -250,6 +250,7 @@ text = "RaidBossId"
 margin_left = 124.0
 margin_right = 288.0
 margin_bottom = 28.0
+hint_tooltip = "RaidBossId_tooltip"
 size_flags_horizontal = 3
 max_value = 4.29497e+09
 rounded = true
@@ -265,6 +266,7 @@ margin_left = 124.0
 margin_top = 32.0
 margin_right = 288.0
 margin_bottom = 60.0
+hint_tooltip = "Scale_tooltip"
 size_flags_horizontal = 3
 max_value = 4.29497e+09
 rounded = true
@@ -280,6 +282,7 @@ margin_left = 124.0
 margin_top = 64.0
 margin_right = 288.0
 margin_bottom = 92.0
+hint_tooltip = "Level_tooltip"
 size_flags_horizontal = 3
 max_value = 4.29497e+09
 rounded = true
@@ -295,6 +298,7 @@ margin_left = 124.0
 margin_top = 96.0
 margin_right = 288.0
 margin_bottom = 120.0
+hint_tooltip = "HmPresetNo_tooltip"
 size_flags_horizontal = 3
 text = "- None -"
 items = [ "- None -", null, false, 0, null ]
@@ -312,6 +316,7 @@ margin_left = 124.0
 margin_top = 124.0
 margin_right = 288.0
 margin_bottom = 152.0
+hint_tooltip = "StartThinkTblNo_tooltip"
 size_flags_horizontal = 3
 max_value = 4.29497e+09
 rounded = true
@@ -327,6 +332,7 @@ margin_left = 124.0
 margin_top = 156.0
 margin_right = 288.0
 margin_bottom = 184.0
+hint_tooltip = "RepopNum_tooltip"
 size_flags_horizontal = 3
 max_value = 4.29497e+09
 rounded = true
@@ -342,6 +348,7 @@ margin_left = 124.0
 margin_top = 188.0
 margin_right = 288.0
 margin_bottom = 216.0
+hint_tooltip = "RepopCount_tooltip"
 size_flags_horizontal = 3
 max_value = 4.29497e+09
 rounded = true
@@ -357,6 +364,7 @@ margin_left = 124.0
 margin_top = 220.0
 margin_right = 288.0
 margin_bottom = 248.0
+hint_tooltip = "EnemyTargetTypesId_tooltip"
 size_flags_horizontal = 3
 max_value = 4.29497e+09
 rounded = true
@@ -372,6 +380,7 @@ margin_left = 124.0
 margin_top = 252.0
 margin_right = 288.0
 margin_bottom = 280.0
+hint_tooltip = "MontageFixNo_tooltip"
 size_flags_horizontal = 3
 max_value = 4.29497e+09
 rounded = true
@@ -387,6 +396,7 @@ margin_left = 124.0
 margin_top = 284.0
 margin_right = 288.0
 margin_bottom = 312.0
+hint_tooltip = "SetType_tooltip"
 size_flags_horizontal = 3
 max_value = 4.29497e+09
 rounded = true
@@ -402,6 +412,7 @@ margin_left = 124.0
 margin_top = 316.0
 margin_right = 288.0
 margin_bottom = 344.0
+hint_tooltip = "InfectionType_tooltip"
 size_flags_horizontal = 3
 max_value = 4.29497e+09
 rounded = true
@@ -410,6 +421,7 @@ rounded = true
 margin_top = 348.0
 margin_right = 120.0
 margin_bottom = 374.0
+hint_tooltip = "IsBossGauge_tooltip"
 text = "IsBossGauge"
 
 [node name="IsBossBGM" type="CheckBox" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
@@ -417,12 +429,14 @@ margin_left = 124.0
 margin_top = 348.0
 margin_right = 288.0
 margin_bottom = 374.0
+hint_tooltip = "IsBossBGM_tooltip"
 text = "IsBossBGM"
 
 [node name="IsManualSet" type="CheckBox" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
 margin_top = 378.0
 margin_right = 120.0
 margin_bottom = 404.0
+hint_tooltip = "IsManualSet_tooltip"
 text = "IsManualSet"
 
 [node name="IsAreaBoss" type="CheckBox" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
@@ -430,12 +444,14 @@ margin_left = 124.0
 margin_top = 378.0
 margin_right = 288.0
 margin_bottom = 404.0
+hint_tooltip = "IsAreaBoss_tooltip"
 text = "IsAreaBoss"
 
 [node name="IsBloodEnemy" type="CheckBox" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
 margin_top = 408.0
 margin_right = 120.0
 margin_bottom = 434.0
+hint_tooltip = "IsBloodEnemy_tooltip"
 text = "IsBloodEnemy"
 
 [node name="IsHighOrbEnemy" type="CheckBox" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
@@ -443,6 +459,7 @@ margin_left = 124.0
 margin_top = 408.0
 margin_right = 288.0
 margin_bottom = 434.0
+hint_tooltip = "IsHighOrbEnemy_tooltip"
 text = "IsHighOrbEnemy"
 
 [node name="FileDialog" type="FileDialog" parent="."]
@@ -460,8 +477,6 @@ mode = 0
 access = 2
 filters = PoolStringArray( "*.csv ; CSV Files" )
 show_hidden_files = true
-current_dir = "/Users/alborrajo/Documents/Programacion/Godot/DDOn Tools/DDOn-Tools"
-current_path = "/Users/alborrajo/Documents/Programacion/Godot/DDOn Tools/DDOn-Tools/"
 
 [node name="NotificationPopup" type="PopupPanel" parent="."]
 anchor_left = 1.0

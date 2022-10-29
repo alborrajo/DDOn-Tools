@@ -28,7 +28,7 @@ const CSV_HEADER := PoolStringArray([
 	"IsManualSet",
 	"IsAreaBoss",
 	"IsBloodEnemy",
-	"Unk0"
+	"IsHighOrbEnemy"
 ])
 
 export (NodePath) var file_dialog: NodePath

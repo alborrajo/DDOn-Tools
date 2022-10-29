@@ -24,20 +24,40 @@ Save,セーブ,Save
 - Default Name -,- デフォルト名 -,- Default Name -
 None,なし,None
 RaidBossId,,RaidBossId
+RaidBossId_tooltip,,
 Scale,スケール,Scale
+Scale_tooltip,,Size of the enemy as a percentage
 Level,LV.,Level
+Level_tooltip,,Level of the enemy
 HmPresetNo,人間プリセット,Human Preset
+HmPresetNo_tooltip,,Appearance and equipment for human enemies
 StartThinkTblNo,,StartThinkTblNo
+StartThinkTblNo_tooltip,,Initial enemy state
 RepopNum,,RepopNum
+RepopNum_tooltip,,
 RepopCount,,RepopCount
+RepopCount_tooltip,,
 EnemyTargetTypesId,,EnemyTargetTypesId
+EnemyTargetTypesId_tooltip,,
 MontageFixNo,,MontageFixNo
+MontageFixNo_tooltip,,
 SetType,,SetType
-InfectionType,,InfectionType
+SetType_tooltip,,
+InfectionType,,Infection/Armor Type
+InfectionType_value_0,,Normal
+InfectionType_value_1,,Slight Corruption
+InfectionType_value_2,,Severe Corruption
+InfectionType_value_3,,Heavy Armor
+InfectionType_tooltip,,Determines how much infection or armor the infected/armored enemy has
 IsBossGauge,ボスゲージ,Boss Gauge
+IsBossGauge_tooltip,,If checked this enemy will have a boss health bar
 IsBossBGM,ボスBGM,Boss BGM
-IsManualSet,,IsManualSet
-IsAreaBoss,,IsAreaBoss
+IsBossBGM_tooltip,,If checked boss music will play when fighting this enemy
+IsManualSet,,Spawn On Boss Rage
+IsManualSet_tooltip,,If checked this enemy will spawn when the boss is enraged
+IsAreaBoss,,Area Boss
+IsAreaBoss_tooltip,,If checked killing this enemy will open the reward doors at the end of the dungeon
 IsBloodEnemy,ブラッドオーブ,Blood Orbs
+IsBloodEnemy_tooltip,,If checked this enemy will drop Blood Orbs when killed
 IsHighOrbEnemy,ハイオーブ,High Orbs
-
+IsHighOrbEnemy_tooltip,,If checked this enemy will drop High Orbs when killed
