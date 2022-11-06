@@ -25,14 +25,14 @@ Save,セーブ,Save
 None,なし,None
 RaidBossId,,RaidBossId
 RaidBossId_tooltip,,
-Scale,スケール,Scale
-Scale_tooltip,,Size of the enemy as a percentage
+Scale,尺度,Scale
+Scale_tooltip,割合にて表したエネミーの大きさです,Size of the enemy as a percentage
 Level,LV.,Level
-Level_tooltip,,Level of the enemy
+Level_tooltip,エネミーのスケールです,Level of the enemy
 HmPresetNo,人間プリセット,Human Preset
-HmPresetNo_tooltip,,Appearance and equipment for human enemies
+HmPresetNo_tooltip,人間エネミーの装備品で姿です。,Appearance and equipment for human enemies
 StartThinkTblNo,,StartThinkTblNo
-StartThinkTblNo_tooltip,,Initial enemy state
+StartThinkTblNo_tooltip,エネミーの状態の一次回です。,Initial enemy state
 RepopNum,,RepopNum
 RepopNum_tooltip,,
 RepopCount,,RepopCount
@@ -43,21 +43,21 @@ MontageFixNo,,MontageFixNo
 MontageFixNo_tooltip,,
 SetType,,SetType
 SetType_tooltip,,
-InfectionType,,Infection/Armor Type
+InfectionType,侵食 / アーマー・タイプ,Infection/Armor Type
 InfectionType_value_0,通常,Normal
 InfectionType_value_1,侵食・軽度,Slight Corruption
 InfectionType_value_2,侵食・重度,Severe Corruption
 InfectionType_value_3,侵食・危険 / 重装,Critical Corruption/Heavy Armor
-InfectionType_tooltip,,Determines how much infection or armor the infected/armored enemy has
+InfectionType_tooltip,侵食または装甲したエネミーの侵食または装甲の量を決定します。,Determines how much infection or armor the infected/armored enemy has
 IsBossGauge,ボスゲージ,Boss Gauge
-IsBossGauge_tooltip,,If checked this enemy will have a boss health bar
+IsBossGauge_tooltip,選り出したならば、ボス健康メーターのエネミーとらせるです。,If checked this enemy will have a boss health bar
 IsBossBGM,ボスBGM,Boss BGM
-IsBossBGM_tooltip,,If checked boss music will play when fighting this enemy
-IsManualSet,,Spawn On Boss Rage
-IsManualSet_tooltip,,If checked this enemy will spawn when the boss is enraged
-IsAreaBoss,,Area Boss
-IsAreaBoss_tooltip,,If checked killing this enemy will open the reward doors at the end of the dungeon
+IsBossBGM_tooltip,選り出したならば、ボスBGMやらせられるとエネミーが戦っている。,If checked boss music will play when fighting this enemy
+IsManualSet,ボスの怒りにおけるスポーン,Spawn On Boss Rage
+IsManualSet_tooltip,選り出したならば、怒ったボスながらが敵スポーンです。,If checked this enemy will spawn when the boss is enraged
+IsAreaBoss,エリアボス,Area Boss
+IsAreaBoss_tooltip,敵を殺したら、ダンジョンの終わりに賞金ドアーズを開くです。,If checked killing this enemy will open the reward doors at the end of the dungeon
 IsBloodEnemy,ブラッドオーブ,Blood Orbs
-IsBloodEnemy_tooltip,,If checked this enemy will drop Blood Orbs when killed
+IsBloodEnemy_tooltip,選り出したならば、これエネミーは倒すと以上のオーブを落とすです。,If checked this enemy will drop Blood Orbs when killed
 IsHighOrbEnemy,ハイオーブ,High Orbs
-IsHighOrbEnemy_tooltip,,If checked this enemy will drop High Orbs when killed
+IsHighOrbEnemy_tooltip,選り出したならば、これエネミーは倒すとハイオーブを落とすです,If checked this enemy will drop High Orbs when killed
