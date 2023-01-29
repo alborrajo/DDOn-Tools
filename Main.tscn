@@ -49,7 +49,7 @@ visible = false
 
 [connection signal="gui_input" from="." to="camera" method="_on_root_gui_input"]
 [connection signal="map_selected" from="ui" to="." method="_on_ui_map_selected"]
-[connection signal="item_activated" from="ui/left/tab/Players" to="." method="_on_Players_item_activated"]
-[connection signal="timeout" from="rpc_timer" to="." method="_on_rpc_timer_timeout"]
+[connection signal="player_activated" from="ui" to="." method="_on_ui_player_activated"]
+[connection signal="stage_selected" from="ui" to="." method="_on_ui_stage_selected"]
 
 [editable path="ui"]

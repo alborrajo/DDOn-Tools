@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://UI/EnemyDetails.gd" type="Script" id=1]
 [ext_resource path="res://UI/NotificationPopup.gd" type="Script" id=2]
@@ -8,17 +8,30 @@
 [ext_resource path="res://UI/EnemyTree.gd" type="Script" id=6]
 [ext_resource path="res://UI/HmPresetNoOptionButton.gd" type="Script" id=7]
 [ext_resource path="res://UI/Settings.tscn" type="PackedScene" id=8]
+[ext_resource path="res://UI/Chat.tscn" type="PackedScene" id=9]
+[ext_resource path="res://UI/Stages.gd" type="Script" id=10]
+[ext_resource path="res://UI/Players.gd" type="Script" id=11]
 
 [sub_resource type="GDScript" id=2]
 script/source = "extends CanvasLayer
 
 signal map_selected(map_id)
+signal stage_selected(stage_no)
+signal player_activated(player_marker)
 
 func get_selected_map() -> int:
 	return $status_view/container/MapOptionButton.get_selected_id()
 
 func _on_MapOptionButton_item_selected(index):
 	emit_signal(\"map_selected\", $status_view/container/MapOptionButton.get_item_id(index))
+
+func _on_Stages_item_activated(index):
+	emit_signal(\"stage_selected\", $left/tab/Stages.get_item_metadata(index))
+	$status_view/container/MapOptionButton.select(-1)
+	
+func _on_Players_item_activated():
+	var selected_player_marker: PlayerMarker = $left/tab/Players.get_selected().get_metadata(0)
+	emit_signal(\"player_activated\", selected_player_marker)
 
 func _on_root_markers_loaded():
 	$left/tab/Enemies/FileMenu._on_markers_loaded()
@@ -64,7 +77,17 @@ margin_right = 303.0
 margin_bottom = 544.0
 tab_align = 0
 
+[node name="Stages" type="ItemList" parent="left/tab"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 36.0
+margin_right = -4.0
+margin_bottom = -4.0
+script = ExtResource( 10 )
+
 [node name="Enemies" type="VBoxContainer" parent="left/tab"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -111,6 +134,14 @@ margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
 hide_root = true
+script = ExtResource( 11 )
+
+[node name="RPCTimer" type="Timer" parent="left/tab/Players"]
+wait_time = 5.0
+autostart = true
+
+[node name="Chat" parent="left/tab" instance=ExtResource( 9 )]
+visible = false
 
 [node name="status_view" type="PanelContainer" parent="."]
 anchor_right = 1.0
@@ -499,6 +530,9 @@ text = "Notification"
 
 [node name="SettingsWindowDialog" parent="." instance=ExtResource( 8 )]
 
+[connection signal="item_activated" from="left/tab/Stages" to="." method="_on_Stages_item_activated"]
+[connection signal="item_activated" from="left/tab/Players" to="." method="_on_Players_item_activated"]
+[connection signal="timeout" from="left/tab/Players/RPCTimer" to="left/tab/Players" method="_on_rpc_timer_timeout"]
 [connection signal="item_selected" from="status_view/container/MapOptionButton" to="." method="_on_MapOptionButton_item_selected"]
 [connection signal="pressed" from="status_view/container/SettingsButton" to="status_view/container/SettingsButton" method="_on_SettingsButton_pressed"]
 [connection signal="pressed" from="Right Panel/VBoxContainer/HBoxContainer/Close" to="Right Panel" method="_on_Close_pressed"]

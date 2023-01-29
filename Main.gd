@@ -28,8 +28,6 @@ func _input(event):
 		var mouse_pos : Vector2 = get_local_mouse_position();
 		coordinates_label.text = String(mouse_pos.round())
 
-func _on_rpc_timer_timeout():
-	update_info()
 
 func _on_ui_map_selected(field_id):
 	# Show texture for the selected map
@@ -56,77 +54,28 @@ func _load_field_markers(field_id):
 				enemy_set_placemark.enemy_set = EnemySetProvider.get_enemy_set(stage_id, 0, marker.GroupNo, 0)
 				enemy_set_placemark.rect_position = marker.get_map_position()
 				markers_node.add_child(enemy_set_placemark)
-	
-	var item = false
-	if players_on_ui.get_root():
-		item = players_on_ui.get_root().get_children()
-	while (item):
-		var exists = false
-		for info in infos:
-			var CharacterId : int = info["CharacterId"]
-			if item.get_metadata(0).player.CharacterId == CharacterId:
-				exists = true
-				break
-		if !exists:
-			# remove players on ui, that have no info
-			var tmp = item
-			item = item.get_next()
-			players_on_ui_root.remove_child(tmp)
-			tmp.free()
-			continue
-		item = item.get_next()
-			
-	for info in infos:
-		var player: Player
-		var field_id = stage_no_to_belonging_field_id(info["StageNo"])
-		if field_id == null:
-			player = Player.new(info)
-		else: 
-			player = Player.new(info, String(field_id))
-		
-		# on map
-		var player_marker : PlayerMarker
-		for n in players_on_map.get_children():
-			if n.player.CharacterId == player.CharacterId:
-				player_marker = n
-		if player_marker:
-			# update existing player
-			player_marker.set_player(player)
-			player_marker._on_ui_map_selected($ui.get_selected_map())
-		else:
-			# create new player
-			player_marker = PlayerMarkerScene.instance()
-			$ui.connect("map_selected", player_marker, "_on_ui_map_selected")
-			player_marker.set_player(player)
-			player_marker._on_ui_map_selected($ui.get_selected_map())
-			players_on_map.add_child(player_marker)
-			
-		# on ui
-		var stage_id := DataProvider.stage_no_to_stage_id(player.StageNo)
-		var text := "%s %s @ %s %s" % [player.FirstName, player.LastName, tr(str("STAGE_NAME_",stage_id)), player.get_map_position().round()]
-		
-		var existing_ui : TreeItem
-		item = false
-		if players_on_ui.get_root():
-			item = players_on_ui.get_root().get_children()
-		while (item):
-			if item.get_metadata(0).player.CharacterId == player.CharacterId:
-				existing_ui = item
-			item = item.get_next()
-		if existing_ui:
-			# update existing player
-			existing_ui.set_text(0, text)
-		else:
-			# create new player
-			create_tree_entry(player_marker)
-			
 
-func create_tree_entry(var player_marker : PlayerMarker):
-	var stage_id := DataProvider.stage_no_to_stage_id(player_marker.player.StageNo)
-	var text := "%s %s @ %s %s" % [player_marker.player.FirstName, player_marker.player.LastName, tr(str("STAGE_NAME_",stage_id)), player_marker.player.get_map_position().round()]
-	var item = players_on_ui.create_item(players_on_ui_root)
-	item.set_text(0, text)
-	item.set_metadata(0, player_marker)
+
+func _on_ui_stage_selected(stage_no):
+	# Hide map texture
+	map_sprite.texture = null
+	
+	_clear_markers()
+	_load_stage_markers(stage_no)
+	
+	var stage_id = DataProvider.stage_no_to_stage_id(int(stage_no))
+	print("Selected stage %s (ID: %s, Stage No. %s) with %s markers" % [tr(str("STAGE_NAME_",stage_id)), stage_id, stage_no, markers_node.get_child_count()])
+
+func _load_stage_markers(stage_no):
+	# Build new stage markers
+	var stage_id = DataProvider.stage_no_to_stage_id(int(stage_no))
+	if stage_no in DataProvider.repo["StageEctMarkers"] and DataProvider.repo["StageEctMarkers"][stage_no] != null:
+		for ect_marker in DataProvider.repo["StageEctMarkers"][stage_no]["MarkerInfos"]:
+			var marker : Marker = Marker.new(ect_marker, int(stage_no), "-1")
+			var enemy_set_placemark: EnemySetPlacemark = EnemySetPlacemarkScene.instance()
+			enemy_set_placemark.enemy_set = EnemySetProvider.get_enemy_set(stage_id, 0, marker.GroupNo, 0)
+			enemy_set_placemark.rect_position = marker.get_map_position()
+			markers_node.add_child(enemy_set_placemark)
 
 
 func _clear_markers() -> void:
@@ -135,11 +84,9 @@ func _clear_markers() -> void:
 		markers_node.remove_child(child)
 
 
-func _on_Players_item_activated():
-	# Act only if there's a map for the area the player is in
-	var selected_player_marker: PlayerMarker = players_on_ui.get_selected().get_metadata(0)
-	if field_id_to_node.has(selected_player_marker.player.field_id):
-		var idx = $ui/status_view/container/MapOptionButton.get_item_index(int(selected_player_marker.player.field_id))
-		$ui/status_view/container/MapOptionButton.select(idx)
-		$ui/status_view/container/MapOptionButton.emit_signal("item_selected", idx)
-		camera.global_position = selected_player_marker.player.get_map_position()
+func _on_ui_player_activated(player_marker: PlayerMarker):
+	_on_ui_stage_selected(player_marker.player.StageNo)
+	var idx = $ui/status_view/container/MapOptionButton.get_item_index(int(player_marker.player.field_id))
+	$ui/status_view/container/MapOptionButton.select(idx)
+	$ui/status_view/container/MapOptionButton.emit_signal("item_selected", idx)
+	camera.global_position = player_marker.player.get_map_position()
