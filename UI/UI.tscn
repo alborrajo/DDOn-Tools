@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://UI/EnemyDetails.gd" type="Script" id=1]
 [ext_resource path="res://UI/NotificationPopup.gd" type="Script" id=2]
@@ -8,17 +8,30 @@
 [ext_resource path="res://UI/EnemyTree.gd" type="Script" id=6]
 [ext_resource path="res://UI/HmPresetNoOptionButton.gd" type="Script" id=7]
 [ext_resource path="res://UI/Settings.tscn" type="PackedScene" id=8]
+[ext_resource path="res://UI/Chat.tscn" type="PackedScene" id=9]
+[ext_resource path="res://UI/Stages.gd" type="Script" id=10]
+[ext_resource path="res://UI/Players.gd" type="Script" id=11]
 
 [sub_resource type="GDScript" id=2]
 script/source = "extends CanvasLayer
 
 signal map_selected(map_id)
+signal stage_selected(stage_no)
+signal player_activated(player_marker)
 
 func get_selected_map() -> int:
 	return $status_view/container/MapOptionButton.get_selected_id()
 
 func _on_MapOptionButton_item_selected(index):
 	emit_signal(\"map_selected\", $status_view/container/MapOptionButton.get_item_id(index))
+
+func _on_Stages_item_activated(index):
+	emit_signal(\"stage_selected\", $left/tab/Stages.get_item_metadata(index))
+	$status_view/container/MapOptionButton.select(-1)
+	
+func _on_Players_item_activated():
+	var player: Player = $left/tab/Players.get_selected().get_metadata(0)
+	emit_signal(\"player_activated\", player)
 
 func _on_root_markers_loaded():
 	$left/tab/Enemies/FileMenu._on_markers_loaded()
@@ -64,7 +77,17 @@ margin_right = 303.0
 margin_bottom = 544.0
 tab_align = 0
 
+[node name="Stages" type="ItemList" parent="left/tab"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 36.0
+margin_right = -4.0
+margin_bottom = -4.0
+script = ExtResource( 10 )
+
 [node name="Enemies" type="VBoxContainer" parent="left/tab"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -74,21 +97,6 @@ margin_bottom = -4.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="FileMenu" type="MenuButton" parent="left/tab/Enemies"]
-process_priority = -1
-margin_right = 32.0
-margin_bottom = 24.0
-focus_mode = 2
-size_flags_horizontal = 0
-text = "File"
-flat = false
-align = 0
-items = [ "New", null, 0, false, false, 0, 0, null, "", false, "Load", null, 0, false, false, 1, 0, null, "", false, "Save", null, 0, false, false, 2, 0, null, "", false ]
-script = ExtResource( 4 )
-file_dialog = NodePath("../../../../FileDialog")
-enemy_tree = NodePath("../EnemyTree")
-notification_popup = NodePath("../../../../NotificationPopup")
 
 [node name="EnemyTree" type="Tree" parent="left/tab/Enemies"]
 margin_top = 28.0
@@ -111,6 +119,14 @@ margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
 hide_root = true
+script = ExtResource( 11 )
+
+[node name="RPCTimer" type="Timer" parent="left/tab/Players"]
+wait_time = 5.0
+autostart = true
+
+[node name="Chat" parent="left/tab" instance=ExtResource( 9 )]
+visible = false
 
 [node name="status_view" type="PanelContainer" parent="."]
 anchor_right = 1.0
@@ -132,23 +148,39 @@ text = "-"
 script = ExtResource( 5 )
 control_to_minimize = NodePath("../../../left")
 
-[node name="MapOptionButton" type="OptionButton" parent="status_view/container"]
+[node name="FileMenu" type="MenuButton" parent="status_view/container"]
+process_priority = -1
 margin_left = 20.0
-margin_right = 168.0
+margin_right = 52.0
+margin_bottom = 24.0
+focus_mode = 2
+size_flags_horizontal = 0
+text = "File"
+flat = false
+align = 0
+items = [ "New", null, 0, false, false, 0, 0, null, "", false, "Load", null, 0, false, false, 1, 0, null, "", false, "Save", null, 0, false, false, 2, 0, null, "", false ]
+script = ExtResource( 4 )
+file_dialog = NodePath("../../../FileDialog")
+enemy_tree = NodePath("../../../left/tab/Enemies/EnemyTree")
+notification_popup = NodePath("../../../NotificationPopup")
+
+[node name="MapOptionButton" type="OptionButton" parent="status_view/container"]
+margin_left = 56.0
+margin_right = 204.0
 margin_bottom = 24.0
 text = "FIELD_AREA_INFO_1"
 items = [ "FIELD_AREA_INFO_1", null, false, 1, null, "FIELD_AREA_INFO_2", null, false, 2, null, "FIELD_AREA_INFO_3", null, false, 3, null, "FIELD_AREA_INFO_4", null, false, 4, null, "FIELD_AREA_INFO_5", null, false, 5, null, "FIELD_AREA_INFO_6", null, false, 6, null ]
 selected = 0
 
 [node name="coordinates" type="Label" parent="status_view/container"]
-margin_left = 172.0
+margin_left = 208.0
 margin_top = 3.0
-margin_right = 241.0
+margin_right = 277.0
 margin_bottom = 21.0
 text = "Coordinates"
 
 [node name="Control" type="Control" parent="status_view/container"]
-margin_left = 245.0
+margin_left = 281.0
 margin_right = 927.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
@@ -222,7 +254,7 @@ margin_bottom = -4.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer"]
 margin_right = 288.0
-margin_bottom = 462.0
+margin_bottom = 458.0
 size_flags_horizontal = 3
 
 [node name="NamedEnemyParamsIdOptionButton" type="OptionButton" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer"]
@@ -237,7 +269,7 @@ script = ExtResource( 3 )
 [node name="GridContainer" type="GridContainer" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer"]
 margin_top = 28.0
 margin_right = 288.0
-margin_bottom = 462.0
+margin_bottom = 458.0
 columns = 2
 
 [node name="RaidBossId" type="Label" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
@@ -250,6 +282,7 @@ text = "RaidBossId"
 margin_left = 124.0
 margin_right = 288.0
 margin_bottom = 28.0
+hint_tooltip = "RaidBossId_tooltip"
 size_flags_horizontal = 3
 max_value = 4.29497e+09
 rounded = true
@@ -265,6 +298,7 @@ margin_left = 124.0
 margin_top = 32.0
 margin_right = 288.0
 margin_bottom = 60.0
+hint_tooltip = "Scale_tooltip"
 size_flags_horizontal = 3
 max_value = 4.29497e+09
 rounded = true
@@ -280,6 +314,7 @@ margin_left = 124.0
 margin_top = 64.0
 margin_right = 288.0
 margin_bottom = 92.0
+hint_tooltip = "Level_tooltip"
 size_flags_horizontal = 3
 max_value = 4.29497e+09
 rounded = true
@@ -295,6 +330,7 @@ margin_left = 124.0
 margin_top = 96.0
 margin_right = 288.0
 margin_bottom = 120.0
+hint_tooltip = "HmPresetNo_tooltip"
 size_flags_horizontal = 3
 text = "- None -"
 items = [ "- None -", null, false, 0, null ]
@@ -312,6 +348,7 @@ margin_left = 124.0
 margin_top = 124.0
 margin_right = 288.0
 margin_bottom = 152.0
+hint_tooltip = "StartThinkTblNo_tooltip"
 size_flags_horizontal = 3
 max_value = 4.29497e+09
 rounded = true
@@ -327,6 +364,7 @@ margin_left = 124.0
 margin_top = 156.0
 margin_right = 288.0
 margin_bottom = 184.0
+hint_tooltip = "RepopNum_tooltip"
 size_flags_horizontal = 3
 max_value = 4.29497e+09
 rounded = true
@@ -342,6 +380,7 @@ margin_left = 124.0
 margin_top = 188.0
 margin_right = 288.0
 margin_bottom = 216.0
+hint_tooltip = "RepopCount_tooltip"
 size_flags_horizontal = 3
 max_value = 4.29497e+09
 rounded = true
@@ -357,6 +396,7 @@ margin_left = 124.0
 margin_top = 220.0
 margin_right = 288.0
 margin_bottom = 248.0
+hint_tooltip = "EnemyTargetTypesId_tooltip"
 size_flags_horizontal = 3
 max_value = 4.29497e+09
 rounded = true
@@ -372,6 +412,7 @@ margin_left = 124.0
 margin_top = 252.0
 margin_right = 288.0
 margin_bottom = 280.0
+hint_tooltip = "MontageFixNo_tooltip"
 size_flags_horizontal = 3
 max_value = 4.29497e+09
 rounded = true
@@ -387,62 +428,71 @@ margin_left = 124.0
 margin_top = 284.0
 margin_right = 288.0
 margin_bottom = 312.0
+hint_tooltip = "SetType_tooltip"
 size_flags_horizontal = 3
 max_value = 4.29497e+09
 rounded = true
 
 [node name="InfectionType" type="Label" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
-margin_top = 321.0
+margin_top = 319.0
 margin_right = 120.0
-margin_bottom = 339.0
+margin_bottom = 337.0
 text = "InfectionType"
 
-[node name="InfectionTypeLineEdit" type="SpinBox" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
+[node name="InfectionTypeLineEdit" type="OptionButton" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
 margin_left = 124.0
 margin_top = 316.0
 margin_right = 288.0
-margin_bottom = 344.0
+margin_bottom = 340.0
+hint_tooltip = "InfectionType_tooltip"
 size_flags_horizontal = 3
-max_value = 4.29497e+09
-rounded = true
+text = "InfectionType_value_0"
+items = [ "InfectionType_value_0", null, false, 0, null, "InfectionType_value_1", null, false, 1, null, "InfectionType_value_2", null, false, 2, null, "InfectionType_value_3", null, false, 3, null ]
+selected = 0
 
 [node name="IsBossGauge" type="CheckBox" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
-margin_top = 348.0
+margin_top = 344.0
 margin_right = 120.0
-margin_bottom = 374.0
+margin_bottom = 370.0
+hint_tooltip = "IsBossGauge_tooltip"
 text = "IsBossGauge"
 
 [node name="IsBossBGM" type="CheckBox" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
 margin_left = 124.0
-margin_top = 348.0
+margin_top = 344.0
 margin_right = 288.0
-margin_bottom = 374.0
+margin_bottom = 370.0
+hint_tooltip = "IsBossBGM_tooltip"
 text = "IsBossBGM"
 
 [node name="IsManualSet" type="CheckBox" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
-margin_top = 378.0
+margin_top = 374.0
 margin_right = 120.0
-margin_bottom = 404.0
+margin_bottom = 400.0
+hint_tooltip = "IsManualSet_tooltip"
 text = "IsManualSet"
 
 [node name="IsAreaBoss" type="CheckBox" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
 margin_left = 124.0
-margin_top = 378.0
+margin_top = 374.0
 margin_right = 288.0
-margin_bottom = 404.0
+margin_bottom = 400.0
+hint_tooltip = "IsAreaBoss_tooltip"
 text = "IsAreaBoss"
 
 [node name="IsBloodEnemy" type="CheckBox" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
-margin_top = 408.0
+margin_top = 404.0
 margin_right = 120.0
-margin_bottom = 434.0
+margin_bottom = 430.0
+hint_tooltip = "IsBloodEnemy_tooltip"
 text = "IsBloodEnemy"
 
 [node name="IsHighOrbEnemy" type="CheckBox" parent="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer"]
 margin_left = 124.0
-margin_top = 408.0
+margin_top = 404.0
 margin_right = 288.0
-margin_bottom = 434.0
+margin_bottom = 430.0
+hint_tooltip = "IsHighOrbEnemy_tooltip"
 text = "IsHighOrbEnemy"
 
 [node name="FileDialog" type="FileDialog" parent="."]
@@ -460,8 +510,6 @@ mode = 0
 access = 2
 filters = PoolStringArray( "*.csv ; CSV Files" )
 show_hidden_files = true
-current_dir = "/Users/alborrajo/Documents/Programacion/Godot/DDOn Tools/DDOn-Tools"
-current_path = "/Users/alborrajo/Documents/Programacion/Godot/DDOn Tools/DDOn-Tools/"
 
 [node name="NotificationPopup" type="PopupPanel" parent="."]
 anchor_left = 1.0
@@ -483,6 +531,9 @@ text = "Notification"
 
 [node name="SettingsWindowDialog" parent="." instance=ExtResource( 8 )]
 
+[connection signal="item_activated" from="left/tab/Stages" to="." method="_on_Stages_item_activated"]
+[connection signal="item_activated" from="left/tab/Players" to="." method="_on_Players_item_activated"]
+[connection signal="timeout" from="left/tab/Players/RPCTimer" to="left/tab/Players" method="_on_rpc_timer_timeout"]
 [connection signal="item_selected" from="status_view/container/MapOptionButton" to="." method="_on_MapOptionButton_item_selected"]
 [connection signal="pressed" from="status_view/container/SettingsButton" to="status_view/container/SettingsButton" method="_on_SettingsButton_pressed"]
 [connection signal="pressed" from="Right Panel/VBoxContainer/HBoxContainer/Close" to="Right Panel" method="_on_Close_pressed"]
@@ -498,7 +549,7 @@ text = "Notification"
 [connection signal="value_changed" from="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer/EnemyTargetTypesIdLineEdit" to="Right Panel/VBoxContainer/EnemyDetails" method="_on_EnemyTargetTypesIdLineEdit_value_changed"]
 [connection signal="value_changed" from="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer/MontageFixNoLineEdit" to="Right Panel/VBoxContainer/EnemyDetails" method="_on_MontageFixNoLineEdit_value_changed"]
 [connection signal="value_changed" from="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer/SetTypeLineEdit" to="Right Panel/VBoxContainer/EnemyDetails" method="_on_SetTypeLineEdit_value_changed"]
-[connection signal="value_changed" from="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer/InfectionTypeLineEdit" to="Right Panel/VBoxContainer/EnemyDetails" method="_on_InfectionTypeLineEdit_value_changed"]
+[connection signal="item_selected" from="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer/InfectionTypeLineEdit" to="Right Panel/VBoxContainer/EnemyDetails" method="_on_InfectionTypeLineEdit_item_selected"]
 [connection signal="pressed" from="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer/IsBossGauge" to="Right Panel/VBoxContainer/EnemyDetails" method="_on_IsBossGauge_pressed"]
 [connection signal="pressed" from="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer/IsBossBGM" to="Right Panel/VBoxContainer/EnemyDetails" method="_on_IsBossBGM_pressed"]
 [connection signal="pressed" from="Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer/IsManualSet" to="Right Panel/VBoxContainer/EnemyDetails" method="_on_IsManualSet_pressed"]

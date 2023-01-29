@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UI/Marker/EnemyPlacemark.gd"
 }, {
+"base": "Resource",
+"class": "EnemySet",
+"language": "GDScript",
+"path": "res://Entities/EnemySet.gd"
+}, {
 "base": "PanelContainer",
 "class": "EnemySetPlacemark",
 "language": "GDScript",
@@ -109,10 +114,25 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UI/Marker/PlayerMarker.gd"
 }, {
+"base": "Node2D",
+"class": "PlayerMarkers",
+"language": "GDScript",
+"path": "res://Main/PlayerMarkers.gd"
+}, {
+"base": "Tree",
+"class": "Players",
+"language": "GDScript",
+"path": "res://UI/Players.gd"
+}, {
 "base": "Reference",
 "class": "RpcClient",
 "language": "GDScript",
 "path": "res://RpcClient/RpcClient.gd"
+}, {
+"base": "ItemList",
+"class": "StagesItemList",
+"language": "GDScript",
+"path": "res://UI/Stages.gd"
 } ]
 _global_script_class_icons={
 "Chat": "",
@@ -120,6 +140,7 @@ _global_script_class_icons={
 "Enemy": "",
 "EnemyDetails": "",
 "EnemyPlacemark": "",
+"EnemySet": "",
 "EnemySetPlacemark": "",
 "EnemyTree": "",
 "EnemyType": "",
@@ -135,7 +156,10 @@ _global_script_class_icons={
 "NotificationPopup": "",
 "Player": "",
 "PlayerMarker": "",
-"RpcClient": ""
+"PlayerMarkers": "",
+"Players": "",
+"RpcClient": "",
+"StagesItemList": ""
 }
 
 [application]
@@ -149,6 +173,7 @@ config/windows_native_icon="res://puala.ico"
 
 DataProvider="*res://Providers/DataProvider.gd"
 StorageProvider="*res://Providers/StorageProvider.tscn"
+EnemySetProvider="*res://Providers/EnemySetProvider.tscn"
 
 [gui]
 

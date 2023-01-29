@@ -40,7 +40,7 @@ func _on_enemy_changed():
 		$ScrollContainer/VBoxContainer/GridContainer/EnemyTargetTypesIdLineEdit.value = enemy.enemy_target_types_id
 		$ScrollContainer/VBoxContainer/GridContainer/MontageFixNoLineEdit.value = enemy.montage_fix_no
 		$ScrollContainer/VBoxContainer/GridContainer/SetTypeLineEdit.value = enemy.set_type
-		$ScrollContainer/VBoxContainer/GridContainer/InfectionTypeLineEdit.value = enemy.infection_type
+		$ScrollContainer/VBoxContainer/GridContainer/InfectionTypeLineEdit.select($ScrollContainer/VBoxContainer/GridContainer/InfectionTypeLineEdit.get_item_index(enemy.infection_type))
 		$ScrollContainer/VBoxContainer/GridContainer/IsBossGauge.pressed = enemy.is_boss_gauge
 		$ScrollContainer/VBoxContainer/GridContainer/IsBossBGM.pressed = enemy.is_boss_bgm
 		$ScrollContainer/VBoxContainer/GridContainer/IsManualSet.pressed = enemy.is_manual_set
@@ -76,7 +76,7 @@ func _on_LevelLineEdit_value_changed(value):
 	enemy.lv = int(value)
 
 func _on_HmPresetNoLineEdit_item_selected(index):
-	enemy.hm_preset_no =$ScrollContainer/VBoxContainer/GridContainer/HmPresetNoOptionButton.get_item_id(index)
+	enemy.hm_preset_no = $ScrollContainer/VBoxContainer/GridContainer/HmPresetNoOptionButton.get_item_id(index)
 
 func _on_StartThinkTblNoLineEdit_value_changed(value):
 	enemy.start_think_tbl_no = int(value)
@@ -96,8 +96,8 @@ func _on_MontageFixNoLineEdit_value_changed(value):
 func _on_SetTypeLineEdit_value_changed(value):
 	enemy.set_type = int(value)
 
-func _on_InfectionTypeLineEdit_value_changed(value):
-	enemy.infection_type = int(value)
+func _on_InfectionTypeLineEdit_item_selected(index):
+	enemy.infection_type = $ScrollContainer/VBoxContainer/GridContainer/InfectionTypeLineEdit.get_item_id(index)
 
 func _on_IsBossGauge_pressed():
 	enemy.is_boss_gauge = $ScrollContainer/VBoxContainer/GridContainer/IsBossGauge.pressed
