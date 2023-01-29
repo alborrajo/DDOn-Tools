@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node
+
+signal new_enemy_set(stage_id, layer_no, group_id, subgroup_id)
+
+var _enemy_sets := []
+
+func clear() -> void:
+	for set in _enemy_sets:
+		set.clear_enemies()
+
+func get_enemy_set(stage_id: int, layer_no: int, group_id: int, subgroup_id: int) -> EnemySet:
+	# Inefficient af
+	for set in _enemy_sets:
+		if set.stage_id == stage_id and set.layer_no == layer_no and set.group_id == group_id and set.subgroup_id == subgroup_id:
+			return set
+	
+	var set := EnemySet.new(stage_id, layer_no, group_id, subgroup_id)
+	_enemy_sets.append(set)
+	emit_signal(\"new_enemy_set\", stage_id, layer_no, group_id, subgroup_id)
+	return set
+
+func get_all_enemy_sets() -> Array:
+	return Array(_enemy_sets)
+"
+
+[node name="EnemySetProvider" type="Node"]
+script = SubResource( 1 )

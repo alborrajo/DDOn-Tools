@@ -136,8 +136,11 @@ func make_request(method: int, host: String, port: int = 80, path: String = '/',
 			rb = rb + chunk
 		
 	var response_body : String = rb.get_string_from_utf8()
+	if response_body == '':
+		return {}
+		
 	var json = JSON.parse(response_body)
 	if json.error != OK:
-		printerr("RpcClient: failed to parse json ", host,":",port, path,"?",query_string) 
+		printerr("RpcClient: failed to parse json ", host,":",port, path,"?",query_string,"\n\t",response_body) 
 		return
 	return json.result
