@@ -5,8 +5,8 @@ const MapMarkerScene = preload("res://UI/Marker/MapMarker.tscn")
 
 onready var camera: Camera2D = $camera
 onready var map_sprite: Sprite = $map
-onready var markers_node: Node2D = $Markers
-onready var players_node: Node2D = $Players
+onready var markers_node: Node2D = $EnemySetMarkers
+onready var players_node: Node2D = $PlayerMarkers
 onready var coordinates_label: Label = $ui/status_view/container/coordinates
 
 onready var field_id_to_texture := {
@@ -84,9 +84,20 @@ func _clear_markers() -> void:
 		markers_node.remove_child(child)
 
 
-func _on_ui_player_activated(player_marker: PlayerMarker):
-	_on_ui_stage_selected(player_marker.player.StageNo)
-	var idx = $ui/status_view/container/MapOptionButton.get_item_index(int(player_marker.player.field_id))
-	$ui/status_view/container/MapOptionButton.select(idx)
-	$ui/status_view/container/MapOptionButton.emit_signal("item_selected", idx)
-	camera.global_position = player_marker.player.get_map_position()
+func _on_ui_player_activated(player: Player):
+	var field_index = $ui/status_view/container/MapOptionButton.get_item_index(int(player.field_id))
+	if field_index == -1:
+		# Terrible 
+		for stage_index in $ui/left/tab/Stages.get_item_count():
+			if $ui/left/tab/Stages.get_item_metadata(stage_index) == String(player.StageNo):
+				$ui/left/tab/Stages.select(stage_index)
+				$ui/left/tab/Stages.emit_signal("item_activated", stage_index)
+				camera.global_position = player.get_map_position()
+				return
+	else:
+		$ui/status_view/container/MapOptionButton.select(field_index)
+		$ui/status_view/container/MapOptionButton.emit_signal("item_selected", field_index)
+		camera.global_position = player.get_map_position()
+		return
+		
+	printerr("Couldnt focus map on %s %s (StageNo: %s)" % [player.FirstName, player.LastName, player.StageNo])

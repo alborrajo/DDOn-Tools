@@ -30,8 +30,8 @@ func _on_Stages_item_activated(index):
 	$status_view/container/MapOptionButton.select(-1)
 	
 func _on_Players_item_activated():
-	var selected_player_marker: PlayerMarker = $left/tab/Players.get_selected().get_metadata(0)
-	emit_signal(\"player_activated\", selected_player_marker)
+	var player: Player = $left/tab/Players.get_selected().get_metadata(0)
+	emit_signal(\"player_activated\", player)
 
 func _on_root_markers_loaded():
 	$left/tab/Enemies/FileMenu._on_markers_loaded()
