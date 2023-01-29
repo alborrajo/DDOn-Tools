@@ -98,21 +98,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FileMenu" type="MenuButton" parent="left/tab/Enemies"]
-process_priority = -1
-margin_right = 32.0
-margin_bottom = 24.0
-focus_mode = 2
-size_flags_horizontal = 0
-text = "File"
-flat = false
-align = 0
-items = [ "New", null, 0, false, false, 0, 0, null, "", false, "Load", null, 0, false, false, 1, 0, null, "", false, "Save", null, 0, false, false, 2, 0, null, "", false ]
-script = ExtResource( 4 )
-file_dialog = NodePath("../../../../FileDialog")
-enemy_tree = NodePath("../EnemyTree")
-notification_popup = NodePath("../../../../NotificationPopup")
-
 [node name="EnemyTree" type="Tree" parent="left/tab/Enemies"]
 margin_top = 28.0
 margin_right = 288.0
@@ -163,23 +148,39 @@ text = "-"
 script = ExtResource( 5 )
 control_to_minimize = NodePath("../../../left")
 
-[node name="MapOptionButton" type="OptionButton" parent="status_view/container"]
+[node name="FileMenu" type="MenuButton" parent="status_view/container"]
+process_priority = -1
 margin_left = 20.0
-margin_right = 168.0
+margin_right = 52.0
+margin_bottom = 24.0
+focus_mode = 2
+size_flags_horizontal = 0
+text = "File"
+flat = false
+align = 0
+items = [ "New", null, 0, false, false, 0, 0, null, "", false, "Load", null, 0, false, false, 1, 0, null, "", false, "Save", null, 0, false, false, 2, 0, null, "", false ]
+script = ExtResource( 4 )
+file_dialog = NodePath("../../../FileDialog")
+enemy_tree = NodePath("../../../left/tab/Enemies/EnemyTree")
+notification_popup = NodePath("../../../NotificationPopup")
+
+[node name="MapOptionButton" type="OptionButton" parent="status_view/container"]
+margin_left = 56.0
+margin_right = 204.0
 margin_bottom = 24.0
 text = "FIELD_AREA_INFO_1"
 items = [ "FIELD_AREA_INFO_1", null, false, 1, null, "FIELD_AREA_INFO_2", null, false, 2, null, "FIELD_AREA_INFO_3", null, false, 3, null, "FIELD_AREA_INFO_4", null, false, 4, null, "FIELD_AREA_INFO_5", null, false, 5, null, "FIELD_AREA_INFO_6", null, false, 6, null ]
 selected = 0
 
 [node name="coordinates" type="Label" parent="status_view/container"]
-margin_left = 172.0
+margin_left = 208.0
 margin_top = 3.0
-margin_right = 241.0
+margin_right = 277.0
 margin_bottom = 21.0
 text = "Coordinates"
 
 [node name="Control" type="Control" parent="status_view/container"]
-margin_left = 245.0
+margin_left = 281.0
 margin_right = 927.0
 margin_bottom = 24.0
 size_flags_horizontal = 3

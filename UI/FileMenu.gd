@@ -43,6 +43,11 @@ onready var notification_popup_node: NotificationPopup = get_node(notification_p
 
 func _ready():
 	get_popup().connect("id_pressed", self, "_on_menu_id_pressed")
+	
+	# Load last csv file on startup
+	var file_path = StorageProvider.get_value(STORAGE_SECTION_FILE_MENU, STORAGE_KEY_FILE_PATH)
+	if file_path != null and file_path != "":
+		load_file(file_path)
 
 func _unhandled_input(event: InputEvent):
 	if Input.is_key_pressed(KEY_CONTROL) and event.is_pressed() and event is InputEventKey:
