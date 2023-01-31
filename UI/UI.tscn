@@ -25,7 +25,7 @@ func get_selected_map() -> int:
 func _on_MapOptionButton_item_selected(index):
 	emit_signal(\"map_selected\", $status_view/container/MapOptionButton.get_item_id(index))
 
-func _on_Stages_item_activated(index):
+func _on_Stages_item_selected(index):
 	emit_signal(\"stage_selected\", $left/tab/Stages.get_item_metadata(index))
 	$status_view/container/MapOptionButton.select(-1)
 	
@@ -531,7 +531,7 @@ text = "Notification"
 
 [node name="SettingsWindowDialog" parent="." instance=ExtResource( 8 )]
 
-[connection signal="item_activated" from="left/tab/Stages" to="." method="_on_Stages_item_activated"]
+[connection signal="item_selected" from="left/tab/Stages" to="." method="_on_Stages_item_selected"]
 [connection signal="item_activated" from="left/tab/Players" to="." method="_on_Players_item_activated"]
 [connection signal="timeout" from="left/tab/Players/RPCTimer" to="left/tab/Players" method="_on_rpc_timer_timeout"]
 [connection signal="item_selected" from="status_view/container/MapOptionButton" to="." method="_on_MapOptionButton_item_selected"]
