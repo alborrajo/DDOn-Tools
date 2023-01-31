@@ -22,6 +22,10 @@ func add_enemy(enemy: Enemy) -> void:
 	_enemies.append(enemy)
 	emit_changed()
 	
+func remove_enemy(index: int) -> void:
+	_enemies.remove(index)
+	emit_changed()
+	
 func clear_enemies() -> void:
 	_enemies.clear()
 	emit_changed()

@@ -19,11 +19,15 @@ func _on_enemy_set_changed() -> void:
 	for child in $VBoxContainer.get_children():
 		$VBoxContainer.remove_child(child)
 		
-	for enemy in _enemy_set.get_enemies():
+	for index in _enemy_set.get_enemies().size():
+		var enemy: Enemy = _enemy_set.get_enemies()[index]
 		var enemy_placemark: EnemyPlacemark = enemy_placemark_packed_scene.instance()
 		enemy_placemark.enemy = enemy
+		enemy_placemark.connect("enemy_removed", self, "_on_enemy_removed", [index])
 		$VBoxContainer.add_child(enemy_placemark)
-	
+
+func _on_enemy_removed(index: int) -> void:
+	_enemy_set.remove_enemy(index)
 
 func add_enemy(enemy: Enemy) -> void:
 	_enemy_set.add_enemy(enemy)
