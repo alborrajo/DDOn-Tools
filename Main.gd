@@ -7,7 +7,6 @@ onready var camera: Camera2D = $camera
 onready var map_sprite: Sprite = $map
 onready var markers_node: Node2D = $EnemySetMarkers
 onready var players_node: Node2D = $PlayerMarkers
-onready var coordinates_label: Label = $ui/status_view/container/coordinates
 
 onready var field_id_to_texture := {
 	"1": "res://resources/maps/field000_m00.png",
@@ -22,13 +21,6 @@ func _ready():
 	# Load Lestania map by default
 	_on_ui_map_selected(1)
 
-
-func _input(event):
-	if event is InputEventMouseMotion:
-		var mouse_pos : Vector2 = get_local_mouse_position();
-		coordinates_label.text = String(mouse_pos.round())
-
-
 func _on_ui_map_selected(field_id):
 	# Show texture for the selected map
 	var map_texture = field_id_to_texture.get(String(field_id))
@@ -39,6 +31,7 @@ func _on_ui_map_selected(field_id):
 	
 	_clear_markers()
 	_load_field_markers(field_id)
+	_focus_camera_on_center()
 	
 	print("Selected field %s (ID: %s) with %s markers" % [tr(str("FIELD_AREA_INFO_",field_id)), field_id, markers_node.get_child_count()])
 
@@ -62,6 +55,7 @@ func _on_ui_stage_selected(stage_no):
 	
 	_clear_markers()
 	_load_stage_markers(stage_no)
+	_focus_camera_on_center()
 	
 	var stage_id = DataProvider.stage_no_to_stage_id(int(stage_no))
 	print("Selected stage %s (ID: %s, Stage No. %s) with %s markers" % [tr(str("STAGE_NAME_",stage_id)), stage_id, stage_no, markers_node.get_child_count()])
@@ -101,3 +95,27 @@ func _on_ui_player_activated(player: Player):
 		return
 		
 	printerr("Couldnt focus map on %s %s (StageNo: %s)" % [player.FirstName, player.LastName, player.StageNo])
+
+
+func _focus_camera_on_center() -> void:
+	if markers_node.get_child_count() > 0:
+		camera.global_position = _get_center(markers_node.get_children())
+
+
+static func _get_center(nodes: Array) -> Vector2:
+	var min_x: int = nodes[0].rect_position.x
+	var max_x: int = nodes[0].rect_position.x
+	var min_y: int = nodes[0].rect_position.y
+	var max_y: int = nodes[0].rect_position.y
+	for obj in nodes:
+		if obj is Node2D:
+			var node := obj as Node2D
+			min_x = min(min_x, node.rect_position.x)
+			max_x = max(max_x, node.rect_position.x)
+			min_y = min(min_y, node.rect_position.y)
+			max_y = max(max_y, node.rect_position.y)
+		
+	var min_bound := Vector2(min_x, min_y)
+	var max_bound := Vector2(max_x, max_y)
+	var direction := min_bound.direction_to(max_bound)
+	return min_bound + direction/2

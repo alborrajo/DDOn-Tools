@@ -19,15 +19,27 @@ signal map_selected(map_id)
 signal stage_selected(stage_no)
 signal player_activated(player_marker)
 
+onready var stage_label: Label = $status_view/container/StageLabel
+onready var coordinates_label: Label = $status_view/container/CoordinatesLabel
+
 func get_selected_map() -> int:
 	return $status_view/container/MapOptionButton.get_selected_id()
 
+func _input(event):
+	if event is InputEventMouseMotion:
+		var mouse_pos : Vector2 = owner.get_global_mouse_position();
+		coordinates_label.text = String(mouse_pos.round())
+		
 func _on_MapOptionButton_item_selected(index):
 	emit_signal(\"map_selected\", $status_view/container/MapOptionButton.get_item_id(index))
+	stage_label.text = \"\"
 
-func _on_Stages_item_selected(index):
-	emit_signal(\"stage_selected\", $left/tab/Stages.get_item_metadata(index))
+func _on_Stages_item_selected(index: int) -> void:
+	var stage_no = $left/tab/Stages.get_item_metadata(index)
+	var stage_id = DataProvider.stage_no_to_stage_id(int(stage_no))
+	emit_signal(\"stage_selected\", stage_no)
 	$status_view/container/MapOptionButton.select(-1)
+	stage_label.text = \"%s (ID: %s, Stage No. %s)\" % [tr(str(\"STAGE_NAME_\",stage_id)), stage_id, stage_no]
 	
 func _on_Players_item_activated():
 	var player: Player = $left/tab/Players.get_selected().get_metadata(0)
@@ -172,18 +184,24 @@ text = "FIELD_AREA_INFO_1"
 items = [ "FIELD_AREA_INFO_1", null, false, 1, null, "FIELD_AREA_INFO_2", null, false, 2, null, "FIELD_AREA_INFO_3", null, false, 3, null, "FIELD_AREA_INFO_4", null, false, 4, null, "FIELD_AREA_INFO_5", null, false, 5, null, "FIELD_AREA_INFO_6", null, false, 6, null ]
 selected = 0
 
-[node name="coordinates" type="Label" parent="status_view/container"]
+[node name="StageLabel" type="Label" parent="status_view/container"]
 margin_left = 208.0
 margin_top = 3.0
-margin_right = 277.0
+margin_right = 208.0
 margin_bottom = 21.0
-text = "Coordinates"
 
-[node name="Control" type="Control" parent="status_view/container"]
-margin_left = 281.0
-margin_right = 927.0
+[node name="Spacer" type="Control" parent="status_view/container"]
+margin_left = 212.0
+margin_right = 854.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
+
+[node name="CoordinatesLabel" type="Label" parent="status_view/container"]
+margin_left = 858.0
+margin_top = 3.0
+margin_right = 927.0
+margin_bottom = 21.0
+text = "Coordinates"
 
 [node name="SettingsButton" type="Button" parent="status_view/container"]
 margin_left = 931.0
