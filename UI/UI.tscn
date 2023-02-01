@@ -19,9 +19,16 @@ signal map_selected(map_id)
 signal stage_selected(stage_no)
 signal player_activated(player_marker)
 
+onready var coordinates_label: Label = $status_view/container/CoordinatesLabel
+
 func get_selected_map() -> int:
 	return $status_view/container/MapOptionButton.get_selected_id()
 
+func _input(event):
+	if event is InputEventMouseMotion:
+		var mouse_pos : Vector2 = owner.get_global_mouse_position();
+		coordinates_label.text = String(mouse_pos.round())
+		
 func _on_MapOptionButton_item_selected(index):
 	emit_signal(\"map_selected\", $status_view/container/MapOptionButton.get_item_id(index))
 

@@ -7,7 +7,6 @@ onready var camera: Camera2D = $camera
 onready var map_sprite: Sprite = $map
 onready var markers_node: Node2D = $EnemySetMarkers
 onready var players_node: Node2D = $PlayerMarkers
-onready var coordinates_label: Label = $ui/status_view/container/coordinates
 
 onready var field_id_to_texture := {
 	"1": "res://resources/maps/field000_m00.png",
@@ -21,13 +20,6 @@ onready var field_id_to_texture := {
 func _ready():
 	# Load Lestania map by default
 	_on_ui_map_selected(1)
-
-
-func _input(event):
-	if event is InputEventMouseMotion:
-		var mouse_pos : Vector2 = get_local_mouse_position();
-		coordinates_label.text = String(mouse_pos.round())
-
 
 func _on_ui_map_selected(field_id):
 	# Show texture for the selected map
