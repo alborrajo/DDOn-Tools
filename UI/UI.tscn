@@ -15,30 +15,21 @@
 [sub_resource type="GDScript" id=2]
 script/source = "extends CanvasLayer
 
-signal map_selected(map_id)
 signal stage_selected(stage_no)
 signal player_activated(player_marker)
 
 onready var stage_label: Label = $status_view/container/StageLabel
 onready var coordinates_label: Label = $status_view/container/CoordinatesLabel
 
-func get_selected_map() -> int:
-	return $status_view/container/MapOptionButton.get_selected_id()
-
 func _input(event):
 	if event is InputEventMouseMotion:
-		var mouse_pos : Vector2 = owner.get_global_mouse_position();
+		var mouse_pos : Vector2 = $\"../MapCoordinateSpace\".get_local_mouse_position();
 		coordinates_label.text = String(mouse_pos.round())
-		
-func _on_MapOptionButton_item_selected(index):
-	emit_signal(\"map_selected\", $status_view/container/MapOptionButton.get_item_id(index))
-	stage_label.text = \"\"
 
 func _on_Stages_item_selected(index: int) -> void:
 	var stage_no = $left/tab/Stages.get_item_metadata(index)
 	var stage_id = DataProvider.stage_no_to_stage_id(int(stage_no))
 	emit_signal(\"stage_selected\", stage_no)
-	$status_view/container/MapOptionButton.select(-1)
 	stage_label.text = \"%s (ID: %s, Stage No. %s)\" % [tr(str(\"STAGE_NAME_\",stage_id)), stage_id, stage_no]
 	
 func _on_Players_item_activated():
@@ -159,6 +150,7 @@ margin_bottom = 24.0
 text = "-"
 script = ExtResource( 5 )
 control_to_minimize = NodePath("../../../left")
+property_to_toggle = "visible"
 
 [node name="FileMenu" type="MenuButton" parent="status_view/container"]
 process_priority = -1
@@ -176,22 +168,14 @@ file_dialog = NodePath("../../../FileDialog")
 enemy_tree = NodePath("../../../left/tab/Enemies/EnemyTree")
 notification_popup = NodePath("../../../NotificationPopup")
 
-[node name="MapOptionButton" type="OptionButton" parent="status_view/container"]
-margin_left = 56.0
-margin_right = 204.0
-margin_bottom = 24.0
-text = "FIELD_AREA_INFO_1"
-items = [ "FIELD_AREA_INFO_1", null, false, 1, null, "FIELD_AREA_INFO_2", null, false, 2, null, "FIELD_AREA_INFO_3", null, false, 3, null, "FIELD_AREA_INFO_4", null, false, 4, null, "FIELD_AREA_INFO_5", null, false, 5, null, "FIELD_AREA_INFO_6", null, false, 6, null ]
-selected = 0
-
 [node name="StageLabel" type="Label" parent="status_view/container"]
-margin_left = 208.0
+margin_left = 56.0
 margin_top = 3.0
-margin_right = 208.0
+margin_right = 56.0
 margin_bottom = 21.0
 
 [node name="Spacer" type="Control" parent="status_view/container"]
-margin_left = 212.0
+margin_left = 60.0
 margin_right = 854.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
@@ -552,7 +536,6 @@ text = "Notification"
 [connection signal="item_selected" from="left/tab/Stages" to="." method="_on_Stages_item_selected"]
 [connection signal="item_activated" from="left/tab/Players" to="." method="_on_Players_item_activated"]
 [connection signal="timeout" from="left/tab/Players/RPCTimer" to="left/tab/Players" method="_on_rpc_timer_timeout"]
-[connection signal="item_selected" from="status_view/container/MapOptionButton" to="." method="_on_MapOptionButton_item_selected"]
 [connection signal="pressed" from="status_view/container/SettingsButton" to="status_view/container/SettingsButton" method="_on_SettingsButton_pressed"]
 [connection signal="pressed" from="Right Panel/VBoxContainer/HBoxContainer/Close" to="Right Panel" method="_on_Close_pressed"]
 [connection signal="enemy_set" from="Right Panel/VBoxContainer/EnemyDetails" to="Right Panel" method="_on_EnemyDetails_enemy_set"]

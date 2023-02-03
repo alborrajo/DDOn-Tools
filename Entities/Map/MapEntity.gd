@@ -2,8 +2,7 @@ extends Resource
 class_name MapEntity
 
 const DEFAULT_TRANSFORM := Transform2D(Vector2(215.0/238162.0, 0), Vector2(0, 215.0/238162.0), Vector2(298.0+9906*215.0/238162.0, 45+348034*215.0/238162.0))
-
-var field_transforms := {
+const FIELD_TRANSFORMS := {
 	"1": Transform2D(Vector2(215.0/238162.0, 0), Vector2(0, 215.0/238162.0), Vector2(298.0+9906*215.0/238162.0, 45+348034*215.0/238162.0)), # Lestania
 	"2": Transform2D(Vector2(57.0/20086.0, 0), Vector2(0, 161.0/56877.0), Vector2(37.0+280440.0/20086.0, 49.0+8817165.0/56877.0)), # Mergoda Lower
 	"3": Transform2D(Vector2(36.0/15014.0, 0), Vector2(0, 21.0/7296.0), Vector2(106.0+511812.0/15014.0, 94.0+437178.0/7296.0)), # Mergoda Palace
@@ -22,4 +21,7 @@ func _init(var pos: Vector3, var field_id: String = "0"):
 	self.field_id = field_id
 
 func get_map_position() -> Vector2:
-	return field_transforms.get(self.field_id, DEFAULT_TRANSFORM).xform(Vector2(pos.x, pos.z))
+	return to_map_position(self.field_id, Vector2(pos.x, pos.z))
+
+static func to_map_position(field_id: String, vec: Vector2) -> Vector2:
+	return FIELD_TRANSFORMS.get(field_id, DEFAULT_TRANSFORM).xform(vec)
