@@ -6,7 +6,7 @@ var FirstName : String
 var LastName : String
 var StageNo: int
 
-func _init(player : Dictionary, field_id: String = "0").(Vector3(player["X"],player["Y"],player["Z"]), field_id):
+func _init(player : Dictionary).(Vector3(player["X"],player["Y"],player["Z"])):
 	CharacterId = player["CharacterId"]
 	FirstName = player["FirstName"]
 	LastName = player["LastName"]

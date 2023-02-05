@@ -8,17 +8,17 @@ onready var original_zoom := zoom.x
 export (NodePath) var map: NodePath
 
 func _unhandled_input(event):
-	if _handle_mouse(event):
+	# Otherwise, unhandled input doesn't take zoom into account when panning
+	if _handle_mouse(event, zoom.x):
 		get_tree().set_input_as_handled()
 
 func _on_root_gui_input(event):
-	if _handle_mouse(event):
-		get_tree().set_input_as_handled()
+	_handle_mouse(event)
 	
-func _handle_mouse(event) -> bool:
+func _handle_mouse(event, multiplier: float = 1) -> bool:
 	# Mouse pan
 	if event is InputEventMouseMotion and Input.is_mouse_button_pressed(BUTTON_LEFT) and not get_tree().root.gui_is_dragging():
-		global_position -= event.relative
+		global_position -= event.relative * multiplier
 		return true
 	
 	# Mouse zoom

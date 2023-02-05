@@ -29,7 +29,9 @@ func stage_no_to_stage_id(stage_no: int) -> int:
 	push_warning("No stage found with StageNo %s" % stage_no)
 	return -1
 
-func stage_no_to_belonging_field_id(stage_no: int):
+## Returns -1 if it doesn't belong to a field
+func stage_no_to_belonging_field_id(stage_no: int) -> int:
 	for field_area_info in repo["FieldAreaList"]["FieldAreaInfos"]:
 		if field_area_info["StageNoList"].has(float(stage_no)):
 			return int(field_area_info["FieldAreaId"])
+	return -1

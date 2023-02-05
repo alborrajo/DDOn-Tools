@@ -42,11 +42,7 @@ func update_info():
 			
 	for info in infos:
 		var player: Player
-		var field_id = DataProvider.stage_no_to_belonging_field_id(info["StageNo"])
-		if field_id == null:
-			player = Player.new(info)
-		else: 
-			player = Player.new(info, String(field_id))
+		player = Player.new(info)
 			
 		# on ui
 		var stage_id := DataProvider.stage_no_to_stage_id(player.StageNo)
