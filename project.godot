@@ -79,11 +79,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Entities/Map/MapEntity.gd"
 }, {
-"base": "GenericMarker",
-"class": "MapMarker",
-"language": "GDScript",
-"path": "res://UI/Marker/MapMarker.gd"
-}, {
 "base": "MapEntity",
 "class": "Marker",
 "language": "GDScript",
@@ -149,7 +144,6 @@ _global_script_class_icons={
 "HmPresetNoOptionButton": "",
 "LanguageOptionButton": "",
 "MapEntity": "",
-"MapMarker": "",
 "Marker": "",
 "Minimize": "",
 "NamedEnemyParamsIdOptionButton": "",

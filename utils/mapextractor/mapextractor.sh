@@ -10,8 +10,8 @@ fi
 
 cd "$(dirname "$0")"
 
-mkdir results
-mkdir tmp
+mkdir -p results
+mkdir -p tmp
 cd tmp
 
 # Copy map files and unpack them
@@ -29,14 +29,13 @@ do
     rm "$arccopy"
 done
 
-# Stitch images together
-for image in $(find ./ -type d -regex "\.\/[a-z]+[0-9]+_m[0-9]+")
-do
-    echo "Stitching $image"
-    imagefile=$(basename "$image")
-    magick montage $(find . -type f -wholename ""$image"**/*.dds") -geometry +0+0 -tile $(find . -type f -wholename ""$image"_00*_0000/**/*.dds" | wc -l)x "../results/$imagefile.png"
-done
+# Stitch together unpacked maps
+cd ..
+zx --experimental mapstitcher.mjs
 
 # Clean up
-cd ..
 rm -r tmp
+
+# Optimize pngs
+cd results
+oxipng ./*
