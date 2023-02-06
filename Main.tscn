@@ -16,10 +16,42 @@ current = true
 zoom = Vector2( 0.1, 0.1 )
 script = ExtResource( 3 )
 
+[node name="CameraTween" type="Tween" parent="."]
+
 [node name="MapCoordinateSpace" type="Node2D" parent="."]
 
-[node name="MapSprites" type="Node2D" parent="MapCoordinateSpace"]
+[node name="MapLayers" type="Node2D" parent="MapCoordinateSpace"]
 scale = Vector2( 0.1, 0.1 )
+
+[node name="Layer 0" type="Node2D" parent="MapCoordinateSpace/MapLayers"]
+visible = false
+
+[node name="Layer 1" type="Node2D" parent="MapCoordinateSpace/MapLayers"]
+visible = false
+
+[node name="Layer 2" type="Node2D" parent="MapCoordinateSpace/MapLayers"]
+visible = false
+
+[node name="Layer 3" type="Node2D" parent="MapCoordinateSpace/MapLayers"]
+visible = false
+
+[node name="Layer 4" type="Node2D" parent="MapCoordinateSpace/MapLayers"]
+visible = false
+
+[node name="Layer 5" type="Node2D" parent="MapCoordinateSpace/MapLayers"]
+visible = false
+
+[node name="Layer 6" type="Node2D" parent="MapCoordinateSpace/MapLayers"]
+visible = false
+
+[node name="Layer 7" type="Node2D" parent="MapCoordinateSpace/MapLayers"]
+visible = false
+
+[node name="Layer 8" type="Node2D" parent="MapCoordinateSpace/MapLayers"]
+visible = false
+
+[node name="Layer 9" type="Node2D" parent="MapCoordinateSpace/MapLayers"]
+visible = false
 
 [node name="EnemySetMarkers" type="Node2D" parent="MapCoordinateSpace"]
 
@@ -28,20 +60,8 @@ script = ExtResource( 1 )
 
 [node name="ui" parent="." instance=ExtResource( 4 )]
 
-[node name="FileMenu" parent="ui/status_view/container" index="1"]
-items = [ "New", null, 0, false, false, 0, 0, null, "", false, "Load", null, 0, false, false, 1, 0, null, "", false, "Save", null, 0, false, false, 2, 0, null, "", false ]
-
-[node name="NamedEnemyParamsIdOptionButton" parent="ui/Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer" index="0"]
-items = [ "- Default name -", null, false, 2298, null ]
-
 [node name="ScaleLineEdit" parent="ui/Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer" index="3"]
 suffix = "%"
-
-[node name="HmPresetNoOptionButton" parent="ui/Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer" index="7"]
-items = [ "- None -", null, false, 0, null ]
-
-[node name="InfectionTypeLineEdit" parent="ui/Right Panel/VBoxContainer/EnemyDetails/ScrollContainer/VBoxContainer/GridContainer" index="21"]
-items = [ "InfectionType_value_0", null, false, 0, null, "InfectionType_value_1", null, false, 1, null, "InfectionType_value_2", null, false, 2, null, "InfectionType_value_3", null, false, 3, null ]
 
 [node name="SettingsWindowDialog" parent="ui" index="5"]
 visible = false
@@ -52,5 +72,6 @@ visible = false
 [connection signal="player_joined" from="ui/left/tab/Players" to="MapCoordinateSpace/PlayerMarkers" method="_on_Players_player_joined"]
 [connection signal="player_left" from="ui/left/tab/Players" to="MapCoordinateSpace/PlayerMarkers" method="_on_Players_player_left"]
 [connection signal="player_updated" from="ui/left/tab/Players" to="MapCoordinateSpace/PlayerMarkers" method="_on_Players_player_updated"]
+[connection signal="item_selected" from="ui/status_view/container/LayerOptionButton" to="." method="_on_LayerOptionButton_item_selected"]
 
 [editable path="ui"]

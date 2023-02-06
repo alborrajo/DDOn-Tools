@@ -28,9 +28,13 @@ func _input(event):
 
 func _on_Stages_item_selected(index: int) -> void:
 	var stage_no = $left/tab/Stages.get_item_metadata(index)
-	var stage_id = DataProvider.stage_no_to_stage_id(int(stage_no))
 	emit_signal(\"stage_selected\", stage_no)
-	stage_label.text = \"%s (ID: %s, Stage No. %s)\" % [tr(str(\"STAGE_NAME_\",stage_id)), stage_id, stage_no]
+	
+	var stage_id = DataProvider.stage_no_to_stage_id(int(stage_no))
+	if stage_id == -1:
+		stage_label.text = \"Stage No. \" + stage_no
+	else:
+		stage_label.text = \"%s (ID: %s, Stage No. %s)\" % [tr(str(\"STAGE_NAME_\",stage_id)), stage_id, stage_no]
 	
 func _on_Players_item_activated():
 	var player: Player = $left/tab/Players.get_selected().get_metadata(0)
@@ -168,14 +172,23 @@ file_dialog = NodePath("../../../FileDialog")
 enemy_tree = NodePath("../../../left/tab/Enemies/EnemyTree")
 notification_popup = NodePath("../../../NotificationPopup")
 
-[node name="StageLabel" type="Label" parent="status_view/container"]
+[node name="LayerOptionButton" type="OptionButton" parent="status_view/container"]
 margin_left = 56.0
+margin_right = 127.0
+margin_bottom = 24.0
+text = "Layer 0"
+items = [ "Layer 0", null, false, 0, null, "Layer 1", null, false, 1, null, "Layer 2", null, false, 2, null, "Layer 3", null, false, 3, null, "Layer 4", null, false, 4, null, "Layer 5", null, false, 5, null, "Layer 6", null, false, 6, null, "Layer 7", null, false, 7, null, "Layer 8", null, false, 8, null, "Layer 9", null, false, 9, null ]
+selected = 0
+
+[node name="StageLabel" type="Label" parent="status_view/container"]
+margin_left = 131.0
 margin_top = 3.0
-margin_right = 56.0
+margin_right = 297.0
 margin_bottom = 21.0
+text = "Stage Name (ID and Number)"
 
 [node name="Spacer" type="Control" parent="status_view/container"]
-margin_left = 60.0
+margin_left = 301.0
 margin_right = 854.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
