@@ -3,7 +3,6 @@ extends Control
 const MAX_LAYERS = 10
 
 const EnemySetPlacemarkScene = preload("res://UI/Marker/EnemySetPlacemark.tscn")
-const MapMarkerScene = preload("res://UI/Marker/MapMarker.tscn")
 
 onready var camera: Camera2D = $camera
 onready var camera_tween: Tween = $CameraTween
@@ -120,11 +119,13 @@ func _clear_markers() -> void:
 func _on_ui_player_activated(player: Player):
 	for stage_index in $ui/left/tab/Stages.get_item_count():
 		if $ui/left/tab/Stages.get_item_metadata(stage_index) == String(player.StageNo):
+			# TODO: Decouple, same as _ready
 			$ui/left/tab/Stages.select(stage_index)
-			$ui/left/tab/Stages.emit_signal("item_activated", stage_index)
-			camera.position = player.get_map_position()
+			$ui/left/tab/Stages.emit_signal("item_selected", stage_index)
+			# Move camera to player position
+			camera_tween.remove_all()
+			_move_camera_to(player.get_map_position())
 			return
-		
 	printerr("Couldnt focus map on %s %s (StageNo: %s)" % [player.FirstName, player.LastName, player.StageNo])
 
 
@@ -151,10 +152,20 @@ func _focus_camera_on_center() -> void:
 		new_position = _get_center(map_layers.get_child(0))
 	
 	if new_position != null:
-		camera_tween.interpolate_property(camera, "position",
+		_move_camera_to(new_position)
+
+
+func _move_camera_to(new_position: Vector2) -> void:
+	camera_tween.interpolate_property(camera, "position",
 		camera.position, new_position, 0.5,
 		Tween.TRANS_SINE, Tween.EASE_IN_OUT)
-		camera_tween.start()
+	camera_tween.start()
+
+
+func _on_LayerOptionButton_item_selected(index):
+	for layer in map_layers.get_children():
+		layer.visible = false
+	map_layers.get_child(index).visible = true
 
 
 static func _get_center(parent: Node2D) -> Vector2:
@@ -171,9 +182,3 @@ static func _get_center(parent: Node2D) -> Vector2:
 		max_y = max(max_y, position.y)
 		
 	return parent.to_global(Rect2(min_x, min_y, max_x-min_x, max_y-min_y).get_center())
-
-
-func _on_LayerOptionButton_item_selected(index):
-	for layer in map_layers.get_children():
-		layer.visible = false
-	map_layers.get_child(index).visible = true

@@ -41,13 +41,8 @@ func update_info():
 		item = item.get_next()
 			
 	for info in infos:
-		var player: Player
-		player = Player.new(info)
-			
-		# on ui
-		var stage_id := DataProvider.stage_no_to_stage_id(player.StageNo)
-		var text := "%s %s @ %s %s" % [player.FirstName, player.LastName, tr(str("STAGE_NAME_",stage_id)), player.get_map_position().round()]
-		
+		var player := Player.new(info)
+		print_debug("[%d] %s %s @ %d %s" % [player.CharacterId, player.FirstName, player.LastName, player.StageNo, player.pos.round()])
 		var existing_ui : TreeItem
 		item = false
 		if get_root():
@@ -58,18 +53,18 @@ func update_info():
 			item = item.get_next()
 		if existing_ui:
 			# update existing player
-			existing_ui.set_text(0, text)
+			_update_tree_entry(existing_ui, player)
 			emit_signal("player_updated", player)
 		else:
 			# create new player
-			create_tree_entry(player)
+			var entry := create_item(players_on_ui_root)
+			_update_tree_entry(entry, player)
 			emit_signal("player_joined", player)
-			
 
-func create_tree_entry(var player: Player):
+
+func _update_tree_entry(item: TreeItem, player: Player):
 	var stage_id := DataProvider.stage_no_to_stage_id(player.StageNo)
 	var text := "%s %s @ %s %s" % [player.FirstName, player.LastName, tr(str("STAGE_NAME_",stage_id)), player.get_map_position().round()]
-	var item = create_item(players_on_ui_root)
 	item.set_text(0, text)
 	item.set_metadata(0, player)
 

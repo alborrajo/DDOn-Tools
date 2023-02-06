@@ -9,7 +9,6 @@ func _on_Players_player_joined(player: Player):
 	var node := _get_player_node(player)
 	if node == null:
 		node = PlayerMarkerScene.instance()
-		ui_node.connect("map_selected", node, "_on_ui_map_selected")
 		ui_node.connect("stage_selected", node, "_on_ui_stage_selected")
 		node.set_player(player)
 		add_child(node)
