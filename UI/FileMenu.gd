@@ -173,8 +173,8 @@ func reload() -> bool:
 func _on_save():
 	file_dialog_node.mode = FileDialog.MODE_SAVE_FILE
 	file_dialog_node.popup()
-	yield(file_dialog_node, "file_selected")
-	save_file(file_dialog_node.current_path)
+	var filename = yield(file_dialog_node, "file_selected")
+	save_file(filename)
 	
 func save_file(file_path: String):
 	print_debug("Saving file ", file_path)
