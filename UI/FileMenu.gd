@@ -173,15 +173,15 @@ func reload() -> bool:
 func _on_save():
 	file_dialog_node.mode = FileDialog.MODE_SAVE_FILE
 	file_dialog_node.popup()
-	yield(file_dialog_node, "file_selected")
-	save_file(file_dialog_node.current_path)
+	var filename = yield(file_dialog_node, "file_selected")
+	save_file(filename)
 	
 func save_file(file_path: String):
 	print_debug("Saving file ", file_path)
 	
 	var file := File.new()
 	file.open(file_path, File.WRITE)
-	file.store_csv_line(CSV_HEADER)
+	store_csv_line_crlf(file, CSV_HEADER)
 	for set in EnemySetProvider.get_all_enemy_sets():
 		for enemy in set.get_enemies():
 			var csv_data := []
@@ -208,13 +208,20 @@ func save_file(file_path: String):
 			csv_data.append(enemy.is_area_boss)
 			csv_data.append(enemy.is_blood_enemy)
 			csv_data.append(enemy.is_highorb_enemy)
-			file.store_csv_line(csv_data)
-	
+			store_csv_line_crlf(file, csv_data)
+			
 	file.close()
 
 	self._file_path = file_path
 	
 	notification_popup_node.notify("Saved file "+file_path)
+
+func store_csv_line_crlf(file: File, csv_data: Array):
+	file.store_csv_line(csv_data)
+	file.seek(file.get_position()-1)
+	#file.store_string("\r\n")
+	file.store_16(0x0A0D)
+	return
 	
 func resave() -> bool:
 	if _file_path != "":
