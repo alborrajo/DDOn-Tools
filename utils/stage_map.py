@@ -7,7 +7,7 @@ def readcstr(f: BufferedReader):
     buf = bytearray()
     while True:
         b = f.read(1)
-        if b is None or b[0] == 0:
+        if b[0] == 0:
             return buf.decode('utf-8')
         else:
             buf.append(b[0])
