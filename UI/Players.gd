@@ -41,7 +41,7 @@ func update_info():
 		item = item.get_next()
 			
 	for info in infos:
-		var player := Player.new(info)
+		var player := PlayerMapEntity.new(info)
 		print_debug("[%d] %s %s @ %d %s" % [player.CharacterId, player.FirstName, player.LastName, player.StageNo, player.pos.round()])
 		var existing_ui : TreeItem
 		item = false
@@ -62,7 +62,7 @@ func update_info():
 			emit_signal("player_joined", player)
 
 
-func _update_tree_entry(item: TreeItem, player: Player):
+func _update_tree_entry(item: TreeItem, player: PlayerMapEntity):
 	var stage_id := DataProvider.stage_no_to_stage_id(player.StageNo)
 	var text := "%s %s @ %s %s" % [player.FirstName, player.LastName, tr(str("STAGE_NAME_",stage_id)), player.get_map_position().round()]
 	item.set_text(0, text)

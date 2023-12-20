@@ -3,8 +3,6 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node
 
-signal new_enemy_set(stage_id, layer_no, group_id, subgroup_id)
-
 var _enemy_sets := []
 
 func clear() -> void:
@@ -19,12 +17,11 @@ func get_enemy_set(stage_id: int, layer_no: int, group_id: int, subgroup_id: int
 	
 	var set := EnemySet.new(stage_id, layer_no, group_id, subgroup_id)
 	_enemy_sets.append(set)
-	emit_signal(\"new_enemy_set\", stage_id, layer_no, group_id, subgroup_id)
 	return set
 
 func get_all_enemy_sets() -> Array:
 	return Array(_enemy_sets)
 "
 
-[node name="EnemySetProvider" type="Node"]
+[node name="SetProvider" type="Node"]
 script = SubResource( 1 )

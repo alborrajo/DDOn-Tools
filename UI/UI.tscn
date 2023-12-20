@@ -37,7 +37,7 @@ func _on_Stages_item_selected(index: int) -> void:
 		stage_label.text = \"%s (ID: %s, Stage No. %s)\" % [tr(str(\"STAGE_NAME_\",stage_id)), stage_id, stage_no]
 	
 func _on_Players_item_activated():
-	var player: Player = $left/tab/Players.get_selected().get_metadata(0)
+	var player: PlayerMapEntity = $left/tab/Players.get_selected().get_metadata(0)
 	emit_signal(\"player_activated\", player)
 
 func _on_root_markers_loaded():

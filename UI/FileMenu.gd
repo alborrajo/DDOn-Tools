@@ -76,7 +76,7 @@ func _on_new():
 	
 func new_file() -> bool:
 	print_debug("New file. Clearing workspace")
-	EnemySetProvider.clear()
+	SetProvider.clear()
 	self._file_path = ""
 	return true
 
@@ -109,7 +109,7 @@ func load_file(file_path: String):
 			return
 	
 	# Clear enemy set state
-	EnemySetProvider.clear()
+	SetProvider.clear()
 		
 	# Then load it from the file
 	while !file.eof_reached():
@@ -124,7 +124,7 @@ func load_file(file_path: String):
 			print("Ignoring comment line ", csv_line)
 			continue
 		
-		# Send read entries to the EnemySetProvider
+		# Send read entries to the SetProvider
 		var stage_id = int(csv_line[0])
 		var layer_no = int(csv_line[1])
 		var group_id = int(csv_line[2])
@@ -151,7 +151,7 @@ func load_file(file_path: String):
 		enemy.is_blood_enemy = parse_bool(csv_line[21].strip_edges())
 		enemy.is_highorb_enemy = parse_bool(csv_line[22].strip_edges())
 		
-		var enemy_set = EnemySetProvider.get_enemy_set(stage_id, layer_no, group_id, subgroup_id)
+		var enemy_set = SetProvider.get_enemy_set(stage_id, layer_no, group_id, subgroup_id)
 		enemy_set.add_enemy(enemy)
 	
 	file.close()
@@ -182,7 +182,7 @@ func save_file(file_path: String):
 	var file := File.new()
 	file.open(file_path, File.WRITE)
 	store_csv_line_crlf(file, CSV_HEADER)
-	for set in EnemySetProvider.get_all_enemy_sets():
+	for set in SetProvider.get_all_enemy_sets():
 		for enemy in set.get_enemies():
 			var csv_data := []
 			csv_data.append(set.stage_id)

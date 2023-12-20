@@ -9,7 +9,7 @@ const EnemySetPlacemarkScene = preload("res://UI/Marker/EnemySetPlacemark.tscn")
 onready var camera: Camera2D = $camera
 onready var camera_tween: Tween = $CameraTween
 onready var map_layers: Node2D = $MapCoordinateSpace/MapLayers
-onready var markers_node: Node2D = $MapCoordinateSpace/EnemySetMarkers
+onready var enemy_sets_node: Node2D = $MapCoordinateSpace/EnemySetMarkers
 onready var players_node: Node2D = $MapCoordinateSpace/PlayerMarkers
 	
 func _ready():
@@ -32,9 +32,9 @@ func _on_ui_stage_selected(stage_no):
 	
 	var stage_id = DataProvider.stage_no_to_stage_id(int(stage_no))
 	if stage_id == -1:
-		print("Selected stage ??? (ID: ???, Stage No. %s) with %s markers" % [stage_no, markers_node.get_child_count()])
+		print("Selected stage ??? (ID: ???, Stage No. %s) with %s markers" % [stage_no, enemy_sets_node.get_child_count()])
 	else:
-		print("Selected stage %s (ID: %s, Stage No. %s) with %s markers" % [tr(str("STAGE_NAME_",stage_id)), stage_id, stage_no, markers_node.get_child_count()])
+		print("Selected stage %s (ID: %s, Stage No. %s) with %s markers" % [tr(str("STAGE_NAME_",stage_id)), stage_id, stage_no, enemy_sets_node.get_child_count()])
 
 
 func _load_stage_map(stage_no) -> void:
@@ -88,15 +88,19 @@ func _add_stage_maps(stage_no: int) -> void:
 		printerr("Couldn't find a map for this stage (Stage No. %s)" % [stage_no])
 
 func _load_stage_markers(stage_no):
-	# Build new stage markers
 	var stage_id = DataProvider.stage_no_to_stage_id(int(stage_no))
+	
+	# Build enemy set markers for the new stage
 	if stage_no in DataProvider.repo["StageEctMarkers"] and DataProvider.repo["StageEctMarkers"][stage_no] != null:
 		for ect_marker in DataProvider.repo["StageEctMarkers"][stage_no]["MarkerInfos"]:
-			var marker : Marker = Marker.new(ect_marker, int(stage_no))
+			var group_no := int(ect_marker["GroupNo"])
+			var pos := Vector3(ect_marker["Pos"]["X"], ect_marker["Pos"]["Y"], ect_marker["Pos"]["Z"])
+			var map_entity = MapEntity.new(pos, int(stage_no))
 			var enemy_set_placemark: EnemySetPlacemark = EnemySetPlacemarkScene.instance()
-			enemy_set_placemark.enemy_set = EnemySetProvider.get_enemy_set(stage_id, 0, marker.GroupNo, 0)
-			enemy_set_placemark.rect_position = marker.get_map_position()
-			markers_node.add_child(enemy_set_placemark)
+			enemy_set_placemark.enemy_set = SetProvider.get_enemy_set(stage_id, 0, group_no, 0)
+			enemy_set_placemark.rect_position = map_entity.get_map_position()
+			enemy_sets_node.add_child(enemy_set_placemark)
+			
 
 
 func _load_map_resource(resource_path: String) -> Resource:
@@ -114,8 +118,8 @@ func _clear_map():
 
 func _clear_markers() -> void:
 	# Clear previous selected stage markers
-	for child in markers_node.get_children():
-		markers_node.remove_child(child)
+	for child in enemy_sets_node.get_children():
+		enemy_sets_node.remove_child(child)
 
 
 func _on_ui_player_activated(player: Player):
@@ -147,8 +151,8 @@ func _update_layer_selector() -> void:
 
 func _focus_camera_on_center() -> void:
 	var new_position = null
-	if markers_node.get_child_count() > 0:
-		new_position = _get_center(markers_node)
+	if enemy_sets_node.get_child_count() > 0:
+		new_position = _get_center(enemy_sets_node)
 	elif map_layers.get_child(0).get_child_count() > 0:
 		# TODO: Not depend on there being a layer 0
 		new_position = _get_center(map_layers.get_child(0))

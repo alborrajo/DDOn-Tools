@@ -1,5 +1,5 @@
 extends MapEntity
-class_name Player
+class_name PlayerMapEntity
 
 var CharacterId : int
 var FirstName : String

@@ -1,9 +1,9 @@
 extends GenericMarker
 class_name PlayerMarker
 
-var player : Player
+var player : PlayerMapEntity
 
-func set_player(var p_player : Player):
+func set_player(var p_player : PlayerMapEntity):
 	player = p_player
 	set_pos_vec(player.get_map_position())
 	

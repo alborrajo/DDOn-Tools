@@ -79,11 +79,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Entities/Map/MapEntity.gd"
 }, {
-"base": "MapEntity",
-"class": "Marker",
-"language": "GDScript",
-"path": "res://Entities/Map/Marker.gd"
-}, {
 "base": "Button",
 "class": "Minimize",
 "language": "GDScript",
@@ -100,9 +95,9 @@ _global_script_classes=[ {
 "path": "res://UI/NotificationPopup.gd"
 }, {
 "base": "MapEntity",
-"class": "Player",
+"class": "PlayerMapEntity",
 "language": "GDScript",
-"path": "res://Entities/Map/Player.gd"
+"path": "res://Entities/Map/PlayerMapEntity.gd"
 }, {
 "base": "GenericMarker",
 "class": "PlayerMarker",
@@ -144,11 +139,10 @@ _global_script_class_icons={
 "HmPresetNoOptionButton": "",
 "LanguageOptionButton": "",
 "MapEntity": "",
-"Marker": "",
 "Minimize": "",
 "NamedEnemyParamsIdOptionButton": "",
 "NotificationPopup": "",
-"Player": "",
+"PlayerMapEntity": "",
 "PlayerMarker": "",
 "PlayerMarkers": "",
 "Players": "",
@@ -167,7 +161,7 @@ config/windows_native_icon="res://puala.ico"
 
 DataProvider="*res://Providers/DataProvider.gd"
 StorageProvider="*res://Providers/StorageProvider.tscn"
-EnemySetProvider="*res://Providers/EnemySetProvider.tscn"
+SetProvider="*res://Providers/SetProvider.tscn"
 
 [gui]
 
