@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://UI/EnemyDetails.gd" type="Script" id=1]
 [ext_resource path="res://UI/NotificationPopup.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://UI/Chat.tscn" type="PackedScene" id=9]
 [ext_resource path="res://UI/Stages.gd" type="Script" id=10]
 [ext_resource path="res://UI/Players.gd" type="Script" id=11]
+[ext_resource path="res://UI/ItemTree.gd" type="Script" id=12]
 
 [sub_resource type="GDScript" id=2]
 script/source = "extends CanvasLayer
@@ -113,6 +114,30 @@ mouse_filter = 1
 size_flags_vertical = 3
 allow_reselect = true
 script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Items" type="VBoxContainer" parent="left/tab"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 36.0
+margin_right = -4.0
+margin_bottom = -4.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemTree" type="Tree" parent="left/tab/Items"]
+margin_top = 28.0
+margin_right = 288.0
+margin_bottom = 497.0
+mouse_filter = 1
+size_flags_vertical = 3
+allow_reselect = true
+script = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
