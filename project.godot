@@ -169,7 +169,7 @@ theme/custom_font="res://UI/font.tres"
 
 [locale]
 
-translations=PoolStringArray( "res://resources/internationalization/enemy_name.en.translation", "res://resources/internationalization/enemy_name.ja.translation", "res://resources/internationalization/named_param.en.translation", "res://resources/internationalization/named_param.ja.translation", "res://resources/internationalization/HmPresetNo.en.translation", "res://resources/internationalization/HmPresetNo.ja.translation", "res://resources/internationalization/ui.en.translation", "res://resources/internationalization/ui.ja.translation", "res://resources/internationalization/stage_name.en.translation", "res://resources/internationalization/stage_name.ja.translation" )
+translations=PoolStringArray( "res://resources/internationalization/enemy_name.en.translation", "res://resources/internationalization/enemy_name.ja.translation", "res://resources/internationalization/named_param.en.translation", "res://resources/internationalization/named_param.ja.translation", "res://resources/internationalization/HmPresetNo.en.translation", "res://resources/internationalization/HmPresetNo.ja.translation", "res://resources/internationalization/ui.en.translation", "res://resources/internationalization/ui.ja.translation", "res://resources/internationalization/stage_name.en.translation", "res://resources/internationalization/stage_name.ja.translation", "res://resources/internationalization/item_name.en.translation", "res://resources/internationalization/item_name.ja.translation" )
 
 [physics]
 
