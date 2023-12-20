@@ -55,6 +55,8 @@ visible = false
 
 [node name="EnemySetMarkers" type="Node2D" parent="MapCoordinateSpace"]
 
+[node name="GatheringSpotMarkers" type="Node2D" parent="MapCoordinateSpace"]
+
 [node name="PlayerMarkers" type="Node2D" parent="MapCoordinateSpace"]
 script = ExtResource( 1 )
 
