@@ -29,7 +29,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UI/EnemyDetails.gd"
 }, {
-"base": "Button",
+"base": "GenericPlacemark",
 "class": "EnemyPlacemark",
 "language": "GDScript",
 "path": "res://UI/Marker/EnemyPlacemark.gd"
@@ -39,7 +39,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Entities/EnemySet.gd"
 }, {
-"base": "PanelContainer",
+"base": "GenericSetPlacemark",
 "class": "EnemySetPlacemark",
 "language": "GDScript",
 "path": "res://UI/Marker/EnemySetPlacemark.gd"
@@ -63,6 +63,16 @@ _global_script_classes=[ {
 "class": "GenericMarker",
 "language": "GDScript",
 "path": "res://UI/Marker/GenericMarker.gd"
+}, {
+"base": "Button",
+"class": "GenericPlacemark",
+"language": "GDScript",
+"path": "res://UI/Marker/GenericPlacemark.gd"
+}, {
+"base": "PanelContainer",
+"class": "GenericSetPlacemark",
+"language": "GDScript",
+"path": "res://UI/Marker/GenericSetPlacemark.gd"
 }, {
 "base": "OptionButton",
 "class": "HmPresetNoOptionButton",
@@ -136,6 +146,8 @@ _global_script_class_icons={
 "EnemyType": "",
 "FileMenu": "",
 "GenericMarker": "",
+"GenericPlacemark": "",
+"GenericSetPlacemark": "",
 "HmPresetNoOptionButton": "",
 "LanguageOptionButton": "",
 "MapEntity": "",
