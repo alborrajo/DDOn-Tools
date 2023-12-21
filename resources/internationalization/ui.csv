@@ -63,3 +63,6 @@ IsBloodEnemy,ブラッドオーブ,Blood Orbs
 IsBloodEnemy_tooltip,選り出したならば、これエネミーは倒すと以上のオーブを落とすです。,If checked this enemy will drop Blood Orbs when killed
 IsHighOrbEnemy,ハイオーブ,High Orbs
 IsHighOrbEnemy_tooltip,選り出したならば、これエネミーは倒すとハイオーブを落とすです,If checked this enemy will drop High Orbs when killed
+Num,量,Amount
+Quality,高レアリティ/特別ドロップ,High Rarity/Special Drop
+IsHidden,隠れた,Hidden
