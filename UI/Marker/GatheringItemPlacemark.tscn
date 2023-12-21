@@ -7,3 +7,5 @@
 text = "Placeholder (69)"
 script = ExtResource( 2 )
 item = null
+
+[connection signal="pressed" from="." to="." method="_on_GatheringItemPlacemark_pressed"]

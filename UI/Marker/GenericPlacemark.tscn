@@ -9,5 +9,3 @@ mouse_filter = 1
 text = "Placeholder"
 flat = true
 script = ExtResource( 1 )
-
-[connection signal="pressed" from="." to="." method="_on_EnemyPlacemark_pressed"]

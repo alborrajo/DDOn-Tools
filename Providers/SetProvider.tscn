@@ -6,11 +6,9 @@ script/source = "extends Node
 var _enemy_sets := []
 var _gathering_spots := []
 
-func clear() -> void:
+func clear_enemy_sets() -> void:
 	for set in _enemy_sets:
 		set.clear_enemies()
-	for spot in _gathering_spots:
-		spot.clear_items()
 
 func get_enemy_set(stage_id: int, layer_no: int, group_id: int, subgroup_id: int) -> EnemySet:
 	# Inefficient af
@@ -25,6 +23,10 @@ func get_enemy_set(stage_id: int, layer_no: int, group_id: int, subgroup_id: int
 func get_all_enemy_sets() -> Array:
 	return Array(_enemy_sets)
 
+
+func clear_gathering_spots() -> void:
+	for spot in _gathering_spots:
+		spot.clear_gathering_items()
 
 func get_gathering_spot(stage_id: int, group_id: int, subgroup_id: int) -> GatheringSpot:
 	# Inefficient af

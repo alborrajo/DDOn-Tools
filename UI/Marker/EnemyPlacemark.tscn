@@ -7,3 +7,5 @@
 text = "Placeholder (Lv.69)"
 script = ExtResource( 1 )
 enemy = null
+
+[connection signal="pressed" from="." to="." method="_on_EnemyPlacemark_pressed"]

@@ -7,11 +7,11 @@ const COLOR_DEFAULT = Color.white
 
 export (Resource) var enemy: Resource setget set_enemy
 
-onready var _enemyDetails: EnemyDetails = EnemyDetails.get_instance(get_tree()) 
+onready var _detailsPanel: DetailsPanel = DetailsPanel.get_instance(get_tree())
 
 func _on_EnemyPlacemark_pressed():
 	# Left Click
-	_enemyDetails.enemy = enemy
+	_detailsPanel.show_details_of(enemy)
 	
 func set_enemy(em: Enemy) -> void:
 	if enemy != null and enemy.is_connected("changed", self, "_on_enemy_changed"):

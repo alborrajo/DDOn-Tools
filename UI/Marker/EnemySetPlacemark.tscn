@@ -10,7 +10,7 @@ border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
-border_color = Color( 1, 0.129412, 0.129412, 1 )
+border_color = Color( 1, 0.333333, 0.333333, 1 )
 
 [node name="EnemySetPlacemark" instance=ExtResource( 2 )]
 custom_styles/panel = SubResource( 1 )
