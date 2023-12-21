@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/Marker/GenericPlacemark.tscn" type="PackedScene" id=1]
+[ext_resource path="res://UI/Marker/GatheringItemPlacemark.gd" type="Script" id=2]
+
+[node name="GatheringItemPlacemark" instance=ExtResource( 1 )]
+text = "Placeholder (69)"
+script = ExtResource( 2 )
+item = null
+
+[connection signal="pressed" from="." to="." method="_on_GatheringItemPlacemark_pressed"]

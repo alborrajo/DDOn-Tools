@@ -19,17 +19,27 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Common.gd"
 }, {
+"base": "Panel",
+"class": "DetailsPanel",
+"language": "GDScript",
+"path": "res://UI/DetailsPanel.gd"
+}, {
 "base": "Resource",
 "class": "Enemy",
 "language": "GDScript",
 "path": "res://Entities/Enemy.gd"
 }, {
-"base": "Panel",
-"class": "EnemyDetails",
+"base": "ScrollContainer",
+"class": "EnemyDetailsPanel",
 "language": "GDScript",
-"path": "res://UI/EnemyDetails.gd"
+"path": "res://UI/EnemyDetailsPanel.gd"
 }, {
-"base": "Button",
+"base": "GenericFileMenu",
+"class": "EnemyFileMenu",
+"language": "GDScript",
+"path": "res://UI/EnemyFileMenu.gd"
+}, {
+"base": "GenericPlacemark",
 "class": "EnemyPlacemark",
 "language": "GDScript",
 "path": "res://UI/Marker/EnemyPlacemark.gd"
@@ -39,7 +49,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Entities/EnemySet.gd"
 }, {
-"base": "PanelContainer",
+"base": "GenericSetPlacemark",
 "class": "EnemySetPlacemark",
 "language": "GDScript",
 "path": "res://UI/Marker/EnemySetPlacemark.gd"
@@ -54,20 +64,70 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Entities/EnemyType.gd"
 }, {
-"base": "MenuButton",
-"class": "FileMenu",
+"base": "Resource",
+"class": "GatheringItem",
 "language": "GDScript",
-"path": "res://UI/FileMenu.gd"
+"path": "res://Entities/GatheringItem.gd"
+}, {
+"base": "GenericPlacemark",
+"class": "GatheringItemPlacemark",
+"language": "GDScript",
+"path": "res://UI/Marker/GatheringItemPlacemark.gd"
+}, {
+"base": "Resource",
+"class": "GatheringSpot",
+"language": "GDScript",
+"path": "res://Entities/GatheringSpot.gd"
+}, {
+"base": "GenericSetPlacemark",
+"class": "GatheringSpotPlacemark",
+"language": "GDScript",
+"path": "res://UI/Marker/GatheringSpotPlacemark.gd"
+}, {
+"base": "MenuButton",
+"class": "GenericFileMenu",
+"language": "GDScript",
+"path": "res://UI/GenericFileMenu.gd"
 }, {
 "base": "Node2D",
 "class": "GenericMarker",
 "language": "GDScript",
 "path": "res://UI/Marker/GenericMarker.gd"
 }, {
+"base": "Button",
+"class": "GenericPlacemark",
+"language": "GDScript",
+"path": "res://UI/Marker/GenericPlacemark.gd"
+}, {
+"base": "PanelContainer",
+"class": "GenericSetPlacemark",
+"language": "GDScript",
+"path": "res://UI/Marker/GenericSetPlacemark.gd"
+}, {
 "base": "OptionButton",
 "class": "HmPresetNoOptionButton",
 "language": "GDScript",
 "path": "res://UI/HmPresetNoOptionButton.gd"
+}, {
+"base": "Resource",
+"class": "Item",
+"language": "GDScript",
+"path": "res://Entities/Item.gd"
+}, {
+"base": "ScrollContainer",
+"class": "ItemDetailsPanel",
+"language": "GDScript",
+"path": "res://UI/ItemDetailsPanel.gd"
+}, {
+"base": "GenericFileMenu",
+"class": "ItemFileMenu",
+"language": "GDScript",
+"path": "res://UI/ItemFileMenu.gd"
+}, {
+"base": "Tree",
+"class": "ItemTree",
+"language": "GDScript",
+"path": "res://UI/ItemTree.gd"
 }, {
 "base": "OptionButton",
 "class": "LanguageOptionButton",
@@ -78,16 +138,6 @@ _global_script_classes=[ {
 "class": "MapEntity",
 "language": "GDScript",
 "path": "res://Entities/Map/MapEntity.gd"
-}, {
-"base": "GenericMarker",
-"class": "MapMarker",
-"language": "GDScript",
-"path": "res://UI/Marker/MapMarker.gd"
-}, {
-"base": "MapEntity",
-"class": "Marker",
-"language": "GDScript",
-"path": "res://Entities/Map/Marker.gd"
 }, {
 "base": "Button",
 "class": "Minimize",
@@ -105,9 +155,9 @@ _global_script_classes=[ {
 "path": "res://UI/NotificationPopup.gd"
 }, {
 "base": "MapEntity",
-"class": "Player",
+"class": "PlayerMapEntity",
 "language": "GDScript",
-"path": "res://Entities/Map/Player.gd"
+"path": "res://Entities/Map/PlayerMapEntity.gd"
 }, {
 "base": "GenericMarker",
 "class": "PlayerMarker",
@@ -137,24 +187,34 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Chat": "",
 "Common": "",
+"DetailsPanel": "",
 "Enemy": "",
-"EnemyDetails": "",
+"EnemyDetailsPanel": "",
+"EnemyFileMenu": "",
 "EnemyPlacemark": "",
 "EnemySet": "",
 "EnemySetPlacemark": "",
 "EnemyTree": "",
 "EnemyType": "",
-"FileMenu": "",
+"GatheringItem": "",
+"GatheringItemPlacemark": "",
+"GatheringSpot": "",
+"GatheringSpotPlacemark": "",
+"GenericFileMenu": "",
 "GenericMarker": "",
+"GenericPlacemark": "",
+"GenericSetPlacemark": "",
 "HmPresetNoOptionButton": "",
+"Item": "",
+"ItemDetailsPanel": "",
+"ItemFileMenu": "",
+"ItemTree": "",
 "LanguageOptionButton": "",
 "MapEntity": "",
-"MapMarker": "",
-"Marker": "",
 "Minimize": "",
 "NamedEnemyParamsIdOptionButton": "",
 "NotificationPopup": "",
-"Player": "",
+"PlayerMapEntity": "",
 "PlayerMarker": "",
 "PlayerMarkers": "",
 "Players": "",
@@ -173,7 +233,7 @@ config/windows_native_icon="res://puala.ico"
 
 DataProvider="*res://Providers/DataProvider.gd"
 StorageProvider="*res://Providers/StorageProvider.tscn"
-EnemySetProvider="*res://Providers/EnemySetProvider.tscn"
+SetProvider="*res://Providers/SetProvider.tscn"
 
 [gui]
 
@@ -181,7 +241,7 @@ theme/custom_font="res://UI/font.tres"
 
 [locale]
 
-translations=PoolStringArray( "res://resources/internationalization/enemy_name.en.translation", "res://resources/internationalization/enemy_name.ja.translation", "res://resources/internationalization/named_param.en.translation", "res://resources/internationalization/named_param.ja.translation", "res://resources/internationalization/HmPresetNo.en.translation", "res://resources/internationalization/HmPresetNo.ja.translation", "res://resources/internationalization/ui.en.translation", "res://resources/internationalization/ui.ja.translation", "res://resources/internationalization/stage_name.en.translation", "res://resources/internationalization/stage_name.ja.translation" )
+translations=PoolStringArray( "res://resources/internationalization/enemy_name.en.translation", "res://resources/internationalization/enemy_name.ja.translation", "res://resources/internationalization/named_param.en.translation", "res://resources/internationalization/named_param.ja.translation", "res://resources/internationalization/HmPresetNo.en.translation", "res://resources/internationalization/HmPresetNo.ja.translation", "res://resources/internationalization/ui.en.translation", "res://resources/internationalization/ui.ja.translation", "res://resources/internationalization/stage_name.en.translation", "res://resources/internationalization/stage_name.ja.translation", "res://resources/internationalization/item_name.en.translation", "res://resources/internationalization/item_name.ja.translation" )
 
 [physics]
 

@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://UI/Marker/GenericSetPlacemark.tscn" type="PackedScene" id=1]
+[ext_resource path="res://UI/Marker/GatheringSpotPlacemark.gd" type="Script" id=2]
+[ext_resource path="res://UI/Marker/GatheringItemPlacemark.tscn" type="PackedScene" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color( 0.333333, 1, 0.333333, 1 )
+
+[node name="GatheringSpotPlacemark" instance=ExtResource( 1 )]
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 2 )
+item_placemark_packed_scene = ExtResource( 3 )
+gathering_spot = null

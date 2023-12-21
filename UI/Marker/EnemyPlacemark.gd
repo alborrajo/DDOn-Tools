@@ -1,7 +1,5 @@
-extends Button
+extends GenericPlacemark
 class_name EnemyPlacemark
-
-signal enemy_removed()
 
 const COLOR_BLOOD_ORB = Color.rebeccapurple
 const COLOR_HIGH_ORB = Color.darkred
@@ -9,24 +7,11 @@ const COLOR_DEFAULT = Color.white
 
 export (Resource) var enemy: Resource setget set_enemy
 
-onready var _enemyDetails: EnemyDetails = EnemyDetails.get_instance(get_tree()) 
-
-func _gui_input(event):
-	if event is InputEventMouseButton:
-		# Right Click
-		if (event as InputEventMouseButton).button_mask == BUTTON_RIGHT:
-			# Notify removal
-			emit_signal("enemy_removed")
-			# Deselect this enemy from the enemy details panel
-			# TODO: Decouple by moving selected enemy to EnemyProvider maybe
-			if _enemyDetails.enemy == enemy:
-				_enemyDetails.enemy = null
-			# Remove node
-			queue_free()
+onready var _detailsPanel: DetailsPanel = DetailsPanel.get_instance(get_tree())
 
 func _on_EnemyPlacemark_pressed():
 	# Left Click
-	_enemyDetails.enemy = enemy
+	_detailsPanel.show_details_of(enemy)
 	
 func set_enemy(em: Enemy) -> void:
 	if enemy != null and enemy.is_connected("changed", self, "_on_enemy_changed"):
@@ -34,8 +19,9 @@ func set_enemy(em: Enemy) -> void:
 		
 	enemy = em
 		
-	em.connect("changed", self, "_on_enemy_changed")
-	_on_enemy_changed()
+	if em != null:
+		em.connect("changed", self, "_on_enemy_changed")
+		_on_enemy_changed()
 	
 func _on_enemy_changed():
 	text = enemy.get_display_name()
