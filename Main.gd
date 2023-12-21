@@ -13,6 +13,14 @@ onready var map_layers: Node2D = $MapCoordinateSpace/MapLayers
 onready var enemy_sets_node: Node2D = $MapCoordinateSpace/EnemySetMarkers
 onready var gathering_spots_node: Node2D = $MapCoordinateSpace/GatheringSpotMarkers
 onready var players_node: Node2D = $MapCoordinateSpace/PlayerMarkers
+
+onready var tab_and_map_node = [
+	null,
+	enemy_sets_node,
+	gathering_spots_node,
+	players_node,
+	null
+]
 	
 func _ready():
 	# Select Lestania by default, simulating a click on its selector
@@ -78,7 +86,7 @@ func _add_stage_maps(stage_no: int) -> void:
 				var stage_map_resource := "res://resources/maps/"+String(param["ModelName"])+"_l"+String(layer_index)+".png"
 				var resource := _load_map_resource(stage_map_resource)
 				if resource == null:
-					printerr("Couldn't find the map ", stage_map_resource)
+					print("Couldn't find the map ", stage_map_resource)
 				else:
 					var map_sprite := Sprite.new()
 					map_sprite.texture = load(stage_map_resource)
@@ -204,3 +212,13 @@ static func _get_center(parent: Node2D) -> Vector2:
 		max_y = max(max_y, position.y)
 		
 	return parent.to_global(Rect2(min_x, min_y, max_x-min_x, max_y-min_y).get_center())
+
+
+func _on_tab_tab_changed(tab):
+	for i in range(tab_and_map_node.size()):
+		var map_node: Node2D = tab_and_map_node[i]
+		if map_node != null:
+			if tab == i:
+				map_node.visible = true
+			else:
+				map_node.visible = false
