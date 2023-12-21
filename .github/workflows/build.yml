@@ -5,60 +5,40 @@ on:
     branches:
       - master
 
-
 jobs:
-  release:
-    runs-on: ubuntu-latest
-    outputs:
-      sha8: ${{ steps.slug.outputs.sha8 }}
-      upload_url: ${{ steps.create_release.outputs.upload_url }}
-    steps:
-      - name: Get short SHA
-        id: slug
-        run: echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1.0.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: release-${{ steps.slug.outputs.sha8 }}
-          release_name: Release ${{ steps.slug.outputs.sha8 }}
-          draft: false
-          prerelease: true
   build:
     runs-on: ubuntu-latest
-    needs: release
     strategy:
       matrix:
-        platform: [windows]
+        platform:
+        - name: Windows
+          file: DDOn-Tools.exe
+#        - name: MacOS
+#          file: DDOn-Tools.zip
+#        - name: Linux
+#          file: DDOn-Tools
     steps:
       - uses: actions/checkout@v2
         with:
           lfs: true
+      - name: Get short SHA
+        id: slug
+        run: echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
       - name: Build
         id: build
-        uses: josephbmanley/build-godot-action@v1.4.1
+        uses: yeslayla/build-godot-action@v1.5.0
         with:
-          name: DDOn-Tools
-          preset: ${{ matrix.platform }}
+          name: ${{ matrix.platform.file }}
+          preset: ${{ matrix.platform.name }}
           debugMode: "false"
-      - name: Rename build executable
-        id: rename
+      - name: Zip
         working-directory: ${{ github.workspace }}
-        run: |
-          mkdir renamedBuildOutput
-          cp ${{ steps.build.outputs.build }}/* renamedBuildOutput/
-          mv "renamedBuildOutput/DDOn-Tools" "renamedBuildOutput/DDOn-Tools.exe"
-      - name: Zip build
-        working-directory: ${{ github.workspace }}
-        run: zip -qq -r ${{ matrix.platform }}-${{ needs.release.outputs.sha8 }}.zip renamedBuildOutput/*
+        run: zip -qq -r DDOn-Tools_${{ matrix.platform.name }}-${{ steps.slug.outputs.sha8 }}.zip *
       - name: Upload Release Asset
-        uses: actions/upload-release-asset@v1.0.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v0.1.15
         with:
-          upload_url: ${{ needs.release.outputs.upload_url }}
-          asset_path: ${{ github.workspace }}/${{ matrix.platform }}-${{ needs.release.outputs.sha8 }}.zip
-          asset_name: ddon-tools_${{ matrix.platform }}-${{ needs.release.outputs.sha8 }}.zip
-          asset_content_type: application/gzip
+          files: DDOn-Tools_${{ matrix.platform.name }}-${{ steps.slug.outputs.sha8 }}.zip
+          tag_name: release-${{ steps.slug.outputs.sha8 }}
+          name: Release ${{ steps.slug.outputs.sha8 }}
+          draft: false
+          prerelease: true
