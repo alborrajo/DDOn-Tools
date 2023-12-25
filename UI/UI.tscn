@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://UI/EnemyDetailsPanel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/NotificationPopup.gd" type="Script" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://UI/Players.gd" type="Script" id=11]
 [ext_resource path="res://UI/ItemTree.gd" type="Script" id=12]
 [ext_resource path="res://UI/ItemFileMenu.gd" type="Script" id=13]
+[ext_resource path="res://resources/icons/brightmixIconset search.png" type="Texture" id=14]
 
 [sub_resource type="GDScript" id=2]
 script/source = "extends CanvasLayer
@@ -94,7 +95,6 @@ margin_bottom = -4.0
 script = ExtResource( 10 )
 
 [node name="Enemies" type="VBoxContainer" parent="left/tab"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -105,10 +105,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="EnemyFileMenu" type="MenuButton" parent="left/tab/Enemies"]
+[node name="HBoxContainer" type="HBoxContainer" parent="left/tab/Enemies"]
+margin_right = 288.0
+margin_bottom = 28.0
+
+[node name="EnemyFileMenu" type="MenuButton" parent="left/tab/Enemies/HBoxContainer"]
 process_priority = 1
 margin_right = 32.0
-margin_bottom = 24.0
+margin_bottom = 28.0
 focus_mode = 2
 size_flags_horizontal = 0
 text = "File"
@@ -116,12 +120,20 @@ flat = false
 align = 0
 items = [ "New", null, 0, false, false, 0, 0, null, "", false, "Load", null, 0, false, false, 1, 0, null, "", false, "Save", null, 0, false, false, 2, 0, null, "", false ]
 script = ExtResource( 4 )
-file_dialog = NodePath("../../../../FileDialog")
-notification_popup = NodePath("../../../../NotificationPopup")
-enemy_tree = NodePath("../EnemyTree")
+file_dialog = NodePath("../../../../../FileDialog")
+notification_popup = NodePath("../../../../../NotificationPopup")
+enemy_tree = NodePath("../../EnemyTree")
+
+[node name="FilterLineEdit" type="LineEdit" parent="left/tab/Enemies/HBoxContainer"]
+margin_left = 36.0
+margin_right = 288.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+right_icon = ExtResource( 14 )
 
 [node name="EnemyTree" type="Tree" parent="left/tab/Enemies"]
-margin_top = 28.0
+margin_top = 32.0
 margin_right = 288.0
 margin_bottom = 497.0
 mouse_filter = 1
@@ -133,6 +145,7 @@ __meta__ = {
 }
 
 [node name="Items" type="VBoxContainer" parent="left/tab"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -143,10 +156,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ItemFileMenu" type="MenuButton" parent="left/tab/Items"]
+[node name="HBoxContainer" type="HBoxContainer" parent="left/tab/Items"]
+margin_right = 288.0
+margin_bottom = 28.0
+
+[node name="ItemFileMenu" type="MenuButton" parent="left/tab/Items/HBoxContainer"]
 process_priority = 1
 margin_right = 32.0
-margin_bottom = 24.0
+margin_bottom = 28.0
 focus_mode = 2
 size_flags_horizontal = 0
 text = "File"
@@ -154,12 +171,20 @@ flat = false
 align = 0
 items = [ "New", null, 0, false, false, 0, 0, null, "", false, "Load", null, 0, false, false, 1, 0, null, "", false, "Save", null, 0, false, false, 2, 0, null, "", false ]
 script = ExtResource( 13 )
-file_dialog = NodePath("../../../../FileDialog")
-notification_popup = NodePath("../../../../NotificationPopup")
-item_tree = NodePath("../ItemTree")
+file_dialog = NodePath("../../../../../FileDialog")
+notification_popup = NodePath("../../../../../NotificationPopup")
+item_tree = NodePath("../../ItemTree")
+
+[node name="FilterLineEdit" type="LineEdit" parent="left/tab/Items/HBoxContainer"]
+margin_left = 36.0
+margin_right = 288.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+right_icon = ExtResource( 14 )
 
 [node name="ItemTree" type="Tree" parent="left/tab/Items"]
-margin_top = 28.0
+margin_top = 32.0
 margin_right = 288.0
 margin_bottom = 497.0
 mouse_filter = 1
@@ -340,6 +365,8 @@ text = "Notification"
 [node name="SettingsWindowDialog" parent="." instance=ExtResource( 8 )]
 
 [connection signal="item_selected" from="left/tab/Stages" to="." method="_on_Stages_item_selected"]
+[connection signal="text_changed" from="left/tab/Enemies/HBoxContainer/FilterLineEdit" to="left/tab/Enemies/EnemyTree" method="_on_FilterLineEdit_text_changed"]
+[connection signal="text_changed" from="left/tab/Items/HBoxContainer/FilterLineEdit" to="left/tab/Items/ItemTree" method="_on_FilterLineEdit_text_changed"]
 [connection signal="item_activated" from="left/tab/Players" to="." method="_on_Players_item_activated"]
 [connection signal="timeout" from="left/tab/Players/RPCTimer" to="left/tab/Players" method="_on_rpc_timer_timeout"]
 [connection signal="pressed" from="status_view/container/SettingsButton" to="status_view/container/SettingsButton" method="_on_SettingsButton_pressed"]

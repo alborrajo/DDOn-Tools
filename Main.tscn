@@ -68,13 +68,13 @@ script = ExtResource( 1 )
 [node name="Stages" parent="ui/left/tab" index="0"]
 visible = true
 
-[node name="EnemyFileMenu" parent="ui/left/tab/Enemies" index="0"]
-items = [ "New", null, 0, false, false, 0, 0, null, "", false, "Load", null, 0, false, false, 1, 0, null, "", false, "Save", null, 0, false, false, 2, 0, null, "", false ]
-
-[node name="Items" parent="ui/left/tab" index="2"]
+[node name="Enemies" parent="ui/left/tab" index="1"]
 visible = false
 
-[node name="ItemFileMenu" parent="ui/left/tab/Items" index="0"]
+[node name="EnemyFileMenu" parent="ui/left/tab/Enemies/HBoxContainer" index="0"]
+items = [ "New", null, 0, false, false, 0, 0, null, "", false, "Load", null, 0, false, false, 1, 0, null, "", false, "Save", null, 0, false, false, 2, 0, null, "", false ]
+
+[node name="ItemFileMenu" parent="ui/left/tab/Items/HBoxContainer" index="0"]
 items = [ "New", null, 0, false, false, 0, 0, null, "", false, "Load", null, 0, false, false, 1, 0, null, "", false, "Save", null, 0, false, false, 2, 0, null, "", false ]
 
 [node name="LayerOptionButton" parent="ui/status_view/container" index="1"]
