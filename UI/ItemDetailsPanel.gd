@@ -20,7 +20,8 @@ func _set_item(i: GatheringItem) -> void:
 	
 func _on_item_changed():
 	if item != null:
-		$GridContainer/NumSpinBox.value = item.num
+		$GridContainer/NumContainer/NumSpinBox.value = item.num
+		$GridContainer/NumContainer/MaxNumSpinBox.value = item.max_num
 		$GridContainer/QualitySpinBox.value = item.quality
 		$GridContainer/IsHiddenCheckBox.pressed = item.is_hidden
 		
@@ -29,8 +30,11 @@ func _on_item_changed():
 
 
 func _on_NumSpinBox_value_changed(value):
-	item.num = $GridContainer/NumSpinBox.value
+	item.num = $GridContainer/NumContainer/NumSpinBox.value
 
+func _on_MaxNumSpinBox_value_changed(value):
+	item.max_num = $GridContainer/NumContainer/MaxNumSpinBox.value
+	
 func _on_QualitySpinBox_value_changed(value):
 	item.quality = $GridContainer/QualitySpinBox.value
 

@@ -4,8 +4,15 @@ class_name ItemTree
 export (String, FILE, "*.csv") var itemsCSV := "res://resources/items.csv"
 
 var items_cache: Array
+var initialized := false
 
 func _ready():
+	init_item_list()
+	
+func init_item_list():
+	if initialized:
+		return
+		
 	items_cache = []
 	var file := File.new()
 	file.open(itemsCSV, File.READ)
@@ -17,6 +24,7 @@ func _ready():
 			items_cache.append(item)
 	file.close()
 	_rebuild_list()
+	initialized = true
 	
 func _on_FilterLineEdit_text_changed(new_text: String):
 	_rebuild_list(new_text)

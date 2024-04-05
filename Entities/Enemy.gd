@@ -1,6 +1,135 @@
 extends Resource
 class_name Enemy
 
+
+# As it is right now, you have to kill 5 bosses of your level
+# or 50 regular enemies to level up
+const EXP_MULTIPLIER := 0.02;
+const EXP_BOSS_MUTLIPLIER := 0.2;
+
+const EXP_UNTIL_NEXT_LV := [
+	0,
+	300, # Lv 1 
+	500, # Lv 2 
+	800, # Lv 3 
+	1200, # Lv 4 
+	1700, # Lv 5 
+	2300, # Lv 6 
+	3000, # Lv 7 
+	3800, # Lv 8 
+	4700, # Lv 9 
+	5700, # Lv 10
+	6800, # Lv 11
+	8000, # Lv 12
+	9300, # Lv 13
+	10700, # Lv 14
+	12200, # Lv 15
+	13800, # Lv 16
+	15500, # Lv 17
+	17300, # Lv 18
+	19200, # Lv 19
+	21200, # Lv 20
+	23300, # Lv 21
+	25500, # Lv 22
+	27800, # Lv 23
+	30200, # Lv 24
+	32700, # Lv 25
+	35300, # Lv 26
+	38000, # Lv 27
+	40800, # Lv 28
+	43700, # Lv 29
+	46700, # Lv 30
+	49800, # Lv 31
+	53000, # Lv 32
+	56300, # Lv 33
+	59700, # Lv 34
+	63200, # Lv 35
+	66800, # Lv 36
+	70500, # Lv 37
+	74300, # Lv 38
+	78200, # Lv 39
+	152500, # Lv 40
+	187100, # Lv 41
+	210000, # Lv 42
+	235300, # Lv 43
+	263200, # Lv 44
+	267700, # Lv 45
+	272300, # Lv 46
+	277000, # Lv 47
+	281800, # Lv 48
+	286700, # Lv 49
+	291700, # Lv 50
+	296800, # Lv 51
+	302000, # Lv 52
+	307300, # Lv 53
+	312700, # Lv 54
+	318200, # Lv 55
+	323800, # Lv 56
+	329500, # Lv 57
+	335300, # Lv 58
+	341200, # Lv 59
+	756600, # Lv 60
+	762700, # Lv 61
+	768900, # Lv 62
+	775200, # Lv 63
+	781600, # Lv 64
+	788100, # Lv 65
+	985000, # Lv 66
+	1085000, # Lv 67
+	1185000, # Lv 68
+	1335000, # Lv 69
+	1535000, # Lv 70 (PP Unlocked)
+	1735000, # Lv 71
+	1935000, # Lv 72
+	2185000, # Lv 73
+	2435000, # Lv 74
+	2735000, # Lv 75
+	3035000, # Lv 76
+	3335000, # Lv 77
+	3685000, # Lv 78
+	4035000, # Lv 79
+	4200000, # Lv 80 
+	4200000, # Lv 81
+	4200000, # Lv 82
+	4200000, # Lv 83
+	4200000, # Lv 84
+	4200000, # Lv 85
+	4200000, # Lv 86
+	4200000, # Lv 87
+	4200000, # Lv 88
+	4200000, # Lv 89
+	4200000, # Lv 90
+	4200000, # Lv 91
+	4200000, # Lv 92
+	4200000, # Lv 93
+	4200000, # Lv 94
+	4200000, # Lv 95
+	4200000, # Lv 96
+	4200000, # Lv 97
+	4200000, # Lv 98
+	4200000, # Lv 99
+	4461000, # Lv 10
+	5000000, # Lv 10
+	5000000, # Lv 10
+	5000000, # Lv 10
+	5000000, # Lv 10
+	5000000, # Lv 10
+	5000000, # Lv 10
+	5000000, # Lv 10
+	5000000, # Lv 10
+	5000000, # Lv 10
+	5000000, # Lv 11
+	5000000, # Lv 11
+	5000000, # Lv 11
+	5000000, # Lv 11
+	5000000, # Lv 11
+	5000000, # Lv 11
+	5000000, # Lv 11
+	5000000, # Lv 11
+	5000000, # Lv 11
+	5000000, # Lv 11
+]
+
 var enemy_type: EnemyType setget _set_enemy_type
 var named_enemy_params_id: int = 0x8FA setget _set_named_enemy_params_id
 var raid_boss_id: int = 0 setget _set_raid_boss_id
@@ -19,11 +148,16 @@ var is_boss_bgm: bool = false setget _set_is_boss_bgm
 var is_manual_set: bool = false setget _set_is_manual_set
 var is_area_boss: bool = false setget _set_is_area_boss
 var is_blood_enemy: bool = false setget _set_is_blood_enemy
+var blood_orbs: int = 0 setget _set_blood_orbs
 var is_highorb_enemy: bool = false setget _set_is_highorb_enemy
+var high_orbs: int = 0 setget _set_high_orbs
+var experience: int = 0 setget _set_experience
+var drops_table: DropsTable = null setget _set_drops_table
 
 func _init(type: EnemyType):
 	self.enemy_type = type
 	self.hm_preset_no = type.default_hm_preset_no
+	_set_lv(self.lv) # Update values dependant on Lv
 
 func get_display_name() -> String:
 	return "%s (Lv. %d)" % [enemy_type.name, lv]
@@ -46,6 +180,9 @@ func _set_scale(value):
 	
 func _set_lv(value):
 	lv = value
+	blood_orbs = value
+	high_orbs = value
+	_calculate_exp()
 	emit_changed()
 	
 func _set_hm_preset_no(value):
@@ -82,10 +219,12 @@ func _set_infection_type(value):
 	
 func _set_is_boss_gauge(value):
 	is_boss_gauge = value
+	_calculate_exp()
 	emit_changed()
 	
 func _set_is_boss_bgm(value):
 	is_boss_bgm = value
+	_calculate_exp()
 	emit_changed()
 	
 func _set_is_manual_set(value):
@@ -94,13 +233,37 @@ func _set_is_manual_set(value):
 	
 func _set_is_area_boss(value):
 	is_area_boss = value
+	_calculate_exp()
 	emit_changed()
 	
 func _set_is_blood_enemy(value):
 	is_blood_enemy = value
 	emit_changed()
+
+func _set_blood_orbs(value):
+	blood_orbs = value
+	emit_changed()
 	
 func _set_is_highorb_enemy(value):
 	is_highorb_enemy = value
 	emit_changed()
+
+func _set_high_orbs(value):
+	high_orbs = value
+	emit_changed()
 	
+func _set_experience(value):
+	experience = value
+	emit_changed()
+
+func _set_drops_table(value):
+	drops_table = value
+	emit_changed()
+
+func _calculate_exp() -> void:
+	var next_level_idx := clamp(lv+1, 0, len(EXP_UNTIL_NEXT_LV)-1)
+	var exp_to_level_up: int = EXP_UNTIL_NEXT_LV[next_level_idx]
+	if is_area_boss or is_boss_bgm or is_boss_gauge:
+		experience = int(exp_to_level_up * EXP_BOSS_MUTLIPLIER)
+	else:
+		experience = int(exp_to_level_up * EXP_MULTIPLIER)

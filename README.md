@@ -4,7 +4,7 @@ Tools to be used with [Arrowgene.DragonsDogmaOnline](https://github.com/sebastia
 
 ![Screenshot](info/readme%20screenshot.png)
 
-This is an enemy set editor that allows you to import/export custom enemy sets in csv format.
+This is a server management utility that allows you to import, edit, and export custom enemy sets and gathering spots.
 
 ## Installation
 
@@ -25,6 +25,6 @@ Save or load your set to a file from the File menu (top left). Once a file is op
 ## Development
 
 1. Clone the repository
-2. Download [Godot](https://godotengine.org/)
+2. Download [Godot 3.5](https://godotengine.org/)
 3. Import and open the project in Godot's project list window
 4. Run the program (Press F5 or the play button on the top right)

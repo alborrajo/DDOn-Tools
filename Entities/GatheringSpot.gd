@@ -7,10 +7,10 @@ export var subgroup_id: int setget _set_subgroup_id
 
 var _gathering_items: Array
 
-func _init(stage_id: int, group_id: int, subgroup_id: int):
-	self.stage_id = stage_id
-	self.group_id = group_id
-	self.subgroup_id = subgroup_id
+func _init(_stage_id: int, _group_id: int, _subgroup_id: int):
+	self.stage_id = _stage_id
+	self.group_id = _group_id
+	self.subgroup_id = _subgroup_id
 	_gathering_items = []
 
 func get_gathering_items() -> Array:

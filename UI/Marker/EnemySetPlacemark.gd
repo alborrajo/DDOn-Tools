@@ -37,9 +37,9 @@ func get_enemies() -> Array:
 	return _enemy_set.get_enemies()
 
 # Drag and drop functions
-func can_drop_data(position, data):
+func can_drop_data(_position, data):
 	return data is EnemyType
 	
-func drop_data(position, data):
+func drop_data(_position, data):
 	add_enemy(Enemy.new(data))
 	print_debug("Placed %s at %s (%d %d %d %d) " % [tr(data.name), tr(str("STAGE_NAME_",_enemy_set.stage_id)), _enemy_set.stage_id, _enemy_set.layer_no, _enemy_set.group_id, _enemy_set.subgroup_id])

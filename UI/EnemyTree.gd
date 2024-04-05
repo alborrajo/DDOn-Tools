@@ -4,8 +4,15 @@ class_name EnemyTree
 export (String, FILE, "*.csv") var enemyCSV := "res://resources/enemies.csv"
 
 var enemy_cache: Array
+var initialized := false
 
 func _ready():
+	init_enemy_list()
+		
+func init_enemy_list():
+	if initialized:
+		return
+		
 	enemy_cache = []
 	var file := File.new()
 	file.open(enemyCSV, File.READ)
@@ -17,6 +24,7 @@ func _ready():
 			enemy_cache.append(enemy)
 	file.close()
 	_rebuild_list()
+	initialized = true
 	
 func _on_FilterLineEdit_text_changed(new_text):
 	_rebuild_list(new_text)

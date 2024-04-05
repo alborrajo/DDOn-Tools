@@ -13,7 +13,7 @@ func hide_details():
 func show_details_of(obj):
 	hide_details()
 	if obj == null:
-		pass
+		push_error("Attempted to show the details of a null object")
 	elif obj is Enemy:
 		$EnemyDetailsPanel.enemy = obj
 		$EnemyDetailsPanel.visible = true

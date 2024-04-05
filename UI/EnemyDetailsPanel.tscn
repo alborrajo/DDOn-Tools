@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://UI/NamedEnemyParamsIdOptionButton.gd" type="Script" id=1]
 [ext_resource path="res://UI/HmPresetNoOptionButton.gd" type="Script" id=2]
 [ext_resource path="res://UI/EnemyDetailsPanel.gd" type="Script" id=3]
+[ext_resource path="res://UI/DropsController.gd" type="Script" id=4]
+[ext_resource path="res://UI/DropTableItemsPanel.gd" type="Script" id=5]
 
 [node name="EnemyDetailsPanel" type="ScrollContainer"]
 anchor_right = 1.0
@@ -14,12 +16,12 @@ margin_bottom = -4.0
 script = ExtResource( 3 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_right = 1016.0
-margin_bottom = 458.0
+margin_right = 1004.0
+margin_bottom = 624.0
 size_flags_horizontal = 3
 
 [node name="NamedEnemyParamsIdOptionButton" type="OptionButton" parent="VBoxContainer"]
-margin_right = 1016.0
+margin_right = 1004.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 text = "- Default name -"
@@ -29,8 +31,8 @@ script = ExtResource( 1 )
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
 margin_top = 28.0
-margin_right = 1016.0
-margin_bottom = 458.0
+margin_right = 1004.0
+margin_bottom = 460.0
 columns = 2
 
 [node name="RaidBossId" type="Label" parent="VBoxContainer/GridContainer"]
@@ -41,7 +43,7 @@ text = "RaidBossId"
 
 [node name="RaidBossIdLineEdit" type="SpinBox" parent="VBoxContainer/GridContainer"]
 margin_left = 124.0
-margin_right = 1016.0
+margin_right = 1004.0
 margin_bottom = 28.0
 hint_tooltip = "RaidBossId_tooltip"
 size_flags_horizontal = 3
@@ -57,7 +59,7 @@ text = "Scale"
 [node name="ScaleLineEdit" type="SpinBox" parent="VBoxContainer/GridContainer"]
 margin_left = 124.0
 margin_top = 32.0
-margin_right = 1016.0
+margin_right = 1004.0
 margin_bottom = 60.0
 hint_tooltip = "Scale_tooltip"
 size_flags_horizontal = 3
@@ -73,11 +75,13 @@ text = "Level"
 [node name="LevelLineEdit" type="SpinBox" parent="VBoxContainer/GridContainer"]
 margin_left = 124.0
 margin_top = 64.0
-margin_right = 1016.0
+margin_right = 1004.0
 margin_bottom = 92.0
 hint_tooltip = "Level_tooltip"
 size_flags_horizontal = 3
-max_value = 4.29497e+09
+min_value = 1.0
+max_value = 65535.0
+value = 1.0
 rounded = true
 
 [node name="HmPresetNo" type="Label" parent="VBoxContainer/GridContainer"]
@@ -89,7 +93,7 @@ text = "HmPresetNo"
 [node name="HmPresetNoOptionButton" type="OptionButton" parent="VBoxContainer/GridContainer"]
 margin_left = 124.0
 margin_top = 96.0
-margin_right = 1016.0
+margin_right = 1004.0
 margin_bottom = 120.0
 hint_tooltip = "HmPresetNo_tooltip"
 size_flags_horizontal = 3
@@ -107,7 +111,7 @@ text = "StartThinkTblNo"
 [node name="StartThinkTblNoLineEdit" type="SpinBox" parent="VBoxContainer/GridContainer"]
 margin_left = 124.0
 margin_top = 124.0
-margin_right = 1016.0
+margin_right = 1004.0
 margin_bottom = 152.0
 hint_tooltip = "StartThinkTblNo_tooltip"
 size_flags_horizontal = 3
@@ -123,7 +127,7 @@ text = "RepopNum"
 [node name="RepopNumLineEdit" type="SpinBox" parent="VBoxContainer/GridContainer"]
 margin_left = 124.0
 margin_top = 156.0
-margin_right = 1016.0
+margin_right = 1004.0
 margin_bottom = 184.0
 hint_tooltip = "RepopNum_tooltip"
 size_flags_horizontal = 3
@@ -139,7 +143,7 @@ text = "RepopCount"
 [node name="RepopCountLineEdit" type="SpinBox" parent="VBoxContainer/GridContainer"]
 margin_left = 124.0
 margin_top = 188.0
-margin_right = 1016.0
+margin_right = 1004.0
 margin_bottom = 216.0
 hint_tooltip = "RepopCount_tooltip"
 size_flags_horizontal = 3
@@ -155,7 +159,7 @@ text = "EnemyTargetTypesId"
 [node name="EnemyTargetTypesIdLineEdit" type="SpinBox" parent="VBoxContainer/GridContainer"]
 margin_left = 124.0
 margin_top = 220.0
-margin_right = 1016.0
+margin_right = 1004.0
 margin_bottom = 248.0
 hint_tooltip = "EnemyTargetTypesId_tooltip"
 size_flags_horizontal = 3
@@ -171,7 +175,7 @@ text = "MontageFixNo"
 [node name="MontageFixNoLineEdit" type="SpinBox" parent="VBoxContainer/GridContainer"]
 margin_left = 124.0
 margin_top = 252.0
-margin_right = 1016.0
+margin_right = 1004.0
 margin_bottom = 280.0
 hint_tooltip = "MontageFixNo_tooltip"
 size_flags_horizontal = 3
@@ -187,7 +191,7 @@ text = "SetType"
 [node name="SetTypeLineEdit" type="SpinBox" parent="VBoxContainer/GridContainer"]
 margin_left = 124.0
 margin_top = 284.0
-margin_right = 1016.0
+margin_right = 1004.0
 margin_bottom = 312.0
 hint_tooltip = "SetType_tooltip"
 size_flags_horizontal = 3
@@ -203,7 +207,7 @@ text = "InfectionType"
 [node name="InfectionTypeLineEdit" type="OptionButton" parent="VBoxContainer/GridContainer"]
 margin_left = 124.0
 margin_top = 316.0
-margin_right = 1016.0
+margin_right = 1004.0
 margin_bottom = 340.0
 hint_tooltip = "InfectionType_tooltip"
 size_flags_horizontal = 3
@@ -221,7 +225,7 @@ text = "IsBossGauge"
 [node name="IsBossBGM" type="CheckBox" parent="VBoxContainer/GridContainer"]
 margin_left = 124.0
 margin_top = 344.0
-margin_right = 1016.0
+margin_right = 1004.0
 margin_bottom = 370.0
 hint_tooltip = "IsBossBGM_tooltip"
 text = "IsBossBGM"
@@ -236,25 +240,140 @@ text = "IsManualSet"
 [node name="IsAreaBoss" type="CheckBox" parent="VBoxContainer/GridContainer"]
 margin_left = 124.0
 margin_top = 374.0
-margin_right = 1016.0
+margin_right = 1004.0
 margin_bottom = 400.0
 hint_tooltip = "IsAreaBoss_tooltip"
 text = "IsAreaBoss"
 
-[node name="IsBloodEnemy" type="CheckBox" parent="VBoxContainer/GridContainer"]
+[node name="BloodOrbsContainer" type="HFlowContainer" parent="VBoxContainer/GridContainer"]
 margin_top = 404.0
 margin_right = 120.0
-margin_bottom = 430.0
-hint_tooltip = "IsBloodEnemy_tooltip"
-text = "IsBloodEnemy"
+margin_bottom = 432.0
 
-[node name="IsHighOrbEnemy" type="CheckBox" parent="VBoxContainer/GridContainer"]
+[node name="IsBloodEnemy" type="CheckBox" parent="VBoxContainer/GridContainer/BloodOrbsContainer"]
+margin_right = 24.0
+margin_bottom = 28.0
+hint_tooltip = "IsBloodEnemy_tooltip"
+
+[node name="BloodOrbsSpinBox" type="SpinBox" parent="VBoxContainer/GridContainer/BloodOrbsContainer"]
+margin_left = 28.0
+margin_right = 120.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+max_value = 9999.0
+suffix = "BO"
+
+[node name="HighOrbsContainer" type="HFlowContainer" parent="VBoxContainer/GridContainer"]
 margin_left = 124.0
 margin_top = 404.0
-margin_right = 1016.0
-margin_bottom = 430.0
+margin_right = 1004.0
+margin_bottom = 432.0
+
+[node name="IsHighOrbEnemy" type="CheckBox" parent="VBoxContainer/GridContainer/HighOrbsContainer"]
+margin_right = 24.0
+margin_bottom = 28.0
 hint_tooltip = "IsHighOrbEnemy_tooltip"
-text = "IsHighOrbEnemy"
+
+[node name="HighOrbsSpinBox" type="SpinBox" parent="VBoxContainer/GridContainer/HighOrbsContainer"]
+margin_left = 28.0
+margin_right = 880.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+max_value = 9999.0
+suffix = "HO"
+
+[node name="ExpSpinBox" type="SpinBox" parent="VBoxContainer"]
+margin_top = 464.0
+margin_right = 1004.0
+margin_bottom = 492.0
+max_value = 4.29497e+09
+suffix = "XP"
+
+[node name="DropsController" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 496.0
+margin_right = 1004.0
+margin_bottom = 624.0
+script = ExtResource( 4 )
+
+[node name="HFlowContainer" type="HFlowContainer" parent="VBoxContainer/DropsController"]
+margin_right = 1004.0
+margin_bottom = 24.0
+
+[node name="DropsTableOptionButton" type="OptionButton" parent="VBoxContainer/DropsController/HFlowContainer"]
+margin_right = 958.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "-- No drops --"
+items = [ "-- No drops --", null, false, 4096, null ]
+selected = 0
+
+[node name="AddDropsTableButton" type="Button" parent="VBoxContainer/DropsController/HFlowContainer"]
+margin_left = 962.0
+margin_right = 981.0
+margin_bottom = 24.0
+text = "+"
+
+[node name="RemoveDropsTableButton" type="Button" parent="VBoxContainer/DropsController/HFlowContainer"]
+margin_left = 985.0
+margin_right = 1004.0
+margin_bottom = 24.0
+disabled = true
+text = "X"
+
+[node name="DropsTableItemsPanel" type="PanelContainer" parent="VBoxContainer/DropsController"]
+margin_top = 28.0
+margin_right = 1004.0
+margin_bottom = 128.0
+mouse_filter = 1
+script = ExtResource( 5 )
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/DropsController/DropsTableItemsPanel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 997.0
+margin_bottom = 93.0
+mouse_filter = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/DropsController/DropsTableItemsPanel/MarginContainer"]
+margin_right = 990.0
+margin_bottom = 86.0
+
+[node name="DropsTableNameLineEdit" type="LineEdit" parent="VBoxContainer/DropsController/DropsTableItemsPanel/MarginContainer/VBoxContainer"]
+margin_right = 990.0
+margin_bottom = 28.0
+
+[node name="DropsTableOptions" type="GridContainer" parent="VBoxContainer/DropsController/DropsTableItemsPanel/MarginContainer/VBoxContainer"]
+margin_top = 32.0
+margin_right = 990.0
+margin_bottom = 60.0
+columns = 2
+
+[node name="DropModelLineLabel" type="Label" parent="VBoxContainer/DropsController/DropsTableItemsPanel/MarginContainer/VBoxContainer/DropsTableOptions"]
+margin_top = 5.0
+margin_right = 493.0
+margin_bottom = 23.0
+size_flags_horizontal = 3
+text = "Drop Model"
+
+[node name="DropModelSpinBox" type="SpinBox" parent="VBoxContainer/DropsController/DropsTableItemsPanel/MarginContainer/VBoxContainer/DropsTableOptions"]
+margin_left = 497.0
+margin_right = 990.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+max_value = 255.0
+
+[node name="DropItemsHereLabel" type="Label" parent="VBoxContainer/DropsController/DropsTableItemsPanel/MarginContainer/VBoxContainer"]
+margin_top = 64.0
+margin_right = 990.0
+margin_bottom = 82.0
+mouse_filter = 1
+text = "Drop Items Here"
+align = 1
+
+[node name="DropItemsContainer" type="VBoxContainer" parent="VBoxContainer/DropsController/DropsTableItemsPanel/MarginContainer/VBoxContainer"]
+margin_top = 86.0
+margin_right = 990.0
+margin_bottom = 86.0
 
 [connection signal="item_selected" from="VBoxContainer/NamedEnemyParamsIdOptionButton" to="." method="_on_NamedEnemyParamsIdOptionButton_item_selected"]
 [connection signal="value_changed" from="VBoxContainer/GridContainer/RaidBossIdLineEdit" to="." method="_on_RaidBossIdLineEdit_value_changed"]
@@ -272,5 +391,15 @@ text = "IsHighOrbEnemy"
 [connection signal="pressed" from="VBoxContainer/GridContainer/IsBossBGM" to="." method="_on_IsBossBGM_pressed"]
 [connection signal="pressed" from="VBoxContainer/GridContainer/IsManualSet" to="." method="_on_IsManualSet_pressed"]
 [connection signal="pressed" from="VBoxContainer/GridContainer/IsAreaBoss" to="." method="_on_IsAreaBoss_pressed"]
-[connection signal="pressed" from="VBoxContainer/GridContainer/IsBloodEnemy" to="." method="_on_IsBloodEnemy_pressed"]
-[connection signal="pressed" from="VBoxContainer/GridContainer/IsHighOrbEnemy" to="." method="_on_IsHighOrbEnemy_pressed"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/BloodOrbsContainer/IsBloodEnemy" to="." method="_on_IsBloodEnemy_pressed"]
+[connection signal="value_changed" from="VBoxContainer/GridContainer/BloodOrbsContainer/BloodOrbsSpinBox" to="." method="_on_BloodOrbsSpinBox_value_changed"]
+[connection signal="pressed" from="VBoxContainer/GridContainer/HighOrbsContainer/IsHighOrbEnemy" to="." method="_on_IsHighOrbEnemy_pressed"]
+[connection signal="value_changed" from="VBoxContainer/GridContainer/HighOrbsContainer/HighOrbsSpinBox" to="." method="_on_HighOrbsSpinBox_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/ExpSpinBox" to="." method="_on_ExpSpinBox_value_changed"]
+[connection signal="drops_table_selected" from="VBoxContainer/DropsController" to="." method="_on_DropsContainer_drops_table_selected"]
+[connection signal="item_selected" from="VBoxContainer/DropsController/HFlowContainer/DropsTableOptionButton" to="VBoxContainer/DropsController" method="_on_DropsTableOptionButton_item_selected"]
+[connection signal="pressed" from="VBoxContainer/DropsController/HFlowContainer/AddDropsTableButton" to="VBoxContainer/DropsController" method="_on_AddDropsTableButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/DropsController/HFlowContainer/RemoveDropsTableButton" to="VBoxContainer/DropsController" method="_on_RemoveDropsTableButton_pressed"]
+[connection signal="dropped_item" from="VBoxContainer/DropsController/DropsTableItemsPanel" to="VBoxContainer/DropsController" method="_on_DropsTableItemsPanel_dropped_item"]
+[connection signal="text_changed" from="VBoxContainer/DropsController/DropsTableItemsPanel/MarginContainer/VBoxContainer/DropsTableNameLineEdit" to="VBoxContainer/DropsController" method="_on_DropsTableNameLineEdit_text_changed"]
+[connection signal="value_changed" from="VBoxContainer/DropsController/DropsTableItemsPanel/MarginContainer/VBoxContainer/DropsTableOptions/DropModelSpinBox" to="VBoxContainer/DropsController" method="_on_DropModelSpinBox_value_changed"]

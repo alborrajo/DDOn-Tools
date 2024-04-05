@@ -37,9 +37,9 @@ func get_items() -> Array:
 	return _gathering_spot.get_items()
 
 # Drag and drop functions
-func can_drop_data(position, data):
+func can_drop_data(_position, data):
 	return data is Item
 	
-func drop_data(position, data):
+func drop_data(_position, data):
 	add_item(GatheringItem.new(data))
 	print_debug("Placed %s at %s (%d %d %d) " % [tr(data.name), tr(str("STAGE_NAME_",_gathering_spot.stage_id)), _gathering_spot.stage_id, _gathering_spot.group_id, _gathering_spot.subgroup_id])

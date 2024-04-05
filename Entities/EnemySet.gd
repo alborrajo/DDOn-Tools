@@ -8,11 +8,11 @@ export var subgroup_id: int setget _set_subgroup_id
 
 var _enemies: Array
 
-func _init(stage_id: int, layer_no: int, group_id: int, subgroup_id: int):
-	self.stage_id = stage_id
-	self.layer_no = layer_no
-	self.group_id = group_id
-	self.subgroup_id = subgroup_id
+func _init(_stage_id: int, _layer_no: int, _group_id: int, _subgroup_id: int):
+	self.stage_id = _stage_id
+	self.layer_no = _layer_no
+	self.group_id = _group_id
+	self.subgroup_id = _subgroup_id
 	_enemies = []
 
 func get_enemies() -> Array:

@@ -40,8 +40,18 @@ func _on_enemy_changed():
 		$VBoxContainer/GridContainer/IsBossBGM.pressed = enemy.is_boss_bgm
 		$VBoxContainer/GridContainer/IsManualSet.pressed = enemy.is_manual_set
 		$VBoxContainer/GridContainer/IsAreaBoss.pressed = enemy.is_area_boss
-		$VBoxContainer/GridContainer/IsBloodEnemy.pressed = enemy.is_blood_enemy
-		$VBoxContainer/GridContainer/IsHighOrbEnemy.pressed = enemy.is_highorb_enemy
+		$VBoxContainer/GridContainer/BloodOrbsContainer/IsBloodEnemy.pressed = enemy.is_blood_enemy
+		$VBoxContainer/GridContainer/BloodOrbsContainer/BloodOrbsSpinBox.editable = enemy.is_blood_enemy
+		$VBoxContainer/GridContainer/BloodOrbsContainer/BloodOrbsSpinBox.value = enemy.blood_orbs
+		$VBoxContainer/GridContainer/HighOrbsContainer/IsHighOrbEnemy.pressed = enemy.is_highorb_enemy
+		$VBoxContainer/GridContainer/HighOrbsContainer/HighOrbsSpinBox.editable = enemy.is_highorb_enemy
+		$VBoxContainer/GridContainer/HighOrbsContainer/HighOrbsSpinBox.value = enemy.high_orbs
+		$VBoxContainer/ExpSpinBox.value = enemy.experience
+		
+		if enemy.drops_table == null:
+			$VBoxContainer/DropsController.select_drops_table(-1, true)
+		else:
+			$VBoxContainer/DropsController.select_drops_table(enemy.drops_table.id, true)
 		
 		# Duplicate code from EnemyPlacemark, where a similar thing is done.
 		# TODO: thonk
@@ -68,7 +78,7 @@ func _on_ScaleLineEdit_value_changed(value):
 func _on_LevelLineEdit_value_changed(value):
 	enemy.lv = int(value)
 
-func _on_HmPresetNoLineEdit_item_selected(index):
+func _on_HmPresetNoOptionButton_item_selected(index):
 	enemy.hm_preset_no = $VBoxContainer/GridContainer/HmPresetNoOptionButton.get_item_id(index)
 
 func _on_StartThinkTblNoLineEdit_value_changed(value):
@@ -105,7 +115,19 @@ func _on_IsAreaBoss_pressed():
 	enemy.is_area_boss = $VBoxContainer/GridContainer/IsAreaBoss.pressed
 
 func _on_IsBloodEnemy_pressed():
-	enemy.is_blood_enemy = $VBoxContainer/GridContainer/IsBloodEnemy.pressed
+	enemy.is_blood_enemy = $VBoxContainer/GridContainer/BloodOrbsContainer/IsBloodEnemy.pressed
 
 func _on_IsHighOrbEnemy_pressed():
-	enemy.is_highorb_enemy = $VBoxContainer/GridContainer/IsHighOrbEnemy.pressed
+	enemy.is_highorb_enemy = $VBoxContainer/GridContainer/HighOrbsContainer/IsHighOrbEnemy.pressed
+
+func _on_BloodOrbsSpinBox_value_changed(value):
+	enemy.blood_orbs = int(value)
+
+func _on_HighOrbsSpinBox_value_changed(value):
+	enemy.high_orbs = int(value)
+
+func _on_ExpSpinBox_value_changed(value):
+	enemy.experience = int(value)
+
+func _on_DropsContainer_drops_table_selected(drops_table):
+	enemy.drops_table = drops_table

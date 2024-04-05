@@ -125,7 +125,7 @@ func _load_stage_markers(stage_no):
 
 
 func _load_map_resource(resource_path: String) -> Resource:
-	var directory = Directory.new();
+	var _directory = Directory.new();
 	if image_array_jorobate_flanders.has(resource_path):
 		return load(resource_path)
 	else:

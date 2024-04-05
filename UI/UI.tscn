@@ -85,7 +85,6 @@ margin_bottom = 544.0
 tab_align = 0
 
 [node name="Stages" type="ItemList" parent="left/tab"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -95,6 +94,7 @@ margin_bottom = -4.0
 script = ExtResource( 10 )
 
 [node name="Enemies" type="VBoxContainer" parent="left/tab"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -118,11 +118,12 @@ size_flags_horizontal = 0
 text = "File"
 flat = false
 align = 0
-items = [ "New", null, 0, false, false, 0, 0, null, "", false, "Load", null, 0, false, false, 1, 0, null, "", false, "Save", null, 0, false, false, 2, 0, null, "", false ]
+items = [ "New Enemy Sets", null, 0, false, false, 0, 0, null, "", false, "Load Enemy Sets", null, 0, false, false, 1, 0, null, "", false, "Save Enemy Sets", null, 0, false, false, 2, 0, null, "", false ]
 script = ExtResource( 4 )
-file_dialog = NodePath("../../../../../FileDialog")
+file_dialog = NodePath("../../../../../EnemyFileDialog")
 notification_popup = NodePath("../../../../../NotificationPopup")
 enemy_tree = NodePath("../../EnemyTree")
+item_tree = NodePath("../../../Items/ItemTree")
 
 [node name="FilterLineEdit" type="LineEdit" parent="left/tab/Enemies/HBoxContainer"]
 margin_left = 36.0
@@ -169,9 +170,9 @@ size_flags_horizontal = 0
 text = "File"
 flat = false
 align = 0
-items = [ "New", null, 0, false, false, 0, 0, null, "", false, "Load", null, 0, false, false, 1, 0, null, "", false, "Save", null, 0, false, false, 2, 0, null, "", false ]
+items = [ "New Gathering Spots", null, 0, false, false, 0, 0, null, "", false, "Load Gathering Spots", null, 0, false, false, 1, 0, null, "", false, "Save Gathering Spots", null, 0, false, false, 2, 0, null, "", false ]
 script = ExtResource( 13 )
-file_dialog = NodePath("../../../../../FileDialog")
+file_dialog = NodePath("../../../../../ItemFileDialog")
 notification_popup = NodePath("../../../../../NotificationPopup")
 item_tree = NodePath("../../ItemTree")
 
@@ -273,7 +274,7 @@ script = SubResource( 3 )
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -320.0
+margin_left = -430.0
 margin_top = 45.0
 margin_right = -10.0
 margin_bottom = -4.0
@@ -282,11 +283,11 @@ script = SubResource( 1 )
 [node name="VBoxContainer" type="VBoxContainer" parent="Right Panel"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 303.0
+margin_right = 413.0
 margin_bottom = 544.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Right Panel/VBoxContainer"]
-margin_right = 296.0
+margin_right = 406.0
 margin_bottom = 24.0
 
 [node name="TitleLabel" type="Label" parent="Right Panel/VBoxContainer/HBoxContainer"]
@@ -297,27 +298,27 @@ text = "Placeholder Title"
 
 [node name="Control" type="Control" parent="Right Panel/VBoxContainer/HBoxContainer"]
 margin_left = 99.0
-margin_right = 253.0
+margin_right = 363.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 
 [node name="Minimize" type="Button" parent="Right Panel/VBoxContainer/HBoxContainer"]
-margin_left = 257.0
-margin_right = 273.0
+margin_left = 367.0
+margin_right = 383.0
 margin_bottom = 24.0
 text = "-"
 script = ExtResource( 5 )
 control_to_minimize = NodePath("../../..")
 
 [node name="Close" type="Button" parent="Right Panel/VBoxContainer/HBoxContainer"]
-margin_left = 277.0
-margin_right = 296.0
+margin_left = 387.0
+margin_right = 406.0
 margin_bottom = 24.0
 text = "X"
 
 [node name="DetailsPanel" type="Panel" parent="Right Panel/VBoxContainer" groups=["DetailsPanel"]]
 margin_top = 28.0
-margin_right = 296.0
+margin_right = 406.0
 margin_bottom = 537.0
 size_flags_vertical = 3
 script = ExtResource( 3 )
@@ -327,22 +328,6 @@ title_label = NodePath("../../HBoxContainer/TitleLabel")
 
 [node name="ItemDetailsPanel" parent="Right Panel/VBoxContainer/DetailsPanel" instance=ExtResource( 7 )]
 title_label = NodePath("../../HBoxContainer/TitleLabel")
-
-[node name="FileDialog" type="FileDialog" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -312.0
-margin_top = -195.0
-margin_right = 312.0
-margin_bottom = 195.0
-rect_min_size = Vector2( 180, 63 )
-window_title = "Abrir un Archivo"
-mode = 0
-access = 2
-filters = PoolStringArray( "*.csv ; CSV Files" )
-show_hidden_files = true
 
 [node name="NotificationPopup" type="PopupPanel" parent="."]
 anchor_left = 1.0
@@ -363,6 +348,38 @@ margin_bottom = 22.0
 text = "Notification"
 
 [node name="SettingsWindowDialog" parent="." instance=ExtResource( 8 )]
+
+[node name="EnemyFileDialog" type="FileDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -312.0
+margin_top = -195.0
+margin_right = 312.0
+margin_bottom = 195.0
+rect_min_size = Vector2( 180, 63 )
+window_title = "Abrir un Archivo"
+mode = 0
+access = 2
+filters = PoolStringArray( "*.json; JSON Files", "*.csv ; CSV Files" )
+show_hidden_files = true
+
+[node name="ItemFileDialog" type="FileDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -312.0
+margin_top = -195.0
+margin_right = 312.0
+margin_bottom = 195.0
+rect_min_size = Vector2( 180, 63 )
+window_title = "Abrir un Archivo"
+mode = 0
+access = 2
+filters = PoolStringArray( "*.csv ; CSV Files" )
+show_hidden_files = true
 
 [connection signal="item_selected" from="left/tab/Stages" to="." method="_on_Stages_item_selected"]
 [connection signal="text_changed" from="left/tab/Enemies/HBoxContainer/FilterLineEdit" to="left/tab/Enemies/EnemyTree" method="_on_FilterLineEdit_text_changed"]

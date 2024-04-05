@@ -88,10 +88,10 @@ func _do_load_file(file: File) -> void:
 	
 func reload() -> bool:
 	if _file_path != "":
-		load(_file_path)
+		load_file(_file_path)
 		return true
 	else:
-		var err_message := "No CSV file loaded. Didn't reload."
+		var err_message := "No file loaded. Didn't reload."
 		print(err_message)
 		notification_popup_node.notify(err_message)
 		return false
@@ -122,7 +122,7 @@ func resave() -> bool:
 		save_file(_file_path)
 		return true
 	else:
-		var err_message := "No CSV file loaded. Didn't save."
+		var err_message := "No file loaded. Didn't save."
 		print(err_message)
 		notification_popup_node.notify(err_message)
 		return false
@@ -145,7 +145,15 @@ func store_csv_line_crlf(file: File, csv_data: Array):
 	#file.store_string("\r\n")
 	file.store_16(0x0A0D)
 	return
-	
+
 
 static func parse_bool(string: String) -> bool:
 	return string.strip_edges().to_lower() == "true"
+
+static func find_schema_indices(schema: Array, reference: Array, out: Dictionary) -> int:
+	for i in range(reference.size()):
+		var index = schema.find(reference[i])
+		if index == -1:
+			return FAILED
+		out[reference[i]] = index
+	return OK

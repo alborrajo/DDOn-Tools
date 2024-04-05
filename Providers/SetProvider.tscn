@@ -3,8 +3,39 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node
 
+signal drops_tables_updated()
+
+var _drops_tables := [] # TODO: Maybe use a dictionary instead
 var _enemy_sets := []
 var _gathering_spots := []
+
+
+func clear_drops_tables() -> void:
+	_drops_tables.clear()
+	emit_signal(\"drops_tables_updated\")
+
+func remove_drops_table(drops_table_id: int) -> DropsTable:
+	for idx in _drops_tables.size():
+		var table: DropsTable = _drops_tables[idx]
+		if table.id == drops_table_id:
+			_drops_tables.remove(idx)
+			emit_signal(\"drops_tables_updated\")
+			return table
+	return null
+
+func get_drops_table(drops_table_id: int) -> DropsTable:
+	for table in _drops_tables:
+		if table.id == drops_table_id:
+			return table
+
+	var table := DropsTable.new(drops_table_id)
+	_drops_tables.append(table)
+	emit_signal(\"drops_tables_updated\")
+	return table
+
+func get_all_drops_tables() -> Array:
+	return Array(_drops_tables)
+
 
 func clear_enemy_sets() -> void:
 	for set in _enemy_sets:
