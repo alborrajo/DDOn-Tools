@@ -20,6 +20,7 @@ func _on_drop_item_changed():
 		$FirstRow/ItemNameLabel.text = drop_item.item.name
 		$FirstRow/HFlowContainer/ItemNumSpinBox.value = drop_item.num
 		$FirstRow/HFlowContainer/MaxItemNumSpinBox.value = drop_item.max_num
+		$SecondRow/GridContainer/DropChanceSpinBox.value = drop_item.drop_chance * 100
 		$SecondRow/GridContainer/QualitySpinBox.value = drop_item.quality
 		$SecondRow/HiddenCheckBox.pressed = drop_item.is_hidden
 
@@ -34,6 +35,10 @@ func _on_MaxItemNumSpinBox_value_changed(value):
 func _on_RemoveButton_pressed():
 	if drop_item != null:
 		emit_signal("drop_item_removed")
+
+func _on_DropChanceSpinBox_value_changed(value):
+	if drop_item != null:
+		drop_item.drop_chance = value / 100.0
 
 func _on_QualitySpinBox_value_changed(value):
 	if drop_item != null:

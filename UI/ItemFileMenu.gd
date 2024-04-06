@@ -26,7 +26,8 @@ const SCHEMA := PoolStringArray([
 	"ItemNum",
 	"MaxItemNum",
 	"Quality",
-	"IsHidden"
+	"IsHidden",
+	"DropChance"
 ])
 
 export (NodePath) var item_tree: NodePath
@@ -91,6 +92,10 @@ func _do_load_file(file: File) -> void:
 		gathering_item.quality = int(csv_line[schema_indices["Quality"]].strip_edges())
 		gathering_item.is_hidden = parse_bool(csv_line[schema_indices["IsHidden"]].strip_edges())
 		
+		# Optional for compatibility with older formats
+		if schema_indices.has("DropChance"):
+			gathering_item.drop_chance = float(csv_line[schema_indices["DropChance"]].strip_edges())
+		
 		var gathering_spot = SetProvider.get_gathering_spot(stage_id, group_id, subgroup_id)
 		gathering_spot.add_item(gathering_item)
 	
@@ -113,4 +118,5 @@ func _do_save_file(file: File) -> void:
 			csv_data.append(gathering_item.max_num)
 			csv_data.append(gathering_item.quality)
 			csv_data.append(gathering_item.is_hidden)
+			csv_data.append(gathering_item.drop_chance)
 			store_csv_line_crlf(file, csv_data)

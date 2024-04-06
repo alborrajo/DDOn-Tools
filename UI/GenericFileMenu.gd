@@ -151,9 +151,9 @@ static func parse_bool(string: String) -> bool:
 	return string.strip_edges().to_lower() == "true"
 
 static func find_schema_indices(schema: Array, reference: Array, out: Dictionary) -> int:
-	for i in range(reference.size()):
-		var index = schema.find(reference[i])
+	for i in range(schema.size()):
+		var index = reference.find(schema[i])
 		if index == -1:
 			return FAILED
-		out[reference[i]] = index
+		out[schema[i]] = index
 	return OK

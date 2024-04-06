@@ -29,6 +29,9 @@ func _on_item_changed():
 			title_label_node.text = item.get_display_name()
 
 
+func _on_DropChanceSpinBox_value_changed(value):
+	item.drop_chance = $GridContainer/DropChanceSpinBox.value / 100
+	
 func _on_NumSpinBox_value_changed(value):
 	item.num = $GridContainer/NumContainer/NumSpinBox.value
 

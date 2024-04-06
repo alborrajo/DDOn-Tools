@@ -13,21 +13,37 @@ script = ExtResource( 1 )
 
 [node name="GridContainer" type="GridContainer" parent="."]
 margin_right = 1016.0
-margin_bottom = 90.0
+margin_bottom = 122.0
 size_flags_horizontal = 3
 columns = 2
 
-[node name="NumLabel" type="Label" parent="GridContainer"]
+[node name="DropChanceLabel" type="Label" parent="GridContainer"]
 margin_top = 5.0
 margin_right = 868.0
 margin_bottom = 23.0
+text = "Drop Chance"
+
+[node name="DropChanceSpinBox" type="SpinBox" parent="GridContainer"]
+margin_left = 872.0
+margin_right = 1016.0
+margin_bottom = 28.0
+hint_tooltip = "Determines the chances there are for there to be drop at all or not"
+value = 100.0
+rounded = true
+suffix = "%"
+
+[node name="NumLabel" type="Label" parent="GridContainer"]
+margin_top = 37.0
+margin_right = 868.0
+margin_bottom = 55.0
 size_flags_horizontal = 3
 text = "Num"
 
 [node name="NumContainer" type="VFlowContainer" parent="GridContainer"]
 margin_left = 872.0
+margin_top = 32.0
 margin_right = 1016.0
-margin_bottom = 28.0
+margin_bottom = 60.0
 
 [node name="NumSpinBox" type="SpinBox" parent="GridContainer/NumContainer"]
 margin_right = 62.0
@@ -51,24 +67,25 @@ size_flags_horizontal = 3
 allow_greater = true
 
 [node name="QualityLabel" type="Label" parent="GridContainer"]
-margin_top = 37.0
+margin_top = 69.0
 margin_right = 868.0
-margin_bottom = 55.0
+margin_bottom = 87.0
 text = "Quality"
 
 [node name="QualitySpinBox" type="SpinBox" parent="GridContainer"]
 margin_left = 872.0
-margin_top = 32.0
+margin_top = 64.0
 margin_right = 1016.0
-margin_bottom = 60.0
+margin_bottom = 92.0
 allow_greater = true
 
 [node name="IsHiddenCheckBox" type="CheckBox" parent="GridContainer"]
-margin_top = 64.0
+margin_top = 96.0
 margin_right = 868.0
-margin_bottom = 90.0
+margin_bottom = 122.0
 text = "IsHidden"
 
+[connection signal="value_changed" from="GridContainer/DropChanceSpinBox" to="." method="_on_DropChanceSpinBox_value_changed"]
 [connection signal="value_changed" from="GridContainer/NumContainer/NumSpinBox" to="." method="_on_NumSpinBox_value_changed"]
 [connection signal="value_changed" from="GridContainer/NumContainer/MaxNumSpinBox" to="." method="_on_MaxNumSpinBox_value_changed"]
 [connection signal="value_changed" from="GridContainer/QualitySpinBox" to="." method="_on_QualitySpinBox_value_changed"]

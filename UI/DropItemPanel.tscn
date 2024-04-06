@@ -31,7 +31,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 7
 text = "Item name placeholder"
 valign = 1
-percent_visible = -0.0526316
 
 [node name="HFlowContainer" type="VFlowContainer" parent="FirstRow"]
 margin_left = 151.0
@@ -70,39 +69,56 @@ size_flags_vertical = 3
 text = "X"
 
 [node name="SecondRow" type="GridContainer" parent="."]
-visible = false
-margin_left = 212.0
+margin_left = 180.0
 margin_top = 32.0
 margin_right = 318.0
-margin_bottom = 90.0
+margin_bottom = 122.0
 size_flags_horizontal = 8
 
 [node name="GridContainer" type="GridContainer" parent="SecondRow"]
-margin_right = 106.0
-margin_bottom = 28.0
+margin_right = 138.0
+margin_bottom = 60.0
 columns = 2
 
-[node name="Label" type="Label" parent="SecondRow/GridContainer"]
+[node name="DropChanceLabel" type="Label" parent="SecondRow/GridContainer"]
 margin_top = 5.0
-margin_right = 40.0
+margin_right = 72.0
 margin_bottom = 23.0
+text = "Drop Chance"
+
+[node name="DropChanceSpinBox" type="SpinBox" parent="SecondRow/GridContainer"]
+margin_left = 76.0
+margin_right = 138.0
+margin_bottom = 28.0
+hint_tooltip = "Determines the chances there are for there to be drop at all or not"
+min_value = 1.0
+value = 100.0
+rounded = true
+suffix = "%"
+
+[node name="QualityLabel" type="Label" parent="SecondRow/GridContainer"]
+margin_top = 37.0
+margin_right = 72.0
+margin_bottom = 55.0
 text = "Quality"
 
 [node name="QualitySpinBox" type="SpinBox" parent="SecondRow/GridContainer"]
-margin_left = 44.0
-margin_right = 106.0
-margin_bottom = 28.0
+margin_left = 76.0
+margin_top = 32.0
+margin_right = 138.0
+margin_bottom = 60.0
 
 [node name="HiddenCheckBox" type="CheckBox" parent="SecondRow"]
-margin_left = 38.0
-margin_top = 32.0
-margin_right = 106.0
-margin_bottom = 58.0
+margin_left = 70.0
+margin_top = 64.0
+margin_right = 138.0
+margin_bottom = 90.0
 size_flags_horizontal = 8
 text = "Hidden"
 
 [connection signal="value_changed" from="FirstRow/HFlowContainer/ItemNumSpinBox" to="." method="_on_ItemNumSpinBox_value_changed"]
 [connection signal="value_changed" from="FirstRow/HFlowContainer/MaxItemNumSpinBox" to="." method="_on_MaxItemNumSpinBox_value_changed"]
 [connection signal="pressed" from="FirstRow/HFlowContainer/RemoveButton" to="." method="_on_RemoveButton_pressed"]
+[connection signal="value_changed" from="SecondRow/GridContainer/DropChanceSpinBox" to="." method="_on_DropChanceSpinBox_value_changed"]
 [connection signal="value_changed" from="SecondRow/GridContainer/QualitySpinBox" to="." method="_on_QualitySpinBox_value_changed"]
 [connection signal="toggled" from="SecondRow/HiddenCheckBox" to="." method="_on_HiddenCheckBox_toggled"]

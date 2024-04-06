@@ -6,11 +6,13 @@ var num: int setget _set_num
 var max_num: int setget _set_max_num
 var quality: int setget _set_quality
 var is_hidden: bool setget _set_is_hidden
+var drop_chance: float setget _set_drop_chance
 
 func _init(_item: Item):
 	self.item = _item
 	self.num = 1
 	self.max_num = 1
+	self.drop_chance = 1
 
 func get_display_name() -> String:
 	return "%s (%d~%d)" % [item.name, num, max_num]
@@ -38,4 +40,8 @@ func _set_quality(value):
 	
 func _set_is_hidden(value):
 	is_hidden = value
+	emit_changed()
+	
+func _set_drop_chance(value):
+	drop_chance = clamp(value, 0, 1)
 	emit_changed()

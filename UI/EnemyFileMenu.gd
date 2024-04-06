@@ -64,7 +64,8 @@ const DROPS_TABLE_ITEMS_SCHEMA := PoolStringArray([
 	"ItemNum",
 	"MaxItemNum",
 	"Quality",
-	"IsHidden"
+	"IsHidden",
+	"DropChance"
 ])
 
 const JSON_KEY_SCHEMAS = "schemas"
@@ -151,6 +152,10 @@ func _do_load_file_json(file: File) -> int:
 			drop_item.max_num = data_item[drops_table_schema_idx["MaxItemNum"]]
 			drop_item.quality = data_item[drops_table_schema_idx["Quality"]]
 			drop_item.is_hidden = data_item[drops_table_schema_idx["IsHidden"]]
+			
+			# Optional for compatibility with older formats
+			if drops_table_schema_idx.has("DropChance"):
+				drop_item.drop_chance = data_item[drops_table_schema_idx["DropChance"]]
 
 			drops_table.add_item(drop_item)
 
@@ -288,7 +293,8 @@ func _do_save_file(file: File) -> void:
 				drop_item.num,
 				drop_item.max_num,
 				drop_item.quality,
-				drop_item.is_hidden
+				drop_item.is_hidden,
+				drop_item.drop_chance
 			]
 			json_data_table[JSON_KEY_ITEMS].append(json_data_table_item)
 		json_data[JSON_KEY_DROPS_TABLES].append(json_data_table)
