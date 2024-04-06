@@ -24,43 +24,51 @@ func _set_enemy(em: Enemy) -> void:
 	
 func _on_enemy_changed():
 	if enemy != null:
-		$VBoxContainer/NamedEnemyParamsIdOptionButton.select($VBoxContainer/NamedEnemyParamsIdOptionButton.get_item_index(enemy.named_enemy_params_id))
-		$VBoxContainer/GridContainer/RaidBossIdLineEdit.value = enemy.raid_boss_id
-		$VBoxContainer/GridContainer/ScaleLineEdit.value = enemy.scale
-		$VBoxContainer/GridContainer/LevelLineEdit.value = enemy.lv
-		$VBoxContainer/GridContainer/HmPresetNoOptionButton.select($VBoxContainer/GridContainer/HmPresetNoOptionButton.get_item_index(enemy.hm_preset_no))
-		$VBoxContainer/GridContainer/StartThinkTblNoLineEdit.value = enemy.start_think_tbl_no
-		$VBoxContainer/GridContainer/RepopNumLineEdit.value = enemy.repop_num
-		$VBoxContainer/GridContainer/RepopCountLineEdit.value = enemy.repop_count
-		$VBoxContainer/GridContainer/EnemyTargetTypesIdLineEdit.value = enemy.enemy_target_types_id
-		$VBoxContainer/GridContainer/MontageFixNoLineEdit.value = enemy.montage_fix_no
-		$VBoxContainer/GridContainer/SetTypeLineEdit.value = enemy.set_type
-		$VBoxContainer/GridContainer/InfectionTypeLineEdit.select($VBoxContainer/GridContainer/InfectionTypeLineEdit.get_item_index(enemy.infection_type))
-		$VBoxContainer/GridContainer/IsBossGauge.pressed = enemy.is_boss_gauge
-		$VBoxContainer/GridContainer/IsBossBGM.pressed = enemy.is_boss_bgm
-		$VBoxContainer/GridContainer/IsManualSet.pressed = enemy.is_manual_set
-		$VBoxContainer/GridContainer/IsAreaBoss.pressed = enemy.is_area_boss
-		$VBoxContainer/GridContainer/BloodOrbsContainer/IsBloodEnemy.pressed = enemy.is_blood_enemy
-		$VBoxContainer/GridContainer/BloodOrbsContainer/BloodOrbsSpinBox.editable = enemy.is_blood_enemy
-		$VBoxContainer/GridContainer/BloodOrbsContainer/BloodOrbsSpinBox.value = enemy.blood_orbs
-		$VBoxContainer/GridContainer/HighOrbsContainer/IsHighOrbEnemy.pressed = enemy.is_highorb_enemy
-		$VBoxContainer/GridContainer/HighOrbsContainer/HighOrbsSpinBox.editable = enemy.is_highorb_enemy
-		$VBoxContainer/GridContainer/HighOrbsContainer/HighOrbsSpinBox.value = enemy.high_orbs
-		$VBoxContainer/ExpSpinBox.value = enemy.experience
+		# Cloning first prevents values from getting overwritten by events
+		# happening while being set in the UI
+		# For example: Setting LevelLineEdit.value triggers a signal, which sets
+		# the enemy.lv property, which resets the HO/BO/Exp values before they
+		# are written to the UI.
+		# Using a clone means that even if the values in the enemy variable are
+		# changed, the values in enemy_clone are still the originals
+		var enemy_clone := enemy.clone()
+		$VBoxContainer/NamedEnemyParamsIdOptionButton.select($VBoxContainer/NamedEnemyParamsIdOptionButton.get_item_index(enemy_clone.named_enemy_params_id))
+		$VBoxContainer/GridContainer/RaidBossIdLineEdit.value = enemy_clone.raid_boss_id
+		$VBoxContainer/GridContainer/ScaleLineEdit.value = enemy_clone.scale
+		$VBoxContainer/GridContainer/LevelLineEdit.value = enemy_clone.lv
+		$VBoxContainer/GridContainer/HmPresetNoOptionButton.select($VBoxContainer/GridContainer/HmPresetNoOptionButton.get_item_index(enemy_clone.hm_preset_no))
+		$VBoxContainer/GridContainer/StartThinkTblNoLineEdit.value = enemy_clone.start_think_tbl_no
+		$VBoxContainer/GridContainer/RepopNumLineEdit.value = enemy_clone.repop_num
+		$VBoxContainer/GridContainer/RepopCountLineEdit.value = enemy_clone.repop_count
+		$VBoxContainer/GridContainer/EnemyTargetTypesIdLineEdit.value = enemy_clone.enemy_target_types_id
+		$VBoxContainer/GridContainer/MontageFixNoLineEdit.value = enemy_clone.montage_fix_no
+		$VBoxContainer/GridContainer/SetTypeLineEdit.value = enemy_clone.set_type
+		$VBoxContainer/GridContainer/InfectionTypeLineEdit.select($VBoxContainer/GridContainer/InfectionTypeLineEdit.get_item_index(enemy_clone.infection_type))
+		$VBoxContainer/GridContainer/IsBossGauge.pressed = enemy_clone.is_boss_gauge
+		$VBoxContainer/GridContainer/IsBossBGM.pressed = enemy_clone.is_boss_bgm
+		$VBoxContainer/GridContainer/IsManualSet.pressed = enemy_clone.is_manual_set
+		$VBoxContainer/GridContainer/IsAreaBoss.pressed = enemy_clone.is_area_boss
+		$VBoxContainer/GridContainer/BloodOrbsContainer/IsBloodEnemy.pressed = enemy_clone.is_blood_enemy
+		$VBoxContainer/GridContainer/BloodOrbsContainer/BloodOrbsSpinBox.editable = enemy_clone.is_blood_enemy
+		$VBoxContainer/GridContainer/BloodOrbsContainer/BloodOrbsSpinBox.value = enemy_clone.blood_orbs
+		$VBoxContainer/GridContainer/HighOrbsContainer/IsHighOrbEnemy.pressed = enemy_clone.is_highorb_enemy
+		$VBoxContainer/GridContainer/HighOrbsContainer/HighOrbsSpinBox.editable = enemy_clone.is_highorb_enemy
+		$VBoxContainer/GridContainer/HighOrbsContainer/HighOrbsSpinBox.value = enemy_clone.high_orbs
+		$VBoxContainer/ExpSpinBox.value = enemy_clone.experience
 		
-		if enemy.drops_table == null:
+		if enemy_clone.drops_table == null:
 			$VBoxContainer/DropsController.select_drops_table(-1, true)
 		else:
-			$VBoxContainer/DropsController.select_drops_table(enemy.drops_table.id, true)
+			$VBoxContainer/DropsController.select_drops_table(enemy_clone.drops_table.id, true)
 		
 		# Duplicate code from EnemyPlacemark, where a similar thing is done.
 		# TODO: thonk
 		if title_label_node != null:
-			title_label_node.text = enemy.get_display_name()
+			title_label_node.text = enemy_clone.get_display_name()
 			
-			if enemy.is_blood_enemy:
+			if enemy_clone.is_blood_enemy:
 				title_label_node.modulate = COLOR_BLOOD_ORB
-			elif enemy.is_highorb_enemy:
+			elif enemy_clone.is_highorb_enemy:
 				title_label_node.modulate = COLOR_HIGH_ORB
 			else: 
 				title_label_node.modulate = COLOR_DEFAULT

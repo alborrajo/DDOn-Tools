@@ -156,14 +156,40 @@ var drops_table: DropsTable = null setget _set_drops_table
 
 func _init(type: EnemyType):
 	self.enemy_type = type
-	self.hm_preset_no = type.default_hm_preset_no
 	_set_lv(self.lv) # Update values dependant on Lv
 
 func get_display_name() -> String:
 	return "%s (Lv. %d)" % [enemy_type.name, lv]
 
+func clone() -> Enemy:
+	var new_enemy: Enemy = get_script().new(self.enemy_type)
+	new_enemy.named_enemy_params_id = self.named_enemy_params_id
+	new_enemy.raid_boss_id = self.raid_boss_id
+	new_enemy.scale = self.scale
+	new_enemy.lv = self.lv
+	new_enemy.hm_preset_no = self.hm_preset_no
+	new_enemy.start_think_tbl_no = self.start_think_tbl_no
+	new_enemy.repop_num = self.repop_num
+	new_enemy.repop_count = self.repop_count
+	new_enemy.enemy_target_types_id = self.enemy_target_types_id
+	new_enemy.montage_fix_no = self.montage_fix_no
+	new_enemy.set_type = self.set_type
+	new_enemy.infection_type = self.infection_type
+	new_enemy.is_boss_gauge = self.is_boss_gauge
+	new_enemy.is_boss_bgm = self.is_boss_bgm
+	new_enemy.is_manual_set = self.is_manual_set
+	new_enemy.is_area_boss = self.is_area_boss
+	new_enemy.is_blood_enemy = self.is_blood_enemy
+	new_enemy.blood_orbs = self.blood_orbs
+	new_enemy.is_highorb_enemy = self.is_highorb_enemy
+	new_enemy.high_orbs = self.high_orbs
+	new_enemy.experience = self.experience
+	new_enemy.drops_table = self.drops_table
+	return new_enemy
+
 func _set_enemy_type(value):
 	enemy_type = value
+	hm_preset_no = value.default_hm_preset_no
 	emit_changed()
 	
 func _set_named_enemy_params_id(value):
