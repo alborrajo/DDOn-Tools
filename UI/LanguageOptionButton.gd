@@ -12,7 +12,7 @@ func _on_item_selected(idx: int):
 	TranslationServer.set_locale(get_item_metadata(idx))
 	
 	# Autosave to prevent unsaved changes from getting lost
-	owner.owner.get_node("left/tab/Enemies/EnemyFileMenu").resave()
-	owner.owner.get_node("left/tab/Items/ItemFileMenu").resave()
+	for node in get_tree().get_nodes_in_group("filemenu"):
+		node.resave()
 	# Reload everything, lol, lmao, yolo
 	get_tree().reload_current_scene()
