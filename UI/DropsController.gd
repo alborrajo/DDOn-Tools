@@ -108,6 +108,32 @@ func _on_DropsTableItemsPanel_dropped_item(drop_item: GatheringItem):
 	_selected_drops_table.add_item(drop_item)
 	print_debug("Placed %s in drops table %s" % [tr(drop_item.item.name), _selected_drops_table.name])
 
+func _on_DropsFilterLineEdit_text_changed(new_text):
+	_FilterList(new_text)
+	
+func _FilterList(filter_text: String = ""):
+	var filtered_tables: Array = []
+	var has_tables: bool = false
+	for drops_table in SetProvider.get_all_drops_tables():
+		var table_name_lower = drops_table.name.to_lower() 
+		if filter_text == "" or table_name_lower.find(filter_text.to_lower()) != -1:
+			filtered_tables.append(drops_table)
+			has_tables = true
+	$HFlowContainer/DropsTableOptionButton.clear()
+	if has_tables:
+		if filter_text != "":
+			$HFlowContainer/DropsTableOptionButton.add_item("Filtered Search", NO_DROPS_OPTION_ID)
+		elif _selected_drops_table != null:
+			$HFlowContainer/DropsTableOptionButton.add_item(_selected_drops_table.name, _selected_drops_table.id)
+		else:
+			$HFlowContainer/DropsTableOptionButton.add_item("-- No Drops --", NO_DROPS_OPTION_ID)
+	else:
+		if _selected_drops_table != null:
+			$HFlowContainer/DropsTableOptionButton.add_item(_selected_drops_table.name, _selected_drops_table.id)
+		else:
+			$HFlowContainer/DropsTableOptionButton.add_item("-- No Drops --", NO_DROPS_OPTION_ID)
+	for filtered_table in filtered_tables:
+		$HFlowContainer/DropsTableOptionButton.add_item(filtered_table.name, filtered_table.id)
 
 static func _get_highest_drops_table_id() -> int:
 	var highest := 0
