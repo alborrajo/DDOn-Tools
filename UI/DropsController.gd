@@ -15,16 +15,30 @@ func _ready():
 	_update_drops_tables()
 	
 func _update_drops_tables() -> void:
-	_clear_drops_tables()
+	var has_filter_text = $DropsFilterLineEdit != null and !$DropsFilterLineEdit.text.empty()
+	_clear_drops_tables(has_filter_text)
+	
 	for drops_table in SetProvider.get_all_drops_tables():
 		if drops_table.id < 0:
 			push_error("Found drops table with ID -1. Ignoring.")
 		else:
 			$HFlowContainer/DropsTableOptionButton.add_item(drops_table.name, drops_table.id)
+	
+	# select the currently selected drops table if it exists
+	if _selected_drops_table != null:
+		var selected_option_idx: int = $HFlowContainer/DropsTableOptionButton.get_item_index(_selected_drops_table.id)
+		if selected_option_idx >= 0:
+			$HFlowContainer/DropsTableOptionButton.select(selected_option_idx)
+
 		
-func _clear_drops_tables() -> void:
+func _clear_drops_tables(has_filter_text: bool) -> void:
 	$HFlowContainer/DropsTableOptionButton.clear()
-	$HFlowContainer/DropsTableOptionButton.add_item("-- No Drops --", NO_DROPS_OPTION_ID)
+	# Add the "-- No Drops --" option only if there's no filter text
+	if not has_filter_text:
+		$HFlowContainer/DropsTableOptionButton.add_item("-- No Drops --", NO_DROPS_OPTION_ID)
+	if _selected_drops_table != null:
+		select_drops_table(_selected_drops_table.id)
+
 			
 func select_drops_table(id: int, quiet: bool = false) -> void:
 	if _selected_drops_table != null and _selected_drops_table.is_connected("changed", self, "_on_selected_drops_table_changed"):
@@ -110,23 +124,34 @@ func _on_DropsTableItemsPanel_dropped_item(drop_item: GatheringItem):
 
 func _on_DropsFilterLineEdit_text_changed(new_text):
 	_FilterList(new_text)
-	
+
 func _FilterList(filter_text: String = "") -> void:
+	var has_filter_text = !filter_text.empty()
+	
 	var filtered_tables: Array = []
+	var selected_table: DropsTable = _selected_drops_table
+
+	if selected_table != null and (selected_table.name.to_lower().find(filter_text.to_lower()) == -1):
+		filtered_tables.append(selected_table)
+
 	for drops_table in SetProvider.get_all_drops_tables():
 		var table_name_lower = drops_table.name.to_lower()
 		if filter_text.empty() or table_name_lower.find(filter_text.to_lower()) != -1:
 			filtered_tables.append(drops_table)
-	
-	_clear_drops_tables()
-	
+
+	if $DropsFilterLineEdit != null:  # Check if $DropsFilterLineEdit is not null
+		_clear_drops_tables(has_filter_text)
+
 	for filtered_table in filtered_tables:
 		$HFlowContainer/DropsTableOptionButton.add_item(filtered_table.name, filtered_table.id)
-	if filter_text.empty() and filtered_tables.empty():
-		var next_id = _get_highest_drops_table_id() + 1
-		var new_drops_table = SetProvider.get_drops_table(next_id)
-		new_drops_table.name = "Drops Table " + str(new_drops_table.id)
-		select_drops_table(new_drops_table.id)
+
+	if $DropsFilterLineEdit != null:  # Check if $DropsFilterLineEdit is not null
+		if filter_text.empty() and filtered_tables.empty():
+			var next_id = _get_highest_drops_table_id() + 1
+			var new_drops_table = SetProvider.get_drops_table(next_id)
+			new_drops_table.name = "Drops Table " + str(new_drops_table.id)
+			select_drops_table(new_drops_table.id)
+
 
 static func _get_highest_drops_table_id() -> int:
 	var highest := 0
