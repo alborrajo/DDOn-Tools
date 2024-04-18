@@ -21,9 +21,14 @@ func _set_enemy(em: Enemy) -> void:
 		em.connect("changed", self, "_on_enemy_changed")
 	
 	_on_enemy_changed()
+
+func _refresh_id():
+	if $VBoxContainer/DropsController != null:
+		$VBoxContainer/DropsController._refresh_id()
 	
 func _on_enemy_changed():
 	if enemy != null:
+		_refresh_id()
 		# Cloning first prevents values from getting overwritten by events
 		# happening while being set in the UI
 		# For example: Setting LevelLineEdit.value triggers a signal, which sets
@@ -60,6 +65,7 @@ func _on_enemy_changed():
 			$VBoxContainer/DropsController.select_drops_table(-1, true)
 		else:
 			$VBoxContainer/DropsController.select_drops_table(enemy_clone.drops_table.id, true)
+			
 		
 		# Duplicate code from EnemyPlacemark, where a similar thing is done.
 		# TODO: thonk
