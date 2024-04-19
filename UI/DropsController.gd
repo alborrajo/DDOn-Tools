@@ -112,9 +112,11 @@ func _on_DropsTableItemsPanel_dropped_item(drop_item: GatheringItem):
 	_selected_drops_table.add_item(drop_item)
 	print_debug("Placed %s in drops table %s" % [tr(drop_item.item.name), _selected_drops_table.name])
 
-func _refresh_id():
-	preexisting_option_id = -1
-	print("POOPY")
+func _refresh_filter():
+	_on_DropsFilterLineEdit_text_changed("")
+	_FilterList("", preexisting_option_id)
+# This calls both filter functions to ensure that the filters get applied 
+
 
 func _on_DropsFilterLineEdit_text_changed(new_text):
 	_current_filter_text = new_text
@@ -130,8 +132,6 @@ func _on_DropsFilterLineEdit_text_changed(new_text):
 				$HFlowContainer/DropsTableOptionButton.select(idx)
 	
 func _FilterList(filter_text: String, preexisting_option_id):
-	if _selected_drops_table == null:
-		return
 		
 	var filtered_tables: Array = []
 	var has_tables: bool = false
