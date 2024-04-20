@@ -23,13 +23,12 @@ func _set_enemy(em: Enemy) -> void:
 	_on_enemy_changed()
 	
 	# this bridges the logic over to dropscontroller, the refreshing is handled there.
-func _refresh_id():
+func _refresh_selected_name():
 		$VBoxContainer/DropsController._refresh_filter()
 	
 func _on_enemy_changed():
 	if enemy != null:
 		var filter_text = $VBoxContainer/DropsController._current_filter_text
-		_refresh_id()
 		# Cloning first prevents values from getting overwritten by events
 		# happening while being set in the UI
 		# For example: Setting LevelLineEdit.value triggers a signal, which sets
@@ -61,6 +60,7 @@ func _on_enemy_changed():
 		$VBoxContainer/GridContainer/HighOrbsContainer/HighOrbsSpinBox.editable = enemy_clone.is_highorb_enemy
 		$VBoxContainer/GridContainer/HighOrbsContainer/HighOrbsSpinBox.value = enemy_clone.high_orbs
 		$VBoxContainer/ExpSpinBox.value = enemy_clone.experience
+		_refresh_selected_name()
 		if enemy_clone.drops_table == null:
 			$VBoxContainer/DropsController.select_drops_table(-1, true)
 		else:

@@ -114,7 +114,6 @@ func _on_DropsTableItemsPanel_dropped_item(drop_item: GatheringItem):
 
 func _refresh_filter():
 	_FilterList("", preexisting_option_id)
-# This calls both filter functions to ensure that the filters get applied 
 
 
 func _on_DropsFilterLineEdit_text_changed(new_text):
