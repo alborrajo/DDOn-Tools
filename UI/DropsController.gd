@@ -113,7 +113,6 @@ func _on_DropsTableItemsPanel_dropped_item(drop_item: GatheringItem):
 	print_debug("Placed %s in drops table %s" % [tr(drop_item.item.name), _selected_drops_table.name])
 
 func _refresh_filter():
-	_on_DropsFilterLineEdit_text_changed("")
 	_FilterList("", preexisting_option_id)
 # This calls both filter functions to ensure that the filters get applied 
 

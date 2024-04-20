@@ -24,7 +24,6 @@ func _set_enemy(em: Enemy) -> void:
 	
 	# this bridges the logic over to dropscontroller, the refreshing is handled there.
 func _refresh_id():
-	if $VBoxContainer/DropsController != null:
 		$VBoxContainer/DropsController._refresh_filter()
 	
 func _on_enemy_changed():
