@@ -57,6 +57,7 @@ const ENEMIES_SCHEMA := PoolStringArray([
 	"HighOrbs",
 	"Experience",
 	"DropsTableId",
+	"SpawnTimeId",
 ])
 
 const DROPS_TABLE_ITEMS_SCHEMA := PoolStringArray([
@@ -119,7 +120,7 @@ func _do_load_file_json(file: File) -> int:
 		print("\tError Line: ", json_parse.error_line)
 		print("\tError String: ", json_parse.error_string)
 		return json_parse.error
-
+	
 	# Clear set state
 	SetProvider.clear_drops_tables()
 	SetProvider.clear_enemy_sets()
@@ -208,6 +209,9 @@ func _do_load_file_json(file: File) -> int:
 		var enemy_set = SetProvider.get_enemy_set(stage_id, layer_no, group_id, subgroup_id)
 		enemy_set.add_enemy(enemy)
 		
+		if enemies_schema_idx.has("SpawnTimeId"):
+			enemy.time_type = data[enemies_schema_idx["SpawnTimeId"]]
+
 	return OK
 
 func _do_load_file_legacy(file: File) -> void:
@@ -340,6 +344,8 @@ func _do_save_file(file: File) -> void:
 				data.append(enemy.drops_table.id)
 			else:
 				data.append(-1)
+				
+			data.append(enemy.time_type)
 
 			json_data[JSON_KEY_ENEMIES].append(data)
 
