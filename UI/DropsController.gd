@@ -9,11 +9,13 @@ const NO_DROPS_OPTION_ID = 4096
 export (PackedScene) var drop_item_panel_packed_scene: PackedScene = preload("res://UI/DropItemPanel.tscn")
 
 var _selected_drops_table: DropsTable = null
+var _current_filter_text: String = ("")
+var preexisting_option_id: int
 
 func _ready():
 	SetProvider.connect("drops_tables_updated", self, "_update_drops_tables")
 	_update_drops_tables()
-	
+
 func _update_drops_tables() -> void:
 	_clear_drops_tables()
 	for drops_table in SetProvider.get_all_drops_tables():
@@ -49,7 +51,6 @@ func select_drops_table(id: int, quiet: bool = false) -> void:
 	if not quiet:
 		emit_signal("drops_table_selected", _selected_drops_table)
 
-
 func _on_selected_drops_table_changed(selected_drops_table: DropsTable):
 	# Name
 	var option_idx: int = $HFlowContainer/DropsTableOptionButton.get_item_index(selected_drops_table.id)
@@ -73,10 +74,10 @@ func _on_selected_drops_table_changed(selected_drops_table: DropsTable):
 		drop_item_panel.drop_item = drop_item
 		drop_item_panel.connect("drop_item_removed", self, "_on_drop_item_removed", [selected_drops_table, index])
 		$DropsTableItemsPanel/MarginContainer/VBoxContainer/DropItemsContainer.add_child(drop_item_panel)
+		
 
 func _on_drop_item_removed(drops_table: DropsTable, index: int):
 	drops_table.remove_item(index)
-
 
 func _on_DropsTableOptionButton_item_selected(index):
 	var selected_option_id: int = $HFlowContainer/DropsTableOptionButton.get_item_id(index)
@@ -84,6 +85,9 @@ func _on_DropsTableOptionButton_item_selected(index):
 		select_drops_table(-1)
 	else:
 		select_drops_table(selected_option_id)
+	# Removes the previous table from the list when swapping to a new table.
+	if _current_filter_text != "":
+		_FilterList(_current_filter_text, selected_option_id)
 	
 func _on_AddDropsTableButton_pressed():
 	var next_id := _get_highest_drops_table_id()+1
@@ -108,6 +112,42 @@ func _on_DropsTableItemsPanel_dropped_item(drop_item: GatheringItem):
 	_selected_drops_table.add_item(drop_item)
 	print_debug("Placed %s in drops table %s" % [tr(drop_item.item.name), _selected_drops_table.name])
 
+func _refresh_filter():
+	_FilterList("", preexisting_option_id)
+
+
+func _on_DropsFilterLineEdit_text_changed(new_text):
+	_current_filter_text = new_text
+	# Keep track of currently selected item when filtering the list
+	preexisting_option_id = $HFlowContainer/DropsTableOptionButton.get_selected_id()
+	
+	if new_text != "":
+		_FilterList(new_text, preexisting_option_id)
+	else:
+		_update_drops_tables()
+		for idx in $HFlowContainer/DropsTableOptionButton.get_item_count():
+			if $HFlowContainer/DropsTableOptionButton.get_item_id(idx) == preexisting_option_id:
+				$HFlowContainer/DropsTableOptionButton.select(idx)
+	
+func _FilterList(filter_text: String, preexisting_option_id):
+		
+	var filtered_tables: Array = []
+	var has_tables: bool = false
+	for drops_table in SetProvider.get_all_drops_tables():
+		var table_name_lower = drops_table.name.to_lower() 
+		if filter_text == "" or drops_table.id == preexisting_option_id or table_name_lower.find(filter_text.to_lower()) != -1:
+			filtered_tables.append(drops_table)
+			has_tables = true
+			
+	_clear_drops_tables()
+		
+	if has_tables:
+		for filtered_table in filtered_tables:
+			$HFlowContainer/DropsTableOptionButton.add_item(filtered_table.name, filtered_table.id)
+	
+	for idx in $HFlowContainer/DropsTableOptionButton.get_item_count():
+		if $HFlowContainer/DropsTableOptionButton.get_item_id(idx) == preexisting_option_id:
+			$HFlowContainer/DropsTableOptionButton.select(idx)
 
 static func _get_highest_drops_table_id() -> int:
 	var highest := 0

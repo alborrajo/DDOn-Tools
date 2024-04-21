@@ -22,8 +22,13 @@ func _set_enemy(em: Enemy) -> void:
 	
 	_on_enemy_changed()
 	
+	# this bridges the logic over to dropscontroller, the refreshing is handled there.
+func _refresh_selected_name():
+		$VBoxContainer/DropsController._refresh_filter()
+	
 func _on_enemy_changed():
 	if enemy != null:
+		var filter_text = $VBoxContainer/DropsController._current_filter_text
 		# Cloning first prevents values from getting overwritten by events
 		# happening while being set in the UI
 		# For example: Setting LevelLineEdit.value triggers a signal, which sets
@@ -55,11 +60,12 @@ func _on_enemy_changed():
 		$VBoxContainer/GridContainer/HighOrbsContainer/HighOrbsSpinBox.editable = enemy_clone.is_highorb_enemy
 		$VBoxContainer/GridContainer/HighOrbsContainer/HighOrbsSpinBox.value = enemy_clone.high_orbs
 		$VBoxContainer/ExpSpinBox.value = enemy_clone.experience
-		
+		_refresh_selected_name()
 		if enemy_clone.drops_table == null:
 			$VBoxContainer/DropsController.select_drops_table(-1, true)
 		else:
 			$VBoxContainer/DropsController.select_drops_table(enemy_clone.drops_table.id, true)
+			
 		
 		# Duplicate code from EnemyPlacemark, where a similar thing is done.
 		# TODO: thonk
@@ -72,6 +78,9 @@ func _on_enemy_changed():
 				title_label_node.modulate = COLOR_HIGH_ORB
 			else: 
 				title_label_node.modulate = COLOR_DEFAULT
+		  
+		$VBoxContainer/DropsController._on_DropsFilterLineEdit_text_changed(filter_text)
+		# Critical this comes after everything to ensure the filters get applied
 
 
 func _on_NamedEnemyParamsIdOptionButton_item_selected(index):
