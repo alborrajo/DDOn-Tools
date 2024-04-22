@@ -4,11 +4,21 @@
 script/source = "extends Node
 
 signal drops_tables_updated()
+signal day_night_selected(index)
 
 var _drops_tables := [] # TODO: Maybe use a dictionary instead
 var _enemy_sets := []
 var _gathering_spots := []
 
+func _ready():
+	var DayNightButton = get_node(\"../root/ui/status_view/container/DayNightOptionButton\")
+	if DayNightButton:
+		DayNightButton.connect(\"item_selected\", self, \"_on_day_night_selected\")
+
+func _on_day_night_selected(selected_index):
+	# Emit a custom signal with the selected index
+	emit_signal(\"day_night_selected\", selected_index)
+	print(\"Selected Time of Day Filter:\", selected_index)
 
 func clear_drops_tables() -> void:
 	_drops_tables.clear()
