@@ -57,7 +57,7 @@ const ENEMIES_SCHEMA := PoolStringArray([
 	"HighOrbs",
 	"Experience",
 	"DropsTableId",
-	"SpawnTimeId",
+	"SpawnTime",
 ])
 
 const DROPS_TABLE_ITEMS_SCHEMA := PoolStringArray([
@@ -209,8 +209,16 @@ func _do_load_file_json(file: File) -> int:
 		var enemy_set = SetProvider.get_enemy_set(stage_id, layer_no, group_id, subgroup_id)
 		enemy_set.add_enemy(enemy)
 		
-		if enemies_schema_idx.has("SpawnTimeId"):
-			enemy.time_type = data[enemies_schema_idx["SpawnTimeId"]]
+		if enemies_schema_idx.has("SpawnTime"):
+			var time_range_str = data[enemies_schema_idx["SpawnTime"]]
+			var time_type = 0
+			if time_range_str == "00:00,23:59":
+				time_type = 0
+			elif time_range_str == "07:00,18:00":
+				time_type = 1
+			elif time_range_str == "18:00,07:00":
+				time_type = 2
+			enemy.time_type = time_type
 
 	return OK
 
@@ -344,8 +352,16 @@ func _do_save_file(file: File) -> void:
 				data.append(enemy.drops_table.id)
 			else:
 				data.append(-1)
-				
-			data.append(enemy.time_type)
+			
+			var selected_index = enemy.time_type
+			var selected_string = ""
+			if selected_index == 0:
+				selected_string = "00:00,23:59"
+			if selected_index == 1:
+				selected_string = "07:00,18:00"
+			if selected_index == 2:
+				selected_string = "18:00,07:00"	
+			data.append(selected_string)
 
 			json_data[JSON_KEY_ENEMIES].append(data)
 
