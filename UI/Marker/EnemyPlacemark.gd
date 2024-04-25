@@ -16,14 +16,13 @@ func _ready():
 		set_provider.connect("day_night_selected", self, "_on_day_night_selected")
 
 func _on_day_night_selected(index):
-	var timeType = index
 	if enemy != null:
-		_update_placemark_visibility(timeType)
+		_update_placemark_visibility(index)
 
-func _update_placemark_visibility(timeType):
+func _update_placemark_visibility(index):
 	if enemy != null:
 		var enemyTimeType = enemy.time_type
-		if timeType == 0 or enemyTimeType == 0 or enemyTimeType == timeType:
+		if index == 0 or enemyTimeType == 0 or enemyTimeType == index:
 			show()
 		else:
 			hide()
