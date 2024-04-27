@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Main/PlayerMarkers.gd" type="Script" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://resources/icons/icon_clock.png" type="Texture" id=5]
 [ext_resource path="res://resources/icons/icon_sun.png" type="Texture" id=6]
 [ext_resource path="res://resources/icons/icon_moon.png" type="Texture" id=7]
+[ext_resource path="res://DayNightOptionButton.gd" type="Script" id=8]
 
 [node name="root" type="Control"]
 anchor_right = 1.0
@@ -85,6 +86,7 @@ text = "Day & Night"
 icon = ExtResource( 5 )
 items = [ "Day & Night", ExtResource( 5 ), false, 0, null, "Day", ExtResource( 6 ), false, 1, null, "Night", ExtResource( 7 ), false, 2, null ]
 selected = 0
+script = ExtResource( 8 )
 
 [node name="StageLabel" parent="ui/status_view/container" index="3"]
 margin_left = 212.0
@@ -110,5 +112,6 @@ window_title = "Open a File"
 [connection signal="player_left" from="ui/left/tab/Players" to="MapCoordinateSpace/PlayerMarkers" method="_on_Players_player_left"]
 [connection signal="player_updated" from="ui/left/tab/Players" to="MapCoordinateSpace/PlayerMarkers" method="_on_Players_player_updated"]
 [connection signal="item_selected" from="ui/status_view/container/LayerOptionButton" to="." method="_on_LayerOptionButton_item_selected"]
+[connection signal="item_selected" from="ui/status_view/container/DayNightOptionButton" to="ui/status_view/container/DayNightOptionButton" method="_on_DayNightOptionButton_item_selected"]
 
 [editable path="ui"]
