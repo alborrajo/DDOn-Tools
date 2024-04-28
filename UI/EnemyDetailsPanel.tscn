@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://UI/NamedEnemyParamsIdOptionButton.gd" type="Script" id=1]
 [ext_resource path="res://UI/HmPresetNoOptionButton.gd" type="Script" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://UI/DropsController.gd" type="Script" id=4]
 [ext_resource path="res://UI/DropTableItemsPanel.gd" type="Script" id=5]
 [ext_resource path="res://resources/icons/brightmixIconset search.png" type="Texture" id=6]
+[ext_resource path="res://resources/icons/icon_clock.png" type="Texture" id=7]
+[ext_resource path="res://resources/icons/icon_sun.png" type="Texture" id=8]
+[ext_resource path="res://resources/icons/icon_moon.png" type="Texture" id=9]
 
 [node name="EnemyDetailsPanel" type="ScrollContainer"]
 anchor_right = 1.0
@@ -18,7 +21,7 @@ script = ExtResource( 3 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_right = 1004.0
-margin_bottom = 656.0
+margin_bottom = 684.0
 size_flags_horizontal = 3
 
 [node name="NamedEnemyParamsIdOptionButton" type="OptionButton" parent="VBoxContainer"]
@@ -33,7 +36,7 @@ script = ExtResource( 1 )
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
 margin_top = 28.0
 margin_right = 1004.0
-margin_bottom = 460.0
+margin_bottom = 488.0
 columns = 2
 
 [node name="RaidBossId" type="Label" parent="VBoxContainer/GridContainer"]
@@ -210,46 +213,63 @@ margin_left = 124.0
 margin_top = 316.0
 margin_right = 1004.0
 margin_bottom = 340.0
-hint_tooltip = "InfectionType_tooltip"
+hint_tooltip = "Set the infection type."
 size_flags_horizontal = 3
 text = "InfectionType_value_0"
 items = [ "InfectionType_value_0", null, false, 0, null, "InfectionType_value_1", null, false, 1, null, "InfectionType_value_2", null, false, 2, null, "InfectionType_value_3", null, false, 3, null ]
 selected = 0
 
-[node name="IsBossGauge" type="CheckBox" parent="VBoxContainer/GridContainer"]
-margin_top = 344.0
+[node name="SpawnTimeType" type="Label" parent="VBoxContainer/GridContainer"]
+margin_top = 347.0
 margin_right = 120.0
-margin_bottom = 370.0
+margin_bottom = 365.0
+text = "Spawntime Type"
+
+[node name="SpawnTimeTypeLineEdit" type="OptionButton" parent="VBoxContainer/GridContainer"]
+margin_left = 124.0
+margin_top = 344.0
+margin_right = 1004.0
+margin_bottom = 368.0
+hint_tooltip = "Define if a monster can spawn at day or night, or both."
+text = "Day & Night"
+icon = ExtResource( 7 )
+items = [ "Day & Night", ExtResource( 7 ), false, 0, null, "Day", ExtResource( 8 ), false, 1, null, "Night", ExtResource( 9 ), false, 2, null ]
+selected = 0
+
+[node name="IsBossGauge" type="CheckBox" parent="VBoxContainer/GridContainer"]
+margin_top = 372.0
+margin_right = 120.0
+margin_bottom = 398.0
 hint_tooltip = "IsBossGauge_tooltip"
 text = "IsBossGauge"
 
 [node name="IsBossBGM" type="CheckBox" parent="VBoxContainer/GridContainer"]
 margin_left = 124.0
-margin_top = 344.0
+margin_top = 372.0
 margin_right = 1004.0
-margin_bottom = 370.0
+margin_bottom = 398.0
 hint_tooltip = "IsBossBGM_tooltip"
 text = "IsBossBGM"
 
 [node name="IsManualSet" type="CheckBox" parent="VBoxContainer/GridContainer"]
-margin_top = 374.0
+margin_top = 402.0
 margin_right = 120.0
-margin_bottom = 400.0
+margin_bottom = 428.0
 hint_tooltip = "IsManualSet_tooltip"
 text = "IsManualSet"
 
 [node name="IsAreaBoss" type="CheckBox" parent="VBoxContainer/GridContainer"]
 margin_left = 124.0
-margin_top = 374.0
+margin_top = 402.0
 margin_right = 1004.0
-margin_bottom = 400.0
+margin_bottom = 428.0
 hint_tooltip = "IsAreaBoss_tooltip"
 text = "IsAreaBoss"
 
 [node name="BloodOrbsContainer" type="HFlowContainer" parent="VBoxContainer/GridContainer"]
-margin_top = 404.0
+margin_top = 432.0
 margin_right = 120.0
-margin_bottom = 432.0
+margin_bottom = 460.0
 
 [node name="IsBloodEnemy" type="CheckBox" parent="VBoxContainer/GridContainer/BloodOrbsContainer"]
 margin_right = 24.0
@@ -266,9 +286,9 @@ suffix = "BO"
 
 [node name="HighOrbsContainer" type="HFlowContainer" parent="VBoxContainer/GridContainer"]
 margin_left = 124.0
-margin_top = 404.0
+margin_top = 432.0
 margin_right = 1004.0
-margin_bottom = 432.0
+margin_bottom = 460.0
 
 [node name="IsHighOrbEnemy" type="CheckBox" parent="VBoxContainer/GridContainer/HighOrbsContainer"]
 margin_right = 24.0
@@ -284,16 +304,16 @@ max_value = 9999.0
 suffix = "HO"
 
 [node name="ExpSpinBox" type="SpinBox" parent="VBoxContainer"]
-margin_top = 464.0
+margin_top = 492.0
 margin_right = 1004.0
-margin_bottom = 492.0
+margin_bottom = 520.0
 max_value = 4.29497e+09
 suffix = "XP"
 
 [node name="DropsFilterLineEdit" type="LineEdit" parent="VBoxContainer"]
-margin_top = 496.0
+margin_top = 524.0
 margin_right = 1004.0
-margin_bottom = 524.0
+margin_bottom = 552.0
 size_flags_horizontal = 3
 clear_button_enabled = true
 right_icon = ExtResource( 6 )
@@ -303,9 +323,9 @@ __meta__ = {
 }
 
 [node name="DropsController" type="VBoxContainer" parent="VBoxContainer"]
-margin_top = 528.0
+margin_top = 556.0
 margin_right = 1004.0
-margin_bottom = 656.0
+margin_bottom = 684.0
 script = ExtResource( 4 )
 
 [node name="HFlowContainer" type="HFlowContainer" parent="VBoxContainer/DropsController"]
@@ -400,6 +420,7 @@ margin_bottom = 86.0
 [connection signal="value_changed" from="VBoxContainer/GridContainer/MontageFixNoLineEdit" to="." method="_on_MontageFixNoLineEdit_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/GridContainer/SetTypeLineEdit" to="." method="_on_SetTypeLineEdit_value_changed"]
 [connection signal="item_selected" from="VBoxContainer/GridContainer/InfectionTypeLineEdit" to="." method="_on_InfectionTypeLineEdit_item_selected"]
+[connection signal="item_selected" from="VBoxContainer/GridContainer/SpawnTimeTypeLineEdit" to="." method="_on_SpawnTimeTypeLineEdit_item_selected"]
 [connection signal="pressed" from="VBoxContainer/GridContainer/IsBossGauge" to="." method="_on_IsBossGauge_pressed"]
 [connection signal="pressed" from="VBoxContainer/GridContainer/IsBossBGM" to="." method="_on_IsBossBGM_pressed"]
 [connection signal="pressed" from="VBoxContainer/GridContainer/IsManualSet" to="." method="_on_IsManualSet_pressed"]

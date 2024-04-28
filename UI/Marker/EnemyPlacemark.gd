@@ -9,6 +9,23 @@ export (Resource) var enemy: Resource setget set_enemy
 
 onready var _detailsPanel: DetailsPanel = DetailsPanel.get_instance(get_tree())
 
+func _ready():
+	var success = SetProvider.connect("selected_day_night", self, "_on_day_night_selected")
+
+func _on_day_night_selected(index):
+	if enemy != null:
+		_update_placemark_visibility(index)
+	else:
+		printerr("ENEMY REFERENCE IS NULL")
+
+func _update_placemark_visibility(index):
+	if enemy != null:
+		var enemyTimeType = enemy.time_type
+		if index == 0 or enemyTimeType == 0 or enemyTimeType == index:
+			show()
+		else:
+			hide()
+
 func _on_EnemyPlacemark_pressed():
 	# Left Click
 	_detailsPanel.show_details_of(enemy)
@@ -22,6 +39,10 @@ func set_enemy(em: Enemy) -> void:
 	if em != null:
 		em.connect("changed", self, "_on_enemy_changed")
 		_on_enemy_changed()
+	
+	if enemy != null and enemy.has_method("_time_type"):
+		var time_type = enemy.get_time_type()
+		print("testing")
 	
 func _on_enemy_changed():
 	text = enemy.get_display_name()

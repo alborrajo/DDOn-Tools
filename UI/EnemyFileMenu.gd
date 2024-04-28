@@ -57,6 +57,7 @@ const ENEMIES_SCHEMA := PoolStringArray([
 	"HighOrbs",
 	"Experience",
 	"DropsTableId",
+	"SpawnTime",
 ])
 
 const DROPS_TABLE_ITEMS_SCHEMA := PoolStringArray([
@@ -119,7 +120,7 @@ func _do_load_file_json(file: File) -> int:
 		print("\tError Line: ", json_parse.error_line)
 		print("\tError String: ", json_parse.error_string)
 		return json_parse.error
-
+	
 	# Clear set state
 	SetProvider.clear_drops_tables()
 	SetProvider.clear_enemy_sets()
@@ -208,6 +209,19 @@ func _do_load_file_json(file: File) -> int:
 		var enemy_set = SetProvider.get_enemy_set(stage_id, layer_no, group_id, subgroup_id)
 		enemy_set.add_enemy(enemy)
 		
+		if enemies_schema_idx.has("SpawnTime"):
+			var time_range_str = data[enemies_schema_idx["SpawnTime"]]
+			var time_type = 0
+			if time_range_str == "00:00,23:59":
+				time_type = 0
+			elif time_range_str == "07:00,17:59":
+				time_type = 1
+			elif time_range_str == "18:00,06:59":
+				time_type = 2
+			else:
+				printerr("JSON HAS INVALID TIME_RANGE DATA")
+			enemy.time_type = time_type
+
 	return OK
 
 func _do_load_file_legacy(file: File) -> void:
@@ -340,6 +354,16 @@ func _do_save_file(file: File) -> void:
 				data.append(enemy.drops_table.id)
 			else:
 				data.append(-1)
+			
+			var selected_index = enemy.time_type
+			var selected_string = ""
+			if selected_index == 0:
+				selected_string = "00:00,23:59"
+			if selected_index == 1:
+				selected_string = "07:00,17:59"
+			if selected_index == 2:
+				selected_string = "18:00,06:59"	
+			data.append(selected_string)
 
 			json_data[JSON_KEY_ENEMIES].append(data)
 

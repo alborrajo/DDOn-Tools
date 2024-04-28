@@ -49,6 +49,7 @@ func _on_enemy_changed():
 		$VBoxContainer/GridContainer/MontageFixNoLineEdit.value = enemy_clone.montage_fix_no
 		$VBoxContainer/GridContainer/SetTypeLineEdit.value = enemy_clone.set_type
 		$VBoxContainer/GridContainer/InfectionTypeLineEdit.select($VBoxContainer/GridContainer/InfectionTypeLineEdit.get_item_index(enemy_clone.infection_type))
+		$VBoxContainer/GridContainer/SpawnTimeTypeLineEdit.select($VBoxContainer/GridContainer/SpawnTimeTypeLineEdit.get_item_index(enemy_clone.time_type))
 		$VBoxContainer/GridContainer/IsBossGauge.pressed = enemy_clone.is_boss_gauge
 		$VBoxContainer/GridContainer/IsBossBGM.pressed = enemy_clone.is_boss_bgm
 		$VBoxContainer/GridContainer/IsManualSet.pressed = enemy_clone.is_manual_set
@@ -118,6 +119,9 @@ func _on_SetTypeLineEdit_value_changed(value):
 
 func _on_InfectionTypeLineEdit_item_selected(index):
 	enemy.infection_type = $VBoxContainer/GridContainer/InfectionTypeLineEdit.get_item_id(index)
+
+func _on_SpawnTimeTypeLineEdit_item_selected(index):
+	enemy.time_type = $VBoxContainer/GridContainer/SpawnTimeTypeLineEdit.get_item_id(index)
 
 func _on_IsBossGauge_pressed():
 	enemy.is_boss_gauge = $VBoxContainer/GridContainer/IsBossGauge.pressed

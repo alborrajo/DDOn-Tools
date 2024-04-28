@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Main/PlayerMarkers.gd" type="Script" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
 [ext_resource path="res://UI/Camera.gd" type="Script" id=3]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://resources/icons/icon_clock.png" type="Texture" id=5]
+[ext_resource path="res://resources/icons/icon_sun.png" type="Texture" id=6]
+[ext_resource path="res://resources/icons/icon_moon.png" type="Texture" id=7]
+[ext_resource path="res://DayNightOptionButton.gd" type="Script" id=8]
 
 [node name="root" type="Control"]
 anchor_right = 1.0
@@ -74,8 +78,31 @@ items = [ "New Gathering Spots", null, 0, false, false, 0, 0, null, "", false, "
 [node name="LayerOptionButton" parent="ui/status_view/container" index="1"]
 items = [ "Layer 0", null, false, 0, null, "Layer 1", null, false, 1, null, "Layer 2", null, false, 2, null, "Layer 3", null, false, 3, null, "Layer 4", null, false, 4, null, "Layer 5", null, false, 5, null, "Layer 6", null, false, 6, null, "Layer 7", null, false, 7, null, "Layer 8", null, false, 8, null, "Layer 9", null, false, 9, null ]
 
+[node name="DayNightOptionButton" type="OptionButton" parent="ui/status_view/container" index="2"]
+margin_left = 95.0
+margin_right = 208.0
+margin_bottom = 24.0
+text = "Day & Night"
+icon = ExtResource( 5 )
+items = [ "Day & Night", ExtResource( 5 ), false, 0, null, "Day", ExtResource( 6 ), false, 1, null, "Night", ExtResource( 7 ), false, 2, null ]
+selected = 0
+script = ExtResource( 8 )
+
+[node name="StageLabel" parent="ui/status_view/container" index="3"]
+margin_left = 212.0
+margin_right = 378.0
+
+[node name="Spacer" parent="ui/status_view/container" index="4"]
+margin_left = 382.0
+
 [node name="SettingsWindowDialog" parent="ui" index="4"]
 visible = false
+
+[node name="EnemyFileDialog" parent="ui" index="5"]
+window_title = "Open a File"
+
+[node name="ItemFileDialog" parent="ui" index="6"]
+window_title = "Open a File"
 
 [connection signal="gui_input" from="." to="camera" method="_on_root_gui_input"]
 [connection signal="player_activated" from="ui" to="." method="_on_ui_player_activated"]
@@ -85,5 +112,6 @@ visible = false
 [connection signal="player_left" from="ui/left/tab/Players" to="MapCoordinateSpace/PlayerMarkers" method="_on_Players_player_left"]
 [connection signal="player_updated" from="ui/left/tab/Players" to="MapCoordinateSpace/PlayerMarkers" method="_on_Players_player_updated"]
 [connection signal="item_selected" from="ui/status_view/container/LayerOptionButton" to="." method="_on_LayerOptionButton_item_selected"]
+[connection signal="item_selected" from="ui/status_view/container/DayNightOptionButton" to="ui/status_view/container/DayNightOptionButton" method="_on_DayNightOptionButton_item_selected"]
 
 [editable path="ui"]
