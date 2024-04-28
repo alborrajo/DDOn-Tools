@@ -28,7 +28,6 @@ func _refresh_selected_name():
 	
 func _on_enemy_changed():
 	if enemy != null:
-		var filter_text = $VBoxContainer/DropsController._current_filter_text
 		# Cloning first prevents values from getting overwritten by events
 		# happening while being set in the UI
 		# For example: Setting LevelLineEdit.value triggers a signal, which sets
@@ -36,6 +35,7 @@ func _on_enemy_changed():
 		# are written to the UI.
 		# Using a clone means that even if the values in the enemy variable are
 		# changed, the values in enemy_clone are still the originals
+		var filter_text = $VBoxContainer/DropsController._current_filter_text
 		var enemy_clone := enemy.clone()
 		$VBoxContainer/NamedEnemyParamsIdOptionButton.select($VBoxContainer/NamedEnemyParamsIdOptionButton.get_item_index(enemy_clone.named_enemy_params_id))
 		$VBoxContainer/GridContainer/RaidBossIdLineEdit.value = enemy_clone.raid_boss_id

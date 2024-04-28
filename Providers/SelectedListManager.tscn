@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+resource_name = "SelectedListManager"
+script/source = "extends Node
+
+var selected_list = []
+var changed_parameters = {}
+
+
+func _check_list_for_type(enemy_placemark: EnemyPlacemark):
+	if enemy_placemark in selected_list:
+		selected_list.erase(enemy_placemark)
+		print(\"Enemy removed from the list\")
+	else:
+		selected_list.append(enemy_placemark)
+		print(\"Enemy added to the list\")
+
+# Clear the selected_list
+func _clear_list():
+	selected_list.clear()
+	print(\"List cleared\")
+
+"
+
+[node name="SelectedListManager" type="Node"]
+script = SubResource( 1 )

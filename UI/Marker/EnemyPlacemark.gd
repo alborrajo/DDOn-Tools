@@ -8,6 +8,7 @@ const COLOR_DEFAULT = Color.white
 export (Resource) var enemy: Resource setget set_enemy
 
 onready var _detailsPanel: DetailsPanel = DetailsPanel.get_instance(get_tree())
+onready var is_selected = false
 
 func _ready():
 	var success = SetProvider.connect("selected_day_night", self, "_on_day_night_selected")
@@ -27,8 +28,12 @@ func _update_placemark_visibility(index):
 			hide()
 
 func _on_EnemyPlacemark_pressed():
-	# Left Click
-	_detailsPanel.show_details_of(enemy)
+	if Input.is_key_pressed(KEY_SHIFT):
+		SelectedListManager._check_list_for_type(self)  # Pass EnemyPlacemark instance and enemy data
+		_detailsPanel.show_details_of(enemy)
+	else:
+		SelectedListManager._clear_list()
+		_detailsPanel.show_details_of(enemy)
 	
 func set_enemy(em: Enemy) -> void:
 	if enemy != null and enemy.is_connected("changed", self, "_on_enemy_changed"):
