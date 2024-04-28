@@ -10,16 +10,13 @@ export (Resource) var enemy: Resource setget set_enemy
 onready var _detailsPanel: DetailsPanel = DetailsPanel.get_instance(get_tree())
 
 func _ready():
-	# Connect to the custom signal emitted by SetProvider
-	var set_provider = get_node("../../../../../../root/ui/status_view/container/DayNightOptionButton")
-	if set_provider:
-		set_provider.connect("day_night_selected", self, "_on_day_night_selected")
-	else:
-		print("FAILED TO FIND DAYNIGHT BUTTON")
+	var success = SetProvider.connect("selected_day_night", self, "_on_day_night_selected")
 
 func _on_day_night_selected(index):
 	if enemy != null:
 		_update_placemark_visibility(index)
+	else:
+		printerr("ENEMY REFERENCE IS NULL")
 
 func _update_placemark_visibility(index):
 	if enemy != null:

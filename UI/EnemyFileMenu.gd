@@ -219,7 +219,7 @@ func _do_load_file_json(file: File) -> int:
 			elif time_range_str == "18:00,06:59":
 				time_type = 2
 			else:
-				print("JSON HAS INVALID TIME_RANGE DATA")
+				printerr("JSON HAS INVALID TIME_RANGE DATA")
 			enemy.time_type = time_type
 
 	return OK
