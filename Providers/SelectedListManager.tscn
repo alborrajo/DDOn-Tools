@@ -80,7 +80,10 @@ func _check_list_for_type(enemy_placemark: EnemyPlacemark, enemy_data: Enemy):
 
 	var index = _find_entry_index(enemy_placemark)
 	if index != -1:
-		selected_list.remove(index)
+		var panel = enemy_placemark.get_node(\"Panel\")
+		if panel:
+			panel.visible = false
+			selected_list.remove(index)
 	else:
 		selected_list.append(entry)
 
@@ -91,10 +94,26 @@ func _find_entry_index(enemy_placemark: EnemyPlacemark) -> int:
 			return i
 	return -1
 
+func highlight():
+	for entry in selected_list:
+		var enemy_placemark = entry[\"placemark\"]
+		# Assuming the Panel node is named \"Panel\" and it's the first child of EnemyPlacemark
+		var panel = enemy_placemark.get_node(\"Panel\")
+		if panel:
+			panel.visible = true
+
 # Function to clear the list
 func _clear_list():
+	remove_highlight()
 	selected_list.clear()
-	print(\"List cleared\")
+	
+func remove_highlight():
+	for entry in selected_list:
+		var enemy_placemark = entry[\"placemark\"]
+		# Assuming the Panel node is named \"Panel\" and it's the first child of EnemyPlacemark
+		var panel = enemy_placemark.get_node(\"Panel\")
+		if panel:
+			panel.visible = false
 "
 
 [node name="SelectedListManager" type="Node"]

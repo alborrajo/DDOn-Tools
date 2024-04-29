@@ -1,11 +1,30 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://UI/Marker/EnemyPlacemark.gd" type="Script" id=1]
 [ext_resource path="res://UI/Marker/GenericPlacemark.tscn" type="PackedScene" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.0862745, 0.772549, 0.901961, 1 )
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color( 0, 0.709804, 1, 1 )
 
 [node name="EnemyPlacemark" instance=ExtResource( 2 )]
 text = "Placeholder (Lv.69)"
 script = ExtResource( 1 )
 enemy = null
+
+[node name="Panel" type="Panel" parent="." index="0"]
+visible = false
+show_behind_parent = true
+anchor_right = 1.006
+margin_right = -0.0400009
+margin_bottom = 25.0
+mouse_filter = 2
+input_pass_on_modal_close_click = false
+custom_styles/panel = SubResource( 1 )
 
 [connection signal="pressed" from="." to="." method="_on_EnemyPlacemark_pressed"]
