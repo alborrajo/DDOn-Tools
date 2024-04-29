@@ -68,7 +68,7 @@ func apply_values_to_enemy(enemy_data: Enemy, parameters: Dictionary):
 			\"experience\":
 				enemy_data.experience = parameter_value
 			\"drops_table\":
-				enemy_data.drops_table = parameter_value
+				enemy_data.drops_table.id = parameter_value
 			# Add more cases for other parameters as needed
 			_:
 				# Handle unknown parameter names
