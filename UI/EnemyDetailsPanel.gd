@@ -21,7 +21,7 @@ func _set_enemy(em: Enemy) -> void:
 	if em != null:
 		em.connect("changed", self, "_on_enemy_changed")
 		
-	supress_event = true	
+	supress_event = true
 	_on_enemy_changed()
 	supress_event = false
 
@@ -107,7 +107,7 @@ func _on_LevelLineEdit_value_changed(value):
 	if supress_event != true:
 		SelectedListManager.apply_values_to_selected_enemies("lv", int(value))
 
-func _on_HmPresetNoOptionButton_item_selected(index):
+func _on_HmPresetNoOptionButton_item_selected(index): # this doesn't work for somereason it sets it to blank?
 	enemy.hm_preset_no = $VBoxContainer/GridContainer/HmPresetNoOptionButton.get_item_id(index)
 	if supress_event != true:
 		SelectedListManager.apply_values_to_selected_enemies("hm_preset_no", int(index))
@@ -198,5 +198,5 @@ func _on_ExpSpinBox_value_changed(value):
 
 func _on_DropsContainer_drops_table_selected(drops_table):
 	enemy.drops_table = drops_table
-	if supress_event != true:
-		SelectedListManager.apply_values_to_selected_enemies("drops_table", int(drops_table))
+#	if supress_event != true:
+#		SelectedListManager.apply_values_to_selected_enemies("drops_table", (drops_table))
