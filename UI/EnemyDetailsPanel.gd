@@ -87,10 +87,11 @@ func _on_enemy_changed():
 
 
 
-func _on_NamedEnemyParamsIdOptionButton_item_selected(index): #not sure why this dropbox doesn't work, will test later
+func _on_NamedEnemyParamsIdOptionButton_item_selected(index): # Not sure why but this requires a var to act as a middle man, using the direct index just freaks it out
 	enemy.named_enemy_params_id = $VBoxContainer/NamedEnemyParamsIdOptionButton.get_item_id(index)
 	if supress_event != true:
-		SelectedListManager.apply_values_to_selected_enemies("named_enemy_params_id", int(index))
+		var name = $VBoxContainer/NamedEnemyParamsIdOptionButton.get_item_id(index)
+		SelectedListManager.apply_values_to_selected_enemies("named_enemy_params_id", int(name))
 
 func _on_RaidBossIdLineEdit_value_changed(value):
 	enemy.raid_boss_id = int(value)
@@ -107,10 +108,11 @@ func _on_LevelLineEdit_value_changed(value):
 	if supress_event != true:
 		SelectedListManager.apply_values_to_selected_enemies("lv", int(value))
 
-func _on_HmPresetNoOptionButton_item_selected(index): # this doesn't work for somereason it sets it to blank?
+func _on_HmPresetNoOptionButton_item_selected(index): # Not sure why but this requires a var to act as a middle man, using the direct index just freaks it out
 	enemy.hm_preset_no = $VBoxContainer/GridContainer/HmPresetNoOptionButton.get_item_id(index)
 	if supress_event != true:
-		SelectedListManager.apply_values_to_selected_enemies("hm_preset_no", int(index))
+		var name = $VBoxContainer/GridContainer/HmPresetNoOptionButton.get_item_id(index)
+		SelectedListManager.apply_values_to_selected_enemies("hm_preset_no", int(name))
 
 func _on_StartThinkTblNoLineEdit_value_changed(value):
 	enemy.start_think_tbl_no = int(value)
@@ -154,32 +156,38 @@ func _on_SpawnTimeTypeLineEdit_item_selected(index):
 
 func _on_IsBossGauge_pressed():
 	enemy.is_boss_gauge = $VBoxContainer/GridContainer/IsBossGauge.pressed
-#	if not supress_event:
-#		SelectedListManager.apply_values_to_selected_enemies("is_boss_gauge", int(index))
+	if not supress_event:
+		var index = $VBoxContainer/GridContainer/IsBossGauge.pressed
+		SelectedListManager.apply_values_to_selected_enemies("is_boss_gauge", int(index))
 
 func _on_IsBossBGM_pressed():
 	enemy.is_boss_bgm = $VBoxContainer/GridContainer/IsBossBGM.pressed
-#	if not supress_event:
-#		SelectedListManager.apply_values_to_selected_enemies("is_boss_bgm", int(index))
+	if not supress_event:
+		var index = $VBoxContainer/GridContainer/IsBossBGM.pressed
+		SelectedListManager.apply_values_to_selected_enemies("is_boss_bgm", int(index))
 func _on_IsManualSet_pressed():
 	enemy.is_manual_set = $VBoxContainer/GridContainer/IsManualSet.pressed
-#	if not supress_event:
-#		SelectedListManager.apply_values_to_selected_enemies("is_manual_set", int(index))
+	if not supress_event:
+		var index = $VBoxContainer/GridContainer/IsManualSet.pressed
+		SelectedListManager.apply_values_to_selected_enemies("is_manual_set", int(index))
 
 func _on_IsAreaBoss_pressed():
 	enemy.is_area_boss = $VBoxContainer/GridContainer/IsAreaBoss.pressed
-#	if not supress_event:
-#		SelectedListManager.apply_values_to_selected_enemies("is_area_boss", int(index))
+	if not supress_event:
+		var index = $VBoxContainer/GridContainer/IsAreaBoss.pressed
+		SelectedListManager.apply_values_to_selected_enemies("is_area_boss", int(index))
 
 func _on_IsBloodEnemy_pressed():
 	enemy.is_blood_enemy = $VBoxContainer/GridContainer/BloodOrbsContainer/IsBloodEnemy.pressed
-#	if not supress_event:
-#		SelectedListManager.apply_values_to_selected_enemies("is_blood_enemy", int(index))
+	if not supress_event:
+		var index = $VBoxContainer/GridContainer/BloodOrbsContainer/IsBloodEnemy.pressed
+		SelectedListManager.apply_values_to_selected_enemies("is_blood_enemy", int(index))
 
 func _on_IsHighOrbEnemy_pressed():
 	enemy.is_highorb_enemy = $VBoxContainer/GridContainer/HighOrbsContainer/IsHighOrbEnemy.pressed
-#	if not supress_event:
-#		SelectedListManager.apply_values_to_selected_enemies("is_highorb_enemy", int(index))
+	if not supress_event:
+		var index = $VBoxContainer/GridContainer/HighOrbsContainer/IsHighOrbEnemy.pressed
+		SelectedListManager.apply_values_to_selected_enemies("is_highorb_enemy", int(index))
 
 func _on_BloodOrbsSpinBox_value_changed(value):
 	enemy.blood_orbs = int(value)
@@ -199,4 +207,5 @@ func _on_ExpSpinBox_value_changed(value):
 func _on_DropsContainer_drops_table_selected(drops_table):
 	enemy.drops_table = drops_table
 #	if supress_event != true:
-#		SelectedListManager.apply_values_to_selected_enemies("drops_table", (drops_table))
+#		var index = drops_table.id
+#		SelectedListManager.apply_values_to_selected_enemies("drops_table", int(index))

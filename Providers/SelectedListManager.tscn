@@ -49,18 +49,18 @@ func apply_values_to_enemy(enemy_data: Enemy, parameters: Dictionary):
 				enemy_data.infection_type = parameter_value
 			\"time_type\":
 				enemy_data.time_type = parameter_value
-		#	\"is_boss_gauge\":
-		#		enemy_data.is_boss_gauge = parameter_value
-		#	\"is_boss_bgm\":
-		#		enemy_data.is_boss_bgm = parameter_value
-		#	\"is_manual_set\":
-		#		enemy_data.is_manual_set = parameter_value
-		#	\"is_area_boss\":
-		#		enemy_data.is_area_boss = parameter_value
-		#	\"is_blood_enemy\":
-		#		enemy_data.is_blood_enemy = parameter_value
-		#	\"is_highorb_enemy\":
-		#		enemy_data.is_highorb_enemy = parameter_value
+			\"is_boss_gauge\":
+				enemy_data.is_boss_gauge = parameter_value
+			\"is_boss_bgm\":
+				enemy_data.is_boss_bgm = parameter_value
+			\"is_manual_set\":
+				enemy_data.is_manual_set = parameter_value
+			\"is_area_boss\":
+				enemy_data.is_area_boss = parameter_value
+			\"is_blood_enemy\":
+				enemy_data.is_blood_enemy = parameter_value
+			\"is_highorb_enemy\":
+				enemy_data.is_highorb_enemy = parameter_value
 			\"blood_orbs\":
 				enemy_data.blood_orbs = parameter_value
 			\"high_orbs\":
