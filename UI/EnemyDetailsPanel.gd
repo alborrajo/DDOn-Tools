@@ -8,6 +8,7 @@ const COLOR_DEFAULT = Color.white
 export (NodePath) var title_label: NodePath
 
 var enemy: Enemy setget _set_enemy
+var supress_event = true
 
 onready var title_label_node: Label = get_node_or_null(title_label)
 
@@ -19,9 +20,11 @@ func _set_enemy(em: Enemy) -> void:
 	
 	if em != null:
 		em.connect("changed", self, "_on_enemy_changed")
-	
+		
+	supress_event = true	
 	_on_enemy_changed()
-	
+	supress_event = false
+
 	# this bridges the logic over to dropscontroller, the refreshing is handled there.
 func _refresh_selected_name():
 		$VBoxContainer/DropsController._refresh_filter()
@@ -79,76 +82,121 @@ func _on_enemy_changed():
 				title_label_node.modulate = COLOR_HIGH_ORB
 			else: 
 				title_label_node.modulate = COLOR_DEFAULT
-		  
 		$VBoxContainer/DropsController._on_DropsFilterLineEdit_text_changed(filter_text)
 		# Critical this comes after everything to ensure the filters get applied
 
 
-func _on_NamedEnemyParamsIdOptionButton_item_selected(index):
+
+func _on_NamedEnemyParamsIdOptionButton_item_selected(index): #not sure why this dropbox doesn't work, will test later
 	enemy.named_enemy_params_id = $VBoxContainer/NamedEnemyParamsIdOptionButton.get_item_id(index)
+	if supress_event != true:
+		SelectedListManager.apply_values_to_selected_enemies("named_enemy_params_id", int(index))
 
 func _on_RaidBossIdLineEdit_value_changed(value):
 	enemy.raid_boss_id = int(value)
+	if supress_event != true:
+		SelectedListManager.apply_values_to_selected_enemies("raid_boss_id", int(value))
 
 func _on_ScaleLineEdit_value_changed(value):
 	enemy.scale = int(value)
+	if supress_event != true:
+		SelectedListManager.apply_values_to_selected_enemies("scale", int(value))
 
 func _on_LevelLineEdit_value_changed(value):
 	enemy.lv = int(value)
+	if supress_event != true:
+		SelectedListManager.apply_values_to_selected_enemies("lv", int(value))
 
 func _on_HmPresetNoOptionButton_item_selected(index):
 	enemy.hm_preset_no = $VBoxContainer/GridContainer/HmPresetNoOptionButton.get_item_id(index)
+	if supress_event != true:
+		SelectedListManager.apply_values_to_selected_enemies("hm_preset_no", int(index))
 
 func _on_StartThinkTblNoLineEdit_value_changed(value):
 	enemy.start_think_tbl_no = int(value)
+	if supress_event != true:
+		SelectedListManager.apply_values_to_selected_enemies("start_think_tbl_no", int(value))
 
 func _on_RepopNumLineEdit_value_changed(value):
 	enemy.repop_num = int(value)
+	if supress_event != true:
+		SelectedListManager.apply_values_to_selected_enemies("repop_num", int(value))
 
 func _on_RepopCountLineEdit_value_changed(value):
 	enemy.repop_count = int(value)
+	if supress_event != true:
+		SelectedListManager.apply_values_to_selected_enemies("repop_count", int(value))
 
 func _on_EnemyTargetTypesIdLineEdit_value_changed(value):
 	enemy.enemy_target_types_id = int(value)
+	if supress_event != true:
+		SelectedListManager.apply_values_to_selected_enemies("enemy_target_types_id", int(value))
 
 func _on_MontageFixNoLineEdit_value_changed(value):
 	enemy.montage_fix_no = int(value)
+	if supress_event != true:
+		SelectedListManager.apply_values_to_selected_enemies("montage_fix_no", int(value))
 
 func _on_SetTypeLineEdit_value_changed(value):
 	enemy.set_type = int(value)
+	if supress_event != true:
+		SelectedListManager.apply_values_to_selected_enemies("set_type", int(value))
 
 func _on_InfectionTypeLineEdit_item_selected(index):
 	enemy.infection_type = $VBoxContainer/GridContainer/InfectionTypeLineEdit.get_item_id(index)
+	if supress_event != true:
+		SelectedListManager.apply_values_to_selected_enemies("infection_type", int(index))
 
 func _on_SpawnTimeTypeLineEdit_item_selected(index):
 	enemy.time_type = $VBoxContainer/GridContainer/SpawnTimeTypeLineEdit.get_item_id(index)
+	if supress_event != true:
+		SelectedListManager.apply_values_to_selected_enemies("time_type", int(index))
 
 func _on_IsBossGauge_pressed():
 	enemy.is_boss_gauge = $VBoxContainer/GridContainer/IsBossGauge.pressed
+#	if not supress_event:
+#		SelectedListManager.apply_values_to_selected_enemies("is_boss_gauge", int(index))
 
 func _on_IsBossBGM_pressed():
 	enemy.is_boss_bgm = $VBoxContainer/GridContainer/IsBossBGM.pressed
-
+#	if not supress_event:
+#		SelectedListManager.apply_values_to_selected_enemies("is_boss_bgm", int(index))
 func _on_IsManualSet_pressed():
 	enemy.is_manual_set = $VBoxContainer/GridContainer/IsManualSet.pressed
+#	if not supress_event:
+#		SelectedListManager.apply_values_to_selected_enemies("is_manual_set", int(index))
 
 func _on_IsAreaBoss_pressed():
 	enemy.is_area_boss = $VBoxContainer/GridContainer/IsAreaBoss.pressed
+#	if not supress_event:
+#		SelectedListManager.apply_values_to_selected_enemies("is_area_boss", int(index))
 
 func _on_IsBloodEnemy_pressed():
 	enemy.is_blood_enemy = $VBoxContainer/GridContainer/BloodOrbsContainer/IsBloodEnemy.pressed
+#	if not supress_event:
+#		SelectedListManager.apply_values_to_selected_enemies("is_blood_enemy", int(index))
 
 func _on_IsHighOrbEnemy_pressed():
 	enemy.is_highorb_enemy = $VBoxContainer/GridContainer/HighOrbsContainer/IsHighOrbEnemy.pressed
+#	if not supress_event:
+#		SelectedListManager.apply_values_to_selected_enemies("is_highorb_enemy", int(index))
 
 func _on_BloodOrbsSpinBox_value_changed(value):
 	enemy.blood_orbs = int(value)
+	if supress_event != true:
+		SelectedListManager.apply_values_to_selected_enemies("blood_orbs", int(value))
 
 func _on_HighOrbsSpinBox_value_changed(value):
 	enemy.high_orbs = int(value)
+	if supress_event != true:
+		SelectedListManager.apply_values_to_selected_enemies("high_orbs", int(value))
 
 func _on_ExpSpinBox_value_changed(value):
 	enemy.experience = int(value)
+	if supress_event != true:
+		SelectedListManager.apply_values_to_selected_enemies("experience", int(value))
 
 func _on_DropsContainer_drops_table_selected(drops_table):
 	enemy.drops_table = drops_table
+	if supress_event != true:
+		SelectedListManager.apply_values_to_selected_enemies("drops_table", int(drops_table))

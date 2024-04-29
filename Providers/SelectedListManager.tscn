@@ -5,32 +5,96 @@ resource_name = "SelectedListManager"
 script/source = "extends Node
 
 var selected_list = []
-var changed_parameters = {}
 
+# Function to receive and apply values to all enemies in the selected list
+func apply_values_to_selected_enemies(parameter_name: String, parameter_value: int):
+	var parameters = {parameter_name: parameter_value}
+	apply_values_to_selected_enemies_generic(parameters)
 
+# Generic function to apply values to all enemies in the selected list
+func apply_values_to_selected_enemies_generic(parameters: Dictionary):
+	for entry in selected_list:
+		var enemy_placemark = entry[\"placemark\"]
+		var enemy_data = entry[\"data\"]
+		apply_values_to_enemy(enemy_data, parameters)
+
+# Function to apply values to selected enemy
+func apply_values_to_enemy(enemy_data: Enemy, parameters: Dictionary):
+	for parameter_name in parameters.keys():
+		var parameter_value = parameters[parameter_name]
+		match parameter_name:
+			\"named_enemy_params_id\":
+				enemy_data.named_enemy_params_id = parameter_value
+			\"raid_boss_id\":
+				enemy_data.raid_boss_id = parameter_value
+			\"scale\":
+				enemy_data.scale = parameter_value
+			\"lv\":
+				enemy_data.lv = parameter_value
+			\"hm_preset_no\":
+				enemy_data.hm_preset_no = parameter_value
+			\"start_think_tbl_no\":
+				enemy_data.start_think_tbl_no = parameter_value
+			\"repop_num\":
+				enemy_data.repop_num = parameter_value
+			\"repop_count\":
+				enemy_data.repop_count = parameter_value
+			\"enemy_target_types_id\":
+				enemy_data.enemy_target_types_id = parameter_value
+			\"montage_fix_no\":
+				enemy_data.montage_fix_no = parameter_value
+			\"set_type\":
+				enemy_data.set_type = parameter_value
+			\"infection_type\":
+				enemy_data.infection_type = parameter_value
+			\"time_type\":
+				enemy_data.time_type = parameter_value
+		#	\"is_boss_gauge\":
+		#		enemy_data.is_boss_gauge = parameter_value
+		#	\"is_boss_bgm\":
+		#		enemy_data.is_boss_bgm = parameter_value
+		#	\"is_manual_set\":
+		#		enemy_data.is_manual_set = parameter_value
+		#	\"is_area_boss\":
+		#		enemy_data.is_area_boss = parameter_value
+		#	\"is_blood_enemy\":
+		#		enemy_data.is_blood_enemy = parameter_value
+		#	\"is_highorb_enemy\":
+		#		enemy_data.is_highorb_enemy = parameter_value
+			\"blood_orbs\":
+				enemy_data.blood_orbs = parameter_value
+			\"high_orbs\":
+				enemy_data.high_orbs = parameter_value
+			\"experience\":
+				enemy_data.experience = parameter_value
+			\"drops_table\":
+				enemy_data.drops_table = parameter_value
+			# Add more cases for other parameters as needed
+			_:
+				# Handle unknown parameter names
+				print(\"Unknown parameter name:\", parameter_name)
+
+# Function to check the list for type
 func _check_list_for_type(enemy_placemark: EnemyPlacemark, enemy_data: Enemy):
 	var entry = {\"placemark\": enemy_placemark, \"data\": enemy_data}
 
 	var index = _find_entry_index(enemy_placemark)
 	if index != -1:
 		selected_list.remove(index)
-		print(\"Enemy removed from the list\")
 	else:
 		selected_list.append(entry)
-		print(\"Added enemy to list:\", enemy_placemark, enemy_data)
 
-
+# Function to find the index of an entry in the list
 func _find_entry_index(enemy_placemark: EnemyPlacemark) -> int:
 	for i in range(selected_list.size()):
 		if selected_list[i][\"placemark\"] == enemy_placemark:
 			return i
 	return -1
 
+# Function to clear the list
 func _clear_list():
 	selected_list.clear()
 	print(\"List cleared\")
-
-
 "
 
 [node name="SelectedListManager" type="Node"]
