@@ -74,8 +74,12 @@ func _on_enemy_changed():
 		# Duplicate code from EnemyPlacemark, where a similar thing is done.
 		# TODO: thonk
 		if title_label_node != null:
-			title_label_node.text = enemy_clone.get_display_name()
-			
+			var list_count = SelectedListManager.selected_list
+			if list_count.size() > 1:
+				title_label_node.text = "Selected Nodes: " + str(list_count.size())
+			else:
+				title_label_node.text = enemy_clone.get_display_name()
+				
 			if enemy_clone.is_blood_enemy:
 				title_label_node.modulate = COLOR_BLOOD_ORB
 			elif enemy_clone.is_highorb_enemy:

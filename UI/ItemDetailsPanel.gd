@@ -28,7 +28,11 @@ func _on_item_changed():
 		$GridContainer/IsHiddenCheckBox.pressed = item.is_hidden
 		
 		if title_label_node != null:
-			title_label_node.text = item.get_display_name()
+			var list_count = SelectedListManager.selected_list
+			if list_count.size() > 1:
+				title_label_node.text = "Selected Nodes: " + str(list_count.size())
+			else:
+				title_label_node.text = item.get_display_name()
 
 
 func _on_DropChanceSpinBox_value_changed(value):
