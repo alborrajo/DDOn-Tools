@@ -9,8 +9,6 @@ export (Resource) var enemy: Resource setget set_enemy
 
 onready var _detailsPanel: DetailsPanel = DetailsPanel.get_instance(get_tree())
 onready var is_selected = false
-#onready var selectionpanel = $EnemyPlacemark.get_node("SelectionPanel")
-
 
 func _ready():
 	var success = SetProvider.connect("selected_day_night", self, "_on_day_night_selected")
@@ -52,8 +50,8 @@ func set_enemy(em: Enemy) -> void:
 func _on_enemy_changed():
 	text = enemy.get_display_name()
 	if enemy.is_blood_enemy:
-		modulate = COLOR_BLOOD_ORB
+		self_modulate = COLOR_BLOOD_ORB
 	elif enemy.is_highorb_enemy:
-		modulate = COLOR_HIGH_ORB
+		self_modulate = COLOR_HIGH_ORB
 	else: 
-		modulate = COLOR_DEFAULT
+		self_modulate = COLOR_DEFAULT

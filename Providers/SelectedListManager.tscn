@@ -121,7 +121,6 @@ func details_panel():
 		var last_entry = selected_list[selected_list.size() - 1]
 		var enemy_data = last_entry[\"data\"]
 		_detailsPanel.show_details_of(enemy_data)
-		print(\"the panel should be this:\", enemy_data)
 "
 
 [node name="SelectedListManager" type="Node"]
