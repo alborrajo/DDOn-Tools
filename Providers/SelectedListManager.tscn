@@ -5,7 +5,8 @@ resource_name = "SelectedListManager"
 script/source = "extends Node
 
 var selected_list = []
-onready var _detailsPanel: DetailsPanel = DetailsPanel.get_instance(get_tree())
+onready var _enemy_detailsPanel: DetailsPanel = DetailsPanel.get_instance(get_tree())
+onready var _item_detailsPanel: DetailsPanel = DetailsPanel.get_instance(get_tree())
 
 # Function to apply values to all enemies in the selected list
 func apply_values_to_selected_enemies(parameter_name: String, parameter_value: int):
@@ -85,7 +86,7 @@ func _check_list_for_type(enemy_placemark: EnemyPlacemark, enemy_data: Enemy):
 			details_panel()
 	else:
 		selected_list.append(entry)
-		_detailsPanel.show_details_of(enemy_data)
+		_enemy_detailsPanel.show_details_of(enemy_data)
 		highlight()
 
 # Function to find the index of an entry in the list
@@ -98,8 +99,8 @@ func _find_entry_index(enemy_placemark: EnemyPlacemark) -> int:
 # Adds the highlight selection around anything inside the selected_list
 func highlight():
 	for entry in selected_list:
-		var enemy_placemark = entry[\"placemark\"]
-		var selectionpanel = enemy_placemark.get_node(\"SelectionPanel\")
+		var placemark = entry[\"placemark\"]
+		var selectionpanel = placemark.get_node(\"SelectionPanel\")
 		if selectionpanel:
 			selectionpanel.visible = true
 
@@ -110,19 +111,37 @@ func _clear_list():
 	
 func clear_all_highlights():
 	for entry in selected_list:
-		var enemy_placemark = entry[\"placemark\"]
-		var selectionpanel = enemy_placemark.get_node(\"SelectionPanel\")
+		var placemark = entry[\"placemark\"]
+		var selectionpanel = placemark.get_node(\"SelectionPanel\")
 		if selectionpanel:
 			selectionpanel.visible = false
 			
 func details_panel():
-	if selected_list.size() > 0:
-		if selected_list.size() > 1:
-			_detailsPanel.show_multiple_details(selected_list.size())
-		else:
-			var last_entry = selected_list[selected_list.size() - 1]
-			var enemy_data = last_entry[\"data\"]
-			_detailsPanel.show_details_of(enemy_data)
+	var last_entry = selected_list[selected_list.size() - 1]
+	var enemy_data = last_entry[\"data\"]
+	_enemy_detailsPanel.show_details_of(enemy_data)
+
+func _check_list_item(gathering_placemark: GatheringItemPlacemark, item: GatheringItem):
+	var entry = {\"placemark\": gathering_placemark, \"data\": item}
+
+	var index = _find_entry_index_2(gathering_placemark)
+	if index != -1:
+		var panel = gathering_placemark.get_node(\"SelectionPanel\")
+		if panel:
+			panel.visible = false
+			selected_list.remove(index)
+			details_panel()
+	else:
+		selected_list.append(entry)
+		_item_detailsPanel.show_details_of(item)
+		highlight()
+		
+func _find_entry_index_2(gathering_placemark: GatheringItemPlacemark) -> int:
+	for i in range(selected_list.size()):
+		if selected_list[i][\"placemark\"] == gathering_placemark:
+			return i
+	return -1
+
 "
 
 [node name="SelectedListManager" type="Node"]

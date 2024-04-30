@@ -6,8 +6,11 @@ export (Resource) var item: Resource setget set_item
 onready var _detailsPanel: DetailsPanel = DetailsPanel.get_instance(get_tree())
 
 func _on_GatheringItemPlacemark_pressed():
-	# Left Click
-	_detailsPanel.show_details_of(item)
+	if Input.is_key_pressed(KEY_SHIFT):
+		SelectedListManager._check_list_item(self, item)
+	else:
+		SelectedListManager._clear_list()
+		SelectedListManager._check_list_item(self, item)
 
 func set_item(i: GatheringItem) -> void:
 	if item != null and item.is_connected("changed", self, "_on_item_changed"):
