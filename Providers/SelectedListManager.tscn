@@ -111,16 +111,18 @@ func _clear_list():
 func clear_all_highlights():
 	for entry in selected_list:
 		var enemy_placemark = entry[\"placemark\"]
-		# Assuming the Panel node is named \"Panel\" and it's the first child of EnemyPlacemark
 		var selectionpanel = enemy_placemark.get_node(\"SelectionPanel\")
 		if selectionpanel:
 			selectionpanel.visible = false
 			
 func details_panel():
 	if selected_list.size() > 0:
-		var last_entry = selected_list[selected_list.size() - 1]
-		var enemy_data = last_entry[\"data\"]
-		_detailsPanel.show_details_of(enemy_data)
+		if selected_list.size() > 1:
+			_detailsPanel.show_multiple_details(selected_list.size())
+		else:
+			var last_entry = selected_list[selected_list.size() - 1]
+			var enemy_data = last_entry[\"data\"]
+			_detailsPanel.show_details_of(enemy_data)
 "
 
 [node name="SelectedListManager" type="Node"]
