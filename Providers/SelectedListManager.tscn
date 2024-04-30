@@ -5,25 +5,23 @@ resource_name = "SelectedListManager"
 script/source = "extends Node
 
 var selected_list = []
-onready var _enemy_detailsPanel: DetailsPanel = DetailsPanel.get_instance(get_tree())
-onready var _item_detailsPanel: DetailsPanel = DetailsPanel.get_instance(get_tree())
-var item = false
+onready var detailspanel: DetailsPanel = DetailsPanel.get_instance(get_tree())
+var is_item = false
 
 
 func is_item():
-	item = true
+	is_item = true
 func not_item():
-	item = false
+	is_item = false
 # Function poises data to get
 func apply_values_to_selected_type(parameter_name: String, parameter_value: int):
 	var parameters = {parameter_name: parameter_value}
 	for entry in selected_list:
-		var enemy_data = entry[\"data\"]
-		var item_data = entry[\"data\"]
-		if item != true:
-			apply_values_to_enemy(enemy_data, parameters)
+		var data = entry[\"data\"]
+		if \"lv\" in data:
+			apply_values_to_enemy(data, parameters)
 		else:
-			apply_values_to_item(item_data, parameters)
+			apply_values_to_item(data, parameters)
 
 
 # Function to apply values to selected enemy
@@ -82,26 +80,32 @@ func apply_values_to_enemy(enemy_data: Enemy, parameters: Dictionary):
 				# Handle unknown parameter names
 				print(\"Unknown parameter name:\", parameter_name)
 
-# Function to check the list for type
-func _check_list_for_type(enemy_placemark: EnemyPlacemark, enemy_data: Enemy):
-	var entry = {\"placemark\": enemy_placemark, \"data\": enemy_data}
+# Function to check the list for type and removes if it exists already
+func _check_list_for_type(placemark: GenericPlacemark, data: Object):
+	var entry = {\"placemark\": placemark, \"data\": data}
 
-	var index = _find_entry_index(enemy_placemark)
+	var index = _find_entry_index(placemark)
 	if index != -1:
-		var panel = enemy_placemark.get_node(\"SelectionPanel\")
+		var panel = placemark.get_node(\"SelectionPanel\")
 		if panel:
 			panel.visible = false
 			selected_list.remove(index)
 			reload_details_panel()
 	else:
 		selected_list.append(entry)
-		_enemy_detailsPanel.show_details_of(enemy_data)
+		detailspanel.show_details_of(data)
 		highlight()
+	if selected_list.size() > 1:
+		text = set_display_name()
+		
+func set_display_name() -> String:
+	return \"Selected Nodes: \" + str(selected_list.size()) 
+	print(\"we should be renaming\")
 
 # Function to find the index of an entry in the list
-func _find_entry_index(enemy_placemark: EnemyPlacemark) -> int:
+func _find_entry_index(placemark: GenericPlacemark) -> int:
 	for i in range(selected_list.size()):
-		if selected_list[i][\"placemark\"] == enemy_placemark:
+		if selected_list[i][\"placemark\"] == placemark:
 			return i
 	return -1
 
@@ -129,29 +133,9 @@ func clear_all_highlights():
 func reload_details_panel():
 	if selected_list.size() > 0:
 		var last_entry = selected_list[selected_list.size() - 1]
-		var enemy_data = last_entry[\"data\"]
-		_enemy_detailsPanel.show_details_of(enemy_data)
+		var data = last_entry[\"data\"]
+		detailspanel.show_details_of(data)
 
-func _check_list_item(gathering_placemark: GatheringItemPlacemark, item: GatheringItem):
-	var entry = {\"placemark\": gathering_placemark, \"data\": item}
-
-	var index = _find_entry_index_2(gathering_placemark)
-	if index != -1:
-		var panel = gathering_placemark.get_node(\"SelectionPanel\")
-		if panel:
-			panel.visible = false
-			selected_list.remove(index)
-			reload_details_panel()
-	else:
-		selected_list.append(entry)
-		_item_detailsPanel.show_details_of(item)
-		highlight()
-		
-func _find_entry_index_2(gathering_placemark: GatheringItemPlacemark) -> int:
-	for i in range(selected_list.size()):
-		if selected_list[i][\"placemark\"] == gathering_placemark:
-			return i
-	return -1
 
 func apply_values_to_item(item_data: GatheringItem, parameters: Dictionary):
 	for parameter_name in parameters.keys():
