@@ -9,10 +9,12 @@ export (Resource) var enemy: Resource setget set_enemy
 
 onready var _detailsPanel: DetailsPanel = DetailsPanel.get_instance(get_tree())
 onready var is_selected = false
+#onready var selectionpanel = $EnemyPlacemark.get_node("SelectionPanel")
+
 
 func _ready():
 	var success = SetProvider.connect("selected_day_night", self, "_on_day_night_selected")
-
+	
 func _on_day_night_selected(index):
 	if enemy != null:
 		_update_placemark_visibility(index)
@@ -30,13 +32,9 @@ func _update_placemark_visibility(index):
 func _on_EnemyPlacemark_pressed():
 	if Input.is_key_pressed(KEY_SHIFT):
 		SelectedListManager._check_list_for_type(self, enemy)  # Pass EnemyPlacemark instance and enemy data
-		_detailsPanel.show_details_of(enemy)
-		SelectedListManager.highlight()
 	else:
 		SelectedListManager._clear_list()
-		_detailsPanel.show_details_of(enemy)
 		SelectedListManager._check_list_for_type(self, enemy)
-		SelectedListManager.highlight()
 
 func set_enemy(em: Enemy) -> void:
 	if enemy != null and enemy.is_connected("changed", self, "_on_enemy_changed"):

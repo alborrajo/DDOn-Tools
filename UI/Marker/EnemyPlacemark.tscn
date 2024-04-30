@@ -10,14 +10,15 @@ border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color( 0, 0.709804, 1, 1 )
+border_color = Color( 0, 0.709804, 1, 0.862745 )
 
 [node name="EnemyPlacemark" instance=ExtResource( 2 )]
+focus_mode = 0
 text = "Placeholder (Lv.69)"
 script = ExtResource( 1 )
 enemy = null
 
-[node name="Panel" type="Panel" parent="." index="0"]
+[node name="SelectionPanel" type="Panel" parent="." index="0"]
 visible = false
 show_behind_parent = true
 anchor_right = 1.006

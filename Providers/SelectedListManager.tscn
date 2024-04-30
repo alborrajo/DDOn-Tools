@@ -5,18 +5,16 @@ resource_name = "SelectedListManager"
 script/source = "extends Node
 
 var selected_list = []
+onready var _detailsPanel: DetailsPanel = DetailsPanel.get_instance(get_tree())
 
-# Function to receive and apply values to all enemies in the selected list
+# Function to apply values to all enemies in the selected list
 func apply_values_to_selected_enemies(parameter_name: String, parameter_value: int):
 	var parameters = {parameter_name: parameter_value}
-	apply_values_to_selected_enemies_generic(parameters)
-
-# Generic function to apply values to all enemies in the selected list
-func apply_values_to_selected_enemies_generic(parameters: Dictionary):
 	for entry in selected_list:
 		var enemy_placemark = entry[\"placemark\"]
 		var enemy_data = entry[\"data\"]
 		apply_values_to_enemy(enemy_data, parameters)
+
 
 # Function to apply values to selected enemy
 func apply_values_to_enemy(enemy_data: Enemy, parameters: Dictionary):
@@ -80,12 +78,15 @@ func _check_list_for_type(enemy_placemark: EnemyPlacemark, enemy_data: Enemy):
 
 	var index = _find_entry_index(enemy_placemark)
 	if index != -1:
-		var panel = enemy_placemark.get_node(\"Panel\")
+		var panel = enemy_placemark.get_node(\"SelectionPanel\")
 		if panel:
 			panel.visible = false
 			selected_list.remove(index)
+			details_panel()
 	else:
 		selected_list.append(entry)
+		_detailsPanel.show_details_of(enemy_data)
+		highlight()
 
 # Function to find the index of an entry in the list
 func _find_entry_index(enemy_placemark: EnemyPlacemark) -> int:
@@ -94,26 +95,33 @@ func _find_entry_index(enemy_placemark: EnemyPlacemark) -> int:
 			return i
 	return -1
 
+# Adds the highlight selection around anything inside the selected_list
 func highlight():
 	for entry in selected_list:
 		var enemy_placemark = entry[\"placemark\"]
-		# Assuming the Panel node is named \"Panel\" and it's the first child of EnemyPlacemark
-		var panel = enemy_placemark.get_node(\"Panel\")
-		if panel:
-			panel.visible = true
+		var selectionpanel = enemy_placemark.get_node(\"SelectionPanel\")
+		if selectionpanel:
+			selectionpanel.visible = true
 
 # Function to clear the list
 func _clear_list():
-	remove_highlight()
+	clear_all_highlights()
 	selected_list.clear()
 	
-func remove_highlight():
+func clear_all_highlights():
 	for entry in selected_list:
 		var enemy_placemark = entry[\"placemark\"]
 		# Assuming the Panel node is named \"Panel\" and it's the first child of EnemyPlacemark
-		var panel = enemy_placemark.get_node(\"Panel\")
-		if panel:
-			panel.visible = false
+		var selectionpanel = enemy_placemark.get_node(\"SelectionPanel\")
+		if selectionpanel:
+			selectionpanel.visible = false
+			
+func details_panel():
+	if selected_list.size() > 0:
+		var last_entry = selected_list[selected_list.size() - 1]
+		var enemy_data = last_entry[\"data\"]
+		_detailsPanel.show_details_of(enemy_data)
+		print(\"the panel should be this:\", enemy_data)
 "
 
 [node name="SelectedListManager" type="Node"]
