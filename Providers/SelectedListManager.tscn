@@ -96,11 +96,10 @@ func _check_list_for_type(placemark: GenericPlacemark, data: Object):
 		detailspanel.show_details_of(data)
 		highlight()
 	if selected_list.size() > 1:
-		text = set_display_name()
+		set_display_name()
 		
-func set_display_name() -> String:
-	return \"Selected Nodes: \" + str(selected_list.size()) 
-	print(\"we should be renaming\")
+func set_display_name():
+	print(\"Selected Nodes: \" + str(selected_list.size())) 
 
 # Function to find the index of an entry in the list
 func _find_entry_index(placemark: GenericPlacemark) -> int:
