@@ -2,20 +2,20 @@ keys,en,ja
 NAME_0x010100,Goblin,ゴブリン
 NAME_0x010101,Goblin Fighter,ゴブリンファイター
 NAME_0x010102,Shield Goblin,シールドゴブリン
-NAME_0x010103,Sling Goblin (Rock),スリングゴブリン (Rock)
+NAME_0x010103,Sling Goblin (Rock),スリングゴブリン (ロック）
 NAME_0x010104,Goblin Leader,ゴブリンリーダー
-NAME_0x010105,Sling Goblin (Torch),スリングゴブリン (Torch)
+NAME_0x010105,Sling Goblin (Torch),スリングゴブリン (トーチ）
 NAME_0x010110,Hobgoblin,ホブゴブリン
 NAME_0x010111,Hobgoblin Fighter,ホブゴブリンファイター
-NAME_0x010112,Sling Hobgoblin (Oil Flask),スリングホブゴブリン (Oil Flask)
+NAME_0x010112,Sling Hobgoblin (Oil flask),スリングホブゴブリン （オイルフラスコ）
 NAME_0x010113,Hobgoblin Leader,ホブゴブリンリーダー
-NAME_0x010114,Sling Hobgoblin (Torch),スリングホブゴブリン (Torch)
+NAME_0x010114,Sling Hobgoblin (Torch),スリングホブゴブリン (トーチ）
 NAME_0x010120,Grim Goblin,グリムゴブリン
 NAME_0x010121,Grim Goblin Fighter,グリムゴブリンファイター
-NAME_0x010123,Sling Grim Goblin (Oil Flask),スリンググリムゴブリン (Oil Flask)
+NAME_0x010123,Sling Grim Goblin (Oil flask),スリンググリムゴブリン （オイルフラスコ）
 NAME_0x010124,Grim Goblin Leader,グリムゴブリンリーダー
-NAME_0x010130,Greater Goblin (Sword),グレーターゴブリン (Sword)
-NAME_0x010131,Greater Goblin (Torch),グレーターゴブリン (Torch)
+NAME_0x010130,Greater Goblin (Sword),グレーターゴブリン （剣）
+NAME_0x010131,Greater Goblin (Torch),グレーターゴブリン (トーチ）
 NAME_0x010140,Goblin Shaman,ゴブリンシャーマン
 NAME_0x010141,Goblin Aid Shaman,ゴブリンエイドシャーマン
 NAME_0x010150,Pixie,ピクシー
@@ -27,9 +27,9 @@ NAME_0x010160,Infected Hobgoblin,侵食ホブゴブリン
 NAME_0x010161,Infected Hobgoblin Fighter,侵食ホブゴブリンファイター
 NAME_0x010162,Infected Sling Hobgoblin,侵食スリングホブゴブリン
 NAME_0x010170,Severely Infected Pixie,狂侵ピクシー
-NAME_0x010171,Severely Infected Pixie (Club),狂侵ピクシー (Club)
-NAME_0x010172,Severely Infected Pixie (Corruption Seeds),狂侵ピクシー (Corruption Seeds)
-NAME_0x010180,Goblin (Horn),ゴブリン (Horn)
+NAME_0x010171,Severely Infected Pixie (Club),狂侵ピクシー (クラブ）
+NAME_0x010172,Severely Infected Pixie (Seeds of corruption),狂侵ピクシー （腐敗の種）
+NAME_0x010180,Goblin (Horn),ゴブリン (ホーン）
 NAME_0x010190,High Pixie Biff,ハイピクシービフ
 NAME_0x010191,High Pixie Zolda,ハイピクシーゾルダ
 NAME_0x010192,High Pixie Pow,ハイピクシーポウ
@@ -80,7 +80,7 @@ NAME_0x010420,Geo Saurian,ジオリザードマン
 NAME_0x010421,Giant Geo Saurian,ラージジオリザード
 NAME_0x010430,Saurian Sage,リザードマンセージ
 NAME_0x010431,Giant Saurian Sage,ラージリザードセージ
-NAME_0x010440,Pyre Saurian (Salamander?),サラマンダー (Salamander?)
+NAME_0x010440,Pyre Saurian (Salamander?),サラマンダー (サラマンダー?)
 NAME_0x010450,Rock Saurian,ロックリザード
 NAME_0x010451,Rock Saurian Spinel,ロックリザードスピネル
 NAME_0x010460,Blue Newt,ブルーニュート
@@ -122,10 +122,10 @@ NAME_0x010614,Severely Infected Stymphalídes,狂侵スチュパリデス
 NAME_0x010621,Ukobach,ウコバク
 NAME_0x010800,Worm,ワーム
 NAME_0x010810,Leech,リーチ
-NAME_0x010820,Armored Insect (Blue),ヨロイムシ (Blue)
-NAME_0x010821,Armored Insect (Red),ヨロイムシ (Red)
-NAME_0x010822,Armored Insect (Red) Passive AI ?,ヨロイムシ (Red) Passive AI ?
-NAME_0x010823,Armored Insect (Red) Passive AI ?,ヨロイムシ (Red) Passive AI ?
+NAME_0x010820,Armored Insect (Blue),ヨロイムシ （ブルー）
+NAME_0x010821,Armored Insect (Red),ヨロイムシ(レッド）
+NAME_0x010822,Armored Insect (Red) passiveAI？,ヨロイムシ(レッド） パッシブAI？
+NAME_0x010823,Armored Insect (Red) passiveAI？,ヨロイムシ(レッド） パッシブAI？
 NAME_0x010900,Slime,スライム
 NAME_0x010901,Deep Slime,ディープスライム
 NAME_0x010902,Ooze,ウーズ
@@ -170,8 +170,8 @@ NAME_0x011034,Mist Warrior,ミストウォリアー
 NAME_0x011040,Iris,イリス
 NAME_0x011041,Diamantes (Human),ディアマンテス (人間)
 NAME_0x011042,Leo,レオ
-NAME_0x011043,Hooded Iris (???),イリス Hooded (???)
-NAME_0x011044,Former Commander Leo (Final Boss),元覚者隊統率レオ (Final Boss)
+NAME_0x011043,Hooded Iris (???),イリス フード付き（？）
+NAME_0x011044,Former Commander Leo (Final boss),元覚者隊統率レオ （最終ボス）
 NAME_0x011050,Pawn Fighter,ポーンファイター
 NAME_0x011051,Pawn Seeker,ポーンシーカー
 NAME_0x011052,Pawn Hunter,ポーンハンター
@@ -211,7 +211,7 @@ NAME_0x011120,Alchemized Goblin,ゴブリンアルケミー
 NAME_0x011121,Alchemized Goblin Fighter,ゴブリンアルケミーファイター
 NAME_0x011122,Alchemized Sling Goblin,スリングゴブリンアルケミー
 NAME_0x011123,Damned Goblin,ダムドゴブリン
-NAME_0x011124,Damned Sling Goblin (Flask),ダムドスリングゴブリン (Flask)
+NAME_0x011124,Damned Sling Goblin (Flask),ダムドスリングゴブリン （フラスコ）
 NAME_0x011125,Damned Goblin Fighter,ダムドゴブリンファイター
 NAME_0x011130,Shadow Goblin,シャドーゴブリン
 NAME_0x011131,Shadow Goblin Fighter,シャドーゴブリンファイター
@@ -221,27 +221,27 @@ NAME_0x011150,Goblin Bomber,ゴブリンボマー
 NAME_0x011160,Shadow Goblin Leader,シャドーゴブリンリーダー
 NAME_0x011170,Blaze Goblin,ブレイズゴブリン
 NAME_0x011171,Blaze Goblin (Fighter?),ブレイズゴブリン (ファイター?)
-NAME_0x011172,Blaze Goblin (Sling?),ブレイズゴブリン (Sling?)
+NAME_0x011172,Blaze Goblin (Sling?),ブレイズゴブリン (スリング？）
 NAME_0x011173,Blaze Goblin Leader,ブレイズゴブリンリーダー
 NAME_0x011200,Killer Bee,キラービー
-NAME_0x011201,Albe (Parasitic Poison),アルベ (Parasitic Posion)
-NAME_0x011210,Moth (Cyan / Sleep),モス (Cyan / Sleep)
-NAME_0x011211,Moth (Magenta / Poison),モス (Magenta / Poison)
+NAME_0x011201,Albe (Parasitic Poison),アルベ (寄生虫）
+NAME_0x011210,Moth (Cyan / Sleep),モス （シアン／スリープ）
+NAME_0x011211,Moth (Magenta / Poison),モス (マゼンタ／ポイズン）
 NAME_0x011300,Mandragora,マンドラゴラ
-NAME_0x011301,Mandragora (Flower),マンドラゴラ (Flower)
+NAME_0x011301,Mandragora (Flower),マンドラゴラ (花)
 NAME_0x011302,Habanero,ハバネロ
 NAME_0x011400,Maneater,マンイーター
-NAME_0x011401,Maneater (Closed),マンイーター (Closed)
+NAME_0x011401,Maneater (Closed),マンイーター (終了しました）
 NAME_0x011410,Tentacle (Evil Eye),触手 (イービルアイ)
 NAME_0x011411,Tentacle (Evil Eye),触手 (イービルアイ)
 NAME_0x011412,Tentacle (Volt Eye),触手 (ボルトアイ)
 NAME_0x011413,Tentacle (Volt Eye),触手 (ボルトアイ)
 NAME_0x011500,Foot-Biter,フットバイター
 NAME_0x015000,Cyclops,サイクロプス
-NAME_0x015001,Cyclops (Club),サイクロプス (Club)
+NAME_0x015001,Cyclops (Club),サイクロプス (クラブ）
 NAME_0x015002,Armored Cyclops,アーマーサイクロプス
-NAME_0x015003,Armored Cyclops (Club),アーマーサイクロプス (Club)
-NAME_0x015004,Cyclops (Giant),サイクロプス (Giant)
+NAME_0x015003,Armored Cyclops (Club),アーマーサイクロプス (クラブ）
+NAME_0x015004,Cyclops (Giant),サイクロプス (ジャイアント）
 NAME_0x015010,Gorecyclops,ゴアサイクロプス
 NAME_0x015012,Infected Gorecyclops,侵食ゴアサイクロプス
 NAME_0x015017,Severely Infected Gorecyclops,狂侵ゴアサイクロプス
@@ -264,7 +264,7 @@ NAME_0x015100,Golem,ゴーレム
 NAME_0x015102,Goliath,ゴリアテ
 NAME_0x015103,Damned Golem,ダムドゴーレム
 NAME_0x015104,Geo Golem,ジオゴーレム
-NAME_0x015105,Goliath + Cyclops (Test),ゴリアテ + サイクロプス (Test)
+NAME_0x015105,Goliath + Cyclops (Test),ゴリアテ + サイクロプス (テスト）
 NAME_0x015200,Chimera,キメラ
 NAME_0x015201,Gorechimera,ゴアキメラ
 NAME_0x015202,White Chimera,ホワイトキメラ
@@ -329,7 +329,7 @@ NAME_0x015720,Tarasque,タラスク
 NAME_0x015721,Wisened Tarasque,アドタラスク
 NAME_0x015723,White Tarasque,ホワイトタラスク
 NAME_0x015730,Catoblepas,カトブレパス
-NAME_0x015740,"Behemoth (""Goblin"" Test)","ベヘモット (""ゴブリン"" Test)"
+NAME_0x015740,"Behemoth (""Goblin"" Test)","ベヘモット (""ゴブリン"" テスト）"
 NAME_0x015800,Orc Soldier,オークソルジャー
 NAME_0x015801,Orc Aimer,オークエイマー
 NAME_0x015802,Orc Banger,オークバンガー
@@ -344,15 +344,15 @@ NAME_0x015821,Sword Soldier Dwarf Orc,斬兵ドワーフオーク
 NAME_0x015822,Blunt Soldier Dwarf Orc,打兵ドワーフオーク
 NAME_0x015823,Heavy Soldier Dwarf Orc,重兵ドワーフオーク
 NAME_0x015824,Ranged Soldier Dwarf Orc,投兵ドワーフオーク
-NAME_0x015825,Dwarf Orc (Test?),ドワーフオーク (Test?)
+NAME_0x015825,Dwarf Orc (Test?),ドワーフオーク (テスト？）
 NAME_0x015826,Squad Leader Dwarf Orc,隊将ドワーフオーク
 NAME_0x015830,General Orc,ジェネラルオーク
 NAME_0x015831,Ancestor Orc,アンセスターオーク
 NAME_0x015832,Ancestor Orc (Fighter),アンセスターオーク (ファイター)
-NAME_0x015833,Ancestor Orc (Different Bones),アンセスターオーク (Different Bones)
+NAME_0x015833,Ancestor Orc (Different Bones),アンセスターオーク (異なる骨)
 NAME_0x015835,Legion,レギオン
 NAME_0x015836,Legion (Fighter),レギオン (ファイター)
-NAME_0x015837,Legion (Different Bones),レギオン (Different Bones)
+NAME_0x015837,Legion (Different Bones),レギオン (異なる骨)
 NAME_0x015838,Legion Leader,レギオンリーダー
 NAME_0x015839,Captain Ancestor Orc,キャプテンアンセスターオーク
 NAME_0x015840,Mogok,モゴック
@@ -362,7 +362,7 @@ NAME_0x015852,Bolt Machina,ボルト・マキナ
 NAME_0x015860,War Master,戦の将
 NAME_0x015861,Beast Master,獣の将
 NAME_0x015862,Necro Master,骸の将
-NAME_0x015863,Shadow Master (Invulnerable),闇の将 (Invulnerable)
+NAME_0x015863,Shadow Master (Invulnerable),闇の将 (不死身)
 NAME_0x015870,Ancestor Origin,アンセスターオリジン
 NAME_0x015900,Grigori,グリゴリ
 NAME_0x015910,Severely Infected Demon,狂侵デーモン
@@ -379,17 +379,17 @@ NAME_0x018401,Giant Rat,オオネズミ
 NAME_0x018600,Boar,野ブタ
 NAME_0x018601,Pig,ブタ
 NAME_0x018602,Piglet,子ブタ
-NAME_0x018603,Pig (Dirty),ブタ (Dirty)
-NAME_0x018604,Piglet (Dirty),子ブタ (Dirty)
+NAME_0x018603,Pig (Dirty),ブタ (汚い)
+NAME_0x018604,Piglet (Dirty),子ブタ (汚い)
 NAME_0x018700,Snake,ヘビ
 NAME_0x018800,Spider,カブトグモ
-NAME_0x019000,Chicken (White),ニワトリ (White)
-NAME_0x019001,Chicken (Brown),ニワトリ (Brown)
+NAME_0x019000,Chicken (White),ニワトリ (ホワイト)
+NAME_0x019001,Chicken (Brown),ニワトリ (ブラウン）
 NAME_0x019100,Goat,ヤギ
-NAME_0x019200,Frog (Gold?),カエル (Gold?)
-NAME_0x019201,Frog (Blue?),カエル (Blue?)
-NAME_0x019300,Wild Boar (Brown),ワイルド・ボア (Brown)
-NAME_0x019301,Wild Boar (Stripes),ワイルド・ボア (Stripes)
+NAME_0x019200,Frog (Gold?),カエル (ゴールド？）
+NAME_0x019201,Frog (Blue?),カエル (ブルー?)
+NAME_0x019300,Wild Boar (Brown),ワイルド・ボア (ブラウン）
+NAME_0x019301,Wild Boar (Stripes),ワイルド・ボア (ストライプ)
 NAME_0x020402,Zuhl,ズール
 NAME_0x020403,Altered Zuhl,アルタード・ズール
 NAME_0x020404,Red Zuhl,レッドズール
@@ -397,11 +397,11 @@ NAME_0x020500,Diamantes,ディアマンテス
 NAME_0x020601,Scourge,スカージ
 NAME_0x020602,Baphomet,バフォメット
 NAME_0x020606,Severely Infected Scourge,狂侵スカージ
-NAME_0x020700,Black Knight (Dark Only),黒騎士 (Dark Only)
-NAME_0x020701,Black Knight (Holy/Ice),黒騎士 (Holy/Ice)
-NAME_0x020702,Black Knight (Holy/Ice),黒騎士 (Holy/Ice)
-NAME_0x020803,Ifrit - 1st Form,イフリート - 1st Form
-NAME_0x020804,Ifrit - 2nd Form,イフリート - 2nd Form
+NAME_0x020700,Black Knight (Dark Only),黒騎士 (ダーク・オンリー)
+NAME_0x020701,Black Knight (Holy/Ice),黒騎士 (ホーリー/アイス)
+NAME_0x020702,Black Knight (Holy/Ice),黒騎士 (ホーリー/アイス)
+NAME_0x020803,Ifrit - 1st Form,イフリート - 第1回
+NAME_0x020804,Ifrit - 2nd Form,イフリート - 第2フォーム
 NAME_0x021000,White Dragon (NPC),白竜 (NPC)
 NAME_0x021001,Elder Dragon,エルダードラゴン
 NAME_0x021002,Golgorran,ゴルゴラン
@@ -409,26 +409,26 @@ NAME_0x021002,Golgorran,ゴルゴラン
 NAME_0x021003,White Dragon,白竜
 NAME_0x021004,Ushumgal,ウシュムガル
 NAME_0x022000,Spirit Dragon Willmia,精霊竜ウィルミア
-NAME_0x022001,"Spirit Dragon Willmia (""Goblin"" Test)","精霊竜ウィルミア (""ゴブリン"" Test)"
+NAME_0x022001,"Spirit Dragon Willmia (""Goblin"" Test)","精霊竜ウィルミア (""ゴブリン"" テスト)"
 NAME_0x023000,The Evil Dragon,悪しき竜
 NAME_0x023000,The Evil Dragon,悪しき竜
-NAME_0x024000,Black Dragon - 1st Form,黒竜 - 1st Form
-NAME_0x024001,Black Dragon - 2nd Form (Untranslated),黒竜 - 2nd Form (Untranslated)
-NAME_0x024002,Black Dragon - 2nd Form (Damaged),黒竜 - 2nd Form (Damaged)
+NAME_0x024000,Black Dragon - 1st Form,黒竜 - 第1回
+NAME_0x024001,Black Dragon - 2nd Form (Untranslated),黒竜 - 第2フォーム (未翻訳)
+NAME_0x024002,Black Dragon - 2nd Form (Damaged),黒竜 - 第2フォーム (破損)
 NAME_0x030100,Unspeakable Meat,謎の肉塊
 NAME_0x030101,Giant Unspeakable Meat,巨大な謎の肉塊
 NAME_0x030104,Dragon Crystal of Praying (Spirit Dragon Willmia WM),祈りの竜晶 (精霊竜ウィルミアWM)
 NAME_0x030105,Dragon Crystal of Groaning (Spirit Dragon Willmia WM),うめきの竜晶 (精霊竜ウィルミアWM)
 NAME_0x030106,No Enemy (In-Combat),
-NAME_0x030107,Dragon Crystal (The Evil Dragon WM) (Untranslated),竜晶 (悪しき竜WM) (Untranslated)
+NAME_0x030107,Dragon Crystal (The Evil Dragon WM) (Untranslated),竜晶 (悪しき竜WM) (未翻訳)
 NAME_0x030108,No Enemy (In-Combat),
 NAME_0x030109,Rock (The Evil Dragon WM),Rock (悪しき竜WM)
-NAME_0x030110,Totem (Shadow Master WM) (Untranslated),Totem (闇の将 WM) (Untranslated)
+NAME_0x030110,Totem (Shadow Master WM) (Untranslated),Totem (闇の将 WM) (未翻訳)
 NAME_0x030111,No Enemy (In-Combat),
-NAME_0x030112,Dragon Crystal of Darkness (Invulnerable) (Ground),暗黒の竜晶 (Invulnerable) (Ground)
-NAME_0x030113,Dragon Crystal of Darkness (Invulnerable) (Flying),暗黒の竜晶 (Invulnerable) (Flying)
+NAME_0x030112,Dragon Crystal of Darkness (Invulnerable) (Ground),暗黒の竜晶 (不死身) (グラウンド)
+NAME_0x030113,Dragon Crystal of Darkness (Invulnerable) (Flying),暗黒の竜晶 (不死身) (フライング)
 NAME_0x030114,Crystal of Blessing,祝福の結晶
-NAME_0x030115,Dragon Crystal of Darkness (Flying) (Untranslated),暗黒の竜晶 (Flying) (Untranslated)
+NAME_0x030115,Dragon Crystal of Darkness (Flying) (Untranslated),暗黒の竜晶 (フライング) (未翻訳)
 NAME_0x030116,Dragon Crystal of Destruction,破滅の竜晶
 NAME_0x030117,Dragon Crystal of Binding (Black Dragon),束縛の竜晶 (黒竜)
 NAME_0x030118,Black Sword,黒剣
@@ -457,23 +457,23 @@ NAME_0x070910,Wyrm,ウィルム
 NAME_0x070920,Angules,アングルス
 NAME_0x070930,Behemoth,ベヘモット
 NAME_0x070940,Lindwurm,リンドブルム
-NAME_0x070950,"Tarasque (""Goblin"" Test)","タラスク (""ゴブリン"" Test)"
-NAME_0x071100,Elder Dragon (Epitath Road Trial?),エルダードラゴン (Epitath Road Trial?)
-NAME_0x071101,Black Dragon - 1st Form (Cutscene?),黒竜 - 1st Form (Cutscene?)
-NAME_0x071102,Black Dragon - 2nd Form (Cutscene?),黒竜 - 2nd Form (Cutscene?)
-NAME_0x071250,Shadow Master (Giant),闇の将 (Giant)
+NAME_0x070950,"Tarasque (""Goblin"" Test)","タラスク (""ゴブリン"" テスト)"
+NAME_0x071100,Elder Dragon (Epitath Road Trial?),エルダードラゴン (エピタス ロードトライアル？)
+NAME_0x071101,Black Dragon - 1st Form (Cutscene?),黒竜 - 第1回 (カットシーン？)
+NAME_0x071102,Black Dragon - 2nd Form (Cutscene?),黒竜 - 第2フォーム (カットシーン？)
+NAME_0x071250,Shadow Master (Giant),闇の将 (ジャイアント）
 NAME_0x071251,War Master,戦の将
 NAME_0x071252,Beast Master,獣の将
 NAME_0x071300,Zuhl,ズール
 NAME_0x071310,Scourge,スカージ
-NAME_0x071311,Baphomet (Enraged),バフォメット (Enraged)
+NAME_0x071311,Baphomet (Enraged),バフォメット (激怒)
 NAME_0x071400,Empty (No Enemy),
 NAME_0x075120,Skeleton Mage,スケルトンメイジ
-NAME_0x075121,Skeleton Mage (Different AI?),スケルトンメイジ (Different AI?)
+NAME_0x075121,Skeleton Mage (Different AI?),スケルトンメイジ (AIが違う？)
 NAME_0x075130,Skeleton Sorcerer,スケルトンソーサラー
 NAME_0x075131,Skeleton Sorcerer,スケルトンソーサラー
 NAME_0x075300,Skeleton Sorcerer,スケルトンソーサラー
-NAME_0x075400,The Evil Dragon (Sparks?),悪しき竜 (Sparks?)
+NAME_0x075400,The Evil Dragon (Sparks?),悪しき竜 (火花?)
 NAME_0x075401,The Evil Dragon,悪しき竜
 NAME_0x075401,The Evil Dragon,悪しき竜
 NAME_0x075700,Wight,ワイト
@@ -485,10 +485,10 @@ NAME_0x080100,Golgorran,ゴルゴラン
 NAME_0x080200,Grand Ent,グランエント
 NAME_0x080300,Zuhl,ズール
 NAME_0x080400,Spirit Dragon Willmia,精霊竜ウィルミア
-NAME_0x080500,Black Knight Phantom (Clear),黒騎士・幻影 (Clear)
+NAME_0x080500,Black Knight Phantom (Clear),黒騎士・幻影 (クリア)
 NAME_0x080501,Black Knight,黒騎士
-NAME_0x080502,Black Knight (Fan of Swords),黒騎士 (Fan of Swords)
-NAME_0x080503,Black Knight Phantom (Opaque),黒騎士・幻影 (Opaque)
+NAME_0x080502,Black Knight (Fan of Swords),黒騎士 (剣のファン)
+NAME_0x080503,Black Knight Phantom (Opaque),黒騎士・幻影 (不透明)
 NAME_0x080504,Arisen of the Black Dragon,黒竜の覚者
 NAME_0x080505,Black Sword,黒剣
 NAME_0x080600,Wisened Tarasque,アドタラスク
@@ -497,21 +497,21 @@ NAME_0x080800,Abaddon,アバドーン
 NAME_0x080801,Albe,アルベ
 NAME_0x080802,Empty (No Enemy),
 NAME_0x080900,Baphomet,バフォメット
-NAME_0x080901,Baphomet (Glowing Purple),バフォメット (Glowing Purple)
-NAME_0x081000,Black Dragon - 1st Form,黒竜 - 1st Form
-NAME_0x081001,Black Dragon - 2nd Form,黒竜 - 2nd Form
-NAME_0x081002,Black Dragon - 1st Form (Again. EM??),黒竜 - 1st Form (Again. EM??)
-NAME_0x081003,Black Dragon - 2nd form (Again. EM??),黒竜 - 2nd form (Again. EM??)
-NAME_0x081004,Dragon Crystal of Destruction / shoots laser rocks,破滅の竜晶 / shoots laser rocks
-NAME_0x081005,Dragon Crystal of Destruction / sucks you in with magic,破滅の竜晶 / sucks you in with magic
-NAME_0x081006,Dragon Crystal of Destruction / lots of laser rocks and big explosion,破滅の竜晶 / lots of laser rocks and big explosion
+NAME_0x080901,Baphomet (Glowing Purple),バフォメット (グローイング・パープル)
+NAME_0x081000,Black Dragon - 1st Form,黒竜 - 第1回
+NAME_0x081001,Black Dragon - 2nd Form,黒竜 - 第2フォーム
+NAME_0x081002,Black Dragon - 1st Form (Again. EM??),黒竜 - 第1回 (もう一度 EM？)
+NAME_0x081003,Black Dragon - 2nd form (Again. EM??),黒竜 - 第2フォーム (もう一度 EM？)
+NAME_0x081004,Dragon Crystal of Destruction / shoots laser rocks,破滅の竜晶 / レーザー岩を撃つ
+NAME_0x081005,Dragon Crystal of Destruction / sucks you in with magic,破滅の竜晶 / 魔法で吸い込まれる
+NAME_0x081006,Dragon Crystal of Destruction / lots of laser rocks and big explosion,破滅の竜晶 / たくさんのレーザー岩と大爆発
 NAME_0x081007,Dragon Crystal of Destruction / sucks you in with magic ,破滅の竜晶 / sucks you in with magic
 NAME_0x085000,Orc Soldier,オークソルジャー
 NAME_0x085001,Orc Soldier,オークソルジャー
 NAME_0x085002,Orc Soldier,オークソルジャー
 NAME_0x085003,Orc Soldier,オークソルジャー
 NAME_0x085004,Captain Orc,キャプテンオーク
-NAME_0x085009,"Orc (""Goblin"" Test)","オーク (""ゴブリン"" Test)"
+NAME_0x085009,"Orc (""Goblin"" Test)","オーク (""ゴブリン"" テスト)"
 NAME_0x085010,Goblin Fighter,ゴブリンファイター
 NAME_0x085011,Goblin Fighter,ゴブリンファイター
 NAME_0x085012,Goblin Fighter,ゴブリンファイター
@@ -530,8 +530,8 @@ NAME_0x085114,Cyclops,サイクロプス
 NAME_0x095801,Gigant Machina Trinity,ギガン・マキナトリニティ
 NAME_0x095802,Frost Machina Trinity,フロスト・マキナトリニティ
 NAME_0x095803,Bolt Machina Trinity,ボルト・マキナトリニティ
-NAME_0x100100,Behemoth (Test?),ベヘモット (Test?)
-NAME_0x100101,Zuhl (Passive),ズール (Passive)
-NAME_0x100104,Black Knight (Getting injured / Cutscene?),黒騎士 (Getting injured / Cutscene?)
-NAME_0x100105,Spirit Dragon Willmia (Test?),精霊竜ウィルミア (Test?)
-NAME_0x100106,Spirit Dragon Willmia (Active),精霊竜ウィルミア (Active)
+NAME_0x100100,Behemoth (Test?),ベヘモット (テスト？）
+NAME_0x100101,Zuhl (Passive),ズール (パッシブ)
+NAME_0x100104,Black Knight (Getting injured / Cutscene?),黒騎士 (負傷 / カットシーン？)
+NAME_0x100105,Spirit Dragon Willmia (Test?),精霊竜ウィルミア (テスト？）
+NAME_0x100106,Spirit Dragon Willmia (Active),精霊竜ウィルミア (アクティブ)

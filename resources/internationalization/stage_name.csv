@@ -124,7 +124,7 @@ STAGE_NAME_124,湖岸地下室,Lakeside Cellar
 STAGE_NAME_125,城の古井戸,Fort's Old Well
 STAGE_NAME_126,テルの枯れ井戸,Tel's Withered Well
 STAGE_NAME_127,村の枯れ井戸,Village's Abandoned Well
-STAGE_NAME_128,旧鉱泉湧き口,旧鉱泉湧き口
+STAGE_NAME_128,旧鉱泉湧き口,Old Spring
 STAGE_NAME_129,生活用水汲み場,Common Waterhole
 STAGE_NAME_130,朽ちかけた井戸,Decaying Well
 STAGE_NAME_131,啼き井戸,Keening Well
@@ -170,77 +170,77 @@ STAGE_NAME_170,水陰の淵辺,Deep Water's Edge
 STAGE_NAME_171,木陰の古井戸,Bower Old Well
 STAGE_NAME_172,妖精の枯れ井戸,Fairy's Withered Well
 STAGE_NAME_173,地下納骨堂,Underground Crypt
-STAGE_NAME_174,st0000 テストステージ,st0000 テストステージ
-STAGE_NAME_175,st0001 裏読み検証ステージ,st0001 裏読み検証ステージ
-STAGE_NAME_176,st0002 ランダム検証ステージ,st0002 ランダム検証ステージ
-STAGE_NAME_177,st0003 カスタム検証ステージ,st0003 カスタム検証ステージ
-STAGE_NAME_178,st0004 旧パーツ編集ステージ,st0004 旧パーツ編集ステージ
-STAGE_NAME_179,st0005 旧サウンド検証部屋,st0005 旧サウンド検証部屋
-STAGE_NAME_180,st0006 ワールドオフセット動作確認部屋,st0006 ワールドオフセット動作確認部屋
-STAGE_NAME_181,st0007 効果マテリアル部屋,st0007 効果マテリアル部屋
-STAGE_NAME_182,st0008 ＡＩ検証部屋,st0008 ＡＩ検証部屋
-STAGE_NAME_183,st0009 天候検証ステージ,st0009 天候検証ステージ
-STAGE_NAME_184,st0010 背景検証部屋,st0010 背景検証部屋
-STAGE_NAME_185,st0011 パーツ編集ステージ（skyあり）,st0011 パーツ編集ステージ（skyあり）
-STAGE_NAME_186,st0012 パーツ編集ステージ（skyなし）,st0012 パーツ編集ステージ（skyなし）
-STAGE_NAME_187,st0013 クライム検証部屋,st0013 クライム検証部屋
-STAGE_NAME_188,st0014 サウンド検証部屋2,st0014 サウンド検証部屋2
-STAGE_NAME_189,st0015 モデル基準部屋（フィールド）,st0015 モデル基準部屋（フィールド）
-STAGE_NAME_190,st0016 モデル基準部屋（ダンジョン）,st0016 モデル基準部屋（ダンジョン）
-STAGE_NAME_191,st0017 イベント検証部屋,st0017 イベント検証部屋
-STAGE_NAME_192,st0018 ＯＭ検証部屋,st0018 ＯＭ検証部屋
-STAGE_NAME_193,st0020 テスト部屋（松田）,st0020 テスト部屋（松田）
-STAGE_NAME_194,st0021 テスト部屋（Ｋ２吉田）,st0021 テスト部屋（Ｋ２吉田）
-STAGE_NAME_195,st0022 テスト部屋（Ｋ２近藤）,st0022 テスト部屋（Ｋ２近藤）
-STAGE_NAME_196,st0023 テスト部屋（藤川）,st0023 テスト部屋（藤川）
-STAGE_NAME_197,st0024 テスト部屋（西増）,st0024 テスト部屋（西増）
-STAGE_NAME_198,st0025 テスト部屋（北垣内）,st0025 テスト部屋（北垣内）
-STAGE_NAME_199,st0026 テスト部屋（向井）,st0026 テスト部屋（向井）
-STAGE_NAME_200,st0027 テスト部屋（大宅）,st0027 テスト部屋（大宅）
-STAGE_NAME_201,st0028 テスト部屋（浦郷）,st0028 テスト部屋（浦郷）
-STAGE_NAME_202,st0029 テスト部屋（渡辺）,st0029 テスト部屋（渡辺）
-STAGE_NAME_203,st0030 テスト部屋（ジュンウェイ）,st0030 テスト部屋（ジュンウェイ）
-STAGE_NAME_204,st0031 テスト部屋（川崎）,st0031 テスト部屋（川崎）
-STAGE_NAME_205,st0032 テスト部屋（坂本）,st0032 テスト部屋（坂本）
-STAGE_NAME_206,st0033 テスト部屋（山本(高)）,st0033 テスト部屋（山本(高)）
-STAGE_NAME_207,st0034 テスト部屋（坂野）,st0034 テスト部屋（坂野）
-STAGE_NAME_208,st0035 テスト部屋（浜島）,st0035 テスト部屋（浜島）
-STAGE_NAME_209,st0036 テスト部屋（田村）,st0036 テスト部屋（田村）
-STAGE_NAME_210,st0037 テスト部屋（伊藤(軍曹)）,st0037 テスト部屋（伊藤(軍曹)）
-STAGE_NAME_211,st0038 テスト部屋（品川）,st0038 テスト部屋（品川）
-STAGE_NAME_212,st0039 テスト部屋（今野）,st0039 テスト部屋（今野）
-STAGE_NAME_213,st0040 テスト部屋（クエスト班）,st0040 テスト部屋（クエスト班）
-STAGE_NAME_214,st0041 テスト部屋（レイドボス）,st0041 テスト部屋（レイドボス）
-STAGE_NAME_215,st0042 テスト部屋（樫本）,st0042 テスト部屋（樫本）
-STAGE_NAME_216,st0043 テスト部屋（中谷）,st0043 テスト部屋（中谷）
-STAGE_NAME_217,st0044 テスト部屋（馬来）,st0044 テスト部屋（馬来）
-STAGE_NAME_218,st0045 テスト部屋（石橋）,st0045 テスト部屋（石橋）
-STAGE_NAME_219,st0046 テスト部屋（上田）,st0046 テスト部屋（上田）
-STAGE_NAME_220,st0050 企画検証部屋 00,st0050 企画検証部屋 00
-STAGE_NAME_221,st0051 企画検証部屋 01,st0051 企画検証部屋 01
-STAGE_NAME_222,st0052 企画検証部屋 02,st0052 企画検証部屋 02
-STAGE_NAME_223,st0053 企画検証部屋 03,st0053 企画検証部屋 03
-STAGE_NAME_224,st0054 企画検証部屋 04,st0054 企画検証部屋 04
-STAGE_NAME_225,st0055 企画検証部屋 05,st0055 企画検証部屋 05
-STAGE_NAME_226,st0056 企画検証部屋 06,st0056 企画検証部屋 06
-STAGE_NAME_227,st0057 企画検証部屋 07,st0057 企画検証部屋 07
-STAGE_NAME_228,st0058 企画検証部屋 08,st0058 企画検証部屋 08
-STAGE_NAME_229,st0059 企画検証部屋 （ステージ班用）,st0059 企画検証部屋 （ステージ班用）
+STAGE_NAME_174,st0000 テストステージ,st0000 Test stage 0
+STAGE_NAME_175,st0001 裏読み検証ステージ,st0001 Event backstage room 1
+STAGE_NAME_176,st0002 ランダム検証ステージ,st0002 Event backstage room 2
+STAGE_NAME_177,st0003 カスタム検証ステージ,st0003 Event backstage room 3
+STAGE_NAME_178,st0004 旧パーツ編集ステージ,st0004 Old Parts Edit Stage
+STAGE_NAME_179,st0005 旧サウンド検証部屋,st0005 Sound testing stage
+STAGE_NAME_180,st0006 ワールドオフセット動作確認部屋,st0006 World reset check room
+STAGE_NAME_181,st0007 効果マテリアル部屋,st0007 Effect materials room
+STAGE_NAME_182,st0008 ＡＩ検証部屋,st0008 AI Testing Room
+STAGE_NAME_183,st0009 天候検証ステージ,st0009 Weather testing stage
+STAGE_NAME_184,st0010 背景検証部屋,st0010 Backdrop testing room
+STAGE_NAME_185,st0011 パーツ編集ステージ（skyあり）,st0011 Parts editing stage (with sky)
+STAGE_NAME_186,st0012 パーツ編集ステージ（skyなし）,st0012 Parts Editing Stage (no sky)
+STAGE_NAME_187,st0013 クライム検証部屋,st0013 Climbing testing room
+STAGE_NAME_188,st0014 サウンド検証部屋2,st0014 Sound Testing stage 2
+STAGE_NAME_189,st0015 モデル基準部屋（フィールド）,st0015 Standard model room (field)
+STAGE_NAME_190,st0016 モデル基準部屋（ダンジョン）,st0016 Standard model room (dungeon)
+STAGE_NAME_191,st0017 イベント検証部屋,st0017 Event testing room
+STAGE_NAME_192,st0018 ＯＭ検証部屋,st0018 OM Testing Room
+STAGE_NAME_193,st0020 テスト部屋（松田）,st0020 test room (Matsuda)
+STAGE_NAME_194,st0021 テスト部屋（Ｋ２吉田）,st0021 test room (k2 yoshida)
+STAGE_NAME_195,st0022 テスト部屋（Ｋ２近藤）,st0022 test room (K2 Kondo)
+STAGE_NAME_196,st0023 テスト部屋（藤川）,st0023 test room (Fujikawa)
+STAGE_NAME_197,st0024 テスト部屋（西増）,st0024 test room ( western addition)
+STAGE_NAME_198,st0025 テスト部屋（北垣内）,st0025 test room (kitagakiuchi)
+STAGE_NAME_199,st0026 テスト部屋（向井）,st0026 test room (mukai)
+STAGE_NAME_200,st0027 テスト部屋（大宅）,st0027 test room (oya)
+STAGE_NAME_201,st0028 テスト部屋（浦郷）,st0028 test room (urago)
+STAGE_NAME_202,st0029 テスト部屋（渡辺）,st0029 test room (Watanabe)
+STAGE_NAME_203,st0030 テスト部屋（ジュンウェイ）,st0030 test room ( Jungwei)
+STAGE_NAME_204,st0031 テスト部屋（川崎）,st0031 test room (kawasaki)
+STAGE_NAME_205,st0032 テスト部屋（坂本）,st0032 test room (sakamoto)
+STAGE_NAME_206,st0033 テスト部屋（山本(高)）,"st0033 test room (Yamamoto, T.)"
+STAGE_NAME_207,st0034 テスト部屋（坂野）,st0034 test room (bano)
+STAGE_NAME_208,st0035 テスト部屋（浜島）,st0035 test room (hamashima)
+STAGE_NAME_209,st0036 テスト部屋（田村）,st0036 test room (tamura)
+STAGE_NAME_210,st0037 テスト部屋（伊藤(軍曹)）,st0037 testing room (ito)
+STAGE_NAME_211,st0038 テスト部屋（品川）,st0038 test room (shinagawa)
+STAGE_NAME_212,st0039 テスト部屋（今野）,st0039 test room (Konno)
+STAGE_NAME_213,st0040 テスト部屋（クエスト班）,st0040 testing room (quest group)
+STAGE_NAME_214,st0041 テスト部屋（レイドボス）,st0041 test room (raid boss)
+STAGE_NAME_215,st0042 テスト部屋（樫本）,st0042 testing room (orc)
+STAGE_NAME_216,st0043 テスト部屋（中谷）,st0043 test room (nakaya)
+STAGE_NAME_217,st0044 テスト部屋（馬来）,st0044 test room ( Murai)
+STAGE_NAME_218,st0045 テスト部屋（石橋）,st0045 test room (stone bridge)
+STAGE_NAME_219,st0046 テスト部屋（上田）,st0046 testing room (ueda)
+STAGE_NAME_220,st0050 企画検証部屋 00,st0050 planning and verification room 00
+STAGE_NAME_221,st0051 企画検証部屋 01,st0051 planning and verification room 01
+STAGE_NAME_222,st0052 企画検証部屋 02,st0052 planning and verification room 02
+STAGE_NAME_223,st0053 企画検証部屋 03,st0053 planning and verification room 03
+STAGE_NAME_224,st0054 企画検証部屋 04,st0054 planning and verification room 04
+STAGE_NAME_225,st0055 企画検証部屋 05,st0055 planning and verification room 05
+STAGE_NAME_226,st0056 企画検証部屋 06,st0056 planning and verification room 06
+STAGE_NAME_227,st0057 企画検証部屋 07,st0057 planning and verification room 07
+STAGE_NAME_228,st0058 企画検証部屋 08,st0058 planning and verification room 08
+STAGE_NAME_229,st0059 企画検証部屋 （ステージ班用）,st0059 Planning and Verification Room (for Staging Team)
 STAGE_NAME_230,グリッテン砦前　戦野,Battlefield outside Gritten Fort
 STAGE_NAME_231,旧水汲み場,Old Waterhole
-STAGE_NAME_232,ムービー再生部屋 (st0150),ムービー再生部屋 (st0150)
-STAGE_NAME_233,キャラエディット部屋(st0160),キャラエディット部屋(st0160)
-STAGE_NAME_234,st0019 パーツダンジョン検証部屋,st0019 パーツダンジョン検証部屋
-STAGE_NAME_235,st0060 OM検証部屋（機能ありOM）,st0060 OM検証部屋（機能ありOM）
-STAGE_NAME_236,st0061 OM検証部屋（機能なしOM）,st0061 OM検証部屋（機能なしOM）
+STAGE_NAME_232,ムービー再生部屋 (st0150),Movie Playback Room (st0150)
+STAGE_NAME_233,キャラエディット部屋(st0160),Character Edit Room (st0160)
+STAGE_NAME_234,st0019 パーツダンジョン検証部屋,st0019 Dungeon parts testing room
+STAGE_NAME_235,st0060 OM検証部屋（機能ありOM）,st0060 OM verification room (functional OM)
+STAGE_NAME_236,st0061 OM検証部屋（機能なしOM）,st0061 OM verification room (OM without functions)
 STAGE_NAME_237,メルゴダ居住区,Mergoda Residential Area
 STAGE_NAME_238,ハイデル地下霊廟　深部,Hidell Catacombs Depths
 STAGE_NAME_239,ハイデル地下霊廟　最深部,Hidell Catacombs Innermost Depths
 STAGE_NAME_240,アーク,The Ark
-STAGE_NAME_241,st0062 シェーダー回収部屋１,st0062 シェーダー回収部屋１
-STAGE_NAME_242,st0063 シェーダー回収部屋２,st0063 シェーダー回収部屋２
-STAGE_NAME_243,st0064 シェーダー回収部屋３,st0064 シェーダー回収部屋３
-STAGE_NAME_244,st0047 テスト部屋（成田）,st0047 テスト部屋（成田）
+STAGE_NAME_241,st0062 シェーダー回収部屋１,st0062 shader collection room 1
+STAGE_NAME_242,st0063 シェーダー回収部屋２,st0063 shader collection room 2
+STAGE_NAME_243,st0064 シェーダー回収部屋３,st0064 shader collection room 3
+STAGE_NAME_244,st0047 テスト部屋（成田）,st0047 test room (Narita)
 STAGE_NAME_286,古の祭祀場,Ancient Place of Rituals
 STAGE_NAME_288,亡都メルゴダ　王宮層,Mergoda Ruins: Royal Palace Level
 STAGE_NAME_289,黄金宮,The Golden Palace
@@ -249,9 +249,9 @@ STAGE_NAME_293,冥き大地下墓地,Dark Tree Great Catacombs
 STAGE_NAME_300,グリッテン砦,Gritten Fort
 STAGE_NAME_303,パブ用ステージ,Pubs' Stage
 STAGE_NAME_304,エンディング用部屋,Ending Office
-STAGE_NAME_305,st0070 ポーンダンジョン処理計測部屋,st0070 ポーンダンジョン処理計測部屋
-STAGE_NAME_306,st0071 アーク処理計測部屋,st0071 アーク処理計測部屋
-STAGE_NAME_307,st0048 テスト部屋（矢萩）,st0048 テスト部屋（矢萩）
+STAGE_NAME_305,st0070 ポーンダンジョン処理計測部屋,st0070 pawn dungeon handling test room
+STAGE_NAME_306,st0071 アーク処理計測部屋,st0071 Arc Processing Measurement Room
+STAGE_NAME_307,st0048 テスト部屋（矢萩）,st0048 test room (yahagi)
 STAGE_NAME_308,メルゴダ護政区,Mergoda Security District
 STAGE_NAME_316,侵食魔の巣窟,Infected Den
 STAGE_NAME_317,調査隊駐屯地,Expedition Garrison
@@ -277,16 +277,16 @@ STAGE_NAME_347,クラン拠点,Clan Hall
 STAGE_NAME_348,覚者の自室,Arisen's Room
 STAGE_NAME_349,鍛練の小部屋,Training Room
 STAGE_NAME_350,メイリーフの寝室,Mayleaf's Bedroom
-STAGE_NAME_351,st0080 40/50しがみつき段差,st0080 40/50しがみつき段差
-STAGE_NAME_352,st0081 40/50クライム段差,st0081 40/50クライム段差
-STAGE_NAME_353,st0082 40/40しがみつき円柱,st0082 40/40しがみつき円柱
-STAGE_NAME_354,st0083 40/40クライム円柱,st0083 40/40クライム円柱
-STAGE_NAME_355,st0084 50/50しがみつき中央段差,st0084 50/50しがみつき中央段差
-STAGE_NAME_356,st0085 60/30細長,st0085 60/30細長
-STAGE_NAME_357,st0086 60/30細長段差,st0086 60/30細長段差
-STAGE_NAME_358,st0087 10～12谷間,st0087 10～12谷間
-STAGE_NAME_359,st0088 二重床・スロープ,st0088 二重床・スロープ
-STAGE_NAME_360,st0089 細長柱,st0089 細長柱
+STAGE_NAME_351,st0080 40/50しがみつき段差,st0080 40/50 clinging steps
+STAGE_NAME_352,st0081 40/50クライム段差,st0081 40/50 climbing steps
+STAGE_NAME_353,st0082 40/40しがみつき円柱,st0082 40/40 clinging cylinders
+STAGE_NAME_354,st0083 40/40クライム円柱,st0083 40/40 Climbing cylinders
+STAGE_NAME_355,st0084 50/50しがみつき中央段差,st0084 50/50 clinging central step
+STAGE_NAME_356,st0085 60/30細長,st0085 60/30 narrow length
+STAGE_NAME_357,st0086 60/30細長段差,st0086 60/30 long narrow step
+STAGE_NAME_358,st0087 10～12谷間,st0087 10-12 time valley
+STAGE_NAME_359,st0088 二重床・スロープ,st0088 double floor and slope
+STAGE_NAME_360,st0089 細長柱,st0089 slender columns
 STAGE_NAME_361,淀みの渦,Vortex of Stagnation
 STAGE_NAME_362,淀みの渦,Vortex of Stagnation
 STAGE_NAME_363,叫びの竪穴,Pit of Screams
@@ -350,8 +350,8 @@ STAGE_NAME_432,幽玄の霊堂,Mysterious Mausoleum
 STAGE_NAME_433,魔赤島,Bloodbane Isle
 STAGE_NAME_434,ダナ族長の家,Dana Chief's Home
 STAGE_NAME_435,モルフォール族長の家,Morfaul Chief's Home
-STAGE_NAME_437,st0066 OM検証部屋ver2.0（機能ありOM）,st0066 OM検証部屋ver2.0（機能ありOM）
-STAGE_NAME_438,st0067 OM検証部屋ver2.0（機能なしOM）,st0067 OM検証部屋ver2.0（機能なしOM）
+STAGE_NAME_437,st0066 OM検証部屋ver2.0（機能ありOM）,st0066 OM verification room ver 2.0 (OM with functions)
+STAGE_NAME_438,st0067 OM検証部屋ver2.0（機能なしOM）,st0067 OM verification room ver 2.0 (OM without functions)
 STAGE_NAME_439,エラン採石洞,Elan Quarry Cave
 STAGE_NAME_440,タラーテ集水路,Thalati Waterway
 STAGE_NAME_442,ボルド大坑道,Volden Large Tunnels
@@ -390,8 +390,8 @@ STAGE_NAME_486,城塞都市メガド 居住層,Fortress City Megado: Residential
 STAGE_NAME_487,城塞都市メガド 居住層,Fortress City Megado: Residential Level
 STAGE_NAME_488,城塞都市メガド 王宮層,Fortress City Megado: Royal Palace Level
 STAGE_NAME_489,メガド離宮,Megado Detached Palace
-STAGE_NAME_490,聖炎の参竜道,聖炎の参竜道
-STAGE_NAME_491,聖炎の参竜道 上層,聖炎の参竜道: Upper Level
+STAGE_NAME_490,聖炎の参竜道,Sacred Flame Path
+STAGE_NAME_491,聖炎の参竜道 上層,Sacred Flame Path: Upper Level
 STAGE_NAME_493,ラスニテ地下水路,Rathnite Underground Waterway
 STAGE_NAME_494,水源へ続く地下道,Reservoir Underground Tunnel
 STAGE_NAME_495,冥府下りの洞穴,Cave of Hell's Descent
@@ -403,13 +403,13 @@ STAGE_NAME_500,轟咆洞,Thundering Roar Cave
 STAGE_NAME_501,安息無き地下水道,Restless Water Channel
 STAGE_NAME_502,いつわりの遺構,False Remains
 STAGE_NAME_504,メガド上水網,Megado Water Supply Network
-STAGE_NAME_506,戦練の社,戦練の社
-STAGE_NAME_507,憩いの坑洞,憩いの坑洞
+STAGE_NAME_506,戦練の社,Shrine of Combat
+STAGE_NAME_507,憩いの坑洞,Cave of Rest
 STAGE_NAME_508,火垂れ山拝竜院,Firefall Mountain Dragon Temple
-STAGE_NAME_509,悼まれぬ者の葬室,悼まれぬ者の葬室
+STAGE_NAME_509,悼まれぬ者の葬室,The Burial Chamber of the Unmourned
 STAGE_NAME_511,ピレモス旅人宿,Piremoth Traveler's Inn
 STAGE_NAME_512,ロスギル旅人宿,Rothgill Traveler's Inn
-STAGE_NAME_513,エルセン商会,エルセン商会
+STAGE_NAME_513,エルセン商会,Trading Company
 STAGE_NAME_514,民家,House
 STAGE_NAME_515,民家,House
 STAGE_NAME_516,王家の隠れ道,Royal Family's Secret Path
@@ -417,13 +417,13 @@ STAGE_NAME_517,メガド回廊,Megado Corridor
 STAGE_NAME_518,メガド大聖堂,Megado Cathedral
 STAGE_NAME_519,ティネス砦,Fort Thines
 STAGE_NAME_520,メフィテ旅人宿,Mephite Traveler's Inn
-STAGE_NAME_521,OM検証部屋ver3.0（機能ありOM）,OM検証部屋ver3.0（機能ありOM）
-STAGE_NAME_522,OM検証部屋ver3.0（機能なしOM）,OM検証部屋ver3.0（機能なしOM）
+STAGE_NAME_521,OM検証部屋ver3.0（機能ありOM）,OM verification room ver 3.0 (OM with functions)
+STAGE_NAME_522,OM検証部屋ver3.0（機能なしOM）,OM verification room ver 3.0 (OM without functions)
 STAGE_NAME_523,ボーナスダンジョン【XP】,Bonus Dungeon (XP)
 STAGE_NAME_524,ボーナスダンジョン【リム】,Bonus Dungeon (R)
 STAGE_NAME_525,ボーナスダンジョン【BO】,Bonus Dungeon (BO)
 STAGE_NAME_526,ボーナスダンジョン【ゴールド】,Bonus Dungeon (G)
-STAGE_NAME_548,[イベント]ED用黒のエフェクト部屋,[イベント]ED用黒のエフェクト部屋
+STAGE_NAME_548,[イベント]ED用黒のエフェクト部屋,[Event] Black effect room
 STAGE_NAME_549,英霊眠りし道 ラスニテ山麓,Heroic Spirit Sleeping Path: Rathnite Foothills
 STAGE_NAME_550,英霊眠りし道 祠,Heroic Spirit Sleeping Path: Shrine
 STAGE_NAME_551,英霊眠りし道 洞窟,Heroic Spirit Sleeping Path: Cave
@@ -438,7 +438,7 @@ STAGE_NAME_559,メガドシスの記憶,Memory of Megadosys
 STAGE_NAME_560,大地の記憶 メガドシス古道,Memory of Megadosys Old Road
 STAGE_NAME_561,メガドシスの記憶 武神の間,Memory of Megadosys: War God Space
 STAGE_NAME_563,ウルテカの記憶,Memory of Urteca
-STAGE_NAME_564,大地の記憶 聖炎の参竜道,大地の記憶 聖炎の参竜道
+STAGE_NAME_564,大地の記憶 聖炎の参竜道,Memories of the Earth: Sacred Flame Path
 STAGE_NAME_565,ウルテカの記憶 武神の間,Memory of Urteca: War God Space
 STAGE_NAME_566,大地の記憶 王家の墓,Memory of Royal Family Mausoleum
 STAGE_NAME_567,大地の記憶 火垂れ山野営地,Memory of Firefall Mountain Campsite
@@ -451,16 +451,16 @@ STAGE_NAME_574,ジフール砦,Jifule Fortress
 STAGE_NAME_575,ラスニテ山麓　湖畔部,Rathnite Foothills Lakeside
 STAGE_NAME_576,ティネス砦　大食堂,Fort Thines: Great Dining Hall
 STAGE_NAME_578,ボーナスダンジョンロビー,Bonus Dungeon Lobby
-STAGE_NAME_579,フェルヤナ荒原 城下,フェルヤナ荒原 城下
+STAGE_NAME_579,フェルヤナ荒原 城下,Feryana Wilderness by Castle
 STAGE_NAME_580,城塞都市メガド クラフトルーム,Fortress City Megado: Craft Room
-STAGE_NAME_581,黒示す王の間,黒示す王の間
+STAGE_NAME_581,黒示す王の間,Black King's Room
 STAGE_NAME_582,王家の墓,The Royal Family Mausoleum
-STAGE_NAME_583,悪しき竜のねぐら,悪しき竜のねぐら
+STAGE_NAME_583,悪しき竜のねぐら,Evil Dragon's Roost
 STAGE_NAME_584,エリ警備塔,Eli Guard Tower
 STAGE_NAME_585,展望城,Lookout Castle
-STAGE_NAME_586,隠匿の王間,隠匿の王間
-STAGE_NAME_587,魔界村地下墓地,魔界村地下墓地
-STAGE_NAME_588,悪しき竜のねぐら,悪しき竜のねぐら
+STAGE_NAME_586,隠匿の王間,The King's Room of Concealment
+STAGE_NAME_587,魔界村地下墓地,Makaimura Catacombs
+STAGE_NAME_588,悪しき竜のねぐら,Evil Dragon's Roost
 STAGE_NAME_589,メガドシス古道,Megadosys Old Road
 STAGE_NAME_590,メガドへの隠れ水路,Hidden Waterway to Megado
 STAGE_NAME_591,タリーエの小塔,Tarie Small Tower
@@ -470,22 +470,22 @@ STAGE_NAME_594,北の盗賊のアジト,Northern Bandit Hideout
 STAGE_NAME_595,火垂れ山野営地,Firefall Mountain Campsite
 STAGE_NAME_596,霧の森,Forest of Mist
 STAGE_NAME_597,静穏の隠れ洞,Quiet Concealed Cave
-STAGE_NAME_598,クルト侯爵邸,クルト侯爵邸
+STAGE_NAME_598,クルト侯爵邸,Marquise Kurt's residence
 STAGE_NAME_599,城塞都市メガド　居住層,Fortress City Megado: Residential Level
 STAGE_NAME_600,城塞都市メガド　居住層,Fortress City Megado: Residential Level
-STAGE_NAME_601,クルト侯爵邸,クルト侯爵邸
+STAGE_NAME_601,クルト侯爵邸,Marquise Kurt's residence
 STAGE_NAME_602,黒呪の迷宮：入り江,Bitterblack Maze Cove
 STAGE_NAME_603,黒呪の迷宮：凱旋者なき庭園,Bitterblack Maze: Garden of Ignominy
 STAGE_NAME_604,黒呪の迷宮：羨月楼,Bitterblack Maze: Duskmoon Tower
 STAGE_NAME_605,黒呪の迷宮：畏れの天蓋,Bitterblack Maze: Rotunda of Dread
-STAGE_NAME_606,イベントビューアー部屋,イベントビューアー部屋
+STAGE_NAME_606,イベントビューアー部屋,Event Viewer Room
 STAGE_NAME_607,王家の隠れ部屋 メガドシス高地,Royal Family's Hidden Chamber (Megadosys Plateau)
 STAGE_NAME_608,王家の隠れ部屋 ウルテカ山岳,Royal Family's Hidden Chamber (Urteca Mountains)
 STAGE_NAME_609,崩れた進入路,Crumbling Entrance Path
 STAGE_NAME_610,黒呪の迷宮：冥府１,Bitterblack Maze: Netherworld 1
 STAGE_NAME_611,黒呪の迷宮：冥府１,Bitterblack Maze: Netherworld 1
 STAGE_NAME_612,黒呪の迷宮：冥府１,Bitterblack Maze: Netherworld 1
-STAGE_NAME_613,悪しき竜のねぐら,悪しき竜のねぐら
+STAGE_NAME_613,悪しき竜のねぐら,Evil Dragon's Roost
 STAGE_NAME_614,黒呪の迷宮：冥府２,Bitterblack Maze: Netherworld 2
 STAGE_NAME_615,黒呪の迷宮：冥府２,Bitterblack Maze: Netherworld 2
 STAGE_NAME_616,黒呪の迷宮：冥府２,Bitterblack Maze: Netherworld 2
@@ -505,24 +505,24 @@ STAGE_NAME_645,王家の隠れ部屋 メガドシス高地,Royal Family's Hidden
 STAGE_NAME_646,王家の隠れ部屋 ウルテカ山岳,Royal Family's Hidden Chamber (Urteca Mountains)
 STAGE_NAME_647,王家の隠れ部屋 ウルテカ山岳,Royal Family's Hidden Chamber (Urteca Mountains)
 STAGE_NAME_648,王家の隠れ部屋 ウルテカ山岳,Royal Family's Hidden Chamber (Urteca Mountains)
-STAGE_NAME_649,3.4導入デモ専用部屋,3.4導入デモ専用部屋
-STAGE_NAME_650,暗黒の統べる地　西端,暗黒の統べる地　西端
-STAGE_NAME_651,暗黒の統べる地　南端,暗黒の統べる地　南端
-STAGE_NAME_652,暗黒の統べる地　東端,暗黒の統べる地　東端
-STAGE_NAME_653,暗黒の統べる地　北端,暗黒の統べる地　北端
-STAGE_NAME_654,選択の道,選択の道
-STAGE_NAME_655,闇に覆われたシェドレアン大神殿,闇に覆われたシェドレアン大神殿
-STAGE_NAME_656,闇に覆われたメガド王宮層,闇に覆われたメガド王宮層
-STAGE_NAME_657,闇に覆われたドリード城,闇に覆われたドリード城
-STAGE_NAME_658,闇に覆われたメルゴダ護政区,闇に覆われたメルゴダ護政区
-STAGE_NAME_659,闇に覆われたメガド回廊,闇に覆われたメガド回廊
+STAGE_NAME_649,3.4導入デモ専用部屋,3.4 Demo Room
+STAGE_NAME_650,暗黒の統べる地　西端,West Land of Darkness
+STAGE_NAME_651,暗黒の統べる地　南端,South Land of Darkness
+STAGE_NAME_652,暗黒の統べる地　東端,East Land of Darkness
+STAGE_NAME_653,暗黒の統べる地　北端,North Land of Darkness
+STAGE_NAME_654,選択の道,Alternative Path
+STAGE_NAME_655,闇に覆われたシェドレアン大神殿,Darkness Shrouded Shadolean Great Temple
+STAGE_NAME_656,闇に覆われたメガド王宮層,Darkness Shrouded Mergoda Royal Palace Level
+STAGE_NAME_657,闇に覆われたドリード城,Darkness Shrouded Dreed Castle
+STAGE_NAME_658,闇に覆われたメルゴダ護政区,Darkness Shrouded Mergoda Security District
+STAGE_NAME_659,闇に覆われたメガド回廊,Darkness Shrouded Megado Corridor
 STAGE_NAME_660,ボーナスダンジョン【JP】,Bonus Dungeon (JP)
 STAGE_NAME_661,ボーナスダンジョン【HO】,Bonus Dungeon (HO)
 STAGE_NAME_662,ハイデル地下霊廟,Hidell Catacombs
-STAGE_NAME_682,黒呪の迷宮：瘴気の満ちる聖堂,黒呪の迷宮：瘴気の満ちる聖堂
-STAGE_NAME_683,黒呪の迷宮：裏切り者の処刑塔,黒呪の迷宮：裏切り者の処刑塔
-STAGE_NAME_684,黒呪の迷宮：異邦の落都,黒呪の迷宮：異邦の落都
-STAGE_NAME_685,黒呪の迷宮：黒呪の祭壇,黒呪の迷宮：黒呪の祭壇
+STAGE_NAME_682,黒呪の迷宮：瘴気の満ちる聖堂,Bitterblack Maze: Noxious Cathedral
+STAGE_NAME_683,黒呪の迷宮：裏切り者の処刑塔,Bitterblack Maze: Traitors' Tower
+STAGE_NAME_684,黒呪の迷宮：異邦の落都,Bitterblack Maze: Fallen City
+STAGE_NAME_685,黒呪の迷宮：黒呪の祭壇,Bitterblack Maze: Altar of the Black Curse
 STAGE_NAME_686,黒呪の迷宮：冥府１,Bitterblack Maze: Netherworld 1
 STAGE_NAME_687,黒呪の迷宮：冥府１,Bitterblack Maze: Netherworld 1
 STAGE_NAME_688,黒呪の迷宮：冥府１,Bitterblack Maze: Netherworld 1
@@ -532,29 +532,29 @@ STAGE_NAME_691,黒呪の迷宮：冥府２,Bitterblack Maze: Netherworld 2
 STAGE_NAME_692,黒呪の迷宮：冥府３,Bitterblack Maze: Netherworld 3
 STAGE_NAME_693,黒呪の迷宮：冥府３,Bitterblack Maze: Netherworld 3
 STAGE_NAME_694,黒呪の迷宮：冥府３,Bitterblack Maze: Netherworld 3
-STAGE_NAME_695,黒呪の迷宮：冥府４,黒呪の迷宮：冥府４
-STAGE_NAME_696,黒呪の迷宮：冥府４,黒呪の迷宮：冥府４
-STAGE_NAME_697,黒呪の迷宮：冥府４,黒呪の迷宮：冥府４
+STAGE_NAME_695,黒呪の迷宮：冥府４,Bitterblack Maze: Netherworld 4
+STAGE_NAME_696,黒呪の迷宮：冥府４,Bitterblack Maze: Netherworld 4
+STAGE_NAME_697,黒呪の迷宮：冥府４,Bitterblack Maze: Netherworld 4
 STAGE_NAME_698,黒呪の迷宮：異界,Bitterblack Maze: Rift
 STAGE_NAME_699,黒呪の迷宮：異界,Bitterblack Maze: Rift
 STAGE_NAME_700,黒呪の迷宮：異界,Bitterblack Maze: Rift
 STAGE_NAME_701,黄金宮,The Golden Palace
 STAGE_NAME_702,メガド回廊,Megado Corridor
 STAGE_NAME_703,展望城,Lookout Castle
-STAGE_NAME_704,黒示す王の間,黒示す王の間
-STAGE_NAME_705,悪しき竜のねぐら,悪しき竜のねぐら
-STAGE_NAME_706,闇に覆われたシェドレアン大神殿,闇に覆われたシェドレアン大神殿
-STAGE_NAME_707,闇に覆われたメガド王宮層,闇に覆われたメガド王宮層
-STAGE_NAME_708,闇に覆われたドリード城,闇に覆われたドリード城
-STAGE_NAME_709,闇に覆われたメルゴダ護政区,闇に覆われたメルゴダ護政区
-STAGE_NAME_710,闇に覆われたメガド回廊,闇に覆われたメガド回廊
+STAGE_NAME_704,黒示す王の間,Black King's Room
+STAGE_NAME_705,悪しき竜のねぐら,Evil Dragon's Roost
+STAGE_NAME_706,闇に覆われたシェドレアン大神殿,Darkness Shrouded Shadolean Great Temple
+STAGE_NAME_707,闇に覆われたメガド王宮層,Darkness Shrouded Mergoda Royal Palace Level
+STAGE_NAME_708,闇に覆われたドリード城,Darkness Shrouded Dreed Castle
+STAGE_NAME_709,闇に覆われたメルゴダ護政区,Darkness Shrouded Mergoda Security District
+STAGE_NAME_710,闇に覆われたメガド回廊,Darkness Shrouded Megado Corridor
 STAGE_NAME_711,ダクレイム砦,Dacreim Fortress
 STAGE_NAME_712,ジフール砦,Jifule Fortress
-STAGE_NAME_713,隠匿の王間,隠匿の王間
-STAGE_NAME_714,聖炎の参竜道,聖炎の参竜道
-STAGE_NAME_715,黒呪の迷宮：冥府４,黒呪の迷宮：冥府４
-STAGE_NAME_716,黒呪の迷宮：冥府４,黒呪の迷宮：冥府４
-STAGE_NAME_717,黒呪の迷宮：冥府４,黒呪の迷宮：冥府４
+STAGE_NAME_713,隠匿の王間,The King's Room of Concealment
+STAGE_NAME_714,聖炎の参竜道,Sacred Flame Path
+STAGE_NAME_715,黒呪の迷宮：冥府４,Bitterblack Maze: Netherworld 4
+STAGE_NAME_716,黒呪の迷宮：冥府４,Bitterblack Maze: Netherworld 4
+STAGE_NAME_717,黒呪の迷宮：冥府４,Bitterblack Maze: Netherworld 4
 STAGE_NAME_718,ダクレイム砦,Dacreim Fortress
 STAGE_NAME_719,ガルドノック砦,Gardnox Fortress
 STAGE_NAME_720,メルゴダ王宮層,Mergoda Royal Palace Level
