@@ -39,39 +39,24 @@ func _on_DropChanceSpinBox_value_changed(value):
 	item.drop_chance = $GridContainer/DropChanceSpinBox.value / 100
 	if supress_event != true:
 		SelectedListManager.apply_values_to_selected_type("drop_chance", int(value))
-		SelectedListManager.is_item()
-	else:
-		SelectedListManager.not_item()
 	
 func _on_NumSpinBox_value_changed(value):
 	item.num = $GridContainer/NumContainer/NumSpinBox.value
 	if supress_event != true:
 		SelectedListManager.apply_values_to_selected_type("number", int(value))
-		SelectedListManager.is_item()
-	else:
-		SelectedListManager.not_item()
 
 func _on_MaxNumSpinBox_value_changed(value):
 	item.max_num = $GridContainer/NumContainer/MaxNumSpinBox.value
 	if supress_event != true:
 		SelectedListManager.apply_values_to_selected_type("max_number", int(value))
-		SelectedListManager.is_item()
-	else:
-		SelectedListManager.not_item()
 	
 func _on_QualitySpinBox_value_changed(value):
 	item.quality = $GridContainer/QualitySpinBox.value
 	if supress_event != true:
 		SelectedListManager.apply_values_to_selected_type("quality", int(value))
-		SelectedListManager.is_item()
-	else:
-		SelectedListManager.not_item()
 
 func _on_IsHiddenCheckBox_pressed():
 	item.is_hidden = $GridContainer/IsHiddenCheckBox.pressed
 	if supress_event != true:
 		var value = $GridContainer/IsHiddenCheckBox.pressed
 		SelectedListManager.apply_values_to_selected_type("is_hidden", int(value))
-		SelectedListManager.is_item()
-	else:
-		SelectedListManager.not_item()
