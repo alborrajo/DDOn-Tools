@@ -62,26 +62,6 @@ func reload_details_panel():
 		var last_entry = selected_list[selected_list.size() - 1]
 		var data = last_entry[\"data\"]
 		detailspanel.show_details_of(data)
-
-
-func apply_values_to_item(item_data: GatheringItem, parameters: Dictionary):
-	for parameter_name in parameters.keys():
-		var parameter_value = parameters[parameter_name]
-		match parameter_name:
-			\"drop_chance\":
-				item_data.drop_chance = parameter_value
-			\"number\":
-				item_data.num = parameter_value
-			\"max_number\":
-				item_data.max_num = parameter_value
-			\"quality\":
-				item_data.quality = parameter_value
-			\"is_hidden\":
-				item_data.is_hidden = parameter_value
-			# Add more cases for other parameters as needed
-			_:
-				# Handle unknown parameter names
-				print(\"Unknown parameter name:\", parameter_name)
 "
 
 [node name="SelectedListManager" type="Node"]
