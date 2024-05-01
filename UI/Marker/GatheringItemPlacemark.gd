@@ -8,10 +8,10 @@ var list_manager = SelectedListManager
 
 func _on_GatheringItemPlacemark_pressed():
 	if Input.is_key_pressed(KEY_SHIFT):
-		list_manager._check_list_for_type(self, item)
+		list_manager._toggle_selection(self, item)
 	else:
 		SelectedListManager._clear_list()
-		list_manager._check_list_for_type(self, item)
+		list_manager._toggle_selection(self, item)
 
 func set_item(i: GatheringItem) -> void:
 	if item != null and item.is_connected("changed", self, "_on_item_changed"):

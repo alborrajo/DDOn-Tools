@@ -29,10 +29,10 @@ func _update_placemark_visibility(index):
 
 func _on_EnemyPlacemark_pressed():
 	if Input.is_key_pressed(KEY_SHIFT):
-		list_manager._check_list_for_type(self, enemy)  # Pass EnemyPlacemark instance and enemy data
+		list_manager._toggle_selection(self, enemy)  # Pass EnemyPlacemark instance and enemy data
 	else:
 		list_manager._clear_list()
-		list_manager._check_list_for_type(self, enemy)
+		list_manager._toggle_selection(self, enemy)
 
 func set_enemy(em: Enemy) -> void:
 	if enemy != null and enemy.is_connected("changed", self, "_on_enemy_changed"):

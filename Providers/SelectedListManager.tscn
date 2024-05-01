@@ -14,7 +14,7 @@ func apply_values_to_selected_type(parameter_name: String, parameter_value: int)
 		data[parameter_name] = parameter_value
 
 # Function to check the list for type and removes if it exists already
-func _check_list_for_type(placemark: GenericPlacemark, data: Object):
+func _toggle_selection(placemark: GenericPlacemark, data: Object):
 	var entry = {\"placemark\": placemark, \"data\": data}
 
 	var index = _find_entry_index(placemark)
