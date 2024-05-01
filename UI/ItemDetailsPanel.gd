@@ -43,12 +43,12 @@ func _on_DropChanceSpinBox_value_changed(value):
 func _on_NumSpinBox_value_changed(value):
 	item.num = $GridContainer/NumContainer/NumSpinBox.value
 	if supress_event != true:
-		SelectedListManager.apply_values_to_selected_type("number", int(value))
+		SelectedListManager.apply_values_to_selected_type("num", int(value))
 
 func _on_MaxNumSpinBox_value_changed(value):
 	item.max_num = $GridContainer/NumContainer/MaxNumSpinBox.value
 	if supress_event != true:
-		SelectedListManager.apply_values_to_selected_type("max_number", int(value))
+		SelectedListManager.apply_values_to_selected_type("max_num", int(value))
 	
 func _on_QualitySpinBox_value_changed(value):
 	item.quality = $GridContainer/QualitySpinBox.value
