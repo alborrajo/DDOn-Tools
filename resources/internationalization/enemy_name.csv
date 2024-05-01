@@ -1,537 +1,537 @@
-"keys","en","ja"
-"NAME_0x010100","Goblin","ゴブリン"
-"NAME_0x010101","Goblin Fighter","ゴブリンファイター"
-"NAME_0x010102","Shield Goblin","シールドゴブリン"
-"NAME_0x010103","Sling Goblin (Rock)","スリングゴブリン (Rock)"
-"NAME_0x010104","Goblin Leader","ゴブリンリーダー"
-"NAME_0x010105","Sling Goblin (Torch)","スリングゴブリン (Torch)"
-"NAME_0x010110","Hobgoblin","ホブゴブリン"
-"NAME_0x010111","Hobgoblin Fighter","ホブゴブリンファイター"
-"NAME_0x010112","Sling Hobgoblin (Oil Flask)","スリングホブゴブリン (Oil Flask)"
-"NAME_0x010113","Hobgoblin Leader","ホブゴブリンリーダー"
-"NAME_0x010114","Sling Hobgoblin (Torch)","スリングホブゴブリン (Torch)"
-"NAME_0x010120","Grim Goblin","グリムゴブリン"
-"NAME_0x010121","Grim Goblin Fighter","グリムゴブリンファイター"
-"NAME_0x010123","Sling Grim Goblin (Oil Flask)","スリンググリムゴブリン (Oil Flask)"
-"NAME_0x010124","Grim Goblin Leader","グリムゴブリンリーダー"
-"NAME_0x010130","Greater Goblin (Sword)","グレーターゴブリン (Sword)"
-"NAME_0x010131","Greater Goblin (Torch)","グレーターゴブリン (Torch)"
-"NAME_0x010140","Goblin Shaman","ゴブリンシャーマン"
-"NAME_0x010141","Goblin Aid Shaman","ゴブリンエイドシャーマン"
-"NAME_0x010150","Pixie","ピクシー"
-"NAME_0x010151","Pixie Biff","ピクシービフ"
-"NAME_0x010152","Pixie Din","ピクシーディン"
-"NAME_0x010153","Pixie Pow","ピクシーポウ"
-"NAME_0x010155","Pixie Jabber","ピクシージャバー"
-"NAME_0x010160","Infected Hobgoblin","侵食ホブゴブリン"
-"NAME_0x010161","Infected Hobgoblin Fighter","侵食ホブゴブリンファイター"
-"NAME_0x010162","Infected Sling Hobgoblin","侵食スリングホブゴブリン"
-"NAME_0x010170","Severely Infected Pixie","狂侵ピクシー"
-"NAME_0x010171","Severely Infected Pixie (Club)","狂侵ピクシー (Club)"
-"NAME_0x010172","Severely Infected Pixie (Corruption Seeds)","狂侵ピクシー (Corruption Seeds)"
-"NAME_0x010180","Goblin (Horn)","ゴブリン (Horn)"
-"NAME_0x010190","High Pixie Biff","ハイピクシービフ"
-"NAME_0x010191","High Pixie Zolda","ハイピクシーゾルダ"
-"NAME_0x010192","High Pixie Pow","ハイピクシーポウ"
-"NAME_0x010195","Pixie King","ピクシーキング"
-"NAME_0x010200","Wolf","オオカミ"
-"NAME_0x010201","Direwolf","ダイアウルフ"
-"NAME_0x010202","Hellhound","ヘルハウンド"
-"NAME_0x010203","Warg","ワーグ"
-"NAME_0x010205","Grimwarg","グリムワーグ"
-"NAME_0x010206","Shadow Wolf","シャドーウルフ"
-"NAME_0x010207","Alchemized Wolf","ウルフアルケミー"
-"NAME_0x010208","Damned Wolf","ダムドウルフ"
-"NAME_0x010209","Infected Direwolf","侵食ダイアウルフ"
-"NAME_0x010210","Green Guardian","グリーンガーディアン"
-"NAME_0x010211","Bolt Grimwarg","ボルトグリムワーグ"
-"NAME_0x010212","Blaze Wolf","ブレイズウルフ"
-"NAME_0x010220","Severely Infected Warg","狂侵ワーグ"
-"NAME_0x010221","Skeleton Warg","スケルトンワーグ"
-"NAME_0x010230","War-Ready Grimwarg (Light Armor)","戦甲グリムワーグ・軽装"
-"NAME_0x010240","Valefar","ウァレフォル"
-"NAME_0x010300","Skeleton","スケルトン"
-"NAME_0x010301","Skeleton Knight","スケルトンナイト"
-"NAME_0x010302","Skeleton Warrior","スケルトンウォリアー"
-"NAME_0x010303","Skeleton Lord (Abyss)","スケルトンロード・アビス"
-"NAME_0x010306","Living Armor","リビングアーマー"
-"NAME_0x010307","Skeleton Brute","スケルトンブルート"
-"NAME_0x010308","Skeleton Mage","スケルトンメイジ"
-"NAME_0x010309","Skeleton Sorcerer","スケルトンソーサラー"
-"NAME_0x010310","Death Knight","デスナイト"
-"NAME_0x010311","Ghost Mail","ゴーストメイル"
-"NAME_0x010312","Alchemized Skeleton","スケルトンアルケミー"
-"NAME_0x010313","Skull Lord","スカルロード"
-"NAME_0x010314","Flame Skeleton","スケルトン・フレイム"
-"NAME_0x010315","Frost Skeleton","スケルトン・フロスト"
-"NAME_0x010316","Bolt Skeleton","スケルトン・ボルト"
-"NAME_0x010317","Lux Skeleton","スケルトン・ルクス"
-"NAME_0x010318","Dark Skeleton","スケルトン・ダーク"
-"NAME_0x010320","Flame Skeleton Brute","スケルトンブルート・フレイム"
-"NAME_0x010321","Frost Skeleton Brute","スケルトンブルート・フロスト"
-"NAME_0x010322","Bolt Skeleton Brute","スケルトンブルート・ボルト"
-"NAME_0x010323","Lux Skeleton Brute","スケルトンブルート・ルクス"
-"NAME_0x010324","Dark Skeleton Brute","スケルトンブルート・ダーク"
-"NAME_0x010400","Saurian","リザードマン"
-"NAME_0x010401","Giant Saurian","ラージリザード"
-"NAME_0x010410","Sulfur Saurian","サルファーリザード"
-"NAME_0x010411","Giant Sulfur Saurian","ラージサルファー"
-"NAME_0x010420","Geo Saurian","ジオリザードマン"
-"NAME_0x010421","Giant Geo Saurian","ラージジオリザード"
-"NAME_0x010430","Saurian Sage","リザードマンセージ"
-"NAME_0x010431","Giant Saurian Sage","ラージリザードセージ"
-"NAME_0x010440","Pyre Saurian (Salamander?)","サラマンダー (Salamander?)"
-"NAME_0x010450","Rock Saurian","ロックリザード"
-"NAME_0x010451","Rock Saurian Spinel","ロックリザードスピネル"
-"NAME_0x010460","Blue Newt","ブルーニュート"
-"NAME_0x010461","Large Newt","ラージニュート"
-"NAME_0x010470","War-Ready Saurian (Light Armor)","戦甲リザードマン・軽装"
-"NAME_0x010471","War-Ready Giant Saurian (Light Armor)","戦甲ラージリザード・軽装"
-"NAME_0x010480","Merman","マーマン"
-"NAME_0x010482","Poison Merman","ポイズンマーマン"
-"NAME_0x010500","Undead (Male)","アンデッド・男性"
-"NAME_0x010501","Undead (Female)","アンデッド・女性"
-"NAME_0x010502","Stout Undead","ファットアンデッド"
-"NAME_0x010503","Sword Undead","ソードアンデッド"
-"NAME_0x010504","Warrior Undead","ウォリアーアンデッド"
-"NAME_0x010508","Eliminator","エリミネーター"
-"NAME_0x010509","Mudman","マッドマン"
-"NAME_0x010510","Sludgeman","スラッジマン"
-"NAME_0x010511","Frost Corpse Punisher","コープスパニッシャー・フロスト"
-"NAME_0x010512","Frost Corpse Torturer","コープストーチャー・フロスト"
-"NAME_0x010513","Flame Corpse Punisher","コープスパニッシャー・フレイム"
-"NAME_0x010514","Bolt Corpse Punisher","コープスパニッシャー・ボルト"
-"NAME_0x010515","Lux Corpse Punisher","コープスパニッシャー・ルクス"
-"NAME_0x010516","Dark Corpse Punisher","コープスパニッシャー・ダーク"
-"NAME_0x010517","Flame Corpse Torturer","コープストーチャー・フレイム"
-"NAME_0x010518","Bolt Corpse Torturer","コープストーチャー・ボルト"
-"NAME_0x010519","Lux Corpse Torturer","コープストーチャー・ルクス"
-"NAME_0x010520","Dark Corpse Torturer","コープストーチャー・ダーク"
-"NAME_0x010530","Eliminator Slay","エリミネーター・スレイ"
-"NAME_0x010600","Harpy","ハーピー"
-"NAME_0x010601","Snow Harpy","スノーハーピー"
-"NAME_0x010603","Gargoyle","ガーゴイル"
-"NAME_0x010605","Siren","セイレーン"
-"NAME_0x010606","Alchemized Harpy","ハーピーアルケミー"
-"NAME_0x010607","Shadow Harpy","シャドーハーピー"
-"NAME_0x010608","Blaze Harpy","ブレイズハーピー"
-"NAME_0x010610","Strix","ストリクス"
-"NAME_0x010611","Stymphalídes","スチュパリデス"
-"NAME_0x010612","Infected Snow Harpy","侵食スノーハーピー"
-"NAME_0x010614","Severely Infected Stymphalídes","狂侵スチュパリデス"
-"NAME_0x010621","Ukobach","ウコバク"
-"NAME_0x010800","Worm","ワーム"
-"NAME_0x010810","Leech","リーチ"
-"NAME_0x010820","Armored Insect (Blue)","ヨロイムシ (Blue)"
-"NAME_0x010821","Armored Insect (Red)","ヨロイムシ (Red)"
-"NAME_0x010822","Armored Insect (Red) Passive AI ?","ヨロイムシ (Red) Passive AI ?"
-"NAME_0x010823","Armored Insect (Red) Passive AI ?","ヨロイムシ (Red) Passive AI ?"
-"NAME_0x010900","Slime","スライム"
-"NAME_0x010901","Deep Slime","ディープスライム"
-"NAME_0x010902","Ooze","ウーズ"
-"NAME_0x010903","Glutton Ooze","グラトンウーズ"
-"NAME_0x010904","Aqua Jelly","アクアジェリー"
-"NAME_0x010905","Pyro Slime","パイロスライム"
-"NAME_0x010906","Freezing Slime","フリージングスライム"
-"NAME_0x010907","Electric Slime","エレキスライム"
-"NAME_0x010908","Photon Slime","フォトンスライム"
-"NAME_0x010909","Dim Slime","ディムスライム"
-"NAME_0x010910","Blob","ブロブ"
-"NAME_0x010911","Acid Blob","アシッドブロブ"
-"NAME_0x010915","Stone Blob","ストーンブロブ"
-"NAME_0x010920","Oil Jelly","オイルジェリー"
-"NAME_0x011000","Rogue Fighter","ローグファイター"
-"NAME_0x011001","Rogue Seeker","ローグシーカー"
-"NAME_0x011002","Rogue Hunter","ローグハンター"
-"NAME_0x011003","Rogue Healer","ローグヒーラー"
-"NAME_0x011004","Rogue Defender","ローグガーダー"
-"NAME_0x011005","Rogue Mage","ローグメイジ"
-"NAME_0x011006","Rogue Warrior","ローグウォリアー"
-"NAME_0x011010","Banded Fighter","バンデッドファイター"
-"NAME_0x011011","Banded Seeker","バンデッドシーカー"
-"NAME_0x011012","Banded Hunter","バンデッドハンター"
-"NAME_0x011013","Banded Healer","バンデッドヒーラー"
-"NAME_0x011014","Banded Defender","バンデッドガーダー"
-"NAME_0x011015","Banded Mage","バンデッドメイジ"
-"NAME_0x011016","Banded Warrior","バンデッドウォリアー"
-"NAME_0x011020","Mergan Fighter","メルガンファイター"
-"NAME_0x011021","Mergan Seeker","メルガンシーカー"
-"NAME_0x011022","Mergan Hunter","メルガンハンター"
-"NAME_0x011023","Mergan Healer","メルガンヒーラー"
-"NAME_0x011024","Mergan Defender","メルガンガーダー"
-"NAME_0x011025","Mergan Mage","メルガンメイジ"
-"NAME_0x011026","Mergan Warrior","メルガンウォリアー"
-"NAME_0x011027","Mergan Element Archer","メルガンエレメンター"
-"NAME_0x011030","Mist Fighter","ミストファイター"
-"NAME_0x011031","Mist Hunter","ミストハンター"
-"NAME_0x011032","Mist Priest","ミストプリースト"
-"NAME_0x011033","Mist Sorcerer","ミストソーサラー"
-"NAME_0x011034","Mist Warrior","ミストウォリアー"
-"NAME_0x011040","Iris","イリス"
-"NAME_0x011041","Diamantes (Human)","ディアマンテス (人間)"
-"NAME_0x011042","Leo","レオ"
-"NAME_0x011043","Hooded Iris (???)","イリス Hooded (???)"
-"NAME_0x011044","Former Commander Leo (Final Boss)","元覚者隊統率レオ (Final Boss)"
-"NAME_0x011050","Pawn Fighter","ポーンファイター"
-"NAME_0x011051","Pawn Seeker","ポーンシーカー"
-"NAME_0x011052","Pawn Hunter","ポーンハンター"
-"NAME_0x011053","Pawn Healer","ポーンヒーラー"
-"NAME_0x011054","Pawn Defender","ポーンガーダー"
-"NAME_0x011055","Pawn Mage","ポーンメイジ"
-"NAME_0x011056","Pawn Warrior","ポーンウォリアー"
-"NAME_0x011057","Pawn Element Archer","ポーンエレメンター"
-"NAME_0x011060","Phindymian Fighter","フィンドファイター"
-"NAME_0x011061","Phindymian Seeker","フィンドシーカー"
-"NAME_0x011062","Phindymian Hunter","フィンドハンター"
-"NAME_0x011063","Phindymian Priest","フィンドプリースト"
-"NAME_0x011064","Phindymian Defender","フィンドガーダー"
-"NAME_0x011065","Phindymian Sorcerer","フィンドソーサラー"
-"NAME_0x011066","Phindymian Warrior","フィンドウォリアー"
-"NAME_0x011067","Phindymian Element Archer","フィンドエレメンター"
-"NAME_0x011068","",""
-"NAME_0x011069","",""
-"NAME_0x011070","Scarlet Fighter","スカーレットファイター"
-"NAME_0x011071","Scarlet Seeker","スカーレットシーカー"
-"NAME_0x011072","Scarlet Hunter","スカーレットハンター"
-"NAME_0x011073","Scarlet Healer","スカーレットヒーラー"
-"NAME_0x011074","Scarlet Defender","スカーレットガーダー"
-"NAME_0x011075","Scarlet Mage","スカーレットメイジ"
-"NAME_0x011076","Scarlet Warrior","スカーレットウォリアー"
-"NAME_0x011080","Megado Guard (Fighter)","メガド護衛兵 (ファイター)"
-"NAME_0x011081","Megado Guard (Seeker)","メガド護衛兵 (シーカー)"
-"NAME_0x011082","Megado Guard (Hunter)","メガド護衛兵 (ハンター)"
-"NAME_0x011083","Megado Guard (Warrior)","メガド護衛兵 (ウォリアー)"
-"NAME_0x011100","Forest Goblin","フォレストゴブリン"
-"NAME_0x011101","Forest Goblin Fighter","フォレストゴブリンファイター"
-"NAME_0x011102","Sling Forest Goblin","スリングフォレストゴブリン"
-"NAME_0x011110","Redcap","レッドキャップ"
-"NAME_0x011111","Redcap Fighter","レッドキャップファイター"
-"NAME_0x011112","Sling Redcap","スリングレッドキャップ"
-"NAME_0x011120","Alchemized Goblin","ゴブリンアルケミー"
-"NAME_0x011121","Alchemized Goblin Fighter","ゴブリンアルケミーファイター"
-"NAME_0x011122","Alchemized Sling Goblin","スリングゴブリンアルケミー"
-"NAME_0x011123","Damned Goblin","ダムドゴブリン"
-"NAME_0x011124","Damned Sling Goblin (Flask)","ダムドスリングゴブリン (Flask)"
-"NAME_0x011125","Damned Goblin Fighter","ダムドゴブリンファイター"
-"NAME_0x011130","Shadow Goblin","シャドーゴブリン"
-"NAME_0x011131","Shadow Goblin Fighter","シャドーゴブリンファイター"
-"NAME_0x011132","Shadow Sling Goblin","スリングシャドーゴブリン"
-"NAME_0x011140","Goblin King (NPC)","ゴブリンキング (NPC)"
-"NAME_0x011150","Goblin Bomber","ゴブリンボマー"
-"NAME_0x011160","Shadow Goblin Leader","シャドーゴブリンリーダー"
-"NAME_0x011170","Blaze Goblin","ブレイズゴブリン"
-"NAME_0x011171","Blaze Goblin (Fighter?)","ブレイズゴブリン (ファイター?)"
-"NAME_0x011172","Blaze Goblin (Sling?)","ブレイズゴブリン (Sling?)"
-"NAME_0x011173","Blaze Goblin Leader","ブレイズゴブリンリーダー"
-"NAME_0x011200","Killer Bee","キラービー"
-"NAME_0x011201","Albe (Parasitic Poison)","アルベ (Parasitic Posion)"
-"NAME_0x011210","Moth (Cyan / Sleep)","モス (Cyan / Sleep)"
-"NAME_0x011211","Moth (Magenta / Poison)","モス (Magenta / Poison)"
-"NAME_0x011300","Mandragora","マンドラゴラ"
-"NAME_0x011301","Mandragora (Flower)","マンドラゴラ (Flower)"
-"NAME_0x011302","Habanero","ハバネロ"
-"NAME_0x011400","Maneater","マンイーター"
-"NAME_0x011401","Maneater (Closed)","マンイーター (Closed)"
-"NAME_0x011410","Tentacle (Evil Eye)","触手 (イービルアイ)"
-"NAME_0x011411","Tentacle (Evil Eye)","触手 (イービルアイ)"
-"NAME_0x011412","Tentacle (Volt Eye)","触手 (ボルトアイ)"
-"NAME_0x011413","Tentacle (Volt Eye)","触手 (ボルトアイ)"
-"NAME_0x011500","Foot-Biter","フットバイター"
-"NAME_0x015000","Cyclops","サイクロプス"
-"NAME_0x015001","Cyclops (Club)","サイクロプス (Club)"
-"NAME_0x015002","Armored Cyclops","アーマーサイクロプス"
-"NAME_0x015003","Armored Cyclops (Club)","アーマーサイクロプス (Club)"
-"NAME_0x015004","Cyclops (Giant)","サイクロプス (Giant)"
-"NAME_0x015010","Gorecyclops","ゴアサイクロプス"
-"NAME_0x015012","Infected Gorecyclops","侵食ゴアサイクロプス"
-"NAME_0x015017","Severely Infected Gorecyclops","狂侵ゴアサイクロプス"
-"NAME_0x015020","Colossus","コロッサス"
-"NAME_0x015030","Grand Ent","グランエント"
-"NAME_0x015031","Ent","エント"
-"NAME_0x015032","Phindymian Ent","フィンダーエント"
-"NAME_0x015033","Burned Ent","バーンドエント"
-"NAME_0x015040","Troll","トロール"
-"NAME_0x015041","Mole Troll","モルトロール"
-"NAME_0x015042","Fodden","フォッデン"
-"NAME_0x015050","Skeleton Cyclops","スケルトンサイクロプス"
-"NAME_0x015051","",""
-"NAME_0x015052","Frost Skeleton Cyclops","スケルトンサイクロプス・フロスト"
-"NAME_0x015053","Bolt Skeleton Cyclops","スケルトンサイクロプス・ボルト"
-"NAME_0x015054","Flame Skeleton Cyclops","スケルトンサイクロプス・フレイム"
-"NAME_0x015060","War-Ready Gorecyclops (Light Armor)","戦甲ゴアサイクロプス・軽装"
-"NAME_0x015061","War-Ready Gorecyclops (Light Armor)","戦甲ゴアサイクロプス・軽装"
-"NAME_0x015100","Golem","ゴーレム"
-"NAME_0x015102","Goliath","ゴリアテ"
-"NAME_0x015103","Damned Golem","ダムドゴーレム"
-"NAME_0x015104","Geo Golem","ジオゴーレム"
-"NAME_0x015105","Goliath + Cyclops (Test)","ゴリアテ + サイクロプス (Test)"
-"NAME_0x015200","Chimera","キメラ"
-"NAME_0x015201","Gorechimera","ゴアキメラ"
-"NAME_0x015202","White Chimera","ホワイトキメラ"
-"NAME_0x015203","Shadow Chimera","シャドーキメラ"
-"NAME_0x015204","Blaze Chimera","ブレイズキメラ"
-"NAME_0x015210","Manticore","マンティコア"
-"NAME_0x015211","Goremanticore","ゴアマンティコア"
-"NAME_0x015220","War-Ready Goremanticore (Light Armor)","戦甲ゴアマンティコア・軽装"
-"NAME_0x015230","Abaddon","アバドーン"
-"NAME_0x015300","Griffin","グリフィン"
-"NAME_0x015301","Cockatrice","コカトリス"
-"NAME_0x015302","Sphinx","スフィンクス"
-"NAME_0x015303","Black Griffin","ブラックグリフィン"
-"NAME_0x015304","Alchemized Griffin","グリフィンアルケミー"
-"NAME_0x015305","Nightmare","ナイトメア"
-"NAME_0x015306","Infected Griffin","侵食グリフィン"
-"NAME_0x015310","Severely Infected Griffin","狂侵グリフィン"
-"NAME_0x015320","White Griffin","ホワイトグリフィン"
-"NAME_0x015321","Bifrest","ビフレスト"
-"NAME_0x015330","War-Ready Nightmare (Light Armor)","戦甲ナイトメア・軽装"
-"NAME_0x015400","Evil Eye","イービルアイ"
-"NAME_0x015401","Vile Eye","バイルアイ"
-"NAME_0x015406","Volt Eye","ボルトアイ"
-"NAME_0x015410","Crystal Eye","クリスタルアイ"
-"NAME_0x015411","Ruby Eye","ルビーアイ"
-"NAME_0x015412","Lapis Eye","ラピスアイ"
-"NAME_0x015413","Emerald Eye","エメラルドアイ"
-"NAME_0x015420","Alchemy Eye","アルケミーアイ"
-"NAME_0x015500","Ogre","オーガ"
-"NAME_0x015502","Dread Ape","ドレッドエイプ"
-"NAME_0x015503","Ghoul","グール"
-"NAME_0x015504","Brute Ape","ブルトエイプ"
-"NAME_0x015505","Silver Roar","シルバーロア"
-"NAME_0x015506","Spineback","スパインバック"
-"NAME_0x015507","Little Spine","リトルスパイン"
-"NAME_0x015508","Cragger","クラッガー"
-"NAME_0x015509","Little Crag","リトルクラッグ"
-"NAME_0x015510","War-Ready Ogre (Light Armor)","戦甲オーガ・軽装"
-"NAME_0x015600","Wight","ワイト"
-"NAME_0x015603","Death","デス"
-"NAME_0x015604","Witch","ウィッチ"
-"NAME_0x015605","Empress Ghost","エンプレスゴースト"
-"NAME_0x015610","Medusa","メドゥーサ"
-"NAME_0x015611","Gorgon","ゴルゴーン"
-"NAME_0x015620","Ghost","ゴースト"
-"NAME_0x015621","Misery Ghost","ミザリーゴースト"
-"NAME_0x015622","Grudge Ghost","グラッジゴースト"
-"NAME_0x015623","Rage Ghost","レイジゴースト"
-"NAME_0x015700","Drake","ドレイク"
-"NAME_0x015701","Wyrm","ウィルム"
-"NAME_0x015706","Cursed Dragon","カースドラゴン"
-"NAME_0x015707","Lindwurm","リンドブルム"
-"NAME_0x015708","Angules","アングルス"
-"NAME_0x015709","Behemoth","ベヘモット"
-"NAME_0x015710","Mist Drake","ミストドレイク"
-"NAME_0x015711","Mist Wyrm","ミストウィルム"
-"NAME_0x015712","Infected Behemoth","侵食ベヘモット"
-"NAME_0x015717","Severely Infected Behemoth","狂侵ベヘモット"
-"NAME_0x015718","Lotus Fin","ロータスフィン"
-"NAME_0x015719","Dagon","ダゴン"
-"NAME_0x015720","Tarasque","タラスク"
-"NAME_0x015721","Wisened Tarasque","アドタラスク"
-"NAME_0x015723","White Tarasque","ホワイトタラスク"
-"NAME_0x015730","Catoblepas","カトブレパス"
-"NAME_0x015740","Behemoth (""Goblin"" Test)","ベヘモット (""ゴブリン"" Test)"
-"NAME_0x015800","Orc Soldier","オークソルジャー"
-"NAME_0x015801","Orc Aimer","オークエイマー"
-"NAME_0x015802","Orc Banger","オークバンガー"
-"NAME_0x015810","Orc Battler","オークバトラー"
-"NAME_0x015811","Orc Bringer","オークブリンガー"
-"NAME_0x015812","Orc Trooper","オークトルーパー"
-"NAME_0x015813","Infected Orc Soldier","侵食オークソルジャー"
-"NAME_0x015814","Infected Orc Aimer","侵食オークエイマー"
-"NAME_0x015815","Infected Orc Banger","侵食オークバンガー"
-"NAME_0x015820","Captain Orc","キャプテンオーク"
-"NAME_0x015821","Sword Soldier Dwarf Orc","斬兵ドワーフオーク"
-"NAME_0x015822","Blunt Soldier Dwarf Orc","打兵ドワーフオーク"
-"NAME_0x015823","Heavy Soldier Dwarf Orc","重兵ドワーフオーク"
-"NAME_0x015824","Ranged Soldier Dwarf Orc","投兵ドワーフオーク"
-"NAME_0x015825","Dwarf Orc (Test?)","ドワーフオーク (Test?)"
-"NAME_0x015826","Squad Leader Dwarf Orc","隊将ドワーフオーク"
-"NAME_0x015830","General Orc","ジェネラルオーク"
-"NAME_0x015831","Ancestor Orc","アンセスターオーク"
-"NAME_0x015832","Ancestor Orc (Fighter)","アンセスターオーク (ファイター)"
-"NAME_0x015833","Ancestor Orc (Different Bones)","アンセスターオーク (Different Bones)"
-"NAME_0x015835","Legion","レギオン"
-"NAME_0x015836","Legion (Fighter)","レギオン (ファイター)"
-"NAME_0x015837","Legion (Different Bones)","レギオン (Different Bones)"
-"NAME_0x015838","Legion Leader","レギオンリーダー"
-"NAME_0x015839","Captain Ancestor Orc","キャプテンアンセスターオーク"
-"NAME_0x015840","Mogok","モゴック"
-"NAME_0x015850","Gigant Machina","ギガン・マキナ"
-"NAME_0x015851","Frost Machina","フロスト・マキナ"
-"NAME_0x015852","Bolt Machina","ボルト・マキナ"
-"NAME_0x015860","War Master","戦の将"
-"NAME_0x015861","Beast Master","獣の将"
-"NAME_0x015862","Necro Master","骸の将"
-"NAME_0x015863","Shadow Master (Invulnerable)","闇の将 (Invulnerable)"
-"NAME_0x015870","Ancestor Origin","アンセスターオリジン"
-"NAME_0x015900","Grigori","グリゴリ"
-"NAME_0x015910","Severely Infected Demon","狂侵デーモン"
-"NAME_0x015920","Bearded Grigori","グリゴリベアード"
-"NAME_0x015921","Samyaza","シェムハザ"
-"NAME_0x015930","Blaze Grigori","ブレイズグリゴリ"
-"NAME_0x015932","Shadow Grigori","シャドーグリゴリ"
-"NAME_0x018000","Rabbit","ウサギ"
-"NAME_0x018100","Bat","コウモリ"
-"NAME_0x018200","Buck","雄ジカ"
-"NAME_0x018201","Doe","雌ジカ"
-"NAME_0x018300","Ox","牛"
-"NAME_0x018401","Giant Rat","オオネズミ"
-"NAME_0x018600","Boar","野ブタ"
-"NAME_0x018601","Pig","ブタ"
-"NAME_0x018602","Piglet","子ブタ"
-"NAME_0x018603","Pig (Dirty)","ブタ (Dirty)"
-"NAME_0x018604","Piglet (Dirty)","子ブタ (Dirty)"
-"NAME_0x018700","Snake","ヘビ"
-"NAME_0x018800","Spider","カブトグモ"
-"NAME_0x019000","Chicken (White)","ニワトリ (White)"
-"NAME_0x019001","Chicken (Brown)","ニワトリ (Brown)"
-"NAME_0x019100","Goat","ヤギ"
-"NAME_0x019200","Frog (Gold?)","カエル (Gold?)"
-"NAME_0x019201","Frog (Blue?)","カエル (Blue?)"
-"NAME_0x019300","Wild Boar (Brown)","ワイルド・ボア (Brown)"
-"NAME_0x019301","Wild Boar (Stripes)","ワイルド・ボア (Stripes)"
-"NAME_0x020402","Zuhl","ズール"
-"NAME_0x020403","Altered Zuhl","アルタード・ズール"
-"NAME_0x020404","Red Zuhl","レッドズール"
-"NAME_0x020500","Diamantes","ディアマンテス"
-"NAME_0x020601","Scourge","スカージ"
-"NAME_0x020602","Baphomet","バフォメット"
-"NAME_0x020606","Severely Infected Scourge","狂侵スカージ"
-"NAME_0x020700","Black Knight (Dark Only)","黒騎士 (Dark Only)"
-"NAME_0x020701","Black Knight (Holy/Ice)","黒騎士 (Holy/Ice)"
-"NAME_0x020702","Black Knight (Holy/Ice)","黒騎士 (Holy/Ice)"
-"NAME_0x020803","Ifrit - 1st Form","イフリート - 1st Form"
-"NAME_0x020804","Ifrit - 2nd Form","イフリート - 2nd Form"
-"NAME_0x021000","White Dragon (NPC)","白竜 (NPC)"
-"NAME_0x021001","Elder Dragon","エルダードラゴン"
-"NAME_0x021002","Golgorran","ゴルゴラン"
-"NAME_0x021002","Golgorran","ゴルゴラン"
-"NAME_0x021003","White Dragon","白竜"
-"NAME_0x021004","Ushumgal","ウシュムガル"
-"NAME_0x022000","Spirit Dragon Willmia","精霊竜ウィルミア"
-"NAME_0x022001","Spirit Dragon Willmia (""Goblin"" Test)","精霊竜ウィルミア (""ゴブリン"" Test)"
-"NAME_0x023000","The Evil Dragon","悪しき竜"
-"NAME_0x023000","The Evil Dragon","悪しき竜"
-"NAME_0x024000","Black Dragon - 1st Form","黒竜 - 1st Form"
-"NAME_0x024001","Black Dragon - 2nd Form (Untranslated)","黒竜 - 2nd Form (Untranslated)"
-"NAME_0x024002","Black Dragon - 2nd Form (Damaged)","黒竜 - 2nd Form (Damaged)"
-"NAME_0x030100","Unspeakable Meat","謎の肉塊"
-"NAME_0x030101","Giant Unspeakable Meat","巨大な謎の肉塊"
-"NAME_0x030104","Dragon Crystal of Praying (Spirit Dragon Willmia WM)","祈りの竜晶 (精霊竜ウィルミアWM)"
-"NAME_0x030105","Dragon Crystal of Groaning (Spirit Dragon Willmia WM)","うめきの竜晶 (精霊竜ウィルミアWM)"
-"NAME_0x030106","",""
-"NAME_0x030107","Dragon Crystal (The Evil Dragon WM) (Untranslated)","竜晶 (悪しき竜WM) (Untranslated)"
-"NAME_0x030108","",""
-"NAME_0x030109","Rock (The Evil Dragon WM)","Rock (悪しき竜WM)"
-"NAME_0x030110","Totem (Shadow Master WM) (Untranslated)","Totem (闇の将 WM) (Untranslated)"
-"NAME_0x030111","",""
-"NAME_0x030112","Dragon Crystal of Darkness (Invulnerable) (Ground)","暗黒の竜晶 (Invulnerable) (Ground)"
-"NAME_0x030113","Dragon Crystal of Darkness (Invulnerable) (Flying)","暗黒の竜晶 (Invulnerable) (Flying)"
-"NAME_0x030114","Crystal of Blessing","祝福の結晶"
-"NAME_0x030115","Dragon Crystal of Darkness (Flying) (Untranslated)","暗黒の竜晶 (Flying) (Untranslated)"
-"NAME_0x030116","Dragon Crystal of Destruction","破滅の竜晶"
-"NAME_0x030117","Dragon Crystal of Binding (Black Dragon)","束縛の竜晶 (黒竜)"
-"NAME_0x030118","Black Sword","黒剣"
-"NAME_0x070041","Colossus","コロッサス"
-"NAME_0x070042","Colossus","コロッサス"
-"NAME_0x070050","Gorecyclops","ゴアサイクロプス"
-"NAME_0x070051","Gorecyclops","ゴアサイクロプス"
-"NAME_0x070200","Ghoul","グール"
-"NAME_0x070210","Spineback","スパインバック"
-"NAME_0x070211","Spineback","スパインバック"
-"NAME_0x070410","Mole Troll","モルトロール"
-"NAME_0x070510","Grand Ent","グランエント"
-"NAME_0x070520","Phindymian Ent","フィンダーエント"
-"NAME_0x070600","Griffin","グリフィン"
-"NAME_0x070610","Black Griffin","ブラックグリフィン"
-"NAME_0x070620","White Griffin","ホワイトグリフィン"
-"NAME_0x070640","Bifrest","ビフレスト"
-"NAME_0x070641","Bifrest","ビフレスト"
-"NAME_0x070700","Sphinx","スフィンクス"
-"NAME_0x070800","Chimera","キメラ"
-"NAME_0x070810","White Chimera","ホワイトキメラ"
-"NAME_0x070820","Gorechimera","ゴアキメラ"
-"NAME_0x070830","Manticore","マンティコア"
-"NAME_0x070900","Drake","ドレイク"
-"NAME_0x070910","Wyrm","ウィルム"
-"NAME_0x070920","Angules","アングルス"
-"NAME_0x070930","Behemoth","ベヘモット"
-"NAME_0x070940","Lindwurm","リンドブルム"
-"NAME_0x070950","Tarasque (""Goblin"" Test)","タラスク (""ゴブリン"" Test)"
-"NAME_0x071100","Elder Dragon (Epitath Road Trial?)","エルダードラゴン (Epitath Road Trial?)"
-"NAME_0x071101","Black Dragon - 1st Form (Cutscene?)","黒竜 - 1st Form (Cutscene?)"
-"NAME_0x071102","Black Dragon - 2nd Form (Cutscene?)","黒竜 - 2nd Form (Cutscene?)"
-"NAME_0x071250","Shadow Master (Giant)","闇の将 (Giant)"
-"NAME_0x071251","War Master","戦の将"
-"NAME_0x071252","Beast Master","獣の将"
-"NAME_0x071300","Zuhl","ズール"
-"NAME_0x071310","Scourge","スカージ"
-"NAME_0x071311","Baphomet (Enraged)","バフォメット (Enraged)"
-"NAME_0x071400","",""
-"NAME_0x075120","Skeleton Mage","スケルトンメイジ"
-"NAME_0x075121","Skeleton Mage (Different AI?)","スケルトンメイジ (Different AI?)"
-"NAME_0x075130","Skeleton Sorcerer","スケルトンソーサラー"
-"NAME_0x075131","Skeleton Sorcerer","スケルトンソーサラー"
-"NAME_0x075300","Skeleton Sorcerer","スケルトンソーサラー"
-"NAME_0x075400","The Evil Dragon (Sparks?)","悪しき竜 (Sparks?)"
-"NAME_0x075401","The Evil Dragon","悪しき竜"
-"NAME_0x075401","The Evil Dragon","悪しき竜"
-"NAME_0x075700","Wight","ワイト"
-"NAME_0x077000","Albe's Nest","アルベ Nest"
-"NAME_0x079000","",""
-"NAME_0x080000","Elder Dragon","エルダードラゴン"
-"NAME_0x080100","Golgorran","ゴルゴラン"
-"NAME_0x080100","Golgorran","ゴルゴラン"
-"NAME_0x080200","Grand Ent","グランエント"
-"NAME_0x080300","Zuhl","ズール"
-"NAME_0x080400","Spirit Dragon Willmia","精霊竜ウィルミア"
-"NAME_0x080500","Black Knight Phantom (Clear)","黒騎士・幻影 (Clear)"
-"NAME_0x080501","Black Knight","黒騎士"
-"NAME_0x080502","Black Knight (Fan of Swords)","黒騎士 (Fan of Swords)"
-"NAME_0x080503","Black Knight Phantom (Opaque)","黒騎士・幻影 (Opaque)"
-"NAME_0x080504","Arisen of the Black Dragon","黒竜の覚者"
-"NAME_0x080505","Black Sword","黒剣"
-"NAME_0x080600","Wisened Tarasque","アドタラスク"
-"NAME_0x080700","Evil Eye","イービルアイ"
-"NAME_0x080800","Abaddon","アバドーン"
-"NAME_0x080801","Albe","アルベ"
-"NAME_0x080802","",""
-"NAME_0x080900","Baphomet","バフォメット"
-"NAME_0x080901","Baphomet (Glowing Purple)","バフォメット (Glowing Purple)"
-"NAME_0x081000","Black Dragon - 1st Form","黒竜 - 1st Form"
-"NAME_0x081001","Black Dragon - 2nd Form","黒竜 - 2nd Form"
-"NAME_0x081002","Black Dragon - 1st Form (Again. EM??)","黒竜 - 1st Form (Again. EM??)"
-"NAME_0x081003","Black Dragon - 2nd form (Again. EM??)","黒竜 - 2nd form (Again. EM??)"
-"NAME_0x081004","Dragon Crystal of Destruction / shoots laser rocks","破滅の竜晶 / shoots laser rocks"
-"NAME_0x081005","Dragon Crystal of Destruction / sucks you in with magic","破滅の竜晶 / sucks you in with magic"
-"NAME_0x081006","Dragon Crystal of Destruction / lots of laser rocks and big explosion","破滅の竜晶 / lots of laser rocks and big explosion"
-"NAME_0x081007","Dragon Crystal of Destruction / sucks you in with magic","破滅の竜晶 / sucks you in with magic"
-"NAME_0x085000","Orc Soldier","オークソルジャー"
-"NAME_0x085001","Orc Soldier","オークソルジャー"
-"NAME_0x085002","Orc Soldier","オークソルジャー"
-"NAME_0x085003","Orc Soldier","オークソルジャー"
-"NAME_0x085004","Captain Orc","キャプテンオーク"
-"NAME_0x085009","Orc (""Goblin"" Test)","オーク (""ゴブリン"" Test)"
-"NAME_0x085010","Goblin Fighter","ゴブリンファイター"
-"NAME_0x085011","Goblin Fighter","ゴブリンファイター"
-"NAME_0x085012","Goblin Fighter","ゴブリンファイター"
-"NAME_0x085013","Goblin Fighter","ゴブリンファイター"
-"NAME_0x085014","Goblin Fighter","ゴブリンファイター"
-"NAME_0x085015","Goblin Fighter","ゴブリンファイター"
-"NAME_0x085016","Goblin Fighter","ゴブリンファイター"
-"NAME_0x085017","Goblin Fighter","ゴブリンファイター"
-"NAME_0x085018","Goblin Fighter","ゴブリンファイター"
-"NAME_0x085019","Goblin Fighter","ゴブリンファイター"
-"NAME_0x085110","Cyclops","サイクロプス"
-"NAME_0x085111","Cyclops","サイクロプス"
-"NAME_0x085112","Cyclops","サイクロプス"
-"NAME_0x085113","Cyclops","サイクロプス"
-"NAME_0x085114","Cyclops","サイクロプス"
-"NAME_0x095801","Gigant Machina Trinity","ギガン・マキナトリニティ"
-"NAME_0x095802","Frost Machina Trinity","フロスト・マキナトリニティ"
-"NAME_0x095803","Bolt Machina Trinity","ボルト・マキナトリニティ"
-"NAME_0x100100","Behemoth (Test?)","ベヘモット (Test?)"
-"NAME_0x100101","Zuhl (Passive)","ズール (Passive)"
-"NAME_0x100104","Black Knight (Getting injured / Cutscene?)","黒騎士 (Getting injured / Cutscene?)"
-"NAME_0x100105","Spirit Dragon Willmia (Test?)","精霊竜ウィルミア (Test?)"
-"NAME_0x100106","Spirit Dragon Willmia (Active)","精霊竜ウィルミア (Active)"
+keys,en,ja
+NAME_0x010100,Goblin,ゴブリン
+NAME_0x010101,Goblin Fighter,ゴブリンファイター
+NAME_0x010102,Shield Goblin,シールドゴブリン
+NAME_0x010103,Sling Goblin (Rock),スリングゴブリン (ロック）
+NAME_0x010104,Goblin Leader,ゴブリンリーダー
+NAME_0x010105,Sling Goblin (Torch),スリングゴブリン (トーチ）
+NAME_0x010110,Hobgoblin,ホブゴブリン
+NAME_0x010111,Hobgoblin Fighter,ホブゴブリンファイター
+NAME_0x010112,Sling Hobgoblin (Oil flask),スリングホブゴブリン （オイルフラスコ）
+NAME_0x010113,Hobgoblin Leader,ホブゴブリンリーダー
+NAME_0x010114,Sling Hobgoblin (Torch),スリングホブゴブリン (トーチ）
+NAME_0x010120,Grim Goblin,グリムゴブリン
+NAME_0x010121,Grim Goblin Fighter,グリムゴブリンファイター
+NAME_0x010123,Sling Grim Goblin (Oil flask),スリンググリムゴブリン （オイルフラスコ）
+NAME_0x010124,Grim Goblin Leader,グリムゴブリンリーダー
+NAME_0x010130,Greater Goblin (Sword),グレーターゴブリン （剣）
+NAME_0x010131,Greater Goblin (Torch),グレーターゴブリン (トーチ）
+NAME_0x010140,Goblin Shaman,ゴブリンシャーマン
+NAME_0x010141,Goblin Aid Shaman,ゴブリンエイドシャーマン
+NAME_0x010150,Pixie,ピクシー
+NAME_0x010151,Pixie Biff,ピクシービフ
+NAME_0x010152,Pixie Din,ピクシーディン
+NAME_0x010153,Pixie Pow,ピクシーポウ
+NAME_0x010155,Pixie Jabber,ピクシージャバー
+NAME_0x010160,Infected Hobgoblin,侵食ホブゴブリン
+NAME_0x010161,Infected Hobgoblin Fighter,侵食ホブゴブリンファイター
+NAME_0x010162,Infected Sling Hobgoblin,侵食スリングホブゴブリン
+NAME_0x010170,Severely Infected Pixie,狂侵ピクシー
+NAME_0x010171,Severely Infected Pixie (Club),狂侵ピクシー (クラブ）
+NAME_0x010172,Severely Infected Pixie (Seeds of corruption),狂侵ピクシー （腐敗の種）
+NAME_0x010180,Goblin (Horn),ゴブリン (ホーン）
+NAME_0x010190,High Pixie Biff,ハイピクシービフ
+NAME_0x010191,High Pixie Zolda,ハイピクシーゾルダ
+NAME_0x010192,High Pixie Pow,ハイピクシーポウ
+NAME_0x010195,Pixie King,ピクシーキング
+NAME_0x010200,Wolf,オオカミ
+NAME_0x010201,Direwolf,ダイアウルフ
+NAME_0x010202,Hellhound,ヘルハウンド
+NAME_0x010203,Warg,ワーグ
+NAME_0x010205,Grimwarg,グリムワーグ
+NAME_0x010206,Shadow Wolf,シャドーウルフ
+NAME_0x010207,Alchemized Wolf,ウルフアルケミー
+NAME_0x010208,Damned Wolf,ダムドウルフ
+NAME_0x010209,Infected Direwolf,侵食ダイアウルフ
+NAME_0x010210,Green Guardian,グリーンガーディアン
+NAME_0x010211,Bolt Grimwarg,ボルトグリムワーグ
+NAME_0x010212,Blaze Wolf,ブレイズウルフ
+NAME_0x010220,Severely Infected Warg,狂侵ワーグ
+NAME_0x010221,Skeleton Warg,スケルトンワーグ
+NAME_0x010230,War-Ready Grimwarg (Light Armor),戦甲グリムワーグ・軽装
+NAME_0x010240,Valefar,ウァレフォル
+NAME_0x010300,Skeleton,スケルトン
+NAME_0x010301,Skeleton Knight,スケルトンナイト
+NAME_0x010302,Skeleton Warrior,スケルトンウォリアー
+NAME_0x010303,Skeleton Lord (Abyss),スケルトンロード・アビス
+NAME_0x010306,Living Armor,リビングアーマー
+NAME_0x010307,Skeleton Brute,スケルトンブルート
+NAME_0x010308,Skeleton Mage,スケルトンメイジ
+NAME_0x010309,Skeleton Sorcerer,スケルトンソーサラー
+NAME_0x010310,Death Knight,デスナイト
+NAME_0x010311,Ghost Mail,ゴーストメイル
+NAME_0x010312,Alchemized Skeleton,スケルトンアルケミー
+NAME_0x010313,Skull Lord,スカルロード
+NAME_0x010314,Flame Skeleton,スケルトン・フレイム
+NAME_0x010315,Frost Skeleton,スケルトン・フロスト
+NAME_0x010316,Bolt Skeleton,スケルトン・ボルト
+NAME_0x010317,Lux Skeleton,スケルトン・ルクス
+NAME_0x010318,Dark Skeleton,スケルトン・ダーク
+NAME_0x010320,Flame Skeleton Brute,スケルトンブルート・フレイム
+NAME_0x010321,Frost Skeleton Brute,スケルトンブルート・フロスト
+NAME_0x010322,Bolt Skeleton Brute,スケルトンブルート・ボルト
+NAME_0x010323,Lux Skeleton Brute,スケルトンブルート・ルクス
+NAME_0x010324,Dark Skeleton Brute,スケルトンブルート・ダーク
+NAME_0x010400,Saurian,リザードマン
+NAME_0x010401,Giant Saurian,ラージリザード
+NAME_0x010410,Sulfur Saurian,サルファーリザード
+NAME_0x010411,Giant Sulfur Saurian,ラージサルファー
+NAME_0x010420,Geo Saurian,ジオリザードマン
+NAME_0x010421,Giant Geo Saurian,ラージジオリザード
+NAME_0x010430,Saurian Sage,リザードマンセージ
+NAME_0x010431,Giant Saurian Sage,ラージリザードセージ
+NAME_0x010440,Pyre Saurian (Salamander?),サラマンダー (サラマンダー?)
+NAME_0x010450,Rock Saurian,ロックリザード
+NAME_0x010451,Rock Saurian Spinel,ロックリザードスピネル
+NAME_0x010460,Blue Newt,ブルーニュート
+NAME_0x010461,Large Newt,ラージニュート
+NAME_0x010470,War-Ready Saurian (Light Armor),戦甲リザードマン・軽装
+NAME_0x010471,War-Ready Giant Saurian (Light Armor),戦甲ラージリザード・軽装
+NAME_0x010480,Merman,マーマン
+NAME_0x010482,Poison Merman,ポイズンマーマン
+NAME_0x010500,Undead (Male),アンデッド・男性
+NAME_0x010501,Undead (Female),アンデッド・女性
+NAME_0x010502,Stout Undead,ファットアンデッド
+NAME_0x010503,Sword Undead,ソードアンデッド
+NAME_0x010504,Warrior Undead,ウォリアーアンデッド
+NAME_0x010508,Eliminator,エリミネーター
+NAME_0x010509,Mudman,マッドマン
+NAME_0x010510,Sludgeman,スラッジマン
+NAME_0x010511,Frost Corpse Punisher,コープスパニッシャー・フロスト
+NAME_0x010512,Frost Corpse Torturer,コープストーチャー・フロスト
+NAME_0x010513,Flame Corpse Punisher,コープスパニッシャー・フレイム
+NAME_0x010514,Bolt Corpse Punisher,コープスパニッシャー・ボルト
+NAME_0x010515,Lux Corpse Punisher,コープスパニッシャー・ルクス
+NAME_0x010516,Dark Corpse Punisher,コープスパニッシャー・ダーク
+NAME_0x010517,Flame Corpse Torturer,コープストーチャー・フレイム
+NAME_0x010518,Bolt Corpse Torturer,コープストーチャー・ボルト
+NAME_0x010519,Lux Corpse Torturer,コープストーチャー・ルクス
+NAME_0x010520,Dark Corpse Torturer,コープストーチャー・ダーク
+NAME_0x010530,Eliminator Slay,エリミネーター・スレイ
+NAME_0x010600,Harpy,ハーピー
+NAME_0x010601,Snow Harpy,スノーハーピー
+NAME_0x010603,Gargoyle,ガーゴイル
+NAME_0x010605,Siren,セイレーン
+NAME_0x010606,Alchemized Harpy,ハーピーアルケミー
+NAME_0x010607,Shadow Harpy,シャドーハーピー
+NAME_0x010608,Blaze Harpy,ブレイズハーピー
+NAME_0x010610,Strix,ストリクス
+NAME_0x010611,Stymphalídes,スチュパリデス
+NAME_0x010612,Infected Snow Harpy,侵食スノーハーピー
+NAME_0x010614,Severely Infected Stymphalídes,狂侵スチュパリデス
+NAME_0x010621,Ukobach,ウコバク
+NAME_0x010800,Worm,ワーム
+NAME_0x010810,Leech,リーチ
+NAME_0x010820,Armored Insect (Blue),ヨロイムシ （ブルー）
+NAME_0x010821,Armored Insect (Red),ヨロイムシ(レッド）
+NAME_0x010822,Armored Insect (Red) passiveAI？,ヨロイムシ(レッド） パッシブAI？
+NAME_0x010823,Armored Insect (Red) passiveAI？,ヨロイムシ(レッド） パッシブAI？
+NAME_0x010900,Slime,スライム
+NAME_0x010901,Deep Slime,ディープスライム
+NAME_0x010902,Ooze,ウーズ
+NAME_0x010903,Glutton Ooze,グラトンウーズ
+NAME_0x010904,Aqua Jelly,アクアジェリー
+NAME_0x010905,Pyro Slime,パイロスライム
+NAME_0x010906,Freezing Slime,フリージングスライム
+NAME_0x010907,Electric Slime,エレキスライム
+NAME_0x010908,Photon Slime,フォトンスライム
+NAME_0x010909,Dim Slime,ディムスライム
+NAME_0x010910,Blob,ブロブ
+NAME_0x010911,Acid Blob,アシッドブロブ
+NAME_0x010915,Stone Blob,ストーンブロブ
+NAME_0x010920,Oil Jelly,オイルジェリー
+NAME_0x011000,Rogue Fighter,ローグファイター
+NAME_0x011001,Rogue Seeker,ローグシーカー
+NAME_0x011002,Rogue Hunter,ローグハンター
+NAME_0x011003,Rogue Healer,ローグヒーラー
+NAME_0x011004,Rogue Defender,ローグガーダー
+NAME_0x011005,Rogue Mage,ローグメイジ
+NAME_0x011006,Rogue Warrior,ローグウォリアー
+NAME_0x011010,Banded Fighter,バンデッドファイター
+NAME_0x011011,Banded Seeker,バンデッドシーカー
+NAME_0x011012,Banded Hunter,バンデッドハンター
+NAME_0x011013,Banded Healer,バンデッドヒーラー
+NAME_0x011014,Banded Defender,バンデッドガーダー
+NAME_0x011015,Banded Mage,バンデッドメイジ
+NAME_0x011016,Banded Warrior,バンデッドウォリアー
+NAME_0x011020,Mergan Fighter,メルガンファイター
+NAME_0x011021,Mergan Seeker,メルガンシーカー
+NAME_0x011022,Mergan Hunter,メルガンハンター
+NAME_0x011023,Mergan Healer,メルガンヒーラー
+NAME_0x011024,Mergan Defender,メルガンガーダー
+NAME_0x011025,Mergan Mage,メルガンメイジ
+NAME_0x011026,Mergan Warrior,メルガンウォリアー
+NAME_0x011027,Mergan Element Archer,メルガンエレメンター
+NAME_0x011030,Mist Fighter,ミストファイター
+NAME_0x011031,Mist Hunter,ミストハンター
+NAME_0x011032,Mist Priest,ミストプリースト
+NAME_0x011033,Mist Sorcerer,ミストソーサラー
+NAME_0x011034,Mist Warrior,ミストウォリアー
+NAME_0x011040,Iris,イリス
+NAME_0x011041,Diamantes (Human),ディアマンテス (人間)
+NAME_0x011042,Leo,レオ
+NAME_0x011043,Hooded Iris (???),イリス フード付き（？）
+NAME_0x011044,Former Commander Leo (Final boss),元覚者隊統率レオ （最終ボス）
+NAME_0x011050,Pawn Fighter,ポーンファイター
+NAME_0x011051,Pawn Seeker,ポーンシーカー
+NAME_0x011052,Pawn Hunter,ポーンハンター
+NAME_0x011053,Pawn Healer,ポーンヒーラー
+NAME_0x011054,Pawn Defender,ポーンガーダー
+NAME_0x011055,Pawn Mage,ポーンメイジ
+NAME_0x011056,Pawn Warrior,ポーンウォリアー
+NAME_0x011057,Pawn Element Archer,ポーンエレメンター
+NAME_0x011060,Phindymian Fighter,フィンドファイター
+NAME_0x011061,Phindymian Seeker,フィンドシーカー
+NAME_0x011062,Phindymian Hunter,フィンドハンター
+NAME_0x011063,Phindymian Priest,フィンドプリースト
+NAME_0x011064,Phindymian Defender,フィンドガーダー
+NAME_0x011065,Phindymian Sorcerer,フィンドソーサラー
+NAME_0x011066,Phindymian Warrior,フィンドウォリアー
+NAME_0x011067,Phindymian Element Archer,フィンドエレメンター
+NAME_0x011068,0x011068 (No Enemy),
+NAME_0x011069,0x011069 (No Enemy),
+NAME_0x011070,Scarlet Fighter,スカーレットファイター
+NAME_0x011071,Scarlet Seeker,スカーレットシーカー
+NAME_0x011072,Scarlet Hunter,スカーレットハンター
+NAME_0x011073,Scarlet Healer,スカーレットヒーラー
+NAME_0x011074,Scarlet Defender,スカーレットガーダー
+NAME_0x011075,Scarlet Mage,スカーレットメイジ
+NAME_0x011076,Scarlet Warrior,スカーレットウォリアー
+NAME_0x011080,Megado Guard (Fighter),メガド護衛兵 (ファイター)
+NAME_0x011081,Megado Guard (Seeker),メガド護衛兵 (シーカー)
+NAME_0x011082,Megado Guard (Hunter),メガド護衛兵 (ハンター)
+NAME_0x011083,Megado Guard (Warrior),メガド護衛兵 (ウォリアー)
+NAME_0x011100,Forest Goblin,フォレストゴブリン
+NAME_0x011101,Forest Goblin Fighter,フォレストゴブリンファイター
+NAME_0x011102,Sling Forest Goblin,スリングフォレストゴブリン
+NAME_0x011110,Redcap,レッドキャップ
+NAME_0x011111,Redcap Fighter,レッドキャップファイター
+NAME_0x011112,Sling Redcap,スリングレッドキャップ
+NAME_0x011120,Alchemized Goblin,ゴブリンアルケミー
+NAME_0x011121,Alchemized Goblin Fighter,ゴブリンアルケミーファイター
+NAME_0x011122,Alchemized Sling Goblin,スリングゴブリンアルケミー
+NAME_0x011123,Damned Goblin,ダムドゴブリン
+NAME_0x011124,Damned Sling Goblin (Flask),ダムドスリングゴブリン （フラスコ）
+NAME_0x011125,Damned Goblin Fighter,ダムドゴブリンファイター
+NAME_0x011130,Shadow Goblin,シャドーゴブリン
+NAME_0x011131,Shadow Goblin Fighter,シャドーゴブリンファイター
+NAME_0x011132,Shadow Sling Goblin,スリングシャドーゴブリン
+NAME_0x011140,Goblin King (NPC),ゴブリンキング (NPC)
+NAME_0x011150,Goblin Bomber,ゴブリンボマー
+NAME_0x011160,Shadow Goblin Leader,シャドーゴブリンリーダー
+NAME_0x011170,Blaze Goblin,ブレイズゴブリン
+NAME_0x011171,Blaze Goblin (Fighter?),ブレイズゴブリン (ファイター?)
+NAME_0x011172,Blaze Goblin (Sling?),ブレイズゴブリン (スリング？）
+NAME_0x011173,Blaze Goblin Leader,ブレイズゴブリンリーダー
+NAME_0x011200,Killer Bee,キラービー
+NAME_0x011201,Albe (Parasitic Poison),アルベ (寄生虫）
+NAME_0x011210,Moth (Cyan / Sleep),モス （シアン／スリープ）
+NAME_0x011211,Moth (Magenta / Poison),モス (マゼンタ／ポイズン）
+NAME_0x011300,Mandragora,マンドラゴラ
+NAME_0x011301,Mandragora (Flower),マンドラゴラ (花)
+NAME_0x011302,Habanero,ハバネロ
+NAME_0x011400,Maneater,マンイーター
+NAME_0x011401,Maneater (Closed),マンイーター (終了しました）
+NAME_0x011410,Tentacle (Evil Eye),触手 (イービルアイ)
+NAME_0x011411,Tentacle (Evil Eye),触手 (イービルアイ)
+NAME_0x011412,Tentacle (Volt Eye),触手 (ボルトアイ)
+NAME_0x011413,Tentacle (Volt Eye),触手 (ボルトアイ)
+NAME_0x011500,Foot-Biter,フットバイター
+NAME_0x015000,Cyclops,サイクロプス
+NAME_0x015001,Cyclops (Club),サイクロプス (クラブ）
+NAME_0x015002,Armored Cyclops,アーマーサイクロプス
+NAME_0x015003,Armored Cyclops (Club),アーマーサイクロプス (クラブ）
+NAME_0x015004,Cyclops (Giant),サイクロプス (ジャイアント）
+NAME_0x015010,Gorecyclops,ゴアサイクロプス
+NAME_0x015012,Infected Gorecyclops,侵食ゴアサイクロプス
+NAME_0x015017,Severely Infected Gorecyclops,狂侵ゴアサイクロプス
+NAME_0x015020,Colossus,コロッサス
+NAME_0x015030,Grand Ent,グランエント
+NAME_0x015031,Ent,エント
+NAME_0x015032,Phindymian Ent,フィンダーエント
+NAME_0x015033,Burned Ent,バーンドエント
+NAME_0x015040,Troll,トロール
+NAME_0x015041,Mole Troll,モルトロール
+NAME_0x015042,Fodden,フォッデン
+NAME_0x015050,Skeleton Cyclops,スケルトンサイクロプス
+NAME_0x015051,Skeleton Cyclops (Test),
+NAME_0x015052,Frost Skeleton Cyclops,スケルトンサイクロプス・フロスト
+NAME_0x015053,Bolt Skeleton Cyclops,スケルトンサイクロプス・ボルト
+NAME_0x015054,Flame Skeleton Cyclops,スケルトンサイクロプス・フレイム
+NAME_0x015060,War-Ready Gorecyclops (Light Armor),戦甲ゴアサイクロプス・軽装
+NAME_0x015061,War-Ready Gorecyclops (Light Armor),戦甲ゴアサイクロプス・軽装
+NAME_0x015100,Golem,ゴーレム
+NAME_0x015102,Goliath,ゴリアテ
+NAME_0x015103,Damned Golem,ダムドゴーレム
+NAME_0x015104,Geo Golem,ジオゴーレム
+NAME_0x015105,Goliath + Cyclops (Test),ゴリアテ + サイクロプス (テスト）
+NAME_0x015200,Chimera,キメラ
+NAME_0x015201,Gorechimera,ゴアキメラ
+NAME_0x015202,White Chimera,ホワイトキメラ
+NAME_0x015203,Shadow Chimera,シャドーキメラ
+NAME_0x015204,Blaze Chimera,ブレイズキメラ
+NAME_0x015210,Manticore,マンティコア
+NAME_0x015211,Goremanticore,ゴアマンティコア
+NAME_0x015220,War-Ready Goremanticore (Light Armor),戦甲ゴアマンティコア・軽装
+NAME_0x015230,Abaddon,アバドーン
+NAME_0x015300,Griffin,グリフィン
+NAME_0x015301,Cockatrice,コカトリス
+NAME_0x015302,Sphinx,スフィンクス
+NAME_0x015303,Black Griffin,ブラックグリフィン
+NAME_0x015304,Alchemized Griffin,グリフィンアルケミー
+NAME_0x015305,Nightmare,ナイトメア
+NAME_0x015306,Infected Griffin,侵食グリフィン
+NAME_0x015310,Severely Infected Griffin,狂侵グリフィン
+NAME_0x015320,White Griffin,ホワイトグリフィン
+NAME_0x015321,Bifrest,ビフレスト
+NAME_0x015330,War-Ready Nightmare (Light Armor),戦甲ナイトメア・軽装
+NAME_0x015400,Evil Eye,イービルアイ
+NAME_0x015401,Vile Eye,バイルアイ
+NAME_0x015406,Volt Eye,ボルトアイ
+NAME_0x015410,Crystal Eye,クリスタルアイ
+NAME_0x015411,Ruby Eye,ルビーアイ
+NAME_0x015412,Lapis Eye,ラピスアイ
+NAME_0x015413,Emerald Eye,エメラルドアイ
+NAME_0x015420,Alchemy Eye,アルケミーアイ
+NAME_0x015500,Ogre,オーガ
+NAME_0x015502,Dread Ape,ドレッドエイプ
+NAME_0x015503,Ghoul,グール
+NAME_0x015504,Brute Ape,ブルトエイプ
+NAME_0x015505,Silver Roar,シルバーロア
+NAME_0x015506,Spineback,スパインバック
+NAME_0x015507,Little Spine,リトルスパイン
+NAME_0x015508,Cragger,クラッガー
+NAME_0x015509,Little Crag,リトルクラッグ
+NAME_0x015510,War-Ready Ogre (Light Armor),戦甲オーガ・軽装
+NAME_0x015600,Wight,ワイト
+NAME_0x015603,Death,デス
+NAME_0x015604,Witch,ウィッチ
+NAME_0x015605,Empress Ghost,エンプレスゴースト
+NAME_0x015610,Medusa,メドゥーサ
+NAME_0x015611,Gorgon,ゴルゴーン
+NAME_0x015620,Ghost,ゴースト
+NAME_0x015621,Misery Ghost,ミザリーゴースト
+NAME_0x015622,Grudge Ghost,グラッジゴースト
+NAME_0x015623,Rage Ghost,レイジゴースト
+NAME_0x015700,Drake,ドレイク
+NAME_0x015701,Wyrm,ウィルム
+NAME_0x015706,Cursed Dragon,カースドラゴン
+NAME_0x015707,Lindwurm,リンドブルム
+NAME_0x015708,Angules,アングルス
+NAME_0x015709,Behemoth,ベヘモット
+NAME_0x015710,Mist Drake,ミストドレイク
+NAME_0x015711,Mist Wyrm,ミストウィルム
+NAME_0x015712,Infected Behemoth,侵食ベヘモット
+NAME_0x015717,Severely Infected Behemoth,狂侵ベヘモット
+NAME_0x015718,Lotus Fin,ロータスフィン
+NAME_0x015719,Dagon,ダゴン
+NAME_0x015720,Tarasque,タラスク
+NAME_0x015721,Wisened Tarasque,アドタラスク
+NAME_0x015723,White Tarasque,ホワイトタラスク
+NAME_0x015730,Catoblepas,カトブレパス
+NAME_0x015740,"Behemoth (""Goblin"" Test)","ベヘモット (""ゴブリン"" テスト）"
+NAME_0x015800,Orc Soldier,オークソルジャー
+NAME_0x015801,Orc Aimer,オークエイマー
+NAME_0x015802,Orc Banger,オークバンガー
+NAME_0x015810,Orc Battler,オークバトラー
+NAME_0x015811,Orc Bringer,オークブリンガー
+NAME_0x015812,Orc Trooper,オークトルーパー
+NAME_0x015813,Infected Orc Soldier,侵食オークソルジャー
+NAME_0x015814,Infected Orc Aimer,侵食オークエイマー
+NAME_0x015815,Infected Orc Banger,侵食オークバンガー
+NAME_0x015820,Captain Orc,キャプテンオーク
+NAME_0x015821,Sword Soldier Dwarf Orc,斬兵ドワーフオーク
+NAME_0x015822,Blunt Soldier Dwarf Orc,打兵ドワーフオーク
+NAME_0x015823,Heavy Soldier Dwarf Orc,重兵ドワーフオーク
+NAME_0x015824,Ranged Soldier Dwarf Orc,投兵ドワーフオーク
+NAME_0x015825,Dwarf Orc (Test?),ドワーフオーク (テスト？）
+NAME_0x015826,Squad Leader Dwarf Orc,隊将ドワーフオーク
+NAME_0x015830,General Orc,ジェネラルオーク
+NAME_0x015831,Ancestor Orc,アンセスターオーク
+NAME_0x015832,Ancestor Orc (Fighter),アンセスターオーク (ファイター)
+NAME_0x015833,Ancestor Orc (Different Bones),アンセスターオーク (異なる骨)
+NAME_0x015835,Legion,レギオン
+NAME_0x015836,Legion (Fighter),レギオン (ファイター)
+NAME_0x015837,Legion (Different Bones),レギオン (異なる骨)
+NAME_0x015838,Legion Leader,レギオンリーダー
+NAME_0x015839,Captain Ancestor Orc,キャプテンアンセスターオーク
+NAME_0x015840,Mogok,モゴック
+NAME_0x015850,Gigant Machina,ギガン・マキナ
+NAME_0x015851,Frost Machina,フロスト・マキナ
+NAME_0x015852,Bolt Machina,ボルト・マキナ
+NAME_0x015860,War Master,戦の将
+NAME_0x015861,Beast Master,獣の将
+NAME_0x015862,Necro Master,骸の将
+NAME_0x015863,Shadow Master (Invulnerable),闇の将 (不死身)
+NAME_0x015870,Ancestor Origin,アンセスターオリジン
+NAME_0x015900,Grigori,グリゴリ
+NAME_0x015910,Severely Infected Demon,狂侵デーモン
+NAME_0x015920,Bearded Grigori,グリゴリベアード
+NAME_0x015921,Samyaza,シェムハザ
+NAME_0x015930,Blaze Grigori,ブレイズグリゴリ
+NAME_0x015932,Shadow Grigori,シャドーグリゴリ
+NAME_0x018000,Rabbit,ウサギ
+NAME_0x018100,Bat,コウモリ
+NAME_0x018200,Buck,雄ジカ
+NAME_0x018201,Doe,雌ジカ
+NAME_0x018300,Ox,牛
+NAME_0x018401,Giant Rat,オオネズミ
+NAME_0x018600,Boar,野ブタ
+NAME_0x018601,Pig,ブタ
+NAME_0x018602,Piglet,子ブタ
+NAME_0x018603,Pig (Dirty),ブタ (汚い)
+NAME_0x018604,Piglet (Dirty),子ブタ (汚い)
+NAME_0x018700,Snake,ヘビ
+NAME_0x018800,Spider,カブトグモ
+NAME_0x019000,Chicken (White),ニワトリ (ホワイト)
+NAME_0x019001,Chicken (Brown),ニワトリ (ブラウン）
+NAME_0x019100,Goat,ヤギ
+NAME_0x019200,Frog (Gold?),カエル (ゴールド？）
+NAME_0x019201,Frog (Blue?),カエル (ブルー?)
+NAME_0x019300,Wild Boar (Brown),ワイルド・ボア (ブラウン）
+NAME_0x019301,Wild Boar (Stripes),ワイルド・ボア (ストライプ)
+NAME_0x020402,Zuhl,ズール
+NAME_0x020403,Altered Zuhl,アルタード・ズール
+NAME_0x020404,Red Zuhl,レッドズール
+NAME_0x020500,Diamantes,ディアマンテス
+NAME_0x020601,Scourge,スカージ
+NAME_0x020602,Baphomet,バフォメット
+NAME_0x020606,Severely Infected Scourge,狂侵スカージ
+NAME_0x020700,Black Knight (Dark Only),黒騎士 (ダーク・オンリー)
+NAME_0x020701,Black Knight (Holy/Ice),黒騎士 (ホーリー/アイス)
+NAME_0x020702,Black Knight (Holy/Ice),黒騎士 (ホーリー/アイス)
+NAME_0x020803,Ifrit - 1st Form,イフリート - 第1回
+NAME_0x020804,Ifrit - 2nd Form,イフリート - 第2フォーム
+NAME_0x021000,White Dragon (NPC),白竜 (NPC)
+NAME_0x021001,Elder Dragon,エルダードラゴン
+NAME_0x021002,Golgorran,ゴルゴラン
+NAME_0x021002,Golgorran,ゴルゴラン
+NAME_0x021003,White Dragon,白竜
+NAME_0x021004,Ushumgal,ウシュムガル
+NAME_0x022000,Spirit Dragon Willmia,精霊竜ウィルミア
+NAME_0x022001,"Spirit Dragon Willmia (""Goblin"" Test)","精霊竜ウィルミア (""ゴブリン"" テスト)"
+NAME_0x023000,The Evil Dragon,悪しき竜
+NAME_0x023000,The Evil Dragon,悪しき竜
+NAME_0x024000,Black Dragon - 1st Form,黒竜 - 第1回
+NAME_0x024001,Black Dragon - 2nd Form (Untranslated),黒竜 - 第2フォーム (未翻訳)
+NAME_0x024002,Black Dragon - 2nd Form (Damaged),黒竜 - 第2フォーム (破損)
+NAME_0x030100,Unspeakable Meat,謎の肉塊
+NAME_0x030101,Giant Unspeakable Meat,巨大な謎の肉塊
+NAME_0x030104,Dragon Crystal of Praying (Spirit Dragon Willmia WM),祈りの竜晶 (精霊竜ウィルミアWM)
+NAME_0x030105,Dragon Crystal of Groaning (Spirit Dragon Willmia WM),うめきの竜晶 (精霊竜ウィルミアWM)
+NAME_0x030106,No Enemy (In-Combat),
+NAME_0x030107,Dragon Crystal (The Evil Dragon WM) (Untranslated),竜晶 (悪しき竜WM) (未翻訳)
+NAME_0x030108,No Enemy (In-Combat),
+NAME_0x030109,Rock (The Evil Dragon WM),Rock (悪しき竜WM)
+NAME_0x030110,Totem (Shadow Master WM) (Untranslated),Totem (闇の将 WM) (未翻訳)
+NAME_0x030111,No Enemy (In-Combat),
+NAME_0x030112,Dragon Crystal of Darkness (Invulnerable) (Ground),暗黒の竜晶 (不死身) (グラウンド)
+NAME_0x030113,Dragon Crystal of Darkness (Invulnerable) (Flying),暗黒の竜晶 (不死身) (フライング)
+NAME_0x030114,Crystal of Blessing,祝福の結晶
+NAME_0x030115,Dragon Crystal of Darkness (Flying) (Untranslated),暗黒の竜晶 (フライング) (未翻訳)
+NAME_0x030116,Dragon Crystal of Destruction,破滅の竜晶
+NAME_0x030117,Dragon Crystal of Binding (Black Dragon),束縛の竜晶 (黒竜)
+NAME_0x030118,Black Sword,黒剣
+NAME_0x070041,Colossus,コロッサス
+NAME_0x070042,Colossus,コロッサス
+NAME_0x070050,Gorecyclops,ゴアサイクロプス
+NAME_0x070051,Gorecyclops,ゴアサイクロプス
+NAME_0x070200,Ghoul,グール
+NAME_0x070210,Spineback,スパインバック
+NAME_0x070211,Spineback,スパインバック
+NAME_0x070410,Mole Troll,モルトロール
+NAME_0x070510,Grand Ent,グランエント
+NAME_0x070520,Phindymian Ent,フィンダーエント
+NAME_0x070600,Griffin,グリフィン
+NAME_0x070610,Black Griffin,ブラックグリフィン
+NAME_0x070620,White Griffin,ホワイトグリフィン
+NAME_0x070640,Bifrest,ビフレスト
+NAME_0x070641,Bifrest,ビフレスト
+NAME_0x070700,Sphinx,スフィンクス
+NAME_0x070800,Chimera,キメラ
+NAME_0x070810,White Chimera,ホワイトキメラ
+NAME_0x070820,Gorechimera,ゴアキメラ
+NAME_0x070830,Manticore,マンティコア
+NAME_0x070900,Drake,ドレイク
+NAME_0x070910,Wyrm,ウィルム
+NAME_0x070920,Angules,アングルス
+NAME_0x070930,Behemoth,ベヘモット
+NAME_0x070940,Lindwurm,リンドブルム
+NAME_0x070950,"Tarasque (""Goblin"" Test)","タラスク (""ゴブリン"" テスト)"
+NAME_0x071100,Elder Dragon (Epitath Road Trial?),エルダードラゴン (エピタス ロードトライアル？)
+NAME_0x071101,Black Dragon - 1st Form (Cutscene?),黒竜 - 第1回 (カットシーン？)
+NAME_0x071102,Black Dragon - 2nd Form (Cutscene?),黒竜 - 第2フォーム (カットシーン？)
+NAME_0x071250,Shadow Master (Giant),闇の将 (ジャイアント）
+NAME_0x071251,War Master,戦の将
+NAME_0x071252,Beast Master,獣の将
+NAME_0x071300,Zuhl,ズール
+NAME_0x071310,Scourge,スカージ
+NAME_0x071311,Baphomet (Enraged),バフォメット (激怒)
+NAME_0x071400,Empty (No Enemy),
+NAME_0x075120,Skeleton Mage,スケルトンメイジ
+NAME_0x075121,Skeleton Mage (Different AI?),スケルトンメイジ (AIが違う？)
+NAME_0x075130,Skeleton Sorcerer,スケルトンソーサラー
+NAME_0x075131,Skeleton Sorcerer,スケルトンソーサラー
+NAME_0x075300,Skeleton Sorcerer,スケルトンソーサラー
+NAME_0x075400,The Evil Dragon (Sparks?),悪しき竜 (火花?)
+NAME_0x075401,The Evil Dragon,悪しき竜
+NAME_0x075401,The Evil Dragon,悪しき竜
+NAME_0x075700,Wight,ワイト
+NAME_0x077000,Albe's Nest,アルベ Nest
+NAME_0x079000,Empty (No Enemy),
+NAME_0x080000,Elder Dragon,エルダードラゴン
+NAME_0x080100,Golgorran,ゴルゴラン
+NAME_0x080100,Golgorran,ゴルゴラン
+NAME_0x080200,Grand Ent,グランエント
+NAME_0x080300,Zuhl,ズール
+NAME_0x080400,Spirit Dragon Willmia,精霊竜ウィルミア
+NAME_0x080500,Black Knight Phantom (Clear),黒騎士・幻影 (クリア)
+NAME_0x080501,Black Knight,黒騎士
+NAME_0x080502,Black Knight (Fan of Swords),黒騎士 (剣のファン)
+NAME_0x080503,Black Knight Phantom (Opaque),黒騎士・幻影 (不透明)
+NAME_0x080504,Arisen of the Black Dragon,黒竜の覚者
+NAME_0x080505,Black Sword,黒剣
+NAME_0x080600,Wisened Tarasque,アドタラスク
+NAME_0x080700,Evil Eye,イービルアイ
+NAME_0x080800,Abaddon,アバドーン
+NAME_0x080801,Albe,アルベ
+NAME_0x080802,Empty (No Enemy),
+NAME_0x080900,Baphomet,バフォメット
+NAME_0x080901,Baphomet (Glowing Purple),バフォメット (グローイング・パープル)
+NAME_0x081000,Black Dragon - 1st Form,黒竜 - 第1回
+NAME_0x081001,Black Dragon - 2nd Form,黒竜 - 第2フォーム
+NAME_0x081002,Black Dragon - 1st Form (Again. EM??),黒竜 - 第1回 (もう一度 EM？)
+NAME_0x081003,Black Dragon - 2nd form (Again. EM??),黒竜 - 第2フォーム (もう一度 EM？)
+NAME_0x081004,Dragon Crystal of Destruction / shoots laser rocks,破滅の竜晶 / レーザー岩を撃つ
+NAME_0x081005,Dragon Crystal of Destruction / sucks you in with magic,破滅の竜晶 / 魔法で吸い込まれる
+NAME_0x081006,Dragon Crystal of Destruction / lots of laser rocks and big explosion,破滅の竜晶 / たくさんのレーザー岩と大爆発
+NAME_0x081007,Dragon Crystal of Destruction / sucks you in with magic ,破滅の竜晶 / sucks you in with magic
+NAME_0x085000,Orc Soldier,オークソルジャー
+NAME_0x085001,Orc Soldier,オークソルジャー
+NAME_0x085002,Orc Soldier,オークソルジャー
+NAME_0x085003,Orc Soldier,オークソルジャー
+NAME_0x085004,Captain Orc,キャプテンオーク
+NAME_0x085009,"Orc (""Goblin"" Test)","オーク (""ゴブリン"" テスト)"
+NAME_0x085010,Goblin Fighter,ゴブリンファイター
+NAME_0x085011,Goblin Fighter,ゴブリンファイター
+NAME_0x085012,Goblin Fighter,ゴブリンファイター
+NAME_0x085013,Goblin Fighter,ゴブリンファイター
+NAME_0x085014,Goblin Fighter,ゴブリンファイター
+NAME_0x085015,Goblin Fighter,ゴブリンファイター
+NAME_0x085016,Goblin Fighter,ゴブリンファイター
+NAME_0x085017,Goblin Fighter,ゴブリンファイター
+NAME_0x085018,Goblin Fighter,ゴブリンファイター
+NAME_0x085019,Goblin Fighter,ゴブリンファイター
+NAME_0x085110,Cyclops,サイクロプス
+NAME_0x085111,Cyclops,サイクロプス
+NAME_0x085112,Cyclops,サイクロプス
+NAME_0x085113,Cyclops,サイクロプス
+NAME_0x085114,Cyclops,サイクロプス
+NAME_0x095801,Gigant Machina Trinity,ギガン・マキナトリニティ
+NAME_0x095802,Frost Machina Trinity,フロスト・マキナトリニティ
+NAME_0x095803,Bolt Machina Trinity,ボルト・マキナトリニティ
+NAME_0x100100,Behemoth (Test?),ベヘモット (テスト？）
+NAME_0x100101,Zuhl (Passive),ズール (パッシブ)
+NAME_0x100104,Black Knight (Getting injured / Cutscene?),黒騎士 (負傷 / カットシーン？)
+NAME_0x100105,Spirit Dragon Willmia (Test?),精霊竜ウィルミア (テスト？）
+NAME_0x100106,Spirit Dragon Willmia (Active),精霊竜ウィルミア (アクティブ)

@@ -6,9 +6,9 @@ NAMED_PARAM_53,要警戒,Vigilant
 NAMED_PARAM_54,凶悪,Brutal
 NAMED_PARAM_56,危機的,Dangerous
 NAMED_PARAM_57,伝説級,Legendary
-NAMED_PARAM_59,八騎喰らい,Knight-Devourer
-NAMED_PARAM_60,百騎喰らい,百騎喰らい
-NAMED_PARAM_61,万騎喰らい,万騎喰らい
+NAMED_PARAM_59,八騎喰らい,Yakki Gourmet
+NAMED_PARAM_60,百騎喰らい,Hyakki Gourmet
+NAMED_PARAM_61,万騎喰らい,Knight Eater
 NAMED_PARAM_120,亡都巨人兵,Ruins Giant Warrior
 NAMED_PARAM_122,ゴブリンの尖兵,Goblin Vanguard
 NAMED_PARAM_123,ゴブリンの哨戒兵,Goblin Patrol
@@ -57,16 +57,16 @@ NAMED_PARAM_165,オーク精鋭兵,Orc Elite
 NAMED_PARAM_166,黒鉄の巨人兵,Black Iron Giant Warrior
 NAMED_PARAM_167,錬魔スケルトン,Alchemized Skeleton
 NAMED_PARAM_168,氷竜,Ice Dragon
-NAMED_PARAM_169,オーク残存兵,オーク残存兵
+NAMED_PARAM_169,オーク残存兵,Orc Remnant
 NAMED_PARAM_170,錬魔ゴブリン,Alchemized Goblin
 NAMED_PARAM_171,紫銅の巨人兵,Copper Giant Warrior
-NAMED_PARAM_172,炎練,炎練
+NAMED_PARAM_172,炎練,Flame training
 NAMED_PARAM_173,錬成強化グリフィン,Reinforcement Griffin
 NAMED_PARAM_174,錬魔ハーピー,Alchemized Harpy
 NAMED_PARAM_175,錬成強化グリフィン,Reinforcement Griffin
 NAMED_PARAM_176,錬魔ハーピー,Alchemized Harpy
 NAMED_PARAM_181,時番,Time Bonus
-NAMED_PARAM_182,鍵守り,鍵守り
+NAMED_PARAM_182,鍵守り,Key Keeper
 NAMED_PARAM_187,兎喰らいの,Rabbit-Eating
 NAMED_PARAM_188,ビンシャの手下,Binsha's Henchman
 NAMED_PARAM_189,橋守のビンシャ,Binsha the Bridge-Keeper
@@ -106,14 +106,14 @@ NAMED_PARAM_228,密猟者の護衛,Poacher Guard
 NAMED_PARAM_229,忘れられた亡霊,Forgotten Specter
 NAMED_PARAM_230,目覚めし亡者,Enlightened Undead
 NAMED_PARAM_231,さまよう亡者,Wandering Undead
-NAMED_PARAM_232,帰還のヨトン,Yoton the Returned
+NAMED_PARAM_232,帰還のヨトン,Jotun the Returned
 NAMED_PARAM_233,コバルトニュート,Cobalt Newt
 NAMED_PARAM_234,遠征準備の小隊長,Battle-Ready Platoon Leader
 NAMED_PARAM_235,オーク遊撃兵,Orc Spy
 NAMED_PARAM_236,オーク偵察兵,Orc Spy
 NAMED_PARAM_237,強化養成ワーグ,Strength Training Warg
-NAMED_PARAM_238,魔犬飼育担当兵長,魔犬飼育担当兵長
-NAMED_PARAM_239,魔犬飼育担当兵,魔犬飼育担当兵
+NAMED_PARAM_238,魔犬飼育担当兵長,Kennel Keeper
+NAMED_PARAM_239,魔犬飼育担当兵,Dog Catcher
 NAMED_PARAM_240,双牙の軍竜ベヘモット,Bifang Military Dragon Behemoth
 NAMED_PARAM_241,淀みの泥人形,Clay Doll of Stagnation
 NAMED_PARAM_242,淀みの水精,Crystal of Stagnation
@@ -133,9 +133,9 @@ NAMED_PARAM_256,ザンドラ・バルバロイ,Zandora Barbarian
 NAMED_PARAM_257,ザンドラ・バルバロイ,Zandora Barbarian
 NAMED_PARAM_258,ザンドラ・バルバロイ,Zandora Barbarian
 NAMED_PARAM_259,ザンドラ・バルバロイ,Zandora Barbarian
-NAMED_PARAM_260,大将級オーク残党頭,大将級オーク残党頭
-NAMED_PARAM_261,オーク残党兵,オーク残党兵
-NAMED_PARAM_262,オーク残党兵,オーク残党兵
+NAMED_PARAM_260,大将級オーク残党頭,Orc General Remnant
+NAMED_PARAM_261,オーク残党兵,Orc Remnants
+NAMED_PARAM_262,オーク残党兵,Orc Remnants
 NAMED_PARAM_263,嘆きのモーラ,Wailing Mora
 NAMED_PARAM_264,白獅子アルバス,White Lion Albus
 NAMED_PARAM_265,斥候のコロッサス,Colossus Patrol
@@ -145,7 +145,7 @@ NAMED_PARAM_270,不浄の肉塊虫,Foul Meat Lump
 NAMED_PARAM_271,炎熱のジオゴーレム,Torrid Geo Golem
 NAMED_PARAM_272,テイムド・,Tamed
 NAMED_PARAM_273,テイマー・バルバロイ,Tamer Barbarian
-NAMED_PARAM_274,虚ろの処刑人,虚ろの処刑人
+NAMED_PARAM_274,虚ろの処刑人,Hollow Executioner
 NAMED_PARAM_276,祠の守兵,Shrine Guard
 NAMED_PARAM_277,合成用ゴブリンアルケミー,Synthetic Alchemized Goblin
 NAMED_PARAM_278,合成用アイ,Synthetic Eye
@@ -175,7 +175,7 @@ NAMED_PARAM_319,水路の大猿,Dread Ape of the Aqueduct
 NAMED_PARAM_321,魔獅子シンガ,Magic Lion Singa
 NAMED_PARAM_322,ピット・,Pit
 NAMED_PARAM_324,ボルドバンガー・,Volden Banger
-NAMED_PARAM_325,強炭性,強炭性
+NAMED_PARAM_325,強炭性,Charcoal Sludgeman
 NAMED_PARAM_327,ムジナ団頭領,Badger Chieftain
 NAMED_PARAM_328,ムジナ団員,Badger Member
 NAMED_PARAM_329,ケイブ・,Cave
@@ -189,9 +189,9 @@ NAMED_PARAM_345,死体齧りの,Corpse-Eating
 NAMED_PARAM_346,グレイブワーグ,Gravewarg
 NAMED_PARAM_347,戦鬼ゲソム,Gesomu the War Demon
 NAMED_PARAM_348,戦鬼の副官,War Demon's Lieutenant
-NAMED_PARAM_349,蒼葉の,蒼葉の
-NAMED_PARAM_350,蒼葉の,蒼葉の
-NAMED_PARAM_351,“白い災厄”エルダーアングルス,'White Calamity' Elder Angules
+NAMED_PARAM_349,蒼葉の,Blue Leaf
+NAMED_PARAM_350,蒼葉の,Blue Leaf
+NAMED_PARAM_351,“白い災厄”エルダーアングルス,"""White Calamity"" Elder Angules"
 NAMED_PARAM_352,影穴の軍狼,Wolf of Shadows
 NAMED_PARAM_353,影穴の部隊兵,Troop of Shadows
 NAMED_PARAM_354,神花の,God Flower
@@ -200,7 +200,7 @@ NAMED_PARAM_358,テゴル不死兵,Tegol the Immortal
 NAMED_PARAM_359,納骨堂の屍食鬼,Ossuary Ghoul
 NAMED_PARAM_360,ドラワン不死兵,Dolan the Immortal
 NAMED_PARAM_361,ピット・,Pit
-NAMED_PARAM_362,魔女ノシュギア,魔女ノシュギア
+NAMED_PARAM_362,魔女ノシュギア,Witch Noshgear
 NAMED_PARAM_363,ピット・,Pit
 NAMED_PARAM_364,分隊,Squad
 NAMED_PARAM_365,封呪の,Runed
@@ -209,12 +209,12 @@ NAMED_PARAM_367,高輝度,Bright
 NAMED_PARAM_378,冥土の黒騎士,Black Knight of the Underworld
 NAMED_PARAM_379,呪われし番兵,Accursed Guard
 NAMED_PARAM_380,呪われし女官,Accursed Court Lady
-NAMED_PARAM_381,不死薬被検者,不死薬被検者
+NAMED_PARAM_381,不死薬被検者,Immortal Drug Test Subject
 NAMED_PARAM_382,セラーケイブ・,Cellar Cave
 NAMED_PARAM_383,セラーケイブ・,Cellar Cave
-NAMED_PARAM_384,錬魔士ヒエニムス,錬魔士ヒエニムス
-NAMED_PARAM_385,高純度ストーンアイ,高純度ストーンアイ
-NAMED_PARAM_386,霊薬師セルギウス,霊薬師セルギウス
+NAMED_PARAM_384,錬魔士ヒエニムス,Hieronymus the Alchemist
+NAMED_PARAM_385,高純度ストーンアイ,High Purity Stone Eye
+NAMED_PARAM_386,霊薬師セルギウス,Sergius the Apothecary
 NAMED_PARAM_387,キーテイカー・,Key Bearer
 NAMED_PARAM_390,キーテイカー・,Key Bearer
 NAMED_PARAM_391,キーテイカー・,Key Bearer
@@ -243,19 +243,19 @@ NAMED_PARAM_427,第５守備隊 ,5th Garrison
 NAMED_PARAM_428,第６守備隊 ,6th Garrison
 NAMED_PARAM_431,幻影牙竜,Phantom Tusk Dragon
 NAMED_PARAM_432,幻影魔竜,Phantom Devil Dragon
-NAMED_PARAM_433,製造番号1017 ゴリアテ改,製造番号1017 ゴリアテ改
+NAMED_PARAM_433,製造番号1017 ゴリアテ改,Serial No. 1017 Goliath
 NAMED_PARAM_434,リターン・ズール,Return Zuhl
-NAMED_PARAM_435,天上の幽姫,天上の幽姫
+NAMED_PARAM_435,天上の幽姫,Heavenly Ghost Princess
 NAMED_PARAM_436,虚無の騎士,Noble Knight
-NAMED_PARAM_437,無より生み出されし,無より生み出されし
-NAMED_PARAM_438,製造番号1020 ゴリアテ改,製造番号1020 ゴリアテ改
+NAMED_PARAM_437,無より生み出されし,From Nothingness
+NAMED_PARAM_438,製造番号1020 ゴリアテ改,Serial No. 1020 Goliath
 NAMED_PARAM_439,・デスペアー,(Despair)
 NAMED_PARAM_440,黄金竜,The Golden Dragon
 NAMED_PARAM_446,強襲の,Assault
 NAMED_PARAM_447,特攻の,Kamikaze
 NAMED_PARAM_448,血珠の,Blood Orb
 NAMED_PARAM_449,時番,Time Bonus
-NAMED_PARAM_450,珍種,珍種
+NAMED_PARAM_450,珍種,Rare
 NAMED_PARAM_451,,
 NAMED_PARAM_454,穢れの術師,Corrupter
 NAMED_PARAM_455,異界の邪霊,Wraith of the Underworld
@@ -302,20 +302,20 @@ NAMED_PARAM_506,穢れの大魔像,Impure Giant Demon
 NAMED_PARAM_507,ケイブレイダー,Cave Raider
 NAMED_PARAM_508,大騒音の主,Lord of Rock
 NAMED_PARAM_510,錬魔グリフィンNo.04,Alchemized Griffin No.04
-NAMED_PARAM_511,煉獄の幽姫,煉獄の幽姫
+NAMED_PARAM_511,煉獄の幽姫,Ghost Princess of Purgatory
 NAMED_PARAM_512,賞金首,Bounty
 NAMED_PARAM_513,賞金首,Bounty
 NAMED_PARAM_514,賞金首,Bounty
 NAMED_PARAM_515,ブラックウィング,Black Wing
 NAMED_PARAM_516,ディープレイク・リンドブルム,Deep Lake Lindwurm
-NAMED_PARAM_517,烈翼の禽獅子,烈翼の禽獅子
-NAMED_PARAM_518,猛牙の銀獅子,猛牙の銀獅子
-NAMED_PARAM_519,幽姫の従士,幽姫の従士
-NAMED_PARAM_520,幽姫の騎士,幽姫の騎士
-NAMED_PARAM_522,石呪を振りまく魔,石呪を振りまく魔
-NAMED_PARAM_524,闇呪をもたらす魔,闇呪をもたらす魔
-NAMED_PARAM_525,強装巨人兵-Ⅱ型,強装巨人兵-Ⅱ型
-NAMED_PARAM_526,強装巨人兵-試作型,強装巨人兵-試作型
+NAMED_PARAM_517,烈翼の禽獅子,Fierce Winged Lion
+NAMED_PARAM_518,猛牙の銀獅子,Fierce Silver Lion
+NAMED_PARAM_519,幽姫の従士,Ghost Princess' Squire
+NAMED_PARAM_520,幽姫の騎士,Ghost Princess' Squire
+NAMED_PARAM_522,石呪を振りまく魔,Demon wielding a stone curse
+NAMED_PARAM_524,闇呪をもたらす魔,Demon wielding curses
+NAMED_PARAM_525,強装巨人兵-Ⅱ型,Titan Soldier - Type II
+NAMED_PARAM_526,強装巨人兵-試作型,Titan Soldier - Prototype
 NAMED_PARAM_527,穢れの大魔像,Impure Giant Demon
 NAMED_PARAM_528,大騒音の主,Lord of Rock
 NAMED_PARAM_529,ケイブレイダー,Cave Raider
@@ -340,72 +340,72 @@ NAMED_PARAM_555,危機的,Dangerous
 NAMED_PARAM_556,危機的,Dangerous
 NAMED_PARAM_557,危機的,Dangerous
 NAMED_PARAM_559,,
-NAMED_PARAM_560,魔壁の護衛隊,魔壁の護衛隊
-NAMED_PARAM_561,鉄壁の護衛隊,鉄壁の護衛隊
-NAMED_PARAM_563,ダンジョンキーボス,ダンジョンキーボス
-NAMED_PARAM_564,レスタライト・確率大,レスタライト・確率大
-NAMED_PARAM_567,ハイレスタライト・確率大,ハイレスタライト・確率大
-NAMED_PARAM_569,鱗砂・確率大,鱗砂・確率大
-NAMED_PARAM_570,大粒の鱗砂・確率大,大粒の鱗砂・確率大
-NAMED_PARAM_571,輸送番,輸送番
-NAMED_PARAM_572,輸送番,輸送番
-NAMED_PARAM_573,輸送番,輸送番
-NAMED_PARAM_574,Cダンジョンボスドロップ,Cダンジョンボスドロップ
+NAMED_PARAM_560,魔壁の護衛隊,Devil's Wall Guard
+NAMED_PARAM_561,鉄壁の護衛隊,Devil's Wall Guard
+NAMED_PARAM_563,ダンジョンキーボス,Dungeon Key Boss
+NAMED_PARAM_564,レスタライト・確率大,Lestalite ・High Probability
+NAMED_PARAM_567,ハイレスタライト・確率大,High Lestalite ・High Probability
+NAMED_PARAM_569,鱗砂・確率大,Scale Dust ・High Probability
+NAMED_PARAM_570,大粒の鱗砂・確率大,Large-Grained Sand ・High Probability
+NAMED_PARAM_571,輸送番,Transport
+NAMED_PARAM_572,輸送番,Transport
+NAMED_PARAM_573,輸送番,Transport
+NAMED_PARAM_574,Cダンジョンボスドロップ,C dungeon boss drop
 NAMED_PARAM_575,・ブレイズ,(Blaze)
-NAMED_PARAM_576,護衛隊 ,護衛隊 
-NAMED_PARAM_581,レスタライト・確率小,レスタライト・確率小
-NAMED_PARAM_582,ハイレスタライト・確率小,ハイレスタライト・確率小
-NAMED_PARAM_583,侵食アイテム確定ドロップ,侵食アイテム確定ドロップ
-NAMED_PARAM_584,獄炎の大魔像,獄炎の大魔像
-NAMED_PARAM_585,汚泥の傀儡,汚泥の傀儡
+NAMED_PARAM_576,護衛隊 ,Convoy
+NAMED_PARAM_581,レスタライト・確率小,Lestalite ・Low Probability
+NAMED_PARAM_582,ハイレスタライト・確率小,High Lestalite ・Low Probability
+NAMED_PARAM_583,侵食アイテム確定ドロップ,Corruption item guaranteed drop
+NAMED_PARAM_584,獄炎の大魔像,Great Demon Statue of Hellfire
+NAMED_PARAM_585,汚泥の傀儡,Sludge Puppet
 NAMED_PARAM_586,賞金首,Bounty
 NAMED_PARAM_587,賞金首,Bounty
 NAMED_PARAM_588,賞金首,Bounty
 NAMED_PARAM_589,賞金首,Bounty
-NAMED_PARAM_590,頑鋼の,頑鋼の
+NAMED_PARAM_590,頑鋼の,Stubborn
 NAMED_PARAM_591,要警戒,Vigilant
 NAMED_PARAM_592,ディープミスト・ウィルム,Deep Mist Wyrm
 NAMED_PARAM_593,ディープニュート,Deep Newt
-NAMED_PARAM_594,艶羽根,艶羽根
-NAMED_PARAM_595,太牙の,太牙の
+NAMED_PARAM_594,艶羽根,Plume
+NAMED_PARAM_595,太牙の,Big Fang
 NAMED_PARAM_596,賞金首,Bounty
-NAMED_PARAM_597,虹眼の,虹眼の
+NAMED_PARAM_597,虹眼の,Rainbow-eyed Alchemy Eye
 NAMED_PARAM_598,賞金首,Bounty
 NAMED_PARAM_599,賞金首,Bounty
 NAMED_PARAM_600,賞金首,Bounty
-NAMED_PARAM_601,剛皮の,剛皮の
+NAMED_PARAM_601,剛皮の,Hardy
 NAMED_PARAM_602,ケイブレイダー・ドレイク,Cave Raider Drake
 NAMED_PARAM_603,ケイブレイダー・エンプレス,Cave Raider Empress
-NAMED_PARAM_604,光角の,光角の
+NAMED_PARAM_604,光角の,Angules of Light
 NAMED_PARAM_605,ブラックウィドウ,Black Widow
 NAMED_PARAM_606,エントアンガー,Entanger
-NAMED_PARAM_607,活枝の,活枝の
+NAMED_PARAM_607,活枝の,Live Branch Ent
 NAMED_PARAM_608,凶悪,Brutal
-NAMED_PARAM_609,威容の,威容の
+NAMED_PARAM_609,威容の,Majestic Chimera
 NAMED_PARAM_610,蒼氷のウィルム,Pale Ice Wyrm
 NAMED_PARAM_611,赤熱のギガン・マキナ,Red-Hot Giga Machina
-NAMED_PARAM_612,石影の,石影の
-NAMED_PARAM_613,恐声の,恐声の
-NAMED_PARAM_614,黒艶の,黒艶の
+NAMED_PARAM_612,石影の,Stone Shadow
+NAMED_PARAM_613,恐声の,Fearful Voice
+NAMED_PARAM_614,黒艶の,Glossy Black Griffin
 NAMED_PARAM_615,業火の,Hellfire
 NAMED_PARAM_616,賞金首,Bounty
-NAMED_PARAM_617,朱炎の,朱炎の
-NAMED_PARAM_618,白亜の,白亜の
+NAMED_PARAM_617,朱炎の,Vermilion Flame
+NAMED_PARAM_618,白亜の,Chalk
 NAMED_PARAM_619,グリフィン・ノワール,Griffin Noir
 NAMED_PARAM_620,デスナイト・ノワール,Death Knight Noir
-NAMED_PARAM_621,暗鉄の,暗鉄の
-NAMED_PARAM_622,石呪をもたらす魔鶏,石呪をもたらす魔鶏
-NAMED_PARAM_623,暴虐の一つ目,暴虐の一つ目
-NAMED_PARAM_624,凶牙の霧竜,凶牙の霧竜
-NAMED_PARAM_625,凶爪の白獅子,凶爪の白獅子
-NAMED_PARAM_626,氷結の,氷結の
+NAMED_PARAM_621,暗鉄の,Dark Iron
+NAMED_PARAM_622,石呪をもたらす魔鶏,Demon Cockerel that wields a Stone Curse
+NAMED_PARAM_623,暴虐の一つ目,One-Eyed Tyrant
+NAMED_PARAM_624,凶牙の霧竜,Sharp Fang Mist Dragon
+NAMED_PARAM_625,凶爪の白獅子,Wicked Clawed White Lion
+NAMED_PARAM_626,氷結の,Frozen Wyrm
 NAMED_PARAM_627,賞金首,Bounty
-NAMED_PARAM_628,強装巨人兵-Ⅲ型,強装巨人兵-Ⅲ型
-NAMED_PARAM_629,炎装造魔兵-実戦型,炎装造魔兵-実戦型
-NAMED_PARAM_631,冥き深奥の主,冥き深奥の主
+NAMED_PARAM_628,強装巨人兵-Ⅲ型,Titan Soldier - Type 3
+NAMED_PARAM_629,炎装造魔兵-実戦型,Fire-armed Magickal Construct - Combat Type
+NAMED_PARAM_631,冥き深奥の主,Master of Dark Depths
 NAMED_PARAM_632,ディアマンテスの影,Shadow of Diamantes
-NAMED_PARAM_633,灼けつく竜力,灼けつく竜力
-NAMED_PARAM_634,凍てつく竜力,凍てつく竜力
+NAMED_PARAM_633,灼けつく竜力,Scorching Dragon Force
+NAMED_PARAM_634,凍てつく竜力,Freezing Dragon Force
 NAMED_PARAM_635,クローン・ズール,Clone Zuhl
 NAMED_PARAM_636,ダムドデストロイヤー,Damned Destroyer
 NAMED_PARAM_637,ギガンブレイカー,Giga Breaker
@@ -415,11 +415,11 @@ NAMED_PARAM_640,カラミティコーラ,Calamity Caller
 NAMED_PARAM_641,死を招く魔姫,Death Courting Demon Princess
 NAMED_PARAM_642,霜竜フロストウィルム,Frost Wyrm
 NAMED_PARAM_643,灼竜ファイアドレイク,Fire Drake
-NAMED_PARAM_644,大角の戦鬼将,大角の戦鬼将
-NAMED_PARAM_645,オーク軍精鋭隊,オーク軍精鋭隊
-NAMED_PARAM_646,戦鬼覇王モゴック,戦鬼覇王モゴック
+NAMED_PARAM_644,大角の戦鬼将,Great Horned War Demon
+NAMED_PARAM_645,オーク軍精鋭隊,Orc Elite Force
+NAMED_PARAM_646,戦鬼覇王モゴック,"Mogok, the Supreme Warrior"
 NAMED_PARAM_647,軍獣サヴェッジキメラ,War Beast Savage Chimera
-NAMED_PARAM_648,オーク軍近衛隊,オーク軍近衛隊
+NAMED_PARAM_648,オーク軍近衛隊,Orcish Kingsguard
 NAMED_PARAM_649,スカルサージェント,Skill Sergeant
 NAMED_PARAM_650,メイルサージェント,Mail Sergeant
 NAMED_PARAM_653,大鴉ハーピー,The Crow Harpy
@@ -439,29 +439,29 @@ NAMED_PARAM_666,賞金首,Bounty
 NAMED_PARAM_667,賞金首,Bounty
 NAMED_PARAM_668,賞金首,Bounty
 NAMED_PARAM_670,,
-NAMED_PARAM_672,復讐の戦鬼,復讐の戦鬼
-NAMED_PARAM_678,孤高の凶獣 ,孤高の凶獣 
-NAMED_PARAM_680,モゴック親衛隊長 ,モゴック親衛隊長 
-NAMED_PARAM_682,力に魅かれし,力に魅かれし
-NAMED_PARAM_683,霊炎の,霊炎の
-NAMED_PARAM_684,霊氷の,霊氷の
+NAMED_PARAM_672,復讐の戦鬼,Vengeful Warrior
+NAMED_PARAM_678,孤高の凶獣 ,"Solitary beast, Mistwyrm "
+NAMED_PARAM_680,モゴック親衛隊長 ,Mogok Elite Guard Captain 
+NAMED_PARAM_682,力に魅かれし,Enchanted by Power
+NAMED_PARAM_683,霊炎の,Ghost Flame
+NAMED_PARAM_684,霊氷の,Ghost Ice
 NAMED_PARAM_691,,
 NAMED_PARAM_692,,
 NAMED_PARAM_693,,
 NAMED_PARAM_694,,
 NAMED_PARAM_695,,
 NAMED_PARAM_696,,
-NAMED_PARAM_697,白の獅子王,白の獅子王
-NAMED_PARAM_698,百戦鬼将,百戦鬼将
+NAMED_PARAM_697,白の獅子王,The White Lion King
+NAMED_PARAM_698,百戦鬼将,Lord of a Hundred Battles
 NAMED_PARAM_699,,
-NAMED_PARAM_700,鍵守り,鍵守り
-NAMED_PARAM_701,鍵守り,鍵守り
-NAMED_PARAM_702,鍵守り,鍵守り
-NAMED_PARAM_703,鍵守り,鍵守り
-NAMED_PARAM_704,鍵守り,鍵守り
-NAMED_PARAM_705,深奥の従者,深奥の従者
-NAMED_PARAM_706,深奥の魔女,深奥の魔女
-NAMED_PARAM_707,虚無の追跡者,虚無の追跡者
+NAMED_PARAM_700,鍵守り,Key Keeper
+NAMED_PARAM_701,鍵守り,Key Keeper
+NAMED_PARAM_702,鍵守り,Key Keeper
+NAMED_PARAM_703,鍵守り,Key Keeper
+NAMED_PARAM_704,鍵守り,Key Keeper
+NAMED_PARAM_705,深奥の従者,Servant of the Deep
+NAMED_PARAM_706,深奥の魔女,The Witch of the Deep
+NAMED_PARAM_707,虚無の追跡者,Chaser of Emptiness
 NAMED_PARAM_708,対の紅竜,Paired Red Dragon
 NAMED_PARAM_709,対の蒼竜,Paired Blue Dragon
 NAMED_PARAM_710,第２守備隊,2nd Garrison
@@ -476,7 +476,7 @@ NAMED_PARAM_718,,
 NAMED_PARAM_719,,
 NAMED_PARAM_720,,
 NAMED_PARAM_721,第１守備隊 ,1st Garrison
-NAMED_PARAM_722,練習,練習
+NAMED_PARAM_722,練習,Practice
 NAMED_PARAM_768,,
 NAMED_PARAM_812,,
 NAMED_PARAM_813,,
@@ -521,8 +521,8 @@ NAMED_PARAM_851,,
 NAMED_PARAM_852,,
 NAMED_PARAM_853,,
 NAMED_PARAM_854,,
-NAMED_PARAM_855,ダークビショップ,ダークビショップ
-NAMED_PARAM_856,（仮）封印の,（仮）封印の
+NAMED_PARAM_855,ダークビショップ,Dark Bishop
+NAMED_PARAM_856,（仮）封印の,(Tentative) Seal
 NAMED_PARAM_857,はぐれ,Stray
 NAMED_PARAM_858,,
 NAMED_PARAM_859,最終練磨,Final Test
@@ -544,7 +544,7 @@ NAMED_PARAM_874,最終練磨,Final Test
 NAMED_PARAM_875,最終練磨,Final Test
 NAMED_PARAM_876,最終練磨,Final Test
 NAMED_PARAM_877,,
-NAMED_PARAM_890,残党,残党
+NAMED_PARAM_890,残党,Remnant
 NAMED_PARAM_891,徘徊,Wandering
 NAMED_PARAM_892,スパーク・ブルー,Spark Blue
 NAMED_PARAM_893,子攫いのメリーティア,Maritia the Kidnapper
@@ -557,21 +557,21 @@ NAMED_PARAM_899,侵食に抗う戦鬼,Infection Resisting War Demon
 NAMED_PARAM_900,虚ろの騎士,Hollow Knight
 NAMED_PARAM_901,跡地荒らしの黒大鷲,Black Sea Eagle of the Ruined Site
 NAMED_PARAM_902,蝕まれし狂鷲,Corrupted and Berserk Eagle
-NAMED_PARAM_903,目覚めし氷騎士,目覚めし氷騎士
+NAMED_PARAM_903,目覚めし氷騎士,Awakening Ice Knight
 NAMED_PARAM_904,製造番号1056 強襲型ゴリアテ,Assault-Type Goliath #1056
 NAMED_PARAM_905,ルインズ・,Ruins
-NAMED_PARAM_906,墓守の獣,墓守の獣
+NAMED_PARAM_906,墓守の獣,Gravekeep's Beast
 NAMED_PARAM_907,ボルディック・,Voldic
 NAMED_PARAM_908,忘却の,Oblivion
 NAMED_PARAM_909,怨姫ヴィルヘルミーナ,Malice Princess Wilhelmina
 NAMED_PARAM_910,ディープウェル・ミストレス,Deep Well Mistress
 NAMED_PARAM_911,テラス・ガーディアン,Terrace Guardian
-NAMED_PARAM_912,廃水路の奇獣,廃水路の奇獣
+NAMED_PARAM_912,廃水路の奇獣,Strange Beast of the Abandoned Waterway
 NAMED_PARAM_913,眠らずの冥騎士,Restless Death Knight
-NAMED_PARAM_914,魔獣喰いの,魔獣喰いの
+NAMED_PARAM_914,魔獣喰いの,Beast Devourer
 NAMED_PARAM_915,異形化,Variant
 NAMED_PARAM_917,墓所の,Tomb
-NAMED_PARAM_919,哀惜の幽鬼,哀惜の幽鬼
+NAMED_PARAM_919,哀惜の幽鬼,Specter of Lament
 NAMED_PARAM_920,未知の魔物？,Unknown Beast?
 NAMED_PARAM_921,ズール,Zuhl
 NAMED_PARAM_922,討伐対象,Suppression Target
@@ -587,28 +587,28 @@ NAMED_PARAM_931,襲来,Invading
 NAMED_PARAM_932,襲来,Invading
 NAMED_PARAM_933,侵食されし有翼,Infected Wings
 NAMED_PARAM_934,強襲,Assault
-NAMED_PARAM_935,嗅ぎつけた,嗅ぎつけた
+NAMED_PARAM_935,嗅ぎつけた,Sniffing Manticore
 NAMED_PARAM_936,囁き惑わす魔女,Luring Witch
-NAMED_PARAM_937,招き寄せる魔女,招き寄せる魔女
-NAMED_PARAM_938,石息吹きの魔女,石息吹きの魔女
+NAMED_PARAM_937,招き寄せる魔女,Beckoning Witch
+NAMED_PARAM_938,石息吹きの魔女,The Stone-Breathing Witch
 NAMED_PARAM_939,行く手をはばむ傀儡,Obstructing Puppet
 NAMED_PARAM_940,淀みの衛士人形,Guard Doll of Stagnation
 NAMED_PARAM_941,淀みの衛士傀儡,Guard Puppet of Stagnation
 NAMED_PARAM_942,淀みし大竜力,Phantasmic Great Dragon
 NAMED_PARAM_943,アルタード・ズール,Altered Zuhl
-NAMED_PARAM_957,宝魔主,宝魔主
-NAMED_PARAM_958,宝魔主,宝魔主
-NAMED_PARAM_959,宝魔主,宝魔主
-NAMED_PARAM_960,宝魔主,宝魔主
-NAMED_PARAM_961,宝魔主,宝魔主
-NAMED_PARAM_962,宝魔主,宝魔主
-NAMED_PARAM_963,宝魔主,宝魔主
-NAMED_PARAM_964,宝魔主,宝魔主
-NAMED_PARAM_965,宝魔主,宝魔主
-NAMED_PARAM_966,宝魔主,宝魔主
-NAMED_PARAM_967,宝魔主,宝魔主
+NAMED_PARAM_957,宝魔主,Treasure Guardian Lord
+NAMED_PARAM_958,宝魔主,Treasure Guardian Lord
+NAMED_PARAM_959,宝魔主,Treasure Guardian Lord
+NAMED_PARAM_960,宝魔主,Treasure Guardian Lord
+NAMED_PARAM_961,宝魔主,Treasure Guardian Lord
+NAMED_PARAM_962,宝魔主,Treasure Guardian Lord
+NAMED_PARAM_963,宝魔主,Treasure Guardian Lord
+NAMED_PARAM_964,宝魔主,Treasure Guardian Lord
+NAMED_PARAM_965,宝魔主,Treasure Guardian Lord
+NAMED_PARAM_966,宝魔主,Treasure Guardian Lord
+NAMED_PARAM_967,宝魔主,Treasure Guardian Lord
 NAMED_PARAM_969,マイセリウム・ベヘモット,Mycelium Behemoth
-NAMED_PARAM_970,宝魔主,宝魔主
+NAMED_PARAM_970,宝魔主,Treasure Guardian Lord
 NAMED_PARAM_971,宝守,Treasure Guard
 NAMED_PARAM_972,宝守,Treasure Guard
 NAMED_PARAM_973,宝守,Treasure Guard
@@ -618,20 +618,20 @@ NAMED_PARAM_976,宝守,Treasure Guard
 NAMED_PARAM_977,宝守,Treasure Guard
 NAMED_PARAM_978,宝守,Treasure Guard
 NAMED_PARAM_983,宝守,Treasure Guard
-NAMED_PARAM_984,宝魔主,宝魔主
-NAMED_PARAM_985,宝魔主,宝魔主
+NAMED_PARAM_984,宝魔主,Treasure Guardian Lord
+NAMED_PARAM_985,宝魔主,Treasure Guardian Lord
 NAMED_PARAM_986,宝守,Treasure Guard
-NAMED_PARAM_987,宝魔主,宝魔主
-NAMED_PARAM_988,宝魔主,宝魔主
-NAMED_PARAM_989,宝魔主,宝魔主
-NAMED_PARAM_990,宝魔主,宝魔主
-NAMED_PARAM_991,宝魔主,宝魔主
-NAMED_PARAM_992,宝魔主,宝魔主
-NAMED_PARAM_993,宝魔主,宝魔主
-NAMED_PARAM_994,宝魔主,宝魔主
-NAMED_PARAM_997,宝魔主,宝魔主
-NAMED_PARAM_999,宝魔主,宝魔主
-NAMED_PARAM_1000,宝魔主,宝魔主
+NAMED_PARAM_987,宝魔主,Treasure Guardian Lord
+NAMED_PARAM_988,宝魔主,Treasure Guardian Lord
+NAMED_PARAM_989,宝魔主,Treasure Guardian Lord
+NAMED_PARAM_990,宝魔主,Treasure Guardian Lord
+NAMED_PARAM_991,宝魔主,Treasure Guardian Lord
+NAMED_PARAM_992,宝魔主,Treasure Guardian Lord
+NAMED_PARAM_993,宝魔主,Treasure Guardian Lord
+NAMED_PARAM_994,宝魔主,Treasure Guardian Lord
+NAMED_PARAM_997,宝魔主,Treasure Guardian Lord
+NAMED_PARAM_999,宝魔主,Treasure Guardian Lord
+NAMED_PARAM_1000,宝魔主,Treasure Guardian Lord
 NAMED_PARAM_1001,,
 NAMED_PARAM_1002,,
 NAMED_PARAM_1003,,
@@ -759,28 +759,28 @@ NAMED_PARAM_1128,竜力を秘めた,Hidden Dragon Force
 NAMED_PARAM_1129,宝飾を秘めた,Hidden Jewelry
 NAMED_PARAM_1130,宝飾を秘めた,Hidden Jewelry
 NAMED_PARAM_1131,宝飾を秘めた,Hidden Jewelry
-NAMED_PARAM_1132,召喚士,召喚士
-NAMED_PARAM_1133,甦生した,甦生した
-NAMED_PARAM_1134,甦生した,甦生した
+NAMED_PARAM_1132,召喚士,Summoner
+NAMED_PARAM_1133,甦生した,Revived
+NAMED_PARAM_1134,甦生した,Revived
 NAMED_PARAM_1135,黒闇より甦りし,Raised from the Darkness
-NAMED_PARAM_1136,甦生した,甦生した
+NAMED_PARAM_1136,甦生した,Revived
 NAMED_PARAM_1137,異界の,of the Other World
-NAMED_PARAM_1138,狭間の,狭間の
+NAMED_PARAM_1138,狭間の,Between
 NAMED_PARAM_1139,隷下部隊,Subordinate Troop
 NAMED_PARAM_1140,隷下部隊長,Subordinate Commanding Officer
-NAMED_PARAM_1141,隷下部大隊長,隷下部大隊長
-NAMED_PARAM_1142,甦生したボルドバンガー・,甦生したボルドバンガー・
+NAMED_PARAM_1141,隷下部大隊長,Subordinate Commanding Officer
+NAMED_PARAM_1142,甦生したボルドバンガー・,Resurrected Lindwurm
 NAMED_PARAM_1143,第一練磨,First Test
 NAMED_PARAM_1144,第二練磨,Second Test
 NAMED_PARAM_1145,,
-NAMED_PARAM_1146,礎の番人,礎の番人
+NAMED_PARAM_1146,礎の番人,Foundation Guardian
 NAMED_PARAM_1147,,
-NAMED_PARAM_1149,甦生した,甦生した
-NAMED_PARAM_1151,召喚士,召喚士
-NAMED_PARAM_1152,甦生した,甦生した
+NAMED_PARAM_1149,甦生した,Revived
+NAMED_PARAM_1151,召喚士,Summoner
+NAMED_PARAM_1152,甦生した,Revived
 NAMED_PARAM_1155,,
 NAMED_PARAM_1156,淀みの戦徒,Myrmidon of Stagnation
-NAMED_PARAM_1157,甦生した,甦生した
+NAMED_PARAM_1157,甦生した,Revived
 NAMED_PARAM_1158,賞金首,Bounty
 NAMED_PARAM_1159,賞金首,Bounty
 NAMED_PARAM_1160,賞金首,Bounty
@@ -798,12 +798,12 @@ NAMED_PARAM_1173,ハイエロファント・,[The Hierophant]
 NAMED_PARAM_1175,マジシャン・,[The Magician]
 NAMED_PARAM_1178,,
 NAMED_PARAM_1179,大竜力の精兵,Great Dragon Force Elite Soldier
-NAMED_PARAM_1180,ＨＰ２倍だよ！,ＨＰ２倍だよ！
-NAMED_PARAM_1181,のけぞりぶっとび２倍だよ！,のけぞりぶっとび２倍だよ！
-NAMED_PARAM_1182,ゆさぶり２倍だよ！,ゆさぶり２倍だよ！
-NAMED_PARAM_1183,のけぶ＆ゆさ２倍だよ！,のけぶ＆ゆさ２倍だよ！
-NAMED_PARAM_1186,蒼葉の,蒼葉の
-NAMED_PARAM_1187,蒼葉の,蒼葉の
+NAMED_PARAM_1180,ＨＰ２倍だよ！,Double HP!
+NAMED_PARAM_1181,のけぞりぶっとび２倍だよ！,Double Stagger/Knockback!
+NAMED_PARAM_1182,ゆさぶり２倍だよ！,Double Shaking!
+NAMED_PARAM_1183,のけぶ＆ゆさ２倍だよ！,Double Knockback/Shaking!
+NAMED_PARAM_1186,蒼葉の,Blue Leaf
+NAMED_PARAM_1187,蒼葉の,Blue Leaf
 NAMED_PARAM_1188,死体齧りの,Corpse-Eating
 NAMED_PARAM_1189,グレイブワーグ,Gravewarg
 NAMED_PARAM_1190,,
@@ -812,7 +812,7 @@ NAMED_PARAM_1199,大竜力の精兵,Great Dragon Force Elite Soldier
 NAMED_PARAM_1200,大竜力の精兵,Great Dragon Force Elite Soldier
 NAMED_PARAM_1201,大竜力の精兵,Great Dragon Force Elite Soldier
 NAMED_PARAM_1202,大竜力の精兵,Great Dragon Force Elite Soldier
-NAMED_PARAM_1204,検証用,検証用
+NAMED_PARAM_1204,検証用,Verification
 NAMED_PARAM_1223,ラヴァーズ・,[The Lovers]
 NAMED_PARAM_1224,ハーミット・,[The Hermit]
 NAMED_PARAM_1225,ハングドマン・,[The Hanged Man]
@@ -834,18 +834,18 @@ NAMED_PARAM_1240,黒騎士ロイグ,Black Knight Loeg
 NAMED_PARAM_1241,精霊竜ウィルミア,Spirit Dragon Willmia
 NAMED_PARAM_1242,大竜力の精兵,Great Dragon Force Elite Soldier
 NAMED_PARAM_1243,大竜力の精兵,Great Dragon Force Elite Soldier
-NAMED_PARAM_1244,獣の主,獣の主
-NAMED_PARAM_1245,鍵を奪った墓守,鍵を奪った墓守
+NAMED_PARAM_1244,獣の主,Beastlord
+NAMED_PARAM_1245,鍵を奪った墓守,Grave Keeper who stole the key
 NAMED_PARAM_1246,鳴動の甲竜,Rumbling Shell Dragon
 NAMED_PARAM_1247,妨害,Interfering
-NAMED_PARAM_1248,急襲する石魔,急襲する石魔
+NAMED_PARAM_1248,急襲する石魔,Stone Golem Ambusher
 NAMED_PARAM_1249,招かれざる白鷲,Unbidden White Eagle
-NAMED_PARAM_1250,群れる,群れる
+NAMED_PARAM_1250,群れる,Flock
 NAMED_PARAM_1251,同胞,Fellow
-NAMED_PARAM_1252,荒れ崩す,荒れ崩す
+NAMED_PARAM_1252,荒れ崩す,Demolishing
 NAMED_PARAM_1253,川辺の,Riverside
 NAMED_PARAM_1254,命屠る,Life Slaughtering
-NAMED_PARAM_1255,神殿に巣食う,神殿に巣食う
+NAMED_PARAM_1255,神殿に巣食う,Nesting in the Temple
 NAMED_PARAM_1256,,
 NAMED_PARAM_1257,,
 NAMED_PARAM_1258,,
@@ -859,14 +859,14 @@ NAMED_PARAM_1265,,
 NAMED_PARAM_1266,,
 NAMED_PARAM_1267,,
 NAMED_PARAM_1268,,
-NAMED_PARAM_1269,目覚めし,目覚めし
+NAMED_PARAM_1269,目覚めし,Awakened
 NAMED_PARAM_1270,怒り狂う大甲竜,Raging Great Shell Dragon
 NAMED_PARAM_1271,緑の森護獣,Green Forest Guardian Beast
 NAMED_PARAM_1272,村潰しの,the Village Crusher
 NAMED_PARAM_1273,さまよう,Wandering
-NAMED_PARAM_1274,蝕み散らす大鷲,蝕み散らす大鷲
-NAMED_PARAM_1275,忘れ去られた,忘れ去られた
-NAMED_PARAM_1276,災厄を呼ぶ,災厄を呼ぶ
+NAMED_PARAM_1274,蝕み散らす大鷲,Corruption Spreading Eagle
+NAMED_PARAM_1275,忘れ去られた,Forgotten
+NAMED_PARAM_1276,災厄を呼ぶ,Disaster Bringer
 NAMED_PARAM_1277,,
 NAMED_PARAM_1278,,
 NAMED_PARAM_1279,,
@@ -1019,9 +1019,9 @@ NAMED_PARAM_1425,最終練磨,Final Test
 NAMED_PARAM_1426,最終練磨,Final Test
 NAMED_PARAM_1427,最終練磨,Final Test
 NAMED_PARAM_1428,鍵番,Key Guardian
-NAMED_PARAM_1429,歪みの執行人,歪みの執行人
-NAMED_PARAM_1430,礎の番人,礎の番人
-NAMED_PARAM_1431,礎の番人,礎の番人
+NAMED_PARAM_1429,歪みの執行人,Agent of Corruption
+NAMED_PARAM_1430,礎の番人,Foundation Guardian
+NAMED_PARAM_1431,礎の番人,Foundation Guardian
 NAMED_PARAM_1432,試練,Trial
 NAMED_PARAM_1433,試練,Trial
 NAMED_PARAM_1434,行く手を阻む,Obstructing
@@ -1042,8 +1042,8 @@ NAMED_PARAM_1460,甲竜に怯える,frightened of the Shell Dragon
 NAMED_PARAM_1461,,
 NAMED_PARAM_1462,襲撃,Raid
 NAMED_PARAM_1463,,
-NAMED_PARAM_1465,竜力に引かれた,竜力に引かれた
-NAMED_PARAM_1466,集いし者たち,集いし者たち
+NAMED_PARAM_1465,竜力に引かれた,Drawn by Dragon Force
+NAMED_PARAM_1466,集いし者たち,The Gathered Ones
 NAMED_PARAM_1467,？？？,???
 NAMED_PARAM_1468,？？？,???
 NAMED_PARAM_1478,淀みの影,Shadow of Stagnation
@@ -1066,7 +1066,7 @@ NAMED_PARAM_1509,,
 NAMED_PARAM_1510,,
 NAMED_PARAM_1511,,
 NAMED_PARAM_1515,,
-NAMED_PARAM_1516,対の大竜力・天,対の大竜力・天
+NAMED_PARAM_1516,対の大竜力・天,Pair of Great Dragon Force - Heaven
 NAMED_PARAM_1517,賞金首,Bounty
 NAMED_PARAM_1520,賞金首,Bounty
 NAMED_PARAM_1521,賞金首,Bounty
@@ -1081,7 +1081,7 @@ NAMED_PARAM_1537,・ブレイズ,(Blaze)
 NAMED_PARAM_1538,甲竜に怯える,frightened of the Shell Dragon
 NAMED_PARAM_1539,甲竜に怯える,frightened of the Shell Dragon
 NAMED_PARAM_1541,,
-NAMED_PARAM_1544,対の大竜力・地,対の大竜力・地
+NAMED_PARAM_1544,対の大竜力・地,Pair of Great Dragon Force - Earth
 NAMED_PARAM_1545,蒼甲竜,Pale Shell Dragon
 NAMED_PARAM_1546,,
 NAMED_PARAM_1547,,
@@ -1102,8 +1102,8 @@ NAMED_PARAM_1561,,
 NAMED_PARAM_1562,お化け,Ghost
 NAMED_PARAM_1563,傷ついた,Wounded
 NAMED_PARAM_1564,樹内の記憶,Memory Within the Tree
-NAMED_PARAM_1565,うめきの記憶,うめきの記憶
-NAMED_PARAM_1566,祈りの記憶,祈りの記憶
+NAMED_PARAM_1565,うめきの記憶,Memory of Sighs
+NAMED_PARAM_1566,祈りの記憶,Memory of Prayer
 NAMED_PARAM_1567,魔封の竜晶,Dragon Crystal of Evil Sealing
 NAMED_PARAM_1568,力滅の竜晶,Dragon Crystal of Power Sapping
 NAMED_PARAM_1569,,
@@ -1125,11 +1125,11 @@ NAMED_PARAM_1586,宝飾を秘めた,Hidden Jewelry
 NAMED_PARAM_1587,宝飾を秘めた,Hidden Jewelry
 NAMED_PARAM_1588,竜力を秘めた,Hidden Dragon Force
 NAMED_PARAM_1589,,
-NAMED_PARAM_1590,呪符に保護されし,呪符に保護されし
-NAMED_PARAM_1591,呪符の番人,呪符の番人
-NAMED_PARAM_1592,呪符の番人,呪符の番人
-NAMED_PARAM_1593,呪符の番人,呪符の番人
-NAMED_PARAM_1598,召喚されし邪悪の眷属,召喚されし邪悪の眷属
+NAMED_PARAM_1590,呪符に保護されし,Protected by an Amulet
+NAMED_PARAM_1591,呪符の番人,Guardian of the Amulet
+NAMED_PARAM_1592,呪符の番人,Guardian of the Amulet
+NAMED_PARAM_1593,呪符の番人,Guardian of the Amulet
+NAMED_PARAM_1598,召喚されし邪悪の眷属,Summoned Servant of Evil
 NAMED_PARAM_1599,,
 NAMED_PARAM_1600,,
 NAMED_PARAM_1609,怪しい盗賊団,Suspicious Bandit
@@ -1137,25 +1137,25 @@ NAMED_PARAM_1610,急襲の,Raid
 NAMED_PARAM_1611,森の怒り,Forest's Fury
 NAMED_PARAM_1612,モゴックの部下,Mogok's Subordinate
 NAMED_PARAM_1613,帰ってきたモゴック,Mogok who came back
-NAMED_PARAM_1614,薬草を守りし,薬草を守りし
+NAMED_PARAM_1614,薬草を守りし,Protected by medicinal herbs.
 NAMED_PARAM_1615,襲撃の,Raid
 NAMED_PARAM_1616,襲撃の,Raid
 NAMED_PARAM_1617,時番群,Time Bonus Group
 NAMED_PARAM_1618,時番群,Time Bonus Group
 NAMED_PARAM_1619,時番群,Time Bonus Group
-NAMED_PARAM_1620,黒騎士の配下,黒騎士の配下
-NAMED_PARAM_1621,黒騎士の配下,黒騎士の配下
+NAMED_PARAM_1620,黒騎士の配下,Underling of the Black Knight.
+NAMED_PARAM_1621,黒騎士の配下,Underling of the Black Knight.
 NAMED_PARAM_1634,,
 NAMED_PARAM_1635,,
 NAMED_PARAM_1636,,
 NAMED_PARAM_1637,子飼いの,Hand-raised
-NAMED_PARAM_1638,植物に誘われし魔物,植物に誘われし魔物
-NAMED_PARAM_1639,植物に誘われし魔物,植物に誘われし魔物
-NAMED_PARAM_1640,植物に誘われし魔物,植物に誘われし魔物
-NAMED_PARAM_1641,植物に誘われし魔物,植物に誘われし魔物
+NAMED_PARAM_1638,植物に誘われし魔物,Enemy lured by plants.
+NAMED_PARAM_1639,植物に誘われし魔物,Enemy lured by plants.
+NAMED_PARAM_1640,植物に誘われし魔物,Enemy lured by plants.
+NAMED_PARAM_1641,植物に誘われし魔物,Enemy lured by plants.
 NAMED_PARAM_1642,急襲の,Raid
-NAMED_PARAM_1643,突然変異の,突然変異の
-NAMED_PARAM_1644,突然変異の,突然変異の
+NAMED_PARAM_1643,突然変異の,Mutant.
+NAMED_PARAM_1644,突然変異の,Mutant.
 NAMED_PARAM_1645,怪しいオーク,Suspicious Orc
 NAMED_PARAM_1659,,
 NAMED_PARAM_1660,,
@@ -1190,21 +1190,21 @@ NAMED_PARAM_1695,,
 NAMED_PARAM_1696,,
 NAMED_PARAM_1697,,
 NAMED_PARAM_1698,異界の,of the Other World
-NAMED_PARAM_1699,狭間の,狭間の
+NAMED_PARAM_1699,狭間の,Between
 NAMED_PARAM_1700,瘴気を纏う,Miasmatic
-NAMED_PARAM_1701,うめきの記憶,うめきの記憶
+NAMED_PARAM_1701,うめきの記憶,Memory of Sighs
 NAMED_PARAM_1702,ロイグ,Loeg
 NAMED_PARAM_1703,,
 NAMED_PARAM_1704,黒闇より甦りし,Raised from the Darkness
 NAMED_PARAM_1705,,
 NAMED_PARAM_1706,蒼甲竜,Pale Shell Dragon
 NAMED_PARAM_1707,樹内の記憶,Memory Within the Tree
-NAMED_PARAM_1708,召喚士,召喚士
-NAMED_PARAM_1709,甦生した,甦生した
+NAMED_PARAM_1708,召喚士,Summoner
+NAMED_PARAM_1709,甦生した,Revived
 NAMED_PARAM_1710,魔封の竜晶,Dragon Crystal of Evil Sealing
 NAMED_PARAM_1711,力滅の竜晶,Dragon Crystal of Power Sapping
 NAMED_PARAM_1712,時番,Time Bonus
-NAMED_PARAM_1713,見たことのない感じのスライム,見たことのない感じのスライム
+NAMED_PARAM_1713,見たことのない感じのスライム,Slime that looks like nothing I've ever seen before.
 NAMED_PARAM_1714,,
 NAMED_PARAM_1715,,
 NAMED_PARAM_1716,,
@@ -1230,17 +1230,17 @@ NAMED_PARAM_1735,ブルータルハーミット,Brutal Hermit
 NAMED_PARAM_1736,,
 NAMED_PARAM_1737,,
 NAMED_PARAM_1738,,
-NAMED_PARAM_1739,先遣隊,先遣隊
-NAMED_PARAM_1740,悪しき竜軍甲兵,悪しき竜軍甲兵
-NAMED_PARAM_1741,第一悪しき竜軍本隊,第一悪しき竜軍本隊
-NAMED_PARAM_1742,第一悪しき竜軍本隊,第一悪しき竜軍本隊
-NAMED_PARAM_1743,第一増援部隊,第一増援部隊
-NAMED_PARAM_1744,第二悪しき竜軍本隊,第二悪しき竜軍本隊
-NAMED_PARAM_1745,第二悪しき竜軍本隊,第二悪しき竜軍本隊
-NAMED_PARAM_1746,第二増援部隊,第二増援部隊
-NAMED_PARAM_1747,第三悪しき竜軍本隊,第三悪しき竜軍本隊
-NAMED_PARAM_1748,第三悪しき竜軍本隊,第三悪しき竜軍本隊
-NAMED_PARAM_1749,第三増援部隊,第三増援部隊
+NAMED_PARAM_1739,先遣隊,Vanguard
+NAMED_PARAM_1740,悪しき竜軍甲兵,Evil Dragon Army Armored Soldiers
+NAMED_PARAM_1741,第一悪しき竜軍本隊,Main force of the First Evil Dragon Army
+NAMED_PARAM_1742,第一悪しき竜軍本隊,Main force of the First Evil Dragon Army
+NAMED_PARAM_1743,第一増援部隊,First Reinforcement Unit
+NAMED_PARAM_1744,第二悪しき竜軍本隊,The Second Evil Dragon Army Main Unit
+NAMED_PARAM_1745,第二悪しき竜軍本隊,The Second Evil Dragon Army Main Unit
+NAMED_PARAM_1746,第二増援部隊,Second Reinforcement Unit
+NAMED_PARAM_1747,第三悪しき竜軍本隊,Third Evil Dragon Army Main Unit
+NAMED_PARAM_1748,第三悪しき竜軍本隊,Third Evil Dragon Army Main Unit
+NAMED_PARAM_1749,第三増援部隊,Third Reinforcement Unit
 NAMED_PARAM_1750,謎のオーク,Mysterious Orc
 NAMED_PARAM_1751,捕虜の見張り,Prisoner's Guard
 NAMED_PARAM_1752,村を襲撃する,Village Raiding
@@ -1251,7 +1251,7 @@ NAMED_PARAM_1756,洞窟の主,Master of the Grotto
 NAMED_PARAM_1757,行く手を阻む,Obstructing
 NAMED_PARAM_1758,獣の将,Beast Commander
 NAMED_PARAM_1759,砦を占拠する,Fort Occupying
-NAMED_PARAM_1760,将の腰巾着,将の腰巾着
+NAMED_PARAM_1760,将の腰巾着,Warlord's Lackey
 NAMED_PARAM_1761,襲撃の,Raid
 NAMED_PARAM_1762,襲撃の,Raid
 NAMED_PARAM_1763,進軍の,Marching
@@ -1261,7 +1261,7 @@ NAMED_PARAM_1766,ジフール城の門番,Jifule Castle Gatekeeper
 NAMED_PARAM_1767,ジフール城の門番,Jifule Castle Gatekeeper
 NAMED_PARAM_1768,古の扉の番兵,Old Door Guard
 NAMED_PARAM_1769,古の扉の番兵,Old Door Guard
-NAMED_PARAM_1770,居残り番兵,居残り番兵
+NAMED_PARAM_1770,居残り番兵,Detainee Guard
 NAMED_PARAM_1771,捕虜の見張り,Prisoner's Guard
 NAMED_PARAM_1772,骸の将,Necro Master
 NAMED_PARAM_1773,骸の腰巾着,Necro Follower
@@ -1286,9 +1286,9 @@ NAMED_PARAM_1791,陣地防衛兵,Encampment Defense Troop
 NAMED_PARAM_1792,,
 NAMED_PARAM_1793,,
 NAMED_PARAM_1794,,
-NAMED_PARAM_1795,魔領進攻軍雑兵,魔領進攻軍雑兵
-NAMED_PARAM_1796,魔領進攻軍一等兵,魔領進攻軍一等兵
-NAMED_PARAM_1797,魔領進攻軍特攻兵,魔領進攻軍特攻兵
+NAMED_PARAM_1795,魔領進攻軍雑兵,Invasion Force Grunt
+NAMED_PARAM_1796,魔領進攻軍一等兵,Invasion Force Soldier
+NAMED_PARAM_1797,魔領進攻軍特攻兵,Invasion Force Assault Trooper
 NAMED_PARAM_1798,・エクストラ,(Extra)
 NAMED_PARAM_1799,・エクストラ,(Extra)
 NAMED_PARAM_1800,・エクストラ,(Extra)
@@ -1299,9 +1299,9 @@ NAMED_PARAM_1804,最終練磨,Final Test
 NAMED_PARAM_1805,,
 NAMED_PARAM_1806,,
 NAMED_PARAM_1807,,
-NAMED_PARAM_1808,伝令士官,伝令士官
+NAMED_PARAM_1808,伝令士官,Aide-de-camp
 NAMED_PARAM_1825,ロスギル襲撃部隊,Rothgill Raid Force
-NAMED_PARAM_1826,試練を与えし竜,試練を与えし竜
+NAMED_PARAM_1826,試練を与えし竜,Dragon That Bestows Trials
 NAMED_PARAM_1827,試練,Trial
 NAMED_PARAM_1828,拠点防衛,Base Defense
 NAMED_PARAM_1829,防衛士官,Defense Officer
@@ -1335,7 +1335,7 @@ NAMED_PARAM_1861,従属,Subordinate
 NAMED_PARAM_1862,従属,Subordinate
 NAMED_PARAM_1863,従属,Subordinate
 NAMED_PARAM_1864,従属,Subordinate
-NAMED_PARAM_1865,関所の番兵,関所の番兵
+NAMED_PARAM_1865,関所の番兵,Gatekeeper
 NAMED_PARAM_1866,,
 NAMED_PARAM_1867,,
 NAMED_PARAM_1868,,
@@ -1363,9 +1363,9 @@ NAMED_PARAM_1889,,
 NAMED_PARAM_1890,,
 NAMED_PARAM_1891,,
 NAMED_PARAM_1892,,
-NAMED_PARAM_1893,魔領進攻軍二等兵,魔領進攻軍二等兵
-NAMED_PARAM_1894,魔領進攻軍一等兵,魔領進攻軍一等兵
-NAMED_PARAM_1895,魔領進攻軍兵長,魔領進攻軍兵長
+NAMED_PARAM_1893,魔領進攻軍二等兵,Invasion Force Private
+NAMED_PARAM_1894,魔領進攻軍一等兵,Invasion Force Soldier
+NAMED_PARAM_1895,魔領進攻軍兵長,Invasion Force Battalion Commander
 NAMED_PARAM_1896,,
 NAMED_PARAM_1897,,
 NAMED_PARAM_1898,占領軍の,Occupation Army
@@ -1439,8 +1439,8 @@ NAMED_PARAM_2019,,
 NAMED_PARAM_2020,強勢,Powerful
 NAMED_PARAM_2021,強勢,Powerful
 NAMED_PARAM_2022,強勢,Powerful
-NAMED_PARAM_2023,砦内残党兵,砦内残党兵
-NAMED_PARAM_2024,砦内残党兵,砦内残党兵
+NAMED_PARAM_2023,砦内残党兵,Remnant Soldier within The Fort
+NAMED_PARAM_2024,砦内残党兵,Remnant Soldier within The Fort
 NAMED_PARAM_2025,,
 NAMED_PARAM_2026,,
 NAMED_PARAM_2027,,
@@ -1485,11 +1485,11 @@ NAMED_PARAM_2067,,
 NAMED_PARAM_2076,,
 NAMED_PARAM_2077,,
 NAMED_PARAM_2078,,
-NAMED_PARAM_2079,王家用4,王家用4
-NAMED_PARAM_2080,王家用5,王家用5
-NAMED_PARAM_2081,王家用6,王家用6
-NAMED_PARAM_2082,王家用7,王家用7
-NAMED_PARAM_2083,王家用8,王家用8
+NAMED_PARAM_2079,王家用4,Royal Family 4
+NAMED_PARAM_2080,王家用5,Royal Family 5
+NAMED_PARAM_2081,王家用6,Royal Family 6
+NAMED_PARAM_2082,王家用7,Royal Family 7
+NAMED_PARAM_2083,王家用8,Royal Family 8
 NAMED_PARAM_2084,,
 NAMED_PARAM_2085,,
 NAMED_PARAM_2086,,
@@ -1499,10 +1499,10 @@ NAMED_PARAM_2089,,
 NAMED_PARAM_2090,,
 NAMED_PARAM_2091,彷徨う,Wandering
 NAMED_PARAM_2092,不死の眷属,Undead Follower
-NAMED_PARAM_2093,地底の遺壁,地底の遺壁
+NAMED_PARAM_2093,地底の遺壁,Underground Ruins Wall
 NAMED_PARAM_2094,氷獄の番人,Ice Prison Guard
-NAMED_PARAM_2095,深森の落胤,深森の落胤
-NAMED_PARAM_2096,紅蓮の魔将,紅蓮の魔将
+NAMED_PARAM_2095,深森の落胤,Deep Woods Bastard
+NAMED_PARAM_2096,紅蓮の魔将,Lord of Crimson
 NAMED_PARAM_2097,彷徨う,Wandering
 NAMED_PARAM_2098,不死の眷属ゾンビ,Undead Follower Zombie
 NAMED_PARAM_2099,不死の眷属,Undead Follower
@@ -1514,8 +1514,8 @@ NAMED_PARAM_2105,,
 NAMED_PARAM_2106,,
 NAMED_PARAM_2107,,
 NAMED_PARAM_2108,お菓子大好き魔女,Candy-loving Witch
-NAMED_PARAM_2109,レベルキャップ白竜（仮）,レベルキャップ白竜（仮）
-NAMED_PARAM_2110,レベルキャップ白竜そに２（仮）,レベルキャップ白竜そに２（仮）
+NAMED_PARAM_2109,レベルキャップ白竜（仮）,The White Dragon Level Cap (tentative)
+NAMED_PARAM_2110,レベルキャップ白竜そに２（仮）,The White Dragon Level Cap 2 (tentative)
 NAMED_PARAM_2111,賞金首,Bounty
 NAMED_PARAM_2112,賞金首,Bounty
 NAMED_PARAM_2113,宵闇より出でし翼,Wing Emerging at Twilight
@@ -1675,16 +1675,16 @@ NAMED_PARAM_2331,メガドの狂犬,Megado's Mad Dog
 NAMED_PARAM_2332,侵入したオーク,Invasion Orc
 NAMED_PARAM_2333,侵入したオーク,Invasion Orc
 NAMED_PARAM_2334,侵入したオーク,Invasion Orc
-NAMED_PARAM_2335,憲兵隊小隊長,憲兵隊小隊長
+NAMED_PARAM_2335,憲兵隊小隊長,Military Police Captain
 NAMED_PARAM_2336,憲兵隊兵士,Military Police Soldier
 NAMED_PARAM_2337,,
 NAMED_PARAM_2338,,
 NAMED_PARAM_2339,,
-NAMED_PARAM_2340,憲兵隊警邏小隊長,憲兵隊警邏小隊長
+NAMED_PARAM_2340,憲兵隊警邏小隊長,Captain of the Military Police Patrol Unit
 NAMED_PARAM_2341,憲兵隊兵士,Military Police Soldier
 NAMED_PARAM_2342,侵入した,Invasion
-NAMED_PARAM_2343,侵略する,侵略する
-NAMED_PARAM_2344,侵略する,侵略する
+NAMED_PARAM_2343,侵略する,Invading
+NAMED_PARAM_2344,侵略する,Invading
 NAMED_PARAM_2345,,
 NAMED_PARAM_2347,,
 NAMED_PARAM_2348,,
@@ -1706,7 +1706,7 @@ NAMED_PARAM_2365,冥府の使い魔,Netherworld Familiar
 NAMED_PARAM_2366,壊滅させるもの,The Devastator
 NAMED_PARAM_2367,冥府の番人,Netherworld Guardian
 NAMED_PARAM_2368,死を約束するもの,One That Promises Death
-NAMED_PARAM_2369,屋敷の鍵番,屋敷の鍵番
+NAMED_PARAM_2369,屋敷の鍵番,Mansion Gatekeeper
 NAMED_PARAM_2370,使役獣,Enslaved Beast
 NAMED_PARAM_2371,,
 NAMED_PARAM_2372,,
@@ -1807,18 +1807,18 @@ NAMED_PARAM_2506,,
 NAMED_PARAM_2507,メダルコレクター,Medal Collector
 NAMED_PARAM_2508,メダルオーナー,Medal Owner
 NAMED_PARAM_2509,,
-NAMED_PARAM_2510,朽ちた騎士の残魂,朽ちた騎士の残魂
-NAMED_PARAM_2511,朽ちた兵士の残魂,朽ちた兵士の残魂
-NAMED_PARAM_2512,朽ちた魔女の残魂,朽ちた魔女の残魂
+NAMED_PARAM_2510,朽ちた騎士の残魂,Remnant Soul of a Decayed Knight
+NAMED_PARAM_2511,朽ちた兵士の残魂,Remnant Soul of a Decayed Soldier
+NAMED_PARAM_2512,朽ちた魔女の残魂,Remnant Soul of a Decayed Witch
 NAMED_PARAM_2513,,
 NAMED_PARAM_2514,離宮の番人,Detached Palace Guard
 NAMED_PARAM_2515,急襲の,Raid
-NAMED_PARAM_2516,戦の将部隊,戦の将部隊
-NAMED_PARAM_2517,戦の将の子飼い,戦の将の子飼い
+NAMED_PARAM_2516,戦の将部隊,War Master Unit
+NAMED_PARAM_2517,戦の将の子飼い,War Master's Pet
 NAMED_PARAM_2518,戦の将,War Master
 NAMED_PARAM_2519,火垂れ山に巣食う炎獣,Firefall Mountain Haunting Flame Beast
-NAMED_PARAM_2520,古代の亡霊,古代の亡霊
-NAMED_PARAM_2521,古代の亡者,古代の亡者
+NAMED_PARAM_2520,古代の亡霊,Ancient Ghost
+NAMED_PARAM_2521,古代の亡者,Ancient Undead
 NAMED_PARAM_2522,行く手を阻む,Obstructing
 NAMED_PARAM_2523,行く手を阻む,Obstructing
 NAMED_PARAM_2524,行く手を阻む,Obstructing
@@ -1853,21 +1853,21 @@ NAMED_PARAM_2552,,
 NAMED_PARAM_2553,,
 NAMED_PARAM_2554,,
 NAMED_PARAM_2555,,
-NAMED_PARAM_2556,百人長の亡霊,百人長の亡霊
-NAMED_PARAM_2557,初代王の亡霊,初代王の亡霊
+NAMED_PARAM_2556,百人長の亡霊,Centurion's Spirit
+NAMED_PARAM_2557,初代王の亡霊,The Ghost of the First King
 NAMED_PARAM_2558,,
 NAMED_PARAM_2559,,
 NAMED_PARAM_2561,離宮の番人,Detached Palace Guard
 NAMED_PARAM_2562,・エクストラ,(Extra)
 NAMED_PARAM_2563,・エクストラ,(Extra)
-NAMED_PARAM_2564,魔炎の竜晶,魔炎の竜晶
-NAMED_PARAM_2565,魔岩の竜晶,魔岩の竜晶
-NAMED_PARAM_2566,魔風の竜晶,魔風の竜晶
-NAMED_PARAM_2567,魔領進攻軍特殊兵,魔領進攻軍特殊兵
+NAMED_PARAM_2564,魔炎の竜晶,Dragon Crystal of Flame
+NAMED_PARAM_2565,魔岩の竜晶,Dragon Crystal of Earth
+NAMED_PARAM_2566,魔風の竜晶,Dragon Crystal of Wind
+NAMED_PARAM_2567,魔領進攻軍特殊兵,Invasion Force First Class Soldier
 NAMED_PARAM_2568,,
-NAMED_PARAM_2569,騎士団の仇敵,騎士団の仇敵
-NAMED_PARAM_2570,騎士団の仇敵,騎士団の仇敵
-NAMED_PARAM_2571,騎士団の仇敵,騎士団の仇敵
+NAMED_PARAM_2569,騎士団の仇敵,The Knights' Bitter Enemy
+NAMED_PARAM_2570,騎士団の仇敵,The Knights' Bitter Enemy
+NAMED_PARAM_2571,騎士団の仇敵,The Knights' Bitter Enemy
 NAMED_PARAM_2572,,
 NAMED_PARAM_2573,,
 NAMED_PARAM_2574,,
@@ -1878,7 +1878,7 @@ NAMED_PARAM_2578,,
 NAMED_PARAM_2579,,
 NAMED_PARAM_2580,,
 NAMED_PARAM_2581,,
-NAMED_PARAM_2582,偉大なる錬金術師,偉大なる錬金術師
+NAMED_PARAM_2582,偉大なる錬金術師,The Great Alchemist
 NAMED_PARAM_2583,,
 NAMED_PARAM_2584,,
 NAMED_PARAM_2586,,
@@ -1886,10 +1886,10 @@ NAMED_PARAM_2587,,
 NAMED_PARAM_2588,,
 NAMED_PARAM_2589,,
 NAMED_PARAM_2590,,
-NAMED_PARAM_2591,火焔の竜晶,火焔の竜晶
-NAMED_PARAM_2592,火焔の竜晶,火焔の竜晶
-NAMED_PARAM_2593,火焔の竜晶,火焔の竜晶
-NAMED_PARAM_2594,火焔の竜晶,火焔の竜晶
+NAMED_PARAM_2591,火焔の竜晶,Flame Dragon Crystal
+NAMED_PARAM_2592,火焔の竜晶,Flame Dragon Crystal
+NAMED_PARAM_2593,火焔の竜晶,Flame Dragon Crystal
+NAMED_PARAM_2594,火焔の竜晶,Flame Dragon Crystal
 NAMED_PARAM_2596,ミュータント・,Mutant
 NAMED_PARAM_2598,,
 NAMED_PARAM_2599,ミュータント・,Mutant
@@ -1912,7 +1912,7 @@ NAMED_PARAM_2618,,
 NAMED_PARAM_2619,甘い香りのする,Sweet scent of
 NAMED_PARAM_2620,甘党の,Sweet Tooth
 NAMED_PARAM_2621,若木の,Sapling
-NAMED_PARAM_2622,怒りの親玉エント,怒りの親玉エント
+NAMED_PARAM_2622,怒りの親玉エント,Angry Ent Chieftain
 NAMED_PARAM_2623,至って普通の,Extremely Ordinary
 NAMED_PARAM_2624,ズールの亡霊,Ghost of Zuhl
 NAMED_PARAM_2625,,
@@ -1923,53 +1923,53 @@ NAMED_PARAM_2629,,
 NAMED_PARAM_2630,,
 NAMED_PARAM_2631,,
 NAMED_PARAM_2632,,
-NAMED_PARAM_2633,悪しき竜に仕える,悪しき竜に仕える
-NAMED_PARAM_2634,悪しき竜に仕える,悪しき竜に仕える
+NAMED_PARAM_2633,悪しき竜に仕える,Evil Dragon Servant
+NAMED_PARAM_2634,悪しき竜に仕える,Evil Dragon Servant
 NAMED_PARAM_2635,,
 NAMED_PARAM_2636,,
 NAMED_PARAM_2637,,
 NAMED_PARAM_2638,,
 NAMED_PARAM_2639,,
 NAMED_PARAM_2640,,
-NAMED_PARAM_2641,火焔の竜晶,火焔の竜晶
-NAMED_PARAM_2642,火焔の竜晶,火焔の竜晶
-NAMED_PARAM_2643,火焔の竜晶,火焔の竜晶
-NAMED_PARAM_2644,火焔の竜晶,火焔の竜晶
+NAMED_PARAM_2641,火焔の竜晶,Flame Dragon Crystal
+NAMED_PARAM_2642,火焔の竜晶,Flame Dragon Crystal
+NAMED_PARAM_2643,火焔の竜晶,Flame Dragon Crystal
+NAMED_PARAM_2644,火焔の竜晶,Flame Dragon Crystal
 NAMED_PARAM_2645,,
 NAMED_PARAM_2646,,
-NAMED_PARAM_2647,魔炎の竜晶,魔炎の竜晶
-NAMED_PARAM_2648,魔岩の竜晶,魔岩の竜晶
-NAMED_PARAM_2649,魔風の竜晶,魔風の竜晶
+NAMED_PARAM_2647,魔炎の竜晶,Dragon Crystal of Flame
+NAMED_PARAM_2648,魔岩の竜晶,Dragon Crystal of Earth
+NAMED_PARAM_2649,魔風の竜晶,Dragon Crystal of Wind
 NAMED_PARAM_2650,,
 NAMED_PARAM_2651,,
-NAMED_PARAM_2652,魔炎の竜晶,魔炎の竜晶
-NAMED_PARAM_2653,魔岩の竜晶,魔岩の竜晶
-NAMED_PARAM_2654,魔風の竜晶,魔風の竜晶
+NAMED_PARAM_2652,魔炎の竜晶,Dragon Crystal of Flame
+NAMED_PARAM_2653,魔岩の竜晶,Dragon Crystal of Earth
+NAMED_PARAM_2654,魔風の竜晶,Dragon Crystal of Wind
 NAMED_PARAM_2655,,
 NAMED_PARAM_2656,,
-NAMED_PARAM_2657,脚の速い,脚の速い
+NAMED_PARAM_2657,脚の速い,Fleet-footed
 NAMED_PARAM_2658,,
-NAMED_PARAM_2659,黄泉がえりし泉の守護者,黄泉がえりし泉の守護者
-NAMED_PARAM_2660,黄泉がえりし戦の将の子飼い,黄泉がえりし戦の将の子飼い
-NAMED_PARAM_2661,黄泉がえりし古の扉の番兵,黄泉がえりし古の扉の番兵
-NAMED_PARAM_2662,黄泉がえりし古代の亡霊,黄泉がえりし古代の亡霊
-NAMED_PARAM_2663,冥府の徘徊魔,冥府の徘徊魔
-NAMED_PARAM_2664,冥府の拷問者,冥府の拷問者
-NAMED_PARAM_2665,冥府の徘徊魔,冥府の徘徊魔
-NAMED_PARAM_2666,饗宴の主,饗宴の主
-NAMED_PARAM_2667,冥府の徘徊魔,冥府の徘徊魔
-NAMED_PARAM_2668,冥府の拷問者,冥府の拷問者
-NAMED_PARAM_2669,冥府の徘徊魔,冥府の徘徊魔
-NAMED_PARAM_2670,死滅都市の悪魔,死滅都市の悪魔
-NAMED_PARAM_2671,冥府の徘徊魔,冥府の徘徊魔
-NAMED_PARAM_2672,冥府の拷問者,冥府の拷問者
-NAMED_PARAM_2673,冥府の徘徊魔,冥府の徘徊魔
-NAMED_PARAM_2674,忌まわしき首領,忌まわしき首領
-NAMED_PARAM_2675,冥府の徘徊魔,冥府の徘徊魔
-NAMED_PARAM_2676,冥府の拷問者,冥府の拷問者
-NAMED_PARAM_2677,冥府の徘徊魔,冥府の徘徊魔
-NAMED_PARAM_2678,堕ちたる者,堕ちたる者
-NAMED_PARAM_2679,封印から目覚めし指輪の守護者,封印から目覚めし指輪の守護者
+NAMED_PARAM_2659,黄泉がえりし泉の守護者,Guardian of the Underworld Spring
+NAMED_PARAM_2660,黄泉がえりし戦の将の子飼い,The Reincarnated Warlord's Pet
+NAMED_PARAM_2661,黄泉がえりし古の扉の番兵,Guardian of the Ancient Gate of the Underworld
+NAMED_PARAM_2662,黄泉がえりし古代の亡霊,Ancient Spirit of the Underworld
+NAMED_PARAM_2663,冥府の徘徊魔,Prowler of the Underworld
+NAMED_PARAM_2664,冥府の拷問者,Torturer of the Underworld
+NAMED_PARAM_2665,冥府の徘徊魔,Prowler of the Underworld
+NAMED_PARAM_2666,饗宴の主,Lord of the Feast
+NAMED_PARAM_2667,冥府の徘徊魔,Prowler of the Underworld
+NAMED_PARAM_2668,冥府の拷問者,Torturer of the Underworld
+NAMED_PARAM_2669,冥府の徘徊魔,Prowler of the Underworld
+NAMED_PARAM_2670,死滅都市の悪魔,Devil in a Dead City
+NAMED_PARAM_2671,冥府の徘徊魔,Prowler of the Underworld
+NAMED_PARAM_2672,冥府の拷問者,Torturer of the Underworld
+NAMED_PARAM_2673,冥府の徘徊魔,Prowler of the Underworld
+NAMED_PARAM_2674,忌まわしき首領,Accursed Lord
+NAMED_PARAM_2675,冥府の徘徊魔,Prowler of the Underworld
+NAMED_PARAM_2676,冥府の拷問者,Torturer of the Underworld
+NAMED_PARAM_2677,冥府の徘徊魔,Prowler of the Underworld
+NAMED_PARAM_2678,堕ちたる者,The Fallen
+NAMED_PARAM_2679,封印から目覚めし指輪の守護者,Guardian of the Ring
 NAMED_PARAM_2680,,
 NAMED_PARAM_2681,,
 NAMED_PARAM_2682,,
@@ -1990,35 +1990,35 @@ NAMED_PARAM_2718,行く手を阻む,Obstructing
 NAMED_PARAM_2744,,
 NAMED_PARAM_2745,,
 NAMED_PARAM_2746,,
-NAMED_PARAM_2747,危険な（仮）,危険な（仮）
-NAMED_PARAM_2748,とっても危険な（仮）,とっても危険な（仮）
-NAMED_PARAM_2749,突然変異（仮）,突然変異（仮）
+NAMED_PARAM_2747,危険な（仮）,Dangerous (temporary)
+NAMED_PARAM_2748,とっても危険な（仮）,Very dangerous (temporary)
+NAMED_PARAM_2749,突然変異（仮）,Mutation (tentative)
 NAMED_PARAM_2750,,
 NAMED_PARAM_2751,,
-NAMED_PARAM_2752,蝕まれた,蝕まれた
-NAMED_PARAM_2753,蝕まれた,蝕まれた
-NAMED_PARAM_2754,蝕まれた,蝕まれた
+NAMED_PARAM_2752,蝕まれた,Corrupted
+NAMED_PARAM_2753,蝕まれた,Corrupted
+NAMED_PARAM_2754,蝕まれた,Corrupted
 NAMED_PARAM_2755,,
 NAMED_PARAM_2756,,
-NAMED_PARAM_2757,蝕まれた,蝕まれた
-NAMED_PARAM_2758,蝕まれた,蝕まれた
-NAMED_PARAM_2759,蝕まれた,蝕まれた
+NAMED_PARAM_2757,蝕まれた,Corrupted
+NAMED_PARAM_2758,蝕まれた,Corrupted
+NAMED_PARAM_2759,蝕まれた,Corrupted
 NAMED_PARAM_2760,,
-NAMED_PARAM_2761,蝕まれた,蝕まれた
-NAMED_PARAM_2762,蝕まれた,蝕まれた
-NAMED_PARAM_2763,蝕まれた,蝕まれた
+NAMED_PARAM_2761,蝕まれた,Corrupted
+NAMED_PARAM_2762,蝕まれた,Corrupted
+NAMED_PARAM_2763,蝕まれた,Corrupted
 NAMED_PARAM_2764,,
-NAMED_PARAM_2765,蝕まれた,蝕まれた
-NAMED_PARAM_2766,蝕まれた,蝕まれた
-NAMED_PARAM_2767,蝕まれた,蝕まれた
+NAMED_PARAM_2765,蝕まれた,Corrupted
+NAMED_PARAM_2766,蝕まれた,Corrupted
+NAMED_PARAM_2767,蝕まれた,Corrupted
 NAMED_PARAM_2768,,
-NAMED_PARAM_2769,蝕まれた,蝕まれた
-NAMED_PARAM_2770,蝕まれた,蝕まれた
-NAMED_PARAM_2771,蝕まれた,蝕まれた
+NAMED_PARAM_2769,蝕まれた,Corrupted
+NAMED_PARAM_2770,蝕まれた,Corrupted
+NAMED_PARAM_2771,蝕まれた,Corrupted
 NAMED_PARAM_2772,,
-NAMED_PARAM_2773,蝕まれた,蝕まれた
-NAMED_PARAM_2774,蝕まれた,蝕まれた
-NAMED_PARAM_2775,蝕まれた,蝕まれた
+NAMED_PARAM_2773,蝕まれた,Corrupted
+NAMED_PARAM_2774,蝕まれた,Corrupted
+NAMED_PARAM_2775,蝕まれた,Corrupted
 NAMED_PARAM_2779,,
 NAMED_PARAM_2780,,
 NAMED_PARAM_2781,,
@@ -2033,7 +2033,7 @@ NAMED_PARAM_2790,,
 NAMED_PARAM_2791,,
 NAMED_PARAM_2792,,
 NAMED_PARAM_2793,,
-NAMED_PARAM_2794,魔軍戦車・,魔軍戦車・
+NAMED_PARAM_2794,魔軍戦車・,Demon Army Tanks
 NAMED_PARAM_2795,,
 NAMED_PARAM_2796,,
 NAMED_PARAM_2797,,
@@ -2043,7 +2043,7 @@ NAMED_PARAM_2800,,
 NAMED_PARAM_2801,,
 NAMED_PARAM_2802,古精霊竜の守獣,Old Spirit Dragon Guard Beast
 NAMED_PARAM_2803,,
-NAMED_PARAM_2804,いにしえの邪眼・,いにしえの邪眼・
+NAMED_PARAM_2804,いにしえの邪眼・,Ancient Evil Eye
 NAMED_PARAM_2805,,
 NAMED_PARAM_2806,,
 NAMED_PARAM_2807,,
@@ -2058,9 +2058,9 @@ NAMED_PARAM_2815,,
 NAMED_PARAM_2816,,
 NAMED_PARAM_2817,不完全な,Defective
 NAMED_PARAM_2818,,
-NAMED_PARAM_2819,力に呑まれし王者・,力に呑まれし王者・
+NAMED_PARAM_2819,力に呑まれし王者・,The Ruler Overwhelmed by Power
 NAMED_PARAM_2820,,
-NAMED_PARAM_2821,古代の亡霊,古代の亡霊
+NAMED_PARAM_2821,古代の亡霊,Ancient Ghost
 NAMED_PARAM_2822,,
 NAMED_PARAM_2823,,
 NAMED_PARAM_2824,,
@@ -2068,205 +2068,205 @@ NAMED_PARAM_2825,,
 NAMED_PARAM_2826,,
 NAMED_PARAM_2827,,
 NAMED_PARAM_2828,,
-NAMED_PARAM_2829,賢竜・,賢竜・
+NAMED_PARAM_2829,賢竜・,Sage Dragon ・
 NAMED_PARAM_2830,白竜黒騎士,White Dragon Black Knight
-NAMED_PARAM_2831,対の幻影・天,対の幻影・天
-NAMED_PARAM_2832,対の幻影・地,対の幻影・地
-NAMED_PARAM_2833,闇に呑まれ硬化した,闇に呑まれ硬化した
-NAMED_PARAM_2837,闇に呑まれ強暴化した,闇に呑まれ強暴化した
-NAMED_PARAM_2838,闇に呑まれ硬化した,闇に呑まれ硬化した
-NAMED_PARAM_2839,闇に呑まれ強暴化した,闇に呑まれ強暴化した
-NAMED_PARAM_2843,闇に呑まれ硬化した,闇に呑まれ硬化した
-NAMED_PARAM_2844,闇に呑まれ強暴化した,闇に呑まれ強暴化した
-NAMED_PARAM_2848,闇に呑まれ硬化した,闇に呑まれ硬化した
-NAMED_PARAM_2849,闇に呑まれ強暴化した,闇に呑まれ強暴化した
-NAMED_PARAM_2852,闇に呑まれ硬化した,闇に呑まれ硬化した
-NAMED_PARAM_2853,闇に呑まれ強暴化した,闇に呑まれ強暴化した
-NAMED_PARAM_2856,弱化した賢竜・,弱化した賢竜・
+NAMED_PARAM_2831,対の幻影・天,Duality Illusion: Heaven
+NAMED_PARAM_2832,対の幻影・地,Duality Illusion: Earth
+NAMED_PARAM_2833,闇に呑まれ硬化した,Hardened by Darkness
+NAMED_PARAM_2837,闇に呑まれ強暴化した,Ravaged by Darkness
+NAMED_PARAM_2838,闇に呑まれ硬化した,Hardened by Darkness
+NAMED_PARAM_2839,闇に呑まれ強暴化した,Ravaged by Darkness
+NAMED_PARAM_2843,闇に呑まれ硬化した,Hardened by Darkness
+NAMED_PARAM_2844,闇に呑まれ強暴化した,Ravaged by Darkness
+NAMED_PARAM_2848,闇に呑まれ硬化した,Hardened by Darkness
+NAMED_PARAM_2849,闇に呑まれ強暴化した,Ravaged by Darkness
+NAMED_PARAM_2852,闇に呑まれ硬化した,Hardened by Darkness
+NAMED_PARAM_2853,闇に呑まれ強暴化した,Ravaged by Darkness
+NAMED_PARAM_2856,弱化した賢竜・,Weakened Sage Dragon・
 NAMED_PARAM_2857,はぐれ,Stray
-NAMED_PARAM_2858,弱化した,弱化した
-NAMED_PARAM_2859,弱化した,弱化した
-NAMED_PARAM_2860,弱化した,弱化した
-NAMED_PARAM_2861,黒剣を護る,黒剣を護る
-NAMED_PARAM_2862,黒剣を護る,黒剣を護る
+NAMED_PARAM_2858,弱化した,Weakened
+NAMED_PARAM_2859,弱化した,Weakened
+NAMED_PARAM_2860,弱化した,Weakened
+NAMED_PARAM_2861,黒剣を護る,Protecting the Black Sword
+NAMED_PARAM_2862,黒剣を護る,Protecting the Black Sword
 NAMED_PARAM_2863,死を約束するもの,One That Promises Death
 NAMED_PARAM_2864,冥府の番人,Netherworld Guardian
 NAMED_PARAM_2865,,
-NAMED_PARAM_2866,蝕まれた,蝕まれた
-NAMED_PARAM_2867,蝕まれた,蝕まれた
-NAMED_PARAM_2868,蝕まれた,蝕まれた
+NAMED_PARAM_2866,蝕まれた,Corrupted
+NAMED_PARAM_2867,蝕まれた,Corrupted
+NAMED_PARAM_2868,蝕まれた,Corrupted
 NAMED_PARAM_2869,,
 NAMED_PARAM_2870,,
-NAMED_PARAM_2871,蝕まれた,蝕まれた
-NAMED_PARAM_2872,蝕まれた,蝕まれた
-NAMED_PARAM_2873,蝕まれた,蝕まれた
+NAMED_PARAM_2871,蝕まれた,Corrupted
+NAMED_PARAM_2872,蝕まれた,Corrupted
+NAMED_PARAM_2873,蝕まれた,Corrupted
 NAMED_PARAM_2874,,
-NAMED_PARAM_2875,蝕まれた,蝕まれた
-NAMED_PARAM_2876,蝕まれた,蝕まれた
-NAMED_PARAM_2877,蝕まれた,蝕まれた
+NAMED_PARAM_2875,蝕まれた,Corrupted
+NAMED_PARAM_2876,蝕まれた,Corrupted
+NAMED_PARAM_2877,蝕まれた,Corrupted
 NAMED_PARAM_2878,,
-NAMED_PARAM_2879,蝕まれた,蝕まれた
-NAMED_PARAM_2880,蝕まれた,蝕まれた
-NAMED_PARAM_2881,蝕まれた,蝕まれた
+NAMED_PARAM_2879,蝕まれた,Corrupted
+NAMED_PARAM_2880,蝕まれた,Corrupted
+NAMED_PARAM_2881,蝕まれた,Corrupted
 NAMED_PARAM_2882,,
-NAMED_PARAM_2883,蝕まれた,蝕まれた
-NAMED_PARAM_2884,蝕まれた,蝕まれた
-NAMED_PARAM_2885,蝕まれた,蝕まれた
+NAMED_PARAM_2883,蝕まれた,Corrupted
+NAMED_PARAM_2884,蝕まれた,Corrupted
+NAMED_PARAM_2885,蝕まれた,Corrupted
 NAMED_PARAM_2886,,
-NAMED_PARAM_2887,蝕まれた,蝕まれた
-NAMED_PARAM_2888,蝕まれた,蝕まれた
-NAMED_PARAM_2889,蝕まれた,蝕まれた
-NAMED_PARAM_2890,闇に呑まれ硬化した,闇に呑まれ硬化した
-NAMED_PARAM_2894,闇に呑まれ強暴化した,闇に呑まれ強暴化した
-NAMED_PARAM_2895,闇に呑まれ硬化した,闇に呑まれ硬化した
-NAMED_PARAM_2896,闇に呑まれ強暴化した,闇に呑まれ強暴化した
-NAMED_PARAM_2900,闇に呑まれ硬化した,闇に呑まれ硬化した
-NAMED_PARAM_2901,闇に呑まれ強暴化した,闇に呑まれ強暴化した
-NAMED_PARAM_2905,闇に呑まれ硬化した,闇に呑まれ硬化した
-NAMED_PARAM_2906,闇に呑まれ強暴化した,闇に呑まれ強暴化した
-NAMED_PARAM_2909,闇に呑まれ硬化した,闇に呑まれ硬化した
-NAMED_PARAM_2910,闇に呑まれ強暴化した,闇に呑まれ強暴化した
+NAMED_PARAM_2887,蝕まれた,Corrupted
+NAMED_PARAM_2888,蝕まれた,Corrupted
+NAMED_PARAM_2889,蝕まれた,Corrupted
+NAMED_PARAM_2890,闇に呑まれ硬化した,Hardened by Darkness
+NAMED_PARAM_2894,闇に呑まれ強暴化した,Ravaged by Darkness
+NAMED_PARAM_2895,闇に呑まれ硬化した,Hardened by Darkness
+NAMED_PARAM_2896,闇に呑まれ強暴化した,Ravaged by Darkness
+NAMED_PARAM_2900,闇に呑まれ硬化した,Hardened by Darkness
+NAMED_PARAM_2901,闇に呑まれ強暴化した,Ravaged by Darkness
+NAMED_PARAM_2905,闇に呑まれ硬化した,Hardened by Darkness
+NAMED_PARAM_2906,闇に呑まれ強暴化した,Ravaged by Darkness
+NAMED_PARAM_2909,闇に呑まれ硬化した,Hardened by Darkness
+NAMED_PARAM_2910,闇に呑まれ強暴化した,Ravaged by Darkness
 NAMED_PARAM_2913,,
-NAMED_PARAM_2914,蝕まれた,蝕まれた
-NAMED_PARAM_2915,蝕まれた,蝕まれた
-NAMED_PARAM_2916,蝕まれた,蝕まれた
+NAMED_PARAM_2914,蝕まれた,Corrupted
+NAMED_PARAM_2915,蝕まれた,Corrupted
+NAMED_PARAM_2916,蝕まれた,Corrupted
 NAMED_PARAM_2917,,
 NAMED_PARAM_2918,,
-NAMED_PARAM_2919,蝕まれた,蝕まれた
-NAMED_PARAM_2920,蝕まれた,蝕まれた
-NAMED_PARAM_2921,蝕まれた,蝕まれた
+NAMED_PARAM_2919,蝕まれた,Corrupted
+NAMED_PARAM_2920,蝕まれた,Corrupted
+NAMED_PARAM_2921,蝕まれた,Corrupted
 NAMED_PARAM_2922,,
-NAMED_PARAM_2923,蝕まれた,蝕まれた
-NAMED_PARAM_2924,蝕まれた,蝕まれた
-NAMED_PARAM_2925,蝕まれた,蝕まれた
+NAMED_PARAM_2923,蝕まれた,Corrupted
+NAMED_PARAM_2924,蝕まれた,Corrupted
+NAMED_PARAM_2925,蝕まれた,Corrupted
 NAMED_PARAM_2926,,
-NAMED_PARAM_2927,蝕まれた,蝕まれた
-NAMED_PARAM_2928,蝕まれた,蝕まれた
-NAMED_PARAM_2929,蝕まれた,蝕まれた
+NAMED_PARAM_2927,蝕まれた,Corrupted
+NAMED_PARAM_2928,蝕まれた,Corrupted
+NAMED_PARAM_2929,蝕まれた,Corrupted
 NAMED_PARAM_2930,,
-NAMED_PARAM_2931,蝕まれた,蝕まれた
-NAMED_PARAM_2932,蝕まれた,蝕まれた
-NAMED_PARAM_2933,蝕まれた,蝕まれた
+NAMED_PARAM_2931,蝕まれた,Corrupted
+NAMED_PARAM_2932,蝕まれた,Corrupted
+NAMED_PARAM_2933,蝕まれた,Corrupted
 NAMED_PARAM_2934,,
-NAMED_PARAM_2935,蝕まれた,蝕まれた
-NAMED_PARAM_2936,蝕まれた,蝕まれた
-NAMED_PARAM_2937,蝕まれた,蝕まれた
-NAMED_PARAM_2938,闇に呑まれ硬化した,闇に呑まれ硬化した
-NAMED_PARAM_2942,闇に呑まれ強暴化した,闇に呑まれ強暴化した
-NAMED_PARAM_2943,闇に呑まれ硬化した,闇に呑まれ硬化した
-NAMED_PARAM_2944,闇に呑まれ強暴化した,闇に呑まれ強暴化した
-NAMED_PARAM_2948,闇に呑まれ硬化した,闇に呑まれ硬化した
-NAMED_PARAM_2949,闇に呑まれ強暴化した,闇に呑まれ強暴化した
-NAMED_PARAM_2953,闇に呑まれ硬化した,闇に呑まれ硬化した
-NAMED_PARAM_2954,闇に呑まれ強暴化した,闇に呑まれ強暴化した
-NAMED_PARAM_2957,闇に呑まれ硬化した,闇に呑まれ硬化した
-NAMED_PARAM_2958,闇に呑まれ強暴化した,闇に呑まれ強暴化した
+NAMED_PARAM_2935,蝕まれた,Corrupted
+NAMED_PARAM_2936,蝕まれた,Corrupted
+NAMED_PARAM_2937,蝕まれた,Corrupted
+NAMED_PARAM_2938,闇に呑まれ硬化した,Hardened by Darkness
+NAMED_PARAM_2942,闇に呑まれ強暴化した,Ravaged by Darkness
+NAMED_PARAM_2943,闇に呑まれ硬化した,Hardened by Darkness
+NAMED_PARAM_2944,闇に呑まれ強暴化した,Ravaged by Darkness
+NAMED_PARAM_2948,闇に呑まれ硬化した,Hardened by Darkness
+NAMED_PARAM_2949,闇に呑まれ強暴化した,Ravaged by Darkness
+NAMED_PARAM_2953,闇に呑まれ硬化した,Hardened by Darkness
+NAMED_PARAM_2954,闇に呑まれ強暴化した,Ravaged by Darkness
+NAMED_PARAM_2957,闇に呑まれ硬化した,Hardened by Darkness
+NAMED_PARAM_2958,闇に呑まれ強暴化した,Ravaged by Darkness
 NAMED_PARAM_2961,,
-NAMED_PARAM_2962,蝕まれた,蝕まれた
-NAMED_PARAM_2963,蝕まれた,蝕まれた
-NAMED_PARAM_2964,蝕まれた,蝕まれた
+NAMED_PARAM_2962,蝕まれた,Corrupted
+NAMED_PARAM_2963,蝕まれた,Corrupted
+NAMED_PARAM_2964,蝕まれた,Corrupted
 NAMED_PARAM_2965,,
 NAMED_PARAM_2966,,
-NAMED_PARAM_2967,蝕まれた,蝕まれた
-NAMED_PARAM_2968,蝕まれた,蝕まれた
-NAMED_PARAM_2969,蝕まれた,蝕まれた
+NAMED_PARAM_2967,蝕まれた,Corrupted
+NAMED_PARAM_2968,蝕まれた,Corrupted
+NAMED_PARAM_2969,蝕まれた,Corrupted
 NAMED_PARAM_2970,,
-NAMED_PARAM_2971,蝕まれた,蝕まれた
-NAMED_PARAM_2972,蝕まれた,蝕まれた
-NAMED_PARAM_2973,蝕まれた,蝕まれた
+NAMED_PARAM_2971,蝕まれた,Corrupted
+NAMED_PARAM_2972,蝕まれた,Corrupted
+NAMED_PARAM_2973,蝕まれた,Corrupted
 NAMED_PARAM_2974,,
-NAMED_PARAM_2975,蝕まれた,蝕まれた
-NAMED_PARAM_2976,蝕まれた,蝕まれた
-NAMED_PARAM_2977,蝕まれた,蝕まれた
+NAMED_PARAM_2975,蝕まれた,Corrupted
+NAMED_PARAM_2976,蝕まれた,Corrupted
+NAMED_PARAM_2977,蝕まれた,Corrupted
 NAMED_PARAM_2978,,
-NAMED_PARAM_2979,蝕まれた,蝕まれた
-NAMED_PARAM_2980,蝕まれた,蝕まれた
-NAMED_PARAM_2981,蝕まれた,蝕まれた
+NAMED_PARAM_2979,蝕まれた,Corrupted
+NAMED_PARAM_2980,蝕まれた,Corrupted
+NAMED_PARAM_2981,蝕まれた,Corrupted
 NAMED_PARAM_2982,,
-NAMED_PARAM_2983,蝕まれた,蝕まれた
-NAMED_PARAM_2984,蝕まれた,蝕まれた
-NAMED_PARAM_2985,蝕まれた,蝕まれた
-NAMED_PARAM_2986,闇に呑まれ硬化した,闇に呑まれ硬化した
-NAMED_PARAM_2990,闇に呑まれ強暴化した,闇に呑まれ強暴化した
-NAMED_PARAM_2991,闇に呑まれ硬化した,闇に呑まれ硬化した
-NAMED_PARAM_2992,闇に呑まれ強暴化した,闇に呑まれ強暴化した
-NAMED_PARAM_2996,闇に呑まれ硬化した,闇に呑まれ硬化した
-NAMED_PARAM_2997,闇に呑まれ強暴化した,闇に呑まれ強暴化した
-NAMED_PARAM_3001,闇に呑まれ硬化した,闇に呑まれ硬化した
-NAMED_PARAM_3002,闇に呑まれ強暴化した,闇に呑まれ強暴化した
-NAMED_PARAM_3005,闇に呑まれ硬化した,闇に呑まれ硬化した
-NAMED_PARAM_3006,闇に呑まれ強暴化した,闇に呑まれ強暴化した
-NAMED_PARAM_3017,黒剣を護る,黒剣を護る
+NAMED_PARAM_2983,蝕まれた,Corrupted
+NAMED_PARAM_2984,蝕まれた,Corrupted
+NAMED_PARAM_2985,蝕まれた,Corrupted
+NAMED_PARAM_2986,闇に呑まれ硬化した,Hardened by Darkness
+NAMED_PARAM_2990,闇に呑まれ強暴化した,Ravaged by Darkness
+NAMED_PARAM_2991,闇に呑まれ硬化した,Hardened by Darkness
+NAMED_PARAM_2992,闇に呑まれ強暴化した,Ravaged by Darkness
+NAMED_PARAM_2996,闇に呑まれ硬化した,Hardened by Darkness
+NAMED_PARAM_2997,闇に呑まれ強暴化した,Ravaged by Darkness
+NAMED_PARAM_3001,闇に呑まれ硬化した,Hardened by Darkness
+NAMED_PARAM_3002,闇に呑まれ強暴化した,Ravaged by Darkness
+NAMED_PARAM_3005,闇に呑まれ硬化した,Hardened by Darkness
+NAMED_PARAM_3006,闇に呑まれ強暴化した,Ravaged by Darkness
+NAMED_PARAM_3017,黒剣を護る,Protecting the Black Sword
 NAMED_PARAM_3018,,
-NAMED_PARAM_3019,黒剣を護る,黒剣を護る
+NAMED_PARAM_3019,黒剣を護る,Protecting the Black Sword
 NAMED_PARAM_3020,,
-NAMED_PARAM_3021,黒剣を護る,黒剣を護る
+NAMED_PARAM_3021,黒剣を護る,Protecting the Black Sword
 NAMED_PARAM_3022,,
-NAMED_PARAM_3023,闇の渦に巣食う,闇の渦に巣食う
-NAMED_PARAM_3024,MQ(仮）,MQ(仮）
-NAMED_PARAM_3025,黒剣を護る,黒剣を護る
+NAMED_PARAM_3023,闇の渦に巣食う,Nestled in the Vortex of Darkness
+NAMED_PARAM_3024,MQ(仮）,MQ (temporary)
+NAMED_PARAM_3025,黒剣を護る,Protecting the Black Sword
 NAMED_PARAM_3026,,
-NAMED_PARAM_3027,黒剣を護る,黒剣を護る
+NAMED_PARAM_3027,黒剣を護る,Protecting the Black Sword
 NAMED_PARAM_3028,,
-NAMED_PARAM_3029,黒剣を護る,黒剣を護る
+NAMED_PARAM_3029,黒剣を護る,Protecting the Black Sword
 NAMED_PARAM_3030,,
-NAMED_PARAM_3031,闇の渦に巣食う,闇の渦に巣食う
-NAMED_PARAM_3032,MQ(仮）,MQ(仮）
-NAMED_PARAM_3033,黒剣を護る,黒剣を護る
+NAMED_PARAM_3031,闇の渦に巣食う,Nestled in the Vortex of Darkness
+NAMED_PARAM_3032,MQ(仮）,MQ (temporary)
+NAMED_PARAM_3033,黒剣を護る,Protecting the Black Sword
 NAMED_PARAM_3034,,
-NAMED_PARAM_3035,黒剣を護る,黒剣を護る
+NAMED_PARAM_3035,黒剣を護る,Protecting the Black Sword
 NAMED_PARAM_3036,,
-NAMED_PARAM_3037,黒剣を護る,黒剣を護る
+NAMED_PARAM_3037,黒剣を護る,Protecting the Black Sword
 NAMED_PARAM_3038,,
-NAMED_PARAM_3039,闇の渦に巣食う,闇の渦に巣食う
-NAMED_PARAM_3040,MQ(仮）,MQ(仮）
-NAMED_PARAM_3041,黒剣を護る,黒剣を護る
+NAMED_PARAM_3039,闇の渦に巣食う,Nestled in the Vortex of Darkness
+NAMED_PARAM_3040,MQ(仮）,MQ (temporary)
+NAMED_PARAM_3041,黒剣を護る,Protecting the Black Sword
 NAMED_PARAM_3042,,
-NAMED_PARAM_3043,黒剣を護る,黒剣を護る
+NAMED_PARAM_3043,黒剣を護る,Protecting the Black Sword
 NAMED_PARAM_3044,,
-NAMED_PARAM_3045,闇の渦に巣食う,闇の渦に巣食う
-NAMED_PARAM_3046,レオ,レオ
-NAMED_PARAM_3047,黒竜,黒竜
-NAMED_PARAM_3048,堕ちたる者,堕ちたる者
+NAMED_PARAM_3045,闇の渦に巣食う,Nestled in the Vortex of Darkness
+NAMED_PARAM_3046,レオ,Leo
+NAMED_PARAM_3047,黒竜,Black Dragon
+NAMED_PARAM_3048,堕ちたる者,The Fallen
 NAMED_PARAM_3049,満開メガトンマンドラゴラ,Full Bloom Megaton Mandragora
 NAMED_PARAM_3050,満開メガトンハバネロ,Full Bloom Megaton Habanero
 NAMED_PARAM_3051,アトロポス・クイーンビー,"Atropos, Queen Bee"
-NAMED_PARAM_3052,炎の傀儡ギガン・マキナ,炎の傀儡ギガン・マキナ
-NAMED_PARAM_3053,氷の傀儡フロスト・マキナ,氷の傀儡フロスト・マキナ
+NAMED_PARAM_3052,炎の傀儡ギガン・マキナ,Flame Puppet Gigant Machina
+NAMED_PARAM_3053,氷の傀儡フロスト・マキナ,Ice Puppet Frost Machina
 NAMED_PARAM_3054,マリオネットマスターウィッチ,Marionette Master Witch
 NAMED_PARAM_3055,暴食フットバイター,Gluttonous Foot-Biter
 NAMED_PARAM_3056,暴食フットバイター？,Gluttonous Foot-Biter?
-NAMED_PARAM_3057,虹の輝きリトルビフレスト,虹の輝きリトルビフレスト
-NAMED_PARAM_3058,変異型狂侵グリフィン,変異型狂侵グリフィン
+NAMED_PARAM_3057,虹の輝きリトルビフレスト,Rainbow Glitter Little Bifrost
+NAMED_PARAM_3058,変異型狂侵グリフィン,Mutated Severely Infected Griffin
 NAMED_PARAM_3059,ヒュージフリージングスライム,Huge Freezing Slime
 NAMED_PARAM_3060,谷の賢者ノーム・エント,谷の賢者ノーム Ent
-NAMED_PARAM_3061,未完の魔眼パイモンルビーアイ,未完の魔眼パイモンルビーアイ
+NAMED_PARAM_3061,未完の魔眼パイモンルビーアイ,Incomplete Magic Eye: Ruby-Eye Paimon
 NAMED_PARAM_3062,ヒュージディープスライム,Huge Deep Slime
-NAMED_PARAM_3063,目覚めた石像ヘルガーゴイル,目覚めた石像ヘルガーゴイル
+NAMED_PARAM_3063,目覚めた石像ヘルガーゴイル,Awakened Stone Statue: Hell Gargoyle
 NAMED_PARAM_3064,スモールリザード,Small Lizard
-NAMED_PARAM_3065,狼王ダイアウルフ,狼王ダイアウルフ
-NAMED_PARAM_3066,300年永らえたマッドマン,300年永らえたマッドマン
+NAMED_PARAM_3065,狼王ダイアウルフ,Wolf King Direwolf
+NAMED_PARAM_3066,300年永らえたマッドマン,300-year-old Mudman
 NAMED_PARAM_3067,ムーンライズ・シャドーキメラ,Moonrise Shadow Chimera
-NAMED_PARAM_3068,大罪・嫉妬のデスナイト,大罪・嫉妬のデスナイト
+NAMED_PARAM_3068,大罪・嫉妬のデスナイト,Sin of Envy Death Knight
 NAMED_PARAM_3069,マウンテン・サイクロプス,Mountain Cyclops
-NAMED_PARAM_3070,夜の訪れリトルブラックグリフィン,夜の訪れリトルブラックグリフィン
-NAMED_PARAM_3071,太古の処刑人,太古の処刑人
-NAMED_PARAM_3072,霧をさまようリトルミストウィルム,霧をさまようリトルミストウィルム
-NAMED_PARAM_3073,【ネームドハント】ワイルドボア,【ネームドハント】ワイルドボア
-NAMED_PARAM_3074,古代の巨兵ジオゴーレム,古代の巨兵ジオゴーレム
-NAMED_PARAM_3075,潜入部隊キャプテンアンセスター,潜入部隊キャプテンアンセスター
+NAMED_PARAM_3070,夜の訪れリトルブラックグリフィン,"The arrival of night, Little Black Griffin"
+NAMED_PARAM_3071,太古の処刑人,The Ancient Executioner
+NAMED_PARAM_3072,霧をさまようリトルミストウィルム,Little Mist Wyrm Wandering through the Mist
+NAMED_PARAM_3073,【ネームドハント】ワイルドボア,[Named Hunt] Wild Boar
+NAMED_PARAM_3074,古代の巨兵ジオゴーレム,Ancient Giant Soldier Geo Golem
+NAMED_PARAM_3075,潜入部隊キャプテンアンセスター,Ancestral Infiltration Unit Captain
 NAMED_PARAM_3076,サンライズ・ブレイズキメラ,Sunrise Blaze Chimera
-NAMED_PARAM_3077,未完の魔眼パイモンラピスアイ,未完の魔眼パイモンラピスアイ
-NAMED_PARAM_3078,300年永らえたスラッジマン,300年永らえたスラッジマン
-NAMED_PARAM_3079,魔法暗殺部隊,魔法暗殺部隊
-NAMED_PARAM_3080,さまよう小さき魂,さまよう小さき魂
-NAMED_PARAM_3081,灼熱ラージサラマンダー,灼熱ラージサラマンダー
-NAMED_PARAM_3082,奇襲のエキスパートリーダー,奇襲のエキスパートリーダー
-NAMED_PARAM_3083,同志の集いロールスパインバック,同志の集いロールスパインバック
-NAMED_PARAM_3084,大罪・憤怒のエリミネーター・スレイ,大罪・憤怒のエリミネーター・スレイ
+NAMED_PARAM_3077,未完の魔眼パイモンラピスアイ,Incomplete Magic Eye: Lapis-Eye Paimon
+NAMED_PARAM_3078,300年永らえたスラッジマン,300-year-old Sludgeman
+NAMED_PARAM_3079,魔法暗殺部隊,Magic Assassination Unit
+NAMED_PARAM_3080,さまよう小さき魂,Wandering Little Soul
+NAMED_PARAM_3081,灼熱ラージサラマンダー,Scorching-hot Giant Pyre Saurian
+NAMED_PARAM_3082,奇襲のエキスパートリーダー,Ambush Expert Leader
+NAMED_PARAM_3083,同志の集いロールスパインバック,"Gathering of Comrades, Roll Spineback"
+NAMED_PARAM_3084,大罪・憤怒のエリミネーター・スレイ,"Mortal Sin of Wrath, Eliminator Slayer"
 NAMED_PARAM_3085,ヒュージパイロスライム,Huge Pyro Slime
-NAMED_PARAM_3086,八眼の怪物アラクネー,八眼の怪物アラクネー
-NAMED_PARAM_3087,欲望喰らいのエンシェントマンイーター,欲望喰らいのエンシェントマンイーター
+NAMED_PARAM_3086,八眼の怪物アラクネー,Eight-Eyed Monster Arachne
+NAMED_PARAM_3087,欲望喰らいのエンシェントマンイーター,Ancient Maneater of Desire
 NAMED_PARAM_3088,レッドズール・ザ・デビル,Red Zuhl the Devil
 NAMED_PARAM_3089,さまよう,Wandering
 NAMED_PARAM_3090,さまよう,Wandering
@@ -2282,37 +2282,37 @@ NAMED_PARAM_3147,,
 NAMED_PARAM_3148,行く手を阻む,Obstructing
 NAMED_PARAM_3149,行く手を阻む,Obstructing
 NAMED_PARAM_3151,,
-NAMED_PARAM_3152,潜入部隊アンセスターオーク,潜入部隊アンセスターオーク
-NAMED_PARAM_3153,奇襲のエキスパートトルーパー,奇襲のエキスパートトルーパー
-NAMED_PARAM_3154,堕ちたる者,堕ちたる者
-NAMED_PARAM_3156,魔法暗殺部隊の目眩まし,魔法暗殺部隊の目眩まし
-NAMED_PARAM_3157,蝕まれた,蝕まれた
-NAMED_PARAM_3158,蝕まれた,蝕まれた
-NAMED_PARAM_3159,蝕まれた,蝕まれた
-NAMED_PARAM_3160,蝕まれた,蝕まれた
-NAMED_PARAM_3161,蝕まれた,蝕まれた
-NAMED_PARAM_3162,蝕まれた,蝕まれた
-NAMED_PARAM_3163,蝕まれた,蝕まれた
-NAMED_PARAM_3164,蝕まれた,蝕まれた
+NAMED_PARAM_3152,潜入部隊アンセスターオーク,Infiltration Team Ancestor Orc
+NAMED_PARAM_3153,奇襲のエキスパートトルーパー,Ambush Expert Trooper
+NAMED_PARAM_3154,堕ちたる者,The Fallen
+NAMED_PARAM_3156,魔法暗殺部隊の目眩まし,Dazzle of the Magic Assassination Unit
+NAMED_PARAM_3157,蝕まれた,Corrupted
+NAMED_PARAM_3158,蝕まれた,Corrupted
+NAMED_PARAM_3159,蝕まれた,Corrupted
+NAMED_PARAM_3160,蝕まれた,Corrupted
+NAMED_PARAM_3161,蝕まれた,Corrupted
+NAMED_PARAM_3162,蝕まれた,Corrupted
+NAMED_PARAM_3163,蝕まれた,Corrupted
+NAMED_PARAM_3164,蝕まれた,Corrupted
 NAMED_PARAM_3167,,
-NAMED_PARAM_3168,闇に呑まれ硬化した,闇に呑まれ硬化した
-NAMED_PARAM_3169,闇に呑まれ硬化した,闇に呑まれ硬化した
-NAMED_PARAM_3170,闇に呑まれ硬化した,闇に呑まれ硬化した
-NAMED_PARAM_3171,闇に呑まれ硬化した,闇に呑まれ硬化した
-NAMED_PARAM_3172,闇に呑まれ強暴化した,闇に呑まれ強暴化した
-NAMED_PARAM_3173,闇に呑まれ硬化した,闇に呑まれ硬化した
-NAMED_PARAM_3174,闇に呑まれ強暴化した,闇に呑まれ強暴化した
-NAMED_PARAM_3175,闇に呑まれ強暴化した,闇に呑まれ強暴化した
-NAMED_PARAM_3176,闇に呑まれ強暴化した,闇に呑まれ強暴化した
-NAMED_PARAM_3177,闇に呑まれ強暴化した,闇に呑まれ強暴化した
-NAMED_PARAM_3178,闇に呑まれ強暴化した,闇に呑まれ強暴化した
-NAMED_PARAM_3179,闇に呑まれ強暴化した,闇に呑まれ強暴化した
+NAMED_PARAM_3168,闇に呑まれ硬化した,Hardened by Darkness
+NAMED_PARAM_3169,闇に呑まれ硬化した,Hardened by Darkness
+NAMED_PARAM_3170,闇に呑まれ硬化した,Hardened by Darkness
+NAMED_PARAM_3171,闇に呑まれ硬化した,Hardened by Darkness
+NAMED_PARAM_3172,闇に呑まれ強暴化した,Ravaged by Darkness
+NAMED_PARAM_3173,闇に呑まれ硬化した,Hardened by Darkness
+NAMED_PARAM_3174,闇に呑まれ強暴化した,Ravaged by Darkness
+NAMED_PARAM_3175,闇に呑まれ強暴化した,Ravaged by Darkness
+NAMED_PARAM_3176,闇に呑まれ強暴化した,Ravaged by Darkness
+NAMED_PARAM_3177,闇に呑まれ強暴化した,Ravaged by Darkness
+NAMED_PARAM_3178,闇に呑まれ強暴化した,Ravaged by Darkness
+NAMED_PARAM_3179,闇に呑まれ強暴化した,Ravaged by Darkness
 NAMED_PARAM_3180,,
 NAMED_PARAM_3181,,
 NAMED_PARAM_3182,,
-NAMED_PARAM_3183,蝕まれた,蝕まれた
+NAMED_PARAM_3183,蝕まれた,Corrupted
 NAMED_PARAM_3184,,
-NAMED_PARAM_3185,蝕まれた,蝕まれた
+NAMED_PARAM_3185,蝕まれた,Corrupted
 NAMED_PARAM_3186,,
 NAMED_PARAM_3187,,
 NAMED_PARAM_3188,,
@@ -2320,24 +2320,24 @@ NAMED_PARAM_3189,,
 NAMED_PARAM_3190,,
 NAMED_PARAM_3191,,
 NAMED_PARAM_3192,,
-NAMED_PARAM_3193,漲る力を秘めた,漲る力を秘めた
-NAMED_PARAM_3194,黒騎士の戦徒,黒騎士の戦徒
-NAMED_PARAM_3195,白竜黒騎士の影,白竜黒騎士の影
-NAMED_PARAM_3196,白竜,白竜
+NAMED_PARAM_3193,漲る力を秘めた,Overflowing Force
+NAMED_PARAM_3194,黒騎士の戦徒,The Black Knight's Myrmidon
+NAMED_PARAM_3195,白竜黒騎士の影,Shadow of the White Dragon Black Knight
+NAMED_PARAM_3196,白竜,The White Dragon
 NAMED_PARAM_3197,白竜の覚者・レオ,"Arisen of the White Dragon, Leo"
 NAMED_PARAM_3198,,
 NAMED_PARAM_3199,異界の,of the Other World
-NAMED_PARAM_3200,激昂,激昂
-NAMED_PARAM_3203,激昂,激昂
-NAMED_PARAM_3204,激昂,激昂
-NAMED_PARAM_3205,激昂,激昂
-NAMED_PARAM_3206,激昂,激昂
-NAMED_PARAM_3207,激昂スパインバック,激昂スパインバック
-NAMED_PARAM_3208,激昂,激昂
-NAMED_PARAM_3209,激昂,激昂
-NAMED_PARAM_3210,激昂,激昂
+NAMED_PARAM_3200,激昂,enraged
+NAMED_PARAM_3203,激昂,enraged
+NAMED_PARAM_3204,激昂,enraged
+NAMED_PARAM_3205,激昂,enraged
+NAMED_PARAM_3206,激昂,enraged
+NAMED_PARAM_3207,激昂スパインバック,Severely Infected Spineback
+NAMED_PARAM_3208,激昂,enraged
+NAMED_PARAM_3209,激昂,enraged
+NAMED_PARAM_3210,激昂,enraged
 NAMED_PARAM_3211,異界の,of the Other World
-NAMED_PARAM_3212,激昂,激昂
+NAMED_PARAM_3212,激昂,enraged
 NAMED_PARAM_3213,,
 NAMED_PARAM_3214,,
 NAMED_PARAM_3215,,
