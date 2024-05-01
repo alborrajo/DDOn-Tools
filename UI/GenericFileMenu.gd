@@ -150,10 +150,10 @@ func store_csv_line_crlf(file: File, csv_data: Array):
 static func parse_bool(string: String) -> bool:
 	return string.strip_edges().to_lower() == "true"
 
-static func find_schema_indices(schema: Array, reference: Array, out: Dictionary) -> int:
+static func find_schema_indices(schema: Array, reference: Array) -> Dictionary:
+	var out := {}
 	for i in range(schema.size()):
 		var index = reference.find(schema[i])
-		if index == -1:
-			return FAILED
-		out[schema[i]] = index
-	return OK
+		if index != -1:
+			out[schema[i]] = index
+	return out

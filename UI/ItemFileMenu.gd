@@ -55,14 +55,8 @@ func _do_load_file(file: File) -> void:
 		schema_indices = LEGACY_SCHEMA_INDEXES
 	else:
 		header[0] = header[0].trim_prefix("#")
-		schema_indices = {}
-		var result := find_schema_indices(header, SCHEMA, schema_indices)
-		if result != OK:
-			var err_message := "Invalid CSV file. Header doesn't have a valid format "
-			printerr(err_message, file.get_path(), " ", header)
-			notification_popup_node.notify(err_message)
-			return
-	
+		schema_indices = find_schema_indices(header, SCHEMA)
+		
 	# Clear enemy set state
 	SetProvider.clear_gathering_spots()
 		
