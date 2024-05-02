@@ -49,22 +49,35 @@ func _on_ui_stage_selected(stage_no):
 
 func _load_stage_map(stage_no) -> void:
 	var stage_no_as_int := int(stage_no)
-	var field_id := DataProvider.stage_no_to_belonging_field_id(stage_no_as_int)
-	if field_id == -1:
-		_add_stage_maps(stage_no_as_int)
-	else:
-		_add_field_maps(field_id-1) # why is it off by one? maybe it needs an additional conversion?
+	
+	if _add_field_maps(stage_no_as_int):
+		return
 
-func _add_field_maps(field_id: int) -> void:
-	# Since Mergoda Ruins uses m01_l01 instead of m00_l00 like the rest
-	if not _do_add_field_maps(field_id, 0, 0):
-		_do_add_field_maps(field_id, 1, 1)
-		
-func _do_add_field_maps(field_id: int, m: int, l: int) -> bool:
-	var stage_map_resource := "res://resources/maps/field00"+String(field_id)+"_m0"+String(m)+"_l"+String(l)+".png"
+	if _add_room_maps(stage_no_as_int):
+		return
+
+	if _add_stage_maps(stage_no_as_int):
+		return
+
+	printerr("Couldn't find a map of any kind for this stage (Stage No. %s)" % [stage_no])
+
+func _add_field_maps(stage_no: int) -> bool:
+	var field_id = DataProvider.stage_no_to_belonging_field_id(stage_no)
+	if field_id == -1:
+		print("Couldn't use a field map for this stage (Stage No. %s doesn't belong to a field)" % [stage_no])
+		return false
+
+	var map_name := "field00"+String(field_id-1) # why is it off by one? maybe it needs an additional conversion?
+	if not _do_add_field_maps(map_name, 0, 0):
+		# Since Mergoda Ruins uses m01_l01 instead of m00_l00 like the rest
+		return _do_add_field_maps(map_name, 1, 1)
+	return true
+
+func _do_add_field_maps(map_name: String, m: int, l: int) -> bool:
+	var stage_map_resource := "res://resources/maps/"+map_name+"_m0"+String(m)+"_l"+String(l)+".png"
 	var resource := _load_map_resource(stage_map_resource)
 	if resource == null:
-		printerr("Couldn't find a map for this field (Field ID %s)" % [field_id])
+		print("Couldn't find a field map for this field (%s)" % [map_name])
 		return false
 	else:
 		var map_sprite := Sprite.new()
@@ -73,21 +86,43 @@ func _do_add_field_maps(field_id: int, m: int, l: int) -> bool:
 		map_layers.get_child(l).add_child(map_sprite)
 		print("Loaded map ", stage_map_resource)
 		return true
-		
-		
-func _add_stage_maps(stage_no: int) -> void:
+
+func _add_room_maps(stage_no: int) -> bool:
+	var stage_room := DataProvider.stage_no_to_stage_room(stage_no)
+	var found_map := false
+	if stage_room != null:
+		for layer_index in range(MAX_LAYERS):
+			var layer := map_layers.get_child(layer_index)
+			var stage_map_resource := "res://resources/maps/"+stage_room.map_name+"_l"+String(layer_index)+".png"
+			var resource := _load_map_resource(stage_map_resource)
+			if resource == null:
+				print("Couldn't find the map ", stage_map_resource)
+			else:
+				found_map = true
+				var map_sprite := Sprite.new()
+				map_sprite.texture = load(stage_map_resource)
+				map_sprite.centered = false
+				map_sprite.global_position = stage_room.offset
+				layer.add_child(map_sprite)
+				print("Loaded map ", stage_map_resource)
+	else:
+		print("Couldn't find an associated room (rm) map for this stage (Stage No. %s)" % [stage_no])
+	return found_map
+
+func _add_stage_maps(stage_no: int) -> bool:
 	var stage_map := DataProvider.stage_no_to_stage_map(stage_no)
 	var origin := Vector2(0,-512) # 512 (map tile height in px)
+	var found_map := false
 	if "ParamList" in stage_map:
 		for layer_index in range(MAX_LAYERS):
 			var layer := map_layers.get_child(layer_index)
 			for param in stage_map["ParamList"]:
-				# TODO: Load all layers and have a control to switch between them
 				var stage_map_resource := "res://resources/maps/"+String(param["ModelName"])+"_l"+String(layer_index)+".png"
 				var resource := _load_map_resource(stage_map_resource)
 				if resource == null:
 					print("Couldn't find the map ", stage_map_resource)
 				else:
+					found_map = true
 					var map_sprite := Sprite.new()
 					map_sprite.texture = load(stage_map_resource)
 					map_sprite.centered = false
@@ -95,7 +130,8 @@ func _add_stage_maps(stage_no: int) -> void:
 					layer.add_child(map_sprite)
 					print("Loaded map ", stage_map_resource)
 	else:
-		printerr("Couldn't find a map for this stage (Stage No. %s)" % [stage_no])
+		print("Couldn't assemble a map for this stage with the info form stage_map (Stage No. %s)" % [stage_no])
+	return found_map
 
 func _load_stage_markers(stage_no):
 	var stage_id = DataProvider.stage_no_to_stage_id(int(stage_no))
