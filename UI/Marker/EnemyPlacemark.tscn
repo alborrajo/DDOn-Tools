@@ -10,7 +10,7 @@ border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color( 0.435294, 0.835294, 1, 1 )
+border_color = Color( 0.364706, 0.886275, 1, 1 )
 
 [node name="EnemyPlacemark" instance=ExtResource( 2 )]
 focus_mode = 0

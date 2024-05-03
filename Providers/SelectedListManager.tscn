@@ -19,15 +19,13 @@ func _toggle_selection(placemark: GenericPlacemark, data: Object):
 
 	var index = _find_entry_index(placemark)
 	if index != -1:
-		var panel = placemark.get_node(\"SelectionPanel\")
-		if panel:
-			panel.visible = false
-			selected_list.remove(index)
-			reload_details_panel()
+		selected_list.remove(index)
+		reload_details_panel()
+		print(\"removed item: \", placemark)
 	else:
 		selected_list.append(entry)
+		print(\"selected: \", placemark)
 		detailspanel.show_details_of(data)
-		highlight()
 
 # Function to find the index of an entry in the list
 func _find_entry_index(placemark: GenericPlacemark) -> int:
@@ -36,19 +34,12 @@ func _find_entry_index(placemark: GenericPlacemark) -> int:
 			return i
 	return -1
 
-# Adds the highlight selection around anything inside the selected_list
-func highlight():
-	for entry in selected_list:
-		var placemark = entry[\"placemark\"]
-		var selectionpanel = placemark.get_node(\"SelectionPanel\")
-		if selectionpanel:
-			selectionpanel.visible = true
-
 # Function to clear the list
 func _clear_list():
 	clear_all_highlights()
 	selected_list.clear()
 	
+# Function that removes all the highlights from everything in the selectedlist before the list is wiped.
 func clear_all_highlights():
 	for entry in selected_list:
 		var placemark = entry[\"placemark\"]
