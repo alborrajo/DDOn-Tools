@@ -6,7 +6,11 @@ var selectionpanel = null
 
 func ready():
 	connect("selection_panel", self, "receive_selection_panel")
-	
+	SelectedListManager.connect("do_clear_all", self, "_clear_all")
+
+func _clear_all():
+	remove_highlight(selectionpanel)
+
 func _gui_input(event):
 	if event is InputEventMouseButton and (event as InputEventMouseButton).button_mask == BUTTON_RIGHT:
 		emit_signal("placemark_removed")

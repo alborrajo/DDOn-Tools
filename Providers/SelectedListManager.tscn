@@ -6,6 +6,7 @@ script/source = "extends Node
 
 var selected_list = []
 onready var detailspanel: DetailsPanel = DetailsPanel.get_instance(get_tree())
+signal do_clear_all
 
 # Function to apply values to selected enemy or item
 func apply_values_to_selected_type(parameter_name: String, parameter_value: int):
@@ -21,10 +22,8 @@ func _toggle_selection(placemark: GenericPlacemark, data: Object):
 	if index != -1:
 		selected_list.remove(index)
 		reload_details_panel()
-		print(\"removed item: \", placemark)
 	else:
 		selected_list.append(entry)
-		print(\"selected: \", placemark)
 		detailspanel.show_details_of(data)
 
 # Function to find the index of an entry in the list
@@ -43,9 +42,7 @@ func _clear_list():
 func clear_all_highlights():
 	for entry in selected_list:
 		var placemark = entry[\"placemark\"]
-		var selectionpanel = placemark.get_node(\"SelectionPanel\")
-		if selectionpanel:
-			selectionpanel.visible = false
+		emit_signal(\"do_clear_all\")
 			
 # Function that will back load the previous panel upon deselecting
 func reload_details_panel():
