@@ -6,11 +6,16 @@ export (PackedScene) var enemy_placemark_packed_scene: PackedScene = preload("re
 export (Resource) var enemy_set: Resource
 
 onready var _enemy_set := enemy_set as EnemySet
-
+onready var set_tod_value = 0
 
 func _ready() -> void:
 	_enemy_set.connect("changed", self, "_on_enemy_set_changed")
+	SetProvider.connect("selected_day_night", self, "_on_selected_day_night")
 	_on_enemy_set_changed()
+	
+func _on_selected_day_night(tod_index: int):
+	set_tod_value = tod_index
+	print("your value my good man: ", set_tod_value)
 	
 func _on_enemy_set_changed() -> void:
 	# Rebuild children elements
@@ -26,6 +31,8 @@ func _on_enemy_set_changed() -> void:
 
 func _on_enemy_removed(index: int) -> void:
 	_enemy_set.remove_enemy(index)
+	SetProvider.select_day_night(set_tod_value)
+	
 
 func add_enemy(enemy: Enemy) -> void:
 	_enemy_set.add_enemy(enemy)
