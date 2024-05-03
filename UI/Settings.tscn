@@ -5,7 +5,6 @@
 [ext_resource path="res://UI/font.tres" type="DynamicFont" id=3]
 
 [node name="SettingsWindowDialog" type="WindowDialog"]
-visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -126,7 +125,7 @@ margin_right = 129.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 
-[node name="PassLineEdit2" type="LineEdit" parent="VBoxContainer/RPCCredentialsGridContainer"]
+[node name="PassLineEdit" type="LineEdit" parent="VBoxContainer/RPCCredentialsGridContainer"]
 margin_left = 133.0
 margin_right = 262.0
 margin_bottom = 28.0
