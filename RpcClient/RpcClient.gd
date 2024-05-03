@@ -29,11 +29,11 @@ func _ready():
 func get_info() -> Array:
 	return _get_array(RPC_PATH_INFO)
 	
-func get_chat(since_iso_date: String = "") -> Array:
-	if since_iso_date == "":
+func get_chat(since) -> Array:
+	if since == null:
 		return _get_array(RPC_PATH_CHAT)
 	else:
-		return _get_array(RPC_PATH_CHAT, {"since": since_iso_date})
+		return _get_array(RPC_PATH_CHAT, {"since": since})
 		
 func post_chat(chat_message_log_entry: Dictionary) -> void:
 	_post_dictionary(RPC_PATH_CHAT, chat_message_log_entry)
