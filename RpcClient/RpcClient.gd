@@ -11,6 +11,10 @@ const STORAGE_KEY_RPC_PORT := "port"
 const STORAGE_KEY_RPC_PORT_DEFAULT := 52099
 const STORAGE_KEY_RPC_PATH := "path"
 const STORAGE_KEY_RPC_PATH_DEFAULT := "/rpc/"
+const STORAGE_KEY_RPC_USERNAME := "username"
+const STORAGE_KEY_RPC_USERNAME_DEFAULT := ""
+const STORAGE_KEY_RPC_PASSWORD := "password"
+const STORAGE_KEY_RPC_PASSWORD_DEFAULT := ""
 
 const RPC_PATH_INFO = "info"
 const RPC_PATH_CHAT = "chat"
@@ -38,8 +42,10 @@ func _get_array(relative_path: String, query_params: Dictionary = {}) -> Array:
 	var host = StorageProvider.get_value(STORAGE_SECTION_RPC, STORAGE_KEY_RPC_HOST, STORAGE_KEY_RPC_HOST_DEFAULT)
 	var port = StorageProvider.get_value(STORAGE_SECTION_RPC, STORAGE_KEY_RPC_PORT, STORAGE_KEY_RPC_PORT_DEFAULT)
 	var base_path = StorageProvider.get_value(STORAGE_SECTION_RPC, STORAGE_KEY_RPC_PATH, STORAGE_KEY_RPC_PATH_DEFAULT)
+	var username = StorageProvider.get_value(STORAGE_SECTION_RPC, STORAGE_KEY_RPC_USERNAME, STORAGE_KEY_RPC_USERNAME_DEFAULT)
+	var password = StorageProvider.get_value(STORAGE_SECTION_RPC, STORAGE_KEY_RPC_PASSWORD, STORAGE_KEY_RPC_PASSWORD_DEFAULT)
 	var path = str(base_path, relative_path)
-	var res = make_request(HTTPClient.METHOD_GET, host, port, path, query_params)
+	var res = make_request(HTTPClient.METHOD_GET, host, port, path, query_params, "", username, password)
 	if typeof(res) != TYPE_ARRAY:
 		print("RpcClient: expected Json Array") 
 		# {} = Dictionary 
@@ -51,10 +57,12 @@ func _post_dictionary(relative_path: String, body: Dictionary) -> void:
 	var host = StorageProvider.get_value(STORAGE_SECTION_RPC, STORAGE_KEY_RPC_HOST, STORAGE_KEY_RPC_HOST_DEFAULT)
 	var port = StorageProvider.get_value(STORAGE_SECTION_RPC, STORAGE_KEY_RPC_PORT, STORAGE_KEY_RPC_PORT_DEFAULT)
 	var base_path = StorageProvider.get_value(STORAGE_SECTION_RPC, STORAGE_KEY_RPC_PATH, STORAGE_KEY_RPC_PATH_DEFAULT)
+	var username = StorageProvider.get_value(STORAGE_SECTION_RPC, STORAGE_KEY_RPC_USERNAME, STORAGE_KEY_RPC_USERNAME_DEFAULT)
+	var password = StorageProvider.get_value(STORAGE_SECTION_RPC, STORAGE_KEY_RPC_PASSWORD, STORAGE_KEY_RPC_PASSWORD_DEFAULT)
 	var path = str(base_path, relative_path)
-	var res = make_request(HTTPClient.METHOD_POST, host, port, path, {}, JSON.print(body))
+	var res = make_request(HTTPClient.METHOD_POST, host, port, path, {}, JSON.print(body), username, password)
 
-func make_request(method: int, host: String, port: int = 80, path: String = '/', query_params: Dictionary = {}, body: String = ""):
+func make_request(method: int, host: String, port: int = 80, path: String = '/', query_params: Dictionary = {}, body: String = "", username: String = "", password: String = ""):
 	var err = 0
 	var http = HTTPClient.new()
 	err = http.connect_to_host(host, port)
@@ -87,6 +95,9 @@ func make_request(method: int, host: String, port: int = 80, path: String = '/',
 		"User-Agent: Pirulo/1.0 (Godot)",
 		"Accept: */*"
 	]
+	
+	if username.length() > 0 and password.length() > 0:
+		headers.append("Authorization: Basic "+Marshalls.utf8_to_base64(username+":"+password))
 	
 	err = http.request(method, str(path,"?",query_string), headers, body)
 	if err != OK:
