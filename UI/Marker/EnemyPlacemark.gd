@@ -7,17 +7,13 @@ const COLOR_DEFAULT = Color.white
 
 export (Resource) var enemy: Resource setget set_enemy
 
-signal selection_panel
 
 onready var _detailsPanel: DetailsPanel = DetailsPanel.get_instance(get_tree())
 
 func _ready():
 	.ready()
 	SetProvider.connect("selected_day_night", self, "_on_day_night_selected")
-	var selectionpanel = get_node("SelectionPanel")
-	emit_signal("selection_panel", selectionpanel)
 
-	
 func _on_day_night_selected(index):
 	if enemy != null:
 		_update_placemark_visibility(index)

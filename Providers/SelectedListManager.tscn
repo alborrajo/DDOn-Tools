@@ -6,7 +6,7 @@ script/source = "extends Node
 
 var selected_list = []
 onready var detailspanel: DetailsPanel = DetailsPanel.get_instance(get_tree())
-signal do_clear_all
+signal selection_cleared
 
 # Function to apply values to selected enemy or item
 func apply_values_to_selected_type(parameter_name: String, parameter_value: int):
@@ -42,7 +42,7 @@ func _clear_list():
 func clear_all_highlights():
 	for entry in selected_list:
 		var placemark = entry[\"placemark\"]
-		emit_signal(\"do_clear_all\")
+		emit_signal(\"selection_cleared\")
 			
 # Function that will back load the previous panel upon deselecting
 func reload_details_panel():

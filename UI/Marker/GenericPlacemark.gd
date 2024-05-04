@@ -5,8 +5,8 @@ signal placemark_removed()
 var selectionpanel = null
 
 func ready():
-	connect("selection_panel", self, "receive_selection_panel")
-	SelectedListManager.connect("do_clear_all", self, "_clear_all")
+	SelectedListManager.connect("selection_cleared", self, "_clear_all")
+	selectionpanel = get_node("SelectionPanel")
 
 func _clear_all():
 	remove_highlight(selectionpanel)
