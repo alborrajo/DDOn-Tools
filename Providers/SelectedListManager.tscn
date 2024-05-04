@@ -8,6 +8,9 @@ var selected_list = []
 onready var detailspanel: DetailsPanel = DetailsPanel.get_instance(get_tree())
 signal selection_cleared
 
+func _init():
+	connect(\"placemark_removed\", self, \"delete_selected\")
+
 # Function to apply values to selected enemy or item
 func apply_values_to_selected_type(parameter_name: String, parameter_value: int):
 	for entry in selected_list:
@@ -50,6 +53,29 @@ func reload_details_panel():
 		var last_entry = selected_list[selected_list.size() - 1]
 		var data = last_entry[\"data\"]
 		detailspanel.show_details_of(data)
+
+#func delete_selected():
+#	for entry in selected_list:
+#		var placemark = entry[\"placemark\"]
+#		placemark.delete_self()
+
+func delete_selected():
+	var entries_to_delete = []
+	# Store entries to delete in reverse order
+	for index in range(selected_list.size() - 1, -1, -1):
+		var entry = selected_list[index]
+		var placemark = entry[\"placemark\"]
+		if placemark:
+			entries_to_delete.append(entry)
+			placemark.delete_self()
+
+	# Remove entries from selected_list
+	for entry_to_delete in entries_to_delete:
+		selected_list.erase(selected_list.find(entry_to_delete))
+		if selected_list.size() <= 0:
+			_clear_list()
+
+
 "
 
 [node name="SelectedListManager" type="Node"]

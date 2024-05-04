@@ -11,12 +11,13 @@ func ready():
 func _clear_all():
 	selectionpanel.visible = false
 
+# TODO, Figure out how to add support for the old behaviour of right clicking to delete without needing something selected.
+# TODO, Fix crash when you continue to shift-select after deleting nodes
+
 func _gui_input(event):
 	if event is InputEventMouseButton and (event as InputEventMouseButton).button_mask == BUTTON_RIGHT:
-		emit_signal("placemark_removed")
-		SelectedListManager._clear_list()
-		queue_free()
-
+		SelectedListManager.delete_selected()
+			
 func receive_selection_panel(selectionpanel):
 	self.selectionpanel = selectionpanel
 	
@@ -30,3 +31,7 @@ func selection_function(type):
 		SelectedListManager._clear_list()
 		SelectedListManager._toggle_selection(self, type)
 		selectionpanel.visible = true
+
+func delete_self():
+	emit_signal("placemark_removed")
+	queue_free()
