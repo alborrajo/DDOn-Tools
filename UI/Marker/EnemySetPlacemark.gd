@@ -15,7 +15,6 @@ func _ready() -> void:
 	
 func _on_selected_day_night(tod_index: int):
 	set_tod_value = tod_index
-	print("your value my good man: ", set_tod_value)
 	
 func _on_enemy_set_changed() -> void:
 	# Rebuild children elements
@@ -36,6 +35,7 @@ func _on_enemy_removed(index: int) -> void:
 
 func add_enemy(enemy: Enemy) -> void:
 	_enemy_set.add_enemy(enemy)
+	SetProvider.select_day_night(set_tod_value)
 
 func clear_enemies() -> void:
 	_enemy_set.clear_enemies()
