@@ -28,6 +28,7 @@ func _toggle_selection(placemark: GenericPlacemark, data: Object):
 	else:
 		selected_list.append(entry)
 		detailspanel.show_details_of(data)
+		print(\"The Selected list as this time:\", selected_list)
 
 # Function to find the index of an entry in the list
 func _find_entry_index(placemark: GenericPlacemark) -> int:
@@ -54,28 +55,27 @@ func reload_details_panel():
 		var data = last_entry[\"data\"]
 		detailspanel.show_details_of(data)
 
-#func delete_selected():
-#	for entry in selected_list:
-#		var placemark = entry[\"placemark\"]
-#		placemark.delete_self()
-
+# Function that handles the deletion of multiple placemarks.
 func delete_selected():
-	var entries_to_delete = []
-	# Store entries to delete in reverse order
 	for index in range(selected_list.size() - 1, -1, -1):
 		var entry = selected_list[index]
 		var placemark = entry[\"placemark\"]
 		if placemark:
-			entries_to_delete.append(entry)
 			placemark.delete_self()
+			var index_to_remove = _find_entry_index(placemark)
+			if index_to_remove != -1:
+				selected_list.remove(index_to_remove)
+	if selected_list.empty():
+			print(\"Final list;\", selected_list)
 
-	# Remove entries from selected_list
-	for entry_to_delete in entries_to_delete:
-		selected_list.erase(selected_list.find(entry_to_delete))
-		if selected_list.size() <= 0:
-			_clear_list()
+func _unselected_removal(placemark: GenericPlacemark, data: Object):
+	var entry = {\"placemark\": placemark, \"data\": data}
 
-
+	var index = _find_entry_index(placemark)
+	if index -1:
+		selected_list.append(entry)
+		detailspanel.show_details_of(data)
+		print(\"We're doing the unselected approach\")
 "
 
 [node name="SelectedListManager" type="Node"]

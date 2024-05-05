@@ -3,6 +3,7 @@ class_name GenericPlacemark
 
 signal placemark_removed()
 var selectionpanel = null
+var fake_data = 1
 
 func ready():
 	SelectedListManager.connect("selection_cleared", self, "_clear_all")
@@ -11,11 +12,9 @@ func ready():
 func _clear_all():
 	selectionpanel.visible = false
 
-# TODO, Figure out how to add support for the old behaviour of right clicking to delete without needing something selected.
-# TODO, Fix crash when you continue to shift-select after deleting nodes
-
 func _gui_input(event):
 	if event is InputEventMouseButton and (event as InputEventMouseButton).button_mask == BUTTON_RIGHT:
+		SelectedListManager._unselected_removal(self, fake_data)
 		SelectedListManager.delete_selected()
 			
 func receive_selection_panel(selectionpanel):

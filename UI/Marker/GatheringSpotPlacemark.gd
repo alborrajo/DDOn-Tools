@@ -5,6 +5,8 @@ export (PackedScene) var item_placemark_packed_scene: PackedScene = preload("res
 
 export (Resource) var gathering_spot: Resource
 
+var indicesToRemove = []
+
 onready var _gathering_spot := gathering_spot as GatheringSpot
 
 
@@ -17,15 +19,23 @@ func _on_gathering_spot_changed() -> void:
 	for child in $VBoxContainer.get_children():
 		$VBoxContainer.remove_child(child)
 		
-	for index in _gathering_spot.get_gathering_items().size():
-		var item: GatheringItem = _gathering_spot.get_gathering_items()[index]
+	var gatheringItems = _gathering_spot.get_gathering_items()
+
+	for index in gatheringItems.size():
+		var item: GatheringItem = gatheringItems[index]
 		var item_placemark: GatheringItemPlacemark = item_placemark_packed_scene.instance()
 		item_placemark.item = item
 		item_placemark.connect("placemark_removed", self, "_on_item_removed", [index])
 		$VBoxContainer.add_child(item_placemark)
 
+	# Iterate through the list of items to remove and remove them
+	for indexToRemove in indicesToRemove:
+		_gathering_spot.remove_item(indexToRemove)
+		print("Item at index", indexToRemove, "removed successfully.")
+
 func _on_item_removed(index: int) -> void:
-	_gathering_spot.remove_item(index)
+	indicesToRemove.append(index)
+
 
 func add_item(item: GatheringItem) -> void:
 	_gathering_spot.add_item(item)

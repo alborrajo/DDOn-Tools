@@ -5,6 +5,8 @@ export (PackedScene) var enemy_placemark_packed_scene: PackedScene = preload("re
 
 export (Resource) var enemy_set: Resource
 
+var indicesToRemove = []
+
 onready var _enemy_set := enemy_set as EnemySet
 onready var set_tod_value = 0
 
@@ -20,18 +22,26 @@ func _on_enemy_set_changed() -> void:
 	# Rebuild children elements
 	for child in $VBoxContainer.get_children():
 		$VBoxContainer.remove_child(child)
-		
-	for index in _enemy_set.get_enemies().size():
-		var enemy: Enemy = _enemy_set.get_enemies()[index]
+
+	var enemies = _enemy_set.get_enemies()
+	var indicesToRemove = []
+
+	for index in enemies.size():
+		var enemy: Enemy = enemies[index]
 		var enemy_placemark: EnemyPlacemark = enemy_placemark_packed_scene.instance()
 		enemy_placemark.enemy = enemy
 		enemy_placemark.connect("placemark_removed", self, "_on_enemy_removed", [index])
 		$VBoxContainer.add_child(enemy_placemark)
 
+	# Iterate through the list of enemies to remove and remove them
+	for indexToRemove in indicesToRemove:
+		_enemy_set.remove_enemy(indexToRemove)
+		print("Enemy at index", indexToRemove, "removed successfully.")
+
 func _on_enemy_removed(index: int) -> void:
-	_enemy_set.remove_enemy(index)
+	indicesToRemove.append(index)
 	SetProvider.select_day_night(set_tod_value)
-	
+
 
 func add_enemy(enemy: Enemy) -> void:
 	_enemy_set.add_enemy(enemy)
