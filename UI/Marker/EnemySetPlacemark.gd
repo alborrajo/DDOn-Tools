@@ -22,30 +22,31 @@ func _on_enemy_set_changed() -> void:
 	# Rebuild children elements
 	for child in $VBoxContainer.get_children():
 		$VBoxContainer.remove_child(child)
-
+	indicesToRemove.clear()
 	var enemies = _enemy_set.get_enemies()
-	var indicesToRemove = []
 
 	for index in enemies.size():
 		var enemy: Enemy = enemies[index]
 		var enemy_placemark: EnemyPlacemark = enemy_placemark_packed_scene.instance()
 		enemy_placemark.enemy = enemy
-		enemy_placemark.connect("placemark_removed", self, "_on_enemy_removed", [index])
+		enemy_placemark.connect("placemark_removed", self, "_get_enemy_removed", [index])
 		$VBoxContainer.add_child(enemy_placemark)
-
-	# Iterate through the list of enemies to remove and remove them
-	for indexToRemove in indicesToRemove:
-		_enemy_set.remove_enemy(indexToRemove)
-		print("Enemy at index", indexToRemove, "removed successfully.")
-
-func _on_enemy_removed(index: int) -> void:
-	indicesToRemove.append(index)
+	
 	SetProvider.select_day_night(set_tod_value)
+	
 
+func _get_enemy_removed(index: int) -> void:
+	indicesToRemove.append(index)
+	for entry in range (indicesToRemove.size() - 1, -1, -1):
+		_on_enemy_removed(entry)
+		print("Enemy at index ", entry, " removed successfully.")
+	
+func _on_enemy_removed(index: int) -> void:
+	_enemy_set.remove_enemy(index)
+	print("on removed values: ", index)
 
 func add_enemy(enemy: Enemy) -> void:
 	_enemy_set.add_enemy(enemy)
-	SetProvider.select_day_night(set_tod_value)
 
 func clear_enemies() -> void:
 	_enemy_set.clear_enemies()

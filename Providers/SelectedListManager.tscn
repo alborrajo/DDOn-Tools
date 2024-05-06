@@ -8,9 +8,6 @@ var selected_list = []
 onready var detailspanel: DetailsPanel = DetailsPanel.get_instance(get_tree())
 signal selection_cleared
 
-func _init():
-	connect(\"placemark_removed\", self, \"delete_selected\")
-
 # Function to apply values to selected enemy or item
 func apply_values_to_selected_type(parameter_name: String, parameter_value: int):
 	for entry in selected_list:
@@ -56,6 +53,7 @@ func reload_details_panel():
 		detailspanel.show_details_of(data)
 
 # Function that handles the deletion of multiple placemarks.
+# Handle the list in reverse order to ensure it doesn't trip over any indexes and fail to delete entries
 func delete_selected():
 	for index in range(selected_list.size() - 1, -1, -1):
 		var entry = selected_list[index]
@@ -65,17 +63,12 @@ func delete_selected():
 			var index_to_remove = _find_entry_index(placemark)
 			if index_to_remove != -1:
 				selected_list.remove(index_to_remove)
-	if selected_list.empty():
-			print(\"Final list;\", selected_list)
 
 func _unselected_removal(placemark: GenericPlacemark, data: Object):
 	var entry = {\"placemark\": placemark, \"data\": data}
-
 	var index = _find_entry_index(placemark)
 	if index -1:
 		selected_list.append(entry)
-		detailspanel.show_details_of(data)
-		print(\"We're doing the unselected approach\")
 "
 
 [node name="SelectedListManager" type="Node"]

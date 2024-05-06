@@ -18,7 +18,7 @@ func _on_gathering_spot_changed() -> void:
 	# Rebuild children elements
 	for child in $VBoxContainer.get_children():
 		$VBoxContainer.remove_child(child)
-		
+	indicesToRemove.clear()
 	var gatheringItems = _gathering_spot.get_gathering_items()
 
 	for index in gatheringItems.size():
@@ -28,13 +28,14 @@ func _on_gathering_spot_changed() -> void:
 		item_placemark.connect("placemark_removed", self, "_on_item_removed", [index])
 		$VBoxContainer.add_child(item_placemark)
 
-	# Iterate through the list of items to remove and remove them
-	for indexToRemove in indicesToRemove:
-		_gathering_spot.remove_item(indexToRemove)
-		print("Item at index", indexToRemove, "removed successfully.")
+
+func get_item_removed(index: int) -> void:
+	indicesToRemove.append(index)
+	for entry in range (indicesToRemove.size() -1, -1 , -1):
+		_on_item_removed(entry)
 
 func _on_item_removed(index: int) -> void:
-	indicesToRemove.append(index)
+	_gathering_spot.remove_item(index)
 
 
 func add_item(item: GatheringItem) -> void:

@@ -14,7 +14,8 @@ func _clear_all():
 
 func _gui_input(event):
 	if event is InputEventMouseButton and (event as InputEventMouseButton).button_mask == BUTTON_RIGHT:
-		SelectedListManager._unselected_removal(self, fake_data)
+		if selectionpanel.visible == false:
+			SelectedListManager._unselected_removal(self, fake_data) # Allows the deletion of nodes that aren't selected.
 		SelectedListManager.delete_selected()
 			
 func receive_selection_panel(selectionpanel):
@@ -34,3 +35,4 @@ func selection_function(type):
 func delete_self():
 	emit_signal("placemark_removed")
 	queue_free()
+	print("WE'VE BEEN CALLED, COUTN ME!!!")
