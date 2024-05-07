@@ -37,15 +37,12 @@ func _on_enemy_set_changed() -> void:
 	
 func cleared_delete_list():
 	index_to_delete.clear()
-	print("deleted index-to-delete data: ", index_to_delete)	
 	
 func _on_placemark_selected(index):
 	index_to_delete.append(index)
-	print("your deletion list: ", index_to_delete)
 	
 func _on_placemark_deselected(index):
 	index_to_delete.erase(index)
-	print("your reduced list: ", index_to_delete)
 	
 func _on_enemy_removed(index: int) -> void:
 	# Sort the indexes in ascending order
@@ -55,7 +52,6 @@ func _on_enemy_removed(index: int) -> void:
 	for i in range(index_to_delete.size() - 1, -1, -1):
 		var enemy_index = index_to_delete[i]
 		_enemy_set.remove_enemy(enemy_index)
-		print("removed: ", enemy_index, " now your list is: ", index_to_delete)
 		index_to_delete.remove(i)
 		
 	if index_to_delete.size() <= 0:

@@ -32,15 +32,12 @@ func _on_gathering_spot_changed() -> void:
 
 func cleared_delete_list():
 	index_to_delete.clear()
-	print("deleted index-to-delete data: ", index_to_delete)
 	
 func _on_placemark_selected(index):
 	index_to_delete.append(index)
-	print("your deletion list: ", index_to_delete)
 	
 func _on_placemark_deselected(index):
 	index_to_delete.erase(index)
-	print("your reduced list: ", index_to_delete)
 
 func _on_item_removed(index: int) -> void:
 	# Sort the indexes in ascending order
@@ -50,7 +47,6 @@ func _on_item_removed(index: int) -> void:
 	for i in range(index_to_delete.size() - 1, -1, -1):
 		var item_index = index_to_delete[i]
 		_gathering_spot.remove_item(item_index)
-		print("removed: ", item_index, " now your list is: ", index_to_delete)
 		index_to_delete.remove(i)
 		
 	if index_to_delete.size() <= 0:
