@@ -16,6 +16,11 @@ func _ready() -> void:
 
 func _on_selected_day_night(tod_index: int):
 	set_tod_value = tod_index
+	for child in $VBoxContainer.get_children():
+		if child is EnemyPlacemark:
+			var enemy_placemark: EnemyPlacemark = child
+			enemy_placemark._on_day_night_selected(tod_index)
+	
 	
 func _on_enemy_set_changed() -> void:
 	# Rebuild children elements
@@ -31,7 +36,7 @@ func _on_enemy_set_changed() -> void:
 		enemy_placemark.connect("placemark_deselected", self, "_on_placemark_deselected", [index])
 		enemy_placemark.connect("placemark_removed", self, "_on_enemy_removed", [index])
 		$VBoxContainer.add_child(enemy_placemark)
-		SetProvider._on_select_day_night(set_tod_value)
+	_on_selected_day_night(set_tod_value)
 	
 func _cleared_delete_list():
 	selected_indices.clear()
