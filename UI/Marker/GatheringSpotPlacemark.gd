@@ -5,37 +5,56 @@ export (PackedScene) var item_placemark_packed_scene: PackedScene = preload("res
 
 export (Resource) var gathering_spot: Resource
 
-var indicesToRemove = []
+onready var index_to_delete = []
 
 onready var _gathering_spot := gathering_spot as GatheringSpot
 
 
 func _ready() -> void:
 	_gathering_spot.connect("changed", self, "_on_gathering_spot_changed")
+	SelectedListManager.connect("selection_cleared", self, "cleared_delete_list")
 	_on_gathering_spot_changed()
 	
 func _on_gathering_spot_changed() -> void:
 	# Rebuild children elements
 	for child in $VBoxContainer.get_children():
 		$VBoxContainer.remove_child(child)
-	indicesToRemove.clear()
 	var gatheringItems = _gathering_spot.get_gathering_items()
 
 	for index in gatheringItems.size():
 		var item: GatheringItem = gatheringItems[index]
 		var item_placemark: GatheringItemPlacemark = item_placemark_packed_scene.instance()
 		item_placemark.item = item
+		item_placemark.connect("placemark_selected", self, "_on_placemark_selected", [index])
+		item_placemark.connect("placemark_deselected", self, "_on_placemark_deselected", [index])
 		item_placemark.connect("placemark_removed", self, "_on_item_removed", [index])
 		$VBoxContainer.add_child(item_placemark)
 
-
-func get_item_removed(index: int) -> void:
-	indicesToRemove.append(index)
-	for entry in range (indicesToRemove.size() -1, -1 , -1):
-		_on_item_removed(entry)
+func cleared_delete_list():
+	index_to_delete.clear()
+	print("deleted index-to-delete data: ", index_to_delete)
+	
+func _on_placemark_selected(index):
+	index_to_delete.append(index)
+	print("your deletion list: ", index_to_delete)
+	
+func _on_placemark_deselected(index):
+	index_to_delete.erase(index)
+	print("your reduced list: ", index_to_delete)
 
 func _on_item_removed(index: int) -> void:
-	_gathering_spot.remove_item(index)
+	# Sort the indexes in ascending order
+	index_to_delete.sort()
+	
+	# Iterate over index_to_delete in reverse order to avoid index shifting
+	for i in range(index_to_delete.size() - 1, -1, -1):
+		var item_index = index_to_delete[i]
+		_gathering_spot.remove_item(item_index)
+		print("removed: ", item_index, " now your list is: ", index_to_delete)
+		index_to_delete.remove(i)
+		
+	if index_to_delete.size() <= 0:
+		cleared_delete_list()
 
 
 func add_item(item: GatheringItem) -> void:

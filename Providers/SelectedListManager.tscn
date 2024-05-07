@@ -25,7 +25,6 @@ func _toggle_selection(placemark: GenericPlacemark, data: Object):
 	else:
 		selected_list.append(entry)
 		detailspanel.show_details_of(data)
-		print(\"The Selected list as this time:\", selected_list)
 
 # Function to find the index of an entry in the list
 func _find_entry_index(placemark: GenericPlacemark) -> int:

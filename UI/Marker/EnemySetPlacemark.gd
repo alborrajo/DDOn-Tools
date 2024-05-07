@@ -5,16 +5,16 @@ export (PackedScene) var enemy_placemark_packed_scene: PackedScene = preload("re
 
 export (Resource) var enemy_set: Resource
 
-var indicesToRemove = []
-
 onready var _enemy_set := enemy_set as EnemySet
 onready var set_tod_value = 0
+onready var index_to_delete = []
 
 func _ready() -> void:
 	_enemy_set.connect("changed", self, "_on_enemy_set_changed")
 	SetProvider.connect("selected_day_night", self, "_on_selected_day_night")
+	SelectedListManager.connect("selection_cleared", self, "cleared_delete_list")
 	_on_enemy_set_changed()
-	
+
 func _on_selected_day_night(tod_index: int):
 	set_tod_value = tod_index
 	
@@ -22,28 +22,44 @@ func _on_enemy_set_changed() -> void:
 	# Rebuild children elements
 	for child in $VBoxContainer.get_children():
 		$VBoxContainer.remove_child(child)
-	indicesToRemove.clear()
 	var enemies = _enemy_set.get_enemies()
 
 	for index in enemies.size():
 		var enemy: Enemy = enemies[index]
 		var enemy_placemark: EnemyPlacemark = enemy_placemark_packed_scene.instance()
 		enemy_placemark.enemy = enemy
-		enemy_placemark.connect("placemark_removed", self, "_get_enemy_removed", [index])
+		enemy_placemark.connect("placemark_selected", self, "_on_placemark_selected", [index])
+		enemy_placemark.connect("placemark_deselected", self, "_on_placemark_deselected", [index])
+		enemy_placemark.connect("placemark_removed", self, "_on_enemy_removed", [index])
 		$VBoxContainer.add_child(enemy_placemark)
 	
 	SetProvider.select_day_night(set_tod_value)
 	
-
-func _get_enemy_removed(index: int) -> void:
-	indicesToRemove.append(index)
-	for entry in range (indicesToRemove.size() - 1, -1, -1):
-		_on_enemy_removed(entry)
-		print("Enemy at index ", entry, " removed successfully.")
+func cleared_delete_list():
+	index_to_delete.clear()
+	print("deleted index-to-delete data: ", index_to_delete)	
+	
+func _on_placemark_selected(index):
+	index_to_delete.append(index)
+	print("your deletion list: ", index_to_delete)
+	
+func _on_placemark_deselected(index):
+	index_to_delete.erase(index)
+	print("your reduced list: ", index_to_delete)
 	
 func _on_enemy_removed(index: int) -> void:
-	_enemy_set.remove_enemy(index)
-	print("on removed values: ", index)
+	# Sort the indexes in ascending order
+	index_to_delete.sort()
+	
+	# Iterate over index_to_delete in reverse order to avoid index shifting
+	for i in range(index_to_delete.size() - 1, -1, -1):
+		var enemy_index = index_to_delete[i]
+		_enemy_set.remove_enemy(enemy_index)
+		print("removed: ", enemy_index, " now your list is: ", index_to_delete)
+		index_to_delete.remove(i)
+		
+	if index_to_delete.size() <= 0:
+		cleared_delete_list()
 
 func add_enemy(enemy: Enemy) -> void:
 	_enemy_set.add_enemy(enemy)
