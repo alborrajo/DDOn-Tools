@@ -38,8 +38,7 @@ func clear_list():
 	for entry in selected_list:
 		var placemark = entry[\"placemark\"]
 		emit_signal(\"selection_cleared\")
-		if selected_list.size() <= 0:
-			selected_list.clear()
+		selected_list.clear()
 	
 			
 # Function that will back load the previous panel upon deselecting

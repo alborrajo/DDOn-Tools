@@ -11,7 +11,7 @@ onready var selected_indices = []
 
 func _ready() -> void:
 	_enemy_set.connect("changed", self, "_on_enemy_set_changed")
-	SetProvider.connect("_on_select_day_night", self, "_on_selected_day_night")
+	SetProvider.connect("selected_day_night", self, "_on_selected_day_night")
 	SelectedListManager.connect("selection_cleared", self, "cleared_delete_list")
 	_on_enemy_set_changed()
 
@@ -32,8 +32,7 @@ func _on_enemy_set_changed() -> void:
 		enemy_placemark.connect("placemark_deselected", self, "_on_placemark_deselected", [index])
 		enemy_placemark.connect("placemark_removed", self, "_on_enemy_removed", [index])
 		$VBoxContainer.add_child(enemy_placemark)
-	
-	SetProvider._on_select_day_night(set_tod_value)
+		SetProvider._on_select_day_night(set_tod_value)
 	
 func _cleared_delete_list():
 	selected_indices.clear()
@@ -45,6 +44,7 @@ func _on_placemark_deselected(index):
 	selected_indices.erase(index)
 	
 func _on_enemy_removed(index: int) -> void:
+	print("we're removing stuff, better not show up in other conditions.")
 	# Sort the indexes in ascending order
 	selected_indices.sort()
 	
