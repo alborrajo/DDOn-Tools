@@ -28,14 +28,6 @@ func _on_gathering_spot_changed() -> void:
 		item_placemark.connect("placemark_removed", self, "_on_item_removed", [index])
 		$VBoxContainer.add_child(item_placemark)
 
-func _cleared_delete_list():
-	selected_indices.clear()
-	
-func _on_placemark_selected(index):
-	selected_indices.append(index)
-	
-func _on_placemark_deselected(index):
-	selected_indices.erase(index)
 
 func _on_item_removed(index: int) -> void:
 	# Sort the indexes in ascending order

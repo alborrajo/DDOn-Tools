@@ -38,16 +38,6 @@ func _on_enemy_set_changed() -> void:
 		$VBoxContainer.add_child(enemy_placemark)
 	_on_selected_day_night(set_tod_value)
 	
-func _cleared_delete_list():
-	selected_indices.clear()
-	
-func _on_placemark_selected(index):
-	selected_indices.append(index)
-	
-func _on_placemark_deselected(index):
-	selected_indices.erase(index)
-	
-	
 func _on_enemy_removed(index: int) -> void:
 	# Sort the indexes in ascending order
 	selected_indices.sort()
