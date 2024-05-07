@@ -29,7 +29,7 @@ func _update_placemark_visibility(index):
 			hide()
 
 func _on_EnemyPlacemark_pressed():
-	selection_function(enemy)
+	_selection_function(enemy)
 
 func set_enemy(em: Enemy) -> void:
 	if enemy != null and enemy.is_connected("changed", self, "_on_enemy_changed"):

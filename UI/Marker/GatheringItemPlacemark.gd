@@ -10,7 +10,7 @@ func _ready():
 	SetProvider.connect("selected_day_night", self, "_on_day_night_selected")
 
 func _on_GatheringItemPlacemark_pressed():
-	selection_function(item)
+	_selection_function(item)
 
 func set_item(i: GatheringItem) -> void:
 	if item != null and item.is_connected("changed", self, "_on_item_changed"):

@@ -15,13 +15,13 @@ func apply_values_to_selected_type(parameter_name: String, parameter_value: int)
 		data[parameter_name] = parameter_value
 
 # Function to check the list for type and removes if it exists already
-func _toggle_selection(placemark: GenericPlacemark, data: Object):
+func toggle_selection(placemark: GenericPlacemark, data: Object):
 	var entry = {\"placemark\": placemark, \"data\": data}
 
 	var index = _find_entry_index(placemark)
 	if index != -1:
 		selected_list.remove(index)
-		reload_details_panel()
+		_reload_details_panel() # Calling the previously selected enemies panel to avoid visual confusion
 	else:
 		selected_list.append(entry)
 		detailspanel.show_details_of(data)
@@ -33,19 +33,17 @@ func _find_entry_index(placemark: GenericPlacemark) -> int:
 			return i
 	return -1
 
-# Function to clear the list
-func _clear_list():
-	clear_all_highlights()
-	selected_list.clear()
-	
-# Function that removes all the highlights from everything in the selectedlist before the list is wiped.
-func clear_all_highlights():
+# Function to clear the list and emit a signal to inform the placemarks.
+func clear_list():
 	for entry in selected_list:
 		var placemark = entry[\"placemark\"]
 		emit_signal(\"selection_cleared\")
+		if selected_list.size() <= 0:
+			selected_list.clear()
+	
 			
 # Function that will back load the previous panel upon deselecting
-func reload_details_panel():
+func _reload_details_panel():
 	if selected_list.size() > 0:
 		var last_entry = selected_list[selected_list.size() - 1]
 		var data = last_entry[\"data\"]
@@ -63,7 +61,7 @@ func delete_selected():
 			if index_to_remove != -1:
 				selected_list.remove(index_to_remove)
 
-func _unselected_removal(placemark: GenericPlacemark, data: Object):
+func unselected_removal(placemark: GenericPlacemark, data: Object):
 	var entry = {\"placemark\": placemark, \"data\": data}
 	var index = _find_entry_index(placemark)
 	if index -1:

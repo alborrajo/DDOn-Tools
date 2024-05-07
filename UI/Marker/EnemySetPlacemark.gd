@@ -7,11 +7,11 @@ export (Resource) var enemy_set: Resource
 
 onready var _enemy_set := enemy_set as EnemySet
 onready var set_tod_value = 0
-onready var index_to_delete = []
+onready var selected_indices = []
 
 func _ready() -> void:
 	_enemy_set.connect("changed", self, "_on_enemy_set_changed")
-	SetProvider.connect("selected_day_night", self, "_on_selected_day_night")
+	SetProvider.connect("_on_select_day_night", self, "_on_selected_day_night")
 	SelectedListManager.connect("selection_cleared", self, "cleared_delete_list")
 	_on_enemy_set_changed()
 
@@ -33,29 +33,29 @@ func _on_enemy_set_changed() -> void:
 		enemy_placemark.connect("placemark_removed", self, "_on_enemy_removed", [index])
 		$VBoxContainer.add_child(enemy_placemark)
 	
-	SetProvider.select_day_night(set_tod_value)
+	SetProvider._on_select_day_night(set_tod_value)
 	
-func cleared_delete_list():
-	index_to_delete.clear()
+func _cleared_delete_list():
+	selected_indices.clear()
 	
 func _on_placemark_selected(index):
-	index_to_delete.append(index)
+	selected_indices.append(index)
 	
 func _on_placemark_deselected(index):
-	index_to_delete.erase(index)
+	selected_indices.erase(index)
 	
 func _on_enemy_removed(index: int) -> void:
 	# Sort the indexes in ascending order
-	index_to_delete.sort()
+	selected_indices.sort()
 	
-	# Iterate over index_to_delete in reverse order to avoid index shifting
-	for i in range(index_to_delete.size() - 1, -1, -1):
-		var enemy_index = index_to_delete[i]
+	# Iterate over selected_indices in reverse order to avoid index shifting
+	for i in range(selected_indices.size() - 1, -1, -1):
+		var enemy_index = selected_indices[i]
 		_enemy_set.remove_enemy(enemy_index)
-		index_to_delete.remove(i)
+		selected_indices.remove(i)
 		
-	if index_to_delete.size() <= 0:
-		cleared_delete_list()
+	if selected_indices.size() <= 0:
+		_cleared_delete_list()
 
 func add_enemy(enemy: Enemy) -> void:
 	_enemy_set.add_enemy(enemy)

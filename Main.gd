@@ -258,7 +258,7 @@ static func _get_center(parent: Node2D) -> Vector2:
 
 
 func _on_tab_tab_changed(tab):
-	SelectedListManager._clear_list()
+	SelectedListManager.clear_list()
 	for i in range(tab_and_map_node.size()):
 		var map_node: Node2D = tab_and_map_node[i]
 		if map_node != null:

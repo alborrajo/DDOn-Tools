@@ -11,7 +11,7 @@ var _enemy_sets := []
 var _gathering_spots := []
 
 
-func select_day_night(index):
+func _on_select_day_night(index):
 	# Emit a custom signal with the selected index
 	emit_signal(\"selected_day_night\", index)
 

@@ -5,7 +5,7 @@ export (PackedScene) var item_placemark_packed_scene: PackedScene = preload("res
 
 export (Resource) var gathering_spot: Resource
 
-onready var index_to_delete = []
+onready var selected_indices = []
 
 onready var _gathering_spot := gathering_spot as GatheringSpot
 
@@ -30,27 +30,27 @@ func _on_gathering_spot_changed() -> void:
 		item_placemark.connect("placemark_removed", self, "_on_item_removed", [index])
 		$VBoxContainer.add_child(item_placemark)
 
-func cleared_delete_list():
-	index_to_delete.clear()
+func _cleared_delete_list():
+	selected_indices.clear()
 	
 func _on_placemark_selected(index):
-	index_to_delete.append(index)
+	selected_indices.append(index)
 	
 func _on_placemark_deselected(index):
-	index_to_delete.erase(index)
+	selected_indices.erase(index)
 
 func _on_item_removed(index: int) -> void:
 	# Sort the indexes in ascending order
-	index_to_delete.sort()
+	selected_indices.sort()
 	
-	# Iterate over index_to_delete in reverse order to avoid index shifting
-	for i in range(index_to_delete.size() - 1, -1, -1):
-		var item_index = index_to_delete[i]
+	# Iterate over selected_indices in reverse order to avoid index shifting
+	for i in range(selected_indices.size() - 1, -1, -1):
+		var item_index = selected_indices[i]
 		_gathering_spot.remove_item(item_index)
-		index_to_delete.remove(i)
+		selected_indices.remove(i)
 		
-	if index_to_delete.size() <= 0:
-		cleared_delete_list()
+	if selected_indices.size() <= 0:
+		_cleared_delete_list()
 
 
 func add_item(item: GatheringItem) -> void:

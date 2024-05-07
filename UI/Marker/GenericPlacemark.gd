@@ -18,18 +18,14 @@ func _gui_input(event):
 	if event is InputEventMouseButton and (event as InputEventMouseButton).button_mask == BUTTON_RIGHT:
 		if selectionpanel.visible == false:
 			emit_signal("placemark_selected")
-			SelectedListManager._unselected_removal(self, fake_data) # Allows the deletion of nodes that aren't selected.
+			SelectedListManager.unselected_removal(self, fake_data) # Allows the deletion of nodes that aren't selected.
 			SelectedListManager.delete_selected()
 		else:
 			SelectedListManager.delete_selected()
-			
-func receive_selection_panel(selectionpanel):
-	self.selectionpanel = selectionpanel
-	
 
-func selection_function(type):
+func _selection_function(type):
 	if Input.is_key_pressed(KEY_SHIFT):
-		SelectedListManager._toggle_selection(self, type)  # Pass EnemyPlacemark instance and enemy data
+		SelectedListManager.toggle_selection(self, type)  # Pass EnemyPlacemark instance and enemy data
 		if selectionpanel:
 			selectionpanel.visible = !selectionpanel.visible
 			if selectionpanel.visible:
@@ -37,8 +33,8 @@ func selection_function(type):
 			else:
 				emit_signal("placemark_deselected")
 	else:
-		SelectedListManager._clear_list()
-		SelectedListManager._toggle_selection(self, type)
+		SelectedListManager.clear_list()
+		SelectedListManager.toggle_selection(self, type)
 		selectionpanel.visible = true
 		emit_signal("placemark_selected")
 
