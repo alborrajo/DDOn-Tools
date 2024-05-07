@@ -204,5 +204,5 @@ func _on_ExpSpinBox_value_changed(value):
 func _on_DropsContainer_drops_table_selected(drops_table):
 	enemy.drops_table = drops_table
 	if supress_event != true:
-		SelectedListManager.apply_dropstable_to_selected("drops_table", Object(enemy.drops_table))
+		SelectedListManager.apply_values_to_selected_type("drops_table", Object(enemy.drops_table))
 

@@ -9,7 +9,7 @@ onready var detailspanel: DetailsPanel = DetailsPanel.get_instance(get_tree())
 signal selection_cleared
 
 # Function to apply values to selected enemy or item
-func apply_values_to_selected_type(parameter_name: String, parameter_value: int):
+func apply_values_to_selected_type(parameter_name: String, parameter_value):
 	for entry in selected_list:
 		var data = entry[\"data\"]
 		data[parameter_name] = parameter_value
@@ -69,8 +69,7 @@ func delete_selected():
 func unselected_removal(placemark: GenericPlacemark, data: Object):
 	var entry = {\"placemark\": placemark, \"data\": data}
 	var index = _find_entry_index(placemark)
-	if index -1:
-		selected_list.append(entry)
+	selected_list.append(entry)
 "
 
 [node name="SelectedListManager" type="Node"]
