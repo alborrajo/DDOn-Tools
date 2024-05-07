@@ -7,12 +7,11 @@ export (Resource) var enemy_set: Resource
 
 onready var _enemy_set := enemy_set as EnemySet
 onready var set_tod_value = 0
-onready var selected_indices = []
 
 func _ready() -> void:
 	_enemy_set.connect("changed", self, "_on_enemy_set_changed")
 	SetProvider.connect("selected_day_night", self, "_on_selected_day_night")
-	SelectedListManager.connect("selection_cleared", self, "cleared_delete_list")
+	SelectedListManager.connect("selection_cleared", self, "_cleared_delete_list")
 	_on_enemy_set_changed()
 
 func _on_selected_day_night(tod_index: int):
@@ -43,8 +42,8 @@ func _on_placemark_selected(index):
 func _on_placemark_deselected(index):
 	selected_indices.erase(index)
 	
+	
 func _on_enemy_removed(index: int) -> void:
-	print("we're removing stuff, better not show up in other conditions.")
 	# Sort the indexes in ascending order
 	selected_indices.sort()
 	

@@ -5,14 +5,12 @@ export (PackedScene) var item_placemark_packed_scene: PackedScene = preload("res
 
 export (Resource) var gathering_spot: Resource
 
-onready var selected_indices = []
-
 onready var _gathering_spot := gathering_spot as GatheringSpot
 
 
 func _ready() -> void:
 	_gathering_spot.connect("changed", self, "_on_gathering_spot_changed")
-	SelectedListManager.connect("selection_cleared", self, "cleared_delete_list")
+	SelectedListManager.connect("selection_cleared", self, "_cleared_delete_list")
 	_on_gathering_spot_changed()
 	
 func _on_gathering_spot_changed() -> void:
