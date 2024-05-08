@@ -10,8 +10,10 @@ export (Resource) var enemy: Resource setget set_enemy
 onready var _detailsPanel: DetailsPanel = DetailsPanel.get_instance(get_tree())
 
 func _ready():
-	var success = SetProvider.connect("selected_day_night", self, "_on_day_night_selected")
-
+	.ready()
+	SetProvider.connect("selected_day_night", self, "_on_day_night_selected")
+	_on_day_night_selected(SetProvider.selected_day_night)
+	
 func _on_day_night_selected(index):
 	if enemy != null:
 		_update_placemark_visibility(index)
@@ -27,9 +29,8 @@ func _update_placemark_visibility(index):
 			hide()
 
 func _on_EnemyPlacemark_pressed():
-	# Left Click
-	_detailsPanel.show_details_of(enemy)
-	
+	_selection_function(enemy)
+
 func set_enemy(em: Enemy) -> void:
 	if enemy != null and enemy.is_connected("changed", self, "_on_enemy_changed"):
 		enemy.disconnect("changed", self, "_on_enemy_changed")
@@ -42,14 +43,12 @@ func set_enemy(em: Enemy) -> void:
 	
 	if enemy != null and enemy.has_method("_time_type"):
 		var time_type = enemy.get_time_type()
-		print("testing")
 	
 func _on_enemy_changed():
 	text = enemy.get_display_name()
-	
 	if enemy.is_blood_enemy:
-		modulate = COLOR_BLOOD_ORB
+		self_modulate = COLOR_BLOOD_ORB
 	elif enemy.is_highorb_enemy:
-		modulate = COLOR_HIGH_ORB
+		self_modulate = COLOR_HIGH_ORB
 	else: 
-		modulate = COLOR_DEFAULT
+		self_modulate = COLOR_DEFAULT

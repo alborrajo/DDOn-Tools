@@ -264,6 +264,7 @@ config/windows_native_icon="res://puala.ico"
 DataProvider="*res://Providers/DataProvider.gd"
 StorageProvider="*res://Providers/StorageProvider.tscn"
 SetProvider="*res://Providers/SetProvider.tscn"
+SelectedListManager="*res://Providers/SelectedListManager.tscn"
 
 [gui]
 
