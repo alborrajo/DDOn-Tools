@@ -11,8 +11,6 @@ func _process(_delta):
 
 func _ready():
 	SelectedListManager.connect("selection_cleared", self, "_cleared_delete_list")
-	print("YOOOOOOOOOOOOOO")
-
 
 func _cleared_delete_list():
 	selected_indices.clear()
