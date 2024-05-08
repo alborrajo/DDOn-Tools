@@ -111,13 +111,15 @@ func _add_room_maps(stage_no: int) -> bool:
 
 func _add_stage_maps(stage_no: int) -> bool:
 	var stage_map := DataProvider.stage_no_to_stage_map(stage_no)
-	var origin := Vector2(0,-512) # 512 (map tile height in px)
+	var offset := Vector2(0,-512) # 512 (map tile height in px)
 	var found_map := false
-	if "ParamList" in stage_map:
-		for layer_index in range(MAX_LAYERS):
-			var layer := map_layers.get_child(layer_index)
-			for param in stage_map["ParamList"]:
-				var stage_map_resource := "res://resources/maps/"+String(param["ModelName"])+"_l"+String(layer_index)+".png"
+	if stage_map != null:
+		var parts_path: String = stage_map["rstagecustom_at_0x08"]["PartsPath"].substr(5, 5)
+		for area in stage_map["rstagecustom_at_0x08"]["mpArrayArea"]:
+			var area_no := String(area["mAreaNo"])
+			var map_name := parts_path+"_m"+area_no.pad_zeros(2)
+			for layer_index in range(MAX_LAYERS):
+				var stage_map_resource := "res://resources/maps/"+map_name+"_l"+String(layer_index)+".png"
 				var resource := _load_map_resource(stage_map_resource)
 				if resource == null:
 					print("Couldn't find the map ", stage_map_resource)
@@ -126,11 +128,16 @@ func _add_stage_maps(stage_no: int) -> bool:
 					var map_sprite := Sprite.new()
 					map_sprite.texture = load(stage_map_resource)
 					map_sprite.centered = false
-					map_sprite.global_position = origin + Vector2(param["ConnectPos"]["x"], param["ConnectPos"]["z"])*0.028 # Eyeballed it, close enough
+					map_sprite.global_position = offset
+					var layer := map_layers.get_child(layer_index)
 					layer.add_child(map_sprite)
 					print("Loaded map ", stage_map_resource)
+			if map_name in DataProvider.map_dimensions:
+				offset.y = offset.y - DataProvider.map_dimensions[map_name].y
+			else:
+				printerr("Failed to get dimensions of map "+map_name+". The next parts of this map will show up with a wrong offset.")
 	else:
-		print("Couldn't assemble a map for this stage with the info form stage_map (Stage No. %s)" % [stage_no])
+		print("Couldn't assemble a parts dungeon (pd) map (Stage No. %s)" % [stage_no])
 	return found_map
 
 func _load_stage_markers(stage_no):
