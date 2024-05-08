@@ -6,21 +6,11 @@ export (PackedScene) var enemy_placemark_packed_scene: PackedScene = preload("re
 export (Resource) var enemy_set: Resource
 
 onready var _enemy_set := enemy_set as EnemySet
-onready var set_tod_value = 0
 
 func _ready() -> void:
 	_enemy_set.connect("changed", self, "_on_enemy_set_changed")
-	SetProvider.connect("selected_day_night", self, "_on_selected_day_night")
 	_on_enemy_set_changed()
 
-func _on_selected_day_night(tod_index: int):
-	set_tod_value = tod_index
-	for child in $VBoxContainer.get_children():
-		if child is EnemyPlacemark:
-			var enemy_placemark: EnemyPlacemark = child
-			enemy_placemark._on_day_night_selected(tod_index)
-	
-	
 func _on_enemy_set_changed() -> void:
 	# Rebuild children elements
 	for child in $VBoxContainer.get_children():
@@ -35,7 +25,6 @@ func _on_enemy_set_changed() -> void:
 		enemy_placemark.connect("placemark_deselected", self, "_on_placemark_deselected", [index])
 		enemy_placemark.connect("placemark_removed", self, "_on_enemy_removed", [index])
 		$VBoxContainer.add_child(enemy_placemark)
-	#_on_selected_day_night(set_tod_value)
 	
 func _on_enemy_removed(index: int) -> void:
 	# Sort the indexes in ascending order
