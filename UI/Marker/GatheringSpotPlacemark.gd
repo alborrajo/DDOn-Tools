@@ -10,7 +10,6 @@ onready var _gathering_spot := gathering_spot as GatheringSpot
 
 func _ready() -> void:
 	_gathering_spot.connect("changed", self, "_on_gathering_spot_changed")
-	SelectedListManager.connect("selection_cleared", self, "_cleared_delete_list")
 	_on_gathering_spot_changed()
 	
 func _on_gathering_spot_changed() -> void:

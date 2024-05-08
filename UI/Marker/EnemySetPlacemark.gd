@@ -11,7 +11,6 @@ onready var set_tod_value = 0
 func _ready() -> void:
 	_enemy_set.connect("changed", self, "_on_enemy_set_changed")
 	SetProvider.connect("selected_day_night", self, "_on_selected_day_night")
-	SelectedListManager.connect("selection_cleared", self, "_cleared_delete_list")
 	_on_enemy_set_changed()
 
 func _on_selected_day_night(tod_index: int):

@@ -9,6 +9,10 @@ func _process(_delta):
 	var camera_zoom: float = get_tree().get_nodes_in_group("camera")[0].zoom.x
 	rect_scale = _original_scale * clamp(camera_zoom, 0, _original_zoom)
 
+func _ready():
+	SelectedListManager.connect("selection_cleared", self, "_cleared_delete_list")
+	print("YOOOOOOOOOOOOOO")
+
 
 func _cleared_delete_list():
 	selected_indices.clear()
