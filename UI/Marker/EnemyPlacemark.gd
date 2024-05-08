@@ -7,16 +7,18 @@ const COLOR_DEFAULT = Color.white
 
 export (Resource) var enemy: Resource setget set_enemy
 
-
 onready var _detailsPanel: DetailsPanel = DetailsPanel.get_instance(get_tree())
+var ToD_index = 0
 
 func _ready():
 	.ready()
 	SetProvider.connect("selected_day_night", self, "_on_day_night_selected")
+	SetProvider.set_ToD()
 
 func _on_day_night_selected(index):
 	if enemy != null:
 		_update_placemark_visibility(index)
+		#print("should be:", index)
 	else:
 		printerr("ENEMY REFERENCE IS NULL")
 

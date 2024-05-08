@@ -35,7 +35,7 @@ func _on_enemy_set_changed() -> void:
 		enemy_placemark.connect("placemark_deselected", self, "_on_placemark_deselected", [index])
 		enemy_placemark.connect("placemark_removed", self, "_on_enemy_removed", [index])
 		$VBoxContainer.add_child(enemy_placemark)
-	_on_selected_day_night(set_tod_value)
+	#_on_selected_day_night(set_tod_value)
 	
 func _on_enemy_removed(index: int) -> void:
 	# Sort the indexes in ascending order
