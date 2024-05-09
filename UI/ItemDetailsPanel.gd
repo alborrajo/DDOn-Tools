@@ -26,6 +26,7 @@ func _on_item_changed():
 		$GridContainer/NumContainer/MaxNumSpinBox.value = item.max_num
 		$GridContainer/QualitySpinBox.value = item.quality
 		$GridContainer/IsHiddenCheckBox.pressed = item.is_hidden
+		$GridContainer/DropChanceSpinBox.value = item.drop_chance
 		
 		if title_label_node != null:
 			var list_count = SelectedListManager.selected_list
@@ -36,7 +37,7 @@ func _on_item_changed():
 
 
 func _on_DropChanceSpinBox_value_changed(value):
-	item.drop_chance = $GridContainer/DropChanceSpinBox.value / 100
+	item.drop_chance = $GridContainer/DropChanceSpinBox.value
 	if supress_event != true:
 		SelectedListManager.apply_values_to_selected_type("drop_chance", item.drop_chance)
 	
