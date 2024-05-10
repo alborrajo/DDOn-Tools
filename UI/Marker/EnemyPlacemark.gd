@@ -7,8 +7,6 @@ const COLOR_DEFAULT = Color.white
 
 export (Resource) var enemy: Resource setget set_enemy
 
-onready var _detailsPanel: DetailsPanel = DetailsPanel.get_instance(get_tree())
-
 func _ready():
 	.ready()
 	SetProvider.connect("selected_day_night", self, "_on_day_night_selected")

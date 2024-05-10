@@ -3,8 +3,6 @@ class_name GatheringItemPlacemark
 
 export (Resource) var item: Resource setget set_item
 
-onready var _detailsPanel: DetailsPanel = DetailsPanel.get_instance(get_tree())
-
 func _ready():
 	.ready()
 	SetProvider.connect("selected_day_night", self, "_on_day_night_selected")

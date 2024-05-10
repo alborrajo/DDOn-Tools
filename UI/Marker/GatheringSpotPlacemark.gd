@@ -22,24 +22,12 @@ func _on_gathering_spot_changed() -> void:
 		var item: GatheringItem = gatheringItems[index]
 		var item_placemark: GatheringItemPlacemark = item_placemark_packed_scene.instance()
 		item_placemark.item = item
-		item_placemark.connect("placemark_selected", self, "_on_placemark_selected", [index])
-		item_placemark.connect("placemark_deselected", self, "_on_placemark_deselected", [index])
 		item_placemark.connect("placemark_removed", self, "_on_item_removed", [index])
 		$VBoxContainer.add_child(item_placemark)
 
 
 func _on_item_removed(index: int) -> void:
-	# Sort the indexes in ascending order
-	selected_indices.sort()
-	
-	# Iterate over selected_indices in reverse order to avoid index shifting
-	for i in range(selected_indices.size() - 1, -1, -1):
-		var item_index = selected_indices[i]
-		_gathering_spot.remove_item(item_index)
-		selected_indices.remove(i)
-		
-	if selected_indices.size() <= 0:
-		_cleared_delete_list()
+	_gathering_spot.remove_item(index)
 
 
 func add_item(item: GatheringItem) -> void:

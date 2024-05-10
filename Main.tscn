@@ -70,13 +70,8 @@ script = ExtResource( 1 )
 [node name="ui" parent="." instance=ExtResource( 4 )]
 
 [node name="EnemyFileMenu" parent="ui/left/tab/Enemies/HBoxContainer" index="0" groups=["filemenu"]]
-items = [ "New Enemy Sets", null, 0, false, false, 0, 0, null, "", false, "Load Enemy Sets", null, 0, false, false, 1, 0, null, "", false, "Save Enemy Sets", null, 0, false, false, 2, 0, null, "", false ]
 
 [node name="ItemFileMenu" parent="ui/left/tab/Items/HBoxContainer" index="0" groups=["filemenu"]]
-items = [ "New Gathering Spots", null, 0, false, false, 0, 0, null, "", false, "Load Gathering Spots", null, 0, false, false, 1, 0, null, "", false, "Save Gathering Spots", null, 0, false, false, 2, 0, null, "", false ]
-
-[node name="LayerOptionButton" parent="ui/status_view/container" index="1"]
-items = [ "Layer 0", null, false, 0, null, "Layer 1", null, false, 1, null, "Layer 2", null, false, 2, null, "Layer 3", null, false, 3, null, "Layer 4", null, false, 4, null, "Layer 5", null, false, 5, null, "Layer 6", null, false, 6, null, "Layer 7", null, false, 7, null, "Layer 8", null, false, 8, null, "Layer 9", null, false, 9, null ]
 
 [node name="DayNightOptionButton" type="OptionButton" parent="ui/status_view/container" index="2"]
 margin_left = 95.0

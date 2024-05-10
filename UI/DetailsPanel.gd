@@ -2,9 +2,9 @@ extends Panel
 class_name DetailsPanel
 
 signal showing_details_of(obj)
-
-static func get_instance(tree: SceneTree) -> DetailsPanel:
-	return tree.get_nodes_in_group("DetailsPanel")[0]
+	
+func _ready():
+	SelectedListManager.connect("selection_changed", self, "_on_selection_changed")
 	
 func hide_details():
 	for child in self.get_children():
@@ -24,3 +24,9 @@ func show_details_of(obj):
 		emit_signal("showing_details_of", obj)
 	else:
 		push_error("Attempted to show the details of an unrecognized object")
+
+func _on_selection_changed():
+	if SelectedListManager.selected_list.size() == 0:
+		hide_details()
+	else:
+		show_details_of(SelectedListManager.selected_list.back()["data"])

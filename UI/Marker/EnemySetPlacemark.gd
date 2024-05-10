@@ -21,23 +21,11 @@ func _on_enemy_set_changed() -> void:
 		var enemy: Enemy = enemies[index]
 		var enemy_placemark: EnemyPlacemark = enemy_placemark_packed_scene.instance()
 		enemy_placemark.enemy = enemy
-		enemy_placemark.connect("placemark_selected", self, "_on_placemark_selected", [index])
-		enemy_placemark.connect("placemark_deselected", self, "_on_placemark_deselected", [index])
 		enemy_placemark.connect("placemark_removed", self, "_on_enemy_removed", [index])
 		$VBoxContainer.add_child(enemy_placemark)
 	
 func _on_enemy_removed(index: int) -> void:
-	# Sort the indexes in ascending order
-	selected_indices.sort()
-	
-	# Iterate over selected_indices in reverse order to avoid index shifting
-	for i in range(selected_indices.size() - 1, -1, -1):
-		var enemy_index = selected_indices[i]
-		_enemy_set.remove_enemy(enemy_index)
-		selected_indices.remove(i)
-		
-	if selected_indices.size() <= 0:
-		_cleared_delete_list()
+	_enemy_set.remove_enemy(index)
 
 func add_enemy(enemy: Enemy) -> void:
 	_enemy_set.add_enemy(enemy)
