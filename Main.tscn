@@ -86,9 +86,10 @@ right_icon = ExtResource( 9 )
 placeholder_text = "Search..."
 
 [node name="StageItemList" type="ItemList" parent="ui/left/tab/Stages" index="2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_top = 32.0
-margin_right = 288.0
-margin_bottom = 498.0
+margin_bottom = -4.0
 size_flags_vertical = 3
 script = ExtResource( 10 )
 
