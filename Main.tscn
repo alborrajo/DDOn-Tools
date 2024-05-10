@@ -95,12 +95,6 @@ margin_right = 378.0
 [node name="Spacer" parent="ui/status_view/container" index="4"]
 margin_left = 382.0
 
-[node name="EnemyFileDialog" parent="ui" index="5"]
-window_title = "Open a File"
-
-[node name="ItemFileDialog" parent="ui" index="6"]
-window_title = "Open a File"
-
 [connection signal="gui_input" from="." to="camera" method="_on_root_gui_input"]
 [connection signal="player_activated" from="ui" to="." method="_on_ui_player_activated"]
 [connection signal="stage_selected" from="ui" to="." method="_on_ui_stage_selected"]

@@ -24,6 +24,9 @@ signal player_activated(player_marker)
 onready var stage_label: Label = $status_view/container/StageLabel
 onready var coordinates_label: Label = $status_view/container/CoordinatesLabel
 
+func _ready():
+	$status_view/container/SetLabel.text = \"\"
+
 func _input(event):
 	if event is InputEventMouseMotion:
 		var mouse_pos : Vector2 = $\"../MapCoordinateSpace\".get_local_mouse_position();
@@ -45,6 +48,18 @@ func _on_Players_item_activated():
 
 func _on_root_markers_loaded():
 	$left/tab/Enemies/FileMenu._on_markers_loaded()
+
+func _on_enemy_set_placemark_mouse_entered(enemy_set_placemark: EnemySetPlacemark) -> void:
+	$status_view/container/SetLabel.text = enemy_set_placemark.enemy_set.to_string()
+	
+func _on_enemy_set_placemark_mouse_exited(enemy_set_placemark: EnemySetPlacemark) -> void:
+	$status_view/container/SetLabel.text = \"\"
+	
+func _on_gathering_spot_placemark_mouse_entered(gathering_spot_placemark: GatheringSpotPlacemark) -> void:
+	$status_view/container/SetLabel.text = gathering_spot_placemark.gathering_spot.to_string()
+	
+func _on_gathering_spot_placemark_mouse_exited(gathering_spot_placemark: GatheringSpotPlacemark) -> void:
+	$status_view/container/SetLabel.text = \"\"
 "
 
 [sub_resource type="GDScript" id=3]
@@ -252,9 +267,16 @@ text = "Stage Name (ID and Number)"
 
 [node name="Spacer" type="Control" parent="status_view/container"]
 margin_left = 265.0
-margin_right = 854.0
+margin_right = 783.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
+
+[node name="SetLabel" type="Label" parent="status_view/container"]
+margin_left = 787.0
+margin_top = 3.0
+margin_right = 854.0
+margin_bottom = 21.0
+text = "Set (X,X,X,X)"
 
 [node name="CoordinatesLabel" type="Label" parent="status_view/container"]
 margin_left = 858.0
@@ -359,7 +381,7 @@ margin_top = -195.0
 margin_right = 312.0
 margin_bottom = 195.0
 rect_min_size = Vector2( 180, 63 )
-window_title = "Open a File"
+window_title = "Abrir un Archivo"
 mode = 0
 access = 2
 filters = PoolStringArray( "*.json; JSON Files", "*.csv ; CSV Files" )
@@ -375,7 +397,7 @@ margin_top = -195.0
 margin_right = 312.0
 margin_bottom = 195.0
 rect_min_size = Vector2( 180, 63 )
-window_title = "Open a File"
+window_title = "Abrir un Archivo"
 mode = 0
 access = 2
 filters = PoolStringArray( "*.csv ; CSV Files" )

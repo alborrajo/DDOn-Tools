@@ -13,6 +13,7 @@ onready var map_layers: Node2D = $MapCoordinateSpace/MapLayers
 onready var enemy_sets_node: Node2D = $MapCoordinateSpace/EnemySetMarkers
 onready var gathering_spots_node: Node2D = $MapCoordinateSpace/GatheringSpotMarkers
 onready var players_node: Node2D = $MapCoordinateSpace/PlayerMarkers
+onready var ui_node = $ui
 
 onready var tab_and_map_node = [
 	null,
@@ -150,6 +151,8 @@ func _load_stage_markers(stage_no):
 			var pos := Vector3(ect_marker["Pos"]["X"], ect_marker["Pos"]["Y"], ect_marker["Pos"]["Z"])
 			var map_entity = MapEntity.new(pos, int(stage_no))
 			var enemy_set_placemark: EnemySetPlacemark = EnemySetPlacemarkScene.instance()
+			enemy_set_placemark.connect("mouse_entered", ui_node, "_on_enemy_set_placemark_mouse_entered", [enemy_set_placemark])
+			enemy_set_placemark.connect("mouse_exited", ui_node, "_on_enemy_set_placemark_mouse_exited", [enemy_set_placemark])
 			enemy_set_placemark.enemy_set = SetProvider.get_enemy_set(stage_id, 0, group_no, 0)
 			enemy_set_placemark.rect_position = map_entity.get_map_position()
 			enemy_sets_node.add_child(enemy_set_placemark)
@@ -162,6 +165,8 @@ func _load_stage_markers(stage_no):
 			var pos := Vector3(gathering_spot["Position"]["x"], gathering_spot["Position"]["y"], gathering_spot["Position"]["z"])
 			var map_entity := MapEntity.new(pos, int(stage_no))
 			var gathering_spot_placemark: GatheringSpotPlacemark = GatheringSpotPlacemarkScene.instance()
+			gathering_spot_placemark.connect("mouse_entered", ui_node, "_on_gathering_spot_placemark_mouse_entered", [gathering_spot_placemark])
+			gathering_spot_placemark.connect("mouse_exited", ui_node, "_on_gathering_spot_placemark_mouse_exited", [gathering_spot_placemark])
 			gathering_spot_placemark.gathering_spot = SetProvider.get_gathering_spot(stage_id, group_no, pos_id)
 			gathering_spot_placemark.rect_position = map_entity.get_map_position()
 			gathering_spots_node.add_child(gathering_spot_placemark)
