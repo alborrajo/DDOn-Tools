@@ -6,6 +6,7 @@ script/source = "extends Node
 
 var selected_list = []
 signal selection_changed
+signal set_revealed_hidden
 
 # Function to apply values to selected enemy or item
 func apply_values_to_selected_type(parameter_name: String, parameter_value):
@@ -13,12 +14,6 @@ func apply_values_to_selected_type(parameter_name: String, parameter_value):
 		var data = entry[\"data\"]
 		data[parameter_name] = parameter_value
 		
-# Function to apply DropsTables to selected enemies.
-func apply_dropstable_to_selected(parameter_name: String, parameter_object: Object):
-	for entry in selected_list:
-		var data = entry[\"data\"]
-		data[parameter_name] = parameter_object
-
 # Function to check the list for type and removes if it exists already
 func toggle_selection(placemark: GenericPlacemark, data: Object):
 	var entry = {\"placemark\": placemark, \"data\": data}
@@ -58,6 +53,9 @@ func unselected_removal(placemark: GenericPlacemark, data: Object):
 	var entry = {\"placemark\": placemark, \"data\": data}
 	var index = _find_entry_index(placemark)
 	selected_list.append(entry)
+	
+func reveal_hidden():
+	emit_signal(\"set_revealed_hidden\")
 "
 
 [node name="SelectedListManager" type="Node"]

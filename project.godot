@@ -270,6 +270,19 @@ SelectedListManager="*res://Providers/SelectedListManager.tscn"
 
 theme/custom_font="res://UI/font.tres"
 
+[input]
+
+set_hide={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":72,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+set_unhide={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":true,"control":false,"meta":false,"command":false,"pressed":false,"scancode":72,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
 [locale]
 
 translations=PoolStringArray( "res://resources/internationalization/enemy_name.en.translation", "res://resources/internationalization/enemy_name.ja.translation", "res://resources/internationalization/named_param.en.translation", "res://resources/internationalization/named_param.ja.translation", "res://resources/internationalization/HmPresetNo.en.translation", "res://resources/internationalization/HmPresetNo.ja.translation", "res://resources/internationalization/ui.en.translation", "res://resources/internationalization/ui.ja.translation", "res://resources/internationalization/stage_name.en.translation", "res://resources/internationalization/stage_name.ja.translation", "res://resources/internationalization/item_name.en.translation", "res://resources/internationalization/item_name.ja.translation" )

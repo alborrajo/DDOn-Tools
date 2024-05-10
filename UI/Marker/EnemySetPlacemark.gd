@@ -10,6 +10,7 @@ onready var _enemy_set := enemy_set as EnemySet
 func _ready() -> void:
 	_enemy_set.connect("changed", self, "_on_enemy_set_changed")
 	_on_enemy_set_changed()
+	SelectedListManager.connect("set_revealed_hidden", self, "_to_unhide")
 
 func _on_enemy_set_changed() -> void:
 	# Rebuild children elements
@@ -43,3 +44,10 @@ func can_drop_data(_position, data):
 func drop_data(_position, data):
 	add_enemy(Enemy.new(data))
 	print_debug("Placed %s at %s (%d %d %d %d) " % [tr(data.name), tr(str("STAGE_NAME_",_enemy_set.stage_id)), _enemy_set.stage_id, _enemy_set.layer_no, _enemy_set.group_id, _enemy_set.subgroup_id])
+
+func _to_hide():
+	self.visible = false
+	
+func _to_unhide():
+	print("validating")
+	self.visible = true
