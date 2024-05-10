@@ -207,7 +207,7 @@ _global_script_classes=[ {
 "base": "ItemList",
 "class": "StagesItemList",
 "language": "GDScript",
-"path": "res://UI/Stages.gd"
+"path": "res://StageItemList.gd"
 } ]
 _global_script_class_icons={
 "Chat": "",

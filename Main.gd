@@ -26,8 +26,8 @@ onready var tab_and_map_node = [
 func _ready():
 	# Select Lestania by default, simulating a click on its selector
 	# TODO: In a less hacky way, using a Provider. Decoupling map selection logic from the selector/ui node itself
-	$ui/left/tab/Stages.select(0)
-	$ui/left/tab/Stages.emit_signal("item_selected", 0)
+	$ui/left/tab/Stages/StageItemList.select(0)
+	$ui/left/tab/Stages/StageItemList.emit_signal("item_selected", 0)
 	
 	# Select Layer 0 by default, also a hacky way
 	$ui/status_view/container/LayerOptionButton.select(0)
@@ -195,11 +195,11 @@ func _clear_markers() -> void:
 
 
 func _on_ui_player_activated(player: PlayerMapEntity):
-	for stage_index in $ui/left/tab/Stages.get_item_count():
-		if $ui/left/tab/Stages.get_item_metadata(stage_index) == String(player.StageNo):
+	for stage_index in $ui/left/tab/Stages/StageItemList.get_item_count():
+		if $ui/left/tab/Stages/StageItemList.get_item_metadata(stage_index) == String(player.StageNo):
 			# TODO: Decouple, same as _ready
-			$ui/left/tab/Stages.select(stage_index)
-			$ui/left/tab/Stages.emit_signal("item_selected", stage_index)
+			$ui/left/tab/Stages/StageItemList.select(stage_index)
+			$ui/left/tab/Stages/StageItemList.emit_signal("item_selected", stage_index)
 			# Move camera to player position
 			camera_tween.remove_all()
 			_move_camera_to(player.get_map_position())

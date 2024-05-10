@@ -9,7 +9,6 @@
 [ext_resource path="res://UI/ItemDetailsPanel.tscn" type="PackedScene" id=7]
 [ext_resource path="res://UI/Settings.tscn" type="PackedScene" id=8]
 [ext_resource path="res://UI/Chat.tscn" type="PackedScene" id=9]
-[ext_resource path="res://UI/Stages.gd" type="Script" id=10]
 [ext_resource path="res://UI/Players.gd" type="Script" id=11]
 [ext_resource path="res://UI/ItemTree.gd" type="Script" id=12]
 [ext_resource path="res://UI/ItemFileMenu.gd" type="Script" id=13]
@@ -40,8 +39,9 @@ func _input(event):
 		if Input.is_action_just_pressed(\"set_unhide\"):
 			SelectedListManager.reveal_hidden()
 		
-func _on_Stages_item_selected(index: int) -> void:
-	var stage_no = $left/tab/Stages.get_item_metadata(index)
+		
+func _on_StageItemList_item_selected(index: int) -> void:
+	var stage_no = $left/tab/Stages/StageItemList.get_item_metadata(index)
 	emit_signal(\"stage_selected\", stage_no)
 	
 	var stage_id = DataProvider.stage_no_to_stage_id(int(stage_no))
@@ -49,7 +49,7 @@ func _on_Stages_item_selected(index: int) -> void:
 		stage_label.text = \"Stage No. \" + stage_no
 	else:
 		stage_label.text = \"%s (ID: %s, Stage No. %s)\" % [tr(str(\"STAGE_NAME_\",stage_id)), stage_id, stage_no]
-	
+
 func _on_Players_item_activated():
 	var player: PlayerMapEntity = $left/tab/Players.get_selected().get_metadata(0)
 	emit_signal(\"player_activated\", player)
@@ -75,7 +75,10 @@ func _on_gathering_spot_placemark_mouse_exited(gathering_spot_placemark: Gatheri
 	
 func _store_placemark(set_placemark):
 	set_instance = set_placemark
+	
 "
+
+[sub_resource type="GDScript" id=4]
 
 [sub_resource type="GDScript" id=3]
 script/source = "extends Button
@@ -122,7 +125,7 @@ margin_left = 4.0
 margin_top = 36.0
 margin_right = -4.0
 margin_bottom = -4.0
-script = ExtResource( 10 )
+script = SubResource( 4 )
 
 [node name="Enemies" type="VBoxContainer" parent="left/tab"]
 visible = false
