@@ -13,14 +13,14 @@ func _process(_delta):
 	rect_scale = _original_scale * clamp(camera_zoom, 0, _original_zoom)
 	
 func _to_hide():
-	self.modulate = Color(1, 1, 1, 0.25)  # Lowering the transparency to 50%
+	self.modulate = Color(1, 1, 1, 0.25)  # Lowering the transparency to 25%
 	self.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_apply_mouse_filter_to_children(self, Control.MOUSE_FILTER_IGNORE)
 
 func _to_unhide():
 	self.modulate = Color(1, 1, 1, 1)  # Raising the transparency to 100%
-	self.mouse_filter = Control.MOUSE_FILTER_STOP
-	_apply_mouse_filter_to_children(self, Control.MOUSE_FILTER_STOP)
+	self.mouse_filter = Control.MOUSE_FILTER_PASS
+	_apply_mouse_filter_to_children(self, Control.MOUSE_FILTER_PASS)
 
 func _apply_mouse_filter_to_children(node, filter):
 	for child in node.get_children():
