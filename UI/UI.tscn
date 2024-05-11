@@ -34,6 +34,7 @@ func _input(event):
 	if event is InputEventKey:
 		if Input.is_action_pressed(\"set_hide\"):
 			if hovered_placemark:
+				SelectedListManager.clear_list()
 				hovered_placemark._to_hide()
 
 		if Input.is_action_just_pressed(\"set_unhide\"):
