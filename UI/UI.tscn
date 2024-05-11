@@ -9,7 +9,6 @@
 [ext_resource path="res://UI/ItemDetailsPanel.tscn" type="PackedScene" id=7]
 [ext_resource path="res://UI/Settings.tscn" type="PackedScene" id=8]
 [ext_resource path="res://UI/Chat.tscn" type="PackedScene" id=9]
-[ext_resource path="res://UI/Stages.gd" type="Script" id=10]
 [ext_resource path="res://UI/Players.gd" type="Script" id=11]
 [ext_resource path="res://UI/ItemTree.gd" type="Script" id=12]
 [ext_resource path="res://UI/ItemFileMenu.gd" type="Script" id=13]
@@ -23,6 +22,7 @@ signal player_activated(player_marker)
 
 onready var stage_label: Label = $status_view/container/StageLabel
 onready var coordinates_label: Label = $status_view/container/CoordinatesLabel
+onready var hovered_placemark = null
 
 func _ready():
 	$status_view/container/SetLabel.text = \"\"
@@ -31,9 +31,17 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		var mouse_pos : Vector2 = $\"../MapCoordinateSpace\".get_local_mouse_position();
 		coordinates_label.text = String(mouse_pos.round())
+	if event is InputEventKey:
+		if Input.is_action_pressed(\"set_hide\"):
+			if hovered_placemark:
+				hovered_placemark._to_hide()
 
-func _on_Stages_item_selected(index: int) -> void:
-	var stage_no = $left/tab/Stages.get_item_metadata(index)
+		if Input.is_action_just_pressed(\"set_unhide\"):
+			SelectedListManager.reveal_hidden()
+		
+		
+func _on_StageItemList_item_selected(index: int) -> void:
+	var stage_no = $left/tab/Stages/StageItemList.get_item_metadata(index)
 	emit_signal(\"stage_selected\", stage_no)
 	
 	var stage_id = DataProvider.stage_no_to_stage_id(int(stage_no))
@@ -41,7 +49,7 @@ func _on_Stages_item_selected(index: int) -> void:
 		stage_label.text = \"Stage No. \" + stage_no
 	else:
 		stage_label.text = \"%s (ID: %s, Stage No. %s)\" % [tr(str(\"STAGE_NAME_\",stage_id)), stage_id, stage_no]
-	
+
 func _on_Players_item_activated():
 	var player: PlayerMapEntity = $left/tab/Players.get_selected().get_metadata(0)
 	emit_signal(\"player_activated\", player)
@@ -51,16 +59,26 @@ func _on_root_markers_loaded():
 
 func _on_enemy_set_placemark_mouse_entered(enemy_set_placemark: EnemySetPlacemark) -> void:
 	$status_view/container/SetLabel.text = enemy_set_placemark.enemy_set.to_string()
+	_set_hovered_placemark(enemy_set_placemark)
 	
 func _on_enemy_set_placemark_mouse_exited(enemy_set_placemark: EnemySetPlacemark) -> void:
 	$status_view/container/SetLabel.text = \"\"
+	hovered_placemark = null
 	
 func _on_gathering_spot_placemark_mouse_entered(gathering_spot_placemark: GatheringSpotPlacemark) -> void:
 	$status_view/container/SetLabel.text = gathering_spot_placemark.gathering_spot.to_string()
+	_set_hovered_placemark(gathering_spot_placemark)
 	
 func _on_gathering_spot_placemark_mouse_exited(gathering_spot_placemark: GatheringSpotPlacemark) -> void:
 	$status_view/container/SetLabel.text = \"\"
+	hovered_placemark = null
+	
+func _set_hovered_placemark(set_placemark):
+	hovered_placemark = set_placemark
+	
 "
+
+[sub_resource type="GDScript" id=4]
 
 [sub_resource type="GDScript" id=3]
 script/source = "extends Button
@@ -107,7 +125,7 @@ margin_left = 4.0
 margin_top = 36.0
 margin_right = -4.0
 margin_bottom = -4.0
-script = ExtResource( 10 )
+script = SubResource( 4 )
 
 [node name="Enemies" type="VBoxContainer" parent="left/tab"]
 visible = false
@@ -382,7 +400,7 @@ margin_top = -195.0
 margin_right = 312.0
 margin_bottom = 195.0
 rect_min_size = Vector2( 180, 63 )
-window_title = "Abrir un Archivo"
+window_title = "Open a File"
 mode = 0
 access = 2
 filters = PoolStringArray( "*.json; JSON Files", "*.csv ; CSV Files" )
@@ -398,7 +416,7 @@ margin_top = -195.0
 margin_right = 312.0
 margin_bottom = 195.0
 rect_min_size = Vector2( 180, 63 )
-window_title = "Abrir un Archivo"
+window_title = "Open a File"
 mode = 0
 access = 2
 filters = PoolStringArray( "*.csv ; CSV Files" )

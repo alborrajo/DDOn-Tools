@@ -207,7 +207,7 @@ _global_script_classes=[ {
 "base": "ItemList",
 "class": "StagesItemList",
 "language": "GDScript",
-"path": "res://UI/Stages.gd"
+"path": "res://StageItemList.gd"
 } ]
 _global_script_class_icons={
 "Chat": "",
@@ -269,6 +269,19 @@ SelectedListManager="*res://Providers/SelectedListManager.tscn"
 [gui]
 
 theme/custom_font="res://UI/font.tres"
+
+[input]
+
+set_hide={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":72,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+set_unhide={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":true,"control":false,"meta":false,"command":false,"pressed":false,"scancode":72,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [locale]
 
