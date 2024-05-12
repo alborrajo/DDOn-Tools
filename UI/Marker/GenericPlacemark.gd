@@ -16,6 +16,7 @@ func _on_selection_changed():
 func _gui_input(event):
 	if event is InputEventMouseButton and (event as InputEventMouseButton).button_mask == BUTTON_RIGHT:
 		SelectedListManager.delete_selected()
+		delete_self()
 
 func _selection_function(type):
 	if Input.is_key_pressed(KEY_SHIFT):
