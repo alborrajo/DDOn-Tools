@@ -20,7 +20,7 @@ func _gui_input(event):
 
 func _selection_function(type):
 	if Input.is_key_pressed(KEY_SHIFT):
-		SelectedListManager.toggle_selection(self, type)  # Pass EnemyPlacemark instance and enemy data
+		SelectedListManager.toggle_selection(self, type)  # Pass Enemy or Gathering Placemark instance and its data
 	else:
 		SelectedListManager.clear_list()
 		SelectedListManager.toggle_selection(self, type)

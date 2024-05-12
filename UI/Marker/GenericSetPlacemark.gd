@@ -17,6 +17,14 @@ func _to_hide():
 	self.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	_apply_mouse_filter_to_children(self, Control.MOUSE_FILTER_IGNORE)
 
+	for child in get_children():
+		for grandchild in child.get_children():
+			for grandgrandchild in grandchild.get_children():
+				if grandgrandchild.name == "SelectionPanel" and grandgrandchild.visible:
+					var placemark = grandgrandchild.get_parent()
+					SelectedListManager.remove_placemark(placemark, null)
+					placemark.emit_signal("selection_changed")
+
 func _to_unhide():
 	self.modulate = Color(1, 1, 1, 1)  # Raising the transparency to 100%
 	self.mouse_filter = Control.MOUSE_FILTER_PASS

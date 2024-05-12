@@ -34,7 +34,6 @@ func _input(event):
 	if event is InputEventKey:
 		if Input.is_action_pressed(\"set_hide\"):
 			if hovered_placemark:
-				SelectedListManager.clear_list()
 				hovered_placemark._to_hide()
 
 		if Input.is_action_just_pressed(\"set_unhide\"):
@@ -92,6 +91,7 @@ func _on_SettingsButton_pressed():
 script/source = "extends PanelContainer
 
 func _ready():
+	SelectedListManager.connect(\"closed_detailspanel\", self, \"_on_Close_pressed\")
 	visible = false
 
 func _on_Close_pressed():
