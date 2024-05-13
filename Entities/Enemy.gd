@@ -254,11 +254,11 @@ func _set_time_type(value):
 func _set_custom_time(value: String) -> void:
 	var regex := "^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9],(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$"
 	# using a Regex to define a valid format for the timestamp
-	if validate_time_format(value, regex):
+	if _validate_time_format(value, regex):
 		custom_time = value
 		emit_changed()
 
-func validate_time_format(time_str: String, regex_str: String) -> bool:
+func _validate_time_format(time_str: String, regex_str: String) -> bool:
 	var regex := RegEx.new()
 	regex.compile(regex_str)
 	
