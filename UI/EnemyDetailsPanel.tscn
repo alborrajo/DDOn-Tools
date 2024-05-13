@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://UI/NamedEnemyParamsIdOptionButton.gd" type="Script" id=1]
 [ext_resource path="res://UI/HmPresetNoOptionButton.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://resources/icons/icon_clock.png" type="Texture" id=7]
 [ext_resource path="res://resources/icons/icon_sun.png" type="Texture" id=8]
 [ext_resource path="res://resources/icons/icon_moon.png" type="Texture" id=9]
+[ext_resource path="res://resources/icons/icon_gear.png" type="Texture" id=10]
 
 [node name="EnemyDetailsPanel" type="ScrollContainer"]
 anchor_right = 1.0
@@ -233,8 +234,24 @@ margin_bottom = 368.0
 hint_tooltip = "Define if a monster can spawn at day or night, or both."
 text = "Day & Night"
 icon = ExtResource( 7 )
-items = [ "Day & Night", ExtResource( 7 ), false, 0, null, "Day", ExtResource( 8 ), false, 1, null, "Night", ExtResource( 9 ), false, 2, null ]
+items = [ "Day & Night", ExtResource( 7 ), false, 0, null, "Day", ExtResource( 8 ), false, 1, null, "Night", ExtResource( 9 ), false, 2, null, "Custom", ExtResource( 10 ), false, 3, null ]
 selected = 0
+
+[node name="CustomTimeType" type="Label" parent="VBoxContainer/GridContainer"]
+visible = false
+margin_top = 376.0
+margin_right = 120.0
+margin_bottom = 394.0
+text = "Custom Time"
+
+[node name="CustomTimeTypeLineEdit" type="LineEdit" parent="VBoxContainer/GridContainer"]
+visible = false
+margin_top = 372.0
+margin_right = 120.0
+margin_bottom = 400.0
+hint_tooltip = "Follow the format correctly.
+HH:MM,HH:MM"
+text = "00:00,23:59"
 
 [node name="IsBossGauge" type="CheckBox" parent="VBoxContainer/GridContainer"]
 margin_top = 372.0
@@ -421,6 +438,8 @@ margin_bottom = 86.0
 [connection signal="value_changed" from="VBoxContainer/GridContainer/SetTypeLineEdit" to="." method="_on_SetTypeLineEdit_value_changed"]
 [connection signal="item_selected" from="VBoxContainer/GridContainer/InfectionTypeLineEdit" to="." method="_on_InfectionTypeLineEdit_item_selected"]
 [connection signal="item_selected" from="VBoxContainer/GridContainer/SpawnTimeTypeLineEdit" to="." method="_on_SpawnTimeTypeLineEdit_item_selected"]
+[connection signal="text_changed" from="VBoxContainer/GridContainer/CustomTimeTypeLineEdit" to="." method="_on_CustomTomeTypeLineEdit_text_changed"]
+[connection signal="text_entered" from="VBoxContainer/GridContainer/CustomTimeTypeLineEdit" to="." method="_on_CustomTimeTypeLineEdit_text_entered"]
 [connection signal="pressed" from="VBoxContainer/GridContainer/IsBossGauge" to="." method="_on_IsBossGauge_pressed"]
 [connection signal="pressed" from="VBoxContainer/GridContainer/IsBossBGM" to="." method="_on_IsBossBGM_pressed"]
 [connection signal="pressed" from="VBoxContainer/GridContainer/IsManualSet" to="." method="_on_IsManualSet_pressed"]
