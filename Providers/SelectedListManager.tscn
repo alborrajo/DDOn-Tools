@@ -20,15 +20,15 @@ func toggle_selection(placemark: GenericPlacemark, data: Object):
 
 	var index = _find_entry_index(placemark)
 	if index != -1:
-		remove_from_selection(index)
+		_remove_from_selection(index)
 	else:
-		add_to_selection(entry)
+		_add_to_selection(entry)
 
-func add_to_selection(entry):
+func _add_to_selection(entry):
 	selected_list.append(entry)
 	emit_signal(\"selection_changed\")
 	
-func remove_from_selection(index):
+func _remove_from_selection(index):
 	selected_list.remove(index)
 	emit_signal(\"selection_changed\")
 	
@@ -64,7 +64,7 @@ func remove_placemark(placemark, data):
 	var entry = {\"placemark\": placemark, \"data\": data}
 	var index = _find_entry_index(placemark)
 	if index != -1:
-		remove_from_selection(index)
+		_remove_from_selection(index)
 
 func is_list_empty() -> bool:
 	return selected_list.size() <= 0
