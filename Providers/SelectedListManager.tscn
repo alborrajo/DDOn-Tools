@@ -7,7 +7,6 @@ script/source = "extends Node
 var selected_list = []
 signal selection_changed
 signal set_revealed_hidden
-signal closed_detailspanel
 
 # Function to apply values to selected enemy or item
 func apply_values_to_selected_type(parameter_name: String, parameter_value):
@@ -49,18 +48,20 @@ func delete_selected():
 			var index_to_remove = _find_entry_index(placemark)
 			if index_to_remove != -1:
 				selected_list.remove(index_to_remove)
-				close_details_panel()
+				emit_signal(\"selection_changed\")
 	
 func reveal_hidden():
 	emit_signal(\"set_revealed_hidden\")
 	
 func remove_placemark(placemark, data):
 	toggle_selection(placemark, data)
-	close_details_panel()
 
 func close_details_panel(): # Closes the details panel if the list is empty
 	if selected_list.size() <= 0:
-		emit_signal(\"closed_detailspanel\")
+		print(\"something is still calling this\")
+
+func is_list_empty() -> bool:
+	return selected_list.size() <= 0
 "
 
 [node name="SelectedListManager" type="Node"]
