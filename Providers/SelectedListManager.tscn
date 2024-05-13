@@ -58,10 +58,8 @@ func remove_placemark(placemark, data):
 	toggle_selection(placemark, data)
 	close_details_panel()
 
-func close_details_panel():
-	print(\"the list:\", selected_list)
+func close_details_panel(): # Closes the details panel if the list is empty
 	if selected_list.size() <= 0:
-		print(\"checking\")
 		emit_signal(\"closed_detailspanel\")
 "
 
