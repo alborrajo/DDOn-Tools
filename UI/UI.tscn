@@ -91,12 +91,17 @@ func _on_SettingsButton_pressed():
 script/source = "extends PanelContainer
 
 func _ready():
+	SelectedListManager.connect(\"selection_changed\", self, \"_on_selection_changed\")
 	visible = false
+
+func _on_selection_changed():
+	if SelectedListManager.selected_list.size() == 0:
+		visible = false
 
 func _on_Close_pressed():
 	SelectedListManager.clear_list()
 	visible = false
-	
+
 func _on_DetailsPanel_showing_details_of(obj):
 	visible = obj != null
 "
