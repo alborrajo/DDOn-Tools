@@ -53,6 +53,7 @@ func _on_enemy_changed():
 		$VBoxContainer/GridContainer/SetTypeLineEdit.value = enemy_clone.set_type
 		$VBoxContainer/GridContainer/InfectionTypeLineEdit.select($VBoxContainer/GridContainer/InfectionTypeLineEdit.get_item_index(enemy_clone.infection_type))
 		$VBoxContainer/GridContainer/SpawnTimeTypeLineEdit.select($VBoxContainer/GridContainer/SpawnTimeTypeLineEdit.get_item_index(enemy_clone.time_type))
+		$VBoxContainer/GridContainer/CustomTimeTypeLineEdit.text = enemy_clone.custom_time
 		$VBoxContainer/GridContainer/IsBossGauge.pressed = enemy_clone.is_boss_gauge
 		$VBoxContainer/GridContainer/IsBossBGM.pressed = enemy_clone.is_boss_bgm
 		$VBoxContainer/GridContainer/IsManualSet.pressed = enemy_clone.is_manual_set
@@ -86,6 +87,9 @@ func _on_enemy_changed():
 				title_label_node.modulate = COLOR_HIGH_ORB
 			else: 
 				title_label_node.modulate = COLOR_DEFAULT
+				
+		$VBoxContainer/GridContainer/CustomTimeType.visible = enemy.time_type == 3
+		$VBoxContainer/GridContainer/CustomTimeTypeLineEdit.visible = enemy.time_type == 3
 		$VBoxContainer/DropsController._on_DropsFilterLineEdit_text_changed(filter_text)
 		# Critical this comes after everything to ensure the filters get applied
 
@@ -154,7 +158,7 @@ func _on_InfectionTypeLineEdit_item_selected(index):
 func _on_SpawnTimeTypeLineEdit_item_selected(index):
 	enemy.time_type = $VBoxContainer/GridContainer/SpawnTimeTypeLineEdit.get_item_id(index)
 	if supress_event != true:
-		SelectedListManager.apply_values_to_selected_type("time_type", enemy.time_type)
+			SelectedListManager.apply_values_to_selected_type("time_type", enemy.time_type)
 
 func _on_IsBossGauge_pressed():
 	enemy.is_boss_gauge = $VBoxContainer/GridContainer/IsBossGauge.pressed 
@@ -206,3 +210,7 @@ func _on_DropsContainer_drops_table_selected(drops_table):
 	if supress_event != true:
 		SelectedListManager.apply_values_to_selected_type("drops_table", enemy.drops_table)
 
+func _on_CustomTimeTypeLineEdit_text_entered(text):
+	enemy.custom_time = text
+	if supress_event != true:
+		SelectedListManager.apply_values_to_selected_type("custom_time", enemy.custom_time)

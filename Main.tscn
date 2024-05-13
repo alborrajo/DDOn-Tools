@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Main/PlayerMarkers.gd" type="Script" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://DayNightOptionButton.gd" type="Script" id=8]
 [ext_resource path="res://resources/icons/brightmixIconset search.png" type="Texture" id=9]
 [ext_resource path="res://StageItemList.gd" type="Script" id=10]
+[ext_resource path="res://resources/icons/icon_gear.png" type="Texture" id=11]
 
 [node name="root" type="Control"]
 anchor_right = 1.0
@@ -108,7 +109,7 @@ margin_right = 208.0
 margin_bottom = 24.0
 text = "Day & Night"
 icon = ExtResource( 5 )
-items = [ "Day & Night", ExtResource( 5 ), false, 0, null, "Day", ExtResource( 6 ), false, 1, null, "Night", ExtResource( 7 ), false, 2, null ]
+items = [ "Day & Night", ExtResource( 5 ), false, 0, null, "Day", ExtResource( 6 ), false, 1, null, "Night", ExtResource( 7 ), false, 2, null, "Custom", ExtResource( 11 ), false, 3, null ]
 selected = 0
 script = ExtResource( 8 )
 

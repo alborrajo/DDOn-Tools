@@ -205,7 +205,9 @@ func _do_load_file_json(file: File) -> int:
 			elif time_range_str == "18:00,06:59":
 				time_type = 2
 			else:
-				printerr("JSON HAS INVALID TIME_RANGE DATA")
+				time_type = 3
+				enemy.custom_time = time_range_str
+
 			enemy.time_type = time_type
 
 	return OK
@@ -349,6 +351,8 @@ func _do_save_file(file: File) -> void:
 				selected_string = "07:00,17:59"
 			if selected_index == 2:
 				selected_string = "18:00,06:59"	
+			if selected_index == 3:
+				selected_string = enemy.custom_time
 			data.append(selected_string)
 
 			json_data[JSON_KEY_ENEMIES].append(data)
