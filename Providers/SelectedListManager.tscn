@@ -20,11 +20,18 @@ func toggle_selection(placemark: GenericPlacemark, data: Object):
 
 	var index = _find_entry_index(placemark)
 	if index != -1:
-		selected_list.remove(index)
+		remove_from_selection(index)
 	else:
-		selected_list.append(entry)
-	emit_signal(\"selection_changed\")
+		add_to_selection(entry)
 
+func add_to_selection(entry):
+	selected_list.append(entry)
+	emit_signal(\"selection_changed\")
+	
+func remove_from_selection(index):
+	selected_list.remove(index)
+	emit_signal(\"selection_changed\")
+	
 # Function to find the index of an entry in the list
 func _find_entry_index(placemark: GenericPlacemark) -> int:
 	for i in range(selected_list.size()):
@@ -54,11 +61,10 @@ func reveal_hidden():
 	emit_signal(\"set_revealed_hidden\")
 	
 func remove_placemark(placemark, data):
-	toggle_selection(placemark, data)
-
-func close_details_panel(): # Closes the details panel if the list is empty
-	if selected_list.size() <= 0:
-		print(\"something is still calling this\")
+	var entry = {\"placemark\": placemark, \"data\": data}
+	var index = _find_entry_index(placemark)
+	if index != -1:
+		remove_from_selection(index)
 
 func is_list_empty() -> bool:
 	return selected_list.size() <= 0
