@@ -353,7 +353,6 @@ func _do_save_file(file: File) -> void:
 				selected_string = "18:00,06:59"	
 			if selected_index == 3:
 				selected_string = enemy.custom_time
-				print("what you're saving: ", enemy.custom_time)
 			data.append(selected_string)
 
 			json_data[JSON_KEY_ENEMIES].append(data)

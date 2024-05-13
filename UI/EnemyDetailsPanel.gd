@@ -88,12 +88,8 @@ func _on_enemy_changed():
 			else: 
 				title_label_node.modulate = COLOR_DEFAULT
 				
-		if enemy.time_type == 3:
-			$VBoxContainer/GridContainer/CustomTimeTypeLineEdit.visible = true
-			$VBoxContainer/GridContainer/CustomTimeType.visible = true
-		else:
-			$VBoxContainer/GridContainer/CustomTimeTypeLineEdit.visible = false
-			$VBoxContainer/GridContainer/CustomTimeType.visible = false
+		$VBoxContainer/GridContainer/CustomTimeType.visible = enemy.time_type == 3
+		$VBoxContainer/GridContainer/CustomTimeTypeLineEdit.visible = enemy.time_type == 3
 		$VBoxContainer/DropsController._on_DropsFilterLineEdit_text_changed(filter_text)
 		# Critical this comes after everything to ensure the filters get applied
 

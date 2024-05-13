@@ -144,7 +144,7 @@ var montage_fix_no: int = 0 setget _set_montage_fix_no
 var set_type: int = 0 setget _set_set_type
 var infection_type: int = 0 setget _set_infection_type
 var time_type: int = 0 setget _set_time_type
-var custom_time: String = "HH:MM,HH:MM" setget _set_custom_time
+var custom_time: String = "00:00,23:59" setget _set_custom_time
 var is_boss_gauge: bool = false setget _set_is_boss_gauge
 var is_boss_bgm: bool = false setget _set_is_boss_bgm
 var is_manual_set: bool = false setget _set_is_manual_set
@@ -251,10 +251,19 @@ func _set_time_type(value):
 	time_type = value
 	emit_changed()
 	
-func _set_custom_time(value):
-	custom_time = value
-	emit_changed()
+func _set_custom_time(value: String) -> void:
+	var regex := "^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9],(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$"
+	# using a Regex to define a valid format for the timestamp
+	if validate_time_format(value, regex):
+		custom_time = value
+		emit_changed()
+
+func validate_time_format(time_str: String, regex_str: String) -> bool:
+	var regex := RegEx.new()
+	regex.compile(regex_str)
 	
+	return regex.search(time_str) != null
+
 func _set_is_boss_gauge(value):
 	is_boss_gauge = value
 	_calculate_exp()
