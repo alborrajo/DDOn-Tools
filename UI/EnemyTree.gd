@@ -31,27 +31,29 @@ func _on_FilterLineEdit_text_changed(new_text):
 	
 func _rebuild_list(filter_text: String = ""):
 	var normalized_filter_text = filter_text.to_upper()
-	var filter_int = int(filter_text)
+	var filter_int = -1
+	var filter_hex = -1
+
+	if filter_text.is_valid_integer():
+		filter_int = int(filter_text)
+	elif filter_text.is_valid_hex_number(true): # true is to check with prefix
+		filter_hex = int("0x" + filter_text)
+
 	clear()
 	hide_root = true
 	var root = create_item()
-
 	for enemy in enemy_cache:
-		# Defining the hex value by back converting to hex
-		var enemy_hex = int("0x%06X" % enemy.id)
-
 		if normalized_filter_text.length() == 0:
 			_populate_list(root, enemy)
-			
-		elif filter_text.is_valid_integer():
-			if filter_int == enemy.id:
+		elif filter_int != -1 and filter_int == enemy.id:
+			_populate_list(root, enemy)
+		elif filter_hex != -1:
+			var enemy_hex = int("0x%06X" % enemy.id)# Converting back to Hex
+			if filter_hex == enemy_hex:
 				_populate_list(root, enemy)
-		elif filter_text.is_valid_hex_number(true): # true is to check with prefix
-			if filter_int == enemy_hex:
-				_populate_list(root, enemy)
-		else:
-			if normalized_filter_text in enemy.name.to_upper():
-				_populate_list(root, enemy)
+		elif normalized_filter_text in enemy.name.to_upper():
+			_populate_list(root, enemy)
+
 
 # exists to reduce duplicate code
 func _populate_list(root, enemy):
