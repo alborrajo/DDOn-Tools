@@ -14,6 +14,7 @@ onready var enemy_sets_node: Node2D = $MapCoordinateSpace/EnemySetMarkers
 onready var gathering_spots_node: Node2D = $MapCoordinateSpace/GatheringSpotMarkers
 onready var players_node: Node2D = $MapCoordinateSpace/PlayerMarkers
 onready var ui_node = $ui
+onready var mapbackground = $MapCoordinateSpace/MapBackground
 
 onready var tab_and_map_node = [
 	null,
@@ -32,6 +33,7 @@ func _ready():
 	# Select Layer 0 by default, also a hacky way
 	$ui/status_view/container/LayerOptionButton.select(0)
 	$ui/status_view/container/LayerOptionButton.emit_signal("item_selected", 0)
+	mapbackground.visible = false
 
 func _on_ui_stage_selected(stage_no):
 	_clear_map()
@@ -65,6 +67,7 @@ func _load_stage_map(stage_no) -> void:
 func _add_field_maps(stage_no: int) -> bool:
 	var field_id = DataProvider.stage_no_to_belonging_field_id(stage_no)
 	if field_id == -1:
+		_toggle_background(true)
 		print("Couldn't use a field map for this stage (Stage No. %s doesn't belong to a field)" % [stage_no])
 		return false
 
@@ -72,6 +75,7 @@ func _add_field_maps(stage_no: int) -> bool:
 	if not _do_add_field_maps(map_name, 0, 0):
 		# Since Mergoda Ruins uses m01_l01 instead of m00_l00 like the rest
 		return _do_add_field_maps(map_name, 1, 1)
+	_toggle_background(false)
 	return true
 
 func _do_add_field_maps(map_name: String, m: int, l: int) -> bool:
@@ -231,7 +235,7 @@ func _focus_camera_on_center() -> void:
 	
 	if new_position != null:
 		_move_camera_to(new_position)
-
+		_move_background_to(new_position)
 
 func _move_camera_to(new_position: Vector2) -> void:
 	camera_tween.interpolate_property(camera, "position",
@@ -239,6 +243,13 @@ func _move_camera_to(new_position: Vector2) -> void:
 		Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 	camera_tween.start()
 
+# Steals the camera position stuff to place the map accurately
+func _move_background_to(new_position): 
+		mapbackground.position = new_position
+
+ # Disables background on Field stages
+func _toggle_background(result: bool):
+		mapbackground.visible = result
 
 func _on_LayerOptionButton_item_selected(index):
 	for layer in map_layers.get_children():

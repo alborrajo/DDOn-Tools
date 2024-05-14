@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Main/PlayerMarkers.gd" type="Script" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://resources/icons/brightmixIconset search.png" type="Texture" id=9]
 [ext_resource path="res://StageItemList.gd" type="Script" id=10]
 [ext_resource path="res://resources/icons/icon_gear.png" type="Texture" id=11]
+[ext_resource path="res://resources/maps/map_background.png" type="Texture" id=12]
 
 [node name="root" type="Control"]
 anchor_right = 1.0
@@ -26,6 +27,11 @@ script = ExtResource( 3 )
 [node name="CameraTween" type="Tween" parent="."]
 
 [node name="MapCoordinateSpace" type="Node2D" parent="."]
+
+[node name="MapBackground" type="Sprite" parent="MapCoordinateSpace"]
+visible = false
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 12 )
 
 [node name="MapLayers" type="Node2D" parent="MapCoordinateSpace"]
 scale = Vector2( 0.1, 0.1 )
