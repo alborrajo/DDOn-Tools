@@ -37,7 +37,7 @@ func _rebuild_list(filter_text: String = ""):
 	if filter_text.is_valid_integer():
 		filter_int = int(filter_text)
 	elif filter_text.is_valid_hex_number(true): # true is to check with prefix
-		filter_hex = int("0x" + filter_text)
+		filter_hex = int(filter_text)
 
 	clear()
 	hide_root = true
