@@ -22,7 +22,7 @@ func _to_hide():
 			for grandgrandchild in grandchild.get_children():
 				if grandgrandchild.name == "SelectionPanel" and grandgrandchild.visible:
 					var placemark = grandgrandchild.get_parent()
-					SelectedListManager.remove_placemark(placemark, null)
+					SelectedListManager.remove_from_selection(placemark, null)
 					placemark.emit_signal("selection_changed")
 
 func _to_unhide():

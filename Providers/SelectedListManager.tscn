@@ -60,7 +60,13 @@ func delete_selected():
 func reveal_hidden():
 	emit_signal(\"set_revealed_hidden\")
 	
-func remove_placemark(placemark, data):
+func add_to_selection(placemark, data):
+	var entry = {\"placemark\": placemark, \"data\": data}
+	var index = _find_entry_index(placemark)
+	if index == -1:
+		_add_to_selection(entry)
+	
+func remove_from_selection(placemark, data):
 	var entry = {\"placemark\": placemark, \"data\": data}
 	var index = _find_entry_index(placemark)
 	if index != -1:
