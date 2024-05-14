@@ -30,16 +30,35 @@ func _on_FilterLineEdit_text_changed(new_text):
 	_rebuild_list(new_text)
 	
 func _rebuild_list(filter_text: String = ""):
-	var normalized_filter_text := filter_text.to_upper()
+	var normalized_filter_text = filter_text.to_upper()
+	var filter_int = int(filter_text)
 	clear()
 	hide_root = true
-	var root := create_item()
+	var root = create_item()
+
 	for enemy in enemy_cache:
-		if normalized_filter_text.length() == 0 or normalized_filter_text in enemy.name.to_upper():
-			var enemy_item := create_item(root)
-			enemy_item.set_text(0, enemy.name)
-			enemy_item.set_metadata(0, enemy)
-	
+		# Defining the hex value by back converting to hex
+		var enemy_hex = int("0x%06X" % enemy.id)
+
+		if normalized_filter_text.length() == 0:
+			_populate_list(root, enemy)
+			
+		elif filter_text.is_valid_integer():
+			if filter_int == enemy.id:
+				_populate_list(root, enemy)
+		elif filter_text.is_valid_hex_number(true): # true is to check with prefix
+			if filter_int == enemy_hex:
+				_populate_list(root, enemy)
+		else:
+			if normalized_filter_text in enemy.name.to_upper():
+				_populate_list(root, enemy)
+
+# exists to reduce duplicate code
+func _populate_list(root, enemy):
+		var enemy_item = create_item(root)
+		enemy_item.set_text(0, enemy.name)
+		enemy_item.set_metadata(0, enemy)
+
 func get_drag_data(position):
 	var selected_enemy_type: EnemyType =  get_item_at_position(position).get_metadata(0)
 	print_debug("Dragging %s" % [tr(selected_enemy_type.name)])
