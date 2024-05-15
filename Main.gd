@@ -42,6 +42,7 @@ func _on_ui_stage_selected(stage_no):
 	_load_stage_markers(stage_no)
 	_update_layer_selector()
 	_focus_camera_on_center()
+	_move_background_to()
 	
 	var stage_id = DataProvider.stage_no_to_stage_id(int(stage_no))
 	if stage_id == -1:
@@ -113,6 +114,7 @@ func _add_room_maps(stage_no: int) -> bool:
 	else:
 		print("Couldn't find an associated room (rm) map for this stage (Stage No. %s)" % [stage_no])
 	return found_map
+
 
 func _add_stage_maps(stage_no: int) -> bool:
 	var stage_map := DataProvider.stage_no_to_stage_map(stage_no)
@@ -235,7 +237,6 @@ func _focus_camera_on_center() -> void:
 	
 	if new_position != null:
 		_move_camera_to(new_position)
-		_move_background_to(new_position)
 
 func _move_camera_to(new_position: Vector2) -> void:
 	camera_tween.interpolate_property(camera, "position",
@@ -244,8 +245,55 @@ func _move_camera_to(new_position: Vector2) -> void:
 	camera_tween.start()
 
 # Steals the camera position stuff to place the map accurately
-func _move_background_to(new_position): 
-		mapbackground.position = new_position
+func _move_background_to():
+	var map_pieces = _find_instanced_maps($MapCoordinateSpace/MapLayers)
+	
+	if map_pieces.size() == 0:
+		return # No sprites found
+	
+	# Initialize min and max coordinates with values from the first sprite
+	var first_sprite = map_pieces[0]
+	var min_x = first_sprite.global_position.x - first_sprite.get_rect().size.x * first_sprite.scale.x / 2
+	var min_y = first_sprite.global_position.y - first_sprite.get_rect().size.y * first_sprite.scale.y / 2
+	var max_x = first_sprite.global_position.x + first_sprite.get_rect().size.x * first_sprite.scale.x / 2
+	var max_y = first_sprite.global_position.y + first_sprite.get_rect().size.y * first_sprite.scale.y / 2
+	
+	# Find the minimum and maximum x and y coordinates among all sprites
+	for entry in map_pieces:
+		var entry_rect = entry.get_rect()
+		var entry_min_x = entry.global_position.x - entry_rect.size.x * entry.scale.x / 2
+		var entry_max_x = entry.global_position.x + entry_rect.size.x * entry.scale.x / 2
+		var entry_min_y = entry.global_position.y - entry_rect.size.y * entry.scale.y / 2
+		var entry_max_y = entry.global_position.y + entry_rect.size.y * entry.scale.y / 2
+		
+		min_x = min(min_x, entry_min_x)
+		min_y = min(min_y, entry_min_y)
+		max_x = max(max_x, entry_max_x)
+		max_y = max(max_y, entry_max_y)
+	
+	# bit hacky, for somereason some stages Y rect don't return accurately?
+	var total_width = max_x - min_x * 1.2
+	var total_height = max_y - min_y * 2
+	
+	var center_x = (max_x + min_x) / 2
+	var center_y = (max_y + min_y) / 2
+	
+	# Adjust the background position based on the calculated offset with padding
+	mapbackground.position.x = center_x
+	mapbackground.position.y = center_y + 50
+	# +50 because the centre is returning reliably lower?
+
+	# Adjust the mapbackground's region size
+	mapbackground.region_rect.size = Vector2(total_width, total_height)
+
+# Function to find all sprites in a given node and its children
+func _find_instanced_maps(node: Node) -> Array:
+	var sprites = []
+	if node is Sprite:
+		sprites.append(node)
+	for child in node.get_children():
+		sprites.append_array(_find_instanced_maps(child))
+	return sprites
 
  # Disables background on Field stages
 func _toggle_background(result: bool):
