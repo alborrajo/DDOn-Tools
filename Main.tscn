@@ -29,11 +29,11 @@ script = ExtResource( 3 )
 [node name="MapCoordinateSpace" type="Node2D" parent="."]
 
 [node name="MapBackground" type="Sprite" parent="MapCoordinateSpace"]
+visible = false
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 12 )
-offset = Vector2( 256, 0 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 1024, 1024 )
+region_rect = Rect2( 0, 0, 2048, 2048 )
 
 [node name="MapLayers" type="Node2D" parent="MapCoordinateSpace"]
 scale = Vector2( 0.1, 0.1 )
