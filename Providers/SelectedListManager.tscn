@@ -5,6 +5,8 @@ resource_name = "SelectedListManager"
 script/source = "extends Node
 
 var selected_list = []
+var enemy_type = false
+var item_type = false
 signal selection_changed
 signal set_revealed_hidden
 
@@ -17,6 +19,16 @@ func apply_values_to_selected_type(parameter_name: String, parameter_value):
 # Function to check the list for type and removes if it exists already
 func toggle_selection(placemark: GenericPlacemark, data: Object):
 	var entry = {\"placemark\": placemark, \"data\": data}
+	
+	if placemark is EnemyPlacemark:
+		enemy_type = true
+		
+	if placemark is GatheringItemPlacemark:
+		item_type = true
+		
+	if enemy_type and item_type:
+		clear_list()
+		print(\"we mismatched, cleaning up!\")
 
 	var index = _find_entry_index(placemark)
 	if index != -1:
