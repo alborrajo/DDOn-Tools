@@ -9,11 +9,12 @@ signal selected_day_night()
 var _drops_tables := [] # TODO: Maybe use a dictionary instead
 var _enemy_sets := []
 var _gathering_spots := []
-
+var selected_day_night = 0
 
 func select_day_night(index):
 	# Emit a custom signal with the selected index
 	emit_signal(\"selected_day_night\", index)
+	selected_day_night = index
 
 func clear_drops_tables() -> void:
 	_drops_tables.clear()

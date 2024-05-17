@@ -55,14 +55,8 @@ func _do_load_file(file: File) -> void:
 		schema_indices = LEGACY_SCHEMA_INDEXES
 	else:
 		header[0] = header[0].trim_prefix("#")
-		schema_indices = {}
-		var result := find_schema_indices(header, SCHEMA, schema_indices)
-		if result != OK:
-			var err_message := "Invalid CSV file. Header doesn't have a valid format "
-			printerr(err_message, file.get_path(), " ", header)
-			notification_popup_node.notify(err_message)
-			return
-	
+		schema_indices = find_schema_indices(header, SCHEMA)
+		
 	# Clear enemy set state
 	SetProvider.clear_gathering_spots()
 		
@@ -94,7 +88,7 @@ func _do_load_file(file: File) -> void:
 		
 		# Optional for compatibility with older formats
 		if schema_indices.has("DropChance"):
-			gathering_item.drop_chance = float(csv_line[schema_indices["DropChance"]].strip_edges())
+			gathering_item.drop_chance = float(csv_line[schema_indices["DropChance"]].strip_edges()) * 100
 		
 		var gathering_spot = SetProvider.get_gathering_spot(stage_id, group_id, subgroup_id)
 		gathering_spot.add_item(gathering_item)
@@ -118,5 +112,5 @@ func _do_save_file(file: File) -> void:
 			csv_data.append(gathering_item.max_num)
 			csv_data.append(gathering_item.quality)
 			csv_data.append(gathering_item.is_hidden)
-			csv_data.append(gathering_item.drop_chance)
+			csv_data.append(gathering_item.drop_chance / 100)
 			store_csv_line_crlf(file, csv_data)

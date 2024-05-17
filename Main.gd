@@ -13,6 +13,7 @@ onready var map_layers: Node2D = $MapCoordinateSpace/MapLayers
 onready var enemy_sets_node: Node2D = $MapCoordinateSpace/EnemySetMarkers
 onready var gathering_spots_node: Node2D = $MapCoordinateSpace/GatheringSpotMarkers
 onready var players_node: Node2D = $MapCoordinateSpace/PlayerMarkers
+onready var ui_node = $ui
 
 onready var tab_and_map_node = [
 	null,
@@ -25,8 +26,8 @@ onready var tab_and_map_node = [
 func _ready():
 	# Select Lestania by default, simulating a click on its selector
 	# TODO: In a less hacky way, using a Provider. Decoupling map selection logic from the selector/ui node itself
-	$ui/left/tab/Stages.select(0)
-	$ui/left/tab/Stages.emit_signal("item_selected", 0)
+	$ui/left/tab/Stages/StageItemList.select(0)
+	$ui/left/tab/Stages/StageItemList.emit_signal("item_selected", 0)
 	
 	# Select Layer 0 by default, also a hacky way
 	$ui/status_view/container/LayerOptionButton.select(0)
@@ -49,22 +50,35 @@ func _on_ui_stage_selected(stage_no):
 
 func _load_stage_map(stage_no) -> void:
 	var stage_no_as_int := int(stage_no)
-	var field_id := DataProvider.stage_no_to_belonging_field_id(stage_no_as_int)
-	if field_id == -1:
-		_add_stage_maps(stage_no_as_int)
-	else:
-		_add_field_maps(field_id-1) # why is it off by one? maybe it needs an additional conversion?
+	
+	if _add_field_maps(stage_no_as_int):
+		return
 
-func _add_field_maps(field_id: int) -> void:
-	# Since Mergoda Ruins uses m01_l01 instead of m00_l00 like the rest
-	if not _do_add_field_maps(field_id, 0, 0):
-		_do_add_field_maps(field_id, 1, 1)
-		
-func _do_add_field_maps(field_id: int, m: int, l: int) -> bool:
-	var stage_map_resource := "res://resources/maps/field00"+String(field_id)+"_m0"+String(m)+"_l"+String(l)+".png"
+	if _add_room_maps(stage_no_as_int):
+		return
+
+	if _add_stage_maps(stage_no_as_int):
+		return
+
+	printerr("Couldn't find a map of any kind for this stage (Stage No. %s)" % [stage_no])
+
+func _add_field_maps(stage_no: int) -> bool:
+	var field_id = DataProvider.stage_no_to_belonging_field_id(stage_no)
+	if field_id == -1:
+		print("Couldn't use a field map for this stage (Stage No. %s doesn't belong to a field)" % [stage_no])
+		return false
+
+	var map_name := "field00"+String(field_id-1) # why is it off by one? maybe it needs an additional conversion?
+	if not _do_add_field_maps(map_name, 0, 0):
+		# Since Mergoda Ruins uses m01_l01 instead of m00_l00 like the rest
+		return _do_add_field_maps(map_name, 1, 1)
+	return true
+
+func _do_add_field_maps(map_name: String, m: int, l: int) -> bool:
+	var stage_map_resource := "res://resources/maps/"+map_name+"_m0"+String(m)+"_l"+String(l)+".png"
 	var resource := _load_map_resource(stage_map_resource)
 	if resource == null:
-		printerr("Couldn't find a map for this field (Field ID %s)" % [field_id])
+		print("Couldn't find a field map for this field (%s)" % [map_name])
 		return false
 	else:
 		var map_sprite := Sprite.new()
@@ -73,29 +87,59 @@ func _do_add_field_maps(field_id: int, m: int, l: int) -> bool:
 		map_layers.get_child(l).add_child(map_sprite)
 		print("Loaded map ", stage_map_resource)
 		return true
-		
-		
-func _add_stage_maps(stage_no: int) -> void:
-	var stage_map := DataProvider.stage_no_to_stage_map(stage_no)
-	var origin := Vector2(0,-512) # 512 (map tile height in px)
-	if "ParamList" in stage_map:
+
+func _add_room_maps(stage_no: int) -> bool:
+	var stage_room := DataProvider.stage_no_to_stage_room(stage_no)
+	var found_map := false
+	if stage_room != null:
 		for layer_index in range(MAX_LAYERS):
 			var layer := map_layers.get_child(layer_index)
-			for param in stage_map["ParamList"]:
-				# TODO: Load all layers and have a control to switch between them
-				var stage_map_resource := "res://resources/maps/"+String(param["ModelName"])+"_l"+String(layer_index)+".png"
+			var stage_map_resource := "res://resources/maps/"+stage_room.map_name+"_l"+String(layer_index)+".png"
+			var resource := _load_map_resource(stage_map_resource)
+			if resource == null:
+				print("Couldn't find the map ", stage_map_resource)
+			else:
+				found_map = true
+				var map_sprite := Sprite.new()
+				map_sprite.texture = load(stage_map_resource)
+				map_sprite.centered = false
+				map_sprite.global_position = stage_room.offset
+				layer.add_child(map_sprite)
+				print("Loaded map ", stage_map_resource)
+	else:
+		print("Couldn't find an associated room (rm) map for this stage (Stage No. %s)" % [stage_no])
+	return found_map
+
+func _add_stage_maps(stage_no: int) -> bool:
+	var stage_map := DataProvider.stage_no_to_stage_map(stage_no)
+	var offset := Vector2(0,-512) # 512 (map tile height in px)
+	var found_map := false
+	if stage_map != null:
+		var parts_path: String = stage_map["rstagecustom_at_0x08"]["PartsPath"].substr(5, 5)
+		for area in stage_map["rstagecustom_at_0x08"]["mpArrayArea"]:
+			var area_no := String(area["mAreaNo"])
+			var map_name := parts_path+"_m"+area_no.pad_zeros(2)
+			for layer_index in range(MAX_LAYERS):
+				var stage_map_resource := "res://resources/maps/"+map_name+"_l"+String(layer_index)+".png"
 				var resource := _load_map_resource(stage_map_resource)
 				if resource == null:
 					print("Couldn't find the map ", stage_map_resource)
 				else:
+					found_map = true
 					var map_sprite := Sprite.new()
 					map_sprite.texture = load(stage_map_resource)
 					map_sprite.centered = false
-					map_sprite.global_position = origin + Vector2(param["ConnectPos"]["x"], param["ConnectPos"]["z"])*0.028 # Eyeballed it, close enough
+					map_sprite.global_position = offset
+					var layer := map_layers.get_child(layer_index)
 					layer.add_child(map_sprite)
 					print("Loaded map ", stage_map_resource)
+			if map_name in DataProvider.map_dimensions:
+				offset.y = offset.y - DataProvider.map_dimensions[map_name].y
+			else:
+				printerr("Failed to get dimensions of map "+map_name+". The next parts of this map will show up with a wrong offset.")
 	else:
-		printerr("Couldn't find a map for this stage (Stage No. %s)" % [stage_no])
+		print("Couldn't assemble a parts dungeon (pd) map (Stage No. %s)" % [stage_no])
+	return found_map
 
 func _load_stage_markers(stage_no):
 	var stage_id = DataProvider.stage_no_to_stage_id(int(stage_no))
@@ -107,6 +151,8 @@ func _load_stage_markers(stage_no):
 			var pos := Vector3(ect_marker["Pos"]["X"], ect_marker["Pos"]["Y"], ect_marker["Pos"]["Z"])
 			var map_entity = MapEntity.new(pos, int(stage_no))
 			var enemy_set_placemark: EnemySetPlacemark = EnemySetPlacemarkScene.instance()
+			enemy_set_placemark.connect("mouse_entered", ui_node, "_on_enemy_set_placemark_mouse_entered", [enemy_set_placemark])
+			enemy_set_placemark.connect("mouse_exited", ui_node, "_on_enemy_set_placemark_mouse_exited", [enemy_set_placemark])
 			enemy_set_placemark.enemy_set = SetProvider.get_enemy_set(stage_id, 0, group_no, 0)
 			enemy_set_placemark.rect_position = map_entity.get_map_position()
 			enemy_sets_node.add_child(enemy_set_placemark)
@@ -119,6 +165,8 @@ func _load_stage_markers(stage_no):
 			var pos := Vector3(gathering_spot["Position"]["x"], gathering_spot["Position"]["y"], gathering_spot["Position"]["z"])
 			var map_entity := MapEntity.new(pos, int(stage_no))
 			var gathering_spot_placemark: GatheringSpotPlacemark = GatheringSpotPlacemarkScene.instance()
+			gathering_spot_placemark.connect("mouse_entered", ui_node, "_on_gathering_spot_placemark_mouse_entered", [gathering_spot_placemark])
+			gathering_spot_placemark.connect("mouse_exited", ui_node, "_on_gathering_spot_placemark_mouse_exited", [gathering_spot_placemark])
 			gathering_spot_placemark.gathering_spot = SetProvider.get_gathering_spot(stage_id, group_no, pos_id)
 			gathering_spot_placemark.rect_position = map_entity.get_map_position()
 			gathering_spots_node.add_child(gathering_spot_placemark)
@@ -147,11 +195,11 @@ func _clear_markers() -> void:
 
 
 func _on_ui_player_activated(player: PlayerMapEntity):
-	for stage_index in $ui/left/tab/Stages.get_item_count():
-		if $ui/left/tab/Stages.get_item_metadata(stage_index) == String(player.StageNo):
+	for stage_index in $ui/left/tab/Stages/StageItemList.get_item_count():
+		if $ui/left/tab/Stages/StageItemList.get_item_metadata(stage_index) == String(player.StageNo):
 			# TODO: Decouple, same as _ready
-			$ui/left/tab/Stages.select(stage_index)
-			$ui/left/tab/Stages.emit_signal("item_selected", stage_index)
+			$ui/left/tab/Stages/StageItemList.select(stage_index)
+			$ui/left/tab/Stages/StageItemList.emit_signal("item_selected", stage_index)
 			# Move camera to player position
 			camera_tween.remove_all()
 			_move_camera_to(player.get_map_position())
@@ -215,6 +263,7 @@ static func _get_center(parent: Node2D) -> Vector2:
 
 
 func _on_tab_tab_changed(tab):
+	SelectedListManager.clear_list()
 	for i in range(tab_and_map_node.size()):
 		var map_node: Node2D = tab_and_map_node[i]
 		if map_node != null:

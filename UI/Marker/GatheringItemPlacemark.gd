@@ -2,12 +2,13 @@ extends GenericPlacemark
 class_name GatheringItemPlacemark
 
 export (Resource) var item: Resource setget set_item
-	
-onready var _detailsPanel: DetailsPanel = DetailsPanel.get_instance(get_tree())
+
+func _ready():
+	.ready()
+	SetProvider.connect("selected_day_night", self, "_on_day_night_selected")
 
 func _on_GatheringItemPlacemark_pressed():
-	# Left Click
-	_detailsPanel.show_details_of(item)
+	_selection_function(item)
 
 func set_item(i: GatheringItem) -> void:
 	if item != null and item.is_connected("changed", self, "_on_item_changed"):

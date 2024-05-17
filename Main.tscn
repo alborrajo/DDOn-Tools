@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Main/PlayerMarkers.gd" type="Script" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
@@ -8,6 +8,9 @@
 [ext_resource path="res://resources/icons/icon_sun.png" type="Texture" id=6]
 [ext_resource path="res://resources/icons/icon_moon.png" type="Texture" id=7]
 [ext_resource path="res://DayNightOptionButton.gd" type="Script" id=8]
+[ext_resource path="res://resources/icons/brightmixIconset search.png" type="Texture" id=9]
+[ext_resource path="res://StageItemList.gd" type="Script" id=10]
+[ext_resource path="res://resources/icons/icon_gear.png" type="Texture" id=11]
 
 [node name="root" type="Control"]
 anchor_right = 1.0
@@ -69,6 +72,28 @@ script = ExtResource( 1 )
 
 [node name="ui" parent="." instance=ExtResource( 4 )]
 
+[node name="Stages" parent="ui/left/tab" index="0"]
+script = null
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ui/left/tab/Stages" index="1"]
+margin_right = 288.0
+margin_bottom = 28.0
+
+[node name="StagesLineEdit" type="LineEdit" parent="ui/left/tab/Stages/HBoxContainer"]
+margin_right = 288.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+right_icon = ExtResource( 9 )
+placeholder_text = "Search..."
+
+[node name="StageItemList" type="ItemList" parent="ui/left/tab/Stages" index="2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 32.0
+margin_bottom = -4.0
+size_flags_vertical = 3
+script = ExtResource( 10 )
+
 [node name="EnemyFileMenu" parent="ui/left/tab/Enemies/HBoxContainer" index="0" groups=["filemenu"]]
 items = [ "New Enemy Sets", null, 0, false, false, 0, 0, null, "", false, "Load Enemy Sets", null, 0, false, false, 1, 0, null, "", false, "Save Enemy Sets", null, 0, false, false, 2, 0, null, "", false ]
 
@@ -84,7 +109,7 @@ margin_right = 208.0
 margin_bottom = 24.0
 text = "Day & Night"
 icon = ExtResource( 5 )
-items = [ "Day & Night", ExtResource( 5 ), false, 0, null, "Day", ExtResource( 6 ), false, 1, null, "Night", ExtResource( 7 ), false, 2, null ]
+items = [ "Day & Night", ExtResource( 5 ), false, 0, null, "Day", ExtResource( 6 ), false, 1, null, "Night", ExtResource( 7 ), false, 2, null, "Custom", ExtResource( 11 ), false, 3, null ]
 selected = 0
 script = ExtResource( 8 )
 
@@ -95,19 +120,12 @@ margin_right = 378.0
 [node name="Spacer" parent="ui/status_view/container" index="4"]
 margin_left = 382.0
 
-[node name="SettingsWindowDialog" parent="ui" index="4"]
-visible = false
-
-[node name="EnemyFileDialog" parent="ui" index="5"]
-window_title = "Open a File"
-
-[node name="ItemFileDialog" parent="ui" index="6"]
-window_title = "Open a File"
-
 [connection signal="gui_input" from="." to="camera" method="_on_root_gui_input"]
 [connection signal="player_activated" from="ui" to="." method="_on_ui_player_activated"]
 [connection signal="stage_selected" from="ui" to="." method="_on_ui_stage_selected"]
 [connection signal="tab_changed" from="ui/left/tab" to="." method="_on_tab_tab_changed"]
+[connection signal="text_changed" from="ui/left/tab/Stages/HBoxContainer/StagesLineEdit" to="ui/left/tab/Stages/StageItemList" method="_on_StagesLineEdit_text_changed"]
+[connection signal="item_selected" from="ui/left/tab/Stages/StageItemList" to="ui" method="_on_StageItemList_item_selected"]
 [connection signal="player_joined" from="ui/left/tab/Players" to="MapCoordinateSpace/PlayerMarkers" method="_on_Players_player_joined"]
 [connection signal="player_left" from="ui/left/tab/Players" to="MapCoordinateSpace/PlayerMarkers" method="_on_Players_player_left"]
 [connection signal="player_updated" from="ui/left/tab/Players" to="MapCoordinateSpace/PlayerMarkers" method="_on_Players_player_updated"]

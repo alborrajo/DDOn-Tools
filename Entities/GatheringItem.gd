@@ -43,5 +43,5 @@ func _set_is_hidden(value):
 	emit_changed()
 	
 func _set_drop_chance(value):
-	drop_chance = clamp(value, 0, 1)
+	drop_chance = clamp(value, 0, 100)
 	emit_changed()

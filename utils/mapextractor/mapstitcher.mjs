@@ -34,10 +34,8 @@ for (const mapPath of maps.stdout.split("\n")) {
             const imagesListFilePath = `${outputBasename}.txt`;
             await writeFile(imagesListFilePath, images.join('\n'));
 
-            const outputTmpPath = `../results/${outputBasename}.tmp.png`
             const outputPath = `../results/${outputBasename}.png`
-            await spinner('Stitching...', () =>  $`magick montage @${imagesListFilePath} -geometry 512x512+0+0! -tile ${maxX-minX+1}x${maxY-minY+1} ${outputTmpPath}`.quiet()); // Command too long
-            await spinner('Making transparent...', () => $`magick convert ${outputTmpPath} -transparent white ${outputPath}`.quiet());
+            await spinner('Stitching...', () =>  $`magick montage @${imagesListFilePath} -background none -geometry 512x512+0+0! -tile ${maxX-minX+1}x${maxY-minY+1} ${outputPath}`.quiet()); // Command too long
             await rm(outputTmpPath);
             echo(chalk.green(outputBasename));
         } catch(err) {
@@ -57,7 +55,7 @@ async function getMapDDSForLayer(map, minX, maxX, minY, maxY, layer) {
             const files = await glob([pathGlobExpr], {onlyFiles: true})
             if(files.length == 0) {
                 // Leave empty space if not found
-                ddsPaths.push("xc:white");
+                ddsPaths.push("xc:none");
                 process.stdout.write('░');
             } else {
                 ddsPaths.push(files[0]);

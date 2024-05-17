@@ -20,7 +20,9 @@ Alternatively, you can follow the steps in the [Development](#development) secti
 - Click on an enemy to change its properties.
 - Switch between zones using to drop down menu on the top left.
 
-Save or load your set to a file from the File menu (top left). Once a file is open you can either quick save or quick load with Ctrl+S or Ctrl+L.
+Save or load your set to a file from the File menu (top left).
+
+If any set placemarks are overlapping you can hide them by having your mouse over them and pressing H. Press Shift+H to unhide hidden placemarks.
 
 ## Development
 

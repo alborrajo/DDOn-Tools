@@ -16,16 +16,19 @@ func _on_gathering_spot_changed() -> void:
 	# Rebuild children elements
 	for child in $VBoxContainer.get_children():
 		$VBoxContainer.remove_child(child)
-		
-	for index in _gathering_spot.get_gathering_items().size():
-		var item: GatheringItem = _gathering_spot.get_gathering_items()[index]
+	var gatheringItems = _gathering_spot.get_gathering_items()
+
+	for index in gatheringItems.size():
+		var item: GatheringItem = gatheringItems[index]
 		var item_placemark: GatheringItemPlacemark = item_placemark_packed_scene.instance()
 		item_placemark.item = item
 		item_placemark.connect("placemark_removed", self, "_on_item_removed", [index])
 		$VBoxContainer.add_child(item_placemark)
 
+
 func _on_item_removed(index: int) -> void:
 	_gathering_spot.remove_item(index)
+
 
 func add_item(item: GatheringItem) -> void:
 	_gathering_spot.add_item(item)
@@ -43,3 +46,4 @@ func can_drop_data(_position, data):
 func drop_data(_position, data):
 	add_item(GatheringItem.new(data))
 	print_debug("Placed %s at %s (%d %d %d) " % [tr(data.name), tr(str("STAGE_NAME_",_gathering_spot.stage_id)), _gathering_spot.stage_id, _gathering_spot.group_id, _gathering_spot.subgroup_id])
+

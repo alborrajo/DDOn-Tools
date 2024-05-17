@@ -126,14 +126,7 @@ func _do_load_file_json(file: File) -> int:
 	SetProvider.clear_enemy_sets()
 
 	# Load loot tables
-	var drops_table_schema_idx = {}
-	var result := find_schema_indices(json_parse.result[JSON_KEY_SCHEMAS][JSON_KEY_DROPS_TABLES+"."+JSON_KEY_ITEMS], DROPS_TABLE_ITEMS_SCHEMA, drops_table_schema_idx) 
-	if result != OK:
-		var err_message := "Invalid file. Loot table schema doesn't have a valid format "
-		printerr(err_message, file.get_path(), " ", json_parse.result[JSON_KEY_SCHEMAS][JSON_KEY_DROPS_TABLES+"."+JSON_KEY_ITEMS])
-		notification_popup_node.notify(err_message)
-		return result
-	
+	var drops_table_schema_idx := find_schema_indices(json_parse.result[JSON_KEY_SCHEMAS][JSON_KEY_DROPS_TABLES+"."+JSON_KEY_ITEMS], DROPS_TABLE_ITEMS_SCHEMA)	
 	for data in json_parse.result[JSON_KEY_DROPS_TABLES]:
 		var id: int = data[JSON_KEY_ID]
 		# Send read entries to the SetProvider
@@ -161,14 +154,7 @@ func _do_load_file_json(file: File) -> int:
 			drops_table.add_item(drop_item)
 
 	# Load enemy sets
-	var enemies_schema_idx = {}
-	result = find_schema_indices(json_parse.result[JSON_KEY_SCHEMAS][JSON_KEY_ENEMIES], ENEMIES_SCHEMA, enemies_schema_idx) 
-	if result != OK:
-		var err_message := "Invalid file. Enemy set schema doesn't have a valid format "
-		printerr(err_message, file.get_path(), " ", json_parse.result[JSON_KEY_SCHEMAS][JSON_KEY_ENEMIES])
-		notification_popup_node.notify(err_message)
-		return result
-		
+	var enemies_schema_idx := find_schema_indices(json_parse.result[JSON_KEY_SCHEMAS][JSON_KEY_ENEMIES], ENEMIES_SCHEMA)		
 	for data in json_parse.result[JSON_KEY_ENEMIES]:
 		# Send read entries to the SetProvider
 		var stage_id = data[enemies_schema_idx["StageId"]]
@@ -219,7 +205,9 @@ func _do_load_file_json(file: File) -> int:
 			elif time_range_str == "18:00,06:59":
 				time_type = 2
 			else:
-				printerr("JSON HAS INVALID TIME_RANGE DATA")
+				time_type = 3
+				enemy.custom_time = time_range_str
+
 			enemy.time_type = time_type
 
 	return OK
@@ -363,6 +351,8 @@ func _do_save_file(file: File) -> void:
 				selected_string = "07:00,17:59"
 			if selected_index == 2:
 				selected_string = "18:00,06:59"	
+			if selected_index == 3:
+				selected_string = enemy.custom_time
 			data.append(selected_string)
 
 			json_data[JSON_KEY_ENEMIES].append(data)

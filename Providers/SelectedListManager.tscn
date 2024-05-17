@@ -1,0 +1,80 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+resource_name = "SelectedListManager"
+script/source = "extends Node
+
+var selected_list = []
+signal selection_changed
+signal set_revealed_hidden
+
+# Function to apply values to selected enemy or item
+func apply_values_to_selected_type(parameter_name: String, parameter_value):
+	for entry in selected_list:
+		var data = entry[\"data\"]
+		data[parameter_name] = parameter_value
+		
+# Function to check the list for type and removes if it exists already
+func toggle_selection(placemark: GenericPlacemark, data: Object):
+	var entry = {\"placemark\": placemark, \"data\": data}
+
+	var index = _find_entry_index(placemark)
+	if index != -1:
+		_remove_from_selection(index)
+	else:
+		_add_to_selection(entry)
+
+func _add_to_selection(entry):
+	selected_list.append(entry)
+	emit_signal(\"selection_changed\")
+	
+func _remove_from_selection(index):
+	selected_list.remove(index)
+	emit_signal(\"selection_changed\")
+	
+# Function to find the index of an entry in the list
+func _find_entry_index(placemark: GenericPlacemark) -> int:
+	for i in range(selected_list.size()):
+		if selected_list[i][\"placemark\"] == placemark:
+			return i
+	return -1
+
+# Function to clear the list and emit a signal to inform the placemarks.
+func clear_list():
+	selected_list.clear()
+	emit_signal(\"selection_changed\")
+
+# Function that handles the deletion of multiple placemarks.
+# Handle the list in reverse order to ensure it doesn't trip over any indexes and fail to delete entries
+func delete_selected():
+	for index in range(selected_list.size() - 1, -1, -1):
+		var entry = selected_list[index]
+		var placemark = entry[\"placemark\"]
+		if placemark:
+			placemark.delete_self()
+			var index_to_remove = _find_entry_index(placemark)
+			if index_to_remove != -1:
+				selected_list.remove(index_to_remove)
+				emit_signal(\"selection_changed\")
+	
+func reveal_hidden():
+	emit_signal(\"set_revealed_hidden\")
+	
+func add_to_selection(placemark, data):
+	var entry = {\"placemark\": placemark, \"data\": data}
+	var index = _find_entry_index(placemark)
+	if index == -1:
+		_add_to_selection(entry)
+	
+func remove_from_selection(placemark, data):
+	var entry = {\"placemark\": placemark, \"data\": data}
+	var index = _find_entry_index(placemark)
+	if index != -1:
+		_remove_from_selection(index)
+
+func is_list_empty() -> bool:
+	return selected_list.size() <= 0
+"
+
+[node name="SelectedListManager" type="Node"]
+script = SubResource( 1 )
