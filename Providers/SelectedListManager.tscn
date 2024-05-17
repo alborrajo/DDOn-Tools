@@ -28,7 +28,6 @@ func toggle_selection(placemark: GenericPlacemark, data: Object):
 		
 	if enemy_type and item_type:
 		clear_list()
-		print(\"we mismatched, cleaning up!\")
 
 	var index = _find_entry_index(placemark)
 	if index != -1:
