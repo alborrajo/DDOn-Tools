@@ -58,7 +58,7 @@ func _rebuild_list(filter_text: String = ""):
 # exists to reduce duplicate code
 func _populate_list(root, enemy):
 	var enemy_item = create_item(root)
-	enemy_item.set_text(0, "%s [%d]" % [enemy.name, enemy.id]) # Displaying name and ID
+	enemy_item.set_text(0, "%s [0x%06X]" % [enemy.name, enemy.id]) # Displaying name and ID
 	enemy_item.set_metadata(0, enemy)
 
 func get_drag_data(position):
