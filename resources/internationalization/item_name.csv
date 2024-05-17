@@ -4883,15 +4883,15 @@ ITEM_NAME_7784,巨人のイボ角,Giant's Horn
 ITEM_NAME_7785,キメラのヤギ角,Goat Horn
 ITEM_NAME_7787,大きな牙,Large Fang
 ITEM_NAME_7788,いびつな牙,Crooked Fang
-ITEM_NAME_7789,金貨袋,Coin Pouch
-ITEM_NAME_7790,金貨袋,Coin Pouch
-ITEM_NAME_7791,金貨袋,Coin Pouch
-ITEM_NAME_7792,リム結晶,Rift Crystal
-ITEM_NAME_7793,リム結晶,Rift Crystal
-ITEM_NAME_7794,リム結晶,Rift Crystal
-ITEM_NAME_7795,ブラッドオーブ,Blood Orb
-ITEM_NAME_7796,ブラッドオーブ,Blood Orb
-ITEM_NAME_7797,ブラッドオーブ,Blood Orb
+ITEM_NAME_7789,金貨袋,Coin Pouch (1 G)
+ITEM_NAME_7790,金貨袋,Coin Pouch (10 G)
+ITEM_NAME_7791,金貨袋,Coin Pouch (100 G)
+ITEM_NAME_7792,リム結晶,Rift Crystal (1 RP)
+ITEM_NAME_7793,リム結晶,Rift Crystal (10 RP)
+ITEM_NAME_7794,リム結晶,Rift Crystal (100 RP)
+ITEM_NAME_7795,ブラッドオーブ,Blood Orb (1 BO)
+ITEM_NAME_7796,ブラッドオーブ,Blood Orb (10 BO)
+ITEM_NAME_7797,ブラッドオーブ,Blood Orb (100 BO)
 ITEM_NAME_7798,小さな牙,Small Fang
 ITEM_NAME_7799,ベヘモットファング,Behemoth Fang
 ITEM_NAME_7800,影まといの爪,Shadowy Claw
@@ -14933,9 +14933,9 @@ ITEM_NAME_18738,目玉石,Eye Ore
 ITEM_NAME_18739,サイクロランタン,Cyclops Lantern
 ITEM_NAME_18740,サイクロランタン【銀】,Cyclops Lantern (Silver)
 ITEM_NAME_18741,サイクロランタン【金】,Cyclops Lantern (Gold)
-ITEM_NAME_18742,ハイオーブ,High Orb
-ITEM_NAME_18743,ハイオーブ,High Orb
-ITEM_NAME_18744,ハイオーブ,High Orb
+ITEM_NAME_18742,ハイオーブ,High Orb (1 HO)
+ITEM_NAME_18743,ハイオーブ,High Orb (10 HO)
+ITEM_NAME_18744,ハイオーブ,High Orb (100 HO)
 ITEM_NAME_18750,レシピ：白い壁紙,Recipe: White Wallpaper
 ITEM_NAME_18751,レシピ：黒い壁紙,Recipe: Black Wallpaper
 ITEM_NAME_18752,レシピ：ウォールペイント・レッド,Recipe: Wall Paint - Red
@@ -14982,9 +14982,9 @@ ITEM_NAME_18824,翔彫りの未鑑定装具【皇】,Unappraised Flight Trinket 
 ITEM_NAME_18825,AP【ウルテカ山岳】,AP (Urteca Mountains)
 ITEM_NAME_18826,王家紋章のメダル＜ウルテカ地方＞,Royal Crest Medal (Urteca District)
 ITEM_NAME_18827,冒パスポイント,Adventure Pass Point
-ITEM_NAME_18828,金貨袋,Coin Pouch
-ITEM_NAME_18829,リム結晶,Rift Crystal
-ITEM_NAME_18830,ブラッドオーブ,Blood Orb
+ITEM_NAME_18828,金貨袋,Coin Pouch (7500 G)
+ITEM_NAME_18829,リム結晶,Rift Crystal (1250 RP)
+ITEM_NAME_18830,ブラッドオーブ,Blood Orb (750 BO)
 ITEM_NAME_18831,経験値結晶,Experience Crystal
 ITEM_NAME_18832,プレイポイント,Play Point
 ITEM_NAME_18833,NPC用_調査兵団武器,NPC_Survey Corps Weapons
@@ -15651,10 +15651,10 @@ ITEM_NAME_19504,妖夜のウィッチブーツ,Magical Night Witch Boots
 ITEM_NAME_19505,白竜像,White Dragon Statue
 ITEM_NAME_19506,精霊竜像,Spirit Dragon Statue
 ITEM_NAME_19507,火竜像,Fire Dragon Statue
-ITEM_NAME_19508,金貨袋,Coin Pouch
-ITEM_NAME_19509,金貨袋,Coin Pouch
-ITEM_NAME_19510,リム結晶,Rift Crystal
-ITEM_NAME_19511,ブラッドオーブ,Blood Orb
+ITEM_NAME_19508,金貨袋,Coin Pouch (1000 G)
+ITEM_NAME_19509,金貨袋,Coin Pouch (10000 G)
+ITEM_NAME_19510,リム結晶,Rift Crystal (1000 RP)
+ITEM_NAME_19511,ブラッドオーブ,Blood Orb (1000 BO)
 ITEM_NAME_19512,魔界村アーサーのヤリ,Ghosts 'n Goblins Arthur's Lance
 ITEM_NAME_19513,彩光のミラージュアーマー【零】,Aurora Mirage Armor (Plain)
 ITEM_NAME_19514,彩光のブライトアーマー【零】,Aurora Bright Armor (Plain)
