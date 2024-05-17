@@ -37,8 +37,9 @@ func _rebuild_list(filter_text: String = ""):
 	for item in items_cache:
 		if normalized_filter_text.length() == 0 or normalized_filter_text in item.name.to_upper():
 			var item_item := create_item(root)
-			item_item.set_text(0, item.name)
+			item_item.set_text(0, "%s [%d]" % [item.name, item.id])
 			item_item.set_metadata(0, item)
+
 
 func get_drag_data(position):
 	var selected_item: Item =  get_item_at_position(position).get_metadata(0)
