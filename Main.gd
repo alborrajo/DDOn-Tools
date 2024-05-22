@@ -213,7 +213,7 @@ func _update_layer_selector() -> void:
 	for layer_index in range(map_layers.get_child_count()):
 		var layer_is_empty := map_layers.get_child(layer_index).get_child_count() == 0
 		$ui/status_view/container/LayerOptionButton.set_item_disabled(layer_index, layer_is_empty)
-		if layer_to_select == -1 and not layer_is_empty:
+		if not layer_is_empty:
 			layer_to_select = layer_index
 
 	if layer_to_select != -1:
@@ -240,10 +240,11 @@ func _move_camera_to(new_position: Vector2) -> void:
 	camera_tween.start()
 
 
-func _on_LayerOptionButton_item_selected(index):
-	for layer in map_layers.get_children():
-		layer.visible = false
-	map_layers.get_child(index).visible = true
+func _on_LayerOptionButton_item_selected(selected_layer_index):
+	for layer_index in range(map_layers.get_child_count()):
+		var layer := map_layers.get_child(layer_index) as Node2D
+		layer.modulate.a = clamp(float(layer_index+1) / float(selected_layer_index+1), 0, 1)
+		layer.visible = layer_index <= selected_layer_index
 
 
 static func _get_center(parent: Node2D) -> Vector2:
