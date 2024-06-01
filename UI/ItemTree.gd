@@ -48,11 +48,8 @@ func get_drag_data(position):
 
 func get_item_by_id(id: int) -> Item:
 	# Also inefficient af
-	var child := get_root().get_children()
-	while child != null:
-		var item := child.get_metadata(0) as Item
+	for item in items_cache:
 		if item.id == id:
 			return item
-		child = child.get_next()
-	
+	printerr("Couldn't find item with id", id)
 	return null

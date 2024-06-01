@@ -68,11 +68,8 @@ func get_drag_data(position):
 
 func get_enemy_by_id(id: int) -> EnemyType:
 	# Also inefficient af
-	var child := get_root().get_children()
-	while child != null:
-		var enemy := child.get_metadata(0) as EnemyType
-		if enemy.id == id:
-			return enemy
-		child = child.get_next()
-	
+	for enemy_type in enemy_cache:
+		if enemy_type.id == id:
+			return enemy_type
+	printerr("Couldn't find enemy with id", id)
 	return null
