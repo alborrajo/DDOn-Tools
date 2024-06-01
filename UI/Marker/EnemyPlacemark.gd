@@ -1,8 +1,8 @@
 extends GenericPlacemark
 class_name EnemyPlacemark
 
-const COLOR_BLOOD_ORB = Color.rebeccapurple
-const COLOR_HIGH_ORB = Color.darkred
+const COLOR_BLOOD_ORB = Color.violet
+const COLOR_HIGH_ORB = Color.orangered
 const COLOR_DEFAULT = Color.white
 
 export (Resource) var enemy: Resource setget set_enemy
