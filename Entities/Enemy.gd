@@ -1,6 +1,7 @@
 extends Resource
 class_name Enemy
 
+const DEFAULT_NAMED_PARAMS_ID = 0x8FA
 
 # As it is right now, you have to kill 5 bosses of your level
 # or 50 regular enemies to level up
@@ -131,7 +132,7 @@ const EXP_UNTIL_NEXT_LV := [
 ]
 
 var enemy_type: EnemyType setget _set_enemy_type
-var named_enemy_params_id: int = 0x8FA setget _set_named_enemy_params_id
+var named_param: NamedParam setget _set_named_param
 var raid_boss_id: int = 0 setget _set_raid_boss_id
 var scale: int = 100 setget _set_scale
 var lv: int = 10 setget _set_lv
@@ -156,16 +157,20 @@ var high_orbs: int = 0 setget _set_high_orbs
 var experience: int = 0 setget _set_experience
 var drops_table: DropsTable = null setget _set_drops_table
 
-func _init(type: EnemyType):
+func _init(type: EnemyType, np: NamedParam = null):
 	self.enemy_type = type
+	if np == null:
+		self.named_param = DataProvider.get_named_param_by_id(DEFAULT_NAMED_PARAMS_ID)
+	else:
+		self.named_param = np
 	_set_lv(self.lv) # Update values dependant on Lv
 
 func get_display_name() -> String:
-	return "%s (Lv. %d)" % [enemy_type.name, lv]
+	return "%s (Lv. %d)" % [named_param.format_name(enemy_type.name), lv]
 
 func clone() -> Enemy:
 	var new_enemy: Enemy = get_script().new(self.enemy_type)
-	new_enemy.named_enemy_params_id = self.named_enemy_params_id
+	new_enemy.named_param = self.named_param
 	new_enemy.raid_boss_id = self.raid_boss_id
 	new_enemy.scale = self.scale
 	new_enemy.lv = self.lv
@@ -196,8 +201,8 @@ func _set_enemy_type(value):
 	hm_preset_no = value.default_hm_preset_no
 	emit_changed()
 	
-func _set_named_enemy_params_id(value):
-	named_enemy_params_id = value
+func _set_named_param(value):
+	named_param = value
 	emit_changed()
 	
 func _set_raid_boss_id(value):

@@ -163,8 +163,8 @@ func _do_load_file_json(file: File) -> int:
 		var subgroup_id = data[enemies_schema_idx["SubGroupId"]]
 		
 		var enemyType := enemy_tree_node.get_enemy_by_id(data[enemies_schema_idx["EnemyId"]].hex_to_int())
-		var enemy := Enemy.new(enemyType)
-		enemy.named_enemy_params_id = data[enemies_schema_idx["NamedEnemyParamsId"]]
+		var namedParam := DataProvider.get_named_param_by_id(data[enemies_schema_idx["NamedEnemyParamsId"]])
+		var enemy := Enemy.new(enemyType, namedParam)
 		enemy.raid_boss_id = data[enemies_schema_idx["RaidBossId"]]
 		enemy.scale = data[enemies_schema_idx["Scale"]]
 		enemy.lv = data[enemies_schema_idx["Lv"]]
@@ -245,8 +245,8 @@ func _do_load_file_legacy(file: File) -> void:
 		var subgroup_id = int(csv_line[3])
 		
 		var enemyType := enemy_tree_node.get_enemy_by_id(csv_line[4].strip_edges().hex_to_int())
-		var enemy := Enemy.new(enemyType)
-		enemy.named_enemy_params_id = csv_line[5].strip_edges().hex_to_int()
+		var namedParam := DataProvider.get_named_param_by_id(csv_line[5].strip_edges().hex_to_int())
+		var enemy := Enemy.new(enemyType, namedParam)
 		enemy.raid_boss_id = int(csv_line[6].strip_edges())
 		enemy.scale = int(csv_line[7].strip_edges())
 		enemy.lv = int(csv_line[8].strip_edges())
@@ -309,7 +309,7 @@ func _do_save_file(file: File) -> void:
 			data.append(set.group_id)
 			data.append(set.subgroup_id)
 			data.append("0x%06X" % enemy.enemy_type.id)
-			data.append(enemy.named_enemy_params_id)
+			data.append(enemy.named_param.id)
 			data.append(enemy.raid_boss_id)
 			data.append(enemy.scale)
 			data.append(enemy.lv)
@@ -370,7 +370,7 @@ func _do_save_file_legacy(file) -> void:
 			data.append(set.group_id)
 			data.append(set.subgroup_id)
 			data.append("0x%06X" % enemy.enemy_type.id)
-			data.append("0x%X" % enemy.named_enemy_params_id)
+			data.append("0x%X" % enemy.named_param.id)
 			data.append(enemy.raid_boss_id)
 			data.append(enemy.scale)
 			data.append(enemy.lv)

@@ -1,5 +1,6 @@
 extends Node
 
+export (String, FILE, "*.json") var named_param_json := "res://resources/named_param.ndp.json"
 export (String, FILE, "*.json") var map_dimensions_csv := "res://resources/maps/dimensions.csv"
 export (String, FILE, "*.json") var stage_custom_json := "res://resources/StageCustom.json"
 export (String, FILE, "*.json") var stage_room_csv := "res://resources/StageRoom.csv"
@@ -7,6 +8,7 @@ export (String, FILE, "*.json") var stage_list_json := "res://resources/StageLis
 export (String, FILE, "*.json") var repo_json := "res://resources/repo.json"
 export (String, FILE, "*.json") var gathering_spots_json := "res://resources/gatheringSpots.json"
 
+var named_params: Array
 var map_dimensions: Dictionary
 var stage_custom: Dictionary
 var stage_room: Dictionary
@@ -15,6 +17,12 @@ var repo: Dictionary
 var gathering_spots: Dictionary
 
 func _ready():
+	named_params = []
+	var loaded_named_param_json: Dictionary = Common.load_json_file(named_param_json)
+	for named_param_dict in loaded_named_param_json["namedParamList"]:
+		var named_param := NamedParam.new(named_param_dict)
+		named_params.append(named_param)
+		
 	stage_custom = Common.load_json_file(stage_custom_json)
 	stage_list = Common.load_json_file(stage_list_json)
 	repo = Common.load_json_file(repo_json)
@@ -61,3 +69,11 @@ func stage_no_to_belonging_field_id(stage_no: int) -> int:
 		if field_area_info["StageNoList"].has(float(stage_no)):
 			return int(field_area_info["FieldAreaId"])
 	return -1
+
+
+func get_named_param_by_id(id: int) -> NamedParam:
+	for named_param in named_params:
+		if named_param.id == id:
+			return named_param
+	printerr("Couldn't find named param with id ", id)
+	return null

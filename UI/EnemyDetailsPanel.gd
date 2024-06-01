@@ -40,7 +40,7 @@ func _on_enemy_changed():
 		# changed, the values in enemy_clone are still the originals
 		var filter_text = $VBoxContainer/DropsController._current_filter_text
 		var enemy_clone := enemy.clone()
-		$VBoxContainer/NamedEnemyParamsIdOptionButton.select($VBoxContainer/NamedEnemyParamsIdOptionButton.get_item_index(enemy_clone.named_enemy_params_id))
+		$VBoxContainer/NamedEnemyParamsIdOptionButton.select_by_id(enemy_clone.named_param.id)
 		$VBoxContainer/GridContainer/RaidBossIdLineEdit.value = enemy_clone.raid_boss_id
 		$VBoxContainer/GridContainer/ScaleLineEdit.value = enemy_clone.scale
 		$VBoxContainer/GridContainer/LevelLineEdit.value = enemy_clone.lv
@@ -96,9 +96,9 @@ func _on_enemy_changed():
 
 
 func _on_NamedEnemyParamsIdOptionButton_item_selected(index):
-	enemy.named_enemy_params_id = $VBoxContainer/NamedEnemyParamsIdOptionButton.get_item_id(index)
+	enemy.named_param = $VBoxContainer/NamedEnemyParamsIdOptionButton.get_item_metadata(index)
 	if supress_event != true:
-		SelectedListManager.apply_values_to_selected_type("named_enemy_params_id", enemy.named_enemy_params_id)
+		SelectedListManager.apply_values_to_selected_type("named_param", enemy.named_param)
 
 func _on_RaidBossIdLineEdit_value_changed(value):
 	enemy.raid_boss_id = int(value)
