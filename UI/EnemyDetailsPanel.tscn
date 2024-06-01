@@ -22,22 +22,50 @@ script = ExtResource( 3 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_right = 1004.0
-margin_bottom = 684.0
+margin_bottom = 732.0
 size_flags_horizontal = 3
 
-[node name="NamedEnemyParamsIdOptionButton" type="OptionButton" parent="VBoxContainer"]
+[node name="NamedParamsControl" type="VBoxContainer" parent="VBoxContainer"]
 margin_right = 1004.0
+margin_bottom = 56.0
+
+[node name="NamedEnemyParamsFilterLineEdit" type="LineEdit" parent="VBoxContainer/NamedParamsControl"]
+margin_right = 1004.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+clear_button_enabled = true
+right_icon = ExtResource( 6 )
+placeholder_text = "Filter Names"
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/NamedParamsControl"]
+margin_top = 32.0
+margin_right = 1004.0
+margin_bottom = 56.0
+
+[node name="NamedEnemyParamsIdOptionButton" type="OptionButton" parent="VBoxContainer/NamedParamsControl/HBoxContainer"]
+margin_right = 976.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
-text = "- Default name -"
-items = [ "- Default name -", null, false, 2298, null ]
-selected = 0
 script = ExtResource( 1 )
 
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
-margin_top = 28.0
+[node name="NamedParamResetButton" type="Button" parent="VBoxContainer/NamedParamsControl/HBoxContainer"]
+margin_left = 980.0
 margin_right = 1004.0
-margin_bottom = 488.0
+margin_bottom = 24.0
+text = "←"
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+margin_top = 60.0
+margin_right = 1004.0
+margin_bottom = 64.0
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
+margin_top = 68.0
+margin_right = 1004.0
+margin_bottom = 528.0
 columns = 2
 
 [node name="RaidBossId" type="Label" parent="VBoxContainer/GridContainer"]
@@ -321,16 +349,21 @@ max_value = 9999.0
 suffix = "HO"
 
 [node name="ExpSpinBox" type="SpinBox" parent="VBoxContainer"]
-margin_top = 492.0
+margin_top = 532.0
 margin_right = 1004.0
-margin_bottom = 520.0
+margin_bottom = 560.0
 max_value = 4.29497e+09
 suffix = "XP"
 
-[node name="DropsFilterLineEdit" type="LineEdit" parent="VBoxContainer"]
-margin_top = 524.0
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+margin_top = 564.0
 margin_right = 1004.0
-margin_bottom = 552.0
+margin_bottom = 568.0
+
+[node name="DropsFilterLineEdit" type="LineEdit" parent="VBoxContainer"]
+margin_top = 572.0
+margin_right = 1004.0
+margin_bottom = 600.0
 size_flags_horizontal = 3
 clear_button_enabled = true
 right_icon = ExtResource( 6 )
@@ -340,9 +373,9 @@ __meta__ = {
 }
 
 [node name="DropsController" type="VBoxContainer" parent="VBoxContainer"]
-margin_top = 556.0
+margin_top = 604.0
 margin_right = 1004.0
-margin_bottom = 684.0
+margin_bottom = 732.0
 script = ExtResource( 4 )
 
 [node name="HFlowContainer" type="HFlowContainer" parent="VBoxContainer/DropsController"]
@@ -425,7 +458,10 @@ margin_top = 86.0
 margin_right = 990.0
 margin_bottom = 86.0
 
-[connection signal="item_selected" from="VBoxContainer/NamedEnemyParamsIdOptionButton" to="." method="_on_NamedEnemyParamsIdOptionButton_item_selected"]
+[connection signal="text_changed" from="VBoxContainer/NamedParamsControl/NamedEnemyParamsFilterLineEdit" to="VBoxContainer/NamedParamsControl/HBoxContainer/NamedEnemyParamsIdOptionButton" method="_on_NamedEnemyParamsFilterLineEdit_text_changed"]
+[connection signal="item_selected" from="VBoxContainer/NamedParamsControl/HBoxContainer/NamedEnemyParamsIdOptionButton" to="." method="_on_NamedEnemyParamsIdOptionButton_item_selected"]
+[connection signal="item_selected" from="VBoxContainer/NamedParamsControl/HBoxContainer/NamedEnemyParamsIdOptionButton" to="VBoxContainer/NamedParamsControl/HBoxContainer/NamedEnemyParamsIdOptionButton" method="_on_NamedEnemyParamsIdOptionButton_item_selected"]
+[connection signal="pressed" from="VBoxContainer/NamedParamsControl/HBoxContainer/NamedParamResetButton" to="VBoxContainer/NamedParamsControl/HBoxContainer/NamedEnemyParamsIdOptionButton" method="_on_NamedParamResetButton_pressed"]
 [connection signal="value_changed" from="VBoxContainer/GridContainer/RaidBossIdLineEdit" to="." method="_on_RaidBossIdLineEdit_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/GridContainer/ScaleLineEdit" to="." method="_on_ScaleLineEdit_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/GridContainer/LevelLineEdit" to="." method="_on_LevelLineEdit_value_changed"]
