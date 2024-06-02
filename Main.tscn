@@ -20,12 +20,13 @@ script = ExtResource( 2 )
 [node name="camera" type="Camera2D" parent="." groups=["camera"]]
 position = Vector2( 175, 258 )
 current = true
-zoom = Vector2( 0.1, 0.1 )
+zoom = Vector2( 100, 100 )
 script = ExtResource( 3 )
 
 [node name="CameraTween" type="Tween" parent="."]
 
 [node name="MapCoordinateSpace" type="Node2D" parent="."]
+scale = Vector2( 1000, 1000 )
 
 [node name="MapLayers" type="Node2D" parent="MapCoordinateSpace"]
 scale = Vector2( 0.1, 0.1 )
