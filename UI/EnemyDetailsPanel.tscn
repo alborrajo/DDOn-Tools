@@ -348,10 +348,30 @@ size_flags_horizontal = 3
 max_value = 9999.0
 suffix = "HO"
 
-[node name="ExpSpinBox" type="SpinBox" parent="VBoxContainer"]
+[node name="ExpContainer" type="HFlowContainer" parent="VBoxContainer"]
 margin_top = 532.0
 margin_right = 1004.0
 margin_bottom = 560.0
+hint_tooltip = "Named Params can affect the experience dropped"
+
+[node name="NamedParamsExpPercentageLabel" type="Label" parent="VBoxContainer/ExpContainer"]
+margin_top = 5.0
+margin_right = 21.0
+margin_bottom = 23.0
+text = "100"
+
+[node name="ExpPercentageLabel" type="Label" parent="VBoxContainer/ExpContainer"]
+margin_left = 25.0
+margin_top = 5.0
+margin_right = 50.0
+margin_bottom = 23.0
+text = "% of"
+
+[node name="ExpSpinBox" type="SpinBox" parent="VBoxContainer/ExpContainer"]
+margin_left = 54.0
+margin_right = 1004.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
 max_value = 4.29497e+09
 suffix = "XP"
 
@@ -484,7 +504,7 @@ margin_bottom = 86.0
 [connection signal="value_changed" from="VBoxContainer/GridContainer/BloodOrbsContainer/BloodOrbsSpinBox" to="." method="_on_BloodOrbsSpinBox_value_changed"]
 [connection signal="pressed" from="VBoxContainer/GridContainer/HighOrbsContainer/IsHighOrbEnemy" to="." method="_on_IsHighOrbEnemy_pressed"]
 [connection signal="value_changed" from="VBoxContainer/GridContainer/HighOrbsContainer/HighOrbsSpinBox" to="." method="_on_HighOrbsSpinBox_value_changed"]
-[connection signal="value_changed" from="VBoxContainer/ExpSpinBox" to="." method="_on_ExpSpinBox_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/ExpContainer/ExpSpinBox" to="." method="_on_ExpSpinBox_value_changed"]
 [connection signal="text_changed" from="VBoxContainer/DropsFilterLineEdit" to="VBoxContainer/DropsController" method="_on_DropsFilterLineEdit_text_changed"]
 [connection signal="drops_table_selected" from="VBoxContainer/DropsController" to="." method="_on_DropsContainer_drops_table_selected"]
 [connection signal="item_selected" from="VBoxContainer/DropsController/HFlowContainer/DropsTableOptionButton" to="VBoxContainer/DropsController" method="_on_DropsTableOptionButton_item_selected"]

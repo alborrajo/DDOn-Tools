@@ -64,7 +64,8 @@ func _on_enemy_changed():
 		$VBoxContainer/GridContainer/HighOrbsContainer/IsHighOrbEnemy.pressed = enemy_clone.is_highorb_enemy
 		$VBoxContainer/GridContainer/HighOrbsContainer/HighOrbsSpinBox.editable = enemy_clone.is_highorb_enemy
 		$VBoxContainer/GridContainer/HighOrbsContainer/HighOrbsSpinBox.value = enemy_clone.high_orbs
-		$VBoxContainer/ExpSpinBox.value = enemy_clone.experience
+		$VBoxContainer/ExpContainer/NamedParamsExpPercentageLabel.text = String(enemy_clone.named_param.experience)
+		$VBoxContainer/ExpContainer/ExpSpinBox.value = enemy_clone.experience
 		_refresh_selected_name()
 		if enemy_clone.drops_table == null:
 			$VBoxContainer/DropsController.select_drops_table(-1, true)
