@@ -12,7 +12,7 @@ func _init(_item: Item):
 	self.item = _item
 	self.num = 1
 	self.max_num = 1
-	self.drop_chance = 1
+	self.drop_chance = 100
 
 func get_display_name() -> String:
 	return "%s (%d~%d)" % [item.name, num, max_num]
