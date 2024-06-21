@@ -66,22 +66,11 @@ script = ExtResource( 1 )
 
 [node name="ui" parent="." instance=ExtResource( 4 )]
 
-[node name="EnemyFileMenu" parent="ui/left/tab/Enemies/HBoxContainer" index="0" groups=["filemenu"]]
-items = [ "New Enemy Sets", null, 0, false, false, 0, 0, null, "", false, "Load Enemy Sets", null, 0, false, false, 1, 0, null, "", false, "Save Enemy Sets", null, 0, false, false, 2, 0, null, "", false ]
-
-[node name="ItemFileMenu" parent="ui/left/tab/Items/HBoxContainer" index="0" groups=["filemenu"]]
-items = [ "New Gathering Spots", null, 0, false, false, 0, 0, null, "", false, "Load Gathering Spots", null, 0, false, false, 1, 0, null, "", false, "Save Gathering Spots", null, 0, false, false, 2, 0, null, "", false ]
-
-[node name="LayerOptionButton" parent="ui/status_view/container" index="1"]
-items = [ "Layer 0", null, false, 0, null, "Layer 1", null, false, 1, null, "Layer 2", null, false, 2, null, "Layer 3", null, false, 3, null, "Layer 4", null, false, 4, null, "Layer 5", null, false, 5, null, "Layer 6", null, false, 6, null, "Layer 7", null, false, 7, null, "Layer 8", null, false, 8, null, "Layer 9", null, false, 9, null ]
-
 [connection signal="gui_input" from="." to="camera" method="_on_root_gui_input"]
+[connection signal="layer_selected" from="ui" to="." method="_on_layer_selected"]
 [connection signal="player_activated" from="ui" to="." method="_on_ui_player_activated"]
+[connection signal="player_joined" from="ui" to="MapCoordinateSpace/PlayerMarkers" method="_on_Players_player_joined"]
+[connection signal="player_left" from="ui" to="MapCoordinateSpace/PlayerMarkers" method="_on_Players_player_left"]
+[connection signal="player_updated" from="ui" to="MapCoordinateSpace/PlayerMarkers" method="_on_Players_player_updated"]
 [connection signal="stage_selected" from="ui" to="." method="_on_ui_stage_selected"]
-[connection signal="tab_changed" from="ui/left/tab" to="." method="_on_tab_tab_changed"]
-[connection signal="player_joined" from="ui/left/tab/Players" to="MapCoordinateSpace/PlayerMarkers" method="_on_Players_player_joined"]
-[connection signal="player_left" from="ui/left/tab/Players" to="MapCoordinateSpace/PlayerMarkers" method="_on_Players_player_left"]
-[connection signal="player_updated" from="ui/left/tab/Players" to="MapCoordinateSpace/PlayerMarkers" method="_on_Players_player_updated"]
-[connection signal="item_selected" from="ui/status_view/container/LayerOptionButton" to="." method="_on_LayerOptionButton_item_selected"]
-
-[editable path="ui"]
+[connection signal="tab_changed" from="ui" to="." method="_on_tab_changed"]

@@ -23,8 +23,16 @@
 [sub_resource type="GDScript" id=2]
 script/source = "extends CanvasLayer
 
+signal layer_selected(layer)
+
+signal tab_changed(tab)
+
 signal stage_selected(stage_no)
+
 signal player_activated(player_marker)
+signal player_joined(player)
+signal player_updated(player)
+signal player_left(player)
 
 onready var stage_label: Label = $status_view/container/StageLabel
 onready var coordinates_label: Label = $status_view/container/CoordinatesLabel
@@ -45,7 +53,10 @@ func _input(event):
 		if Input.is_action_just_pressed(\"set_unhide\"):
 			SelectedListManager.reveal_hidden()
 		
-		
+
+func _on_LayerOptionButton_item_selected(index):
+	emit_signal(\"layer_selected\", index)
+
 func _on_StageItemList_item_selected(index: int) -> void:
 	var stage_no = $left/tab/Stages/StageItemList.get_item_metadata(index)
 	emit_signal(\"stage_selected\", stage_no)
@@ -59,6 +70,18 @@ func _on_StageItemList_item_selected(index: int) -> void:
 func _on_Players_item_activated():
 	var player: PlayerMapEntity = $left/tab/Players.get_selected().get_metadata(0)
 	emit_signal(\"player_activated\", player)
+
+func _on_tab_changed(tab):
+	emit_signal(\"tab_changed\", tab)
+	
+func _on_Players_player_joined(player):
+	emit_signal(\"player_joined\", player)
+
+func _on_Players_player_left(player):
+	emit_signal(\"player_left\", player)
+
+func _on_Players_player_updated(player):
+	emit_signal(\"player_updated\", player)
 
 func _on_root_markers_loaded():
 	$left/tab/Enemies/FileMenu._on_markers_loaded()
@@ -81,7 +104,6 @@ func _on_gathering_spot_placemark_mouse_exited(gathering_spot_placemark: Gatheri
 	
 func _set_hovered_placemark(set_placemark):
 	hovered_placemark = set_placemark
-	
 "
 
 [sub_resource type="GDScript" id=3]
@@ -460,12 +482,17 @@ access = 2
 filters = PoolStringArray( "*.csv ; CSV Files" )
 show_hidden_files = true
 
+[connection signal="tab_changed" from="left/tab" to="." method="_on_tab_changed"]
 [connection signal="text_changed" from="left/tab/Stages/HBoxContainer/StagesLineEdit" to="left/tab/Stages/StageItemList" method="_on_StagesLineEdit_text_changed"]
 [connection signal="item_selected" from="left/tab/Stages/StageItemList" to="." method="_on_StageItemList_item_selected"]
 [connection signal="text_changed" from="left/tab/Enemies/HBoxContainer/FilterLineEdit" to="left/tab/Enemies/EnemyTree" method="_on_FilterLineEdit_text_changed"]
 [connection signal="text_changed" from="left/tab/Items/HBoxContainer/FilterLineEdit" to="left/tab/Items/ItemTree" method="_on_FilterLineEdit_text_changed"]
 [connection signal="item_activated" from="left/tab/Players" to="." method="_on_Players_item_activated"]
+[connection signal="player_joined" from="left/tab/Players" to="." method="_on_Players_player_joined"]
+[connection signal="player_left" from="left/tab/Players" to="." method="_on_Players_player_left"]
+[connection signal="player_updated" from="left/tab/Players" to="." method="_on_Players_player_updated"]
 [connection signal="timeout" from="left/tab/Players/RPCTimer" to="left/tab/Players" method="_on_rpc_timer_timeout"]
+[connection signal="item_selected" from="status_view/container/LayerOptionButton" to="." method="_on_LayerOptionButton_item_selected"]
 [connection signal="item_selected" from="status_view/container/DayNightOptionButton" to="status_view/container/DayNightOptionButton" method="_on_DayNightOptionButton_item_selected"]
 [connection signal="pressed" from="status_view/container/SettingsButton" to="status_view/container/SettingsButton" method="_on_SettingsButton_pressed"]
 [connection signal="pressed" from="Right Panel/VBoxContainer/HBoxContainer/Close" to="Right Panel" method="_on_Close_pressed"]

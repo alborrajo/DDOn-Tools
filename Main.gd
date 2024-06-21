@@ -240,7 +240,7 @@ func _move_camera_to(new_position: Vector2) -> void:
 	camera_tween.start()
 
 
-func _on_LayerOptionButton_item_selected(selected_layer_index):
+func _on_layer_selected(selected_layer_index):
 	for layer_index in range(map_layers.get_child_count()):
 		var layer := map_layers.get_child(layer_index) as Node2D
 		layer.modulate.a = clamp(float(layer_index+1) / float(selected_layer_index+1), 0, 1)
@@ -263,7 +263,7 @@ static func _get_center(parent: Node2D) -> Vector2:
 	return parent.to_global(Rect2(min_x, min_y, max_x-min_x, max_y-min_y).get_center())
 
 
-func _on_tab_tab_changed(tab):
+func _on_tab_changed(tab):
 	for i in range(tab_and_map_node.size()):
 		var map_node: Node2D = tab_and_map_node[i]
 		if map_node != null:

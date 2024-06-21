@@ -24,15 +24,17 @@ func update_info():
 	if get_root():
 		item = get_root().get_children()
 	while (item):
+		var item_player = item.get_metadata(0) as PlayerMapEntity
 		var exists = false
 		for info in infos:
 			var CharacterId : int = info["CharacterId"]
-			if item.get_metadata(0).CharacterId == CharacterId:
+			if item_player.CharacterId == CharacterId:
 				exists = true
 				break
 		if !exists:
 			# remove players on ui, that have no info
-			emit_signal("player_left", item.get_metadata(0))
+			print_debug("[%d] %s %s left", [item_player.CharacterId, item_player.FirstName, item_player.LastName])
+			emit_signal("player_left", item_player)
 			var tmp = item
 			item = item.get_next()
 			players_on_ui_root.remove_child(tmp)
@@ -42,7 +44,6 @@ func update_info():
 			
 	for info in infos:
 		var player := PlayerMapEntity.new(info)
-		print_debug("[%d] %s %s @ %d %s" % [player.CharacterId, player.FirstName, player.LastName, player.StageNo, player.pos.round()])
 		var existing_ui : TreeItem
 		item = false
 		if get_root():
@@ -54,11 +55,13 @@ func update_info():
 		if existing_ui:
 			# update existing player
 			_update_tree_entry(existing_ui, player)
+			print_debug("[%d] %s %s @ %d %s" % [player.CharacterId, player.FirstName, player.LastName, player.StageNo, player.pos.round()])
 			emit_signal("player_updated", player)
 		else:
 			# create new player
 			var entry := create_item(players_on_ui_root)
 			_update_tree_entry(entry, player)
+			print_debug("[%d] %s %s @ %d %s joined" % [player.CharacterId, player.FirstName, player.LastName, player.StageNo, player.pos.round()])
 			emit_signal("player_joined", player)
 
 

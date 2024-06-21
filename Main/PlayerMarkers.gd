@@ -3,7 +3,9 @@ class_name PlayerMarkers
 
 const PlayerMarkerScene = preload("res://UI/Marker/PlayerMarker.tscn")
 
-onready var ui_node := $"../../ui"
+export (NodePath) var ui_node_path: NodePath = "../../ui"
+
+onready var ui_node = get_node(ui_node_path)
 
 func _on_Players_player_joined(player: PlayerMapEntity):
 	var node := _get_player_node(player)
