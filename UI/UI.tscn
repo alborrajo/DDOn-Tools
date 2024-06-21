@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://UI/EnemyDetailsPanel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/NotificationPopup.gd" type="Script" id=2]
@@ -9,10 +9,16 @@
 [ext_resource path="res://UI/ItemDetailsPanel.tscn" type="PackedScene" id=7]
 [ext_resource path="res://UI/Settings.tscn" type="PackedScene" id=8]
 [ext_resource path="res://UI/Chat.tscn" type="PackedScene" id=9]
+[ext_resource path="res://DayNightOptionButton.gd" type="Script" id=10]
 [ext_resource path="res://UI/Players.gd" type="Script" id=11]
 [ext_resource path="res://UI/ItemTree.gd" type="Script" id=12]
 [ext_resource path="res://UI/ItemFileMenu.gd" type="Script" id=13]
 [ext_resource path="res://resources/icons/brightmixIconset search.png" type="Texture" id=14]
+[ext_resource path="res://resources/icons/icon_sun.png" type="Texture" id=15]
+[ext_resource path="res://resources/icons/icon_moon.png" type="Texture" id=16]
+[ext_resource path="res://resources/icons/icon_clock.png" type="Texture" id=17]
+[ext_resource path="res://resources/icons/icon_gear.png" type="Texture" id=18]
+[ext_resource path="res://StageItemList.gd" type="Script" id=19]
 
 [sub_resource type="GDScript" id=2]
 script/source = "extends CanvasLayer
@@ -78,8 +84,6 @@ func _set_hovered_placemark(set_placemark):
 	
 "
 
-[sub_resource type="GDScript" id=4]
-
 [sub_resource type="GDScript" id=3]
 script/source = "extends Button
 
@@ -123,14 +127,32 @@ margin_right = 303.0
 margin_bottom = 544.0
 tab_align = 0
 
-[node name="Stages" type="ItemList" parent="left/tab"]
+[node name="Stages" type="Control" parent="left/tab"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
 margin_top = 36.0
 margin_right = -4.0
 margin_bottom = -4.0
-script = SubResource( 4 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="left/tab/Stages"]
+margin_right = 288.0
+margin_bottom = 28.0
+
+[node name="StagesLineEdit" type="LineEdit" parent="left/tab/Stages/HBoxContainer"]
+margin_right = 288.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+right_icon = ExtResource( 14 )
+placeholder_text = "Search..."
+
+[node name="StageItemList" type="ItemList" parent="left/tab/Stages"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 32.0
+margin_bottom = -4.0
+size_flags_vertical = 3
+script = ExtResource( 19 )
 
 [node name="Enemies" type="VBoxContainer" parent="left/tab"]
 visible = false
@@ -265,6 +287,7 @@ margin_left = 7.0
 margin_top = 7.0
 margin_right = 997.0
 margin_bottom = 31.0
+rect_pivot_offset = Vector2( -163, -80 )
 
 [node name="minimize" type="Button" parent="status_view/container"]
 margin_right = 16.0
@@ -282,15 +305,25 @@ text = "Layer 0"
 items = [ "Layer 0", null, false, 0, null, "Layer 1", null, false, 1, null, "Layer 2", null, false, 2, null, "Layer 3", null, false, 3, null, "Layer 4", null, false, 4, null, "Layer 5", null, false, 5, null, "Layer 6", null, false, 6, null, "Layer 7", null, false, 7, null, "Layer 8", null, false, 8, null, "Layer 9", null, false, 9, null ]
 selected = 0
 
-[node name="StageLabel" type="Label" parent="status_view/container"]
+[node name="DayNightOptionButton" type="OptionButton" parent="status_view/container"]
 margin_left = 95.0
+margin_right = 208.0
+margin_bottom = 24.0
+text = "Day & Night"
+icon = ExtResource( 17 )
+items = [ "Day & Night", ExtResource( 17 ), false, 0, null, "Day", ExtResource( 15 ), false, 1, null, "Night", ExtResource( 16 ), false, 2, null, "Custom", ExtResource( 18 ), false, 3, null ]
+selected = 0
+script = ExtResource( 10 )
+
+[node name="StageLabel" type="Label" parent="status_view/container"]
+margin_left = 212.0
 margin_top = 3.0
-margin_right = 261.0
+margin_right = 378.0
 margin_bottom = 21.0
 text = "Stage Name (ID and Number)"
 
 [node name="Spacer" type="Control" parent="status_view/container"]
-margin_left = 265.0
+margin_left = 382.0
 margin_right = 783.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
@@ -405,7 +438,7 @@ margin_top = -195.0
 margin_right = 312.0
 margin_bottom = 195.0
 rect_min_size = Vector2( 180, 63 )
-window_title = "Open a File"
+window_title = "Abrir un Archivo"
 mode = 0
 access = 2
 filters = PoolStringArray( "*.json; JSON Files", "*.csv ; CSV Files" )
@@ -421,17 +454,19 @@ margin_top = -195.0
 margin_right = 312.0
 margin_bottom = 195.0
 rect_min_size = Vector2( 180, 63 )
-window_title = "Open a File"
+window_title = "Abrir un Archivo"
 mode = 0
 access = 2
 filters = PoolStringArray( "*.csv ; CSV Files" )
 show_hidden_files = true
 
-[connection signal="item_selected" from="left/tab/Stages" to="." method="_on_Stages_item_selected"]
+[connection signal="text_changed" from="left/tab/Stages/HBoxContainer/StagesLineEdit" to="left/tab/Stages/StageItemList" method="_on_StagesLineEdit_text_changed"]
+[connection signal="item_selected" from="left/tab/Stages/StageItemList" to="." method="_on_StageItemList_item_selected"]
 [connection signal="text_changed" from="left/tab/Enemies/HBoxContainer/FilterLineEdit" to="left/tab/Enemies/EnemyTree" method="_on_FilterLineEdit_text_changed"]
 [connection signal="text_changed" from="left/tab/Items/HBoxContainer/FilterLineEdit" to="left/tab/Items/ItemTree" method="_on_FilterLineEdit_text_changed"]
 [connection signal="item_activated" from="left/tab/Players" to="." method="_on_Players_item_activated"]
 [connection signal="timeout" from="left/tab/Players/RPCTimer" to="left/tab/Players" method="_on_rpc_timer_timeout"]
+[connection signal="item_selected" from="status_view/container/DayNightOptionButton" to="status_view/container/DayNightOptionButton" method="_on_DayNightOptionButton_item_selected"]
 [connection signal="pressed" from="status_view/container/SettingsButton" to="status_view/container/SettingsButton" method="_on_SettingsButton_pressed"]
 [connection signal="pressed" from="Right Panel/VBoxContainer/HBoxContainer/Close" to="Right Panel" method="_on_Close_pressed"]
 [connection signal="showing_details_of" from="Right Panel/VBoxContainer/DetailsPanel" to="Right Panel" method="_on_DetailsPanel_showing_details_of"]
