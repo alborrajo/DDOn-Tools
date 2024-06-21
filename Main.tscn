@@ -73,4 +73,5 @@ script = ExtResource( 1 )
 [connection signal="player_left" from="ui" to="MapCoordinateSpace/PlayerMarkers" method="_on_Players_player_left"]
 [connection signal="player_updated" from="ui" to="MapCoordinateSpace/PlayerMarkers" method="_on_Players_player_updated"]
 [connection signal="stage_selected" from="ui" to="." method="_on_ui_stage_selected"]
+[connection signal="subgroup_changed" from="ui" to="." method="_on_ui_subgroup_changed"]
 [connection signal="tab_changed" from="ui" to="." method="_on_tab_changed"]

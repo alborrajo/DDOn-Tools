@@ -37,7 +37,7 @@ func _on_ui_stage_selected(stage_no):
 	_clear_map()
 	_load_stage_map(stage_no)
 	_clear_markers()
-	_load_stage_markers(stage_no)
+	_load_stage_markers(stage_no, $ui.current_subgroup_id)
 	_update_layer_selector()
 	_focus_camera_on_center()
 	
@@ -141,7 +141,7 @@ func _add_stage_maps(stage_no: int) -> bool:
 		print("Couldn't assemble a parts dungeon (pd) map (Stage No. %s)" % [stage_no])
 	return found_map
 
-func _load_stage_markers(stage_no):
+func _load_stage_markers(stage_no, subgroup_id):
 	var stage_id = DataProvider.stage_no_to_stage_id(int(stage_no))
 	
 	# Build enemy set markers for the new stage
@@ -153,7 +153,7 @@ func _load_stage_markers(stage_no):
 			var enemy_set_placemark: EnemySetPlacemark = EnemySetPlacemarkScene.instance()
 			enemy_set_placemark.connect("mouse_entered", ui_node, "_on_enemy_set_placemark_mouse_entered", [enemy_set_placemark])
 			enemy_set_placemark.connect("mouse_exited", ui_node, "_on_enemy_set_placemark_mouse_exited", [enemy_set_placemark])
-			enemy_set_placemark.enemy_set = SetProvider.get_enemy_set(stage_id, 0, group_no, 0)
+			enemy_set_placemark.enemy_set = SetProvider.get_enemy_set(stage_id, 0, group_no, subgroup_id)
 			enemy_set_placemark.rect_position = map_entity.get_map_position()
 			enemy_sets_node.add_child(enemy_set_placemark)
 			
@@ -246,6 +246,9 @@ func _on_layer_selected(selected_layer_index):
 		layer.modulate.a = clamp(float(layer_index+1) / float(selected_layer_index+1), 0, 1)
 		layer.visible = layer_index <= selected_layer_index
 
+func _on_ui_subgroup_changed(subgroup_id):
+	_clear_markers()
+	_load_stage_markers($ui.current_stage_no, subgroup_id)
 
 static func _get_center(parent: Node2D) -> Vector2:
 	var min_x: int = 9223372036854775807

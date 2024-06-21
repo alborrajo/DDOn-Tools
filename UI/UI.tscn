@@ -24,6 +24,7 @@
 script/source = "extends CanvasLayer
 
 signal layer_selected(layer)
+signal subgroup_changed(subgroup_id)
 
 signal tab_changed(tab)
 
@@ -34,9 +35,13 @@ signal player_joined(player)
 signal player_updated(player)
 signal player_left(player)
 
+var current_stage_no
+
 onready var stage_label: Label = $status_view/container/StageLabel
 onready var coordinates_label: Label = $status_view/container/CoordinatesLabel
 onready var hovered_placemark = null
+
+onready var current_subgroup_id := int($status_view/container/SubGroupIdSpinBox.value)
 
 func _ready():
 	$status_view/container/SetLabel.text = \"\"
@@ -56,6 +61,9 @@ func _input(event):
 
 func _on_LayerOptionButton_item_selected(index):
 	emit_signal(\"layer_selected\", index)
+	
+func _on_SubGroupIdSpinBox_value_changed(value):
+	emit_signal(\"subgroup_changed\", int(value))
 
 func _on_StageItemList_item_selected(index: int) -> void:
 	var stage_no = $left/tab/Stages/StageItemList.get_item_metadata(index)
@@ -66,6 +74,8 @@ func _on_StageItemList_item_selected(index: int) -> void:
 		stage_label.text = \"Stage No. \" + stage_no
 	else:
 		stage_label.text = \"%s (ID: %s, Stage No. %s)\" % [tr(str(\"STAGE_NAME_\",stage_id)), stage_id, stage_no]
+		
+	current_stage_no = stage_no
 
 func _on_Players_item_activated():
 	var player: PlayerMapEntity = $left/tab/Players.get_selected().get_metadata(0)
@@ -308,12 +318,12 @@ margin_bottom = 44.0
 margin_left = 7.0
 margin_top = 7.0
 margin_right = 997.0
-margin_bottom = 31.0
+margin_bottom = 35.0
 rect_pivot_offset = Vector2( -163, -80 )
 
 [node name="minimize" type="Button" parent="status_view/container"]
 margin_right = 16.0
-margin_bottom = 24.0
+margin_bottom = 28.0
 text = "-"
 script = ExtResource( 5 )
 control_to_minimize = NodePath("../../../left")
@@ -322,7 +332,7 @@ property_to_toggle = "visible"
 [node name="LayerOptionButton" type="OptionButton" parent="status_view/container"]
 margin_left = 20.0
 margin_right = 91.0
-margin_bottom = 24.0
+margin_bottom = 28.0
 text = "Layer 0"
 items = [ "Layer 0", null, false, 0, null, "Layer 1", null, false, 1, null, "Layer 2", null, false, 2, null, "Layer 3", null, false, 3, null, "Layer 4", null, false, 4, null, "Layer 5", null, false, 5, null, "Layer 6", null, false, 6, null, "Layer 7", null, false, 7, null, "Layer 8", null, false, 8, null, "Layer 9", null, false, 9, null ]
 selected = 0
@@ -330,7 +340,7 @@ selected = 0
 [node name="DayNightOptionButton" type="OptionButton" parent="status_view/container"]
 margin_left = 95.0
 margin_right = 208.0
-margin_bottom = 24.0
+margin_bottom = 28.0
 text = "Day & Night"
 icon = ExtResource( 17 )
 items = [ "Day & Night", ExtResource( 17 ), false, 0, null, "Day", ExtResource( 15 ), false, 1, null, "Night", ExtResource( 16 ), false, 2, null, "Custom", ExtResource( 18 ), false, 3, null ]
@@ -339,35 +349,43 @@ script = ExtResource( 10 )
 
 [node name="StageLabel" type="Label" parent="status_view/container"]
 margin_left = 212.0
-margin_top = 3.0
+margin_top = 5.0
 margin_right = 378.0
-margin_bottom = 21.0
+margin_bottom = 23.0
 text = "Stage Name (ID and Number)"
 
 [node name="Spacer" type="Control" parent="status_view/container"]
 margin_left = 382.0
-margin_right = 783.0
-margin_bottom = 24.0
+margin_right = 659.0
+margin_bottom = 28.0
 size_flags_horizontal = 3
 
 [node name="SetLabel" type="Label" parent="status_view/container"]
-margin_left = 787.0
-margin_top = 3.0
-margin_right = 854.0
-margin_bottom = 21.0
+margin_left = 663.0
+margin_top = 5.0
+margin_right = 730.0
+margin_bottom = 23.0
 text = "Set (X,X,X,X)"
+
+[node name="SubGroupIdSpinBox" type="SpinBox" parent="status_view/container"]
+margin_left = 734.0
+margin_right = 854.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 120, 0 )
+rounded = true
+prefix = "SubGroup Id"
 
 [node name="CoordinatesLabel" type="Label" parent="status_view/container"]
 margin_left = 858.0
-margin_top = 3.0
+margin_top = 5.0
 margin_right = 927.0
-margin_bottom = 21.0
+margin_bottom = 23.0
 text = "Coordinates"
 
 [node name="SettingsButton" type="Button" parent="status_view/container"]
 margin_left = 931.0
 margin_right = 990.0
-margin_bottom = 24.0
+margin_bottom = 28.0
 text = "Settings"
 script = SubResource( 3 )
 
@@ -494,6 +512,7 @@ show_hidden_files = true
 [connection signal="timeout" from="left/tab/Players/RPCTimer" to="left/tab/Players" method="_on_rpc_timer_timeout"]
 [connection signal="item_selected" from="status_view/container/LayerOptionButton" to="." method="_on_LayerOptionButton_item_selected"]
 [connection signal="item_selected" from="status_view/container/DayNightOptionButton" to="status_view/container/DayNightOptionButton" method="_on_DayNightOptionButton_item_selected"]
+[connection signal="value_changed" from="status_view/container/SubGroupIdSpinBox" to="." method="_on_SubGroupIdSpinBox_value_changed"]
 [connection signal="pressed" from="status_view/container/SettingsButton" to="status_view/container/SettingsButton" method="_on_SettingsButton_pressed"]
 [connection signal="pressed" from="Right Panel/VBoxContainer/HBoxContainer/Close" to="Right Panel" method="_on_Close_pressed"]
 [connection signal="showing_details_of" from="Right Panel/VBoxContainer/DetailsPanel" to="Right Panel" method="_on_DetailsPanel_showing_details_of"]
