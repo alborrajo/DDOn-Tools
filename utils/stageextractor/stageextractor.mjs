@@ -42,23 +42,42 @@ for (const arcPath of stLotArcPaths) {
     } else {
         for(const pLayoutPath of pLayoutPaths) {
             const [stageNo, groupNo, lot] = await readLayout(pLayoutPath);
-            const gatheringSpots = [
-                ...lot.setInfoOmGather, 
-                ...lot.setInfoOmTreasureBox.map(x => x.super_cSetInfoOmGather)
-            ];
-            for(const gatheringSpot of gatheringSpots) {
+            for (let index = 0; index < lot.setInfo.length; index++) {
+                const setInfo = lot.setInfo[index];
                 if(!stageNoAndGatheringSpots.has(stageNo)) {
                     stageNoAndGatheringSpots.set(stageNo, new Array());
                 }
-                stageNoAndGatheringSpots.get(stageNo).push({
-                    GroupNo: groupNo,
-                    PosId: Number(gatheringSpot.ItemListID),
-                    Position: {
-                        x: Number(gatheringSpot.SetInfoOm.SetInfoCoord.Position.x),
-                        y: Number(gatheringSpot.SetInfoOm.SetInfoCoord.Position.y),
-                        z: Number(gatheringSpot.SetInfoOm.SetInfoCoord.Position.z)
-                    }
-                });
+                if(setInfo.type == 4) {
+                    stageNoAndGatheringSpots.get(stageNo).push({
+                        GroupNo: groupNo,
+                        PosId: Number(setInfo.id),
+                        Position: {
+                            x: Number(setInfo.info.SetInfoOm.SetInfoCoord.Position.x),
+                            y: Number(setInfo.info.SetInfoOm.SetInfoCoord.Position.y),
+                            z: Number(setInfo.info.SetInfoOm.SetInfoCoord.Position.z)
+                        }
+                    });
+                } else if(setInfo.type == 7) {
+                    stageNoAndGatheringSpots.get(stageNo).push({
+                        GroupNo: groupNo,
+                        PosId: Number(setInfo.id),
+                        Position: {
+                            x: Number(setInfo.info.super_cSetInfoOmGather.SetInfoOm.SetInfoCoord.Position.x),
+                            y: Number(setInfo.info.super_cSetInfoOmGather.SetInfoOm.SetInfoCoord.Position.y),
+                            z: Number(setInfo.info.super_cSetInfoOmGather.SetInfoOm.SetInfoCoord.Position.z)
+                        }
+                    });
+                } else if (setInfo.type == 42) {
+                    stageNoAndGatheringSpots.get(stageNo).push({
+                        GroupNo: groupNo,
+                        PosId: Number(setInfo.id),
+                        Position: {
+                            x: Number(setInfo.info.SetInfoOm.SetInfoCoord.Position.x),
+                            y: Number(setInfo.info.SetInfoOm.SetInfoCoord.Position.y),
+                            z: Number(setInfo.info.SetInfoOm.SetInfoCoord.Position.z)
+                        }
+                    });
+                }
             }
         }
     }
@@ -78,8 +97,8 @@ for (const arcPath of stArcPaths) {
     const parsedArcPath = path.parse(arcPath);
     echo(`Copying ${parsedArcPath.base}`);
     await cp(arcPath, parsedArcPath.base);
-    echo(`Unarchiving ${parsedArcPath.base} ${arcToolPath} -ddo -tex -alwayscomp -pc -txt -v 7 ${parsedArcPath.base}`);
-    await $`${arcToolPath} -ddo -tex -alwayscomp -pc -txt -v 7 ${parsedArcPath.base}`.quiet();
+    echo(`Unarchiving ${parsedArcPath.base} ${arcToolPath} -ddo -tex -alwayscomp -pc -v 7 ${parsedArcPath.base}`);
+    await $`${arcToolPath} -ddo -tex -alwayscomp -pc -v 7 ${parsedArcPath.base}`.quiet();
 
     const stageCustomPaths = (await $`find ${parsedArcPath.name} -type f -name "st????.59F75535"`.quiet()).stdout.split('\n').filter(filename => filename.trim().length > 0);
     if (stageCustomPaths.length == 0) {
