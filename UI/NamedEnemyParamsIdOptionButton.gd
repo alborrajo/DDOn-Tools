@@ -40,3 +40,4 @@ func _on_NamedEnemyParamsFilterLineEdit_text_changed(filter_text):
 
 func _on_NamedParamResetButton_pressed():
 	select_by_id(Enemy.DEFAULT_NAMED_PARAMS_ID)
+	emit_signal("item_selected", selected)
