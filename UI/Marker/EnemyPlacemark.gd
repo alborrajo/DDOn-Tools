@@ -43,7 +43,11 @@ func set_enemy(em: Enemy) -> void:
 		var time_type = enemy.get_time_type()
 	
 func _on_enemy_changed():
-	text = enemy.get_display_name()
+	if enemy.named_param.type == NamedParam.Type.NAMED_TYPE_REPLACE:
+		text = "*"+enemy.get_display_name()
+	else:
+		text = enemy.get_display_name()
+		
 	if enemy.is_blood_enemy:
 		self_modulate = COLOR_BLOOD_ORB
 	elif enemy.is_highorb_enemy:

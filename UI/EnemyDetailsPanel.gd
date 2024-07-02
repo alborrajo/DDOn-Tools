@@ -73,14 +73,15 @@ func _on_enemy_changed():
 			$VBoxContainer/DropsController.select_drops_table(enemy_clone.drops_table.id, true)
 			
 		
-		# Duplicate code from EnemyPlacemark, where a similar thing is done.
-		# TODO: thonk
 		if title_label_node != null:
 			var list_count = SelectedListManager.selected_list
 			if list_count.size() > 1:
 				title_label_node.text = "Selected Nodes: " + str(list_count.size())
 			else:
-				title_label_node.text = enemy_clone.get_display_name()
+				if enemy.named_param.type == NamedParam.Type.NAMED_TYPE_REPLACE:
+					title_label_node.text = "%s (%s)" % [enemy.get_display_name(), enemy.enemy_type.name]
+				else:
+					title_label_node.text = enemy.get_display_name()
 				
 			if enemy_clone.is_blood_enemy:
 				title_label_node.modulate = COLOR_BLOOD_ORB
