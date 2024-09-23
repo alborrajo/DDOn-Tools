@@ -155,6 +155,7 @@ var blood_orbs: int = 0 setget _set_blood_orbs
 var is_highorb_enemy: bool = false setget _set_is_highorb_enemy
 var high_orbs: int = 0 setget _set_high_orbs
 var experience: int = 0 setget _set_experience
+var play_points: int = 0 setget _set_play_points
 var drops_table: DropsTable = null setget _set_drops_table
 
 func _init(type: EnemyType, np: NamedParam = null):
@@ -193,6 +194,7 @@ func clone() -> Enemy:
 	new_enemy.is_highorb_enemy = self.is_highorb_enemy
 	new_enemy.high_orbs = self.high_orbs
 	new_enemy.experience = self.experience
+	new_enemy.play_points = self.play_points
 	new_enemy.drops_table = self.drops_table
 	return new_enemy
 
@@ -306,6 +308,10 @@ func _set_high_orbs(value):
 	
 func _set_experience(value):
 	experience = value
+	emit_changed()
+
+func _set_play_points(value):
+	play_points = value
 	emit_changed()
 
 func _set_drops_table(value):
