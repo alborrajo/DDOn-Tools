@@ -58,6 +58,7 @@ const ENEMIES_SCHEMA := PoolStringArray([
 	"Experience",
 	"DropsTableId",
 	"SpawnTime",
+	"PPDrop"
 ])
 
 const DROPS_TABLE_ITEMS_SCHEMA := PoolStringArray([
@@ -185,6 +186,11 @@ func _do_load_file_json(file: File) -> int:
 		enemy.high_orbs = data[enemies_schema_idx["HighOrbs"]]
 		enemy.is_highorb_enemy = enemy.high_orbs > 0
 		enemy.experience = data[enemies_schema_idx["Experience"]]
+		# The PPDrop field may or may not exist. If it doesn't exist, set to Experience over 7500
+		if enemies_schema_idx.has("PPDrop"):
+			enemy.play_points = data[enemies_schema_idx["PPDrop"]]
+		else:
+			enemy.play_points = enemy.experience / 7500
 
 		var drops_table_id = data[enemies_schema_idx["DropsTableId"]]
 		if drops_table_id == -1:
@@ -354,6 +360,8 @@ func _do_save_file(file: File) -> void:
 			if selected_index == 3:
 				selected_string = enemy.custom_time
 			data.append(selected_string)
+
+			data.append(enemy.play_points)
 
 			json_data[JSON_KEY_ENEMIES].append(data)
 
