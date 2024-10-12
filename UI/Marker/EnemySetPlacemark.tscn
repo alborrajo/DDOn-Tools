@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UI/Marker/EnemySetPlacemark.gd" type="Script" id=1]
 [ext_resource path="res://UI/Marker/GenericSetPlacemark.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/Marker/EnemyPlacemark.tscn" type="PackedScene" id=3]
+[ext_resource path="res://resources/fonts/NotoSansJP-Regular.otf" type="DynamicFontData" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -12,8 +13,33 @@ border_width_right = 4
 border_width_bottom = 4
 border_color = Color( 1, 0.333333, 0.333333, 1 )
 
+[sub_resource type="DynamicFont" id=2]
+outline_size = 2
+outline_color = Color( 0.61, 0.61, 0, 1 )
+font_data = ExtResource( 4 )
+
 [node name="EnemySetPlacemark" instance=ExtResource( 2 )]
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 1 )
 enemy_placemark_packed_scene = ExtResource( 3 )
-enemy_set = null
+
+[node name="VBoxContainer" parent="." index="0"]
+margin_right = 20.0
+margin_bottom = 676.0
+
+[node name="WarningLabel" type="Label" parent="." index="1"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 20.0
+margin_bottom = 676.0
+rect_min_size = Vector2( 16, 0 )
+mouse_filter = 1
+size_flags_vertical = 0
+custom_colors/font_color = Color( 1, 1, 0, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "⚠ This set has more enemies than it can fit"
+autowrap = true
+
+[connection signal="gui_input" from="WarningLabel" to="." method="_on_WarningLabel_gui_input"]
+[connection signal="mouse_entered" from="WarningLabel" to="." method="_on_WarningLabel_mouse_entered"]
+[connection signal="mouse_exited" from="WarningLabel" to="." method="_on_WarningLabel_mouse_exited"]
