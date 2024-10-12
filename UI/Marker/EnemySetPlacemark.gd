@@ -49,4 +49,3 @@ func can_drop_data(_position, data):
 func drop_data(_position, data):
 	add_enemy(Enemy.new(data))
 	print_debug("Placed %s at %s (%d %d %d %d) " % [tr(data.name), tr(str("STAGE_NAME_",enemy_set.stage_id)), enemy_set.stage_id, enemy_set.layer_no, enemy_set.group_id, enemy_set.subgroup_id])
-

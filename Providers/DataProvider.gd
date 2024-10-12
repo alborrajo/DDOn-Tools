@@ -7,6 +7,7 @@ export (String, FILE, "*.json") var stage_room_csv := "res://resources/StageRoom
 export (String, FILE, "*.json") var stage_list_json := "res://resources/StageList.json"
 export (String, FILE, "*.json") var repo_json := "res://resources/repo.json"
 export (String, FILE, "*.json") var gathering_spots_json := "res://resources/gatheringSpots.json"
+export (String, FILE, "*.json") var enemy_positions_json := "res://resources/enemyPositions.json"
 
 var named_params: Array
 var map_dimensions: Dictionary
@@ -14,6 +15,7 @@ var stage_custom: Dictionary
 var stage_room: Dictionary
 var stage_list: Array
 var repo: Dictionary
+var enemy_sets: Dictionary
 var gathering_spots: Dictionary
 
 func _ready():
@@ -28,6 +30,27 @@ func _ready():
 	repo = Common.load_json_file(repo_json)
 	gathering_spots = Common.load_json_file(gathering_spots_json)
 
+	enemy_sets = {}
+	var enemy_positions: Dictionary = Common.load_json_file(enemy_positions_json)
+	for stage_no in enemy_positions:
+		for enemy_position in enemy_positions[stage_no]:
+			if not stage_no in enemy_sets:
+				enemy_sets[stage_no] = []
+			var existing_enemy_set = null
+			for enemy_set in enemy_sets[stage_no]:
+				if enemy_set["GroupNo"] == enemy_position["GroupNo"] and enemy_set["SubGroupNo"] == enemy_position["SubGroupNo"]:
+					existing_enemy_set = enemy_set
+					break
+
+			if existing_enemy_set == null:
+				existing_enemy_set = {}
+				existing_enemy_set["GroupNo"] = enemy_position["GroupNo"]
+				existing_enemy_set["SubGroupNo"] = enemy_position["SubGroupNo"]
+				existing_enemy_set["Position"] = enemy_position["Position"]
+				existing_enemy_set["MaxPositions"] = 0
+				enemy_sets[stage_no].append(existing_enemy_set)
+
+			existing_enemy_set["MaxPositions"] = existing_enemy_set["MaxPositions"] + 1
 	
 	stage_room = {}
 	var file := File.new()

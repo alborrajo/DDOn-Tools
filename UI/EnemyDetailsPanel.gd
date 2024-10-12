@@ -82,6 +82,7 @@ func _on_enemy_changed():
 					title_label_node.text = "%s (%s)" % [enemy.get_display_name(), enemy.enemy_type.name]
 				else:
 					title_label_node.text = enemy.get_display_name()
+				title_label_node.text = "%s (%d, %d, %d, %d)" % [title_label_node.text, 1, 2, 3, 4]
 				
 			if enemy_clone.is_blood_enemy:
 				title_label_node.modulate = COLOR_BLOOD_ORB
