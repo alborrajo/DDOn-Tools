@@ -10,7 +10,9 @@ onready var notification_popup_node: NotificationPopup = get_node(notification_p
 onready var file_dialog_node: FileDialog = get_node(file_dialog)
 
 func _ready():
-	get_popup().connect("id_pressed", self, "_on_menu_id_pressed")
+	var popup = get_popup()
+	if not popup.is_connected("id_pressed", self, "_on_menu_id_pressed"):
+		popup.connect("id_pressed", self, "_on_menu_id_pressed")
 	
 	# Load last csv file on startup
 	var file_path = _get_file_path_from_storage()

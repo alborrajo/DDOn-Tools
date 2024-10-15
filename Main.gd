@@ -145,21 +145,24 @@ func _load_stage_markers(stage_no, subgroup_id):
 	var stage_id = DataProvider.stage_no_to_stage_id(int(stage_no))
 	
 	# Build enemy set markers for the new stage
-	if stage_no in DataProvider.repo["StageEctMarkers"] and DataProvider.repo["StageEctMarkers"][stage_no] != null:
-		for ect_marker in DataProvider.repo["StageEctMarkers"][stage_no]["MarkerInfos"]:
-			var group_no := int(ect_marker["GroupNo"])
-			var pos := Vector3(ect_marker["Pos"]["X"], ect_marker["Pos"]["Y"], ect_marker["Pos"]["Z"])
+	if String(stage_no) in DataProvider.enemy_sets:
+		for enemy_set in DataProvider.enemy_sets[String(stage_no)]:
+			var group_no := int(enemy_set["GroupNo"])
+			var subgroup_no := int(enemy_set["SubGroupNo"])
+			var pos := Vector3(enemy_set["Position"]["x"], enemy_set["Position"]["y"], enemy_set["Position"]["z"])
+			var max_positions := int(enemy_set["MaxPositions"])
 			var map_entity = MapEntity.new(pos, int(stage_no))
 			var enemy_set_placemark: EnemySetPlacemark = EnemySetPlacemarkScene.instance()
 			enemy_set_placemark.connect("mouse_entered", ui_node, "_on_enemy_set_placemark_mouse_entered", [enemy_set_placemark])
 			enemy_set_placemark.connect("mouse_exited", ui_node, "_on_enemy_set_placemark_mouse_exited", [enemy_set_placemark])
 			enemy_set_placemark.enemy_set = SetProvider.get_enemy_set(stage_id, 0, group_no, subgroup_id)
+			enemy_set_placemark.enemy_set.max_positions = max_positions
 			enemy_set_placemark.rect_position = map_entity.get_map_position()
 			enemy_sets_node.add_child(enemy_set_placemark)
-			
+
 	# Build gathering spot markers for the new stage
 	if String(stage_no) in DataProvider.gathering_spots:
-		for gathering_spot in DataProvider.gathering_spots[stage_no]:
+		for gathering_spot in DataProvider.gathering_spots[String(stage_no)]:
 			var group_no := int(gathering_spot["GroupNo"])
 			var pos_id := int(gathering_spot["PosId"])
 			var pos := Vector3(gathering_spot["Position"]["x"], gathering_spot["Position"]["y"], gathering_spot["Position"]["z"])
