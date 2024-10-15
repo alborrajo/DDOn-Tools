@@ -14,10 +14,11 @@ func _on_enemy_set_changed() -> void:
 		var enemies = enemy_set.get_enemies()
 		for index in enemies.size():
 			var enemy: Enemy = enemies[index]
-			enemy.connect("changed", self, "_on_enemy_changed")
+			if not enemy.is_connected("changed", self, "_on_enemy_changed"):
+				assert(enemy.connect("changed", self, "_on_enemy_changed", [enemy]) == OK)
 			var enemy_placemark: EnemyPlacemark = enemy_placemark_packed_scene.instance()
 			enemy_placemark.enemy = enemy
-			enemy_placemark.connect("placemark_removed", self, "_on_enemy_removed", [enemy, index])
+			assert(enemy_placemark.connect("placemark_removed", self, "_on_enemy_removed", [enemy, index]) == OK)
 			$VBoxContainer.add_child(enemy_placemark)
 
 		_check_max_positions_exceeded()
@@ -28,11 +29,13 @@ func _on_enemy_changed(enemy: Enemy) -> void:
 func _set_enemy_set(new_enemy_set: EnemySet) -> void:
 	if enemy_set != null:
 		enemy_set.disconnect("changed", self, "_on_enemy_set_changed")
+		for enemy in enemy_set.get_enemies():
+			enemy.disconnect("changed", self, "_on_enemy_changed")
 	
 	enemy_set = new_enemy_set
 	
 	if enemy_set != null:
-		enemy_set.connect("changed", self, "_on_enemy_set_changed")
+		assert(enemy_set.connect("changed", self, "_on_enemy_set_changed") == OK)
 
 	_on_enemy_set_changed()
 

@@ -39,9 +39,6 @@ func set_enemy(em: Enemy) -> void:
 		em.connect("changed", self, "_on_enemy_changed")
 		_on_enemy_changed()
 	
-	if enemy != null and enemy.has_method("_time_type"):
-		var time_type = enemy.get_time_type()
-	
 func _on_enemy_changed():
 	if enemy.named_param.type == NamedParam.Type.NAMED_TYPE_REPLACE:
 		text = "*"+enemy.get_display_name()

@@ -50,6 +50,7 @@ func _set_group_id(value: int) -> void:
 func _set_subgroup_id(value: int) -> void:
 	subgroup_id = value
 	emit_changed()
+
 func _set_max_positions(value: int) -> void:
 	max_positions = value
 	emit_changed()
@@ -58,13 +59,11 @@ func effective_enemy_count() -> int:
 	var day_enemies := 0
 	var night_enemies := 0
 	for enemy in _enemies:
-		if enemy.time_type == 0:
-			day_enemies = day_enemies+1
-			night_enemies = night_enemies+1
-		elif enemy.time_type == 1:
+		if enemy.time_type == 1:
 			day_enemies = day_enemies+1
 		elif enemy.time_type == 2:
 			night_enemies = night_enemies+1
 		else:
-			printerr("Unknown time type"+enemy.time_type)
+			day_enemies = day_enemies+1
+			night_enemies = night_enemies+1
 	return int(max(day_enemies, night_enemies))
