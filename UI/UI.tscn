@@ -160,6 +160,7 @@ margin_bottom = 544.0
 tab_align = 0
 
 [node name="Stages" type="Control" parent="left/tab"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -187,7 +188,6 @@ size_flags_vertical = 3
 script = ExtResource( 19 )
 
 [node name="Enemies" type="VBoxContainer" parent="left/tab"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0

@@ -66,6 +66,8 @@ func _on_enemy_changed():
 		$VBoxContainer/GridContainer/HighOrbsContainer/HighOrbsSpinBox.value = enemy_clone.high_orbs
 		$VBoxContainer/ExpContainer/NamedParamsExpPercentageLabel.text = String(enemy_clone.named_param.experience)
 		$VBoxContainer/ExpContainer/ExpSpinBox.value = enemy_clone.experience
+		$VBoxContainer/PpContainer/NamedParamsPpPercentageLabel.text = String(enemy_clone.play_points)
+		$VBoxContainer/PpContainer/PpSpinBox.value = enemy_clone.play_points
 		_refresh_selected_name()
 		if enemy_clone.drops_table == null:
 			$VBoxContainer/DropsController.select_drops_table(-1, true)
@@ -207,6 +209,12 @@ func _on_ExpSpinBox_value_changed(value):
 	enemy.experience = int(value)
 	if supress_event != true:
 		SelectedListManager.apply_values_to_selected_type("experience", enemy.experience)
+
+func _on_PpSpinBox_value_changed(value):
+	enemy.play_points = int(value)
+	if supress_event != true:
+		SelectedListManager.apply_values_to_selected_type("play_points", enemy.play_points)
+
 
 func _on_DropsContainer_drops_table_selected(drops_table):
 	enemy.drops_table = drops_table
