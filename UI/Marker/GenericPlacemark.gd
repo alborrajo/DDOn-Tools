@@ -24,7 +24,6 @@ func _selection_function(type):
 	else:
 		SelectedListManager.clear_list()
 		SelectedListManager.toggle_selection(self, type)
-		emit_signal("placemark_selected")
 
 func delete_self():
 	emit_signal("placemark_removed")
