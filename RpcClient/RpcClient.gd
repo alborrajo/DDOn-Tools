@@ -1,5 +1,4 @@
 extends Reference
-
 class_name RpcClient
 
 const HTTP_DELAY_MS : int = 20
@@ -18,16 +17,27 @@ const STORAGE_KEY_RPC_PASSWORD_DEFAULT := ""
 
 const RPC_PATH_INFO = "info"
 const RPC_PATH_CHAT = "chat"
+const RPC_PATH_STATUS = "status"
 
-func _init():
-	pass
+var host: String
+var port: int
 	
-func _ready():
-	# never
-	pass
+func _init(h = null, p = null):
+	if h == null:
+		self.host = StorageProvider.get_value(STORAGE_SECTION_RPC, STORAGE_KEY_RPC_HOST, STORAGE_KEY_RPC_HOST_DEFAULT)
+	else:
+		self.host = h
+		
+	if p == null:
+		self.port = StorageProvider.get_value(STORAGE_SECTION_RPC, STORAGE_KEY_RPC_PORT, STORAGE_KEY_RPC_PORT_DEFAULT)
+	else:
+		self.port = p
 
 func get_info() -> Array:
 	return _get_array(RPC_PATH_INFO)
+	
+func delete_info(account_name: String) -> void:
+	_delete_dictionary(RPC_PATH_INFO, {"accountname": account_name})
 	
 func get_chat(since) -> Array:
 	if since == null:
@@ -38,14 +48,15 @@ func get_chat(since) -> Array:
 func post_chat(chat_message_log_entry: Dictionary) -> void:
 	_post_dictionary(RPC_PATH_CHAT, chat_message_log_entry)
 	
+func get_status() -> Array:
+	return _get_array(RPC_PATH_STATUS)
+	
 func _get_array(relative_path: String, query_params: Dictionary = {}) -> Array:
-	var host = StorageProvider.get_value(STORAGE_SECTION_RPC, STORAGE_KEY_RPC_HOST, STORAGE_KEY_RPC_HOST_DEFAULT)
-	var port = StorageProvider.get_value(STORAGE_SECTION_RPC, STORAGE_KEY_RPC_PORT, STORAGE_KEY_RPC_PORT_DEFAULT)
 	var base_path = StorageProvider.get_value(STORAGE_SECTION_RPC, STORAGE_KEY_RPC_PATH, STORAGE_KEY_RPC_PATH_DEFAULT)
 	var username = StorageProvider.get_value(STORAGE_SECTION_RPC, STORAGE_KEY_RPC_USERNAME, STORAGE_KEY_RPC_USERNAME_DEFAULT)
 	var password = StorageProvider.get_value(STORAGE_SECTION_RPC, STORAGE_KEY_RPC_PASSWORD, STORAGE_KEY_RPC_PASSWORD_DEFAULT)
 	var path = str(base_path, relative_path)
-	var res = make_request(HTTPClient.METHOD_GET, host, port, path, query_params, "", username, password)
+	var res = make_request(HTTPClient.METHOD_GET, path, query_params, "", username, password)
 	if typeof(res) != TYPE_ARRAY:
 		print("RpcClient: expected Json Array") 
 		# {} = Dictionary 
@@ -54,15 +65,20 @@ func _get_array(relative_path: String, query_params: Dictionary = {}) -> Array:
 	return res
 	
 func _post_dictionary(relative_path: String, body: Dictionary) -> void:
-	var host = StorageProvider.get_value(STORAGE_SECTION_RPC, STORAGE_KEY_RPC_HOST, STORAGE_KEY_RPC_HOST_DEFAULT)
-	var port = StorageProvider.get_value(STORAGE_SECTION_RPC, STORAGE_KEY_RPC_PORT, STORAGE_KEY_RPC_PORT_DEFAULT)
 	var base_path = StorageProvider.get_value(STORAGE_SECTION_RPC, STORAGE_KEY_RPC_PATH, STORAGE_KEY_RPC_PATH_DEFAULT)
 	var username = StorageProvider.get_value(STORAGE_SECTION_RPC, STORAGE_KEY_RPC_USERNAME, STORAGE_KEY_RPC_USERNAME_DEFAULT)
 	var password = StorageProvider.get_value(STORAGE_SECTION_RPC, STORAGE_KEY_RPC_PASSWORD, STORAGE_KEY_RPC_PASSWORD_DEFAULT)
 	var path = str(base_path, relative_path)
-	var res = make_request(HTTPClient.METHOD_POST, host, port, path, {}, JSON.print(body), username, password)
+	make_request(HTTPClient.METHOD_POST, path, {}, JSON.print(body), username, password)
+	
+func _delete_dictionary(relative_path: String, query_params: Dictionary) -> void:
+	var base_path = StorageProvider.get_value(STORAGE_SECTION_RPC, STORAGE_KEY_RPC_PATH, STORAGE_KEY_RPC_PATH_DEFAULT)
+	var username = StorageProvider.get_value(STORAGE_SECTION_RPC, STORAGE_KEY_RPC_USERNAME, STORAGE_KEY_RPC_USERNAME_DEFAULT)
+	var password = StorageProvider.get_value(STORAGE_SECTION_RPC, STORAGE_KEY_RPC_PASSWORD, STORAGE_KEY_RPC_PASSWORD_DEFAULT)
+	var path = str(base_path, relative_path)
+	make_request(HTTPClient.METHOD_DELETE, path, query_params, "", username, password)
 
-func make_request(method: int, host: String, port: int = 80, path: String = '/', query_params: Dictionary = {}, body: String = "", username: String = "", password: String = ""):
+func make_request(method: int, path: String, query_params: Dictionary = {}, body: String = "", username: String = "", password: String = ""):
 	var err = 0
 	var http = HTTPClient.new()
 	err = http.connect_to_host(host, port)
