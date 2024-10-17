@@ -78,8 +78,9 @@ func _on_StageItemList_item_selected(index: int) -> void:
 	current_stage_no = stage_no
 
 func _on_Players_item_activated():
-	var player: PlayerMapEntity = $left/tab/Players.get_selected().get_metadata(0)
-	emit_signal(\"player_activated\", player)
+	var selected = $left/tab/Players.get_selected().get_metadata(0)
+	if selected is PlayerMapEntity:
+		emit_signal(\"player_activated\", selected as PlayerMapEntity)
 
 func _on_tab_changed(tab):
 	emit_signal(\"tab_changed\", tab)
@@ -160,7 +161,6 @@ margin_bottom = 544.0
 tab_align = 0
 
 [node name="Stages" type="Control" parent="left/tab"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -188,6 +188,7 @@ size_flags_vertical = 3
 script = ExtResource( 19 )
 
 [node name="Enemies" type="VBoxContainer" parent="left/tab"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -297,12 +298,19 @@ margin_left = 4.0
 margin_top = 32.0
 margin_right = -4.0
 margin_bottom = -4.0
+allow_rmb_select = true
 hide_root = true
 script = ExtResource( 11 )
 
 [node name="RPCTimer" type="Timer" parent="left/tab/Players"]
 wait_time = 5.0
 autostart = true
+
+[node name="KickConfirmationDialog" type="ConfirmationDialog" parent="left/tab/Players"]
+margin_right = 360.0
+margin_bottom = 126.0
+rect_min_size = Vector2( 360, 126 )
+window_title = "Kick player?"
 
 [node name="Chat" parent="left/tab" instance=ExtResource( 9 )]
 visible = false
@@ -506,6 +514,7 @@ show_hidden_files = true
 [connection signal="text_changed" from="left/tab/Enemies/HBoxContainer/FilterLineEdit" to="left/tab/Enemies/EnemyTree" method="_on_FilterLineEdit_text_changed"]
 [connection signal="text_changed" from="left/tab/Items/HBoxContainer/FilterLineEdit" to="left/tab/Items/ItemTree" method="_on_FilterLineEdit_text_changed"]
 [connection signal="item_activated" from="left/tab/Players" to="." method="_on_Players_item_activated"]
+[connection signal="item_rmb_selected" from="left/tab/Players" to="left/tab/Players" method="_on_Players_item_rmb_selected"]
 [connection signal="player_joined" from="left/tab/Players" to="." method="_on_Players_player_joined"]
 [connection signal="player_left" from="left/tab/Players" to="." method="_on_Players_player_left"]
 [connection signal="player_updated" from="left/tab/Players" to="." method="_on_Players_player_updated"]
