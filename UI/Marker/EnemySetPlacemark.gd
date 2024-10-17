@@ -28,9 +28,11 @@ func _on_enemy_changed(enemy: Enemy) -> void:
 
 func _set_enemy_set(new_enemy_set: EnemySet) -> void:
 	if enemy_set != null:
-		enemy_set.disconnect("changed", self, "_on_enemy_set_changed")
+		if enemy_set.is_connected("changed", self, "_on_enemy_set_changed"):
+			enemy_set.disconnect("changed", self, "_on_enemy_set_changed")
 		for enemy in enemy_set.get_enemies():
-			enemy.disconnect("changed", self, "_on_enemy_changed")
+			if enemy.is_connected("changed", self, "_on_enemy_changed"):
+				enemy.disconnect("changed", self, "_on_enemy_changed")
 	
 	enemy_set = new_enemy_set
 	
