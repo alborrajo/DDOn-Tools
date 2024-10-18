@@ -163,6 +163,8 @@ func _do_load_file_json(file: File) -> int:
 		var group_id = data[enemies_schema_idx["GroupId"]]
 		var subgroup_id = data[enemies_schema_idx["SubGroupId"]]
 		
+		var enemy_set = SetProvider.get_enemy_set(stage_id, layer_no, group_id, subgroup_id)
+		
 		var enemyType := enemy_tree_node.get_enemy_by_id(data[enemies_schema_idx["EnemyId"]].hex_to_int())
 		var namedParam := DataProvider.get_named_param_by_id(data[enemies_schema_idx["NamedEnemyParamsId"]])
 		var enemy := Enemy.new(enemyType, namedParam)
@@ -196,10 +198,7 @@ func _do_load_file_json(file: File) -> int:
 		if drops_table_id == -1:
 			enemy.drops_table = null
 		else:
-			enemy.drops_table = SetProvider.get_drops_table(drops_table_id)
-
-		var enemy_set = SetProvider.get_enemy_set(stage_id, layer_no, group_id, subgroup_id)
-		enemy_set.add_enemy(enemy)
+			enemy.drops_table = SetProvider.get_drops_table(drops_table_id)	
 		
 		if enemies_schema_idx.has("SpawnTime"):
 			var time_range_str = data[enemies_schema_idx["SpawnTime"]]
@@ -213,8 +212,9 @@ func _do_load_file_json(file: File) -> int:
 			else:
 				time_type = 3
 				enemy.custom_time = time_range_str
-
 			enemy.time_type = time_type
+			
+		enemy_set.add_enemy(enemy)
 
 	return OK
 
@@ -308,62 +308,64 @@ func _do_save_file(file: File) -> void:
 		json_data[JSON_KEY_DROPS_TABLES].append(json_data_table)
 
 	for set in SetProvider.get_all_enemy_sets():
-		for enemy in set.get_enemies():
-			var data = []
-			data.append(set.stage_id)
-			data.append(set.layer_no)
-			data.append(set.group_id)
-			data.append(set.subgroup_id)
-			data.append("0x%06X" % enemy.enemy_type.id)
-			data.append(enemy.named_param.id)
-			data.append(enemy.raid_boss_id)
-			data.append(enemy.scale)
-			data.append(enemy.lv)
-			data.append(enemy.hm_preset_no)
-			data.append(enemy.start_think_tbl_no)
-			data.append(enemy.repop_num)
-			data.append(enemy.repop_count)
-			data.append(enemy.enemy_target_types_id)
-			data.append(enemy.montage_fix_no)
-			data.append(enemy.set_type)
-			data.append(enemy.infection_type)
-			data.append(enemy.is_boss_gauge)
-			data.append(enemy.is_boss_bgm)
-			data.append(enemy.is_manual_set)
-			data.append(enemy.is_area_boss)
+		for position_index in set.positions.size():
+			for enemy in set.positions[position_index].enemies:
+				if enemy != null:
+					var data = []
+					data.append(set.stage_id)
+					data.append(set.layer_no)
+					data.append(set.group_id)
+					data.append(set.subgroup_id)
+					data.append("0x%06X" % enemy.enemy_type.id)
+					data.append(enemy.named_param.id)
+					data.append(enemy.raid_boss_id)
+					data.append(enemy.scale)
+					data.append(enemy.lv)
+					data.append(enemy.hm_preset_no)
+					data.append(enemy.start_think_tbl_no)
+					data.append(enemy.repop_num)
+					data.append(enemy.repop_count)
+					data.append(enemy.enemy_target_types_id)
+					data.append(enemy.montage_fix_no)
+					data.append(enemy.set_type)
+					data.append(enemy.infection_type)
+					data.append(enemy.is_boss_gauge)
+					data.append(enemy.is_boss_bgm)
+					data.append(enemy.is_manual_set)
+					data.append(enemy.is_area_boss)
 
-			if enemy.is_blood_enemy:
-				data.append(enemy.blood_orbs)
-			else:
-				data.append(0)
+					if enemy.is_blood_enemy:
+						data.append(enemy.blood_orbs)
+					else:
+						data.append(0)
 
-			if enemy.is_highorb_enemy:
-				data.append(enemy.high_orbs)
-			else:
-				data.append(0)
+					if enemy.is_highorb_enemy:
+						data.append(enemy.high_orbs)
+					else:
+						data.append(0)
 
-			data.append(enemy.experience)
+					data.append(enemy.experience)
 
-			if enemy.drops_table != null:
-				data.append(enemy.drops_table.id)
-			else:
-				data.append(-1)
-			
-			var selected_index = enemy.time_type
-			var selected_string = ""
-			if selected_index == 0:
-				selected_string = "00:00,23:59"
-			if selected_index == 1:
-				selected_string = "07:00,17:59"
-			if selected_index == 2:
-				selected_string = "18:00,06:59"	
-			if selected_index == 3:
-				selected_string = enemy.custom_time
-			data.append(selected_string)
+					if enemy.drops_table != null:
+						data.append(enemy.drops_table.id)
+					else:
+						data.append(-1)
+					
+					var selected_index = enemy.time_type
+					var selected_string = ""
+					if selected_index == 0:
+						selected_string = "00:00,23:59"
+					if selected_index == 1:
+						selected_string = "07:00,17:59"
+					if selected_index == 2:
+						selected_string = "18:00,06:59"	
+					if selected_index == 3:
+						selected_string = enemy.custom_time
+					data.append(selected_string)
 
-			data.append(enemy.play_points)
+					data.append(enemy.play_points)
 
-			json_data[JSON_KEY_ENEMIES].append(data)
+					json_data[JSON_KEY_ENEMIES].append(data)
 
 	file.store_string(JSON.print(json_data, "\t"))
 

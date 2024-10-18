@@ -37,6 +37,8 @@ func _ready():
 			if not stage_no in enemy_sets:
 				enemy_sets[stage_no] = []
 			var existing_enemy_set = null
+			
+			# TODO: Optimize this 
 			for enemy_set in enemy_sets[stage_no]:
 				if enemy_set["GroupNo"] == enemy_position["GroupNo"] and enemy_set["SubGroupNo"] == enemy_position["SubGroupNo"]:
 					existing_enemy_set = enemy_set
@@ -46,11 +48,10 @@ func _ready():
 				existing_enemy_set = {}
 				existing_enemy_set["GroupNo"] = enemy_position["GroupNo"]
 				existing_enemy_set["SubGroupNo"] = enemy_position["SubGroupNo"]
-				existing_enemy_set["Position"] = enemy_position["Position"]
-				existing_enemy_set["MaxPositions"] = 0
+				existing_enemy_set["Positions"] = []
 				enemy_sets[stage_no].append(existing_enemy_set)
 
-			existing_enemy_set["MaxPositions"] = existing_enemy_set["MaxPositions"] + 1
+			existing_enemy_set["Positions"].append(enemy_position["Position"])
 	
 	stage_room = {}
 	var file := File.new()
@@ -84,6 +85,14 @@ func stage_no_to_stage_id(stage_no: int) -> int:
 			return stage["ID"]
 			
 	push_warning("No stage found with StageNo %s" % stage_no)
+	return -1
+	
+func stage_id_to_stage_no(stage_id: int) -> int:
+	for stage in stage_list:
+		if stage["ID"] == stage_id:
+			return stage["StageNo"]
+			
+	push_warning("No stage found with Stage ID %s" % stage_id)
 	return -1
 
 ## Returns -1 if it doesn't belong to a field

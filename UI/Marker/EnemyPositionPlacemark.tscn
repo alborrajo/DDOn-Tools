@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://UI/Marker/EnemySetPlacemark.gd" type="Script" id=1]
+[ext_resource path="res://UI/Marker/EnemyPositionPlacemark.gd" type="Script" id=1]
 [ext_resource path="res://UI/Marker/GenericSetPlacemark.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/Marker/EnemyPlacemark.tscn" type="PackedScene" id=3]
 [ext_resource path="res://resources/fonts/NotoSansJP-Regular.otf" type="DynamicFontData" id=4]
@@ -18,7 +18,7 @@ outline_size = 2
 outline_color = Color( 0.61, 0.61, 0, 1 )
 font_data = ExtResource( 4 )
 
-[node name="EnemySetPlacemark" instance=ExtResource( 2 )]
+[node name="EnemyPositionPlacemark" instance=ExtResource( 2 )]
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 1 )
 enemy_placemark_packed_scene = ExtResource( 3 )

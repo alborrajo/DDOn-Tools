@@ -97,11 +97,11 @@ func _on_Players_player_updated(player):
 func _on_root_markers_loaded():
 	$left/tab/Enemies/FileMenu._on_markers_loaded()
 
-func _on_enemy_set_placemark_mouse_entered(enemy_set_placemark: EnemySetPlacemark) -> void:
+func _on_enemy_position_placemark_mouse_entered(enemy_set_placemark: EnemyPositionPlacemark) -> void:
 	$status_view/container/SetLabel.text = enemy_set_placemark.enemy_set.to_string()
 	_set_hovered_placemark(enemy_set_placemark)
 	
-func _on_enemy_set_placemark_mouse_exited(enemy_set_placemark: EnemySetPlacemark) -> void:
+func _on_enemy_position_placemark_mouse_exited(enemy_set_placemark: EnemyPositionPlacemark) -> void:
 	$status_view/container/SetLabel.text = \"\"
 	hovered_placemark = null
 	
@@ -486,7 +486,7 @@ margin_top = -195.0
 margin_right = 312.0
 margin_bottom = 195.0
 rect_min_size = Vector2( 180, 63 )
-window_title = "Open a File"
+window_title = "Abrir un Archivo"
 mode = 0
 access = 2
 filters = PoolStringArray( "*.json; JSON Files", "*.csv ; CSV Files" )
@@ -502,7 +502,7 @@ margin_top = -195.0
 margin_right = 312.0
 margin_bottom = 195.0
 rect_min_size = Vector2( 180, 63 )
-window_title = "Open a File"
+window_title = "Abrir un Archivo"
 mode = 0
 access = 2
 filters = PoolStringArray( "*.csv ; CSV Files" )
