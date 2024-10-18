@@ -157,5 +157,5 @@ static func find_schema_indices(schema: Array, reference: Array) -> Dictionary:
 	for i in range(schema.size()):
 		var index = reference.find(schema[i])
 		if index != -1:
-			out[schema[i]] = index
+			out[schema[i]] = i
 	return out
