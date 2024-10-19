@@ -15,11 +15,11 @@ func _init(_stage_id: int, _layer_no: int, _group_id: int, _subgroup_id: int):
 	self.positions = []
 
 func add_enemy(enemy: Enemy) -> int:
-	# Find first null position
+	# Find first non-conflictive position
 	var position_index = -1
 	for i in positions.size():
 		var position: EnemyPosition = positions[i]
-		if position.enemies.size() == 0:
+		if not position.adding_enemy_causes_conflict(enemy):
 			position_index = i
 			break
 	

@@ -26,6 +26,32 @@ func remove_enemy(index: int):
 func clear_enemies():
 	enemies.clear()
 	emit_changed()
+	
+
+func adding_enemy_causes_conflict(enemy: Enemy) -> bool:
+	# TODO: Check custom times too
+	var enemy_during_day := false
+	var enemy_during_night := false
+	for enemy in enemies:
+		if enemy.time_type == 1:
+			enemy_during_day = true
+		elif enemy.time_type == 2:
+			enemy_during_night = true
+		else:
+			enemy_during_day = true
+			enemy_during_night = true
+	
+	if enemy.time_type == 1:
+		if enemy_during_day:
+			return true
+	elif enemy.time_type == 2:
+		if enemy_during_night:
+			return true
+	else:
+		if enemy_during_day || enemy_during_night:
+			return true
+	
+	return false
 
 func has_conflicting_enemy_times() -> bool:
 	# TODO: Check custom times too

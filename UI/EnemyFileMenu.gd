@@ -36,6 +36,7 @@ const ENEMIES_SCHEMA := PoolStringArray([
 	"LayerNo",
 	"GroupId",
 	"SubGroupId",
+	"PositionIndex",
 	"EnemyId",
 	"NamedEnemyParamsId",
 	"RaidBossId",
@@ -214,7 +215,14 @@ func _do_load_file_json(file: File) -> int:
 				enemy.custom_time = time_range_str
 			enemy.time_type = time_type
 			
-		enemy_set.add_enemy(enemy)
+		var result: int
+		if enemies_schema_idx.has("PositionIndex"):
+			var position_index = data[enemies_schema_idx["PositionIndex"]]
+			result = enemy_set.add_enemy_at_index(enemy, position_index)
+		else:
+			result = enemy_set.add_enemy(enemy)
+		if result != OK:
+				printerr("Enemy outside of the set's possible positions: ", data)
 
 	return OK
 
@@ -316,6 +324,7 @@ func _do_save_file(file: File) -> void:
 					data.append(set.layer_no)
 					data.append(set.group_id)
 					data.append(set.subgroup_id)
+					data.append(position_index)
 					data.append("0x%06X" % enemy.enemy_type.id)
 					data.append(enemy.named_param.id)
 					data.append(enemy.raid_boss_id)
