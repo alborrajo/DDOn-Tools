@@ -155,14 +155,15 @@ func _load_stage_markers(stage_no, subgroup_id):
 			var subgroup_no := int(enemy_set["SubGroupNo"])
 			var enemy_set_instance := SetProvider.get_enemy_set(stage_id, 0, group_no, subgroup_id)
 			var positions = []
-			for position in enemy_set["Positions"]:
+			for position_index in enemy_set["Positions"].size():
+				var position = enemy_set["Positions"][position_index]
 				var pos := Vector3(position["x"], position["y"], position["z"])
 				var enemy_position := EnemyPosition.new(pos)
 				var map_entity = MapEntity.new(enemy_position.coordinates, int(stage_no))
 				var enemy_position_placemark: EnemyPositionPlacemark = EnemyPositionPlacemarkScene.instance()
 				enemy_position_placemark.rect_position = map_entity.get_map_position()*MAP_SCALE
-				#enemy_position_placemark.connect("mouse_entered", ui_node, "_on_enemy_set_placemark_mouse_entered", [enemy_position_placemark])
-				#enemy_position_placemark.connect("mouse_exited", ui_node, "_on_enemy_set_placemark_mouse_exited", [enemy_position_placemark])
+				enemy_position_placemark.connect("mouse_entered", ui_node, "_on_enemy_position_placemark_mouse_entered", [enemy_set_instance, position_index, enemy_position_placemark])
+				enemy_position_placemark.connect("mouse_exited", ui_node, "_on_enemy_position_placemark_mouse_exited", [enemy_set_instance, position_index, enemy_position_placemark])
 				enemy_position_placemark.enemy_position = enemy_position
 				enemy_sets_node.add_child(enemy_position_placemark)
 				positions.append(enemy_position)
