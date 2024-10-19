@@ -108,6 +108,7 @@ func _add_room_maps(stage_no: int) -> bool:
 				map_sprite.texture = load(stage_map_resource)
 				map_sprite.centered = false
 				map_sprite.global_position = stage_room.offset
+				map_sprite.scale = Vector2.ONE * MAP_SCALE
 				layer.add_child(map_sprite)
 				print("Loaded map ", stage_map_resource)
 	else:
@@ -134,6 +135,7 @@ func _add_stage_maps(stage_no: int) -> bool:
 					map_sprite.texture = load(stage_map_resource)
 					map_sprite.centered = false
 					map_sprite.global_position = offset * MAP_SCALE
+					map_sprite.scale = Vector2.ONE * MAP_SCALE
 					var layer := map_layers.get_child(layer_index)
 					layer.add_child(map_sprite)
 					print("Loaded map ", stage_map_resource)
