@@ -11,6 +11,23 @@ var _enemy_sets := []
 var _gathering_spots := []
 var selected_day_night = 0
 
+func _ready():
+	for stage_no in DataProvider.enemy_sets.keys():
+		for enemy_set in DataProvider.enemy_sets[stage_no]:
+			var stage_id := DataProvider.stage_no_to_stage_id(int(stage_no))
+			var layer_no := 0
+			var group_no := int(enemy_set[\"GroupNo\"])
+			var subgroup_no := int(enemy_set[\"SubGroupNo\"])
+			var enemy_set_instance := EnemySet.new(stage_id, layer_no, group_no, subgroup_no)
+			_enemy_sets.append(enemy_set_instance)
+			var positions = []
+			for position_index in enemy_set[\"Positions\"].size():
+				var position = enemy_set[\"Positions\"][position_index]
+				var pos := Vector3(position[\"x\"], position[\"y\"], position[\"z\"])
+				var enemy_position := EnemyPosition.new(pos)
+				positions.append(enemy_position)
+			enemy_set_instance.positions = positions
+
 func select_day_night(index):
 	# Emit a custom signal with the selected index
 	emit_signal(\"selected_day_night\", index)
@@ -49,13 +66,24 @@ func clear_enemy_sets() -> void:
 
 func get_enemy_set(stage_id: int, layer_no: int, group_id: int, subgroup_id: int) -> EnemySet:
 	# Inefficient af
+	var set_for_same_group: EnemySet = null
 	for set in _enemy_sets:
-		if set.stage_id == stage_id and set.layer_no == layer_no and set.group_id == group_id and set.subgroup_id == subgroup_id:
-			return set
+		if set.stage_id == stage_id and set.layer_no == layer_no and set.group_id == group_id:
+			if set.subgroup_id == subgroup_id:
+				return set
+			else:
+				set_for_same_group = set
 	
-	var set := EnemySet.new(stage_id, layer_no, group_id, subgroup_id)
-	_enemy_sets.append(set)
-	return set
+	# Create a new set for the new subgroup
+	# TODO: Rework EnemySet into containing a list of subgroups instead
+	if set_for_same_group != null:
+		var set := EnemySet.new(stage_id, layer_no, group_id, subgroup_id)
+		for position in set_for_same_group.positions:
+			set.positions.append(EnemyPosition.new(position.coordinates))
+		_enemy_sets.append(set)
+		return set
+		
+	return null
 
 func get_all_enemy_sets() -> Array:
 	return Array(_enemy_sets)

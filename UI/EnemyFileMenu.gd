@@ -165,6 +165,9 @@ func _do_load_file_json(file: File) -> int:
 		var subgroup_id = data[enemies_schema_idx["SubGroupId"]]
 		
 		var enemy_set = SetProvider.get_enemy_set(stage_id, layer_no, group_id, subgroup_id)
+		if enemy_set == null:
+			printerr("Unknown enemy set: (%d, %d, %d, %d)" % [stage_id, layer_no, group_id, subgroup_id])
+			continue
 		
 		var enemyType := enemy_tree_node.get_enemy_by_id(data[enemies_schema_idx["EnemyId"]].hex_to_int())
 		var namedParam := DataProvider.get_named_param_by_id(data[enemies_schema_idx["NamedEnemyParamsId"]])
