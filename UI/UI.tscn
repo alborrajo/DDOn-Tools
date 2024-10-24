@@ -36,15 +36,15 @@ signal player_updated(player)
 signal player_left(player)
 
 var current_stage_no
+var current_subgroup_id
 
 onready var stage_label: Label = $status_view/container/StageLabel
 onready var coordinates_label: Label = $status_view/container/CoordinatesLabel
 onready var hovered_placemark = null
 
-onready var current_subgroup_id := int($status_view/container/SubGroupIdSpinBox.value)
-
 func _ready():
 	$status_view/container/SetLabel.text = \"\"
+	current_subgroup_id = $status_view/container/SubGroupIdSpinBox.value
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -63,7 +63,8 @@ func _on_LayerOptionButton_item_selected(index):
 	emit_signal(\"layer_selected\", index)
 	
 func _on_SubGroupIdSpinBox_value_changed(value):
-	emit_signal(\"subgroup_changed\", int(value))
+	current_subgroup_id = int(value)
+	emit_signal(\"subgroup_changed\", current_subgroup_id)
 
 func _on_StageItemList_item_selected(index: int) -> void:
 	var stage_no = $left/tab/Stages/StageItemList.get_item_metadata(index)
