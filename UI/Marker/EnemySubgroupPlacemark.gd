@@ -10,7 +10,7 @@ var enemy_set: EnemySet
 var enemy_subgroup: EnemySubgroup
 
 onready var _original_zoom : float = get_tree().get_nodes_in_group("camera")[0].original_zoom
-onready var _button_original_scale: Vector2 = $SubgroupButton.rect_scale
+onready var _button_original_scale: Vector2 = $SubgroupButtonControl.rect_scale
 
 func _ready():
 	assert(enemy_subgroup.connect("changed", self, "_on_enemy_subgroup_changed") == OK)
@@ -28,14 +28,19 @@ func _ready():
 		$EnemyPositionPlacemarksControl.add_child(enemy_position_placemark)
 	
 	# TODO: Calcualte group center instead of using the first position
-	$SubgroupButton.rect_position = $EnemyPositionPlacemarksControl.get_child(0).rect_position
+	$SubgroupButtonControl.rect_position = $EnemyPositionPlacemarksControl.get_child(0).rect_position
 
 func _process(_delta):
 	var camera_zoom: float = get_tree().get_nodes_in_group("camera")[0].zoom.x
-	$SubgroupButton.rect_scale = _button_original_scale * clamp(camera_zoom, 0, _original_zoom)
+	$SubgroupButtonControl.rect_scale = _button_original_scale * clamp(camera_zoom, 0, _original_zoom)
 	
 func _on_enemy_subgroup_changed():
-	$SubgroupButton.text = "%d - %d/%d" % [enemy_set.group_id, enemy_subgroup.effective_enemy_count(), enemy_subgroup.positions.size()]
+	$SubgroupButtonControl/SubgroupButton.text = "%d - %d/%d" % [enemy_set.group_id, enemy_subgroup.effective_enemy_count(), enemy_subgroup.positions.size()]
+	$SubgroupButtonControl/WarningLabel.visible = false
+	for position in enemy_subgroup.positions:
+		if position.has_conflicting_enemy_times():
+			$SubgroupButtonControl/WarningLabel.visible = true
+			break
 
 func _on_GroupButton_mouse_entered():
 	emit_signal("subgroup_mouse_entered", -1, null)
@@ -61,9 +66,9 @@ func get_position_placemarks() -> Array:
 	return $EnemyPositionPlacemarksControl.get_children()
 	
 func show_positions() -> void:
-	$SubgroupButton.visible = false
+	$SubgroupButtonControl.visible = false
 	$EnemyPositionPlacemarksControl.visible = true
 	
 func hide_positions() -> void:
-	$SubgroupButton.visible = true
+	$SubgroupButtonControl.visible = true
 	$EnemyPositionPlacemarksControl.visible = false
