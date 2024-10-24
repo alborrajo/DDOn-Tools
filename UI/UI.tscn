@@ -52,7 +52,7 @@ func _input(event):
 		coordinates_label.text = String((mouse_pos / Main.MAP_SCALE).round())
 	if event is InputEventKey:
 		if Input.is_action_pressed(\"set_hide\"):
-			if hovered_placemark:
+			if hovered_placemark != null and hovered_placemark.has_method(\"_to_hide\"):
 				hovered_placemark._to_hide()
 
 		if Input.is_action_just_pressed(\"set_unhide\"):
@@ -132,7 +132,7 @@ func _on_SettingsButton_pressed():
 script/source = "extends PanelContainer
 
 func _ready():
-	SelectedListManager.connect(\"selection_changed\", self, \"_on_selection_changed\")
+	assert(SelectedListManager.connect(\"selection_changed\", self, \"_on_selection_changed\") == OK)
 	visible = false
 
 func _on_selection_changed():

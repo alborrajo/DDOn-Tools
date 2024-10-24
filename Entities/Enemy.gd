@@ -267,7 +267,7 @@ func _set_custom_time(value: String) -> void:
 
 func _validate_time_format(time_str: String, regex_str: String) -> bool:
 	var regex := RegEx.new()
-	regex.compile(regex_str)
+	assert(regex.compile(regex_str) == OK)
 	
 	return regex.search(time_str) != null
 

@@ -13,7 +13,7 @@ var _current_filter_text: String = ("")
 var preexisting_option_id: int
 
 func _ready():
-	SetProvider.connect("drops_tables_updated", self, "_update_drops_tables")
+	assert(SetProvider.connect("drops_tables_updated", self, "_update_drops_tables") == OK)
 	_update_drops_tables()
 
 func _update_drops_tables() -> void:
@@ -38,7 +38,7 @@ func select_drops_table(id: int, quiet: bool = false) -> void:
 		$HFlowContainer/DropsTableOptionButton.select(no_drops_option_idx)
 	else:
 		_selected_drops_table = SetProvider.get_drops_table(id)
-		_selected_drops_table.connect("changed", self, "_on_selected_drops_table_changed", [_selected_drops_table])
+		assert(_selected_drops_table.connect("changed", self, "_on_selected_drops_table_changed", [_selected_drops_table]) == OK)
 		_on_selected_drops_table_changed(_selected_drops_table)
 	
 	for idx in $HFlowContainer/DropsTableOptionButton.get_item_count():
@@ -72,7 +72,7 @@ func _on_selected_drops_table_changed(selected_drops_table: DropsTable):
 		var drop_item: GatheringItem = selected_drops_table.get_items()[index]
 		var drop_item_panel: DropItemPanel = drop_item_panel_packed_scene.instance()
 		drop_item_panel.drop_item = drop_item
-		drop_item_panel.connect("drop_item_removed", self, "_on_drop_item_removed", [selected_drops_table, index])
+		assert(drop_item_panel.connect("drop_item_removed", self, "_on_drop_item_removed", [selected_drops_table, index]) == OK)
 		$DropsTableItemsPanel/MarginContainer/VBoxContainer/DropItemsContainer.add_child(drop_item_panel)
 		
 
@@ -129,13 +129,12 @@ func _on_DropsFilterLineEdit_text_changed(new_text):
 			if $HFlowContainer/DropsTableOptionButton.get_item_id(idx) == preexisting_option_id:
 				$HFlowContainer/DropsTableOptionButton.select(idx)
 	
-func _FilterList(filter_text: String, preexisting_option_id):
-		
+func _FilterList(filter_text: String, option_id):
 	var filtered_tables: Array = []
 	var has_tables: bool = false
 	for drops_table in SetProvider.get_all_drops_tables():
 		var table_name_lower = drops_table.name.to_lower() 
-		if filter_text == "" or drops_table.id == preexisting_option_id or table_name_lower.find(filter_text.to_lower()) != -1:
+		if filter_text == "" or drops_table.id == option_id or table_name_lower.find(filter_text.to_lower()) != -1:
 			filtered_tables.append(drops_table)
 			has_tables = true
 			

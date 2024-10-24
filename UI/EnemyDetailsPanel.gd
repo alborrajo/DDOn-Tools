@@ -19,7 +19,7 @@ func _set_enemy(em: Enemy) -> void:
 	enemy = em
 	
 	if em != null:
-		em.connect("changed", self, "_on_enemy_changed")
+		assert(em.connect("changed", self, "_on_enemy_changed") == OK)
 		
 	supress_event = true
 	_on_enemy_changed()

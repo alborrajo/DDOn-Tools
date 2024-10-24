@@ -20,7 +20,7 @@ func _on_enemy_position_changed() -> void:
 
 	_check_position_conflicts()
 
-func _on_enemy_changed(enemy: Enemy) -> void:
+func _on_enemy_changed(_enemy: Enemy) -> void:
 	_check_position_conflicts()
 
 func _set_enemy_position(new_enemy_position: EnemyPosition) -> void:

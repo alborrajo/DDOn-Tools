@@ -7,7 +7,8 @@ export (String, FILE, "*.csv") var named_param_csv := "res://resources/HmPresetN
 
 func _ready():
 	var file := File.new()
-	file.open(named_param_csv, File.READ)
+	assert(file.open(named_param_csv, File.READ) == OK)
+	# warning-ignore:return_value_discarded
 	file.get_csv_line() # Ignore header line
 	while !file.eof_reached():
 		var csv_line := file.get_csv_line()

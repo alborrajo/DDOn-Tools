@@ -6,7 +6,7 @@ onready var _original_scale := rect_scale
 onready var selected_indices = []
 
 func _ready():
-	SelectedListManager.connect("set_revealed_hidden", self, "_to_unhide")
+	assert(SelectedListManager.connect("set_revealed_hidden", self, "_to_unhide") == OK)
 
 func _process(_delta):
 	var camera_zoom: float = get_tree().get_nodes_in_group("camera")[0].zoom.x

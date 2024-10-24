@@ -15,7 +15,8 @@ func init_enemy_list():
 		
 	enemy_cache = []
 	var file := File.new()
-	file.open(enemyCSV, File.READ)
+	assert(file.open(enemyCSV, File.READ) == OK)
+	# warning-ignore:return_value_discarded
 	file.get_csv_line() # Ignore header line
 	while !file.eof_reached():
 		var csv_line := file.get_csv_line()

@@ -9,7 +9,7 @@ onready var _gathering_spot := gathering_spot as GatheringSpot
 
 
 func _ready() -> void:
-	_gathering_spot.connect("changed", self, "_on_gathering_spot_changed")
+	assert(_gathering_spot.connect("changed", self, "_on_gathering_spot_changed") == OK)
 	_on_gathering_spot_changed()
 	
 func _on_gathering_spot_changed() -> void:
@@ -22,7 +22,7 @@ func _on_gathering_spot_changed() -> void:
 		var item: GatheringItem = gatheringItems[index]
 		var item_placemark: GatheringItemPlacemark = item_placemark_packed_scene.instance()
 		item_placemark.item = item
-		item_placemark.connect("placemark_removed", self, "_on_item_removed", [index])
+		assert(item_placemark.connect("placemark_removed", self, "_on_item_removed", [index]) == OK)
 		$VBoxContainer.add_child(item_placemark)
 
 

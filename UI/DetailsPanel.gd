@@ -4,7 +4,7 @@ class_name DetailsPanel
 signal showing_details_of(obj)
 	
 func _ready():
-	SelectedListManager.connect("selection_changed", self, "_on_selection_changed")
+	assert(SelectedListManager.connect("selection_changed", self, "_on_selection_changed") == OK)
 	
 func hide_details():
 	for child in self.get_children():

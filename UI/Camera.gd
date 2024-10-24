@@ -13,6 +13,7 @@ func _unhandled_input(event):
 		get_tree().set_input_as_handled()
 
 func _on_root_gui_input(event):
+	# warning-ignore:return_value_discarded
 	_handle_mouse(event)
 	
 func _handle_mouse(event, multiplier: float = 1) -> bool:

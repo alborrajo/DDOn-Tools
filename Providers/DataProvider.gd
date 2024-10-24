@@ -55,7 +55,8 @@ func _ready():
 	
 	stage_room = {}
 	var file := File.new()
-	file.open(stage_room_csv, File.READ)
+	assert(file.open(stage_room_csv, File.READ) == OK)
+	# warning-ignore:return_value_discarded
 	file.get_csv_line() # Ignore header line
 	while !file.eof_reached():
 		var csv_line := file.get_csv_line()
@@ -65,7 +66,8 @@ func _ready():
 
 	map_dimensions = {}
 	file = File.new()
-	file.open(map_dimensions_csv, File.READ)
+	assert(file.open(map_dimensions_csv, File.READ) == OK)
+	# warning-ignore:return_value_discarded
 	file.get_csv_line() # Ignore header line
 	while !file.eof_reached():
 		var csv_line := file.get_csv_line()

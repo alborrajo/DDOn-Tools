@@ -15,7 +15,8 @@ func init_item_list():
 		
 	items_cache = []
 	var file := File.new()
-	file.open(itemsCSV, File.READ)
+	assert(file.open(itemsCSV, File.READ) == OK)
+	# warning-ignore:return_value_discarded
 	file.get_csv_line() # Ignore header line
 	while !file.eof_reached():
 		var csv_line := file.get_csv_line()

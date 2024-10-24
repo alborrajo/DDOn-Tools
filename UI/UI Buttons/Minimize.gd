@@ -11,7 +11,7 @@ onready var control_to_minimize_node: Control = get_node(control_to_minimize)
 
 
 func _ready():
-	connect("pressed", self, "_on_pressed")
+	assert(connect("pressed", self, "_on_pressed") == OK)
 	_update_label()
 
 func _on_pressed():

@@ -12,7 +12,7 @@ func set_drop_item(di: GatheringItem) -> void:
 	drop_item = di
 	
 	if di != null:
-		di.connect("changed", self, "_on_drop_item_changed")
+		assert(di.connect("changed", self, "_on_drop_item_changed") == OK)
 		_on_drop_item_changed()
 	
 func _on_drop_item_changed():

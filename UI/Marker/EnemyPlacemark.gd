@@ -9,7 +9,7 @@ export (Resource) var enemy: Resource setget set_enemy
 
 func _ready():
 	.ready()
-	SetProvider.connect("selected_day_night", self, "_on_day_night_selected")
+	assert(SetProvider.connect("selected_day_night", self, "_on_day_night_selected") == OK)
 	_on_day_night_selected(SetProvider.selected_day_night)
 	
 func _on_day_night_selected(index):
@@ -36,7 +36,7 @@ func set_enemy(em: Enemy) -> void:
 	enemy = em
 		
 	if em != null:
-		em.connect("changed", self, "_on_enemy_changed")
+		assert(em.connect("changed", self, "_on_enemy_changed") == OK)
 		_on_enemy_changed()
 	
 func _on_enemy_changed():

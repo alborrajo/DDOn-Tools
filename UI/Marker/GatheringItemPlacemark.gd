@@ -5,7 +5,7 @@ export (Resource) var item: Resource setget set_item
 
 func _ready():
 	.ready()
-	SetProvider.connect("selected_day_night", self, "_on_day_night_selected")
+	assert(SetProvider.connect("selected_day_night", self, "_on_day_night_selected") == OK)
 
 func _on_GatheringItemPlacemark_pressed():
 	_selection_function(item)
@@ -17,7 +17,7 @@ func set_item(i: GatheringItem) -> void:
 	item = i
 	
 	if i != null:
-		i.connect("changed", self, "_on_item_changed")
+		assert(i.connect("changed", self, "_on_item_changed") == OK)
 		_on_item_changed()
 	
 func _on_item_changed():

@@ -114,7 +114,7 @@ func _update_player_tree_entry(item: TreeItem, player: PlayerMapEntity):
 	item.set_text(0, text)
 	item.set_metadata(0, player)
 
-func _on_Players_item_rmb_selected(position):
+func _on_Players_item_rmb_selected(_position):
 	var selection: TreeItem = get_selected()
 	var selection_meta = selection.get_metadata(0)
 	if selection_meta is PlayerMapEntity:

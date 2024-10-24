@@ -15,4 +15,4 @@ func _on_item_selected(idx: int):
 	for node in get_tree().get_nodes_in_group("filemenu"):
 		node.resave()
 	# Reload everything, lol, lmao, yolo
-	get_tree().reload_current_scene()
+	assert(get_tree().reload_current_scene() == OK)

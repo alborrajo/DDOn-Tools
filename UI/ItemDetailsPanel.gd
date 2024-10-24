@@ -15,7 +15,7 @@ func _set_item(i: GatheringItem) -> void:
 	item = i
 	
 	if i != null:
-		i.connect("changed", self, "_on_item_changed")
+		assert(i.connect("changed", self, "_on_item_changed") == OK)
 	supress_event = true
 	_on_item_changed()
 	supress_event = false
@@ -36,22 +36,22 @@ func _on_item_changed():
 				title_label_node.text = item.get_display_name()
 
 
-func _on_DropChanceSpinBox_value_changed(value):
+func _on_DropChanceSpinBox_value_changed(_value):
 	item.drop_chance = $GridContainer/DropChanceSpinBox.value
 	if supress_event != true:
 		SelectedListManager.apply_values_to_selected_type("drop_chance", item.drop_chance)
 	
-func _on_NumSpinBox_value_changed(value):
+func _on_NumSpinBox_value_changed(_value):
 	item.num = $GridContainer/NumContainer/NumSpinBox.value
 	if supress_event != true:
 		SelectedListManager.apply_values_to_selected_type("num", item.num)
 
-func _on_MaxNumSpinBox_value_changed(value):
+func _on_MaxNumSpinBox_value_changed(_value):
 	item.max_num = $GridContainer/NumContainer/MaxNumSpinBox.value
 	if supress_event != true:
 		SelectedListManager.apply_values_to_selected_type("max_num", item.max_num)
 	
-func _on_QualitySpinBox_value_changed(value):
+func _on_QualitySpinBox_value_changed(_value):
 	item.quality = $GridContainer/QualitySpinBox.value
 	if supress_event != true:
 		SelectedListManager.apply_values_to_selected_type("quality", item.quality)

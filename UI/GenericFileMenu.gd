@@ -50,7 +50,7 @@ func _on_menu_id_pressed(id: int) -> void:
 			
 			
 func _on_new():
-	new_file()
+	assert(new_file())
 
 func new_file() -> bool:
 	print_debug("New file. Clearing workspace")
@@ -78,14 +78,14 @@ func load_file(file_path: String):
 		notification_popup_node.notify(err_message+": "+file_path)
 		return
 	
-	file.open(file_path, File.READ)
+	assert(file.open(file_path, File.READ) == OK)
 	_do_load_file(file)
 	file.close()
 	
 	self._file_path = file_path
 	notification_popup_node.notify("Loaded file "+file_path)
 	
-func _do_load_file(file: File) -> void:
+func _do_load_file(_file: File) -> void:
 	pass
 	
 func reload() -> bool:
@@ -109,14 +109,14 @@ func save_file(file_path: String):
 	print_debug("Saving file ", file_path)
 	var file := File.new()
 	
-	file.open(file_path, File.WRITE)
+	assert(file.open(file_path, File.WRITE) == OK)
 	_do_save_file(file)
 	file.close()
 	
 	self._file_path = file_path
 	notification_popup_node.notify("Saved file "+file_path)
 	
-func _do_save_file(file: File) -> void:
+func _do_save_file(_file: File) -> void:
 	pass
 	
 func resave() -> bool:
