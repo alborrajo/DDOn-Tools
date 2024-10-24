@@ -8,6 +8,7 @@ signal selected_day_night()
 
 var _drops_tables := [] # TODO: Maybe use a dictionary instead
 var _enemy_sets := []
+var _enemy_set_templates := []
 var _gathering_spots := []
 var selected_day_night = 0
 
@@ -18,15 +19,17 @@ func _ready():
 			var layer_no := 0
 			var group_no := int(enemy_set[\"GroupNo\"])
 			var subgroup_no := int(enemy_set[\"SubGroupNo\"])
-			var enemy_set_instance := EnemySet.new(stage_id, layer_no, group_no, subgroup_no)
-			_enemy_sets.append(enemy_set_instance)
+			var enemy_set_instance := EnemySet.new(stage_id, layer_no, group_no)
 			var positions = []
 			for position_index in enemy_set[\"Positions\"].size():
 				var position = enemy_set[\"Positions\"][position_index]
 				var pos := Vector3(position[\"x\"], position[\"y\"], position[\"z\"])
-				var enemy_position := EnemyPosition.new(pos)
-				positions.append(enemy_position)
-			enemy_set_instance.positions = positions
+				positions.append(pos)
+			if subgroup_no == -1:
+				enemy_set_instance.subgroup_position_template = positions
+			else:
+				assert(enemy_set_instance.get_subgroup_or_create_with_positions(subgroup_no, positions) != null)
+			_enemy_sets.append(enemy_set_instance)
 
 func select_day_night(index):
 	# Emit a custom signal with the selected index
@@ -64,24 +67,11 @@ func clear_enemy_sets() -> void:
 	for set in _enemy_sets:
 		set.clear_enemies()
 
-func get_enemy_set(stage_id: int, layer_no: int, group_id: int, subgroup_id: int) -> EnemySet:
+func get_enemy_set(stage_id: int, layer_no: int, group_id: int) -> EnemySet:
 	# Inefficient af
-	var set_for_same_group: EnemySet = null
 	for set in _enemy_sets:
 		if set.stage_id == stage_id and set.layer_no == layer_no and set.group_id == group_id:
-			if set.subgroup_id == subgroup_id:
-				return set
-			else:
-				set_for_same_group = set
-	
-	# Create a new set for the new subgroup
-	# TODO: Rework EnemySet into containing a list of subgroups instead
-	if set_for_same_group != null:
-		var set := EnemySet.new(stage_id, layer_no, group_id, subgroup_id)
-		for position in set_for_same_group.positions:
-			set.positions.append(EnemyPosition.new(position.coordinates))
-		_enemy_sets.append(set)
-		return set
+			return set
 		
 	return null
 

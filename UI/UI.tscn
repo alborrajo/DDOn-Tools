@@ -97,15 +97,15 @@ func _on_Players_player_updated(player):
 func _on_root_markers_loaded():
 	$left/tab/Enemies/FileMenu._on_markers_loaded()
 
-func _on_enemy_group_placemark_mouse_entered(position_index: int, enemy_position_placemark: EnemyPositionPlacemark, enemy_group_placemark: EnemyGroupPlacemark) -> void:
+func _on_enemy_subgroup_placemark_mouse_entered(position_index: int, enemy_position_placemark: EnemyPositionPlacemark, subgroup_id: int, enemy_group_placemark: EnemySubgroupPlacemark) -> void:
+	$status_view/container/SetLabel.text = \"Enemy set (%d, %d, %d) Subgroup %d - %d/%d\" % [enemy_group_placemark.enemy_set.stage_id, enemy_group_placemark.enemy_set.layer_no, enemy_group_placemark.enemy_set.group_id, subgroup_id, enemy_group_placemark.enemy_subgroup.effective_enemy_count(), enemy_group_placemark.enemy_subgroup.positions.size()]
 	if position_index == -1:
-		$status_view/container/SetLabel.text = enemy_group_placemark.enemy_set.to_string()
 		_set_hovered_placemark(enemy_group_placemark)
 	else:
-		$status_view/container/SetLabel.text = \"Position #\" + String(position_index) + \" of \" + enemy_group_placemark.enemy_set.to_string()
+		$status_view/container/SetLabel.text = \"Position #%d of %s\" % [position_index, $status_view/container/SetLabel.text]
 		_set_hovered_placemark(enemy_position_placemark)
 	
-func _on_enemy_group_placemark_mouse_exited(position_index: int, enemy_position_placemark: EnemyPositionPlacemark, enemy_group_placemark: EnemyGroupPlacemark) -> void:
+func _on_enemy_subgroup_placemark_mouse_exited(_position_index: int, _enemy_position_placemark: EnemyPositionPlacemark, _subgroup_id: int, _enemy_group_placemark: EnemySubgroupPlacemark) -> void:
 	$status_view/container/SetLabel.text = \"\"
 	hovered_placemark = null
 	
@@ -113,7 +113,7 @@ func _on_gathering_spot_placemark_mouse_entered(gathering_spot_placemark: Gather
 	$status_view/container/SetLabel.text = gathering_spot_placemark.gathering_spot.to_string()
 	_set_hovered_placemark(gathering_spot_placemark)
 	
-func _on_gathering_spot_placemark_mouse_exited(gathering_spot_placemark: GatheringSpotPlacemark) -> void:
+func _on_gathering_spot_placemark_mouse_exited(_gathering_spot_placemark: GatheringSpotPlacemark) -> void:
 	$status_view/container/SetLabel.text = \"\"
 	hovered_placemark = null
 	

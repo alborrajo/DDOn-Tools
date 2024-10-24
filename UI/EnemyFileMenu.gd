@@ -162,12 +162,15 @@ func _do_load_file_json(file: File) -> int:
 		var stage_id = data[enemies_schema_idx["StageId"]]
 		var layer_no = data[enemies_schema_idx["LayerNo"]]
 		var group_id = data[enemies_schema_idx["GroupId"]]
+		
+		var enemy_set = SetProvider.get_enemy_set(stage_id, layer_no, group_id)
+		if enemy_set == null:
+			printerr("Unknown enemy set: (%d, %d, %d)" % [stage_id, layer_no, group_id])
+			continue
+			
 		var subgroup_id = data[enemies_schema_idx["SubGroupId"]]
 		
-		var enemy_set = SetProvider.get_enemy_set(stage_id, layer_no, group_id, subgroup_id)
-		if enemy_set == null:
-			printerr("Unknown enemy set: (%d, %d, %d, %d)" % [stage_id, layer_no, group_id, subgroup_id])
-			continue
+		var enemy_subgroup: EnemySubgroup = enemy_set.get_subgroup(subgroup_id)
 		
 		var enemyType := enemy_tree_node.get_enemy_by_id(data[enemies_schema_idx["EnemyId"]].hex_to_int())
 		var namedParam := DataProvider.get_named_param_by_id(data[enemies_schema_idx["NamedEnemyParamsId"]])
@@ -196,7 +199,7 @@ func _do_load_file_json(file: File) -> int:
 		if enemies_schema_idx.has("PPDrop"):
 			enemy.play_points = data[enemies_schema_idx["PPDrop"]]
 		else:
-			enemy.play_points = enemy.experience / 7500
+			enemy.play_points = int(enemy.experience / 7500.0)
 
 		var drops_table_id = data[enemies_schema_idx["DropsTableId"]]
 		if drops_table_id == -1:
@@ -221,9 +224,9 @@ func _do_load_file_json(file: File) -> int:
 		var result: int
 		if enemies_schema_idx.has("PositionIndex"):
 			var position_index = data[enemies_schema_idx["PositionIndex"]]
-			result = enemy_set.add_enemy_at_index(enemy, position_index)
+			result = enemy_subgroup.add_enemy_at_index(enemy, position_index)
 		else:
-			result = enemy_set.add_enemy(enemy)
+			result = enemy_subgroup.add_enemy(enemy)
 		if result != OK:
 				printerr("Enemy outside of the set's possible positions: ", data)
 
@@ -282,8 +285,9 @@ func _do_load_file_legacy(file: File) -> void:
 		enemy.is_blood_enemy = parse_bool(csv_line[21].strip_edges())
 		enemy.is_highorb_enemy = parse_bool(csv_line[22].strip_edges())
 		
-		var enemy_set = SetProvider.get_enemy_set(stage_id, layer_no, group_id, subgroup_id)
-		enemy_set.add_enemy(enemy)
+		var enemy_set = SetProvider.get_enemy_set(stage_id, layer_no, group_id)
+		var enemy_subgroup = enemy_set.get_subgroup(subgroup_id)
+		enemy_subgroup.add_enemy(enemy)
 	
 func _do_save_file(file: File) -> void:
 	if file.get_path().get_extension() == "csv":
@@ -319,65 +323,68 @@ func _do_save_file(file: File) -> void:
 		json_data[JSON_KEY_DROPS_TABLES].append(json_data_table)
 
 	for set in SetProvider.get_all_enemy_sets():
-		for position_index in set.positions.size():
-			for enemy in set.positions[position_index].enemies:
-				if enemy != null:
-					var data = []
-					data.append(set.stage_id)
-					data.append(set.layer_no)
-					data.append(set.group_id)
-					data.append(set.subgroup_id)
-					data.append(position_index)
-					data.append("0x%06X" % enemy.enemy_type.id)
-					data.append(enemy.named_param.id)
-					data.append(enemy.raid_boss_id)
-					data.append(enemy.scale)
-					data.append(enemy.lv)
-					data.append(enemy.hm_preset_no)
-					data.append(enemy.start_think_tbl_no)
-					data.append(enemy.repop_num)
-					data.append(enemy.repop_count)
-					data.append(enemy.enemy_target_types_id)
-					data.append(enemy.montage_fix_no)
-					data.append(enemy.set_type)
-					data.append(enemy.infection_type)
-					data.append(enemy.is_boss_gauge)
-					data.append(enemy.is_boss_bgm)
-					data.append(enemy.is_manual_set)
-					data.append(enemy.is_area_boss)
+		for subgroup_id in set.subgroups.size():
+			var subgroup: EnemySubgroup = set.subgroups[subgroup_id]
+			if subgroup != null:
+				for position_index in subgroup.positions.size():
+					for enemy in subgroup.positions[position_index].enemies:
+						if enemy != null:
+							var data = []
+							data.append(set.stage_id)
+							data.append(set.layer_no)
+							data.append(set.group_id)
+							data.append(subgroup_id)
+							data.append(position_index)
+							data.append("0x%06X" % enemy.enemy_type.id)
+							data.append(enemy.named_param.id)
+							data.append(enemy.raid_boss_id)
+							data.append(enemy.scale)
+							data.append(enemy.lv)
+							data.append(enemy.hm_preset_no)
+							data.append(enemy.start_think_tbl_no)
+							data.append(enemy.repop_num)
+							data.append(enemy.repop_count)
+							data.append(enemy.enemy_target_types_id)
+							data.append(enemy.montage_fix_no)
+							data.append(enemy.set_type)
+							data.append(enemy.infection_type)
+							data.append(enemy.is_boss_gauge)
+							data.append(enemy.is_boss_bgm)
+							data.append(enemy.is_manual_set)
+							data.append(enemy.is_area_boss)
 
-					if enemy.is_blood_enemy:
-						data.append(enemy.blood_orbs)
-					else:
-						data.append(0)
+							if enemy.is_blood_enemy:
+								data.append(enemy.blood_orbs)
+							else:
+								data.append(0)
 
-					if enemy.is_highorb_enemy:
-						data.append(enemy.high_orbs)
-					else:
-						data.append(0)
+							if enemy.is_highorb_enemy:
+								data.append(enemy.high_orbs)
+							else:
+								data.append(0)
 
-					data.append(enemy.experience)
+							data.append(enemy.experience)
 
-					if enemy.drops_table != null:
-						data.append(enemy.drops_table.id)
-					else:
-						data.append(-1)
-					
-					var selected_index = enemy.time_type
-					var selected_string = ""
-					if selected_index == 0:
-						selected_string = "00:00,23:59"
-					if selected_index == 1:
-						selected_string = "07:00,17:59"
-					if selected_index == 2:
-						selected_string = "18:00,06:59"	
-					if selected_index == 3:
-						selected_string = enemy.custom_time
-					data.append(selected_string)
+							if enemy.drops_table != null:
+								data.append(enemy.drops_table.id)
+							else:
+								data.append(-1)
+							
+							var selected_index = enemy.time_type
+							var selected_string = ""
+							if selected_index == 0:
+								selected_string = "00:00,23:59"
+							if selected_index == 1:
+								selected_string = "07:00,17:59"
+							if selected_index == 2:
+								selected_string = "18:00,06:59"	
+							if selected_index == 3:
+								selected_string = enemy.custom_time
+							data.append(selected_string)
 
-					data.append(enemy.play_points)
+							data.append(enemy.play_points)
 
-					json_data[JSON_KEY_ENEMIES].append(data)
+							json_data[JSON_KEY_ENEMIES].append(data)
 
 	file.store_string(JSON.print(json_data, "\t"))
 
@@ -385,29 +392,34 @@ func _do_save_file(file: File) -> void:
 func _do_save_file_legacy(file) -> void:
 	store_csv_line_crlf(file, LEGACY_CSV_HEADER)
 	for set in SetProvider.get_all_enemy_sets():
-		for enemy in set.get_enemies():
-			var data := []
-			data.append(set.stage_id)
-			data.append(set.layer_no)
-			data.append(set.group_id)
-			data.append(set.subgroup_id)
-			data.append("0x%06X" % enemy.enemy_type.id)
-			data.append("0x%X" % enemy.named_param.id)
-			data.append(enemy.raid_boss_id)
-			data.append(enemy.scale)
-			data.append(enemy.lv)
-			data.append(enemy.hm_preset_no)
-			data.append(enemy.start_think_tbl_no)
-			data.append(enemy.repop_num)
-			data.append(enemy.repop_count)
-			data.append(enemy.enemy_target_types_id)
-			data.append(enemy.montage_fix_no)
-			data.append(enemy.set_type)
-			data.append(enemy.infection_type)
-			data.append(enemy.is_boss_gauge)
-			data.append(enemy.is_boss_bgm)
-			data.append(enemy.is_manual_set)
-			data.append(enemy.is_area_boss)
-			data.append(enemy.is_blood_enemy)
-			data.append(enemy.is_highorb_enemy)
-			store_csv_line_crlf(file, data)
+		for subgroup_id in set.subgroups.size():
+			var subgroup: EnemySubgroup = set.subgroups[subgroup_id]
+			if subgroup != null:
+				for position_index in set.subgroups[subgroup_id].positions.size():
+					for enemy in set.positions[position_index].enemies:
+						if enemy != null:
+							var data := []
+							data.append(set.stage_id)
+							data.append(set.layer_no)
+							data.append(set.group_id)
+							data.append(subgroup_id)
+							data.append("0x%06X" % enemy.enemy_type.id)
+							data.append("0x%X" % enemy.named_param.id)
+							data.append(enemy.raid_boss_id)
+							data.append(enemy.scale)
+							data.append(enemy.lv)
+							data.append(enemy.hm_preset_no)
+							data.append(enemy.start_think_tbl_no)
+							data.append(enemy.repop_num)
+							data.append(enemy.repop_count)
+							data.append(enemy.enemy_target_types_id)
+							data.append(enemy.montage_fix_no)
+							data.append(enemy.set_type)
+							data.append(enemy.infection_type)
+							data.append(enemy.is_boss_gauge)
+							data.append(enemy.is_boss_bgm)
+							data.append(enemy.is_manual_set)
+							data.append(enemy.is_area_boss)
+							data.append(enemy.is_blood_enemy)
+							data.append(enemy.is_highorb_enemy)
+							store_csv_line_crlf(file, data)
