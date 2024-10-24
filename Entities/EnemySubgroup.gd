@@ -20,7 +20,12 @@ func add_enemy(enemy: Enemy) -> int:
 			break
 	
 	if position_index == -1:
-		return FAILED
+		# Put in the first position
+		var result := add_enemy_at_index(enemy, 0)
+		if result == OK:
+			return ERR_PRINTER_ON_FIRE
+		else:
+			return result
 	else:
 		positions[position_index].add_enemy(enemy)
 		return OK
