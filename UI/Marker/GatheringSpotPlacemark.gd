@@ -41,9 +41,10 @@ func get_items() -> Array:
 
 # Drag and drop functions
 func can_drop_data(_position, data):
-	return data is Item
+	return data is Item or data is GatheringItem
 	
 func drop_data(_position, data):
-	add_item(GatheringItem.new(data))
-	print_debug("Placed %s at %s (%d %d %d) " % [tr(data.name), tr(str("STAGE_NAME_",_gathering_spot.stage_id)), _gathering_spot.stage_id, _gathering_spot.group_id, _gathering_spot.subgroup_id])
-
+	if data is GatheringItem:
+		add_item(data)
+	elif data is Item:
+		add_item(GatheringItem.new(data))

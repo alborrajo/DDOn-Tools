@@ -84,7 +84,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Entities/EnemySubgroup.gd"
 }, {
-"base": "Node",
+"base": "Control",
 "class": "EnemySubgroupPlacemark",
 "language": "GDScript",
 "path": "res://UI/Marker/EnemySubgroupPlacemark.gd"

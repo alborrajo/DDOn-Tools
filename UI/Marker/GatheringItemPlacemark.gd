@@ -22,3 +22,7 @@ func set_item(i: GatheringItem) -> void:
 	
 func _on_item_changed():
 	text = item.get_display_name()
+
+func get_drag_data(position):
+	.get_drag_data(position)
+	return item as GatheringItem

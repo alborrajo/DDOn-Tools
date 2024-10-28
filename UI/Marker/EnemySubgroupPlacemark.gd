@@ -1,4 +1,4 @@
-extends Node
+extends Control
 class_name EnemySubgroupPlacemark
 
 signal subgroup_mouse_entered(position_index, enemy_position_placemark)

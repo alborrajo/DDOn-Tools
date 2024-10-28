@@ -3,6 +3,8 @@ class_name GenericPlacemark
 
 signal placemark_removed()
 
+var _is_dragging := false
+
 func ready():
 	SelectedListManager.connect("selection_changed", self, "_on_selection_changed")
 
@@ -24,6 +26,16 @@ func _selection_function(type):
 	else:
 		SelectedListManager.clear_list()
 		SelectedListManager.toggle_selection(self, type)
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_DRAG_END and _is_dragging:
+		_is_dragging = false
+		if get_viewport().gui_is_drag_successful():
+			delete_self()
+
+func get_drag_data(_position):
+	_is_dragging = true
+	return null
 
 func delete_self():
 	emit_signal("placemark_removed")

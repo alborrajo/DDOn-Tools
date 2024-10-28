@@ -58,3 +58,7 @@ func _on_enemy_changed():
 		self_modulate = COLOR_HIGH_ORB
 	else: 
 		self_modulate = COLOR_DEFAULT
+
+func get_drag_data(position):
+	.get_drag_data(position)
+	return enemy

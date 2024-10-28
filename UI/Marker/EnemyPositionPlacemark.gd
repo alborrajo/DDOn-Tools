@@ -55,10 +55,13 @@ func get_enemies() -> Array:
 
 # Drag and drop functions
 func can_drop_data(_position, data):
-	return data is EnemyType
+	return data is EnemyType or data is Enemy
 	
 func drop_data(_position, data):
-	add_enemy(Enemy.new(data))
+	if data is Enemy:
+		add_enemy(data)
+	elif data is EnemyType:
+		add_enemy(Enemy.new(data))
 
 func _check_position_conflicts() -> void:
 	var exceeded := enemy_position.has_conflicting_enemy_times()
