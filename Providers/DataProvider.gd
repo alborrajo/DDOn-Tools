@@ -40,14 +40,14 @@ func _ready():
 			
 			# TODO: Optimize this 
 			for enemy_set in enemy_sets[stage_no]:
-				if enemy_set["GroupNo"] == enemy_position["GroupNo"] and enemy_set["SubGroupNo"] == enemy_position["SubGroupNo"]:
+				if enemy_set["GroupNo"] == enemy_position["GroupNo"]:# and enemy_set["SubGroupNo"] == enemy_position["SubGroupNo"]:
 					existing_enemy_set = enemy_set
 					break
 
 			if existing_enemy_set == null:
 				existing_enemy_set = {}
 				existing_enemy_set["GroupNo"] = enemy_position["GroupNo"]
-				existing_enemy_set["SubGroupNo"] = enemy_position["SubGroupNo"]
+				#existing_enemy_set["SubGroupNo"] = enemy_position["SubGroupNo"]
 				existing_enemy_set["Positions"] = []
 				enemy_sets[stage_no].append(existing_enemy_set)
 

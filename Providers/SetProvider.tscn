@@ -18,7 +18,7 @@ func _ready():
 			var stage_id := DataProvider.stage_no_to_stage_id(int(stage_no))
 			var layer_no := 0
 			var group_no := int(enemy_set[\"GroupNo\"])
-			var subgroup_no := int(enemy_set[\"SubGroupNo\"])
+			var subgroup_no := -1#int(enemy_set[\"SubGroupNo\"])
 			var enemy_set_instance := EnemySet.new(stage_id, layer_no, group_no)
 			var positions = []
 			for position_index in enemy_set[\"Positions\"].size():
