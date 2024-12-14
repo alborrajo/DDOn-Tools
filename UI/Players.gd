@@ -23,10 +23,12 @@ func update_servers():
 		server_item = get_root().get_children()
 	while (server_item):
 		var server_item_host = server_item.get_metadata(0) as String
+		var server_item_port = server_item.get_metadata(1) as int
 		var exists = false
 		for server in servers:
 			var server_host: String = server["Addr"]
-			if server_item_host == server_host:
+			var server_rpc_port: int = server["RpcPort"]
+			if server_item_host == server_host and server_item_port == server_rpc_port:
 				exists = true
 				break
 		if !exists:
@@ -42,12 +44,15 @@ func update_servers():
 			
 	for server in servers:
 		var server_host: String = server["Addr"]
+		var server_rpc_port: int = server["RpcPort"]
 		var existing_ui: TreeItem
 		server_item = false
 		if get_root():
 			server_item = get_root().get_children()
 		while (server_item):
-			if server_item.get_metadata(0) == server_host:
+			var server_item_host = server_item.get_metadata(0) as String
+			var server_item_port = server_item.get_metadata(1) as int
+			if server_item_host == server_host and server_item_port == server_rpc_port:
 				existing_ui = server_item
 			server_item = server_item.get_next()
 		if existing_ui:
@@ -60,7 +65,8 @@ func update_servers():
 			
 func _update_server_info(server_item: TreeItem):
 	var server_item_host = server_item.get_metadata(0) as String
-	var infos : Array = RpcClient.new(server_item_host).get_info()
+	var server_item_port = server_item.get_metadata(1) as int
+	var infos : Array = RpcClient.new(server_item_host, server_item_port).get_info()
 	var item = server_item.get_children()
 	while (item):
 		var item_player = item.get_metadata(0) as PlayerMapEntity
@@ -107,6 +113,7 @@ func _update_server_info(server_item: TreeItem):
 func _update_server_tree_entry(item: TreeItem, server: Dictionary):
 	item.set_text(0, server["Name"])
 	item.set_metadata(0, server["Addr"])
+	item.set_metadata(1, server["RpcPort"])
 
 func _update_player_tree_entry(item: TreeItem, player: PlayerMapEntity):
 	var stage_id := DataProvider.stage_no_to_stage_id(player.StageNo)
@@ -120,15 +127,16 @@ func _on_Players_item_rmb_selected(_position):
 	if selection_meta is PlayerMapEntity:
 		var player = selection_meta as PlayerMapEntity
 		var server_host: String = selection.get_parent().get_metadata(0)
+		var server_port: int = selection.get_parent().get_metadata(1)
 		
 		# TODO: Use translations
 		$KickConfirmationDialog.dialog_text = "Kick %s %s?" % [player.FirstName, player.LastName]
 		if $KickConfirmationDialog.is_connected("confirmed", self, "_on_KickConfirmationDialog_confirmed"):
 			$KickConfirmationDialog.disconnect("confirmed", self, "_on_KickConfirmationDialog_confirmed")
-		assert($KickConfirmationDialog.connect("confirmed", self, "_on_KickConfirmationDialog_confirmed", [server_host, player], CONNECT_ONESHOT) == OK)
+		assert($KickConfirmationDialog.connect("confirmed", self, "_on_KickConfirmationDialog_confirmed", [server_host, server_port, player], CONNECT_ONESHOT) == OK)
 		$KickConfirmationDialog.popup_centered()
 
-func _on_KickConfirmationDialog_confirmed(server_host: String, player: PlayerMapEntity):
-	RpcClient.new(server_host).delete_info(player.AccountName)
+func _on_KickConfirmationDialog_confirmed(server_host: String, server_port: int, player: PlayerMapEntity):
+	RpcClient.new(server_host, server_port).delete_info(player.AccountName)
 	print_debug("[%d] %s %s @ %d %s kicked" % [player.CharacterId, player.FirstName, player.LastName, player.StageNo, player.pos.round()])
 	update_servers()
