@@ -5,15 +5,26 @@ signal player_joined(player)
 signal player_updated(player)
 signal player_left(player)
 
-onready var servers_on_ui_root: TreeItem = create_item()
+var _thread: Thread
 
+onready var servers_on_ui_root: TreeItem = create_item()
 
 func _ready():
 	# Request RPC immediately
 	update_servers()
 
 func _on_rpc_timer_timeout():
-	update_servers()
+	# If there's an old thread that hasn't finished, don't start a new one
+	# if there's an old thread that has finished, join it and start a new one
+	# if there's no old thread, start a new one
+	if _thread != null and _thread.is_active():
+		if not _thread.is_alive():
+			_thread.wait_to_finish()
+		else:
+			return
+		
+	_thread = Thread.new()
+	assert(_thread.start(self, "update_servers") == OK)
 
 # TODO: Refactor for less code duplication when updating trees
 func update_servers():
@@ -143,3 +154,7 @@ func _on_KickConfirmationDialog_confirmed(server_host: String, server_port: int,
 	RpcClient.new(server_host, server_port).delete_info(player.AccountName)
 	print_debug("[%d] %s %s @ %d %s kicked" % [player.CharacterId, player.FirstName, player.LastName, player.StageNo, player.pos.round()])
 	update_servers()
+
+func _exit_tree():
+	if _thread != null and _thread.is_active():
+		_thread.wait_to_finish()
