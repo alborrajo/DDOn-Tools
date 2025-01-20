@@ -396,7 +396,7 @@ func _do_save_file_legacy(file) -> void:
 			var subgroup: EnemySubgroup = set.subgroups[subgroup_id]
 			if subgroup != null:
 				for position_index in set.subgroups[subgroup_id].positions.size():
-					for enemy in set.positions[position_index].enemies:
+					for enemy in set.subgroups[subgroup_id].positions[position_index].enemies:
 						if enemy != null:
 							var data := []
 							data.append(set.stage_id)
