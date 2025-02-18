@@ -3,10 +3,13 @@ class_name Enemy
 
 const DEFAULT_NAMED_PARAMS_ID = 0x8FA
 
-# As it is right now, you have to kill 5 bosses of your level
-# or 50 regular enemies to level up
-const EXP_MULTIPLIER := 0.02;
-const EXP_BOSS_MUTLIPLIER := 0.2;
+# By default, you have to kill 5 bosses or 50 enemies
+# of your level to level up
+const STORAGE_SECTION_ENEMIES := "Enemies"
+const STORAGE_KEY_ENEMIES_TO_LEVEL_UP := "EnemiesToLevelUp"
+const STORAGE_KEY_ENEMIES_TO_LEVEL_UP_DEFAULT := 50;
+const STORAGE_KEY_BOSSES_TO_LEVEL_UP := "BossesToLevelUp"
+const STORAGE_KEY_BOSSES_TO_LEVEL_UP_DEFAULT := 5;
 
 const EXP_UNTIL_NEXT_LV := [
 	0,
@@ -322,6 +325,6 @@ func _calculate_exp() -> void:
 	var next_level_idx := clamp(lv+1, 0, len(EXP_UNTIL_NEXT_LV)-1)
 	var exp_to_level_up: int = EXP_UNTIL_NEXT_LV[next_level_idx]
 	if is_area_boss or is_boss_bgm or is_boss_gauge:
-		experience = int(exp_to_level_up * EXP_BOSS_MUTLIPLIER)
+		experience = int(exp_to_level_up / StorageProvider.get_value(STORAGE_SECTION_ENEMIES, STORAGE_KEY_BOSSES_TO_LEVEL_UP, STORAGE_KEY_BOSSES_TO_LEVEL_UP_DEFAULT))
 	else:
-		experience = int(exp_to_level_up * EXP_MULTIPLIER)
+		experience = int(exp_to_level_up / StorageProvider.get_value(STORAGE_SECTION_ENEMIES, STORAGE_KEY_ENEMIES_TO_LEVEL_UP, STORAGE_KEY_ENEMIES_TO_LEVEL_UP_DEFAULT))
