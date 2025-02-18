@@ -221,7 +221,11 @@ func _on_DropsContainer_drops_table_selected(drops_table):
 	if supress_event != true:
 		SelectedListManager.apply_values_to_selected_type("drops_table", enemy.drops_table)
 
-func _on_CustomTimeTypeLineEdit_text_entered(text):
+func _on_CustomTimeTypeLineEdit_text_changed(text):
 	enemy.custom_time = text
-	if supress_event != true:
+	# Verify if the new text passed validations
+	if enemy.custom_time != text:
+		$VBoxContainer/GridContainer/CustomTimeTypeLineEdit.add_color_override("font_color", Color.red)
+	elif supress_event != true:
+		$VBoxContainer/GridContainer/CustomTimeTypeLineEdit.remove_color_override("font_color")
 		SelectedListManager.apply_values_to_selected_type("custom_time", enemy.custom_time)
