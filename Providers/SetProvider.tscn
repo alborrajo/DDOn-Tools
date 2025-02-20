@@ -77,6 +77,14 @@ func get_enemy_set(stage_id: int, layer_no: int, group_id: int) -> EnemySet:
 
 func get_all_enemy_sets() -> Array:
 	return Array(_enemy_sets)
+	
+func apply_suggested_exp_for_all_enemies() -> void:
+	for set in _enemy_sets:
+		for subgroup in set.subgroups:
+			if subgroup != null:
+				for position in subgroup.positions:
+					for enemy in position.enemies:
+						enemy.apply_suggested_exp()
 
 
 func clear_gathering_spots() -> void:

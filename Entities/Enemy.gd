@@ -222,8 +222,7 @@ func _set_lv(value):
 	lv = value
 	blood_orbs = value
 	high_orbs = value
-	_calculate_exp()
-	emit_changed()
+	apply_suggested_exp()
 	
 func _set_hm_preset_no(value):
 	hm_preset_no = value
@@ -276,13 +275,11 @@ func _validate_time_format(time_str: String, regex_str: String) -> bool:
 
 func _set_is_boss_gauge(value):
 	is_boss_gauge = value
-	_calculate_exp()
-	emit_changed()
+	apply_suggested_exp()
 	
 func _set_is_boss_bgm(value):
 	is_boss_bgm = value
-	_calculate_exp()
-	emit_changed()
+	apply_suggested_exp()
 	
 func _set_is_manual_set(value):
 	is_manual_set = value
@@ -290,8 +287,7 @@ func _set_is_manual_set(value):
 	
 func _set_is_area_boss(value):
 	is_area_boss = value
-	_calculate_exp()
-	emit_changed()
+	apply_suggested_exp()
 	
 func _set_is_blood_enemy(value):
 	is_blood_enemy = value
@@ -321,10 +317,11 @@ func _set_drops_table(value):
 	drops_table = value
 	emit_changed()
 
-func _calculate_exp() -> void:
+func apply_suggested_exp() -> void:
 	var next_level_idx := clamp(lv+1, 0, len(EXP_UNTIL_NEXT_LV)-1)
 	var exp_to_level_up: int = EXP_UNTIL_NEXT_LV[next_level_idx]
 	if is_area_boss or is_boss_bgm or is_boss_gauge:
 		experience = int(exp_to_level_up / StorageProvider.get_value(STORAGE_SECTION_ENEMIES, STORAGE_KEY_BOSSES_TO_LEVEL_UP, STORAGE_KEY_BOSSES_TO_LEVEL_UP_DEFAULT))
 	else:
 		experience = int(exp_to_level_up / StorageProvider.get_value(STORAGE_SECTION_ENEMIES, STORAGE_KEY_ENEMIES_TO_LEVEL_UP, STORAGE_KEY_ENEMIES_TO_LEVEL_UP_DEFAULT))
+	emit_changed()

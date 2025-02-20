@@ -7,7 +7,7 @@ export var group_id: int setget _set_group_id
 
 export var subgroup_position_template: Array # Array of Vector3
 
-var subgroups: Array # Array of EnemySubgroup
+var subgroups: Array # Array of nullable EnemySubgroup
 
 func _init(_stage_id: int, _layer_no: int, _group_id: int):
 	self.stage_id = _stage_id

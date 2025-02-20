@@ -7,6 +7,7 @@ func _on_SettingsWindowDialog_about_to_show():
 	
 	$VBoxContainer/ExpSuggestionsFlowContainer/EnemiesToLevelUpSpinBox.value = StorageProvider.get_value(Enemy.STORAGE_SECTION_ENEMIES, Enemy.STORAGE_KEY_ENEMIES_TO_LEVEL_UP, Enemy.STORAGE_KEY_ENEMIES_TO_LEVEL_UP_DEFAULT)
 	$VBoxContainer/ExpSuggestionsFlowContainer/BossesToLevelUpSpinBox.value = StorageProvider.get_value(Enemy.STORAGE_SECTION_ENEMIES, Enemy.STORAGE_KEY_BOSSES_TO_LEVEL_UP, Enemy.STORAGE_KEY_BOSSES_TO_LEVEL_UP_DEFAULT)
+	$VBoxContainer/ApplySuggestedEXPCheckBox.pressed = false
 	
 	$VBoxContainer/RPCGridContainer/RPCHostLineEdit.text = StorageProvider.get_value(RpcClient.STORAGE_SECTION_RPC, RpcClient.STORAGE_KEY_RPC_HOST, RpcClient.STORAGE_KEY_RPC_HOST_DEFAULT)
 	$VBoxContainer/RPCGridContainer/RPCPortSpinBox.value = StorageProvider.get_value(RpcClient.STORAGE_SECTION_RPC, RpcClient.STORAGE_KEY_RPC_PORT, RpcClient.STORAGE_KEY_RPC_PORT_DEFAULT)
@@ -26,5 +27,17 @@ func _on_SettingsWindowDialog_popup_hide():
 	StorageProvider.set_value(RpcClient.STORAGE_SECTION_RPC, RpcClient.STORAGE_KEY_RPC_PATH, $VBoxContainer/RPCGridContainer/RPCPathLineEdit.text)
 	StorageProvider.set_value(RpcClient.STORAGE_SECTION_RPC, RpcClient.STORAGE_KEY_RPC_USERNAME, $VBoxContainer/RPCCredentialsGridContainer/UserLineEdit.text)
 	StorageProvider.set_value(RpcClient.STORAGE_SECTION_RPC, RpcClient.STORAGE_KEY_RPC_PASSWORD, $VBoxContainer/RPCCredentialsGridContainer/PassLineEdit.text)
+	
+	if $VBoxContainer/ApplySuggestedEXPCheckBox.pressed:
+		SetProvider.apply_suggested_exp_for_all_enemies()
 
 	emit_signal("settings_updated")
+
+
+func _on_ApplySuggestedEXPCheckBox_toggled(button_pressed):
+	if button_pressed:
+		$VBoxContainer/ApplySuggestedEXPCheckBox/ConfirmationDialog.popup()
+		$VBoxContainer/ApplySuggestedEXPCheckBox.pressed = false
+
+func _on_ConfirmationDialog_confirmed():
+	$VBoxContainer/ApplySuggestedEXPCheckBox.set_pressed_no_signal(true)
