@@ -1,6 +1,10 @@
 extends Tree
 class_name Players
 
+const STORAGE_SECTION_PLAYERS := "Players"
+const STORAGE_KEY_SHOW_IN_ALL_TABS := "ShowInAllTabs"
+const STORAGE_KEY_SHOW_IN_ALL_TABS_DEFAULT := false;
+
 signal player_joined(player)
 signal player_updated(player)
 signal player_left(player)

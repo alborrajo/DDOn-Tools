@@ -35,16 +35,16 @@ signal player_joined(player)
 signal player_updated(player)
 signal player_left(player)
 
+signal settings_updated()
+
 var current_stage_no
-var current_subgroup_id
 
 onready var stage_label: Label = $status_view/container/StageLabel
 onready var coordinates_label: Label = $status_view/container/CoordinatesLabel
 onready var hovered_placemark = null
 
-func _ready():
-	$status_view/container/SetLabel.text = \"\"
-	current_subgroup_id = $status_view/container/SubGroupIdSpinBox.value
+onready var current_tab = $left/tab.current_tab
+onready var current_subgroup_id = $status_view/container/SubGroupIdSpinBox.value
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -84,6 +84,7 @@ func _on_Players_item_activated():
 		emit_signal(\"player_activated\", selected as PlayerMapEntity)
 
 func _on_tab_changed(tab):
+	current_tab = tab
 	emit_signal(\"tab_changed\", tab)
 	
 func _on_Players_player_joined(player):
@@ -94,6 +95,9 @@ func _on_Players_player_left(player):
 
 func _on_Players_player_updated(player):
 	emit_signal(\"player_updated\", player)
+	
+func _on_SettingsWindowDialog_settings_updated():
+	emit_signal(\"settings_updated\")
 
 func _on_root_markers_loaded():
 	$left/tab/Enemies/FileMenu._on_markers_loaded()
@@ -530,3 +534,4 @@ show_hidden_files = true
 [connection signal="pressed" from="status_view/container/SettingsButton" to="status_view/container/SettingsButton" method="_on_SettingsButton_pressed"]
 [connection signal="pressed" from="Right Panel/VBoxContainer/HBoxContainer/Close" to="Right Panel" method="_on_Close_pressed"]
 [connection signal="showing_details_of" from="Right Panel/VBoxContainer/DetailsPanel" to="Right Panel" method="_on_DetailsPanel_showing_details_of"]
+[connection signal="settings_updated" from="SettingsWindowDialog" to="." method="_on_SettingsWindowDialog_settings_updated"]

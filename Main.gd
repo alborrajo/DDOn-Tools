@@ -35,6 +35,8 @@ func _ready():
 	# Select Layer 0 by default, also a hacky way
 	$ui/status_view/container/LayerOptionButton.select(0)
 	$ui/status_view/container/LayerOptionButton.emit_signal("item_selected", 0)
+	
+	_on_ui_settings_updated()
 
 func _on_ui_stage_selected(stage_no):
 	_clear_map()
@@ -289,7 +291,10 @@ func _on_tab_changed(tab):
 	for i in range(tab_and_map_node.size()):
 		var map_node: Node2D = tab_and_map_node[i]
 		if map_node != null:
-			if tab == i:
-				map_node.visible = true
-			else:
-				map_node.visible = false
+			map_node.visible = tab == i
+	
+	if StorageProvider.get_value(Players.STORAGE_SECTION_PLAYERS, Players.STORAGE_KEY_SHOW_IN_ALL_TABS, Players.STORAGE_KEY_SHOW_IN_ALL_TABS_DEFAULT):
+		players_node.visible = true
+
+func _on_ui_settings_updated():
+	players_node.visible = tab_and_map_node[ui_node.current_tab] == players_node or StorageProvider.get_value(Players.STORAGE_SECTION_PLAYERS, Players.STORAGE_KEY_SHOW_IN_ALL_TABS, Players.STORAGE_KEY_SHOW_IN_ALL_TABS_DEFAULT)
