@@ -96,7 +96,6 @@ func _update_server_info(server_item: TreeItem):
 				break
 		if !exists:
 			# remove players on ui, that have no info
-			print_debug("[%d] %s %s left", [item_player.CharacterId, item_player.FirstName, item_player.LastName])
 			emit_signal("player_left", item_player)
 			var tmp = item
 			item = item.get_next()
@@ -118,13 +117,11 @@ func _update_server_info(server_item: TreeItem):
 		if existing_ui:
 			# update existing player
 			_update_player_tree_entry(existing_ui, player)
-			print_debug("[%d] %s %s @ %d %s" % [player.CharacterId, player.FirstName, player.LastName, player.StageNo, player.pos.round()])
 			emit_signal("player_updated", player)
 		else:
 			# create new player
 			var entry := create_item(server_item)
 			_update_player_tree_entry(entry, player)
-			print_debug("[%d] %s %s @ %d %s joined" % [player.CharacterId, player.FirstName, player.LastName, player.StageNo, player.pos.round()])
 			emit_signal("player_joined", player)
 
 
@@ -156,7 +153,6 @@ func _on_Players_item_rmb_selected(_position):
 
 func _on_KickConfirmationDialog_confirmed(server_host: String, server_port: int, player: PlayerMapEntity):
 	RpcClient.new(server_host, server_port).delete_info(player.AccountName)
-	print_debug("[%d] %s %s @ %d %s kicked" % [player.CharacterId, player.FirstName, player.LastName, player.StageNo, player.pos.round()])
 	update_servers()
 
 func _exit_tree():
