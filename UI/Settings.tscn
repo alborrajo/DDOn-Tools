@@ -5,6 +5,7 @@
 [ext_resource path="res://UI/font.tres" type="DynamicFont" id=3]
 
 [node name="SettingsWindowDialog" type="WindowDialog"]
+visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -12,7 +13,7 @@ anchor_bottom = 0.5
 margin_left = -135.0
 margin_top = -95.0
 margin_right = 135.0
-margin_bottom = 228.0
+margin_bottom = 294.0
 custom_fonts/title_font = ExtResource( 3 )
 window_title = "Settings"
 script = ExtResource( 2 )
@@ -110,14 +111,50 @@ margin_right = 258.0
 margin_bottom = 45.0
 text = "bosses"
 
-[node name="ApplySuggestedEXPCheckBox" type="CheckBox" parent="VBoxContainer"]
+[node name="HOBOSuggestionsGridContainer" type="GridContainer" parent="VBoxContainer"]
 margin_top = 128.0
 margin_right = 262.0
-margin_bottom = 154.0
-text = "Apply suggested EXP to all enemies"
+margin_bottom = 188.0
+columns = 2
 
-[node name="ConfirmationDialog" type="ConfirmationDialog" parent="VBoxContainer/ApplySuggestedEXPCheckBox"]
-visible = true
+[node name="BloodOrbsLabel" type="Label" parent="VBoxContainer/HOBOSuggestionsGridContainer"]
+margin_top = 5.0
+margin_right = 129.0
+margin_bottom = 23.0
+size_flags_horizontal = 3
+text = "Suggested Blood Orbs"
+
+[node name="BloodOrbSpinBox" type="SpinBox" parent="VBoxContainer/HOBOSuggestionsGridContainer"]
+margin_left = 133.0
+margin_right = 262.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+suffix = "x Lv"
+
+[node name="HighOrbLabel" type="Label" parent="VBoxContainer/HOBOSuggestionsGridContainer"]
+margin_top = 37.0
+margin_right = 129.0
+margin_bottom = 55.0
+size_flags_horizontal = 3
+text = "Suggested High Orbs"
+
+[node name="HighOrbSpinBox" type="SpinBox" parent="VBoxContainer/HOBOSuggestionsGridContainer"]
+margin_left = 133.0
+margin_top = 32.0
+margin_right = 262.0
+margin_bottom = 60.0
+size_flags_horizontal = 3
+step = 0.01
+value = 1.0
+suffix = "x Lv"
+
+[node name="ApplySuggestedValuesCheckBox" type="CheckBox" parent="VBoxContainer"]
+margin_top = 192.0
+margin_right = 262.0
+margin_bottom = 218.0
+text = "Apply suggested values to all enemies"
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" parent="VBoxContainer/ApplySuggestedValuesCheckBox"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -127,19 +164,19 @@ margin_top = -54.0
 margin_right = 167.0
 margin_bottom = 54.0
 window_title = "Por favor, Confirma..."
-dialog_text = "Applying the suggested EXP to all enemies will overwrite
-the current EXP drops in the entire file.
+dialog_text = "Applying the suggested values to all enemies will
+overwrite the current EXP drops in the entire file.
 Are you sure you want to proceed?"
 
 [node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
-margin_top = 158.0
+margin_top = 222.0
 margin_right = 262.0
-margin_bottom = 162.0
+margin_bottom = 226.0
 
 [node name="RPCGridContainer" type="GridContainer" parent="VBoxContainer"]
-margin_top = 166.0
+margin_top = 230.0
 margin_right = 262.0
-margin_bottom = 258.0
+margin_bottom = 322.0
 columns = 2
 
 [node name="RPCHostLabel" type="Label" parent="VBoxContainer/RPCGridContainer"]
@@ -193,16 +230,16 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-margin_top = 262.0
+margin_top = 326.0
 margin_right = 262.0
-margin_bottom = 280.0
+margin_bottom = 344.0
 custom_fonts/font = ExtResource( 3 )
 text = "RPC User and Password"
 
 [node name="RPCCredentialsGridContainer" type="GridContainer" parent="VBoxContainer"]
-margin_top = 284.0
+margin_top = 348.0
 margin_right = 262.0
-margin_bottom = 312.0
+margin_bottom = 376.0
 columns = 2
 
 [node name="UserLineEdit" type="LineEdit" parent="VBoxContainer/RPCCredentialsGridContainer"]
@@ -220,5 +257,5 @@ secret = true
 [connection signal="about_to_show" from="." to="." method="_on_SettingsWindowDialog_about_to_show"]
 [connection signal="popup_hide" from="." to="." method="_on_SettingsWindowDialog_popup_hide"]
 [connection signal="item_selected" from="VBoxContainer/LanguageGridContainer/LanguageOptionButton" to="VBoxContainer/LanguageGridContainer/LanguageOptionButton" method="_on_item_selected"]
-[connection signal="toggled" from="VBoxContainer/ApplySuggestedEXPCheckBox" to="." method="_on_ApplySuggestedEXPCheckBox_toggled"]
-[connection signal="confirmed" from="VBoxContainer/ApplySuggestedEXPCheckBox/ConfirmationDialog" to="." method="_on_ConfirmationDialog_confirmed"]
+[connection signal="toggled" from="VBoxContainer/ApplySuggestedValuesCheckBox" to="." method="_on_ApplySuggestedEXPCheckBox_toggled"]
+[connection signal="confirmed" from="VBoxContainer/ApplySuggestedValuesCheckBox/ConfirmationDialog" to="." method="_on_ConfirmationDialog_confirmed"]

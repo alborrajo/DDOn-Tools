@@ -6,6 +6,10 @@ const DEFAULT_NAMED_PARAMS_ID = 0x8FA
 # By default, you have to kill 5 bosses or 50 enemies
 # of your level to level up
 const STORAGE_SECTION_ENEMIES := "Enemies"
+const STORAGE_KEY_BLOOD_ORB_RATE := "BloodOrbRate"
+const STORAGE_KEY_BLOOD_ORB_RATE_DEFAULT := 1.0
+const STORAGE_KEY_HIGH_ORB_RATE := "HighOrbRate"
+const STORAGE_KEY_HIGH_ORB_RATE_DEFAULT := 1.0
 const STORAGE_KEY_ENEMIES_TO_LEVEL_UP := "EnemiesToLevelUp"
 const STORAGE_KEY_ENEMIES_TO_LEVEL_UP_DEFAULT := 50;
 const STORAGE_KEY_BOSSES_TO_LEVEL_UP := "BossesToLevelUp"
@@ -220,8 +224,8 @@ func _set_scale(value):
 	
 func _set_lv(value):
 	lv = value
-	blood_orbs = value
-	high_orbs = value
+	apply_suggested_blood_orbs()
+	apply_suggested_high_orbs()
 	apply_suggested_exp()
 	
 func _set_hm_preset_no(value):
@@ -316,6 +320,12 @@ func _set_play_points(value):
 func _set_drops_table(value):
 	drops_table = value
 	emit_changed()
+	
+func apply_suggested_blood_orbs() -> void:
+	blood_orbs = lv * StorageProvider.get_value(STORAGE_SECTION_ENEMIES, STORAGE_KEY_BLOOD_ORB_RATE, STORAGE_KEY_BLOOD_ORB_RATE_DEFAULT)
+	
+func apply_suggested_high_orbs() -> void:
+	high_orbs = lv * StorageProvider.get_value(STORAGE_SECTION_ENEMIES, STORAGE_KEY_HIGH_ORB_RATE, STORAGE_KEY_HIGH_ORB_RATE_DEFAULT)
 
 func apply_suggested_exp() -> void:
 	var next_level_idx := clamp(lv+1, 0, len(EXP_UNTIL_NEXT_LV)-1)
