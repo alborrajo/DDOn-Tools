@@ -30,13 +30,13 @@ func _unhandled_input(event: InputEvent):
 	if is_visible_in_tree() and Input.is_key_pressed(KEY_CONTROL) and event.is_pressed() and event is InputEventKey:
 		var inputEventKey := event as InputEventKey
 		if inputEventKey.scancode == KEY_N:
-			new_file()
+			var _result := new_file()
 			get_tree().set_input_as_handled()
 		elif inputEventKey.scancode == KEY_S:
-			resave()
+			var _result := resave()
 			get_tree().set_input_as_handled()
 		elif inputEventKey.scancode == KEY_L:
-			reload()
+			var _result := reload()
 			get_tree().set_input_as_handled()
 
 func _on_menu_id_pressed(id: int) -> void:

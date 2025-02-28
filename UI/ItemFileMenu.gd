@@ -71,7 +71,7 @@ func _do_load_file(file: File) -> void:
 		
 		# Send read entries to the SetProvider
 		var stage_id = int(csv_line[schema_indices["StageId"]])
-		var layer_no = int(csv_line[schema_indices["LayerNo"]])
+		var _layer_no = int(csv_line[schema_indices["LayerNo"]]) # TODO: Figure out LayerNo
 		var group_id = int(csv_line[schema_indices["GroupId"]])
 		var subgroup_id = int(csv_line[schema_indices["PosId"]])
 		

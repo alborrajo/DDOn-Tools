@@ -207,7 +207,7 @@ func _on_ui_player_activated(player: PlayerMapEntity):
 			$ui/left/tab/Stages/StageItemList.select(stage_index)
 			$ui/left/tab/Stages/StageItemList.emit_signal("item_selected", stage_index)
 			# Move camera to player position
-			camera_tween.remove_all()
+			assert(camera_tween.remove_all())
 			_move_camera_to(player.get_map_position()*MAP_SCALE)
 			return
 	printerr("Couldnt focus map on %s %s (StageNo: %s)" % [player.FirstName, player.LastName, player.StageNo])
@@ -239,10 +239,10 @@ func _focus_camera_on_center() -> void:
 
 
 func _move_camera_to(new_position: Vector2) -> void:
-	camera_tween.interpolate_property(camera, "position",
+	assert(camera_tween.interpolate_property(camera, "position",
 		camera.position, new_position, 0.5,
-		Tween.TRANS_SINE, Tween.EASE_IN_OUT)
-	camera_tween.start()
+		Tween.TRANS_SINE, Tween.EASE_IN_OUT))
+	assert(camera_tween.start())
 
 
 func _on_layer_selected(selected_layer_index):
@@ -264,12 +264,12 @@ func _get_enemy_groups_center() -> Vector2:
 	for enemy_group in enemy_sets_node.get_children():
 		for enemy_position in enemy_group.get_position_placemarks():
 			var position: Vector2 = enemy_position.get_rect().get_center()
-			min_x = min(min_x, position.x)
-			max_x = max(max_x, position.x)
-			min_y = min(min_y, position.y)
-			max_y = max(max_y, position.y)
+			min_x = int(min(min_x, position.x))
+			max_x = int(max(max_x, position.x))
+			min_y = int(min(min_y, position.y))
+			max_y = int(max(max_y, position.y))
 		
-	return enemy_sets_node.to_global(Rect2(min_x, min_y, max_x-min_x, max_y-min_y).get_center())
+	return Rect2(min_x, min_y, max_x-min_x, max_y-min_y).get_center()
 
 func _get_map_center() -> Vector2:
 	var min_x: int = 9223372036854775807
@@ -280,16 +280,16 @@ func _get_map_center() -> Vector2:
 	for map_layer in map_layers.get_children():
 		for map in map_layer.get_children():
 			var position: Vector2 = map.get_rect().get_center()
-			min_x = min(min_x, position.x)
-			max_x = max(max_x, position.x)
-			min_y = min(min_y, position.y)
-			max_y = max(max_y, position.y)
+			min_x = int(min(min_x, position.x))
+			max_x = int(max(max_x, position.x))
+			min_y = int(min(min_y, position.y))
+			max_y = int(max(max_y, position.y))
 		
-	return map_layers.to_global(Rect2(min_x, min_y, max_x-min_x, max_y-min_y).get_center())
+	return Rect2(min_x, min_y, max_x-min_x, max_y-min_y).get_center()
 
 func _on_tab_changed(tab):
 	for i in range(tab_and_map_node.size()):
-		var map_node: Node2D = tab_and_map_node[i]
+		var map_node: Node = tab_and_map_node[i]
 		if map_node != null:
 			map_node.visible = tab == i
 	

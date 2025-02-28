@@ -98,7 +98,7 @@ func _on_AddDropsTableButton_pressed():
 func _on_RemoveDropsTableButton_pressed():
 	var selected_option_id: int = $HFlowContainer/DropsTableOptionButton.get_selected_id()
 	if selected_option_id != NO_DROPS_OPTION_ID:
-		SetProvider.remove_drops_table(selected_option_id)
+		var _removed_table := SetProvider.remove_drops_table(selected_option_id)
 		select_drops_table(-1)
 
 func _on_DropsTableNameLineEdit_text_changed(new_text):
@@ -151,5 +151,5 @@ func _FilterList(filter_text: String, option_id):
 static func _get_highest_drops_table_id() -> int:
 	var highest := 0
 	for drops_table in SetProvider.get_all_drops_tables():
-		highest = max(highest, drops_table.id)
+		highest = int(max(highest, drops_table.id))
 	return int(highest)
