@@ -134,6 +134,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UI/Marker/GenericPlacemark.gd"
 }, {
+"base": "Control",
+"class": "GenericSetMarkersControl",
+"language": "GDScript",
+"path": "res://UI/Marker/GenericSetMarkersControl.gd"
+}, {
 "base": "PanelContainer",
 "class": "GenericSetPlacemark",
 "language": "GDScript",
@@ -260,6 +265,7 @@ _global_script_class_icons={
 "GenericFileMenu": "",
 "GenericMarker": "",
 "GenericPlacemark": "",
+"GenericSetMarkersControl": "",
 "GenericSetPlacemark": "",
 "HmPresetNoOptionButton": "",
 "Item": "",

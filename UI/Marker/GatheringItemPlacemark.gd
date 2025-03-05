@@ -9,6 +9,9 @@ func _ready():
 
 func _on_GatheringItemPlacemark_pressed():
 	_selection_function(item)
+	
+func select_placemark():
+	SelectedListManager.add_to_selection(self, item)
 
 func set_item(i: GatheringItem) -> void:
 	if item != null and item.is_connected("changed", self, "_on_item_changed"):

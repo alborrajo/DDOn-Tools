@@ -34,9 +34,8 @@ func _select_recursively(selection_rect: Rect2, node: Node) -> void:
 	for child in node.get_children():
 		if child is Control:
 			var control := child as Control
-			var control_rect := control.get_global_rect()
-			if selection_rect.intersects(control_rect):
-				pass # TODO: Call select method or something
+			if control.is_visible_in_tree() and selection_rect.intersects(control.get_global_rect()) and control.has_method("select_placemark"):
+				control.select_placemark()
 		_select_recursively(selection_rect, child)
 
 func _get_selection_rect() -> Rect2:

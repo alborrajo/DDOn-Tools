@@ -13,8 +13,8 @@ const GatheringSpotPlacemarkScene = preload("res://UI/Marker/GatheringSpotPlacem
 onready var camera: Camera2D = $camera
 onready var camera_tween: Tween = $CameraTween
 onready var map_layers: Node2D = $MapCoordinateSpace/MapLayers
-onready var enemy_sets_node: Node2D = $MapCoordinateSpace/EnemySetMarkers
-onready var gathering_spots_node: Node2D = $MapCoordinateSpace/GatheringSpotMarkers
+onready var enemy_sets_node: Control = $MapCoordinateSpace/EnemySetMarkers
+onready var gathering_spots_node: Control = $MapCoordinateSpace/GatheringSpotMarkers
 onready var players_node: Node2D = $MapCoordinateSpace/PlayerMarkers
 onready var ui_node = $ui
 

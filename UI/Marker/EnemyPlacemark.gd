@@ -28,6 +28,9 @@ func _update_placemark_visibility(index):
 
 func _on_EnemyPlacemark_pressed():
 	_selection_function(enemy)
+	
+func select_placemark():
+	SelectedListManager.add_to_selection(self, enemy)
 
 func set_enemy(em: Enemy) -> void:
 	if enemy != null and enemy.is_connected("changed", self, "_on_enemy_changed"):
