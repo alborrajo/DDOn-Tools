@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://UI/Marker/EnemySubgroupPlacemark.gd" type="Script" id=1]
 [ext_resource path="res://resources/fonts/NotoSansJP-Regular.otf" type="DynamicFontData" id=2]
@@ -54,6 +54,15 @@ corner_radius_bottom_left = 10
 expand_margin_left = 2.0
 expand_margin_right = 2.0
 
+[sub_resource type="GDScript" id=6]
+script/source = "extends Button
+
+signal subgroup_selected()
+
+func select_placemark():
+	emit_signal(\"subgroup_selected\")
+"
+
 [sub_resource type="DynamicFont" id=5]
 outline_size = 2
 outline_color = Color( 0.61, 0.61, 0, 1 )
@@ -77,6 +86,7 @@ custom_styles/hover = SubResource( 3 )
 custom_styles/pressed = SubResource( 4 )
 custom_styles/normal = SubResource( 2 )
 text = "GRP - X/Y"
+script = SubResource( 6 )
 
 [node name="WarningLabel" type="Label" parent="SubgroupButtonControl"]
 margin_left = -22.0
@@ -99,3 +109,4 @@ mouse_filter = 1
 [connection signal="mouse_entered" from="SubgroupButtonControl/SubgroupButton" to="." method="_on_GroupButton_mouse_entered"]
 [connection signal="mouse_exited" from="SubgroupButtonControl/SubgroupButton" to="." method="_on_GroupButton_mouse_exited"]
 [connection signal="pressed" from="SubgroupButtonControl/SubgroupButton" to="." method="_on_GroupButton_pressed"]
+[connection signal="subgroup_selected" from="SubgroupButtonControl/SubgroupButton" to="." method="_on_SubgroupButton_subgroup_selected"]
