@@ -15,6 +15,8 @@ func _input(event):
 					get_tree().set_input_as_handled()
 				elif dragging:
 					dragging = false
+					if not iemb.shift:
+						SelectedListManager.clear_list()
 					_select_recursively(_get_selection_rect().abs(), self)
 					update()
 					get_tree().set_input_as_handled()
