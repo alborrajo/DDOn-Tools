@@ -62,6 +62,7 @@ script = ExtResource( 5 )
 [node name="GatheringSpotMarkers" type="Control" parent="MapCoordinateSpace"]
 visible = false
 mouse_filter = 1
+script = ExtResource( 5 )
 
 [node name="PlayerMarkers" type="Node2D" parent="MapCoordinateSpace"]
 visible = false
