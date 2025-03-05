@@ -23,7 +23,6 @@ func _to_hide():
 				if grandgrandchild.name == "SelectionPanel" and grandgrandchild.visible:
 					var placemark = grandgrandchild.get_parent()
 					SelectedListManager.remove_from_selection(placemark, null)
-					placemark.emit_signal("selection_changed")
 
 func _to_unhide():
 	self.modulate = Color(1, 1, 1, 1)  # Raising the transparency to 100%

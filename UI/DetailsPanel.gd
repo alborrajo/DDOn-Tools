@@ -25,7 +25,7 @@ func show_details_of(obj):
 	else:
 		push_error("Attempted to show the details of an unrecognized object")
 
-func _on_selection_changed():
+func _on_selection_changed(_added, _removed):
 	if SelectedListManager.selected_list.size() == 0:
 		hide_details()
 	else:

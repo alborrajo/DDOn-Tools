@@ -6,14 +6,17 @@ signal placemark_removed()
 var _is_dragging := false
 
 func ready():
-	SelectedListManager.connect("selection_changed", self, "_on_selection_changed")
+	assert(SelectedListManager.connect("selection_changed", self, "_on_selection_changed") == OK)
 
-func _on_selection_changed():
-	var is_self_selected := false
-	for entry in SelectedListManager.selected_list:
+func _on_selection_changed(added, removed):
+	for entry in added:
 		if self == entry["placemark"]:
-			is_self_selected = true
-	$SelectionPanel.visible = is_self_selected
+			$SelectionPanel.visible = true
+			return
+	for entry in removed:
+		if self == entry["placemark"]:
+			$SelectionPanel.visible = false
+			return
 
 func _gui_input(event):
 	if event is InputEventMouseButton and (event as InputEventMouseButton).button_mask == BUTTON_RIGHT:
@@ -26,6 +29,9 @@ func _selection_function(type):
 	else:
 		SelectedListManager.clear_list()
 		SelectedListManager.toggle_selection(self, type)
+		
+func select_placemark():
+	pass
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_DRAG_END and _is_dragging:

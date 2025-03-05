@@ -4,11 +4,12 @@
 resource_name = "SelectedListManager"
 script/source = "extends Node
 
-var selected_list = []
-var enemy_type = false
-var item_type = false
-signal selection_changed
-signal set_revealed_hidden
+signal selection_changed(added, removed)
+signal set_revealed_hidden()
+
+var selected_list := []
+var enemy_type := false
+var item_type := false
 
 # Function to apply values to selected enemy or item
 func apply_values_to_selected_type(parameter_name: String, parameter_value):
@@ -18,13 +19,12 @@ func apply_values_to_selected_type(parameter_name: String, parameter_value):
 		
 # Function to check the list for type and removes if it exists already
 func toggle_selection(placemark: GenericPlacemark, data: Object):
-	var entry = {\"placemark\": placemark, \"data\": data}
-	
 	if placemark is EnemyPlacemark:
 		enemy_type = true
-		
-	if placemark is GatheringItemPlacemark:
+	elif placemark is GatheringItemPlacemark:
 		item_type = true
+	else:
+		return # Ignore anything else
 		
 	if enemy_type and item_type:
 		clear_list()
@@ -33,15 +33,16 @@ func toggle_selection(placemark: GenericPlacemark, data: Object):
 	if index != -1:
 		_remove_from_selection(index)
 	else:
-		_add_to_selection(entry)
+		_add_to_selection({\"placemark\": placemark, \"data\": data})
 
 func _add_to_selection(entry):
 	selected_list.append(entry)
-	emit_signal(\"selection_changed\")
+	emit_signal(\"selection_changed\", [entry], [])
 	
 func _remove_from_selection(index):
+	var removed = selected_list[index]
 	selected_list.remove(index)
-	emit_signal(\"selection_changed\")
+	emit_signal(\"selection_changed\", [], [removed])
 	
 # Function to find the index of an entry in the list
 func _find_entry_index(placemark: GenericPlacemark) -> int:
@@ -52,23 +53,23 @@ func _find_entry_index(placemark: GenericPlacemark) -> int:
 
 # Function to clear the list and emit a signal to inform the placemarks.
 func clear_list():
+	var removed_list := selected_list.duplicate()
 	selected_list.clear()
-	emit_signal(\"selection_changed\")
+	emit_signal(\"selection_changed\", [], removed_list)
 	enemy_type = false
 	item_type = false
 
 # Function that handles the deletion of multiple placemarks.
 # Handle the list in reverse order to ensure it doesn't trip over any indexes and fail to delete entries
 func delete_selected():
+	var removed_list := []
 	for index in range(selected_list.size() - 1, -1, -1):
 		var entry = selected_list[index]
 		var placemark = entry[\"placemark\"]
-		if placemark:
-			placemark.delete_self()
-			var index_to_remove = _find_entry_index(placemark)
-			if index_to_remove != -1:
-				selected_list.remove(index_to_remove)
-				emit_signal(\"selection_changed\")
+		placemark.delete_self()
+		removed_list.append(entry)
+		selected_list.remove(index)
+	emit_signal(\"selection_changed\", [], removed_list)
 	
 func reveal_hidden():
 	emit_signal(\"set_revealed_hidden\")
