@@ -14,15 +14,19 @@ Alternatively, you can follow the steps in the [Development](#development) secti
 
 ## How to use
 
+- Select a stage in the left menu's first tab
 - Move around the map dragging your mouse.
 - Zoom with the mouse wheel.
-- Add enemies by draggin from the list to any of the positions.
-- Click on an enemy to change its properties.
-- Switch between zones using to drop down menu on the top left.
-
-Save or load your set to a file from the File menu (top left).
-
-If any set placemarks are overlapping you can hide them by having your mouse over them and pressing H. Press Shift+H to unhide hidden placemarks.
+- Add enemies/items by draggin from the list to any of the positions.
+    - Click on an enemy/item to change its properties.
+    - Delete with right click
+    - Save or load your sets to a file from the File menu (top left from the Enemy/Items tabs).
+    - Select multiple entries by holding shift and clicking
+    - Select an area by holding ctrl and dragging your mouse. Hold shift too to add to an existing selection 
+    - If any set placemarks are overlapping you can hide them by having your mouse over them and pressing H. Press Shift+H to unhide hidden placemarks.
+    - Change the suggested EXP and HOBO values curve from the Settings
+- Optionally set up in the settings an address and credentials for an admin account to use the Chat and Player functionalities
+    - Kick players by right clicking their names on the menu
 
 ## Development
 
