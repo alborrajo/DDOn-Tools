@@ -34,3 +34,8 @@ func _apply_mouse_filter_to_children(node, filter):
 		if child is Control:
 			child.mouse_filter = filter
 		_apply_mouse_filter_to_children(child, filter)
+
+func select_all_placemarks():
+	for placemark in $VBoxContainer.get_children():
+		if placemark.has_method("select_placemark"):
+			placemark.select_placemark()

@@ -12,7 +12,7 @@ func _ready() -> void:
 	assert(_gathering_spot.connect("changed", self, "_on_gathering_spot_changed") == OK)
 	_on_gathering_spot_changed()
 	
-func _on_gathering_spot_changed() -> void:
+func _on_gathering_spot_changed() -> void:	
 	# Rebuild children elements
 	for child in $VBoxContainer.get_children():
 		$VBoxContainer.remove_child(child)

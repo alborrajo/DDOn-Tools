@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://UI/Marker/GatheringSpotPlacemark.tscn" type="PackedScene" id=1]
+[ext_resource path="res://UI/Marker/GatheringSubgroupPlacemark.gd" type="Script" id=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Button
+
+signal subgroup_selected()
+
+func select_placemark():
+	emit_signal(\"subgroup_selected\")
+"
+
+[node name="GatheringSubgroupPlacemark" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -26, -49 )
+mouse_filter = 1
+script = ExtResource( 2 )
+
+[node name="GatheringTypeButton" type="Button" parent="."]
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+mouse_filter = 1
+flat = true
+icon_align = 1
+script = SubResource( 1 )
+
+[node name="GatheringSpotPlacemark" parent="." instance=ExtResource( 1 )]
+visible = false
+
+[connection signal="mouse_entered" from="GatheringTypeButton" to="." method="_on_GatheringTypeButton_mouse_entered"]
+[connection signal="mouse_exited" from="GatheringTypeButton" to="." method="_on_GatheringTypeButton_mouse_exited"]
+[connection signal="pressed" from="GatheringTypeButton" to="." method="_on_GatheringTypeButton_pressed"]
+[connection signal="subgroup_selected" from="GatheringTypeButton" to="." method="_on_GatheringTypeButton_subgroup_selected"]
+[connection signal="gui_input" from="GatheringSpotPlacemark" to="." method="_on_GatheringSpotPlacemark_gui_input"]
+[connection signal="mouse_entered" from="GatheringSpotPlacemark" to="." method="_on_GatheringSpotPlacemark_mouse_entered"]
+[connection signal="mouse_exited" from="GatheringSpotPlacemark" to="." method="_on_GatheringSpotPlacemark_mouse_exited"]

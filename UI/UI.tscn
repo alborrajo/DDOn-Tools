@@ -114,11 +114,11 @@ func _on_enemy_subgroup_placemark_mouse_exited(_position_index: int, _enemy_posi
 	$status_view/container/SetLabel.text = \"\"
 	hovered_placemark = null
 	
-func _on_gathering_spot_placemark_mouse_entered(gathering_spot_placemark: GatheringSpotPlacemark) -> void:
-	$status_view/container/SetLabel.text = gathering_spot_placemark.gathering_spot.to_string()
-	_set_hovered_placemark(gathering_spot_placemark)
+func _on_gathering_subgroup_placemark_mouse_entered(gathering_subgroup_placemark: GatheringSubgroupPlacemark) -> void:
+	$status_view/container/SetLabel.text = gathering_subgroup_placemark.gathering_spot.to_string()
+	_set_hovered_placemark(gathering_subgroup_placemark)
 	
-func _on_gathering_spot_placemark_mouse_exited(_gathering_spot_placemark: GatheringSpotPlacemark) -> void:
+func _on_gathering_subgroup_placemark_mouse_exited(_gathering_subgroup_placemark: GatheringSubgroupPlacemark) -> void:
 	$status_view/container/SetLabel.text = \"\"
 	hovered_placemark = null
 	

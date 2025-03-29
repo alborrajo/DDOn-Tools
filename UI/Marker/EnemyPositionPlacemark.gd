@@ -62,11 +62,6 @@ func drop_data(_position, data):
 		add_enemy(data)
 	elif data is EnemyType:
 		add_enemy(Enemy.new(data))
-		
-func select_all_placemarks():
-	for placemark in $VBoxContainer.get_children():
-		if placemark.has_method("select_placemark"):
-			placemark.select_placemark()
 
 func _check_position_conflicts() -> void:
 	var exceeded := enemy_position.has_conflicting_enemy_times()

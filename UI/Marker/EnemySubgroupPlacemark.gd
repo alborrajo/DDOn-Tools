@@ -73,7 +73,6 @@ func hide_positions() -> void:
 	$SubgroupButtonControl.visible = true
 	$EnemyPositionPlacemarksControl.visible = false
 
-
 func _on_SubgroupButton_subgroup_selected():
 	show_positions()
 	for child in $EnemyPositionPlacemarksControl.get_children():
