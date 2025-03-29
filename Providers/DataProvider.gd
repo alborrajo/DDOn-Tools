@@ -2,7 +2,7 @@ extends Node
 
 export (String, FILE, "*.json") var named_param_json := "res://resources/named_param.ndp.json"
 export (String, FILE, "*.json") var map_dimensions_csv := "res://resources/maps/dimensions.csv"
-export (String, FILE, "*.json") var stage_custom_json := "res://resources/StageCustom.json"
+export (String, FILE, "*.json") var stage_custom_json := "res://resources/stageCustom.json"
 export (String, FILE, "*.json") var stage_room_csv := "res://resources/StageRoom.csv"
 export (String, FILE, "*.json") var stage_list_json := "res://resources/StageList.json"
 export (String, FILE, "*.json") var repo_json := "res://resources/repo.json"
