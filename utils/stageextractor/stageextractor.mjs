@@ -3,6 +3,7 @@ import { cp, mkdir, readFile, rm, writeFile } from "fs/promises";
 import path, { basename } from "path";
 import JSON5 from 'json5';
 import { $, cd, chalk, echo } from "zx";
+import { exit } from "process";
 
 /**
  * Target rLayout file name format:
@@ -15,7 +16,7 @@ const regex = /[a-z]+([0-9]{4})_[0-9]{2}m[0-9]{2}n_.([0-9]+)/;
 if(argv._.length < 2) {
     echo("Usage: ./stageextractor.mjs \"/path/to/ARCtool\" \"/path/to/Dragon's Dogma Online\"");
     echo("To use this you must have ImHex installed in your PATH");
-    await $`exit 1`.quiet();
+    exit(1);
 }
 
 const arcToolPath = argv._[0];
@@ -55,7 +56,8 @@ for (const arcPath of stLotArcPaths) {
                             x: Number(setInfo.info.SetInfoOm.SetInfoCoord.Position.x),
                             y: Number(setInfo.info.SetInfoOm.SetInfoCoord.Position.y),
                             z: Number(setInfo.info.SetInfoOm.SetInfoCoord.Position.z)
-                        }
+                        },
+                        GatheringType: setInfo.info.GatheringType
                     });
                 } else if(setInfo.type == 7) {
                     stageNoAndGatheringSpots.get(stageNo).push({
@@ -65,7 +67,8 @@ for (const arcPath of stLotArcPaths) {
                             x: Number(setInfo.info.super_cSetInfoOmGather.SetInfoOm.SetInfoCoord.Position.x),
                             y: Number(setInfo.info.super_cSetInfoOmGather.SetInfoOm.SetInfoCoord.Position.y),
                             z: Number(setInfo.info.super_cSetInfoOmGather.SetInfoOm.SetInfoCoord.Position.z)
-                        }
+                        },
+                        GatheringType: setInfo.info.GatheringType
                     });
                 } else if (setInfo.type == 42) {
                     stageNoAndGatheringSpots.get(stageNo).push({
@@ -75,7 +78,8 @@ for (const arcPath of stLotArcPaths) {
                             x: Number(setInfo.info.SetInfoOm.SetInfoCoord.Position.x),
                             y: Number(setInfo.info.SetInfoOm.SetInfoCoord.Position.y),
                             z: Number(setInfo.info.SetInfoOm.SetInfoCoord.Position.z)
-                        }
+                        },
+                        GatheringType: setInfo.info.GatheringType
                     });
                 }
             }

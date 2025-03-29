@@ -62,6 +62,16 @@ struct cSetInfoOmSealedTreasureBox {
     cSetInfoOm SetInfoOm;
 };
 
+struct cSetInfoOmEnemy {
+    u32 u0;
+    u32 u1;
+    u32 u2;
+    u32 u3;
+    u32 u4;
+    u8 u5;
+    cSetInfoCoord SetInfoCoord;
+};
+
 struct TODO_cSetInfo {
 };
 
@@ -70,7 +80,7 @@ struct Wrapper_cSetInfo {
     s32 type;
     match (type) {
         (0): TODO_cSetInfo info; // cSetInfoOm
-        (1): TODO_cSetInfo info; // cSetInfoEnemy
+        (1): cSetInfoOmEnemy info; // cSetInfoEnemy
         (2): TODO_cSetInfo info; // cSetInfoNpc
         (3): TODO_cSetInfo info; // cSetInfoGeneralPoint
         (4): cSetInfoOmGather info; // cSetInfoOmGather
