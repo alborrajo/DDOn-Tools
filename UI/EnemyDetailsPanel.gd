@@ -58,11 +58,13 @@ func _on_enemy_changed():
 		$VBoxContainer/GridContainer/IsBossBGM.pressed = enemy_clone.is_boss_bgm
 		$VBoxContainer/GridContainer/IsManualSet.pressed = enemy_clone.is_manual_set
 		$VBoxContainer/GridContainer/IsAreaBoss.pressed = enemy_clone.is_area_boss
-		$VBoxContainer/GridContainer/BloodOrbsContainer/IsBloodEnemy.pressed = enemy_clone.is_blood_enemy
-		$VBoxContainer/GridContainer/BloodOrbsContainer/BloodOrbsSpinBox.editable = enemy_clone.is_blood_enemy
+		$VBoxContainer/GridContainer/IsBloodEnemy.pressed = enemy_clone.is_blood_enemy
+		$VBoxContainer/GridContainer/BloodOrbsContainer/DoesDropBO.pressed = enemy_clone.does_drop_bo
+		$VBoxContainer/GridContainer/BloodOrbsContainer/BloodOrbsSpinBox.editable = enemy_clone.does_drop_bo
 		$VBoxContainer/GridContainer/BloodOrbsContainer/BloodOrbsSpinBox.value = enemy_clone.blood_orbs
-		$VBoxContainer/GridContainer/HighOrbsContainer/IsHighOrbEnemy.pressed = enemy_clone.is_highorb_enemy
-		$VBoxContainer/GridContainer/HighOrbsContainer/HighOrbsSpinBox.editable = enemy_clone.is_highorb_enemy
+		$VBoxContainer/GridContainer/IsHighOrbEnemy.pressed = enemy_clone.is_highorb_enemy
+		$VBoxContainer/GridContainer/HighOrbsContainer/DoesDropHO.pressed = enemy_clone.does_drop_ho
+		$VBoxContainer/GridContainer/HighOrbsContainer/HighOrbsSpinBox.editable = enemy_clone.does_drop_ho
 		$VBoxContainer/GridContainer/HighOrbsContainer/HighOrbsSpinBox.value = enemy_clone.high_orbs
 		$VBoxContainer/ExpContainer/NamedParamsExpPercentageLabel.text = String(enemy_clone.named_param.experience)
 		$VBoxContainer/ExpContainer/ExpSpinBox.value = enemy_clone.experience
@@ -185,13 +187,23 @@ func _on_IsAreaBoss_pressed():
 	if supress_event != true:
 		SelectedListManager.apply_values_to_selected_type("is_area_boss", enemy.is_area_boss)
 
+func _on_DoesDropBO_pressed():
+	enemy.does_drop_bo = $VBoxContainer/GridContainer/BloodOrbsContainer/DoesDropBO.pressed
+	if supress_event != true:
+		SelectedListManager.apply_values_to_selected_type("does_drop_bo", enemy.does_drop_bo)
+
+func _on_DoesDropHO_pressed():
+	enemy.does_drop_ho = $VBoxContainer/GridContainer/HighOrbsContainer/DoesDropHO.pressed
+	if supress_event != true:
+		SelectedListManager.apply_values_to_selected_type("does_drop_ho", enemy.does_drop_ho)
+
 func _on_IsBloodEnemy_pressed():
-	enemy.is_blood_enemy = $VBoxContainer/GridContainer/BloodOrbsContainer/IsBloodEnemy.pressed
+	enemy.is_blood_enemy = $VBoxContainer/GridContainer/IsBloodEnemy.pressed
 	if supress_event != true:
 		SelectedListManager.apply_values_to_selected_type("is_blood_enemy", enemy.is_blood_enemy)
 
 func _on_IsHighOrbEnemy_pressed():
-	enemy.is_highorb_enemy = $VBoxContainer/GridContainer/HighOrbsContainer/IsHighOrbEnemy.pressed
+	enemy.is_highorb_enemy = $VBoxContainer/GridContainer/IsHighOrbEnemy.pressed
 	if supress_event != true:
 		SelectedListManager.apply_values_to_selected_type("is_highorb_enemy", enemy.is_highorb_enemy)
 

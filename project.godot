@@ -155,11 +155,6 @@ _global_script_classes=[ {
 "path": "res://UI/HmPresetNoOptionButton.gd"
 }, {
 "base": "Resource",
-"class": "ImageTextureArray",
-"language": "GDScript",
-"path": "res://Entities/ImageTextureArray.gd"
-}, {
-"base": "Resource",
 "class": "Item",
 "language": "GDScript",
 "path": "res://Entities/Item.gd"
@@ -279,7 +274,6 @@ _global_script_class_icons={
 "GenericSetMarkersControl": "",
 "GenericSetPlacemark": "",
 "HmPresetNoOptionButton": "",
-"ImageTextureArray": "",
 "Item": "",
 "ItemDetailsPanel": "",
 "ItemFileMenu": "",

@@ -157,8 +157,10 @@ var is_boss_gauge: bool = false setget _set_is_boss_gauge
 var is_boss_bgm: bool = false setget _set_is_boss_bgm
 var is_manual_set: bool = false setget _set_is_manual_set
 var is_area_boss: bool = false setget _set_is_area_boss
+var does_drop_bo: bool = false setget _set_does_drop_bo
 var is_blood_enemy: bool = false setget _set_is_blood_enemy
 var blood_orbs: int = 0 setget _set_blood_orbs
+var does_drop_ho: bool = false setget _set_does_drop_ho
 var is_highorb_enemy: bool = false setget _set_is_highorb_enemy
 var high_orbs: int = 0 setget _set_high_orbs
 var experience: int = 0 setget _set_experience
@@ -196,8 +198,10 @@ func clone() -> Enemy:
 	new_enemy.is_boss_bgm = self.is_boss_bgm
 	new_enemy.is_manual_set = self.is_manual_set
 	new_enemy.is_area_boss = self.is_area_boss
+	new_enemy.does_drop_bo = self.does_drop_bo
 	new_enemy.is_blood_enemy = self.is_blood_enemy
 	new_enemy.blood_orbs = self.blood_orbs
+	new_enemy.does_drop_ho = self.does_drop_ho
 	new_enemy.is_highorb_enemy = self.is_highorb_enemy
 	new_enemy.high_orbs = self.high_orbs
 	new_enemy.experience = self.experience
@@ -292,6 +296,10 @@ func _set_is_manual_set(value):
 func _set_is_area_boss(value):
 	is_area_boss = value
 	apply_suggested_exp()
+
+func _set_does_drop_bo(value):
+	does_drop_bo = value
+	emit_changed()
 	
 func _set_is_blood_enemy(value):
 	is_blood_enemy = value
@@ -299,6 +307,10 @@ func _set_is_blood_enemy(value):
 
 func _set_blood_orbs(value):
 	blood_orbs = value
+	emit_changed()
+
+func _set_does_drop_ho(value):
+	does_drop_ho = value
 	emit_changed()
 	
 func _set_is_highorb_enemy(value):

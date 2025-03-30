@@ -54,7 +54,9 @@ const ENEMIES_SCHEMA := PoolStringArray([
 	"IsBossBGM",
 	"IsManualSet",
 	"IsAreaBoss",
+	"IsBloodOrbEnemy",
 	"BloodOrbs",
+	"IsHighOrbEnemy",
 	"HighOrbs",
 	"Experience",
 	"DropsTableId",
@@ -191,9 +193,17 @@ func _do_load_file_json(file: File) -> int:
 		enemy.is_manual_set = data[enemies_schema_idx["IsManualSet"]]
 		enemy.is_area_boss = data[enemies_schema_idx["IsAreaBoss"]]
 		enemy.blood_orbs = data[enemies_schema_idx["BloodOrbs"]]
-		enemy.is_blood_enemy = enemy.blood_orbs > 0
+		enemy.does_drop_bo = enemy.blood_orbs > 0
+		if enemies_schema_idx.has("IsBloodOrbEnemy"):
+			enemy.is_blood_enemy = data[enemies_schema_idx["IsBloodOrbEnemy"]]
+		else:
+			enemy.is_blood_enemy = enemy.blood_orbs > 0
 		enemy.high_orbs = data[enemies_schema_idx["HighOrbs"]]
-		enemy.is_highorb_enemy = enemy.high_orbs > 0
+		enemy.does_drop_ho = enemy.high_orbs > 0
+		if enemies_schema_idx.has("IsHighOrbEnemy"):
+			enemy.is_highorb_enemy = data[enemies_schema_idx["IsHighOrbEnemy"]]
+		else:
+			enemy.is_highorb_enemy = enemy.high_orbs > 0
 		enemy.experience = data[enemies_schema_idx["Experience"]]
 		# The PPDrop field may or may not exist. If it doesn't exist, set to Experience over 7500
 		if enemies_schema_idx.has("PPDrop"):
@@ -352,13 +362,15 @@ func _do_save_file(file: File) -> void:
 							data.append(enemy.is_boss_bgm)
 							data.append(enemy.is_manual_set)
 							data.append(enemy.is_area_boss)
-
-							if enemy.is_blood_enemy:
+							
+							data.append(enemy.is_blood_enemy)
+							if enemy.does_drop_bo:
 								data.append(enemy.blood_orbs)
 							else:
 								data.append(0)
 
-							if enemy.is_highorb_enemy:
+							data.append(enemy.is_highorb_enemy)
+							if enemy.does_drop_ho:
 								data.append(enemy.high_orbs)
 							else:
 								data.append(0)
