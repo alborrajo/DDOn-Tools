@@ -49,7 +49,7 @@ onready var current_subgroup_id = $status_view/container/SubGroupIdSpinBox.value
 func _input(event):
 	if event is InputEventMouseMotion:
 		var mouse_pos : Vector2 = $\"../MapCoordinateSpace\".get_local_mouse_position();
-		coordinates_label.text = String((mouse_pos / Main.MAP_SCALE).round())
+		coordinates_label.text = String((mouse_pos / MapControl.MAP_SCALE).round())
 	if event is InputEventKey:
 		if Input.is_action_pressed(\"set_hide\"):
 			if hovered_placemark != null and hovered_placemark.has_method(\"_to_hide\"):

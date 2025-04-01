@@ -12,10 +12,12 @@ func _ready() -> void:
 	assert(_gathering_spot.connect("changed", self, "_on_gathering_spot_changed") == OK)
 	_on_gathering_spot_changed()
 	
-func _on_gathering_spot_changed() -> void:	
+func _on_gathering_spot_changed() -> void:
+	set_ddon_world_position(DataProvider.stage_id_to_stage_no(_gathering_spot.stage_id), _gathering_spot.coordinates)
+	
 	# Rebuild children elements
-	for child in $VBoxContainer.get_children():
-		$VBoxContainer.remove_child(child)
+	for child in $Panel/VBoxContainer.get_children():
+		$Panel/VBoxContainer.remove_child(child)
 	var gatheringItems = _gathering_spot.get_gathering_items()
 
 	for index in gatheringItems.size():
@@ -23,7 +25,7 @@ func _on_gathering_spot_changed() -> void:
 		var item_placemark: GatheringItemPlacemark = item_placemark_packed_scene.instance()
 		item_placemark.item = item
 		assert(item_placemark.connect("placemark_removed", self, "_on_item_removed", [index]) == OK)
-		$VBoxContainer.add_child(item_placemark)
+		$Panel/VBoxContainer.add_child(item_placemark)
 
 
 func _on_item_removed(index: int) -> void:

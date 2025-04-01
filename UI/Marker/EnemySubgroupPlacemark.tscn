@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://UI/Marker/EnemySubgroupPlacemark.gd" type="Script" id=1]
 [ext_resource path="res://resources/fonts/NotoSansJP-Regular.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://UI/Marker/MapControl.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 14
@@ -76,6 +77,7 @@ script = ExtResource( 1 )
 margin_right = 40.0
 margin_bottom = 40.0
 mouse_filter = 1
+script = ExtResource( 3 )
 
 [node name="SubgroupButton" type="Button" parent="SubgroupButtonControl"]
 margin_right = 67.0
@@ -94,7 +96,6 @@ margin_top = 4.0
 margin_right = 30.0
 margin_bottom = 28.0
 rect_min_size = Vector2( 16, 24 )
-mouse_filter = 1
 size_flags_vertical = 0
 custom_colors/font_color = Color( 1, 1, 0, 1 )
 custom_fonts/font = SubResource( 5 )

@@ -1,7 +1,7 @@
 extends Reference
 class_name RpcClient
 
-const HTTP_DELAY_MS : int = 20
+const HTTP_DELAY_MS : int = 200
 
 const STORAGE_SECTION_RPC := "RPC"
 const STORAGE_KEY_RPC_HOST := "host"
@@ -142,7 +142,7 @@ func make_request(method: int, path: String, query_params: Dictionary = {}, body
 
 	headers = http.get_response_headers_as_dictionary()
 	if http.get_response_code() < 200 or http.get_response_code() >= 300:
-		printerr("RpcClient: bad response code ", host,":",port, path,"?",query_string) 
+		printerr("RpcClient: bad response code ", http.get_response_code(), " ", host,":",port, path,"?",query_string) 
 		return
 		
 	try_count = 0

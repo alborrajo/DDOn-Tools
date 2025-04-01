@@ -1,16 +1,10 @@
-extends PanelContainer
+extends MapControl
 class_name GenericSetPlacemark
 
-onready var _original_zoom : float = get_tree().get_nodes_in_group("camera")[0].original_zoom
-onready var _original_scale := rect_scale
 onready var selected_indices = []
 
 func _ready():
 	assert(SelectedListManager.connect("set_revealed_hidden", self, "_to_unhide") == OK)
-
-func _process(_delta):
-	var camera_zoom: float = get_tree().get_nodes_in_group("camera")[0].zoom.x
-	rect_scale = _original_scale * clamp(camera_zoom, 0, _original_zoom)
 	
 func _to_hide():
 	self.modulate = Color(1, 1, 1, 0.25)  # Lowering the transparency to 25%
@@ -36,6 +30,6 @@ func _apply_mouse_filter_to_children(node, filter):
 		_apply_mouse_filter_to_children(child, filter)
 
 func select_all_placemarks():
-	for placemark in $VBoxContainer.get_children():
+	for placemark in $Panel/VBoxContainer.get_children():
 		if placemark.has_method("select_placemark"):
 			placemark.select_placemark()

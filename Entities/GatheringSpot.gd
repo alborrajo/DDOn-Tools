@@ -45,6 +45,7 @@ export var stage_id: int setget _set_stage_id
 export var group_id: int setget _set_group_id
 export var subgroup_id: int setget _set_subgroup_id
 export var type: int setget _set_type
+export var coordinates: Vector3 setget _set_coordinates
 
 var _gathering_items: Array
 
@@ -86,4 +87,8 @@ func _set_subgroup_id(value: int) -> void:
 
 func _set_type(value: int) -> void:
 	type = value
+	emit_changed()
+
+func _set_coordinates(value: Vector3) -> void:
+	coordinates = value
 	emit_changed()

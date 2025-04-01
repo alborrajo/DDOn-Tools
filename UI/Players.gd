@@ -47,22 +47,18 @@ func update_servers():
 			if server_item_host == server_host and server_item_rpc_port == server_rpc_port:
 				exists = true
 				break
+		var tmp = server_item
+		server_item = server_item.get_next()
 		if !exists:
 			# remove servers on ui, that have no info
-			var tmp = server_item
-			server_item = server_item.get_next()
 			servers_on_ui_root.remove_child(tmp)
 			tmp.free()
-		else:
-			# Update the server's player list
-			_update_server_info(server_item)
-			server_item = server_item.get_next()
 			
 	for server in servers:
 		var server_host: String = server["Addr"]
 		var server_rpc_port: int = server["RpcPort"]
 		var existing_ui: TreeItem
-		server_item = false
+		server_item = null
 		if get_root():
 			server_item = get_root().get_children()
 		while (server_item):
@@ -70,21 +66,24 @@ func update_servers():
 			var server_item_host: String = server_item_metadata["Addr"]
 			var server_item_rpc_port: int = server_item_metadata["RpcPort"]
 			if server_item_host == server_host and server_item_rpc_port == server_rpc_port:
-				existing_ui = server_item
+				break
 			server_item = server_item.get_next()
-		if existing_ui:
-			# update existing player
+		if server_item != null:
+			# update existing server
 			_update_server_tree_entry(existing_ui, server)
 		else:
-			# create new player
-			var entry := create_item(servers_on_ui_root)
-			_update_server_tree_entry(entry, server)
+			# create new server
+			server_item = create_item(servers_on_ui_root)
+			_update_server_tree_entry(server_item, server)
+		# Update the server's player list
+		_update_server_info(server_item)
 			
 func _update_server_info(server_item: TreeItem):
 	var server_item_metadata = server_item.get_metadata(0)
 	var server_item_host: String = server_item_metadata["Addr"]
 	var server_item_rpc_port: int = server_item_metadata["RpcPort"]
 	var infos : Array = RpcClient.new(server_item_host, server_item_rpc_port).get_info()
+	print("PACO", infos)
 	var item = server_item.get_children()
 	while (item):
 		var item_player = item.get_metadata(0) as PlayerMapEntity
@@ -131,7 +130,7 @@ func _update_server_tree_entry(item: TreeItem, server: Dictionary):
 
 func _update_player_tree_entry(item: TreeItem, player: PlayerMapEntity):
 	var stage_id := DataProvider.stage_no_to_stage_id(player.StageNo)
-	var text := "%s %s @ %s %s" % [player.FirstName, player.LastName, tr(str("STAGE_NAME_",stage_id)), player.get_map_position().round()]
+	var text := "%s %s @ %s %s" % [player.FirstName, player.LastName, tr(str("STAGE_NAME_",stage_id)), MapControl.get_map_position(player.StageNo, player.pos).round()]
 	item.set_text(0, text)
 	item.set_metadata(0, player)
 

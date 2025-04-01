@@ -9,16 +9,22 @@ border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
 
-[node name="GenericSetPlacemark" type="PanelContainer"]
+[node name="MapControl" type="Control"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 8.0
+margin_bottom = 8.0
+script = ExtResource( 1 )
+
+[node name="Panel" type="PanelContainer" parent="."]
 margin_right = 12.0
 margin_bottom = 12.0
 mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 1 )
-script = ExtResource( 1 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 8.0

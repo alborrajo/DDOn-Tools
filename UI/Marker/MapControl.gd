@@ -1,5 +1,5 @@
-extends Resource
-class_name MapEntity
+extends Control
+class_name MapControl
 
 const STAGE_TRANSFORM := Transform2D(Vector2(62.0/22181.0, 0), Vector2(0, 56.0/19420.0), Vector2(28 + 505052.0/22181.0, -32 + 651448.0/19420.0))
 const FIELD_TRANSFORMS := {
@@ -13,15 +13,25 @@ const FIELD_TRANSFORMS := {
 	# TODO: Bitterblack Maze
 }
 
-var pos: Vector3
-var StageNo : int
+const MAP_SCALE = 1000
 
-func _init(var p_pos: Vector3, p_stage_no: int):
-	pos = p_pos
-	StageNo = p_stage_no
 
-func get_map_position() -> Vector2:
-	return _get_transform_for_stage_no(StageNo).xform(Vector2(self.pos.x, self.pos.z))
+onready var _original_zoom : float = get_tree().get_nodes_in_group("camera")[0].original_zoom
+onready var _original_scale: Vector2 = rect_scale
+
+func _process(_delta):
+	var camera_zoom: float = get_tree().get_nodes_in_group("camera")[0].zoom.x
+	var zoom := clamp(camera_zoom, 0, _original_zoom)
+	rect_scale = _original_scale * zoom
+	
+func set_ddon_world_position(stage_no: int, pos: Vector3):
+	rect_position = get_control_position(stage_no, pos)
+
+static func get_control_position(stage_no: int, pos: Vector3) -> Vector2:
+	return get_map_position(stage_no, pos)*MAP_SCALE
+
+static func get_map_position(stage_no: int, pos: Vector3) -> Vector2:
+	return _get_transform_for_stage_no(stage_no).xform(Vector2(pos.x, pos.z))
 
 static func _get_transform_for_stage_no(stage_no: int) -> Transform2D:
 	 return FIELD_TRANSFORMS.get(DataProvider.stage_no_to_belonging_field_id(stage_no), STAGE_TRANSFORM)

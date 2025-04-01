@@ -5,10 +5,12 @@ export (PackedScene) var enemy_placemark_packed_scene: PackedScene = preload("re
 
 var enemy_position: EnemyPosition setget _set_enemy_position
 
+onready var _warning_full_text: String = $WarningLabel.text
+
 func _on_enemy_position_changed() -> void:
 	# Rebuild children elements
-	for child in $VBoxContainer.get_children():
-		$VBoxContainer.remove_child(child)
+	for child in $Panel/VBoxContainer.get_children():
+		$Panel/VBoxContainer.remove_child(child)
 		
 	if enemy_position != null: 
 		for enemy_idx in enemy_position.enemies.size():
@@ -16,7 +18,7 @@ func _on_enemy_position_changed() -> void:
 			var enemy_placemark: EnemyPlacemark = enemy_placemark_packed_scene.instance()
 			enemy_placemark.enemy = enemy
 			assert(enemy_placemark.connect("placemark_removed", self, "_on_enemy_removed", [enemy_idx]) == OK)
-			$VBoxContainer.add_child(enemy_placemark)
+			$Panel/VBoxContainer.add_child(enemy_placemark)
 
 	_check_position_conflicts()
 
@@ -69,11 +71,11 @@ func _check_position_conflicts() -> void:
 	if exceeded:
 		$WarningLabel.mouse_filter = Control.MOUSE_FILTER_PASS
 
-# Bad homemade tooltip-like behavior since the normal tooltip doesnt shot up
+# Bad homemade tooltip-like behavior since the normal tooltip doesnt show up
 func _on_WarningLabel_mouse_entered():
-	$WarningLabel.visible_characters = -1
+	$WarningLabel.text = _warning_full_text
 func _on_WarningLabel_mouse_exited():
-	$WarningLabel.visible_characters = 1
+	$WarningLabel.text = _warning_full_text.left(1)
 func _on_WarningLabel_gui_input(event: InputEvent):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
 		_on_WarningLabel_mouse_exited()

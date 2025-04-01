@@ -3,8 +3,6 @@ class_name Main
 
 const MAX_LAYERS = 10
 
-const MAP_SCALE = 1000
-
 # i have to do this bs otherwise godot refuses to export the files
 const EnemySubgroupPlacemarkScene = preload("res://UI/Marker/EnemySubgroupPlacemark.tscn")
 const GatheringSubgroupPlacemarkScene = preload("res://UI/Marker/GatheringSubgroupPlacemark.tscn")
@@ -14,7 +12,7 @@ onready var camera_tween: Tween = $CameraTween
 onready var map_layers: Node2D = $MapCoordinateSpace/MapLayers
 onready var enemy_sets_node: Control = $MapCoordinateSpace/EnemySetMarkers
 onready var gathering_spots_node: Control = $MapCoordinateSpace/GatheringSpotMarkers
-onready var players_node: Node2D = $MapCoordinateSpace/PlayerMarkers
+onready var players_node: Control = $MapCoordinateSpace/PlayerMarkers
 onready var ui_node = $ui
 
 onready var tab_and_map_node = [
@@ -88,7 +86,7 @@ func _do_add_field_maps(map_name: String, m: int, l: int) -> bool:
 		var map_sprite := Sprite.new()
 		map_sprite.texture = load(stage_map_resource)
 		map_sprite.centered = false
-		map_sprite.scale = Vector2.ONE * MAP_SCALE
+		map_sprite.scale = Vector2.ONE * MapControl.MAP_SCALE
 		map_layers.get_child(l).add_child(map_sprite)
 		print("Loaded map ", stage_map_resource)
 		return true
@@ -109,7 +107,7 @@ func _add_room_maps(stage_no: int) -> bool:
 				map_sprite.texture = load(stage_map_resource)
 				map_sprite.centered = false
 				map_sprite.global_position = stage_room.offset
-				map_sprite.scale = Vector2.ONE * MAP_SCALE
+				map_sprite.scale = Vector2.ONE * MapControl.MAP_SCALE
 				layer.add_child(map_sprite)
 				print("Loaded map ", stage_map_resource)
 	else:
@@ -135,8 +133,8 @@ func _add_stage_maps(stage_no: int) -> bool:
 					var map_sprite := Sprite.new()
 					map_sprite.texture = load(stage_map_resource)
 					map_sprite.centered = false
-					map_sprite.global_position = offset * MAP_SCALE
-					map_sprite.scale = Vector2.ONE * MAP_SCALE
+					map_sprite.global_position = offset * MapControl.MAP_SCALE
+					map_sprite.scale = Vector2.ONE * MapControl.MAP_SCALE
 					var layer := map_layers.get_child(layer_index)
 					layer.add_child(map_sprite)
 					print("Loaded map ", stage_map_resource)
@@ -170,15 +168,14 @@ func _load_stage_markers(stage_no, subgroup_id):
 			var pos_id := int(gathering_spot["PosId"])
 			var pos := Vector3(gathering_spot["Position"]["x"], gathering_spot["Position"]["y"], gathering_spot["Position"]["z"])
 			var type := int(gathering_spot.get("GatheringType", 0))
-			var map_entity := MapEntity.new(pos, int(stage_no))
 			var gathering_spot_entity := SetProvider.get_gathering_spot(stage_id, group_no, pos_id)
 			gathering_spot_entity.type = type
+			gathering_spot_entity.coordinates = pos
 			
 			var gathering_subgroup_placemark: GatheringSubgroupPlacemark = GatheringSubgroupPlacemarkScene.instance()
 			assert(gathering_subgroup_placemark.connect("subgroup_mouse_entered", ui_node, "_on_gathering_subgroup_placemark_mouse_entered", [gathering_subgroup_placemark]) == OK)
 			assert(gathering_subgroup_placemark.connect("subgroup_mouse_exited", ui_node, "_on_gathering_subgroup_placemark_mouse_exited", [gathering_subgroup_placemark]) == OK)
 			gathering_subgroup_placemark.gathering_spot = gathering_spot_entity
-			gathering_subgroup_placemark.rect_position = map_entity.get_map_position()*MAP_SCALE
 			gathering_spots_node.add_child(gathering_subgroup_placemark)
 
 func _load_map_resource(resource_path: String) -> Resource:
@@ -211,7 +208,7 @@ func _on_ui_player_activated(player: PlayerMapEntity):
 			$ui/left/tab/Stages/StageItemList.emit_signal("item_selected", stage_index)
 			# Move camera to player position
 			assert(camera_tween.remove_all())
-			_move_camera_to(player.get_map_position()*MAP_SCALE)
+			_move_camera_to($MapCoordinateSpace/PlayerMarkers.get_player_node(player).rect_position)
 			return
 	printerr("Couldnt focus map on %s %s (StageNo: %s)" % [player.FirstName, player.LastName, player.StageNo])
 

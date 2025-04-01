@@ -9,18 +9,14 @@ const EnemyPositionPlacemarkScene = preload("res://UI/Marker/EnemyPositionPlacem
 var enemy_set: EnemySet
 var enemy_subgroup: EnemySubgroup
 
-onready var _original_zoom : float = get_tree().get_nodes_in_group("camera")[0].original_zoom
-onready var _button_original_scale: Vector2 = $SubgroupButtonControl.rect_scale
-
 func _ready():
 	assert(enemy_subgroup.connect("changed", self, "_on_enemy_subgroup_changed") == OK)
 	_on_enemy_subgroup_changed()
 	
 	for position_index in enemy_subgroup.positions.size():
 		var enemy_position: EnemyPosition = enemy_subgroup.positions[position_index]
-		var map_entity = MapEntity.new(enemy_position.coordinates, DataProvider.stage_id_to_stage_no(enemy_set.stage_id))
 		var enemy_position_placemark: EnemyPositionPlacemark = EnemyPositionPlacemarkScene.instance()
-		enemy_position_placemark.rect_position = map_entity.get_map_position()*1000
+		enemy_position_placemark.set_ddon_world_position(DataProvider.stage_id_to_stage_no(enemy_set.stage_id), enemy_position.coordinates)
 		assert(enemy_position_placemark.connect("mouse_entered", self, "_on_enemy_position_placemark_mouse_entered", [position_index, enemy_position_placemark]) == OK)
 		assert(enemy_position_placemark.connect("mouse_exited", self, "_on_enemy_position_placemark_mouse_exited", [position_index, enemy_position_placemark]) == OK)
 		enemy_position_placemark.enemy_position = enemy_position
@@ -29,10 +25,6 @@ func _ready():
 	
 	# TODO: Calcualte group center instead of using the first position
 	$SubgroupButtonControl.rect_position = $EnemyPositionPlacemarksControl.get_child(0).rect_position
-
-func _process(_delta):
-	var camera_zoom: float = get_tree().get_nodes_in_group("camera")[0].zoom.x
-	$SubgroupButtonControl.rect_scale = _button_original_scale * clamp(camera_zoom, 0, _original_zoom)
 	
 func _on_enemy_subgroup_changed():
 	$SubgroupButtonControl/SubgroupButton.text = "%d - %d/%d" % [enemy_set.group_id, enemy_subgroup.effective_enemy_count(), enemy_subgroup.positions.size()]

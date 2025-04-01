@@ -46,22 +46,13 @@ const GATHERING_TYPE_ICONS := [
 
 export (Resource) var gathering_spot: Resource setget _set_gathering_spot
 
-onready var _original_zoom : float = get_tree().get_nodes_in_group("camera")[0].original_zoom
-onready var _button_original_position: Vector2 = $GatheringTypeButton.rect_position
-onready var _button_original_scale: Vector2 = $GatheringTypeButton.rect_scale
-
-func _process(_delta):
-	var camera_zoom: float = get_tree().get_nodes_in_group("camera")[0].zoom.x
-	var zoom := clamp(camera_zoom, 0, _original_zoom)
-	$GatheringTypeButton.rect_position = _button_original_position * zoom
-	$GatheringTypeButton.rect_scale = _button_original_scale * zoom
-	
 func _set_gathering_spot(value: GatheringSpot) -> void:
 	gathering_spot = value
 	
 	# Update icon
 	# TODO: Keep a global cache? Preload all icons?
-	$GatheringTypeButton.icon = load(GATHERING_TYPE_ICONS[value.type])
+	$MapControl.set_ddon_world_position(DataProvider.stage_id_to_stage_no(value.stage_id), value.coordinates)
+	$MapControl/GatheringTypeButton.icon = load(GATHERING_TYPE_ICONS[value.type])
 	
 	$GatheringSpotPlacemark.gathering_spot = value
 
@@ -86,11 +77,11 @@ func _on_GatheringSpotPlacemark_gui_input(event):
 			hide_positions()
 
 func show_positions() -> void:
-	$GatheringTypeButton.visible = false
+	$MapControl/GatheringTypeButton.visible = false
 	$GatheringSpotPlacemark.visible = true
 	
 func hide_positions() -> void:
-	$GatheringTypeButton.visible = true
+	$MapControl/GatheringTypeButton.visible = true
 	$GatheringSpotPlacemark.visible = false
 
 func _on_GatheringTypeButton_subgroup_selected():
