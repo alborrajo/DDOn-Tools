@@ -119,10 +119,9 @@ func _add_stage_maps(stage_no: int) -> bool:
 	var offset := Vector2(0,-512) # 512 (map tile height in px)
 	var found_map := false
 	if stage_map != null:
-		var parts_path: String = stage_map["rstagecustom_at_0x08"]["PartsPath"].substr(5, 5)
-		for area in stage_map["rstagecustom_at_0x08"]["mpArrayArea"]:
-			var area_no := String(area["mAreaNo"])
-			var map_name := parts_path+"_m"+area_no.pad_zeros(2)
+		var parts_path: String = stage_map["PartsPath"].substr(7, 5)
+		for area in stage_map["ArrayArea"]:
+			var map_name := parts_path+"_m"+String(area).pad_zeros(2)
 			for layer_index in range(MAX_LAYERS):
 				var stage_map_resource := "res://resources/maps/"+map_name+"_l"+String(layer_index)+".png"
 				var resource := _load_map_resource(stage_map_resource)
@@ -168,8 +167,10 @@ func _load_stage_markers(stage_no, subgroup_id):
 			var pos_id := int(gathering_spot["PosId"])
 			var pos := Vector3(gathering_spot["Position"]["x"], gathering_spot["Position"]["y"], gathering_spot["Position"]["z"])
 			var type := int(gathering_spot.get("GatheringType", 0))
+			var unit_id := int(gathering_spot["UnitId"])
 			var gathering_spot_entity := SetProvider.get_gathering_spot(stage_id, group_no, pos_id)
 			gathering_spot_entity.type = type
+			gathering_spot_entity.unit_id = unit_id
 			gathering_spot_entity.coordinates = pos
 			
 			var gathering_subgroup_placemark: GatheringSubgroupPlacemark = GatheringSubgroupPlacemarkScene.instance()

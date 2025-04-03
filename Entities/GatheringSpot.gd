@@ -45,6 +45,7 @@ export var stage_id: int setget _set_stage_id
 export var group_id: int setget _set_group_id
 export var subgroup_id: int setget _set_subgroup_id
 export var type: int setget _set_type
+export var unit_id: int setget _set_unit_id
 export var coordinates: Vector3 setget _set_coordinates
 
 var _gathering_items: Array
@@ -71,7 +72,7 @@ func clear_gathering_items() -> void:
 	emit_changed()
 	
 func _to_string():
-	return "Gathering Spot (%s) @ (%d,%d,%d)" % [GATHERING_TYPES[type], stage_id, group_id, subgroup_id]
+	return "Gathering Spot (%s, om%d) @ (%d,%d,%d)" % [GATHERING_TYPES[type], unit_id, stage_id, group_id, subgroup_id]
 	
 func _set_stage_id(value: int) -> void:
 	stage_id = value
@@ -87,6 +88,10 @@ func _set_subgroup_id(value: int) -> void:
 
 func _set_type(value: int) -> void:
 	type = value
+	emit_changed()
+
+func _set_unit_id(value: int) -> void:
+	unit_id = value
 	emit_changed()
 
 func _set_coordinates(value: Vector3) -> void:
