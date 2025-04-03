@@ -83,7 +83,6 @@ func _update_server_info(server_item: TreeItem):
 	var server_item_host: String = server_item_metadata["Addr"]
 	var server_item_rpc_port: int = server_item_metadata["RpcPort"]
 	var infos : Array = RpcClient.new(server_item_host, server_item_rpc_port).get_info()
-	print("PACO", infos)
 	var item = server_item.get_children()
 	while (item):
 		var item_player = item.get_metadata(0) as PlayerMapEntity
