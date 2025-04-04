@@ -24,7 +24,8 @@ func set_item(i: GatheringItem) -> void:
 		_on_item_changed()
 	
 func _on_item_changed():
-	text = item.get_display_name()
+	text = String(item.num)
+	icon = load(item.item.icon_path)
 
 func get_drag_data(position):
 	.get_drag_data(position)

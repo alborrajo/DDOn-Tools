@@ -9,8 +9,8 @@ onready var _warning_full_text: String = $WarningLabel.text
 
 func _on_enemy_position_changed() -> void:
 	# Rebuild children elements
-	for child in $Panel/VBoxContainer.get_children():
-		$Panel/VBoxContainer.remove_child(child)
+	for child in $Panel/Container.get_children():
+		$Panel/Container.remove_child(child)
 		
 	if enemy_position != null: 
 		for enemy_idx in enemy_position.enemies.size():
@@ -18,7 +18,7 @@ func _on_enemy_position_changed() -> void:
 			var enemy_placemark: EnemyPlacemark = enemy_placemark_packed_scene.instance()
 			enemy_placemark.enemy = enemy
 			assert(enemy_placemark.connect("placemark_removed", self, "_on_enemy_removed", [enemy_idx]) == OK)
-			$Panel/VBoxContainer.add_child(enemy_placemark)
+			$Panel/Container.add_child(enemy_placemark)
 
 	_check_position_conflicts()
 

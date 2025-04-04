@@ -23,6 +23,7 @@ script = ExtResource( 2 )
 [node name="MapControl" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
+mouse_filter = 1
 script = ExtResource( 3 )
 
 [node name="GatheringTypeButton" type="Button" parent="MapControl"]
@@ -49,6 +50,7 @@ size_flags_vertical = 3
 [connection signal="mouse_exited" from="MapControl/GatheringTypeButton" to="." method="_on_GatheringTypeButton_mouse_exited"]
 [connection signal="pressed" from="MapControl/GatheringTypeButton" to="." method="_on_GatheringTypeButton_pressed"]
 [connection signal="subgroup_selected" from="MapControl/GatheringTypeButton" to="." method="_on_GatheringTypeButton_subgroup_selected"]
+[connection signal="closed" from="GatheringSpotPlacemark" to="." method="_on_GatheringSpotPlacemark_closed"]
 [connection signal="gui_input" from="GatheringSpotPlacemark" to="." method="_on_GatheringSpotPlacemark_gui_input"]
 [connection signal="mouse_entered" from="GatheringSpotPlacemark" to="." method="_on_GatheringSpotPlacemark_mouse_entered"]
 [connection signal="mouse_exited" from="GatheringSpotPlacemark" to="." method="_on_GatheringSpotPlacemark_mouse_exited"]

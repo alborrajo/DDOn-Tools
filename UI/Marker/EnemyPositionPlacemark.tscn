@@ -1,9 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UI/Marker/EnemyPositionPlacemark.gd" type="Script" id=1]
 [ext_resource path="res://UI/Marker/GenericSetPlacemark.tscn" type="PackedScene" id=2]
 [ext_resource path="res://UI/Marker/EnemyPlacemark.tscn" type="PackedScene" id=3]
 [ext_resource path="res://resources/fonts/NotoSansJP-Regular.otf" type="DynamicFontData" id=4]
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
 
 [sub_resource type="DynamicFont" id=2]
 outline_size = 2
@@ -16,6 +23,7 @@ enemy_placemark_packed_scene = ExtResource( 3 )
 
 [node name="Panel" parent="." index="0"]
 self_modulate = Color( 1, 0.25098, 0.25098, 1 )
+custom_styles/panel = SubResource( 3 )
 
 [node name="WarningLabel" type="Label" parent="." index="1"]
 margin_left = -133.0

@@ -130,6 +130,9 @@ func _on_GatheringTypeButton_mouse_entered():
 
 func _on_GatheringTypeButton_mouse_exited():
 	emit_signal("subgroup_mouse_exited")
+	
+func _on_GatheringSpotPlacemark_closed():
+	hide_positions()
 
 func _on_GatheringTypeButton_pressed():
 	show_positions()
@@ -150,5 +153,3 @@ func hide_positions() -> void:
 func _on_GatheringTypeButton_subgroup_selected():
 	show_positions()
 	$GatheringSpotPlacemark.select_all_placemarks()
-
-

@@ -13,7 +13,12 @@ border_width_bottom = 3
 border_color = Color( 0.160784, 0.290196, 1, 1 )
 
 [node name="GatheringItemPlacemark" instance=ExtResource( 1 )]
-text = "Placeholder (69)"
+margin_right = 64.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 32, 32 )
+text = ""
+flat = false
+expand_icon = true
 script = ExtResource( 2 )
 item = null
 

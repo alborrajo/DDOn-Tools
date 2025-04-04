@@ -1,6 +1,8 @@
 extends GenericSetPlacemark
 class_name GatheringSpotPlacemark
 
+signal closed()
+
 export (PackedScene) var item_placemark_packed_scene: PackedScene = preload("res://UI/Marker/GatheringItemPlacemark.tscn")
 
 export (Resource) var gathering_spot: Resource
@@ -16,8 +18,8 @@ func _on_gathering_spot_changed() -> void:
 	set_ddon_world_position(DataProvider.stage_id_to_stage_no(_gathering_spot.stage_id), _gathering_spot.coordinates)
 	
 	# Rebuild children elements
-	for child in $Panel/VBoxContainer.get_children():
-		$Panel/VBoxContainer.remove_child(child)
+	for child in $Panel/Container.get_children():
+		$Panel/Container.remove_child(child)
 	var gatheringItems = _gathering_spot.get_gathering_items()
 
 	for index in gatheringItems.size():
@@ -25,7 +27,7 @@ func _on_gathering_spot_changed() -> void:
 		var item_placemark: GatheringItemPlacemark = item_placemark_packed_scene.instance()
 		item_placemark.item = item
 		assert(item_placemark.connect("placemark_removed", self, "_on_item_removed", [index]) == OK)
-		$Panel/VBoxContainer.add_child(item_placemark)
+		$Panel/Container.add_child(item_placemark)
 
 
 func _on_item_removed(index: int) -> void:
@@ -50,3 +52,6 @@ func drop_data(_position, data):
 		add_item(data)
 	elif data is Item:
 		add_item(GatheringItem.new(data))
+
+func _on_CloseButton_pressed():
+	emit_signal("closed")

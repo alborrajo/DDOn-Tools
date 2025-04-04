@@ -30,6 +30,6 @@ func _apply_mouse_filter_to_children(node, filter):
 		_apply_mouse_filter_to_children(child, filter)
 
 func select_all_placemarks():
-	for placemark in $Panel/VBoxContainer.get_children():
+	for placemark in $Panel/Container.get_children():
 		if placemark.has_method("select_placemark"):
 			placemark.select_placemark()
