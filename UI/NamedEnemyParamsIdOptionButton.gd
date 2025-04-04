@@ -23,12 +23,14 @@ func _rebuild_list(filter_text: String = ""):
 	var normalized_filter_text = filter_text.to_upper()
 	for named_param in DataProvider.named_params:
 		var named_param_text: String = "%s [%d]" % [named_param.format_name("<name>"), named_param.id]
+		var named_param_details: String = named_param.to_string()
 		var normalized_named_param_text := named_param_text.to_upper()
-		if normalized_filter_text.length() == 0 or normalized_filter_text in normalized_named_param_text or named_param.id == _last_selected_id:
+		var normalized_named_param_details := named_param_details.to_upper()
+		if normalized_filter_text.length() == 0 or normalized_filter_text in normalized_named_param_text or normalized_filter_text in normalized_named_param_details or named_param.id == _last_selected_id:
 			add_item(named_param_text, named_param.id)
 			var last_added_item_index := get_item_count()-1
 			set_item_metadata(last_added_item_index, named_param)
-			set_item_tooltip(last_added_item_index, named_param.to_string())
+			set_item_tooltip(last_added_item_index, named_param_details)
 
 func _on_NamedEnemyParamsIdOptionButton_item_selected(index):
 	_last_selected_id = get_item_id(index)
