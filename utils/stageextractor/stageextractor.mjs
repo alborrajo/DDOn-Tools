@@ -22,7 +22,6 @@ const regex = /[a-z]+([0-9]{4})_[0-9]{2}m[0-9]{2}n_.([0-9]+)/;
 if(argv._.length < 1) {
     echo("Usage: ./stageextractor.mjs \"/path/to/ddon-data\"");
     echo("Obtain ddon-data from here: https://github.com/ddon-research/ddon-data/");
-    echo("To use this you must have ImHex installed in your PATH");
     exit(1);
 }
 
