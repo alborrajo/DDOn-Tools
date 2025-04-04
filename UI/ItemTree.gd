@@ -13,6 +13,7 @@ func init_item_list():
 	if initialized:
 		return
 		
+	# TODO: Move to DataProvider
 	items_cache = []
 	var file := File.new()
 	assert(file.open(itemsCSV, File.READ) == OK)
@@ -20,10 +21,11 @@ func init_item_list():
 	file.get_csv_line() # Ignore header line
 	while !file.eof_reached():
 		var csv_line := file.get_csv_line()
-		if csv_line.size() >= 1:
-			var item := Item.new(int(csv_line[0]))
+		if csv_line.size() >= 3:
+			var item := Item.new(int(csv_line[0]), int(csv_line[1]), int(csv_line[2]))
 			items_cache.append(item)
 	file.close()
+	
 	_rebuild_list()
 	initialized = true
 	
@@ -38,8 +40,10 @@ func _rebuild_list(filter_text: String = ""):
 	for item in items_cache:
 		if normalized_filter_text.length() == 0 or normalized_filter_text in item.name.to_upper():
 			var item_item := create_item(root)
-			item_item.set_text(0, "%s [%d]" % [item.name, item.id])
 			item_item.set_metadata(0, item)
+			item_item.set_text(0, "%s [%d]" % [item.name, item.id])
+			item_item.set_icon(0, load(item.icon_path))
+			item_item.set_icon_max_width(0, 48)
 
 
 func get_drag_data(position):
