@@ -29,11 +29,14 @@ do
     icon=`find "${arccopy%.*}" -type f -name "*.dds"`
     iconbasename=`basename "$icon"`
     echo "Converting item icon $iconbasename to png"
-    magick convert "$icon" "../icons/${iconbasename%.*}.png"
+    mkdir -p "../icons/${arccopy%.*}"
+    magick mogrify -trim "$icon"
+    magick convert "$icon" "../icons/${arccopy%.*}/${iconbasename%.*}.png"
 
     # Clean up arc file
     rm "$arccopy"
 done
+
 
 # Copy map files and unpack them
 for arc in "$2"/nativePC/rom/ui/02_map/map/**/*.arc
