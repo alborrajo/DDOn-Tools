@@ -25,7 +25,7 @@ func init_item_list():
 	while !file.eof_reached():
 		var csv_line := file.get_csv_line()
 		if csv_line.size() >= 3:
-			var item := Item.new(int(csv_line[0]), int(csv_line[1]), int(csv_line[2]))
+			var item := Item.new(int(csv_line[0]), int(csv_line[1]), int(csv_line[2]), int(csv_line[3]))
 			items_cache.append(item)
 	file.close()
 	
@@ -62,7 +62,7 @@ func _do_rebuild_list(args: Array) -> void:
 			_cancel_rebuild_list_thread = false
 			return
 		if normalized_filter_text.length() == 0 or normalized_filter_text in item.name.to_upper():
-			var text := "%s [%d]" % [item.name, item.id]
+			var text := "%s\n%s [%d]" % [item.name, "★".repeat(item.quality_stars), item.id]
 			var icon = item.icon
 			deferred_calls.append(["_add_item_to_tree_node", root, text, icon, item])
 			

@@ -4,6 +4,7 @@ class_name Item
 const TRANSLATION_KEY_FORMAT = "ITEM_NAME_%d"
 
 export var id: int
+export var quality_stars: int
 export var icon_no: int
 export var icon_co_no: int
 export var icon: Texture setget , _get_icon
@@ -11,8 +12,9 @@ export var name: String setget , _get_name
 
 var _cached_icon = null
 
-func _init(_id: int, _icon_no: int, _icon_co_no: int):
+func _init(_id: int, _quality_stars: int, _icon_no: int, _icon_co_no: int):
 	self.id = _id
+	self.quality_stars = _quality_stars
 	self.icon_no = _icon_no
 	self.icon_co_no = _icon_co_no
 
