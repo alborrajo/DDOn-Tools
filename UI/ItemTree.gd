@@ -6,6 +6,9 @@ export (String, FILE, "*.csv") var itemsCSV := "res://resources/items.csv"
 var items_cache: Array
 var initialized := false
 
+var _rebuild_list_thread = null
+var _cancel_rebuild_list_thread := false
+
 func _ready():
 	init_item_list()
 	
@@ -33,17 +36,46 @@ func _on_FilterLineEdit_text_changed(new_text: String):
 	_rebuild_list(new_text)
 
 func _rebuild_list(filter_text: String = ""):
-	var normalized_filter_text := filter_text.to_upper()
 	clear()
-	hide_root = true
 	var root := create_item()
+	
+	# If there's an old thread that hasn't finished, cancel it
+	# if there's an old thread that has finished, join it and start a new one
+	# if there's no old thread, start a new one
+	if _rebuild_list_thread != null and _rebuild_list_thread.is_active():
+		_cancel_rebuild_list_thread = true
+		_rebuild_list_thread.wait_to_finish()
+	
+	_cancel_rebuild_list_thread = false
+	_rebuild_list_thread = Thread.new()
+	assert(_rebuild_list_thread.start(self, "_do_rebuild_list", [root, filter_text]) == OK)
+
+func _do_rebuild_list(args: Array) -> void:
+	var root: Object = args[0]
+	var filter_text: String = args[1]
+	var deferred_calls = []
+	var normalized_filter_text := filter_text.to_upper()
+	
+	# Load everything first
 	for item in items_cache:
+		if _cancel_rebuild_list_thread:
+			_cancel_rebuild_list_thread = false
+			return
 		if normalized_filter_text.length() == 0 or normalized_filter_text in item.name.to_upper():
-			var item_item := create_item(root)
-			item_item.set_metadata(0, item)
-			item_item.set_text(0, "%s [%d]" % [item.name, item.id])
-			item_item.set_icon(0, load(item.icon_path))
-			item_item.set_icon_max_width(0, 48)
+			var text := "%s [%d]" % [item.name, item.id]
+			var icon = item.icon
+			deferred_calls.append(["_add_item_to_tree_node", root, text, icon, item])
+			
+	# Defer calls that modify the scene tree since they're not thread safe
+	for deferred_call in deferred_calls:
+		call_deferred(deferred_call[0], deferred_call[1], deferred_call[2], deferred_call[3], deferred_call[4])
+
+func _add_item_to_tree_node(parent: Object, text: String, icon: Texture, metadata: Object) -> void:
+	var item_item := create_item(parent)
+	item_item.set_text(0, text)
+	item_item.set_icon(0, icon)
+	item_item.set_metadata(0, metadata)
+	item_item.custom_minimum_height = 48
 
 
 func get_drag_data(position):

@@ -18,7 +18,6 @@ margin_bottom = 48.0
 rect_min_size = Vector2( 32, 32 )
 text = ""
 flat = false
-expand_icon = true
 script = ExtResource( 2 )
 item = null
 

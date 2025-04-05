@@ -294,6 +294,7 @@ margin_bottom = 497.0
 mouse_filter = 1
 size_flags_vertical = 3
 allow_reselect = true
+hide_root = true
 script = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
