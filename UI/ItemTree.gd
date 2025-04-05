@@ -61,8 +61,8 @@ func _do_rebuild_list(args: Array) -> void:
 		if _cancel_rebuild_list_thread:
 			_cancel_rebuild_list_thread = false
 			return
-		if normalized_filter_text.length() == 0 or normalized_filter_text in item.name.to_upper():
-			var text := "%s\n%s [%d]" % [item.name, "★".repeat(item.quality_stars), item.id]
+		var text := "%s\n%s [%d]" % [item.name, "★".repeat(item.quality_stars), item.id]
+		if normalized_filter_text.length() == 0 or normalized_filter_text in text.to_upper():
 			var icon = item.icon
 			deferred_calls.append(["_add_item_to_tree_node", root, text, icon, item])
 			
