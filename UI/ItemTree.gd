@@ -72,10 +72,18 @@ func _do_rebuild_list(args: Array) -> void:
 
 func _add_item_to_tree_node(parent: Object, text: String, icon: Texture, metadata: Object) -> void:
 	var item_item := create_item(parent)
-	item_item.set_text(0, text)
-	item_item.set_icon(0, icon)
-	item_item.set_metadata(0, metadata)
 	item_item.custom_minimum_height = 48
+	item_item.set_text(0, text)
+	item_item.set_metadata(0, metadata)
+	item_item.set_cell_mode(0, TreeItem.CELL_MODE_CUSTOM)
+	item_item.set_custom_draw(0, self, "_draw_tree_item")
+	
+func _draw_tree_item(tree_item: TreeItem, rect: Rect2):
+	var item: Item = tree_item.get_metadata(0)
+	var icon_position := Vector2(rect.position.x + (24 - item.icon.get_width()/2), rect.position.y + (rect.size.y/2 - item.icon.get_height()/2))
+	draw_texture(item.icon, icon_position)
+	draw_string(get_font("font"), rect.position + Vector2(48, rect.size.y/2), item.name)
+	draw_string(get_font("font"), rect.position + Vector2(48, rect.size.y/2 + 16), "%s[%d]" % ["★".repeat(item.quality_stars), item.id])
 
 
 func get_drag_data(position):
