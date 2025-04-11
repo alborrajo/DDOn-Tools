@@ -39,7 +39,7 @@ RepopNum,,RepopNum
 RepopNum_tooltip,,
 RepopCount,,RepopCount
 RepopCount_tooltip,,
-EnemyTargetTypesId,,EnemyTargetTypesId
+EnemyTargetTypesId,,Enemy Target Type
 EnemyTargetTypesId_tooltip,このモンスターをクエストタイプに割り当てます。,Assign this Monster to a Quest Type.
 MontageFixNo,,MontageFixNo
 MontageFixNo_tooltip,,

@@ -48,7 +48,7 @@ func _on_enemy_changed():
 		$VBoxContainer/GridContainer/StartThinkTblNoLineEdit.value = enemy_clone.start_think_tbl_no
 		$VBoxContainer/GridContainer/RepopNumLineEdit.value = enemy_clone.repop_num
 		$VBoxContainer/GridContainer/RepopCountLineEdit.value = enemy_clone.repop_count
-		$VBoxContainer/GridContainer/EnemyTargetTypesIdLineEdit.value = enemy_clone.enemy_target_types_id
+		$VBoxContainer/GridContainer/EnemyTargetTypesIdLineEdit.select($VBoxContainer/GridContainer/EnemyTargetTypesIdLineEdit.get_item_index(enemy_clone.enemy_target_types_id))
 		$VBoxContainer/GridContainer/MontageFixNoLineEdit.value = enemy_clone.montage_fix_no
 		$VBoxContainer/GridContainer/SetTypeLineEdit.value = enemy_clone.set_type
 		$VBoxContainer/GridContainer/InfectionTypeLineEdit.select($VBoxContainer/GridContainer/InfectionTypeLineEdit.get_item_index(enemy_clone.infection_type))
@@ -142,8 +142,8 @@ func _on_RepopCountLineEdit_value_changed(value):
 	if supress_event != true:
 		SelectedListManager.apply_values_to_selected_type("repop_count", enemy.repop_count)
 
-func _on_EnemyTargetTypesIdLineEdit_value_changed(value):
-	enemy.enemy_target_types_id = int(value)
+func _on_EnemyTargetTypesIdLineEdit_item_selected(index):
+	enemy.enemy_target_types_id = $VBoxContainer/GridContainer/EnemyTargetTypesIdLineEdit.get_item_id(index)
 	if supress_event != true:
 		SelectedListManager.apply_values_to_selected_type("enemy_target_types_id", enemy.enemy_target_types_id)
 
@@ -241,3 +241,6 @@ func _on_CustomTimeTypeLineEdit_text_changed(text):
 	elif supress_event != true:
 		$VBoxContainer/GridContainer/CustomTimeTypeLineEdit.remove_color_override("font_color")
 		SelectedListManager.apply_values_to_selected_type("custom_time", enemy.custom_time)
+
+
+
