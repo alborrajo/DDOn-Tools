@@ -9,6 +9,7 @@ export (Resource) var enemy: Resource setget set_enemy
 
 func _ready():
 	.ready()
+	assert(SelectedListManager.connect("enemy_filter_changed", self, "_on_enemy_filter_changed") == OK)
 	assert(SetProvider.connect("selected_day_night", self, "_on_day_night_selected") == OK)
 	_on_day_night_selected(SetProvider.selected_day_night)
 	
@@ -65,3 +66,9 @@ func _on_enemy_changed():
 func get_drag_data(position):
 	.get_drag_data(position)
 	return enemy
+
+func _on_enemy_filter_changed(uppercase_filter_text: String):
+	if enemy.enemy_type.matches_filter_text(uppercase_filter_text):
+		modulate = SelectedListManager.FILTER_MATCH_COLOR
+		return
+	modulate = SelectedListManager.FILTER_NONMATCH_COLOR

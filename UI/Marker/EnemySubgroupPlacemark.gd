@@ -10,6 +10,8 @@ var enemy_set: EnemySet
 var enemy_subgroup: EnemySubgroup
 
 func _ready():
+	assert(SelectedListManager.connect("enemy_filter_changed", self, "_on_enemy_filter_changed") == OK)
+	
 	assert(enemy_subgroup.connect("changed", self, "_on_enemy_subgroup_changed") == OK)
 	_on_enemy_subgroup_changed()
 	
@@ -71,3 +73,11 @@ func _on_SubgroupButton_subgroup_selected():
 		assert(child is EnemyPositionPlacemark)
 		var position := child as EnemyPositionPlacemark
 		position.select_all_placemarks()
+
+func _on_enemy_filter_changed(uppercase_filter_text: String):
+	for position in enemy_subgroup.positions:
+		for enemy in position.enemies:
+			if enemy.enemy_type.matches_filter_text(uppercase_filter_text):
+				modulate = SelectedListManager.FILTER_MATCH_COLOR
+				return
+	modulate = SelectedListManager.FILTER_NONMATCH_COLOR

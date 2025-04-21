@@ -25,6 +25,12 @@ enemy_placemark_packed_scene = ExtResource( 3 )
 self_modulate = Color( 1, 0.25098, 0.25098, 1 )
 custom_styles/panel = SubResource( 3 )
 
+[node name="Container" parent="Panel" index="0"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 8.0
+margin_bottom = 8.0
+
 [node name="WarningLabel" type="Label" parent="." index="1"]
 margin_left = -133.0
 margin_right = -5.0

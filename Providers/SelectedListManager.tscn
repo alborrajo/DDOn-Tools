@@ -7,6 +7,12 @@ script/source = "extends Node
 signal selection_changed(added, removed)
 signal set_revealed_hidden()
 
+signal enemy_filter_changed(uppercase_filter_text)
+signal item_filter_changed(uppercase_filter_text)
+
+const FILTER_MATCH_COLOR = Color.white
+const FILTER_NONMATCH_COLOR = Color(0.75, 0.75, 0.75, 0.75)
+
 var selected_list := []
 var enemy_type := false
 var item_type := false
@@ -87,6 +93,13 @@ func remove_from_selection(placemark, _data):
 
 func is_list_empty() -> bool:
 	return selected_list.size() <= 0
+	
+	
+func set_enemy_filter(filter_text: String) -> void:
+	emit_signal(\"enemy_filter_changed\", filter_text.to_upper())
+
+func set_item_filter(filter_text: String) -> void:
+	emit_signal(\"item_filter_changed\", filter_text.to_upper())
 "
 
 [node name="SelectedListManager" type="Node"]

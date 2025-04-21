@@ -32,6 +32,10 @@ func _get_icon():
 
 func _get_name():
 	return tr(TRANSLATION_KEY_FORMAT % id)
+	
+func matches_filter_text(uppercase_filter_text: String) -> bool:
+	return uppercase_filter_text in _get_name().to_upper() or uppercase_filter_text in String(id).to_upper()
+	
 
 const image_array_jorobate_flanders := [
 	"res://resources/items/icon_dragonskill001/icon_dragonskill001_ID.png",

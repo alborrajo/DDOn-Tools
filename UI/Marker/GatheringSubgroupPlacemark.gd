@@ -105,6 +105,9 @@ const UNKNOWN_ITEM_ICON = "res://resources/items/ii000000/icon_item000000_ID.png
 
 export (Resource) var gathering_spot: Resource setget _set_gathering_spot
 
+func _ready():
+	assert(SelectedListManager.connect("item_filter_changed", self, "_on_item_filter_changed") == OK)
+
 func _set_gathering_spot(value: GatheringSpot) -> void:
 	gathering_spot = value
 	
@@ -153,3 +156,11 @@ func hide_positions() -> void:
 func _on_GatheringTypeButton_subgroup_selected():
 	show_positions()
 	$GatheringSpotPlacemark.select_all_placemarks()
+
+
+func _on_item_filter_changed(uppercase_filter_text: String):
+	for gathering_item in gathering_spot.get_gathering_items():
+		if gathering_item.item.matches_filter_text(uppercase_filter_text):
+			modulate = SelectedListManager.FILTER_MATCH_COLOR
+			return
+	modulate = SelectedListManager.FILTER_NONMATCH_COLOR

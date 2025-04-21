@@ -34,6 +34,7 @@ func init_item_list():
 	
 func _on_FilterLineEdit_text_changed(new_text: String):
 	_rebuild_list(new_text)
+	SelectedListManager.set_item_filter(new_text)
 
 func _rebuild_list(filter_text: String = ""):
 	clear()
@@ -61,8 +62,8 @@ func _do_rebuild_list(args: Array) -> void:
 		if _cancel_rebuild_list_thread:
 			_cancel_rebuild_list_thread = false
 			return
-		var text := "%s\n%s [%d]" % [item.name, "★".repeat(item.quality_stars), item.id]
-		if normalized_filter_text.length() == 0 or normalized_filter_text in text.to_upper():
+		if normalized_filter_text.length() == 0 or item.matches_filter_text(normalized_filter_text):
+			var text := "%s\n%s [%d]" % [item.name, "★".repeat(item.quality_stars), item.id]
 			var icon = item.icon
 			deferred_calls.append(["_add_item_to_tree_node", root, text, icon, item])
 			
