@@ -163,21 +163,23 @@ func _load_stage_markers(stage_no, subgroup_id):
 	# Build gathering spot markers for the new stage
 	if String(stage_no) in DataProvider.gathering_spots:
 		for gathering_spot in DataProvider.gathering_spots[String(stage_no)]:
-			var group_no := int(gathering_spot["GroupNo"])
-			var pos_id := int(gathering_spot["PosId"])
-			var pos := Vector3(gathering_spot["Position"]["x"], gathering_spot["Position"]["y"], gathering_spot["Position"]["z"])
 			var type := int(gathering_spot.get("GatheringType", 0))
-			var unit_id := int(gathering_spot["UnitId"])
-			var gathering_spot_entity := SetProvider.get_gathering_spot(stage_id, group_no, pos_id)
-			gathering_spot_entity.type = type
-			gathering_spot_entity.unit_id = unit_id
-			gathering_spot_entity.coordinates = pos
-			
-			var gathering_subgroup_placemark: GatheringSubgroupPlacemark = GatheringSubgroupPlacemarkScene.instance()
-			assert(gathering_subgroup_placemark.connect("subgroup_mouse_entered", ui_node, "_on_gathering_subgroup_placemark_mouse_entered", [gathering_subgroup_placemark]) == OK)
-			assert(gathering_subgroup_placemark.connect("subgroup_mouse_exited", ui_node, "_on_gathering_subgroup_placemark_mouse_exited", [gathering_subgroup_placemark]) == OK)
-			gathering_subgroup_placemark.gathering_spot = gathering_spot_entity
-			gathering_spots_node.add_child(gathering_subgroup_placemark)
+			if type != 30 and type != 36:
+				# Show marker if the type isn't Twinkle or One Off
+				var group_no := int(gathering_spot["GroupNo"])
+				var pos_id := int(gathering_spot["PosId"])
+				var pos := Vector3(gathering_spot["Position"]["x"], gathering_spot["Position"]["y"], gathering_spot["Position"]["z"])
+				var unit_id := int(gathering_spot["UnitId"])
+				var gathering_spot_entity := SetProvider.get_gathering_spot(stage_id, group_no, pos_id)
+				gathering_spot_entity.type = type
+				gathering_spot_entity.unit_id = unit_id
+				gathering_spot_entity.coordinates = pos
+				
+				var gathering_subgroup_placemark: GatheringSubgroupPlacemark = GatheringSubgroupPlacemarkScene.instance()
+				assert(gathering_subgroup_placemark.connect("subgroup_mouse_entered", ui_node, "_on_gathering_subgroup_placemark_mouse_entered", [gathering_subgroup_placemark]) == OK)
+				assert(gathering_subgroup_placemark.connect("subgroup_mouse_exited", ui_node, "_on_gathering_subgroup_placemark_mouse_exited", [gathering_subgroup_placemark]) == OK)
+				gathering_subgroup_placemark.gathering_spot = gathering_spot_entity
+				gathering_spots_node.add_child(gathering_subgroup_placemark)
 
 func _load_map_resource(resource_path: String) -> Resource:
 	var _directory = Directory.new();
