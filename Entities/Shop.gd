@@ -20,6 +20,7 @@ func _init(_id: int):
 
 func clear_goods() -> void:
 	_goods_param_list.clear()
+	emit_changed()
 	
 func get_goods() -> Array:
 	return Array(_goods_param_list)
