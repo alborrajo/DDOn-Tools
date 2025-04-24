@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "npx zx stageextractor.mjs"
+  },
   "devDependencies": {
     "@types/node": "^18.11.18"
   },
