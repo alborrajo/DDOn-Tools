@@ -24,6 +24,8 @@ const WALLET_TYPES = [
 
 var stage_id: int setget _set_stage_id
 var npc_id: int setget _set_npc_id
+var institution_function_id: int setget _set_institution_function_id
+var coordinates: Vector3 setget _set_coordinates
 var shop: Shop setget _set_shop
 
 func _ready():
@@ -34,26 +36,28 @@ func get_display_name() -> String:
 	
 func _set_stage_id(value: int) -> void:
 	stage_id = value
-	if shop != null:
-		$MapControl.set_ddon_world_position(DataProvider.stage_id_to_stage_no(stage_id), shop.coordinates)
+	$MapControl.set_ddon_world_position(DataProvider.stage_id_to_stage_no(stage_id), coordinates)
 
 func _set_npc_id(value: int) -> void:
 	npc_id = value
 	$MapControl/ToggleButton.text = get_display_name()
 
+func _set_institution_function_id(value: int) -> void:
+	institution_function_id = value
+	# TODO: Update icon
+	
+func _set_coordinates(value: Vector3) -> void:
+	coordinates = value
+	$MapControl.set_ddon_world_position(DataProvider.stage_id_to_stage_no(stage_id), coordinates)
+
 func _set_shop(value: Shop) -> void:
 	if value == null:
 		return
-		
 	if shop != null:
 		shop.disconnect("changed", self, "_on_shop_changed")
-
 	shop = value
 	assert(shop.connect("changed", self, "_on_shop_changed") == OK)
 	_on_shop_changed()
-	
-	# Update icon and position
-	$MapControl.set_ddon_world_position(DataProvider.stage_id_to_stage_no(stage_id), value.coordinates)
 	
 func _on_shop_changed() -> void:
 	$MapControl/Control/Panel/ShopPlacemark/NpcNameLabel.text = get_display_name()

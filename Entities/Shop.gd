@@ -3,8 +3,6 @@ class_name Shop
 
 # Client data, loaded in Main.gd from bundled shops.json file extracted from the client
 var id: int
-var institution_function_id: int
-var coordinates: Vector3
 
 # Server data, loaded in ShopFileMenu.gd from user-provided Shop.json file used in the server
 export var unk0: int setget _set_unk0

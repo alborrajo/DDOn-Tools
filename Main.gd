@@ -190,16 +190,14 @@ func _load_stage_markers(stage_no, subgroup_id):
 			var institution_function_id := int(shop["InstitutionFunctionId"])
 			var shop_id := int(shop["ShopId"])
 			var pos := Vector3(shop["Position"]["x"], shop["Position"]["y"], shop["Position"]["z"])
-			var shop_entity := SetProvider.get_shop(shop_id)
-			shop_entity.institution_function_id = institution_function_id
-			shop_entity.coordinates = pos
-			
 			var shop_placemark: ToggleableShopPlacemark = ShopPlacemarkScene.instance()
 			assert(shop_placemark.connect("subgroup_mouse_entered", ui_node, "_on_shop_placemark_mouse_entered", [shop_placemark]) == OK)
 			assert(shop_placemark.connect("subgroup_mouse_exited", ui_node, "_on_shop_placemark_mouse_exited", [shop_placemark]) == OK)
 			shop_placemark.stage_id = stage_id
 			shop_placemark.npc_id = npc_id
-			shop_placemark.shop = shop_entity
+			shop_placemark.institution_function_id = institution_function_id
+			shop_placemark.coordinates = pos
+			shop_placemark.shop = SetProvider.get_shop(shop_id)
 			shops_node.add_child(shop_placemark)
 			
 
