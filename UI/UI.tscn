@@ -123,6 +123,14 @@ func _on_gathering_subgroup_placemark_mouse_exited(_gathering_placemark: Togglea
 	$status_view/container/SetLabel.text = \"\"
 	hovered_placemark = null
 	
+func _on_shop_placemark_mouse_entered(shop_placemark: ToggleableShopPlacemark) -> void:
+	$status_view/container/SetLabel.text = \"%s (Shop ID: %d)\" % [shop_placemark.get_display_name(), shop_placemark.shop.id]
+	_set_hovered_placemark(shop_placemark)
+	
+func _on_shop_placemark_mouse_exited(_shop: ToggleableShopPlacemark) -> void:
+	$status_view/container/SetLabel.text = \"\"
+	hovered_placemark = null
+	
 func _set_hovered_placemark(set_placemark):
 	hovered_placemark = set_placemark
 "

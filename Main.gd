@@ -6,21 +6,23 @@ const MAX_LAYERS = 10
 # i have to do this bs otherwise godot refuses to export the files
 const EnemyPlacemarkScene = preload("res://UI/Marker/ToggleableEnemySubgroupPlacemark.tscn")
 const GatheringPlacemarkScene = preload("res://UI/Marker/ToggleableGatheringSpotPlacemark.tscn")
+const ShopPlacemarkScene = preload("res://UI/Marker/ToggleableShopPlacemark.tscn")
 
 onready var camera: Camera2D = $camera
 onready var camera_tween: Tween = $CameraTween
 onready var map_layers: Node2D = $MapCoordinateSpace/MapLayers
 onready var enemy_sets_node: Control = $MapCoordinateSpace/EnemySetMarkers
 onready var gathering_spots_node: Control = $MapCoordinateSpace/GatheringSpotMarkers
+onready var shops_node: Control = $MapCoordinateSpace/ShopMarkers
 onready var players_node: Control = $MapCoordinateSpace/PlayerMarkers
 onready var ui_node = $ui
 
-onready var tab_and_map_node = [
-	null,
-	enemy_sets_node,
-	gathering_spots_node,
-	players_node,
-	null
+onready var tab_and_map_nodes = [
+	[],
+	[enemy_sets_node],
+	[gathering_spots_node, shops_node],
+	[players_node],
+	[]
 ]
 	
 func _ready():
@@ -180,6 +182,26 @@ func _load_stage_markers(stage_no, subgroup_id):
 				assert(gathering_placemark.connect("subgroup_mouse_exited", ui_node, "_on_gathering_subgroup_placemark_mouse_exited", [gathering_placemark]) == OK)
 				gathering_placemark.gathering_spot = gathering_spot_entity
 				gathering_spots_node.add_child(gathering_placemark)
+				
+	# Build shop markers for the new stage
+	if String(stage_no) in DataProvider.shops:
+		for shop in DataProvider.shops[String(stage_no)]:
+			var npc_id := int(shop["NpcId"])
+			var institution_function_id := int(shop["InstitutionFunctionId"])
+			var shop_id := int(shop["ShopId"])
+			var pos := Vector3(shop["Position"]["x"], shop["Position"]["y"], shop["Position"]["z"])
+			var shop_entity := SetProvider.get_shop(shop_id)
+			shop_entity.institution_function_id = institution_function_id
+			shop_entity.coordinates = pos
+			
+			var shop_placemark: ToggleableShopPlacemark = ShopPlacemarkScene.instance()
+			assert(shop_placemark.connect("subgroup_mouse_entered", ui_node, "_on_shop_placemark_mouse_entered", [shop_placemark]) == OK)
+			assert(shop_placemark.connect("subgroup_mouse_exited", ui_node, "_on_shop_placemark_mouse_exited", [shop_placemark]) == OK)
+			shop_placemark.stage_id = stage_id
+			shop_placemark.npc_id = npc_id
+			shop_placemark.shop = shop_entity
+			shops_node.add_child(shop_placemark)
+			
 
 func _load_map_resource(resource_path: String) -> Resource:
 	var _directory = Directory.new();
@@ -201,6 +223,9 @@ func _clear_markers() -> void:
 		
 	for child in gathering_spots_node.get_children():
 		gathering_spots_node.remove_child(child)
+		
+	for child in shops_node.get_children():
+		shops_node.remove_child(child)
 
 
 func _on_ui_player_activated(player: PlayerMapEntity):
@@ -291,16 +316,15 @@ func _get_map_center() -> Vector2:
 	return Rect2(min_x, min_y, max_x-min_x, max_y-min_y).get_center()
 
 func _on_tab_changed(tab):
-	for i in range(tab_and_map_node.size()):
-		var map_node: Node = tab_and_map_node[i]
-		if map_node != null:
-			map_node.visible = tab == i
+	for i in range(tab_and_map_nodes.size()):
+		for node in tab_and_map_nodes[i]:
+			node.visible = tab == i
 	
 	if StorageProvider.get_value(Players.STORAGE_SECTION_PLAYERS, Players.STORAGE_KEY_SHOW_IN_ALL_TABS, Players.STORAGE_KEY_SHOW_IN_ALL_TABS_DEFAULT):
 		players_node.visible = true
 
 func _on_ui_settings_updated():
-	players_node.visible = tab_and_map_node[ui_node.current_tab] == players_node or StorageProvider.get_value(Players.STORAGE_SECTION_PLAYERS, Players.STORAGE_KEY_SHOW_IN_ALL_TABS, Players.STORAGE_KEY_SHOW_IN_ALL_TABS_DEFAULT)
+	players_node.visible = tab_and_map_nodes[ui_node.current_tab].has(players_node) or StorageProvider.get_value(Players.STORAGE_SECTION_PLAYERS, Players.STORAGE_KEY_SHOW_IN_ALL_TABS, Players.STORAGE_KEY_SHOW_IN_ALL_TABS_DEFAULT)
 
 const image_array_jorobate_flanders := [
 	"res://resources/maps/field000_m00_l0.png",

@@ -68,6 +68,12 @@ script = ExtResource( 5 )
 visible = false
 script = ExtResource( 1 )
 
+[node name="ShopMarkers" type="Control" parent="MapCoordinateSpace"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 5 )
+
 [node name="ui" parent="." instance=ExtResource( 4 )]
 
 [connection signal="gui_input" from="." to="camera" method="_on_root_gui_input"]
