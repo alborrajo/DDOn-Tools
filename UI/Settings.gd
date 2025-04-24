@@ -11,6 +11,9 @@ func _on_SettingsWindowDialog_about_to_show():
 	$VBoxContainer/HOBOSuggestionsGridContainer/HighOrbSpinBox.value = StorageProvider.get_value(Enemy.STORAGE_SECTION_ENEMIES, Enemy.STORAGE_KEY_HIGH_ORB_RATE, Enemy.STORAGE_KEY_HIGH_ORB_RATE_DEFAULT)
 	$VBoxContainer/ApplySuggestedValuesCheckBox.pressed = false
 	
+	$VBoxContainer/ShopPriceSuggestionsFlowContainer/ShopPriceSpinBox.value = StorageProvider.get_value(ShopItem.STORAGE_SECTION_SHOPS, ShopItem.STORAGE_KEY_SHOP_PRICE_RATE, ShopItem.STORAGE_KEY_SHOP_PRICE_RATE_DEFAULT)
+	$VBoxContainer/ApplySuggestedValuesCheckBox2.pressed = false
+	
 	$VBoxContainer/RPCGridContainer/RPCHostLineEdit.text = StorageProvider.get_value(RpcClient.STORAGE_SECTION_RPC, RpcClient.STORAGE_KEY_RPC_HOST, RpcClient.STORAGE_KEY_RPC_HOST_DEFAULT)
 	$VBoxContainer/RPCGridContainer/RPCPortSpinBox.value = StorageProvider.get_value(RpcClient.STORAGE_SECTION_RPC, RpcClient.STORAGE_KEY_RPC_PORT, RpcClient.STORAGE_KEY_RPC_PORT_DEFAULT)
 	$VBoxContainer/RPCGridContainer/RPCPathLineEdit.text = StorageProvider.get_value(RpcClient.STORAGE_SECTION_RPC, RpcClient.STORAGE_KEY_RPC_PATH, RpcClient.STORAGE_KEY_RPC_PATH_DEFAULT)
@@ -26,6 +29,8 @@ func _on_SettingsWindowDialog_popup_hide():
 	StorageProvider.set_value(Enemy.STORAGE_SECTION_ENEMIES, Enemy.STORAGE_KEY_BLOOD_ORB_RATE, $VBoxContainer/HOBOSuggestionsGridContainer/BloodOrbSpinBox.value)
 	StorageProvider.set_value(Enemy.STORAGE_SECTION_ENEMIES, Enemy.STORAGE_KEY_HIGH_ORB_RATE, $VBoxContainer/HOBOSuggestionsGridContainer/HighOrbSpinBox.value)
 	
+	StorageProvider.set_value(ShopItem.STORAGE_SECTION_SHOPS, ShopItem.STORAGE_KEY_SHOP_PRICE_RATE, $VBoxContainer/ShopPriceSuggestionsFlowContainer/ShopPriceSpinBox.value)
+	
 	StorageProvider.set_value(RpcClient.STORAGE_SECTION_RPC, RpcClient.STORAGE_KEY_RPC_HOST, $VBoxContainer/RPCGridContainer/RPCHostLineEdit.text)
 	StorageProvider.set_value(RpcClient.STORAGE_SECTION_RPC, RpcClient.STORAGE_KEY_RPC_PORT, $VBoxContainer/RPCGridContainer/RPCPortSpinBox.value)
 	StorageProvider.set_value(RpcClient.STORAGE_SECTION_RPC, RpcClient.STORAGE_KEY_RPC_PATH, $VBoxContainer/RPCGridContainer/RPCPathLineEdit.text)
@@ -34,6 +39,9 @@ func _on_SettingsWindowDialog_popup_hide():
 	
 	if $VBoxContainer/ApplySuggestedValuesCheckBox.pressed:
 		SetProvider.apply_suggested_values_for_all_enemies()
+		
+	if $VBoxContainer/ApplySuggestedValuesCheckBox2.pressed:
+		SetProvider.apply_suggested_values_for_all_shops()
 
 	emit_signal("settings_updated")
 
@@ -45,3 +53,12 @@ func _on_ApplySuggestedEXPCheckBox_toggled(button_pressed):
 
 func _on_ConfirmationDialog_confirmed():
 	$VBoxContainer/ApplySuggestedValuesCheckBox.set_pressed_no_signal(true)
+
+
+func _on_ApplySuggestedValuesCheckBox2_toggled(button_pressed):
+	if button_pressed:
+		$VBoxContainer/ApplySuggestedValuesCheckBox2/ShopConfirmationDialog.popup()
+		$VBoxContainer/ApplySuggestedValuesCheckBox2.pressed = false
+
+func _on_ShopConfirmationDialog_confirmed():
+	$VBoxContainer/ApplySuggestedValuesCheckBox2.set_pressed_no_signal(true)

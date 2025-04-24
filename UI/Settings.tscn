@@ -5,14 +5,15 @@
 [ext_resource path="res://UI/font.tres" type="DynamicFont" id=3]
 
 [node name="SettingsWindowDialog" type="WindowDialog"]
+visible = true
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -135.0
-margin_top = -95.0
+margin_top = -250.0
 margin_right = 135.0
-margin_bottom = 294.0
+margin_bottom = 232.0
 custom_fonts/title_font = ExtResource( 3 )
 window_title = "Settings"
 script = ExtResource( 2 )
@@ -169,15 +170,64 @@ dialog_text = "Applying the suggested values to all enemies will
 overwrite the current EXP drops in the entire file.
 Are you sure you want to proceed?"
 
-[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+[node name="HSeparator4" type="HSeparator" parent="VBoxContainer"]
 margin_top = 222.0
 margin_right = 262.0
 margin_bottom = 226.0
 
-[node name="RPCGridContainer" type="GridContainer" parent="VBoxContainer"]
+[node name="ShopPriceSuggestionsFlowContainer" type="HFlowContainer" parent="VBoxContainer"]
 margin_top = 230.0
 margin_right = 262.0
-margin_bottom = 322.0
+margin_bottom = 280.0
+
+[node name="ExpSuggestionsLabel" type="Label" parent="VBoxContainer/ShopPriceSuggestionsFlowContainer"]
+margin_right = 261.0
+margin_bottom = 18.0
+text = "With the suggested prices, buying items costs "
+
+[node name="ShopPriceSpinBox" type="SpinBox" parent="VBoxContainer/ShopPriceSuggestionsFlowContainer"]
+margin_top = 22.0
+margin_right = 62.0
+margin_bottom = 50.0
+step = 0.01
+value = 1.0
+
+[node name="BossesLabel" type="Label" parent="VBoxContainer/ShopPriceSuggestionsFlowContainer"]
+margin_left = 66.0
+margin_top = 27.0
+margin_right = 259.0
+margin_bottom = 45.0
+text = "times as much as you get selling it"
+
+[node name="ApplySuggestedValuesCheckBox2" type="CheckBox" parent="VBoxContainer"]
+margin_top = 284.0
+margin_right = 262.0
+margin_bottom = 310.0
+text = "Apply suggested values to all shop items"
+
+[node name="ShopConfirmationDialog" type="ConfirmationDialog" parent="VBoxContainer/ApplySuggestedValuesCheckBox2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -167.0
+margin_top = -54.0
+margin_right = 167.0
+margin_bottom = 54.0
+window_title = "Por favor, Confirma..."
+dialog_text = "Applying the suggested values to all enemies will
+overwrite the current EXP drops in the entire file.
+Are you sure you want to proceed?"
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+margin_top = 314.0
+margin_right = 262.0
+margin_bottom = 318.0
+
+[node name="RPCGridContainer" type="GridContainer" parent="VBoxContainer"]
+margin_top = 322.0
+margin_right = 262.0
+margin_bottom = 414.0
 columns = 2
 
 [node name="RPCHostLabel" type="Label" parent="VBoxContainer/RPCGridContainer"]
@@ -231,16 +281,16 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Label" type="Label" parent="VBoxContainer"]
-margin_top = 326.0
+margin_top = 418.0
 margin_right = 262.0
-margin_bottom = 344.0
+margin_bottom = 436.0
 custom_fonts/font = ExtResource( 3 )
 text = "RPC User and Password"
 
 [node name="RPCCredentialsGridContainer" type="GridContainer" parent="VBoxContainer"]
-margin_top = 348.0
+margin_top = 440.0
 margin_right = 262.0
-margin_bottom = 376.0
+margin_bottom = 468.0
 columns = 2
 
 [node name="UserLineEdit" type="LineEdit" parent="VBoxContainer/RPCCredentialsGridContainer"]
@@ -260,3 +310,5 @@ secret = true
 [connection signal="item_selected" from="VBoxContainer/LanguageGridContainer/LanguageOptionButton" to="VBoxContainer/LanguageGridContainer/LanguageOptionButton" method="_on_item_selected"]
 [connection signal="toggled" from="VBoxContainer/ApplySuggestedValuesCheckBox" to="." method="_on_ApplySuggestedEXPCheckBox_toggled"]
 [connection signal="confirmed" from="VBoxContainer/ApplySuggestedValuesCheckBox/ConfirmationDialog" to="." method="_on_ConfirmationDialog_confirmed"]
+[connection signal="toggled" from="VBoxContainer/ApplySuggestedValuesCheckBox2" to="." method="_on_ApplySuggestedValuesCheckBox2_toggled"]
+[connection signal="confirmed" from="VBoxContainer/ApplySuggestedValuesCheckBox2/ShopConfirmationDialog" to="." method="_on_ShopConfirmationDialog_confirmed"]
