@@ -88,6 +88,11 @@ func apply_suggested_values_for_all_enemies() -> void:
 						enemy.apply_suggested_blood_orbs()
 						enemy.apply_suggested_high_orbs()
 						enemy.apply_suggested_exp()
+						
+func apply_suggested_values_for_shops() -> void:
+	for shop in _shops:
+		for good in shop.get_goods():
+			good.apply_suggested_price()
 
 
 func clear_gathering_spots() -> void:

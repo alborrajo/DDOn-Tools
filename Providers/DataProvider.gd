@@ -47,7 +47,7 @@ func _ready():
 	while !file.eof_reached():
 		var csv_line := file.get_csv_line()
 		if csv_line.size() >= 3:
-			var item := Item.new(int(csv_line[0]), int(csv_line[1]), int(csv_line[2]), int(csv_line[3]))
+			var item := Item.new(int(csv_line[0]), int(csv_line[1]), int(csv_line[2]), int(csv_line[3]), int(csv_line[4]))
 			item_list.append(item)
 	file.close()
 

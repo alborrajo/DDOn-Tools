@@ -1,6 +1,10 @@
 extends Resource
 class_name ShopItem
 
+const STORAGE_SECTION_SHOPS := "Shops"
+const STORAGE_KEY_SHOP_PRICE_RATE := "ShopPriceRate"
+const STORAGE_KEY_SHOP_PRICE_RATE_DEFAULT := 1.5
+
 var item: Item setget _set_item
 var price: int setget _set_price
 var is_stock_unlimited: bool setget _set_is_stock_unlimited
@@ -14,7 +18,7 @@ var _requirements: Array
 
 func _init(_item: Item):
 	self.item = _item
-	self.price = 0 # TODO: Use sale price from itemlist.ipa * configurable multiplier
+	apply_suggested_price()
 	self.is_stock_unlimited = true
 	self.stock = 0
 	self.hide_if_reqs_unmet= 0
@@ -39,6 +43,7 @@ func remove_requirement(index: int) -> void:
 
 func _set_item(value):
 	item = value
+	apply_suggested_price()
 	emit_changed()
 
 func _set_price(value):
@@ -64,3 +69,7 @@ func _set_sales_period_start(value):
 func _set_sales_period_end(value):
 	sales_period_end = value
 	emit_changed()
+
+
+func apply_suggested_price() -> void:
+	price = item.price * StorageProvider.get_value(STORAGE_SECTION_SHOPS, STORAGE_KEY_SHOP_PRICE_RATE, STORAGE_KEY_SHOP_PRICE_RATE_DEFAULT)
