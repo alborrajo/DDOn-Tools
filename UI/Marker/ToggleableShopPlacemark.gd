@@ -64,24 +64,42 @@ func _on_shop_changed() -> void:
 	$MapControl/Control/Panel/ShopPlacemark/GridContainer/Unk0SpinBox.value = shop.unk0
 	$MapControl/Control/Panel/ShopPlacemark/GridContainer/Unk1SpinBox.value = shop.unk1
 	$MapControl/Control/Panel/ShopPlacemark/GridContainer2/WalletTypeOptionButton.select(shop.wallet_type)
-	$MapControl/Control/Panel/ShopPlacemark/ScrollContainer/ItemList.clear()
+	$MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree.clear()
+	var root: TreeItem = $MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree.create_item()
 	for good in shop.get_goods():
-		good = good as ShopItem
-		var stock_string := ""
-		if not good.is_stock_unlimited:
-			stock_string = String(good.stock)+" "
-		var wallet_type := FALLBACK_WALLET_TYPE
-		if shop.wallet_type >= 0 and shop.wallet_type < WALLET_TYPES.size() and WALLET_TYPES[shop.wallet_type] != null:
-			wallet_type = WALLET_TYPES[shop.wallet_type]
-		var text := "%s%s\n%d %s" % [stock_string, good.item.name, good.price, wallet_type]
-		$MapControl/Control/Panel/ShopPlacemark/ScrollContainer/ItemList.add_item(text, good.item.icon)
-		var last_added_item_index: int = $MapControl/Control/Panel/ShopPlacemark/ScrollContainer/ItemList.get_item_count()-1
-		$MapControl/Control/Panel/ShopPlacemark/ScrollContainer/ItemList.set_item_metadata(last_added_item_index, good)
+		var tree_item: TreeItem = $MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree.create_item(root)
+		tree_item.custom_minimum_height = 48
+		tree_item.set_text(0, good.item.name)
+		tree_item.set_metadata(0, good)
+		tree_item.set_cell_mode(0, TreeItem.CELL_MODE_CUSTOM)
+		tree_item.set_custom_draw(0, self, "_draw_tree_item")
 
-func _on_ItemList_item_rmb_selected(index, _at_position):
-	shop.remove_goods(index)
+func _draw_tree_item(tree_item: TreeItem, rect: Rect2):
+	var good: ShopItem = tree_item.get_metadata(0)
+	var color := SelectedListManager.FILTER_NONMATCH_COLOR
+	if good.item.matches_filter_text(SelectedListManager.item_filter):
+		color = SelectedListManager.FILTER_MATCH_COLOR
+	var icon_position := Vector2(rect.position.x + (24 - good.item.icon.get_width()/2), rect.position.y + (rect.size.y/2 - good.item.icon.get_height()/2))
+	$MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree.draw_texture(good.item.icon, icon_position, color)
+	var stock_string := ""
+	if not good.is_stock_unlimited:
+		stock_string = String(good.stock)+"x "
+	var wallet_type := FALLBACK_WALLET_TYPE
+	if shop.wallet_type >= 0 and shop.wallet_type < WALLET_TYPES.size() and WALLET_TYPES[shop.wallet_type] != null:
+		wallet_type = WALLET_TYPES[shop.wallet_type]
+	$MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree.draw_string(get_font("font"), rect.position + Vector2(48, rect.size.y/2), "%s%s" % [stock_string, good.item.name], color)
+	$MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree.draw_string(get_font("font"), rect.position + Vector2(48, rect.size.y/2 + 16), "%s[%d]" % ["★".repeat(good.item.quality_stars), good.item.id], color)
+	$MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree.draw_string(get_font("font"), rect.position + Vector2(148, rect.size.y/2 + 16), "%d %s" % [good.price, wallet_type], color)
 
-func _on_ItemList_dragged_shop_item(index):
+func _on_ItemList_item_rmb_selected(position: Vector2):
+	var shop_item: ShopItem = $MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree.get_item_at_position(position).get_metadata(0)
+	var index := shop.get_goods().find(shop_item)
+	assert(index != -1)
+	shop.call_deferred("remove_goods", index)
+
+func _on_ItemList_dragged_shop_item(shop_item):
+	var index := shop.get_goods().find(shop_item)
+	assert(index != -1)
 	shop.remove_goods(index)
 
 func _on_ItemList_dropped_shop_item(shop_item):
