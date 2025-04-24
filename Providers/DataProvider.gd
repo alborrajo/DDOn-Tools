@@ -11,6 +11,7 @@ export (String, FILE, "*.json") var stage_list_json := "res://resources/StageLis
 export (String, FILE, "*.json") var repo_json := "res://resources/repo.json"
 export (String, FILE, "*.json") var gathering_spots_json := "res://resources/gatheringSpots.json"
 export (String, FILE, "*.json") var enemy_positions_json := "res://resources/enemyPositions.json"
+export (String, FILE, "*.json") var shops_json := "res://resources/shops.json"
 
 var enemy_list: Array
 var item_list: Array
@@ -23,6 +24,7 @@ var stage_list: Array
 var repo: Dictionary
 var enemy_sets: Dictionary
 var gathering_spots: Dictionary
+var shops: Dictionary
 
 func _ready():
 	enemy_list = []
@@ -59,6 +61,7 @@ func _ready():
 	stage_list = Common.load_json_file(stage_list_json)
 	repo = Common.load_json_file(repo_json)
 	gathering_spots = Common.load_json_file(gathering_spots_json)
+	shops = Common.load_json_file(shops_json)
 
 	enemy_sets = {}
 	var enemy_positions: Dictionary = Common.load_json_file(enemy_positions_json)
