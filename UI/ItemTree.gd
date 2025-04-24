@@ -1,36 +1,11 @@
 extends Tree
 class_name ItemTree
 
-export (String, FILE, "*.csv") var itemsCSV := "res://resources/items.csv"
-
-var items_cache: Array
-var initialized := false
-
 var _rebuild_list_thread = null
 var _cancel_rebuild_list_thread := false
 
 func _ready():
-	init_item_list()
-	
-func init_item_list():
-	if initialized:
-		return
-		
-	# TODO: Move to DataProvider
-	items_cache = []
-	var file := File.new()
-	assert(file.open(itemsCSV, File.READ) == OK)
-	# warning-ignore:return_value_discarded
-	file.get_csv_line() # Ignore header line
-	while !file.eof_reached():
-		var csv_line := file.get_csv_line()
-		if csv_line.size() >= 3:
-			var item := Item.new(int(csv_line[0]), int(csv_line[1]), int(csv_line[2]), int(csv_line[3]))
-			items_cache.append(item)
-	file.close()
-	
 	_rebuild_list()
-	initialized = true
 	
 func _on_FilterLineEdit_text_changed(new_text: String):
 	_rebuild_list(new_text)
@@ -58,7 +33,7 @@ func _do_rebuild_list(args: Array) -> void:
 	var normalized_filter_text := filter_text.to_upper()
 	
 	# Load everything first
-	for item in items_cache:
+	for item in DataProvider.item_list:
 		if _cancel_rebuild_list_thread:
 			_cancel_rebuild_list_thread = false
 			return
@@ -91,11 +66,3 @@ func get_drag_data(position):
 	var selected_item: Item =  get_item_at_position(position).get_metadata(0)
 	print_debug("Dragging %s" % [tr(selected_item.name)])
 	return selected_item
-
-func get_item_by_id(id: int) -> Item:
-	# Also inefficient af
-	for item in items_cache:
-		if item.id == id:
-			return item
-	printerr("Couldn't find item with id", id)
-	return null

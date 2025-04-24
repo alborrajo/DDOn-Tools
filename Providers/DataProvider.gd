@@ -1,13 +1,19 @@
 extends Node
 
+export (String, FILE, "*.csv") var enemy_csv := "res://resources/enemies.csv"
+export (String, FILE, "*.csv") var items_csv := "res://resources/items.csv"
+
 export (String, FILE, "*.json") var named_param_json := "res://resources/named_param.ndp.json"
-export (String, FILE, "*.json") var map_dimensions_csv := "res://resources/maps/dimensions.csv"
+export (String, FILE, "*.csv") var map_dimensions_csv := "res://resources/maps/dimensions.csv"
 export (String, FILE, "*.json") var stage_custom_json := "res://resources/StageCustom.json"
-export (String, FILE, "*.json") var stage_room_csv := "res://resources/StageRoom.csv"
+export (String, FILE, "*.csv") var stage_room_csv := "res://resources/StageRoom.csv"
 export (String, FILE, "*.json") var stage_list_json := "res://resources/StageList.json"
 export (String, FILE, "*.json") var repo_json := "res://resources/repo.json"
 export (String, FILE, "*.json") var gathering_spots_json := "res://resources/gatheringSpots.json"
 export (String, FILE, "*.json") var enemy_positions_json := "res://resources/enemyPositions.json"
+
+var enemy_list: Array
+var item_list: Array
 
 var named_params: Array
 var map_dimensions: Dictionary
@@ -19,6 +25,30 @@ var enemy_sets: Dictionary
 var gathering_spots: Dictionary
 
 func _ready():
+	enemy_list = []
+	var file := File.new()
+	assert(file.open(enemy_csv, File.READ) == OK)
+	# warning-ignore:return_value_discarded
+	file.get_csv_line() # Ignore header line
+	while !file.eof_reached():
+		var csv_line := file.get_csv_line()
+		if csv_line.size() >= 3:
+			var enemy := EnemyType.new(csv_line[0].hex_to_int(), int(csv_line[2]))
+			enemy_list.append(enemy)
+	file.close()
+
+	item_list = []
+	file = File.new()
+	assert(file.open(items_csv, File.READ) == OK)
+	# warning-ignore:return_value_discarded
+	file.get_csv_line() # Ignore header line
+	while !file.eof_reached():
+		var csv_line := file.get_csv_line()
+		if csv_line.size() >= 3:
+			var item := Item.new(int(csv_line[0]), int(csv_line[1]), int(csv_line[2]), int(csv_line[3]))
+			item_list.append(item)
+	file.close()
+
 	named_params = []
 	var loaded_named_param_json: Dictionary = Common.load_json_file(named_param_json)
 	for named_param_dict in loaded_named_param_json["namedParamList"]:
@@ -54,7 +84,7 @@ func _ready():
 			existing_enemy_set["Positions"].append(enemy_position["Position"])
 	
 	stage_room = {}
-	var file := File.new()
+	file = File.new()
 	assert(file.open(stage_room_csv, File.READ) == OK)
 	# warning-ignore:return_value_discarded
 	file.get_csv_line() # Ignore header line
@@ -74,6 +104,22 @@ func _ready():
 		if csv_line.size() >= 2:
 			map_dimensions[csv_line[0]] = Vector2(int(csv_line[1]), int(csv_line[2]))
 	file.close()
+
+func get_enemy_by_id(id: int) -> EnemyType:
+	# Also inefficient af
+	for enemy_type in DataProvider.enemy_list:
+		if enemy_type.id == id:
+			return enemy_type
+	printerr("Couldn't find enemy with id", id)
+	return null
+
+func get_item_by_id(id: int) -> Item:
+	# Also inefficient af
+	for item in DataProvider.item_list:
+		if item.id == id:
+			return item
+	printerr("Couldn't find item with id", id)
+	return null
 
 func stage_no_to_stage_map(stage_no: int) -> Dictionary:
 	return stage_custom.get(String(stage_no))

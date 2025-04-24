@@ -82,16 +82,8 @@ const JSON_KEY_NAME = "name"
 const JSON_KEY_MDL_TYPE = "mdlType"
 const JSON_KEY_ITEMS = "items"
 
-export (NodePath) var enemy_tree: NodePath
-export (NodePath) var item_tree: NodePath
-
-onready var enemy_tree_node: EnemyTree = get_node(enemy_tree)
-onready var item_tree_node: ItemTree = get_node(item_tree)
-	
 func _ready():
 	._ready()
-	enemy_tree_node.init_enemy_list()
-	item_tree_node.init_item_list()
 	
 func _get_file_path_from_storage() -> String:
 	return StorageProvider.get_value(STORAGE_SECTION_FILE_MENU, STORAGE_KEY_FILE_PATH)
@@ -140,7 +132,7 @@ func _do_load_file_json(file: File) -> int:
 
 		for data_item in data[JSON_KEY_ITEMS]:
 			var item_id: int = data_item[drops_table_schema_idx["ItemId"]]
-			var item := item_tree_node.get_item_by_id(item_id)
+			var item := DataProvider.get_item_by_id(item_id)
 			if item == null:
 				push_error("Found drops table entry with an unrecognized item ID %d" % item_id)
 				continue
@@ -174,7 +166,7 @@ func _do_load_file_json(file: File) -> int:
 		
 		var enemy_subgroup: EnemySubgroup = enemy_set.get_subgroup(subgroup_id)
 		
-		var enemyType := enemy_tree_node.get_enemy_by_id(data[enemies_schema_idx["EnemyId"]].hex_to_int())
+		var enemyType := DataProvider.get_enemy_by_id(data[enemies_schema_idx["EnemyId"]].hex_to_int())
 		var namedParam := DataProvider.get_named_param_by_id(data[enemies_schema_idx["NamedEnemyParamsId"]])
 		var enemy := Enemy.new(enemyType, namedParam)
 		enemy.raid_boss_id = data[enemies_schema_idx["RaidBossId"]]
@@ -274,7 +266,7 @@ func _do_load_file_legacy(file: File) -> void:
 		var group_id = int(csv_line[2])
 		var subgroup_id = int(csv_line[3])
 		
-		var enemyType := enemy_tree_node.get_enemy_by_id(csv_line[4].strip_edges().hex_to_int())
+		var enemyType := DataProvider.get_enemy_by_id(csv_line[4].strip_edges().hex_to_int())
 		var namedParam := DataProvider.get_named_param_by_id(csv_line[5].strip_edges().hex_to_int())
 		var enemy := Enemy.new(enemyType, namedParam)
 		enemy.raid_boss_id = int(csv_line[6].strip_edges())

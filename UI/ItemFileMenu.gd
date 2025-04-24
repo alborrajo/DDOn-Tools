@@ -30,13 +30,8 @@ const SCHEMA := PoolStringArray([
 	"DropChance"
 ])
 
-export (NodePath) var item_tree: NodePath
-
-onready var item_tree_node: ItemTree = get_node(item_tree)
-
 func _ready():
 	._ready()
-	item_tree_node.init_item_list()
 
 func _get_file_path_from_storage() -> String:
 	return StorageProvider.get_value(STORAGE_SECTION_FILE_MENU, STORAGE_KEY_FILE_PATH)
@@ -75,7 +70,7 @@ func _do_load_file(file: File) -> void:
 		var group_id = int(csv_line[schema_indices["GroupId"]])
 		var subgroup_id = int(csv_line[schema_indices["PosId"]])
 		
-		var item := item_tree_node.get_item_by_id(int(csv_line[schema_indices["ItemId"]].strip_edges()))
+		var item := DataProvider.get_item_by_id(int(csv_line[schema_indices["ItemId"]].strip_edges()))
 		if item == null:
 			push_error("Found gathering spot entry with an unrecognized item "+ String(csv_line))
 			continue
