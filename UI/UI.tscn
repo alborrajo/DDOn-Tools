@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://UI/EnemyDetailsPanel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/NotificationPopup.gd" type="Script" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://resources/icons/icon_clock.png" type="Texture" id=17]
 [ext_resource path="res://resources/icons/icon_gear.png" type="Texture" id=18]
 [ext_resource path="res://StageItemList.gd" type="Script" id=19]
+[ext_resource path="res://UI/ShopFileMenu.gd" type="Script" id=20]
 
 [sub_resource type="GDScript" id=2]
 script/source = "extends CanvasLayer
@@ -225,8 +226,6 @@ items = [ "New Enemy Sets", null, 0, false, false, 0, 0, null, "", false, "Load 
 script = ExtResource( 4 )
 file_dialog = NodePath("../../../../../EnemyFileDialog")
 notification_popup = NodePath("../../../../../NotificationPopup")
-enemy_tree = NodePath("../../EnemyTree")
-item_tree = NodePath("../../../Items/ItemTree")
 
 [node name="FilterLineEdit" type="LineEdit" parent="left/tab/Enemies/HBoxContainer"]
 margin_left = 36.0
@@ -265,21 +264,31 @@ margin_bottom = 28.0
 
 [node name="ItemFileMenu" type="MenuButton" parent="left/tab/Items/HBoxContainer"]
 process_priority = 1
-margin_right = 32.0
+margin_right = 68.0
 margin_bottom = 28.0
 focus_mode = 2
 size_flags_horizontal = 0
-text = "File"
+text = "Gathering"
 flat = false
 align = 0
-items = [ "New Gathering Spots", null, 0, false, false, 0, 0, null, "", false, "Load Gathering Spots", null, 0, false, false, 1, 0, null, "", false, "Save Gathering Spots", null, 0, false, false, 2, 0, null, "", false ]
+items = [ "New", null, 0, false, false, 0, 0, null, "", false, "Load", null, 0, false, false, 1, 0, null, "", false, "Save", null, 0, false, false, 2, 0, null, "", false ]
 script = ExtResource( 13 )
 file_dialog = NodePath("../../../../../ItemFileDialog")
 notification_popup = NodePath("../../../../../NotificationPopup")
-item_tree = NodePath("../../ItemTree")
+
+[node name="ShopFileMenu" type="MenuButton" parent="left/tab/Items/HBoxContainer"]
+margin_left = 72.0
+margin_right = 112.0
+margin_bottom = 28.0
+text = "Shop"
+flat = false
+items = [ "New", null, 0, false, false, 0, 0, null, "", false, "Load", null, 0, false, false, 1, 0, null, "", false, "Save", null, 0, false, false, 2, 0, null, "", false ]
+script = ExtResource( 20 )
+file_dialog = NodePath("../../../../../ShopFileDialog")
+notification_popup = NodePath("../../../../../NotificationPopup")
 
 [node name="FilterLineEdit" type="LineEdit" parent="left/tab/Items/HBoxContainer"]
-margin_left = 36.0
+margin_left = 116.0
 margin_right = 288.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
@@ -515,6 +524,22 @@ window_title = "Abrir un Archivo"
 mode = 0
 access = 2
 filters = PoolStringArray( "*.csv ; CSV Files" )
+show_hidden_files = true
+
+[node name="ShopFileDialog" type="FileDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -312.0
+margin_top = -195.0
+margin_right = 312.0
+margin_bottom = 195.0
+rect_min_size = Vector2( 180, 63 )
+window_title = "Abrir un Archivo"
+mode = 0
+access = 2
+filters = PoolStringArray( "*.json ; JSON Files" )
 show_hidden_files = true
 
 [connection signal="tab_changed" from="left/tab" to="." method="_on_tab_changed"]
