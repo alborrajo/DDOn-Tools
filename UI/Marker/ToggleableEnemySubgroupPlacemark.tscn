@@ -86,6 +86,12 @@ custom_colors/font_color = Color( 1, 1, 0, 1 )
 custom_fonts/font = SubResource( 5 )
 text = "⚠"
 
+[node name="Panel" parent="MapControl/Control" index="0"]
+visible = false
+
+[node name="CloseButton" parent="MapControl/Control" index="1"]
+visible = false
+
 [node name="EnemyPositionPlacemarksControl" type="Control" parent="." index="1"]
 margin_right = 40.0
 margin_bottom = 40.0
