@@ -113,7 +113,7 @@ func _add_room_maps(stage_no: int) -> bool:
 				layer.add_child(map_sprite)
 				print("Loaded map ", stage_map_resource)
 	else:
-		print("Couldn't find an associated room (rm) map for this stage (Stage No. %s)" % [stage_no])
+		print("Couldn't find an associated lobby (lb) or room (rm) map for this stage (Stage No. %s)" % [stage_no])
 	return found_map
 
 func _add_stage_maps(stage_no: int) -> bool:
