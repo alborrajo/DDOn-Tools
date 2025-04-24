@@ -34,7 +34,7 @@ func _get_name():
 	return tr(TRANSLATION_KEY_FORMAT % id)
 	
 func matches_filter_text(uppercase_filter_text: String) -> bool:
-	return uppercase_filter_text in _get_name().to_upper() or uppercase_filter_text in String(id).to_upper()
+	return uppercase_filter_text == "" or uppercase_filter_text in _get_name().to_upper() or uppercase_filter_text in String(id).to_upper()
 	
 
 const image_array_jorobate_flanders := [

@@ -19,4 +19,4 @@ func get_hex_id() -> String:
 	return HEX_ID_FORMAT % id
 	
 func matches_filter_text(uppercase_filter_text: String) -> bool:
-	return uppercase_filter_text in _get_name().to_upper() or uppercase_filter_text in String(get_hex_id()).to_upper()
+	return uppercase_filter_text == "" or uppercase_filter_text in _get_name().to_upper() or uppercase_filter_text in String(get_hex_id()).to_upper()
