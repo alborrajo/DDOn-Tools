@@ -26,6 +26,9 @@ var stage_id: int setget _set_stage_id
 var npc_id: int setget _set_npc_id
 var shop: Shop setget _set_shop
 
+func _ready():
+	assert(SelectedListManager.connect("item_filter_changed", self, "_on_item_filter_changed") == OK)
+
 func get_display_name() -> String:
 	return tr('NPC_NAME_'+String(npc_id))
 	
@@ -79,3 +82,12 @@ func _on_ItemList_dragged_shop_item(index):
 
 func _on_ItemList_dropped_shop_item(shop_item):
 	shop.add_goods(shop_item)
+
+func _on_item_filter_changed(uppercase_filter_text: String):
+	$MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree.update() #rerender
+	for good in shop.get_goods():
+		if good.item.matches_filter_text(uppercase_filter_text):
+			modulate = SelectedListManager.FILTER_MATCH_COLOR
+			return
+	modulate = SelectedListManager.FILTER_NONMATCH_COLOR
+	

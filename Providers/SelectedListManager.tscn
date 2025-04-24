@@ -17,6 +17,9 @@ var selected_list := []
 var enemy_type := false
 var item_type := false
 
+var enemy_filter := \"\"
+var item_filter := \"\"
+
 # Function to apply values to selected enemy or item
 func apply_values_to_selected_type(parameter_name: String, parameter_value):
 	for entry in selected_list:
@@ -96,10 +99,12 @@ func is_list_empty() -> bool:
 	
 	
 func set_enemy_filter(filter_text: String) -> void:
-	emit_signal(\"enemy_filter_changed\", filter_text.to_upper())
+	enemy_filter = filter_text.to_upper()
+	emit_signal(\"enemy_filter_changed\", enemy_filter)
 
 func set_item_filter(filter_text: String) -> void:
-	emit_signal(\"item_filter_changed\", filter_text.to_upper())
+	item_filter = filter_text.to_upper()
+	emit_signal(\"item_filter_changed\", item_filter)
 "
 
 [node name="SelectedListManager" type="Node"]
