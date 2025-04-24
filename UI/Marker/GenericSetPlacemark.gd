@@ -1,4 +1,4 @@
-extends MapControl
+extends Control
 class_name GenericSetPlacemark
 
 onready var selected_indices = []

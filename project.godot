@@ -84,11 +84,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Entities/EnemySubgroup.gd"
 }, {
-"base": "Control",
-"class": "EnemySubgroupPlacemark",
-"language": "GDScript",
-"path": "res://UI/Marker/EnemySubgroupPlacemark.gd"
-}, {
 "base": "Tree",
 "class": "EnemyTree",
 "language": "GDScript",
@@ -119,11 +114,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UI/Marker/GatheringSpotPlacemark.gd"
 }, {
-"base": "Control",
-"class": "GatheringSubgroupPlacemark",
-"language": "GDScript",
-"path": "res://UI/Marker/GatheringSubgroupPlacemark.gd"
-}, {
 "base": "MenuButton",
 "class": "GenericFileMenu",
 "language": "GDScript",
@@ -139,7 +129,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://UI/Marker/GenericSetMarkersControl.gd"
 }, {
-"base": "MapControl",
+"base": "Control",
 "class": "GenericSetPlacemark",
 "language": "GDScript",
 "path": "res://UI/Marker/GenericSetPlacemark.gd"
@@ -238,6 +228,20 @@ _global_script_classes=[ {
 "class": "StagesItemList",
 "language": "GDScript",
 "path": "res://StageItemList.gd"
+"base": "ToggleablePlacemark",
+"class": "ToggleableEnemySubgroupPlacemark",
+"language": "GDScript",
+"path": "res://UI/Marker/ToggleableEnemySubgroupPlacemark.gd"
+}, {
+"base": "ToggleablePlacemark",
+"class": "ToggleableGatheringSpotPlacemark",
+"language": "GDScript",
+"path": "res://UI/Marker/ToggleableGatheringSpotPlacemark.gd"
+}, {
+"base": "Control",
+"class": "ToggleablePlacemark",
+"language": "GDScript",
+"path": "res://UI/Marker/ToggleablePlacemark.gd"
 } ]
 _global_script_class_icons={
 "Chat": "",
@@ -255,14 +259,12 @@ _global_script_class_icons={
 "EnemyPositionPlacemark": "",
 "EnemySet": "",
 "EnemySubgroup": "",
-"EnemySubgroupPlacemark": "",
 "EnemyTree": "",
 "EnemyType": "",
 "GatheringItem": "",
 "GatheringItemPlacemark": "",
 "GatheringSpot": "",
 "GatheringSpotPlacemark": "",
-"GatheringSubgroupPlacemark": "",
 "GenericFileMenu": "",
 "GenericPlacemark": "",
 "GenericSetMarkersControl": "",
@@ -285,7 +287,10 @@ _global_script_class_icons={
 "Players": "",
 "RoomMap": "",
 "RpcClient": "",
-"StagesItemList": ""
+"StagesItemList": "",
+"ToggleableEnemySubgroupPlacemark": "",
+"ToggleableGatheringSpotPlacemark": "",
+"ToggleablePlacemark": "",
 }
 
 [application]

@@ -4,8 +4,8 @@ class_name Main
 const MAX_LAYERS = 10
 
 # i have to do this bs otherwise godot refuses to export the files
-const EnemySubgroupPlacemarkScene = preload("res://UI/Marker/EnemySubgroupPlacemark.tscn")
-const GatheringSubgroupPlacemarkScene = preload("res://UI/Marker/GatheringSubgroupPlacemark.tscn")
+const EnemyPlacemarkScene = preload("res://UI/Marker/ToggleableEnemySubgroupPlacemark.tscn")
+const GatheringPlacemarkScene = preload("res://UI/Marker/ToggleableGatheringSpotPlacemark.tscn")
 
 onready var camera: Camera2D = $camera
 onready var camera_tween: Tween = $CameraTween
@@ -153,9 +153,9 @@ func _load_stage_markers(stage_no, subgroup_id):
 		if enemy_set.stage_id == stage_id:
 			var enemy_subgroup: EnemySubgroup = enemy_set.get_subgroup(subgroup_id)
 			if enemy_subgroup.positions.size() > 0:
-				var enemy_subgroup_placemark: EnemySubgroupPlacemark = EnemySubgroupPlacemarkScene.instance()
-				assert(enemy_subgroup_placemark.connect("subgroup_mouse_entered", ui_node, "_on_enemy_subgroup_placemark_mouse_entered", [subgroup_id, enemy_subgroup_placemark]) == OK)
-				assert(enemy_subgroup_placemark.connect("subgroup_mouse_exited", ui_node, "_on_enemy_subgroup_placemark_mouse_exited", [subgroup_id, enemy_subgroup_placemark]) == OK)
+				var enemy_subgroup_placemark: ToggleableEnemySubgroupPlacemark = EnemyPlacemarkScene.instance()
+				assert(enemy_subgroup_placemark.connect("enemy_subgroup_mouse_entered", ui_node, "_on_enemy_subgroup_placemark_mouse_entered", [subgroup_id, enemy_subgroup_placemark]) == OK)
+				assert(enemy_subgroup_placemark.connect("enemy_subgroup_mouse_exited", ui_node, "_on_enemy_subgroup_placemark_mouse_exited", [subgroup_id, enemy_subgroup_placemark]) == OK)
 				enemy_subgroup_placemark.enemy_set = enemy_set
 				enemy_subgroup_placemark.enemy_subgroup = enemy_subgroup
 				enemy_sets_node.add_child(enemy_subgroup_placemark)
@@ -175,11 +175,11 @@ func _load_stage_markers(stage_no, subgroup_id):
 				gathering_spot_entity.unit_id = unit_id
 				gathering_spot_entity.coordinates = pos
 				
-				var gathering_subgroup_placemark: GatheringSubgroupPlacemark = GatheringSubgroupPlacemarkScene.instance()
-				assert(gathering_subgroup_placemark.connect("subgroup_mouse_entered", ui_node, "_on_gathering_subgroup_placemark_mouse_entered", [gathering_subgroup_placemark]) == OK)
-				assert(gathering_subgroup_placemark.connect("subgroup_mouse_exited", ui_node, "_on_gathering_subgroup_placemark_mouse_exited", [gathering_subgroup_placemark]) == OK)
-				gathering_subgroup_placemark.gathering_spot = gathering_spot_entity
-				gathering_spots_node.add_child(gathering_subgroup_placemark)
+				var gathering_placemark: ToggleableGatheringSpotPlacemark = GatheringPlacemarkScene.instance()
+				assert(gathering_placemark.connect("subgroup_mouse_entered", ui_node, "_on_gathering_subgroup_placemark_mouse_entered", [gathering_placemark]) == OK)
+				assert(gathering_placemark.connect("subgroup_mouse_exited", ui_node, "_on_gathering_subgroup_placemark_mouse_exited", [gathering_placemark]) == OK)
+				gathering_placemark.gathering_spot = gathering_spot_entity
+				gathering_spots_node.add_child(gathering_placemark)
 
 func _load_map_resource(resource_path: String) -> Resource:
 	var _directory = Directory.new();

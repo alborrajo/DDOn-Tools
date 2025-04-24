@@ -1,8 +1,8 @@
-extends Control
-class_name EnemySubgroupPlacemark
+extends ToggleablePlacemark
+class_name ToggleableEnemySubgroupPlacemark
 
-signal subgroup_mouse_entered(position_index, enemy_position_placemark)
-signal subgroup_mouse_exited(position_index, enemy_position_placemark)
+signal enemy_subgroup_mouse_entered(position_index, enemy_position_placemark)
+signal enemy_subgroup_mouse_exited(position_index, enemy_position_placemark)
 
 const EnemyPositionPlacemarkScene = preload("res://UI/Marker/EnemyPositionPlacemark.tscn")
 
@@ -18,60 +18,56 @@ func _ready():
 	for position_index in enemy_subgroup.positions.size():
 		var enemy_position: EnemyPosition = enemy_subgroup.positions[position_index]
 		var enemy_position_placemark: EnemyPositionPlacemark = EnemyPositionPlacemarkScene.instance()
-		enemy_position_placemark.set_ddon_world_position(DataProvider.stage_id_to_stage_no(enemy_set.stage_id), enemy_position.coordinates)
 		assert(enemy_position_placemark.connect("mouse_entered", self, "_on_enemy_position_placemark_mouse_entered", [position_index, enemy_position_placemark]) == OK)
 		assert(enemy_position_placemark.connect("mouse_exited", self, "_on_enemy_position_placemark_mouse_exited", [position_index, enemy_position_placemark]) == OK)
 		enemy_position_placemark.enemy_position = enemy_position
 		assert(enemy_position_placemark.connect("gui_input", self, "_on_EnemyPositionPlacemark_gui_input") == OK)
-		$EnemyPositionPlacemarksControl.add_child(enemy_position_placemark)
+		var map_control := MapControl.new()
+		map_control.set_ddon_world_position(DataProvider.stage_id_to_stage_no(enemy_set.stage_id), enemy_position.coordinates)
+		map_control.add_child(enemy_position_placemark)
+		map_control.mouse_filter = MOUSE_FILTER_PASS
+		$EnemyPositionPlacemarksControl.add_child(map_control)
 	
 	# TODO: Calcualte group center instead of using the first position
-	$SubgroupButtonControl.rect_position = $EnemyPositionPlacemarksControl.get_child(0).rect_position
+	$MapControl.set_ddon_world_position(DataProvider.stage_id_to_stage_no(enemy_set.stage_id), enemy_subgroup.positions[0].coordinates)
 	
 func _on_enemy_subgroup_changed():
-	$SubgroupButtonControl/SubgroupButton.text = "%d - %d/%d" % [enemy_set.group_id, enemy_subgroup.effective_enemy_count(), enemy_subgroup.positions.size()]
-	$SubgroupButtonControl/WarningLabel.visible = false
+	$MapControl/ToggleButton.text = "%d - %d/%d" % [enemy_set.group_id, enemy_subgroup.effective_enemy_count(), enemy_subgroup.positions.size()]
+	$MapControl/ToggleButton/WarningLabel.visible = false
 	for position in enemy_subgroup.positions:
 		if position.has_conflicting_enemy_times():
-			$SubgroupButtonControl/WarningLabel.visible = true
+			$MapControl/ToggleButton/WarningLabel.visible = true
 			break
+			
+func _process(_delta):
+	$EnemyPositionPlacemarksControl.visible = $MapControl/Control.visible
 
-func _on_GroupButton_mouse_entered():
-	emit_signal("subgroup_mouse_entered", -1, null)
+func _on_Control_mouse_entered():
+	emit_signal("enemy_subgroup_mouse_entered", -1, null)
 
-func _on_GroupButton_mouse_exited():
-	emit_signal("subgroup_mouse_exited", -1, null)
+func _on_Control_mouse_exited():
+	emit_signal("enemy_subgroup_mouse_exited", -1, null)
+	
+func _on_ToggleButton_mouse_entered():
+	emit_signal("enemy_subgroup_mouse_entered", -1, null)
+	
+func _on_ToggleButton_mouse_exited():
+	emit_signal("enemy_subgroup_mouse_exited", -1, null)
 	
 func _on_enemy_position_placemark_mouse_entered(position_index: int, enemy_position_placemark: EnemyPositionPlacemark):
-	emit_signal("subgroup_mouse_entered", position_index, enemy_position_placemark)
+	emit_signal("enemy_subgroup_mouse_entered", position_index, enemy_position_placemark)
 	
 func _on_enemy_position_placemark_mouse_exited(position_index: int, enemy_position_placemark: EnemyPositionPlacemark):
-	emit_signal("subgroup_mouse_exited", position_index, enemy_position_placemark)
-
-func _on_GroupButton_pressed():
-	show_positions()
-	
-func _on_EnemyPositionPlacemark_gui_input(event: InputEvent):
-	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_MIDDLE and event.pressed:
-			hide_positions()
+	emit_signal("enemy_subgroup_mouse_exited", position_index, enemy_position_placemark)
 
 func get_position_placemarks() -> Array:
 	return $EnemyPositionPlacemarksControl.get_children()
-	
-func show_positions() -> void:
-	$SubgroupButtonControl.visible = false
-	$EnemyPositionPlacemarksControl.visible = true
-	
-func hide_positions() -> void:
-	$SubgroupButtonControl.visible = true
-	$EnemyPositionPlacemarksControl.visible = false
 
 func _on_SubgroupButton_subgroup_selected():
-	show_positions()
+	show()
 	for child in $EnemyPositionPlacemarksControl.get_children():
-		assert(child is EnemyPositionPlacemark)
-		var position := child as EnemyPositionPlacemark
+		assert(child.get_child(0) is EnemyPositionPlacemark)
+		var position := child.get_child(0) as EnemyPositionPlacemark
 		position.select_all_placemarks()
 
 func _on_enemy_filter_changed(uppercase_filter_text: String):
@@ -81,3 +77,7 @@ func _on_enemy_filter_changed(uppercase_filter_text: String):
 				modulate = SelectedListManager.FILTER_MATCH_COLOR
 				return
 	modulate = SelectedListManager.FILTER_NONMATCH_COLOR
+
+
+func _on_EnemyPositionPlacemarksControl_gui_input(event):
+	._on_Control_gui_input(event)

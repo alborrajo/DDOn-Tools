@@ -1,8 +1,5 @@
-extends Control
-class_name GatheringSubgroupPlacemark
-
-signal subgroup_mouse_entered()
-signal subgroup_mouse_exited()
+extends ToggleablePlacemark
+class_name ToggleableGatheringSpotPlacemark
 
 const OM_UNIT_ID_ICONS = {
 	523907: "res://resources/items/ii000423/icon_item000010_ID.png", # Magic-sealed red chest locked with chains
@@ -109,53 +106,25 @@ func _ready():
 	assert(SelectedListManager.connect("item_filter_changed", self, "_on_item_filter_changed") == OK)
 
 func _set_gathering_spot(value: GatheringSpot) -> void:
+	if value == null:
+		return
+	
 	gathering_spot = value
 	
 	# Update icon and position
 	$MapControl.set_ddon_world_position(DataProvider.stage_id_to_stage_no(value.stage_id), value.coordinates)
 	if OM_UNIT_ID_ICONS.get(value.unit_id) != null:
-		$MapControl/GatheringTypeButton.icon = load(OM_UNIT_ID_ICONS[value.unit_id])
+		$MapControl/ToggleButton.icon = load(OM_UNIT_ID_ICONS[value.unit_id])
 	elif GATHERING_TYPE_ICONS[value.type] != null:
-		$MapControl/GatheringTypeButton.icon = load(GATHERING_TYPE_ICONS[value.type])
+		$MapControl/ToggleButton.icon = load(GATHERING_TYPE_ICONS[value.type])
 	else:
-		$MapControl/GatheringTypeButton.icon = load(UNKNOWN_ITEM_ICON)
+		$MapControl/ToggleButton.icon = load(UNKNOWN_ITEM_ICON)
 	
-	$GatheringSpotPlacemark.gathering_spot = value
+	$MapControl/Control/Panel/GatheringSpotPlacemark.gathering_spot = value
 
-func _on_GatheringSpotPlacemark_mouse_entered():
-	emit_signal("subgroup_mouse_entered")
-
-func _on_GatheringSpotPlacemark_mouse_exited():
-	emit_signal("subgroup_mouse_exited")
-
-func _on_GatheringTypeButton_mouse_entered():
-	emit_signal("subgroup_mouse_entered")
-
-func _on_GatheringTypeButton_mouse_exited():
-	emit_signal("subgroup_mouse_exited")
-	
-func _on_GatheringSpotPlacemark_closed():
-	hide_positions()
-
-func _on_GatheringTypeButton_pressed():
-	show_positions()
-
-func _on_GatheringSpotPlacemark_gui_input(event):
-	if event is InputEventMouseButton:
-		if event.button_index == BUTTON_MIDDLE and event.pressed:
-			hide_positions()
-
-func show_positions() -> void:
-	$MapControl/GatheringTypeButton.visible = false
-	$GatheringSpotPlacemark.visible = true
-	
-func hide_positions() -> void:
-	$MapControl/GatheringTypeButton.visible = true
-	$GatheringSpotPlacemark.visible = false
-
-func _on_GatheringTypeButton_subgroup_selected():
-	show_positions()
-	$GatheringSpotPlacemark.select_all_placemarks()
+func _on_ToggleButton_subgroup_selected():
+	._on_ToggleButton_subgroup_selected()
+	$MapControl/Control/Panel/GatheringSpotPlacemark.select_all_placemarks()
 
 
 func _on_item_filter_changed(uppercase_filter_text: String):
