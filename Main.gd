@@ -236,8 +236,10 @@ func _on_ui_player_activated(player: PlayerMapEntity):
 			$ui/left/tab/Stages/StageItemList.emit_signal("item_selected", stage_index)
 			# Move camera to player position
 			assert(camera_tween.remove_all())
-			_move_camera_to($MapCoordinateSpace/PlayerMarkers.get_player_node(player).rect_position)
-			return
+			var player_node = players_node.get_player_node(player)
+			if player_node != null:
+				_move_camera_to(player_node.rect_position)
+				return
 	printerr("Couldnt focus map on %s %s (StageNo: %s)" % [player.FirstName, player.LastName, player.StageNo])
 
 
