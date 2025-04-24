@@ -10,6 +10,7 @@ var _drops_tables := [] # TODO: Maybe use a dictionary instead
 var _enemy_sets := []
 var _enemy_set_templates := []
 var _gathering_spots := []
+var _shops := []
 var selected_day_night = 0
 
 func _ready():
@@ -105,6 +106,23 @@ func get_gathering_spot(stage_id: int, group_id: int, subgroup_id: int) -> Gathe
 
 func get_all_gathering_spots() -> Array:
 	return Array(_gathering_spots)
+
+
+func clear_shops() -> void:
+	for shop in _shops:
+		shop.clear_goods()
+		
+func get_shop(shop_id: int) -> Shop:
+	for shop in _shops:
+		if shop.id == shop_id:
+			return shop
+			
+	var shop := Shop.new(shop_id)
+	_shops.append(shop)
+	return shop
+	
+func get_all_shops() -> Array:
+	return Array(_shops)
 "
 
 [node name="SetProvider" type="Node"]

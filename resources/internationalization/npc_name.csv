@@ -1,0 +1,1070 @@
+keys,en,ja
+NPC_NAME_1,The White Dragon,白竜
+NPC_NAME_2,Mysial,ミシアル
+NPC_NAME_3,Klaus,クラウス
+NPC_NAME_4,Joseph,ジョゼフ
+NPC_NAME_5,Leo,レオ
+NPC_NAME_6,Iris,イリス
+NPC_NAME_7,Gerd,ゲルト
+NPC_NAME_8,Heinz,ハインツ
+NPC_NAME_9,Diamantes,ディアマンテス
+NPC_NAME_10,Theodor,テオドール
+NPC_NAME_11,Vanessa,ヴァネッサ
+NPC_NAME_12,Fabio,ファビオ
+NPC_NAME_13,Lise,リズ
+NPC_NAME_14,Mayleaf,メイリーフ
+NPC_NAME_15,Kieshildt,キースヒルト
+NPC_NAME_16,Mogok,モゴック
+NPC_NAME_17,Zuhl,ズール
+NPC_NAME_18,Diamantes,ディアマンテス
+NPC_NAME_500,Plum,プラム
+NPC_NAME_501,Gurdolin,ガルドリン
+NPC_NAME_502,Wandering Seeker,流浪の探究者
+NPC_NAME_503,Travers,トラバース
+NPC_NAME_504,White Knight,白衛騎士団員
+NPC_NAME_505,White Knight,白衛騎士団員
+NPC_NAME_506,White Knight,白衛騎士団員
+NPC_NAME_507,Strange Man,不気味な男
+NPC_NAME_508,Mysterious Girl,不思議な少女
+NPC_NAME_509,Peddler,行商人
+NPC_NAME_510,Man,男
+NPC_NAME_511,Man,男
+NPC_NAME_512,Woman,女
+NPC_NAME_513,Christoph,クリストフ
+NPC_NAME_514,Thomas,トマス
+NPC_NAME_515,August,オーギュスト
+NPC_NAME_516,Dalia,ダリア
+NPC_NAME_517,Dubois,デュボワ
+NPC_NAME_518,Marquis,マルキス
+NPC_NAME_519,Freya,フレイア
+NPC_NAME_520,Lent,レント
+NPC_NAME_521,Kiefer,キーファー
+NPC_NAME_522,Bandit,盗賊
+NPC_NAME_523,Lingering Skeleton,たたずむスケルトン
+NPC_NAME_524,Skeleton,スケルトン
+NPC_NAME_525,Skeleton,スケルトン
+NPC_NAME_526,Weary Harpy,物憂げなハーピー
+NPC_NAME_527,Dubois,デュボワ
+NPC_NAME_528,Morten,モルテン
+NPC_NAME_529,Arisen Corps Regimental Soldier,覚者隊の隊士
+NPC_NAME_530,Arisen Corps Regimental Soldier,覚者隊の隊士
+NPC_NAME_531,Arisen Corps Regimental Soldier,覚者隊の隊士
+NPC_NAME_532,Arisen Corps Regimental Soldier,覚者隊の隊士
+NPC_NAME_533,Arisen Corps Regimental Soldier,覚者隊の隊士
+NPC_NAME_534,Arisen Corps Regimental Soldier,覚者隊の隊士
+NPC_NAME_535,Arisen Corps Regimental Soldier,覚者隊の隊士
+NPC_NAME_536,Soldier,戦士
+NPC_NAME_537,Soldier,戦士
+NPC_NAME_538,Female Soldier,女性戦士
+NPC_NAME_539,Lightly-Equipped Soldier,軽装の戦士
+NPC_NAME_540,Lightly-Equipped Female Soldier,軽装の女戦士
+NPC_NAME_541,Hunter,ハンター
+NPC_NAME_542,Traveling Female Hunter,旅の女性ハンター
+NPC_NAME_543,Sorcerer,魔術師
+NPC_NAME_544,Sorcerer,魔術師
+NPC_NAME_545,Priest,神官
+NPC_NAME_546,Female Priest,女性神官
+NPC_NAME_900,Lifeless Villager,息絶えた村人
+NPC_NAME_901,Lifeless Villager,息絶えた村人
+NPC_NAME_902,Lifeless Villager,息絶えた村人
+NPC_NAME_903,Lifeless Villager,息絶えた村人
+NPC_NAME_904,Lifeless Villager,息絶えた村人
+NPC_NAME_905,Lifeless Knight,息絶えた騎士
+NPC_NAME_906,Lifeless Knight,息絶えた騎士
+NPC_NAME_907,Lifeless Knight,息絶えた騎士
+NPC_NAME_908,Lifeless Arisen,息絶えた覚者
+NPC_NAME_909,Lifeless Arisen,息絶えた覚者
+NPC_NAME_910,Jonas,ジョナス
+NPC_NAME_911,Lifeless Arisen,息絶えた覚者
+NPC_NAME_1000,Emilia,エミリア
+NPC_NAME_1001,Colette,コレット
+NPC_NAME_1002,Ferguson,ファーガソン
+NPC_NAME_1003,Pamela,パメラ
+NPC_NAME_1004,Morris,モーリス
+NPC_NAME_1005,Kittredge,キトリッジ
+NPC_NAME_1006,Vicelot,ヴァイスロット
+NPC_NAME_1007,Owen,オーウェン
+NPC_NAME_1008,Mel,メル
+NPC_NAME_1009,Joanna,ジョアンナ
+NPC_NAME_1010,Tonio,トニオ
+NPC_NAME_1011,Kibiza,キビザ
+NPC_NAME_1012,Nancy,ナンシー
+NPC_NAME_1013,Seneka,セネカ
+NPC_NAME_1014,Nestor,ネストーレ
+NPC_NAME_1015,Hilde,ヒルデ
+NPC_NAME_1016,Duke,デューク
+NPC_NAME_1017,Logan,ローガン
+NPC_NAME_1018,Milburn,ミルバーン
+NPC_NAME_1019,Karno,カルノ
+NPC_NAME_1020,Hancock,ハンコック
+NPC_NAME_1021,Freddy,フレディー
+NPC_NAME_1022,Charleston,チャールストン
+NPC_NAME_1023,Lucina,ルチーナ
+NPC_NAME_1024,Barton,バートン
+NPC_NAME_1025,Cornelia,コーネリア
+NPC_NAME_1026,Sonia,ソニア
+NPC_NAME_1027,Alan,アラン
+NPC_NAME_1028,Archibald,アーチボルト
+NPC_NAME_1029,Renton,レンテン
+NPC_NAME_1030,Cameron,キャメロン
+NPC_NAME_1031,Allen,アレン
+NPC_NAME_1032,Gilliam,ギリアム
+NPC_NAME_1033,McCormick,マコーミック
+NPC_NAME_1034,Lapis,ラピス
+NPC_NAME_1035,Zerkin,ゼルキン
+NPC_NAME_1036,Volden,ボルドー
+NPC_NAME_1037,Gershwin,ガーシュウィン
+NPC_NAME_1038,Pitt,ピット
+NPC_NAME_1039,Moana,モアナ
+NPC_NAME_1200,Walter,ウォルター
+NPC_NAME_1201,Rosa,ローザ
+NPC_NAME_1202,Harold,ハロルド
+NPC_NAME_1203,Persimmon,パーシモン
+NPC_NAME_1204,Mystera,ミステラ
+NPC_NAME_1205,O'Neill,オニール
+NPC_NAME_1206,Akim,アキム
+NPC_NAME_1207,Yuni,ユニ
+NPC_NAME_1208,Gloria,グロリア
+NPC_NAME_1209,Thales,ターレス
+NPC_NAME_1210,Freud,フロイト
+NPC_NAME_1211,Anise,アニス
+NPC_NAME_1212,Chloe,クロエ
+NPC_NAME_1300,Loura,ローラ
+NPC_NAME_1301,Pedro,ペドロ
+NPC_NAME_1302,Federico,フェデルコ
+NPC_NAME_1303,Eterna,エテルナ
+NPC_NAME_1304,Norman,ノーマン
+NPC_NAME_1305,Henry,ヘンリー
+NPC_NAME_1306,Myra,マイラ
+NPC_NAME_1307,Bob,ボブ
+NPC_NAME_1308,Nikki,ニキ
+NPC_NAME_1309,Gordon,ゴートン
+NPC_NAME_1310,Nathaniel,ナサニエル
+NPC_NAME_1311,Josh,ジョシュ
+NPC_NAME_1400,Miranda,ミランダ
+NPC_NAME_1401,Yanks,ヤンクス
+NPC_NAME_1402,Barclay,バークレイ
+NPC_NAME_1403,Alkane,アルカン
+NPC_NAME_1404,Melissa,メリッサ
+NPC_NAME_1405,Cedric,セドリック
+NPC_NAME_1406,Ecole,エコール
+NPC_NAME_1407,Gash,ガッシュ
+NPC_NAME_1408,Mahal,マハル
+NPC_NAME_1409,Sanya,サーニャ
+NPC_NAME_1410,Cain,カイン
+NPC_NAME_1411,Alma,アルマ
+NPC_NAME_1500,Gray,グレイ
+NPC_NAME_1501,Flavell,フラベル
+NPC_NAME_1502,Urda,ウルダ
+NPC_NAME_1503,Mubarak,ムバラク
+NPC_NAME_1504,Goltas,ゴルタス
+NPC_NAME_1505,Gibson,ギブソン
+NPC_NAME_1506,Toby,トビー
+NPC_NAME_1507,Normel,ノーメル
+NPC_NAME_1600,Dorothea,ドロテア
+NPC_NAME_1601,Raul,ラウル
+NPC_NAME_1602,Chunk,チャンク
+NPC_NAME_1603,Livian,リビアン
+NPC_NAME_1604,Roy,ロイ
+NPC_NAME_1605,Kennec,ケネック
+NPC_NAME_1606,Sisley,シスレー
+NPC_NAME_1607,Eugene,ユージーン
+NPC_NAME_1608,Nelson,ネルソン
+NPC_NAME_1609,Nirvana,ニルヴァーナ
+NPC_NAME_1610,Serea,セレア
+NPC_NAME_1611,Hannah,ハンナ
+NPC_NAME_1612,Miles,マイルズ
+NPC_NAME_1613,Bridgette,ブリジット
+NPC_NAME_1614,Hawthorne,ホーソーン
+NPC_NAME_1615,Giselle,ジゼル
+NPC_NAME_1616,Shalom,シャロム
+NPC_NAME_1617,Margaret,マーガレット
+NPC_NAME_1618,Francesca,フランチェスカ
+NPC_NAME_1619,Cromwell,クロムウェル
+NPC_NAME_1620,Neia,ネイア
+NPC_NAME_1700,Emporio,エンポリオ
+NPC_NAME_1701,Sunny,サニー
+NPC_NAME_1702,Brandon,ブランドン
+NPC_NAME_1703,Gort,ゴート
+NPC_NAME_1704,Regina,レジーナ
+NPC_NAME_1705,Johann,ヨハン
+NPC_NAME_1706,Rocher,ローシェ
+NPC_NAME_1707,Jordan,ジョーダン
+NPC_NAME_1708,Augusto,アウグスト
+NPC_NAME_1800,Oswald,オズワルド
+NPC_NAME_1801,Casey,ケイシー
+NPC_NAME_1802,Isabel,イザベル
+NPC_NAME_1803,Poe,ポー
+NPC_NAME_1804,Lyonnet,ライオネット
+NPC_NAME_1805,Dion,ダイアン
+NPC_NAME_1806,Zeppeli,ツエッペリ
+NPC_NAME_1807,Rick,リック
+NPC_NAME_1808,Sonya,ソーニャ
+NPC_NAME_1809,Oliver,オリバー
+NPC_NAME_1810,Sheryn,シェリン
+NPC_NAME_1811,Nadia,ナディア
+NPC_NAME_1812,Salamis,サラミス
+NPC_NAME_1813,Majori,マジョリー
+NPC_NAME_1900,Cyrus,サイラス
+NPC_NAME_1901,Talcott,タルコット
+NPC_NAME_1902,Stark,スターク
+NPC_NAME_1903,Ridley,リドリー
+NPC_NAME_1904,Dikka,ディッカ
+NPC_NAME_1905,Scherzo,スケルツォ
+NPC_NAME_1906,Heston,ヘストン
+NPC_NAME_2000,Gilstan,ギルスタン
+NPC_NAME_2001,Ugau,ウガウ
+NPC_NAME_2002,Baranja,バランジャ
+NPC_NAME_2003,Zutan,ズタン
+NPC_NAME_2004,Surabo,スラボ
+NPC_NAME_2005,Babo,バボ
+NPC_NAME_2006,Torogga,トロッガ
+NPC_NAME_2007,Wango,ワンゴ
+NPC_NAME_2100,Nicola,ニコラ
+NPC_NAME_2101,Deredo,デレード
+NPC_NAME_2102,Alvar,アルヴァー
+NPC_NAME_2103,Sera,セラ
+NPC_NAME_2104,Thomason,トマソン
+NPC_NAME_2105,Susanna,スザンナ
+NPC_NAME_2106,Nabal,ナバル
+NPC_NAME_2107,Camus,カミュ
+NPC_NAME_2108,Julienne,ジュリエンヌ
+NPC_NAME_2200,General Orc,ジェネラルオーク
+NPC_NAME_2201,Captain Orc,キャプテンオーク
+NPC_NAME_2202,Orc,オーク
+NPC_NAME_2203,Orc,オーク
+NPC_NAME_2204,Orc,オーク
+NPC_NAME_2300,Actaeon,アクタイオン
+NPC_NAME_2301,Beatrix,ベアトリクス
+NPC_NAME_2302,Iosef,イオセフ
+NPC_NAME_2303,Ariadne,アリアドネ
+NPC_NAME_2304,Metrophanes,メトロファネス
+NPC_NAME_4500,Rudolfo,ルドルフォ
+NPC_NAME_4501,Emerada,エメラダ
+NPC_NAME_4502,Ringdeel,リングディール
+NPC_NAME_4503,Ivan,イヴァン
+NPC_NAME_4504,Bayard,バイヤール
+NPC_NAME_4505,Chester,チェスター
+NPC_NAME_4506,Christine,クリスティーヌ
+NPC_NAME_4507,Dian,ダイオン
+NPC_NAME_5000,,
+NPC_NAME_5001,,
+NPC_NAME_6000,Demo NPC,自分中心　デモ枠1
+NPC_NAME_6001,Demo NPC,自分中心　デモ枠2
+NPC_NAME_6002,Demo NPC,自分中心　デモ枠3
+NPC_NAME_6003,Demo NPC,自分中心　デモ枠4
+NPC_NAME_6004,Demo NPC,自分中心　デモ枠5
+NPC_NAME_6005,Demo NPC,自分中心　デモ枠6
+NPC_NAME_6006,Demo NPC,自分中心　デモ枠7
+NPC_NAME_6007,Demo NPC,自分中心　デモ枠8
+NPC_NAME_6100,Demo NPC,メンバー共通　デモ枠1
+NPC_NAME_6101,Demo NPC,メンバー共通　デモ枠2
+NPC_NAME_6102,Demo NPC,メンバー共通　デモ枠3
+NPC_NAME_6103,Demo NPC,メンバー共通　デモ枠4
+NPC_NAME_6104,Demo NPC,メンバー共通　デモ枠5
+NPC_NAME_6105,Demo NPC,メンバー共通　デモ枠6
+NPC_NAME_6106,Demo NPC,メンバー共通　デモ枠7
+NPC_NAME_6107,Demo NPC,メンバー共通　デモ枠8
+NPC_NAME_7000,Crafter NPC,クラフトリーダー1
+NPC_NAME_7001,Crafter NPC,クラフトリーダー2
+NPC_NAME_7002,Crafter NPC,クラフトリーダー3
+NPC_NAME_7003,Crafter NPC,クラフトリーダー4
+NPC_NAME_7004,Crafter NPC,クラフトリーダー5
+NPC_NAME_7005,Crafter NPC,クラフトリーダー6
+NPC_NAME_7006,Crafter NPC,クラフトサポート1
+NPC_NAME_7007,Crafter NPC,クラフトサポート2
+NPC_NAME_7008,Crafter NPC,クラフトサポート3
+NPC_NAME_7009,Crafter NPC,クラフトサポート4
+NPC_NAME_7010,Crafter NPC,クラフトサポート5
+NPC_NAME_7011,Crafter NPC,クラフトサポート6
+NPC_NAME_7012,Crafter NPC,クラフトサポート7
+NPC_NAME_7013,Crafter NPC,クラフトサポート8
+NPC_NAME_7014,Crafter NPC,クラフトサポート9
+NPC_NAME_7015,Crafter NPC,クラフトサポート10
+NPC_NAME_7016,Crafter NPC,クラフトサポート11
+NPC_NAME_7017,Crafter NPC,クラフトサポート12
+NPC_NAME_7018,Crafter NPC,クラフトサポート13
+NPC_NAME_7019,Crafter NPC,クラフトサポート14
+NPC_NAME_8000,Stray pawn,野良ポーン1
+NPC_NAME_8001,Stray pawn,野良ポーン2
+NPC_NAME_8002,Stray pawn,野良ポーン3
+NPC_NAME_8003,Stray pawn,野良ポーン4
+NPC_NAME_8004,Stray pawn,野良ポーン5
+NPC_NAME_8005,Stray pawn,野良ポーン6
+NPC_NAME_8006,Stray pawn,野良ポーン7
+NPC_NAME_8007,Stray pawn,野良ポーン8
+NPC_NAME_8008,Stray pawn,野良ポーン9
+NPC_NAME_8009,Stray pawn,野良ポーン10
+NPC_NAME_8010,Stray pawn,野良ポーン11
+NPC_NAME_8011,Stray pawn,野良ポーン12
+NPC_NAME_8012,Stray pawn,野良ポーン13
+NPC_NAME_8013,Stray pawn,野良ポーン14
+NPC_NAME_8014,Stray pawn,野良ポーン15
+NPC_NAME_8015,Stray pawn,野良ポーン16
+NPC_NAME_8016,Stray pawn,野良ポーン17
+NPC_NAME_8017,Stray pawn,野良ポーン18
+NPC_NAME_8018,Stray pawn,野良ポーン19
+NPC_NAME_8019,Stray pawn,野良ポーン20
+NPC_NAME_8020,Stray pawn,野良ポーン21
+NPC_NAME_8021,Stray pawn,野良ポーン22
+NPC_NAME_8022,Stray pawn,野良ポーン23
+NPC_NAME_8023,Stray pawn,野良ポーン24
+NPC_NAME_8024,Stray pawn,野良ポーン25
+NPC_NAME_8025,Stray pawn,野良ポーン26
+NPC_NAME_8026,Stray pawn,野良ポーン27
+NPC_NAME_8027,Stray pawn,野良ポーン28
+NPC_NAME_8028,Stray pawn,野良ポーン29
+NPC_NAME_8029,Stray pawn,野良ポーン30
+NPC_NAME_8030,Stray pawn,野良ポーン31
+NPC_NAME_8031,Stray pawn,野良ポーン32
+NPC_NAME_8032,Stray pawn,野良ポーン33
+NPC_NAME_8033,Stray pawn,野良ポーン34
+NPC_NAME_8034,Stray pawn,野良ポーン35
+NPC_NAME_8035,Stray pawn,野良ポーン36
+NPC_NAME_8036,Stray pawn,野良ポーン37
+NPC_NAME_8037,Stray pawn,野良ポーン38
+NPC_NAME_8038,Stray pawn,野良ポーン39
+NPC_NAME_8039,Stray pawn,野良ポーン40
+NPC_NAME_8040,Stray pawn,野良ポーン41
+NPC_NAME_8041,Stray pawn,野良ポーン42
+NPC_NAME_8042,Stray pawn,野良ポーン43
+NPC_NAME_8043,Stray pawn,野良ポーン44
+NPC_NAME_8044,Stray pawn,野良ポーン45
+NPC_NAME_8045,Stray pawn,野良ポーン46
+NPC_NAME_8046,Stray pawn,野良ポーン47
+NPC_NAME_8047,Stray pawn,野良ポーン48
+NPC_NAME_8048,Stray pawn,野良ポーン49
+NPC_NAME_8049,Stray pawn,野良ポーン50
+NPC_NAME_8050,Stray pawn,野良ポーン51
+NPC_NAME_8051,Stray pawn,野良ポーン52
+NPC_NAME_8052,Stray pawn,野良ポーン53
+NPC_NAME_8053,Stray pawn,野良ポーン54
+NPC_NAME_8054,Stray pawn,野良ポーン55
+NPC_NAME_8055,Stray pawn,野良ポーン56
+NPC_NAME_8056,Stray pawn,野良ポーン57
+NPC_NAME_8057,Stray pawn,野良ポーン58
+NPC_NAME_8058,Stray pawn,野良ポーン59
+NPC_NAME_8059,Stray pawn,野良ポーン60
+NPC_NAME_8060,Stray pawn,野良ポーン61
+NPC_NAME_8061,Stray pawn,野良ポーン62
+NPC_NAME_8062,Stray pawn,野良ポーン63
+NPC_NAME_8063,Stray pawn,野良ポーン64
+NPC_NAME_8064,Stray pawn,野良ポーン65
+NPC_NAME_8065,Stray pawn,野良ポーン66
+NPC_NAME_8066,Stray pawn,野良ポーン67
+NPC_NAME_8067,Stray pawn,野良ポーン68
+NPC_NAME_8068,Stray pawn,野良ポーン69
+NPC_NAME_8069,Stray pawn,野良ポーン70
+NPC_NAME_8070,Stray pawn,野良ポーン71
+NPC_NAME_8071,Stray pawn,野良ポーン72
+NPC_NAME_8072,Stray pawn,野良ポーン73
+NPC_NAME_8073,Stray pawn,野良ポーン74
+NPC_NAME_8074,Stray pawn,野良ポーン75
+NPC_NAME_8075,Stray pawn,野良ポーン76
+NPC_NAME_8076,Stray pawn,野良ポーン77
+NPC_NAME_8077,Stray pawn,野良ポーン78
+NPC_NAME_8078,Stray pawn,野良ポーン79
+NPC_NAME_8079,Stray pawn,野良ポーン80
+NPC_NAME_8080,Stray pawn,野良ポーン81
+NPC_NAME_8081,Stray pawn,野良ポーン82
+NPC_NAME_8082,Stray pawn,野良ポーン83
+NPC_NAME_8083,Stray pawn,野良ポーン84
+NPC_NAME_8084,Stray pawn,野良ポーン85
+NPC_NAME_8085,Stray pawn,野良ポーン86
+NPC_NAME_8086,Stray pawn,野良ポーン87
+NPC_NAME_8087,Stray pawn,野良ポーン88
+NPC_NAME_8088,Stray pawn,野良ポーン89
+NPC_NAME_8089,Stray pawn,野良ポーン90
+NPC_NAME_8090,Stray pawn,野良ポーン91
+NPC_NAME_8091,Stray pawn,野良ポーン92
+NPC_NAME_8092,Stray pawn,野良ポーン93
+NPC_NAME_8093,Stray pawn,野良ポーン94
+NPC_NAME_8094,Stray pawn,野良ポーン95
+NPC_NAME_8095,Stray pawn,野良ポーン96
+NPC_NAME_8096,Stray pawn,野良ポーン97
+NPC_NAME_8097,Stray pawn,野良ポーン98
+NPC_NAME_8098,Stray pawn,野良ポーン99
+NPC_NAME_8099,Stray pawn,野良ポーン100
+NPC_NAME_9000,Stray pawn,救出ポーン1
+NPC_NAME_9001,Salvage pawn,救出ポーン2
+NPC_NAME_9002,Salvage pawn,救出ポーン3
+NPC_NAME_9003,Salvage pawn,救出ポーン4
+NPC_NAME_9004,Salvage pawn,救出ポーン5
+NPC_NAME_9005,Salvage pawn,救出ポーン6
+NPC_NAME_9006,Salvage pawn,救出ポーン7
+NPC_NAME_9007,Salvage pawn,救出ポーン8
+NPC_NAME_9008,Salvage pawn,救出ポーン9
+NPC_NAME_9009,Salvage pawn,救出ポーン10
+NPC_NAME_9010,Co-op pawn,共闘ポーン1
+NPC_NAME_1040,Hicks,ヒックス
+NPC_NAME_1312,Donnell,ドネル
+NPC_NAME_7020,Crafter NPC,クラフトサポート15
+NPC_NAME_7021,Crafter NPC,クラフトサポート16
+NPC_NAME_7022,Crafter NPC,クラフトサポート17
+NPC_NAME_7023,Crafter NPC,クラフトサポート18
+NPC_NAME_7024,Waiting pawn,待機ポーン１
+NPC_NAME_7025,Waiting pawn,待機ポーン2
+NPC_NAME_7026,Waiting pawn,待機ポーン3
+NPC_NAME_7027,Waiting pawn,待機ポーン4
+NPC_NAME_7028,Waiting pawn,待機ポーン5
+NPC_NAME_7029,Waiting pawn,待機ポーン6
+NPC_NAME_7030,Waiting pawn,待機ポーン7
+NPC_NAME_7031,Waiting pawn,待機ポーン8
+NPC_NAME_7032,Waiting pawn,待機ポーン9
+NPC_NAME_7033,Waiting pawn,待機ポーン10
+NPC_NAME_7034,Waiting pawn,待機ポーン11
+NPC_NAME_7035,Waiting pawn,待機ポーン12
+NPC_NAME_7036,Waiting pawn,待機ポーン13
+NPC_NAME_7037,Waiting pawn,待機ポーン14
+NPC_NAME_7038,Waiting pawn,待機ポーン15
+NPC_NAME_7039,Waiting pawn,待機ポーン16
+NPC_NAME_7040,Waiting pawn,待機ポーン17
+NPC_NAME_7041,Waiting pawn,待機ポーン18
+NPC_NAME_7042,Waiting pawn,待機ポーン19
+NPC_NAME_7043,Waiting pawn,待機ポーン20
+NPC_NAME_2010,Goblin,ゴブリン
+NPC_NAME_1313,Alfred,アルフレド
+NPC_NAME_1412,Patricia,パトリシア
+NPC_NAME_1508,Hayden,ヘイデン
+NPC_NAME_4508,Rondejeel,ロンドジール
+NPC_NAME_547,Wilson,ウィルソン
+NPC_NAME_19,Golgorran,ゴルゴラン
+NPC_NAME_1041,Ellen,エリン
+NPC_NAME_4700,Harvey,ハーヴェイ
+NPC_NAME_4701,Guardian Priest of the Wasteland,禁域守の神官
+NPC_NAME_4702,Ophelia,オフィリア
+NPC_NAME_4703,Temple Bystander,神殿女：予備枠
+NPC_NAME_4707,Culture A: Male 4,文化Ａ：男4
+NPC_NAME_4706,Gregory,グレゴリー
+NPC_NAME_4705,Carl,カール
+NPC_NAME_4704,Luchino,ルキーノ
+NPC_NAME_4711,Shelly,シェリー
+NPC_NAME_4710,Natalia,ナタリア
+NPC_NAME_4709,Sally,サリー
+NPC_NAME_4708,Culture A: Male 5,文化Ａ：男5
+NPC_NAME_4713,Culture A: Female 5,文化Ａ：女5
+NPC_NAME_4712,Culture A: Female 4,文化Ａ：女4
+NPC_NAME_4714,Angelo,アンジェロ
+NPC_NAME_4715,"Culture B: Male 2, Lumberjack",文化Ｂ：男2　きこり系
+NPC_NAME_4716,Culture B: Male 3 Mining,文化Ｂ：男3　鉱山系
+NPC_NAME_4717,"Culture C: Male 1, Nautical",文化Ｃ：男1　海系
+NPC_NAME_4718,"Culture C: Male 2, Nautical",文化Ｃ：男2　海系
+NPC_NAME_4719,Culture C: Male 3 Half-naked,文化Ｃ：男3　半裸系
+NPC_NAME_4720,Aidas,エイダス
+NPC_NAME_4721,Aristocrat 2,貴族2
+NPC_NAME_4722,Aristocrat 3,貴族3
+NPC_NAME_4723,Swimming 1,お水系1
+NPC_NAME_4724,Swimming 2,お水系2
+NPC_NAME_4725,Marisa,マリサ
+NPC_NAME_4726,Julia,ジュリア
+NPC_NAME_4733,Arisen Corps Regimental Soldier,覚者隊の隊士
+NPC_NAME_4732,Arisen Corps Regimental Soldier,覚者隊の隊士
+NPC_NAME_4731,Arisen Corps Regimental Soldier,覚者隊の隊士
+NPC_NAME_4730,Arisen Corps Regimental Soldier,覚者隊の隊士
+NPC_NAME_4729,White Knights 3,白衛騎士団3
+NPC_NAME_4728,Charles,チャールズ
+NPC_NAME_4727,Messenger,不在伝言係
+NPC_NAME_4734,Arisen Corps Regimental Soldier,覚者隊の隊士
+NPC_NAME_4735,Ludovika,ルドヴィカ
+NPC_NAME_4739,Female Alchemist 2,術士　女2
+NPC_NAME_4738,Female Alchemist 1,術士　女1
+NPC_NAME_4737,Male Alchemist 1,術士　男2
+NPC_NAME_4736,Arisen Corps Regimental Soldier,覚者隊の隊士
+NPC_NAME_4743,Bewitching Alchemist,妖艶な錬金術師
+NPC_NAME_4742,Eunike,エウニケ
+NPC_NAME_4741,People of the Dead City,亡都の民
+NPC_NAME_4740,Alchemist of the Dead City,亡都の錬金術師
+NPC_NAME_4747,Lightly dressed Female 2,薄着　女2
+NPC_NAME_4746,Lightly dressed Female 1,薄着　女1
+NPC_NAME_4745,Lightly dressed Male 2,薄着　男2
+NPC_NAME_4744,Abram,エイブラム
+NPC_NAME_4748,Suspicious Goblin,怪しいゴブリン
+NPC_NAME_4749,Orc,オーク
+NPC_NAME_5107,Sexy Pawn,ポーン会話用セクシー
+NPC_NAME_5106,Wild Pawn,ポーン会話用ワイルド
+NPC_NAME_5105,Pure Pawn,ポーン会話用ピュア
+NPC_NAME_5104,Cool Pawn,ポーン会話用クール
+NPC_NAME_5103,Smart Pawn,ポーン会話用スマート
+NPC_NAME_5102,Active Pawn,ポーン会話用アクティブ
+NPC_NAME_5101,Shy Pawn,ポーン会話用シャイ
+NPC_NAME_5100,Normal Pawn,ポーン会話用ノーマル
+NPC_NAME_1042,Seabell,シーベル
+NPC_NAME_1213,Mario,マリオ
+NPC_NAME_1621,Lucy,ルーシー
+NPC_NAME_1622,Isap,イサップ
+NPC_NAME_1814,Lara,ララ
+NPC_NAME_2008,Buggu,ブッグ
+NPC_NAME_2009,Gogo,ゴーゴ
+NPC_NAME_8100,Man,男性
+NPC_NAME_8101,Woman,女性
+NPC_NAME_8108,Miner,鉱員
+NPC_NAME_8107,Farmer,農夫
+NPC_NAME_8106,Senior Couple,老夫婦
+NPC_NAME_8105,Woman with children,子供連れの女性
+NPC_NAME_8104,Scared Woman,おびえた様子の女性
+NPC_NAME_8103,Drunk Man,酔っぱらった男
+NPC_NAME_8102,Injured Man,負傷した男性
+NPC_NAME_8122,Musician,音楽家
+NPC_NAME_8121,Passing Traveler,通りすがりの旅人
+NPC_NAME_8120,Traveler,旅人
+NPC_NAME_8119,Sorcerer,魔術師
+NPC_NAME_8118,Injured Soldier,負傷した戦士
+NPC_NAME_8117,Soldier,戦士
+NPC_NAME_8116,Nobleman,貴族
+NPC_NAME_8115,Merchant,商人
+NPC_NAME_8114,Apprentice Arisen,見習い覚者
+NPC_NAME_8113,Arisen,覚者
+NPC_NAME_8112,Bounty Hunter,賞金稼ぎ
+NPC_NAME_8111,Adventurer,冒険者
+NPC_NAME_8110,Priest,神官
+NPC_NAME_8109,Villager,村人
+NPC_NAME_8123,Boy,少年
+NPC_NAME_8124,Girl,少女
+NPC_NAME_8125,Knight,騎士
+NPC_NAME_8126,Apprentice Knight,見習い騎士
+NPC_NAME_8127,Senior Knight,古参の騎士
+NPC_NAME_8128,Veteran Knight,歴戦の戦士
+NPC_NAME_8129,Veteran Arisen,古参の覚者
+NPC_NAME_8130,Old Woman,老婦
+NPC_NAME_8131,Drunk Woman,酔っぱらった女
+NPC_NAME_8132,Hunter,狩人
+NPC_NAME_8133,Lumberjack,木こり
+NPC_NAME_8134,Bandit,盗賊
+NPC_NAME_8135,Tavern Woman,酒場の女
+NPC_NAME_8136,Poet,詩人
+NPC_NAME_8137,Smith,鍛冶職人
+NPC_NAME_8138,Man in rags,ボロをまとった男
+NPC_NAME_8139,Female Soldier,女戦士
+NPC_NAME_8140,Bystander,目撃者予備枠18
+NPC_NAME_8141,Bystander,目撃者予備枠19
+NPC_NAME_8142,Bystander,目撃者予備枠20
+NPC_NAME_8143,Bystander,目撃者予備枠21
+NPC_NAME_8144,Bystander,目撃者予備枠22
+NPC_NAME_8145,Bystander,目撃者予備枠23
+NPC_NAME_8146,Bystander,目撃者予備枠24
+NPC_NAME_8147,Bystander,目撃者予備枠25
+NPC_NAME_8148,Bystander,目撃者予備枠26
+NPC_NAME_8149,Bystander,目撃者予備枠27
+NPC_NAME_8150,Bystander,目撃者予備枠28
+NPC_NAME_8151,Bystander,目撃者予備枠29
+NPC_NAME_8152,Bystander,目撃者予備枠30
+NPC_NAME_9011,Second Pawn,セカンドポーン
+NPC_NAME_9012,Co-op NPC,共闘セット用NPC
+NPC_NAME_0,,
+NPC_NAME_912,Grand Ent,グランエント
+NPC_NAME_20,Cecily,セシリー
+NPC_NAME_21,Elliot,エリオット
+NPC_NAME_22,Loeg,ロイグ
+NPC_NAME_23,Gearóid,ガラダ
+NPC_NAME_24,Black Knight,黒騎士
+NPC_NAME_25,Altered Zuhl,アルタード・ズール
+NPC_NAME_26,Phantasmic Great Dragon,淀みし大竜力
+NPC_NAME_27,Spirit Dragon Willmia,精霊竜ウィルミア
+NPC_NAME_28,Spirit Dragon Cecily,精霊竜セシリー
+NPC_NAME_548,Lyka,リュカ
+NPC_NAME_549,Bertrand,ベルトラン
+NPC_NAME_550,Isaac,アイザック
+NPC_NAME_551,End Content NPC,エンド誘導予備1
+NPC_NAME_552,End Content NPC,エンド誘導予備2
+NPC_NAME_553,End Content NPC,エンド誘導予備3
+NPC_NAME_554,Inataya,イナタイヤ
+NPC_NAME_555,Braden,ブレーデン
+NPC_NAME_556,Enna,エンナ
+NPC_NAME_557,Gobinet,ゴビネット
+NPC_NAME_558,Mole,モル
+NPC_NAME_559,Dirith,ディリス
+NPC_NAME_560,Corentin,コランタン
+NPC_NAME_561,Sullivan,サリヴァン
+NPC_NAME_562,Glenis,グリニス
+NPC_NAME_563,Ifa,イーファ
+NPC_NAME_913,Man Seeking Help,助けを求める男
+NPC_NAME_914,Caradoc,カラドック
+NPC_NAME_915,Hefina,ヘフィーナ
+NPC_NAME_916,Eluned,エルネド
+NPC_NAME_917,Lorcan,ロルカン
+NPC_NAME_918,Glenner,グレナー
+NPC_NAME_1043,Sebastian,セバスチャン
+NPC_NAME_1044,Mary,メアリー
+NPC_NAME_1045,Paris Hart,パリスハルト
+NPC_NAME_1046,Lluvia,ルヴィア
+NPC_NAME_2400,Clarissa,クラリッサ
+NPC_NAME_2401,Gunther,ギュンター
+NPC_NAME_2402,Rolf,ロルフ
+NPC_NAME_2403,Sven,スヴェン
+NPC_NAME_2500,Pisarr,ピサル
+NPC_NAME_2501,Razanailt,ラザネイル
+NPC_NAME_2502,Audran,オドラン
+NPC_NAME_2503,Evey,イーヴィ
+NPC_NAME_2504,Flannan,フラナン
+NPC_NAME_2505,Lewela,レウェラ
+NPC_NAME_2506,Marhon,マーホン
+NPC_NAME_2507,Fionn,フィン
+NPC_NAME_2508,Wine,ワイニ
+NPC_NAME_2509,Oria,オリア
+NPC_NAME_2510,Dewey,デューイ
+NPC_NAME_2511,Etna,エトナ
+NPC_NAME_2600,Arthfael,アルトフェイル
+NPC_NAME_2601,Dingus,ディンガス
+NPC_NAME_2602,Milan,ミラン
+NPC_NAME_2603,Suronya,スローニャ
+NPC_NAME_2604,Thorin,トリン
+NPC_NAME_2605,Ultan,ウルタン
+NPC_NAME_2606,Finbar,フィンバー
+NPC_NAME_2607,Reich,ライシュ
+NPC_NAME_2608,Zolta,ゾルタ
+NPC_NAME_2609,Winnie,ウィニー
+NPC_NAME_2610,Mordred,モードレッド
+NPC_NAME_2700,Ciarán,キアラン
+NPC_NAME_2701,Maeve,メーヴ
+NPC_NAME_2702,Conan,コナーン
+NPC_NAME_2703,Shena,シェナ
+NPC_NAME_2704,Nave,ナーヴ
+NPC_NAME_2708,Adelin,アデリン
+NPC_NAME_2705,Oengus,オイングス
+NPC_NAME_2706,Mavail,マヴェイル
+NPC_NAME_2707,Boadicea,ボーデシア
+NPC_NAME_2620,Doherty,ドハティ
+NPC_NAME_2621,Maia,マイア
+NPC_NAME_2622,Terg,ターグ
+NPC_NAME_2550,Gas,ガス
+NPC_NAME_2551,Albe,アルベ
+NPC_NAME_2552,Vora,ヴォーラ
+NPC_NAME_2553,Gon,ゴーン
+NPC_NAME_2554,Hough,ハフ
+NPC_NAME_2555,Darin,ダリン
+NPC_NAME_2556,Henin,エナン
+NPC_NAME_2756,Videlia,ビデリア
+NPC_NAME_2750,Gwenhwyfar,グェネイラ
+NPC_NAME_2751,Gilroy,ギルロイ
+NPC_NAME_2752,Oona,ウーナ
+NPC_NAME_2753,Berenas,ベレナス
+NPC_NAME_2754,Lyam,ライアム
+NPC_NAME_2755,Daren,ダレン
+NPC_NAME_4509,Musel,ミューセル
+NPC_NAME_4510,Adair Donnchadh,アデルドナハ
+NPC_NAME_4750,Cadell,カデル
+NPC_NAME_4751,Gearóid's Escort Guard,ガラダの護衛戦士
+NPC_NAME_4752,Gearóid's Escort Guard,ガラダの護衛戦士
+NPC_NAME_4753,Nora,ノーラ
+NPC_NAME_4754,Anelian,アネリアン
+NPC_NAME_4755,McMahon,マクマホン
+NPC_NAME_4756,Fergal,ファーガル
+NPC_NAME_4757,Diadora,ディアドラ
+NPC_NAME_4758,Ide,イデ
+NPC_NAME_4759,Phindym Female Bystander 3,フィンダム女予備3
+NPC_NAME_5002,,
+NPC_NAME_4511,Morgana,モルガーナ
+NPC_NAME_7100,Partner Pawn,パートナーポーン
+NPC_NAME_4760,Blair,ブレア
+NPC_NAME_4761,Gavan,ガヴァン
+NPC_NAME_4762,Cana,キャナ
+NPC_NAME_564,Toreasa,トレアサ
+NPC_NAME_4763,Gearóid's Escort Guard,ガラダの護衛戦士
+NPC_NAME_5003,Clan Administrator,クラン管理人枠
+NPC_NAME_7150,Home Pawn 2,自宅用ポーン枠２
+NPC_NAME_7200,Clan Pawn 1,クラン拠点用ポーン枠1
+NPC_NAME_2512,Riagan,リアガン
+NPC_NAME_2513,Deleen,デリーン
+NPC_NAME_5110,Clan Member's Pawn_normal,クラン他人ポーン_ノーマル
+NPC_NAME_5111,Clan Member's Pawn_sexy,クラン他人ポーン_シャイ
+NPC_NAME_5112,Clan Member's Pawn_active,クラン他人ポーン_アクティブ
+NPC_NAME_5117,Clan Members's Pawn_sexy,クラン他人ポーン_セクシー
+NPC_NAME_5113,Clan Members's Pawn_smart,クラン他人ポーン_スマート
+NPC_NAME_5114,Clan Member's Pawn_cool,クラン他人ポーン_クール
+NPC_NAME_5115,Clan Member's Pawn_pure,クラン他人ポーン_ピュア
+NPC_NAME_5116,Clan Member's Pawn_wild,クラン他人ポーン_ワイルド
+NPC_NAME_5118,Clan Member's Pawn_normal,クラン自分ポーン_ノーマル
+NPC_NAME_5119,Clan Member's Pawn_sexy,クラン自分ポーン_シャイ
+NPC_NAME_5120,Clan Member's Pawn_active,クラン自分ポーン_アクティブ
+NPC_NAME_5121,Clan Member's Pawn_smart,クラン自分ポーン_スマート
+NPC_NAME_5122,Clan Member's Pawn_normal,クラン自分ポーン_クール
+NPC_NAME_5123,Clan Member's Pawn_pure,クラン自分ポーン_ピュア
+NPC_NAME_5124,Clan Member's Pawn_wild,クラン自分ポーン_ワイルド
+NPC_NAME_5125,Clan Member's Pawn_sexy,クラン自分ポーン_セクシー
+NPC_NAME_7201,Clan Pawn,クラン拠点用ポーン枠2
+NPC_NAME_7202,Clan Pawn,クラン拠点用ポーン枠3
+NPC_NAME_7203,Clan Pawn,クラン拠点用ポーン枠4
+NPC_NAME_7204,Clan Pawn,クラン拠点用ポーン枠5
+NPC_NAME_7205,Clan Pawn,クラン拠点用ポーン枠6
+NPC_NAME_7206,Clan Pawn,クラン拠点用ポーン枠7
+NPC_NAME_7207,Clan Pawn,クラン拠点用ポーン枠8
+NPC_NAME_7208,Clan Pawn,クラン拠点用ポーン枠9
+NPC_NAME_7209,Clan Member's Pawn_,クラン拠点用ポーン枠10
+NPC_NAME_7210,Clan Pawn,クラン拠点用ポーン枠11
+NPC_NAME_7211,Clan Pawn,クラン拠点用ポーン枠12
+NPC_NAME_7212,Clan Pawn,クラン拠点用ポーン枠13
+NPC_NAME_7213,Clan Member's Pawn_,クラン拠点用ポーン枠14
+NPC_NAME_7214,Clan Pawn 15,クラン拠点用ポーン枠15
+NPC_NAME_29,Nedo,ネド
+NPC_NAME_30,Gillian,ジリアン
+NPC_NAME_31,Meirova,メイロワ
+NPC_NAME_32,Gerhard,イェルハルド
+NPC_NAME_33,Bertha,ベルタ
+NPC_NAME_34,Quintus,クインタス
+NPC_NAME_35,The Evil Dragon,悪しき竜
+NPC_NAME_575,Shadow Master,闇の将
+NPC_NAME_565,Liberation Army Soldier,解放軍戦士
+NPC_NAME_566,Liberation Army Soldier,解放軍戦士
+NPC_NAME_567,Liberation Army Soldier,解放軍戦士
+NPC_NAME_568,Dwarf Orc,ドワーフオーク
+NPC_NAME_569,Dwarf Orc,ドワーフオーク
+NPC_NAME_570,Dwarf Orc,ドワーフオーク
+NPC_NAME_571,Squad Leader Dwarf Orc,隊将ドワーフオーク
+NPC_NAME_572,Beast Commander,獣の将
+NPC_NAME_573,Necro Master,骸の将
+NPC_NAME_574,War Master,戦の将
+NPC_NAME_2951,Sly,スライ
+NPC_NAME_2952,Raven,レイベン
+NPC_NAME_3051,Yuri,ユーリ
+NPC_NAME_3052,Ross,ロス
+NPC_NAME_4512,Bacias,バシアス
+NPC_NAME_4764,Nicholas,ニコラス
+NPC_NAME_4765,Marco,マルコ
+NPC_NAME_4766,Mia,ミーア
+NPC_NAME_4950,Gurdolin,ガルドリン
+NPC_NAME_4951,Elliot,エリオット
+NPC_NAME_4952,Klaus,クラウス
+NPC_NAME_4953,Mayleaf,メイリーフ
+NPC_NAME_4954,Lise,リズ
+NPC_NAME_576,Cyril,セロ
+NPC_NAME_577,Pieri,ピエリ
+NPC_NAME_578,Marten,マルテン
+NPC_NAME_579,Berce,ベルス
+NPC_NAME_584,Dolkey,ドルキ
+NPC_NAME_585,Bruce,ブルース
+NPC_NAME_586,Ennis,エニス
+NPC_NAME_587,Achille​,アシル
+NPC_NAME_588,Judith,ジュディス
+NPC_NAME_589,Jenna,ジェンナ
+NPC_NAME_590,Hester,ヘスター
+NPC_NAME_591,Madeline,マデリーン
+NPC_NAME_592,Hayal,ハヤル
+NPC_NAME_593,Ethel,エセル
+NPC_NAME_594,Dorothy,ドロシー
+NPC_NAME_595,Guy,ガイ
+NPC_NAME_596,Dana,ダーナ
+NPC_NAME_597,Dean,ディーン
+NPC_NAME_598,Eileen,エイリーン
+NPC_NAME_599,Revento,レヴェント
+NPC_NAME_600,Dudley,ダドリー
+NPC_NAME_601,Anna,アンナ
+NPC_NAME_602,Elton,エルトン
+NPC_NAME_603,Barris,バリス
+NPC_NAME_604,Versa,バーサ
+NPC_NAME_605,Soule,スーレ
+NPC_NAME_919,Wounded Warrior,傷付いた戦士
+NPC_NAME_920,Wounded Warrior,傷付いた戦士
+NPC_NAME_921,Exhausted Male Bandit,疲弊した盗賊男
+NPC_NAME_922,Village woman seeking help,助けを求める村人女
+NPC_NAME_923,Village woman seeking help,助けを求める村人女
+NPC_NAME_924,Village male seeking help,助けを求める村人男
+NPC_NAME_925,Village male seeking help,助けを求める村人男
+NPC_NAME_2800,Endale,エンデール
+NPC_NAME_2801,Bruno,ブルーノ
+NPC_NAME_2802,Andrea,アンドレア
+NPC_NAME_2803,Fran,フラン
+NPC_NAME_2804,Orhan,オルハン
+NPC_NAME_2805,Carlotta,カルロッタ
+NPC_NAME_2806,Boris,ボリス
+NPC_NAME_2807,Mona,モナ
+NPC_NAME_2850,Felix,フェリクス
+NPC_NAME_2851,Emil,エミール
+NPC_NAME_2852,Iruva,イルヴァ
+NPC_NAME_2853,Aslan,アスラン
+NPC_NAME_2854,Ricardo,リキャルド
+NPC_NAME_2855,Leeza,リーザ
+NPC_NAME_2856,Alvin,アルビン
+NPC_NAME_2857,Zeki,ゼキ
+NPC_NAME_2858,Ines,イネス
+NPC_NAME_2859,Bart,バート
+NPC_NAME_2860,Michaela,ミカエラ
+NPC_NAME_2861,Enf,エンフ
+NPC_NAME_2862,Seda,セダ
+NPC_NAME_2900,Victor,ヴィクトル
+NPC_NAME_2901,Laura,ラウラ
+NPC_NAME_2902,Ingrid,イングリッド
+NPC_NAME_2903,Elsen,エルセン
+NPC_NAME_2904,Ozgur,オズギュル
+NPC_NAME_2905,Miriam,ミリヤム
+NPC_NAME_2906,Brett,ブレット
+NPC_NAME_2907,Asena,アセナ
+NPC_NAME_2908,Eva,エバ
+NPC_NAME_2909,Hamza,ハムザ
+NPC_NAME_2910,Paul,ポール
+NPC_NAME_2950,Selma,セルマ
+NPC_NAME_2953,Joaquim,ヨアキム
+NPC_NAME_2954,Gerald,ジェラール
+NPC_NAME_2955,Eje,エジェ
+NPC_NAME_2956,Kenan,ケナン
+NPC_NAME_2957,Josephine,ジョセフィン
+NPC_NAME_2958,Adem,アデム
+NPC_NAME_3000,Pehr,ペール
+NPC_NAME_3001,Anita,アニタ
+NPC_NAME_3002,Isel,イゼル
+NPC_NAME_3003,Damad,ダーマード
+NPC_NAME_3050,Nayajiku,ナヤジーク
+NPC_NAME_3053,Shekel,シェケル
+NPC_NAME_3054,Khalil,ハリル
+NPC_NAME_3055,Artin,アルティン
+NPC_NAME_3056,Dennis,デニス
+NPC_NAME_3057,Berg,ベルク
+NPC_NAME_3058,Sheelah,シーラ
+NPC_NAME_3100,Mertem,メルテム
+NPC_NAME_3101,Thea,テア
+NPC_NAME_3102,Marcus,マルクス
+NPC_NAME_3103,Isetto,イゼット
+NPC_NAME_3104,Akgis,アクギス
+NPC_NAME_3105,Byram,バイラム
+NPC_NAME_3106,Yonas,ヨナス
+NPC_NAME_3107,Sara,サーラ
+NPC_NAME_3108,Mustafa,ムスタファ
+NPC_NAME_3109,Samuel,サムエル
+NPC_NAME_3110,Aysel,アイセル
+NPC_NAME_3111,Tobias,トビアス
+NPC_NAME_3112,Dan,ダン
+NPC_NAME_3113,Lotta,ロッタ
+NPC_NAME_3114,Ekrem,エクレム
+NPC_NAME_3115,Serik,セリク
+NPC_NAME_3116,Barbara,バーバラ
+NPC_NAME_3117,Bilge,ビルジ
+NPC_NAME_3118,Beste,ベステ
+NPC_NAME_3119,Tanel,タネル
+NPC_NAME_3120,Ray,レヤ
+NPC_NAME_3150,Yuiato,ユイアト
+NPC_NAME_3151,Ira,アイラ
+NPC_NAME_3152,Kemal,ケマル
+NPC_NAME_3153,Holya,フーリャ
+NPC_NAME_3200,Doris,ドリス
+NPC_NAME_3201,Lucas,ルーカス
+NPC_NAME_3202,Yumit,ユーミット
+NPC_NAME_3250,Axel,アクセル
+NPC_NAME_3251,Ginette,ジネット
+NPC_NAME_3252,Shem,セム
+NPC_NAME_3253,Jemir,ジェミル
+NPC_NAME_3254,Evren,エヴレン
+NPC_NAME_3255,Muget,ミュゲ
+NPC_NAME_3256,Murad,ムラト
+NPC_NAME_3257,Erdem,エルデム
+NPC_NAME_3258,Demir,デミル
+NPC_NAME_3259,Jan,ジャン
+NPC_NAME_3260,Ivey,アイヴィ
+NPC_NAME_3261,Eddys,エディーズ
+NPC_NAME_3262,Sago,サゴー
+NPC_NAME_3263,Fred,フレッド
+NPC_NAME_3264,Karen,カレン
+NPC_NAME_3265,Linus,ライナス
+NPC_NAME_3266,Toyugaru,トユガル
+NPC_NAME_3267,Percy,パーシー
+NPC_NAME_3268,Barry,バリー
+NPC_NAME_3269,Esen,エセン
+NPC_NAME_4513,Kirsty,キルスティ
+NPC_NAME_4767,Walt,ウォルト
+NPC_NAME_4768,Paula,ポーラ
+NPC_NAME_4769,Ashton,アシュトン
+NPC_NAME_4770,Emine,エミーネ
+NPC_NAME_4771,Pascal,パスカル
+NPC_NAME_4772,Megado Guard,メガド護衛兵
+NPC_NAME_4773,Sunika,スニーカー
+NPC_NAME_4774,Eden,イーデン
+NPC_NAME_4775,Erudoan,エルドアン
+NPC_NAME_4776,Meryem,メリエム
+NPC_NAME_4777,Burj,ブルジュ
+NPC_NAME_580,Carrie,キャリー
+NPC_NAME_606,Pehr,ペール
+NPC_NAME_607,Anita,アニタ
+NPC_NAME_608,Isel,イゼル
+NPC_NAME_609,Damad,ダーマード
+NPC_NAME_610,Ira,アイラ
+NPC_NAME_611,Yuiato,ユイアト
+NPC_NAME_612,Kemal,ケマル
+NPC_NAME_613,Holya,フーリャ
+NPC_NAME_614,Construction Worker,工事作業員I
+NPC_NAME_615,Construction Worker,工事作業員J
+NPC_NAME_616,Construction Worker,工事作業員K
+NPC_NAME_617,Construction Worker,工事作業員L
+NPC_NAME_618,Construction Worker,工事作業員1-A
+NPC_NAME_619,Construction Worker,工事作業員1-B
+NPC_NAME_620,Construction Worker,工事作業員1-C
+NPC_NAME_621,Construction Worker,工事作業員1-D
+NPC_NAME_622,Construction Worker,工事作業員1-E
+NPC_NAME_623,Construction Worker,工事作業員1-F
+NPC_NAME_624,Construction Worker,工事作業員1-G
+NPC_NAME_625,Construction Worker,工事作業員1-H
+NPC_NAME_626,Construction Worker,工事作業員1-I
+NPC_NAME_627,Construction Worker,工事作業員1-J
+NPC_NAME_628,Construction Worker,工事作業員1-K
+NPC_NAME_629,Construction Worker,工事作業員1-L
+NPC_NAME_581,Peco,ペコ
+NPC_NAME_582,Sonel,ソネル
+NPC_NAME_654,Drew,ドルー
+NPC_NAME_655,Shenai,シェナイ
+NPC_NAME_656,Derek,デレク
+NPC_NAME_657,Keiku,ケイーク
+NPC_NAME_658,Liberation Army Soldier,解放軍戦士
+NPC_NAME_659,Liberation Army Soldier,解放軍戦士
+NPC_NAME_660,Liberation Army Soldier,解放軍戦士
+NPC_NAME_661,Liberation Army Soldier,解放軍戦士
+NPC_NAME_662,Bertha's Bandit Group,ベルタ盗賊団
+NPC_NAME_663,Bertha's Bandit Group,ベルタ盗賊団
+NPC_NAME_664,Bertha's Bandit Group,ベルタ盗賊団
+NPC_NAME_665,Rothgill Soldier,ロスギル兵士
+NPC_NAME_666,Rothgill Soldier,ロスギル兵士
+NPC_NAME_667,Rothgill Soldier,ロスギル兵士
+NPC_NAME_3140,Elmer,エルマー
+NPC_NAME_3141,Harriet,ハリエット
+NPC_NAME_3142,Liam,リアム
+NPC_NAME_3143,Jasper,ジャスパー
+NPC_NAME_3144,Beza,ベイザ
+NPC_NAME_3145,Gallip,ガリプ
+NPC_NAME_3146,Geren,ジェレン
+NPC_NAME_3147,Ted,テッド
+NPC_NAME_2880,Tabitha,タバサ
+NPC_NAME_2881,Youin,ユーイン
+NPC_NAME_2882,Ethan,イーサン
+NPC_NAME_2883,Lucinda,ルシンダ
+NPC_NAME_2884,Sadie,セイディ
+NPC_NAME_2890,Curtis,カーティス
+NPC_NAME_2891,Eddie,エディ
+NPC_NAME_2892,Sean,ショーン
+NPC_NAME_668,Giant Rat,オオネズミ
+NPC_NAME_669,Rabbit,ウサギ
+NPC_NAME_670,Male Deer,雄シカ
+NPC_NAME_671,Pig,ブタ
+NPC_NAME_672,Ox,牛
+NPC_NAME_673,Flower-chan,お花ちゃん
+NPC_NAME_2893,Sidika,シディカ
+NPC_NAME_1047,Craig,クレイグ
+NPC_NAME_4955,Ray,レイ
+NPC_NAME_4956,Samantha,サマンサ
+NPC_NAME_676,Brad,ブラッド
+NPC_NAME_677,Lorna,ローナ
+NPC_NAME_678,Heather,ヘザー
+NPC_NAME_679,Aidan,アイダン
+NPC_NAME_674,Chief Mandragora,チーフマンドラゴラ
+NPC_NAME_4957,Eluna,エルナ
+NPC_NAME_4958,Gerd,ゲルト
+NPC_NAME_4959,Heinz,ハインツ
+NPC_NAME_4960,Vanessa,ヴァネッサ
+NPC_NAME_4961,Fabio,ファビオ
+NPC_NAME_4962,Plum,プラム
+NPC_NAME_4963,Seneka,セネカ
+NPC_NAME_4964,Cornelia,コーネリア
+NPC_NAME_4965,Alan,アラン
+NPC_NAME_4966,Cameron,キャメロン
+NPC_NAME_4967,Seabell,シーベル
+NPC_NAME_4968,Emerada,エメラダ
+NPC_NAME_4969,Ringdeel,リングディール
+NPC_NAME_4970,Chester,チェスター
+NPC_NAME_4971,Dirith,ディリス
+NPC_NAME_4972,Musel,ミューセル
+NPC_NAME_4973,Gearóid,ガラダ
+NPC_NAME_4974,Mordred,モードレッド
+NPC_NAME_4975,Gurdolin,ガルドリン
+NPC_NAME_4976,Elliot,エリオット
+NPC_NAME_4977,Mayleaf,メイリーフ
+NPC_NAME_4978,Lise,リズ
+NPC_NAME_4979,Gregory,グレゴリー
+NPC_NAME_1048,Lisa,リサ
+NPC_NAME_4980,Luchino,ルキーノ
+NPC_NAME_4981,Marisa,マリサ
+NPC_NAME_4982,Garrulous Skeleton,饒舌なスケルトン
+NPC_NAME_680,Mephis,メフィス
+NPC_NAME_681,Navido,ナヴィド
+NPC_NAME_682,Dwarf Orc,ドワーフオーク
+NPC_NAME_4983,Angelo,アンジェロ
+NPC_NAME_4984,Shelly,シェリー
+NPC_NAME_4985,Adair Donnchadh,アデルドナハ
+NPC_NAME_4986,Heinz,ハインツ
+NPC_NAME_4987,Rondejeel,ロンドジール
+NPC_NAME_4988,Nedo,ネド
+NPC_NAME_4989,Craig,クレイグ
+NPC_NAME_4990,Vanessa,ヴァネッサ
+NPC_NAME_4991,Gillian,ジリアン
+NPC_NAME_4992,Carrie,キャリー
+NPC_NAME_4993,Lyka,リュカ
+NPC_NAME_4994,Emerada,エメラダ
+NPC_NAME_4995,Shelly,シェリー
+NPC_NAME_4996,Angelo,アンジェロ
+NPC_NAME_4997,Angelo,アンジェロ
+NPC_NAME_3300,Randolf,ランドル
+NPC_NAME_3301,Zef,ゼフ
+NPC_NAME_3302,Balsh,バルシ
+NPC_NAME_3303,Ashe,アーシェ
+NPC_NAME_3350,Cory,コリー
+NPC_NAME_3351,Sema,セマ
+NPC_NAME_3352,Youssef,ユセフ
+NPC_NAME_683,Megado Guard,メガド護衛兵
+NPC_NAME_3270,Serine,セリン
+NPC_NAME_3271,Timel,ティメル
+NPC_NAME_3272,Scylla,シラ
+NPC_NAME_3273,Ilmaz,イルマズ
+NPC_NAME_684,Megado Guard,メガド護衛兵
+NPC_NAME_685,Megado Guard,メガド護衛兵
+NPC_NAME_686,Military Police,憲兵
+NPC_NAME_687,Military Police,憲兵
+NPC_NAME_688,Military Police,憲兵
+NPC_NAME_689,Military Police,憲兵
+NPC_NAME_690,Military Police,憲兵
+NPC_NAME_691,Basit,バジット
+NPC_NAME_692,Thug,ゴロツキ
+NPC_NAME_693,Thug Leader,ゴロツキリーダー
+NPC_NAME_694,Lady of the Night,夜の女
+NPC_NAME_695,Lady of the Night,夜の女
+NPC_NAME_696,Drunkard,酔っ払い
+NPC_NAME_697,Raksha,ガクシャ
+NPC_NAME_698,Johoya,ジョウホウヤ
+NPC_NAME_699,Scared Man,怯えた男
+NPC_NAME_700,Vernon,バーノン
+NPC_NAME_701,Child,子供
+NPC_NAME_702,Child,子供
+NPC_NAME_703,Child,子供
+NPC_NAME_704,Abbas,アッバス
+NPC_NAME_705,Zachary,ザカリー
+NPC_NAME_3274,Suleiman,スレイマン
+NPC_NAME_706,Morgan,モーガン
+NPC_NAME_707,Selim,セリム
+NPC_NAME_708,Jared,ジャレッド
+NPC_NAME_709,Chawla,チャウラ
+NPC_NAME_710,Raymond,レイモンド
+NPC_NAME_711,Basil,ベイジル
+NPC_NAME_712,Obren,オブリン
+NPC_NAME_713,Falk,ファルク
+NPC_NAME_714,Nate,ネイト
+NPC_NAME_715,Lyka,リュカ
+NPC_NAME_716,Lyka,リュカ
+NPC_NAME_4900,Gillian,ジリアン
+NPC_NAME_4901,Carrie,キャリー
+NPC_NAME_4902,Kirsty,キルスティ
+NPC_NAME_4903,Adair Donnchadh,アデルドナハ
+NPC_NAME_4904,Meirova,メイロワ
+NPC_NAME_4905,Archibald,アーチボルト
+NPC_NAME_4906,Renton,レンテン
+NPC_NAME_36,Black Dragon,黒竜
+NPC_NAME_37,Mysial,ミシアル
+NPC_NAME_38,Leo,レオ
+NPC_NAME_39,Water Dragon King,水竜の王
+NPC_NAME_4907,Shelly,シェリー
+NPC_NAME_4908,Mysterious Ghost,謎のお化け
+NPC_NAME_4909,Disguised Gurdolin,変装したガルドリン
+NPC_NAME_4910,Off-time Gurdolin,オフタイムのガルドリン
+NPC_NAME_4911,Hiding Gurdolin,隠れ潜むガルドリン
+NPC_NAME_4912,Gurdolin celebrating 3rd Anniversary,３周年を祝うガルドリン
+NPC_NAME_1049,Dragon Skill Coalescence,竜スキル合体
+NPC_NAME_717,Lucien,リュシアン
+NPC_NAME_718,Travers,トラバース
+NPC_NAME_719,Lucien,リュシアン
+NPC_NAME_4913,Angelo,アンジェロ
+NPC_NAME_4914,Shelly,シェリー
+NPC_NAME_40,Leo,レオ
+NPC_NAME_4915,Gurdolin,ガルドリン
+NPC_NAME_4916,Sonel,ソネル
+NPC_NAME_4917,Elliot,エリオット
+NPC_NAME_4918,Mephis,メフィス
+NPC_NAME_4919,Meirova,メイロワ
+NPC_NAME_4920,Cecily,セシリー
+NPC_NAME_4921,Gillian,ジリアン
+NPC_NAME_4922,Lise,リズ
+NPC_NAME_4923,Kirsty,キルスティ
+NPC_NAME_4924,Emerada,エメラダ
+NPC_NAME_4925,Mayleaf,メイリーフ
+NPC_NAME_4926,Adair Donnchadh,アデルドナハ

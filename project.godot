@@ -224,10 +224,26 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://RpcClient/RpcClient.gd"
 }, {
+"base": "Resource",
+"class": "Shop",
+"language": "GDScript",
+"path": "res://Entities/Shop.gd"
+}, {
+"base": "Resource",
+"class": "ShopItem",
+"language": "GDScript",
+"path": "res://Entities/ShopItem.gd"
+}, {
+"base": "Resource",
+"class": "ShopItemRequirement",
+"language": "GDScript",
+"path": "res://Entities/ShopItemRequirement.gd"
+}, {
 "base": "ItemList",
 "class": "StagesItemList",
 "language": "GDScript",
 "path": "res://StageItemList.gd"
+}, {
 "base": "ToggleablePlacemark",
 "class": "ToggleableEnemySubgroupPlacemark",
 "language": "GDScript",
@@ -287,6 +303,10 @@ _global_script_class_icons={
 "Players": "",
 "RoomMap": "",
 "RpcClient": "",
+"Shop": "",
+"ShopFileMenu": "",
+"ShopItem": "",
+"ShopItemRequirement": "",
 "StagesItemList": "",
 "ToggleableEnemySubgroupPlacemark": "",
 "ToggleableGatheringSpotPlacemark": "",
@@ -363,7 +383,7 @@ set_unhide={
 
 [locale]
 
-translations=PoolStringArray( "res://resources/internationalization/enemy_name.en.translation", "res://resources/internationalization/enemy_name.ja.translation", "res://resources/internationalization/named_param.en.translation", "res://resources/internationalization/named_param.ja.translation", "res://resources/internationalization/HmPresetNo.en.translation", "res://resources/internationalization/HmPresetNo.ja.translation", "res://resources/internationalization/ui.en.translation", "res://resources/internationalization/ui.ja.translation", "res://resources/internationalization/stage_name.en.translation", "res://resources/internationalization/stage_name.ja.translation", "res://resources/internationalization/item_name.en.translation", "res://resources/internationalization/item_name.ja.translation" )
+translations=PoolStringArray( "res://resources/internationalization/enemy_name.en.translation", "res://resources/internationalization/enemy_name.ja.translation", "res://resources/internationalization/named_param.en.translation", "res://resources/internationalization/named_param.ja.translation", "res://resources/internationalization/HmPresetNo.en.translation", "res://resources/internationalization/HmPresetNo.ja.translation", "res://resources/internationalization/ui.en.translation", "res://resources/internationalization/ui.ja.translation", "res://resources/internationalization/stage_name.en.translation", "res://resources/internationalization/stage_name.ja.translation", "res://resources/internationalization/item_name.en.translation", "res://resources/internationalization/item_name.ja.translation", "res://resources/internationalization/npc_name.en.translation", "res://resources/internationalization/npc_name.ja.translation" )
 
 [physics]
 
