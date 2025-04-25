@@ -46,17 +46,9 @@ func _on_enemy_removed(enemy_idx: int) -> void:
 		enemy.disconnect("changed", self, "_on_enemy_changed")
 	enemy_position.remove_enemy(enemy_idx)
 
-func add_enemy(enemy: Enemy) -> void:
-	enemy_position.add_enemy(enemy)
-
-func clear_enemies() -> void:
-	enemy_position.clear_enemies()
-
-func get_enemies() -> Array:
-	return enemy_position.enemies
 	
 func select_all_placemarks():
-	for enemy in get_enemies():
+	for enemy in enemy_position.get_enemies():
 		SelectedListManager.add_to_selection(enemy)
 
 # Drag and drop functions
@@ -65,9 +57,9 @@ func can_drop_data(_position, data):
 	
 func drop_data(_position, data):
 	if data is Enemy:
-		add_enemy(data)
+		enemy_position.add_enemy(data)
 	elif data is EnemyType:
-		add_enemy(Enemy.new(data))
+		enemy_position.add_enemy(Enemy.new(data))
 
 func _check_position_conflicts() -> void:
 	var exceeded := enemy_position.has_conflicting_enemy_times()

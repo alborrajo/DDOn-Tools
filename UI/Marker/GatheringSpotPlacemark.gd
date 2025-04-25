@@ -31,17 +31,8 @@ func _on_item_removed(index: int) -> void:
 	_gathering_spot.remove_item(index)
 
 
-func add_item(item: GatheringItem) -> void:
-	_gathering_spot.add_item(item)
-
-func clear_items() -> void:
-	_gathering_spot.clear_items()
-
-func get_items() -> Array:
-	return _gathering_spot.get_items()
-
 func select_all_placemarks():
-	for gathering_item in get_items():
+	for gathering_item in _gathering_spot.get_gathering_items():
 		SelectedListManager.add_to_selection(gathering_item)
 
 # Drag and drop functions
@@ -50,6 +41,6 @@ func can_drop_data(_position, data):
 	
 func drop_data(_position, data):
 	if data is GatheringItem:
-		add_item(data)
+		_gathering_spot.add_item(data)
 	elif data is Item:
-		add_item(GatheringItem.new(data))
+		_gathering_spot.add_item(GatheringItem.new(data))

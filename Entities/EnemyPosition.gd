@@ -15,6 +15,9 @@ func _set_enemies(e):
 	enemies = e
 	emit_changed()
 	
+func get_enemies() -> Array:
+	return enemies
+	
 func add_enemy(e: Enemy):
 	enemies.append(e)
 	emit_changed()
