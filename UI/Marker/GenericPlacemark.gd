@@ -6,9 +6,7 @@ signal placemark_removed()
 var _is_dragging := false
 
 func ready():
-	assert(connect("tree_exiting", self, "_on_tree_exiting") == OK)
 	assert(SelectedListManager.connect("selection_changed", self, "_on_selection_changed") == OK)
-	assert(SelectedListManager.connect("selection_deleted", self, "_on_selection_deleted") == OK)
 
 func _on_selection_changed(added: Array, removed: Array):
 	if added.has(_get_selection_entity()):
@@ -18,14 +16,11 @@ func _on_selection_changed(added: Array, removed: Array):
 		$SelectionPanel.visible = false
 		return
 
-func _on_selection_deleted(deleted):
-	if deleted.has(_get_selection_entity()):
-		queue_free()
-
 func _gui_input(event):
 	if event is InputEventMouseButton and (event as InputEventMouseButton).button_mask == BUTTON_RIGHT:
 		select_placemark()
 		SelectedListManager.delete_selected()
+		emit_signal("placemark_removed")
 
 func _selection_function():
 	if Input.is_key_pressed(KEY_SHIFT):
@@ -47,11 +42,8 @@ func _notification(what: int) -> void:
 	if what == NOTIFICATION_DRAG_END and _is_dragging:
 		_is_dragging = false
 		if get_viewport().gui_is_drag_successful():
-			queue_free()
+			emit_signal("placemark_removed")
 
 func get_drag_data(_position):
 	_is_dragging = true
 	return null
-
-func _on_tree_exiting():
-	emit_signal("placemark_removed")
