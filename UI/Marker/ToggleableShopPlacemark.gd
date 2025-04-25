@@ -117,3 +117,16 @@ func _on_item_filter_changed(uppercase_filter_text: String):
 			return
 	modulate = SelectedListManager.FILTER_NONMATCH_COLOR
 	
+func _on_ToggleButton_subgroup_selected():
+	._on_ToggleButton_subgroup_selected()
+	for good in shop.get_goods():
+		SelectedListManager.add_to_selection(good)
+
+func _on_Unk0SpinBox_value_changed(value):
+	shop.unk0 = value
+
+func _on_Unk1SpinBox_value_changed(value):
+	shop.unk1 = value
+
+func _on_WalletTypeOptionButton_item_selected(index):
+	shop.wallet_type = index

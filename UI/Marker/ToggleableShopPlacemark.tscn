@@ -9,6 +9,14 @@ flags = 4
 atlas = ExtResource( 3 )
 region = Rect2( 4, 58, 20, 22 )
 
+[sub_resource type="GDScript" id=3]
+script/source = "extends OptionButton
+
+func _process(delta):
+	# Terrible hack
+	get_popup().rect_global_position = rect_global_position + Vector2(0, 2000)
+"
+
 [sub_resource type="GDScript" id=1]
 script/source = "extends Tree
 
@@ -127,6 +135,7 @@ size_flags_horizontal = 3
 text = "None"
 items = [ "None", null, false, 0, null, "Gold", null, false, 1, null, "Rift Points", null, false, 2, null, "Blood Orbs", null, false, 3, null, "Silver Tickets", null, false, 4, null, "Golden Gemstones", null, false, 5, null, "Rental Points", null, false, 6, null, "Reset Job Points", null, false, 7, null, "Reset Craft Skills", null, false, 8, null, "High Orbs", null, false, 9, null, "Dominion Points", null, false, 10, null, "Adventure Pass Points", null, false, 11, null, "Custom Made Service Tickets", null, false, 12, null, "Bitterblack Maze Reset Tickets", null, false, 13, null, "Golden Dragon Marks", null, false, 14, null, "Silver Dragon Marks", null, false, 15, null, "Red Dragon Marks", null, false, 16, null ]
 selected = 0
+script = SubResource( 3 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MapControl/Control/Panel/ShopPlacemark" index="3"]
 margin_top = 82.0
@@ -143,6 +152,9 @@ allow_rmb_select = true
 hide_root = true
 script = SubResource( 1 )
 
+[connection signal="value_changed" from="MapControl/Control/Panel/ShopPlacemark/GridContainer/Unk0SpinBox" to="." method="_on_Unk0SpinBox_value_changed"]
+[connection signal="value_changed" from="MapControl/Control/Panel/ShopPlacemark/GridContainer/Unk1SpinBox" to="." method="_on_Unk1SpinBox_value_changed"]
+[connection signal="item_selected" from="MapControl/Control/Panel/ShopPlacemark/GridContainer2/WalletTypeOptionButton" to="." method="_on_WalletTypeOptionButton_item_selected"]
 [connection signal="dragged_shop_item" from="MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree" to="." method="_on_ItemList_dragged_shop_item"]
 [connection signal="dropped_shop_item" from="MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree" to="." method="_on_ItemList_dropped_shop_item"]
 [connection signal="item_rmb_selected" from="MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree" to="." method="_on_ItemList_item_rmb_selected"]
