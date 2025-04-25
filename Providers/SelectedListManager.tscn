@@ -5,6 +5,7 @@ resource_name = "SelectedListManager"
 script/source = "extends Node
 
 signal selection_changed(added, removed)
+signal selection_deleted(deleted)
 signal set_revealed_hidden()
 
 signal enemy_filter_changed(uppercase_filter_text)
@@ -13,91 +14,85 @@ signal item_filter_changed(uppercase_filter_text)
 const FILTER_MATCH_COLOR = Color.white
 const FILTER_NONMATCH_COLOR = Color(0.75, 0.75, 0.75, 0.75)
 
+const SELECTION_TYPE_NONE := 0
+const SELECTION_TYPE_ENEMY := 1
+const SELECTION_TYPE_GATHERING_ITEM := 2
+
 var selected_list := []
-var enemy_type := false
-var item_type := false
+var selection_type := SELECTION_TYPE_NONE
 
 var enemy_filter := \"\"
 var item_filter := \"\"
 
 # Function to apply values to selected enemy or item
-func apply_values_to_selected_type(parameter_name: String, parameter_value):
-	for entry in selected_list:
-		var data = entry[\"data\"]
-		data[parameter_name] = parameter_value
+func apply_values_to_selection(parameter_name: String, parameter_value):
+	for selected_element in selected_list:
+		selected_element[parameter_name] = parameter_value
 		
 # Function to check the list for type and removes if it exists already
-func toggle_selection(placemark: GenericPlacemark, data: Object):
-	if placemark is EnemyPlacemark:
-		enemy_type = true
-	elif placemark is GatheringItemPlacemark:
-		item_type = true
+func toggle_selection(selected_element: Object):
+	var new_selection_type := SELECTION_TYPE_NONE
+	if selected_element is Enemy:
+		new_selection_type = SELECTION_TYPE_ENEMY
+	elif selected_element is GatheringItem:
+		new_selection_type = SELECTION_TYPE_GATHERING_ITEM
 	else:
+		push_error(\"Attempted to select an unrecognized type\")
 		return # Ignore anything else
 		
-	if enemy_type and item_type:
+	if selection_type != new_selection_type:
 		clear_list()
+		selection_type = new_selection_type
 
-	var index = _find_entry_index(placemark)
+	var index = selected_list.find(selected_element)
 	if index != -1:
 		_remove_from_selection(index)
 	else:
-		_add_to_selection({\"placemark\": placemark, \"data\": data})
+		_add_to_selection(selected_element)
 
-func _add_to_selection(entry):
-	selected_list.append(entry)
-	emit_signal(\"selection_changed\", [entry], [])
+func _add_to_selection(selected_element):
+	selected_list.append(selected_element)
+	emit_signal(\"selection_changed\", [selected_element], [])
 	
 func _remove_from_selection(index):
 	var removed = selected_list[index]
 	selected_list.remove(index)
 	emit_signal(\"selection_changed\", [], [removed])
 	
-# Function to find the index of an entry in the list
-func _find_entry_index(placemark: GenericPlacemark) -> int:
-	for i in range(selected_list.size()):
-		if selected_list[i][\"placemark\"] == placemark:
-			return i
-	return -1
-
 # Function to clear the list and emit a signal to inform the placemarks.
 func clear_list():
 	var removed_list := selected_list.duplicate()
 	selected_list.clear()
 	emit_signal(\"selection_changed\", [], removed_list)
-	enemy_type = false
-	item_type = false
+	selection_type = SELECTION_TYPE_NONE
 
 # Function that handles the deletion of multiple placemarks.
-# Handle the list in reverse order to ensure it doesn't trip over any indexes and fail to delete entries
 func delete_selected():
-	var removed_list := []
+	var deleted_list := []
 	for index in range(selected_list.size() - 1, -1, -1):
-		var entry = selected_list[index]
-		var placemark = entry[\"placemark\"]
-		placemark.delete_self()
-		removed_list.append(entry)
+		var selected_element = selected_list[index]
+		deleted_list.append(selected_element)
 		selected_list.remove(index)
-	emit_signal(\"selection_changed\", [], removed_list)
+	emit_signal(\"selection_changed\", [], deleted_list)
+	emit_signal(\"selection_deleted\", deleted_list)
 	
 func reveal_hidden():
 	emit_signal(\"set_revealed_hidden\")
 	
-func add_to_selection(placemark, data):
-	var entry = {\"placemark\": placemark, \"data\": data}
-	var index = _find_entry_index(placemark)
+func add_to_selection(selected_element):
+	var index = selected_list.find(selected_element)
 	if index == -1:
-		_add_to_selection(entry)
+		_add_to_selection(selected_element)
 	
-func remove_from_selection(placemark, _data):
-	var index = _find_entry_index(placemark)
+func remove_from_selection(selected_element):
+	var index = selected_list.find(selected_element)
 	if index != -1:
 		_remove_from_selection(index)
 
 func is_list_empty() -> bool:
 	return selected_list.size() <= 0
-	
-	
+
+
 func set_enemy_filter(filter_text: String) -> void:
 	enemy_filter = filter_text.to_upper()
 	emit_signal(\"enemy_filter_changed\", enemy_filter)

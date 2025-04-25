@@ -62,8 +62,8 @@ func _on_enemy_position_placemark_mouse_exited(position_index: int, enemy_positi
 func get_position_placemarks() -> Array:
 	return $EnemyPositionPlacemarksControl.get_children()
 
-func _on_SubgroupButton_subgroup_selected():
-	show()
+func _on_ToggleButton_subgroup_selected():
+	._on_ToggleButton_subgroup_selected()
 	for child in $EnemyPositionPlacemarksControl.get_children():
 		assert(child.get_child(0) is EnemyPositionPlacemark)
 		var position := child.get_child(0) as EnemyPositionPlacemark

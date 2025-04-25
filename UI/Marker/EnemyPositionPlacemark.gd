@@ -54,6 +54,10 @@ func clear_enemies() -> void:
 
 func get_enemies() -> Array:
 	return enemy_position.enemies
+	
+func select_all_placemarks():
+	for enemy in get_enemies():
+		SelectedListManager.add_to_selection(enemy)
 
 # Drag and drop functions
 func can_drop_data(_position, data):

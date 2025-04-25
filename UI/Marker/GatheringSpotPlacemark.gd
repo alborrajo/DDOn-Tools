@@ -40,6 +40,10 @@ func clear_items() -> void:
 func get_items() -> Array:
 	return _gathering_spot.get_items()
 
+func select_all_placemarks():
+	for gathering_item in get_items():
+		SelectedListManager.add_to_selection(gathering_item)
+
 # Drag and drop functions
 func can_drop_data(_position, data):
 	return data is Item or data is GatheringItem

@@ -9,10 +9,10 @@ func _ready():
 	assert(SetProvider.connect("selected_day_night", self, "_on_day_night_selected") == OK)
 
 func _on_GatheringItemPlacemark_pressed():
-	_selection_function(item)
+	_selection_function()
 	
-func select_placemark():
-	SelectedListManager.add_to_selection(self, item)
+func _get_selection_entity():
+	return item
 
 func set_item(i: GatheringItem) -> void:
 	if item != null and item.is_connected("changed", self, "_on_item_changed"):

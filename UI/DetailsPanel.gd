@@ -29,4 +29,4 @@ func _on_selection_changed(_added, _removed):
 	if SelectedListManager.selected_list.size() == 0:
 		hide_details()
 	else:
-		show_details_of(SelectedListManager.selected_list.back()["data"])
+		show_details_of(SelectedListManager.selected_list.back())

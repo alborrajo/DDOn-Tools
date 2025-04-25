@@ -16,7 +16,7 @@ func _to_hide():
 			for grandgrandchild in grandchild.get_children():
 				if grandgrandchild.name == "SelectionPanel" and grandgrandchild.visible:
 					var placemark = grandgrandchild.get_parent()
-					SelectedListManager.remove_from_selection(placemark, null)
+					placemark.deselect_placemark()
 
 func _to_unhide():
 	self.modulate = Color(1, 1, 1, 1)  # Raising the transparency to 100%
@@ -30,6 +30,4 @@ func _apply_mouse_filter_to_children(node, filter):
 		_apply_mouse_filter_to_children(child, filter)
 
 func select_all_placemarks():
-	for placemark in $Panel/Container.get_children():
-		if placemark.has_method("select_placemark"):
-			placemark.select_placemark()
+	pass
