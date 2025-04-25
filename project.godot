@@ -125,11 +125,6 @@ _global_script_classes=[ {
 "path": "res://UI/Marker/GenericPlacemark.gd"
 }, {
 "base": "Control",
-"class": "GenericSetMarkersControl",
-"language": "GDScript",
-"path": "res://UI/Marker/GenericSetMarkersControl.gd"
-}, {
-"base": "Control",
 "class": "GenericSetPlacemark",
 "language": "GDScript",
 "path": "res://UI/Marker/GenericSetPlacemark.gd"
@@ -173,6 +168,11 @@ _global_script_classes=[ {
 "class": "MapControl",
 "language": "GDScript",
 "path": "res://UI/Marker/MapControl.gd"
+}, {
+"base": "Node2D",
+"class": "MapCoordinateSpace",
+"language": "GDScript",
+"path": "res://MapCoordinateSpace.gd"
 }, {
 "base": "Button",
 "class": "Minimize",
@@ -293,7 +293,6 @@ _global_script_class_icons={
 "GatheringSpotPlacemark": "",
 "GenericFileMenu": "",
 "GenericPlacemark": "",
-"GenericSetMarkersControl": "",
 "GenericSetPlacemark": "",
 "HmPresetNoOptionButton": "",
 "Item": "",
@@ -303,6 +302,7 @@ _global_script_class_icons={
 "LanguageOptionButton": "",
 "Main": "",
 "MapControl": "",
+"MapCoordinateSpace": "",
 "Minimize": "",
 "NamedEnemyParamsIdOptionButton": "",
 "NamedParam": "",

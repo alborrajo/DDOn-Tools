@@ -1,5 +1,5 @@
-extends Control
-class_name GenericSetMarkersControl
+extends Node2D
+class_name MapCoordinateSpace
 
 var dragging := false
 var drag_start_global_position: Vector2
@@ -28,9 +28,10 @@ func _draw():
 	if dragging:
 		var rect := _get_selection_rect()
 		draw_rect(rect, Color(0.27451, 0.509804,0.705882, 0.25), true)
-		VisualServer.canvas_item_set_custom_rect(get_canvas_item(), true, rect)
+		#VisualServer.canvas_item_set_custom_rect(get_canvas_item(), true, rect)
 	else:
-		VisualServer.canvas_item_set_custom_rect(get_canvas_item(), false)
+		pass
+		#VisualServer.canvas_item_set_custom_rect(get_canvas_item(), false)
 		
 func _select_recursively(selection_rect: Rect2, node: Node) -> void:
 	for child in node.get_children():

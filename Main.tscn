@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Main/PlayerMarkers.gd" type="Script" id=1]
 [ext_resource path="res://Main.gd" type="Script" id=2]
 [ext_resource path="res://UI/Camera.gd" type="Script" id=3]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=4]
-[ext_resource path="res://UI/Marker/GenericSetMarkersControl.gd" type="Script" id=5]
+[ext_resource path="res://MapCoordinateSpace.gd" type="Script" id=5]
 
 [node name="root" type="Control"]
 anchor_right = 1.0
@@ -20,8 +19,10 @@ script = ExtResource( 3 )
 [node name="CameraTween" type="Tween" parent="."]
 
 [node name="MapCoordinateSpace" type="Node2D" parent="."]
+script = ExtResource( 5 )
 
 [node name="MapLayers" type="Node2D" parent="MapCoordinateSpace"]
+show_behind_parent = true
 scale = Vector2( 0.1, 0.1 )
 
 [node name="Layer 0" type="Node2D" parent="MapCoordinateSpace/MapLayers"]
@@ -56,23 +57,23 @@ visible = false
 
 [node name="EnemySetMarkers" type="Control" parent="MapCoordinateSpace"]
 visible = false
+show_behind_parent = true
 mouse_filter = 1
-script = ExtResource( 5 )
 
 [node name="GatheringSpotMarkers" type="Control" parent="MapCoordinateSpace"]
 visible = false
+show_behind_parent = true
 mouse_filter = 1
-script = ExtResource( 5 )
 
 [node name="PlayerMarkers" type="Control" parent="MapCoordinateSpace"]
 visible = false
-script = ExtResource( 1 )
+show_behind_parent = true
 
 [node name="ShopMarkers" type="Control" parent="MapCoordinateSpace"]
 visible = false
+show_behind_parent = true
 margin_right = 40.0
 margin_bottom = 40.0
-script = ExtResource( 5 )
 
 [node name="ui" parent="." instance=ExtResource( 4 )]
 
