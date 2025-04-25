@@ -21,7 +21,6 @@ func _ready():
 		assert(enemy_position_placemark.connect("mouse_entered", self, "_on_enemy_position_placemark_mouse_entered", [position_index, enemy_position_placemark]) == OK)
 		assert(enemy_position_placemark.connect("mouse_exited", self, "_on_enemy_position_placemark_mouse_exited", [position_index, enemy_position_placemark]) == OK)
 		enemy_position_placemark.enemy_position = enemy_position
-		assert(enemy_position_placemark.connect("gui_input", self, "_on_EnemyPositionPlacemark_gui_input") == OK)
 		var map_control := MapControl.new()
 		map_control.set_ddon_world_position(DataProvider.stage_id_to_stage_no(enemy_set.stage_id), enemy_position.coordinates)
 		map_control.add_child(enemy_position_placemark)
