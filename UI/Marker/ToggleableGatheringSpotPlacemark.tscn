@@ -9,15 +9,16 @@ script = ExtResource( 3 )
 gathering_spot = null
 
 [node name="Container" type="GridContainer" parent="MapControl/Control/Panel" index="0"]
-margin_left = 14.0
-margin_top = 14.0
-margin_right = 32.0
-margin_bottom = 32.0
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 54.0
+margin_bottom = 31.0
 columns = 6
 
 [node name="GatheringSpotPlacemark" type="Control" parent="MapControl/Control/Panel" index="1"]
 margin_left = 7.0
 margin_top = 7.0
-margin_right = 25.0
-margin_bottom = 25.0
+margin_right = 54.0
+margin_bottom = 31.0
+mouse_filter = 2
 script = ExtResource( 2 )
