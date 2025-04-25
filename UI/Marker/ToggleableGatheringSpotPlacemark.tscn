@@ -1,8 +1,23 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://UI/Marker/ToggleablePlacemark.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/Marker/GatheringSpotPlacemark.gd" type="Script" id=2]
 [ext_resource path="res://UI/Marker/ToggleableGatheringSpotPlacemark.gd" type="Script" id=3]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends GridContainer
+
+
+# Drag and drop functions
+func can_drop_data(_position, data):
+	return data is Item or data is GatheringItem
+	
+func drop_data(_position, data):
+	if data is GatheringItem:
+		$\"../GatheringSpotPlacemark\".gathering_spot.add_item(data)
+	elif data is Item:
+		$\"../GatheringSpotPlacemark\".gathering_spot.add_item(GatheringItem.new(data))
+"
 
 [node name="ToggleableGatheringSpotPlacemark" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
@@ -14,6 +29,7 @@ margin_top = 7.0
 margin_right = 54.0
 margin_bottom = 31.0
 columns = 6
+script = SubResource( 1 )
 
 [node name="GatheringSpotPlacemark" type="Control" parent="MapControl/Control/Panel" index="1"]
 margin_left = 7.0

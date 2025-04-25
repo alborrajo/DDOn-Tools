@@ -3,21 +3,17 @@ class_name GatheringSpotPlacemark
 
 export (PackedScene) var item_placemark_packed_scene: PackedScene = preload("res://UI/Marker/GatheringItemPlacemark.tscn")
 
-export (Resource) var gathering_spot: Resource
-
-onready var _gathering_spot := gathering_spot as GatheringSpot
-
-# TODO: Fix hiding gathering spots, move the feature of the superclass somewhere else?
+var gathering_spot: GatheringSpot
 
 func _ready() -> void:
-	assert(_gathering_spot.connect("changed", self, "_on_gathering_spot_changed") == OK)
+	assert(gathering_spot.connect("changed", self, "_on_gathering_spot_changed") == OK)
 	_on_gathering_spot_changed()
 	
 func _on_gathering_spot_changed() -> void:
 	# Rebuild children elements
 	for child in $"../Container".get_children():
 		$"../Container".remove_child(child)
-	var gatheringItems = _gathering_spot.get_gathering_items()
+	var gatheringItems = gathering_spot.get_gathering_items()
 
 	for index in gatheringItems.size():
 		var item: GatheringItem = gatheringItems[index]
@@ -28,19 +24,9 @@ func _on_gathering_spot_changed() -> void:
 
 
 func _on_item_removed(index: int) -> void:
-	_gathering_spot.remove_item(index)
+	gathering_spot.remove_item(index)
 
 
 func select_all_placemarks():
-	for gathering_item in _gathering_spot.get_gathering_items():
+	for gathering_item in gathering_spot.get_gathering_items():
 		SelectedListManager.add_to_selection(gathering_item)
-
-# Drag and drop functions
-func can_drop_data(_position, data):
-	return data is Item or data is GatheringItem
-	
-func drop_data(_position, data):
-	if data is GatheringItem:
-		_gathering_spot.add_item(data)
-	elif data is Item:
-		_gathering_spot.add_item(GatheringItem.new(data))
