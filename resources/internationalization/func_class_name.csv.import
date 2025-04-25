@@ -1,0 +1,16 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+
+[deps]
+
+files=[ "res://resources/internationalization/func_class_name.en.translation", "res://resources/internationalization/func_class_name.ja.translation" ]
+
+source_file="res://resources/internationalization/func_class_name.csv"
+dest_files=[ "res://resources/internationalization/func_class_name.en.translation", "res://resources/internationalization/func_class_name.ja.translation" ]
+
+[params]
+
+compress=true
+delimiter=0

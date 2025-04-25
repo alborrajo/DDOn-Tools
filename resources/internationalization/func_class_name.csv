@@ -1,0 +1,99 @@
+key,en,ja
+FUNC_CLASS_NAME_3,General Shop,よろず屋
+FUNC_CLASS_NAME_4,Item Shop,道具屋
+FUNC_CLASS_NAME_5,Equipment Shop,武具屋
+FUNC_CLASS_NAME_6,Material Shop,素材屋
+FUNC_CLASS_NAME_7,Inn,宿屋
+FUNC_CLASS_NAME_8,Weapon Shop,武器屋
+FUNC_CLASS_NAME_9,Armor Shop,防具屋
+FUNC_CLASS_NAME_10,Arts Support,戦技補佐
+FUNC_CLASS_NAME_11,Vocation / Arts Support,転職・戦技補佐
+FUNC_CLASS_NAME_12,Grand Mission,グランドミッション
+FUNC_CLASS_NAME_13,Adventure Organizer,冒険仲介係
+FUNC_CLASS_NAME_14,Clan Tavern,クラン酒場
+FUNC_CLASS_NAME_15,Craft Officer,クラフト係官
+FUNC_CLASS_NAME_16,Beauty Salon,美容院
+FUNC_CLASS_NAME_17,Lestania News,レスタニアニュース
+FUNC_CLASS_NAME_18,Dragon Force Augmentation,竜力の継承
+FUNC_CLASS_NAME_19,Orb Exchange: Crests,オーブ交換：クレスト
+FUNC_CLASS_NAME_20,Orb Exchange: Rare Items / Materials,オーブ交換：珍品／素材
+FUNC_CLASS_NAME_21,Area Master,エリアマスター
+FUNC_CLASS_NAME_22,Job Master,ジョブマスター
+FUNC_CLASS_NAME_24,Bazaar,バザー
+FUNC_CLASS_NAME_25,Storage Box,保管ボックス
+FUNC_CLASS_NAME_26,Delivery Box,納品ボックス
+FUNC_CLASS_NAME_27,Riftstone,リムストーン
+FUNC_CLASS_NAME_28,Dragon's Keystone,竜の礎
+FUNC_CLASS_NAME_29,Portcrystal,拠点の礎
+FUNC_CLASS_NAME_30,Dragon's Keystone,竜の礎
+FUNC_CLASS_NAME_31,Quest Board,クエストボード
+FUNC_CLASS_NAME_32,Clan Quest Board,クランクエストボード
+FUNC_CLASS_NAME_33,Ranking Board,ランキングボード
+FUNC_CLASS_NAME_34,,亡都の礎
+FUNC_CLASS_NAME_35,,移送の楔
+FUNC_CLASS_NAME_36,Historian,記録官
+FUNC_CLASS_NAME_37,Revive Pawn,ポーンの復活
+FUNC_CLASS_NAME_39,Extreme Missions,エクストリームミッション
+FUNC_CLASS_NAME_40,Recover Revival Power,復活力の回復
+FUNC_CLASS_NAME_41,Camp Storage Box,拠点用保管ボックス
+FUNC_CLASS_NAME_42,Login Stamp,ログインスタンプ
+FUNC_CLASS_NAME_43,Receive Reward,報酬受け取り
+FUNC_CLASS_NAME_44,Treasure Lot,トレジャーズロット
+FUNC_CLASS_NAME_45,,現れしポーン
+FUNC_CLASS_NAME_46,Treat Weakness,弱化の治療
+FUNC_CLASS_NAME_47,Myrmidon's Pledge,戦徒の契り
+FUNC_CLASS_NAME_48,Appraisal Exchange,鑑定交換
+FUNC_CLASS_NAME_49,Partner Pawn,パートナーポーン
+FUNC_CLASS_NAME_50,Skill Augmentation,戦技の継承
+FUNC_CLASS_NAME_51,Achievements,アチーブメント
+FUNC_CLASS_NAME_52,Storage Chest,格納チェスト
+FUNC_CLASS_NAME_53,Vocation Unlock,ジョブ解放
+FUNC_CLASS_NAME_54,Box Treasure Lot,ボックストレジャーズロット
+FUNC_CLASS_NAME_55,Pawn Expedition Corps,ポーン遠征隊
+FUNC_CLASS_NAME_56,Check Expedition Result,遠征成果の確認
+FUNC_CLASS_NAME_57,Play Point Shop,プレイポイントショップ
+FUNC_CLASS_NAME_58,Clan Hall Management,クラン拠点管理
+FUNC_CLASS_NAME_59,Warfare Practice,戦技練習
+FUNC_CLASS_NAME_60,Clan Dungeon,クランダンジョン
+FUNC_CLASS_NAME_61,,
+FUNC_CLASS_NAME_62,,
+FUNC_CLASS_NAME_63,,
+FUNC_CLASS_NAME_64,Special Skill Augmentation,絶技の継承
+FUNC_CLASS_NAME_65,Vocation Emblem,ジョブエンブレム
+FUNC_CLASS_NAME_66,Substory Log,サブストーリーログ
+FUNC_CLASS_NAME_67,Heroic Spirit Sleeping Path,英霊眠りし道
+FUNC_CLASS_NAME_68,Give Spirits,魂を捧げる
+FUNC_CLASS_NAME_69,War Missions,ウォーミッション
+FUNC_CLASS_NAME_70,Dominion Point Shop,ドミニオンポイントショップ
+FUNC_CLASS_NAME_71,Reincarnation,転生
+FUNC_CLASS_NAME_72,Custom-made Arms,武具のカスタムメイド
+FUNC_CLASS_NAME_73,Arms Resource Disassembly,武具の資源分解
+FUNC_CLASS_NAME_74,Adventure Pass Shop,冒パスショップ
+FUNC_CLASS_NAME_75,,
+FUNC_CLASS_NAME_76,,
+FUNC_CLASS_NAME_77,,
+FUNC_CLASS_NAME_78,Achievements: Royal Family Restoration,アチーブメント：王家再興
+FUNC_CLASS_NAME_80,Emblem Medal Exchange,紋章メダル交換
+FUNC_CLASS_NAME_81,Outing Support Service,おでかけ支援サービス
+FUNC_CLASS_NAME_82,Visit Another's Room,他人の自室訪問
+FUNC_CLASS_NAME_83,Special Quest Board,スペシャルクエストボード
+FUNC_CLASS_NAME_84,Large Delivery Reward Review,大口納品報酬確認
+FUNC_CLASS_NAME_85,My Room Visit Setup,自室訪問設定
+FUNC_CLASS_NAME_86,Adventure Guide,冒険ガイド
+FUNC_CLASS_NAME_87,Recruitment Board,募集掲示板
+FUNC_CLASS_NAME_88,Effect Seal,効果の封印
+FUNC_CLASS_NAME_89,Bitterblack Item Appraisal,黒呪アイテムの鑑定
+FUNC_CLASS_NAME_90,,具現化
+FUNC_CLASS_NAME_91,Report Search Results,探索結果の報告
+FUNC_CLASS_NAME_93,,
+FUNC_CLASS_NAME_94,,
+FUNC_CLASS_NAME_95,Medal Exchange,印記章交換
+FUNC_CLASS_NAME_96,Large Delivery Event,大口納品イベント
+FUNC_CLASS_NAME_97,Bitterblack Shop,黒呪ショップ
+FUNC_CLASS_NAME_98,,
+FUNC_CLASS_NAME_99,Wild Hunt,ワイルドハント
+FUNC_CLASS_NAME_100,High Orb Exchange,ハイオーブ交換
+FUNC_CLASS_NAME_101,Dragon Ability Synthesis,ドラゴンアビリティの合成
+FUNC_CLASS_NAME_102,Dragon Armor Appraisal,竜防具の鑑定交換
+FUNC_CLASS_NAME_103,Reward Mission,リワードミッション
+FUNC_CLASS_NAME_104,Reward Medal Exchange,リワードメダル交換

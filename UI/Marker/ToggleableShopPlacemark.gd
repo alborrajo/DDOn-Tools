@@ -32,7 +32,7 @@ func _ready():
 	assert(SelectedListManager.connect("item_filter_changed", self, "_on_item_filter_changed") == OK)
 
 func get_display_name() -> String:
-	return tr('NPC_NAME_'+String(npc_id))
+	return tr('NPC_NAME_'+String(npc_id))+' - '+tr('FUNC_CLASS_NAME_'+String(institution_function_id))
 	
 func _set_stage_id(value: int) -> void:
 	stage_id = value
@@ -44,7 +44,7 @@ func _set_npc_id(value: int) -> void:
 
 func _set_institution_function_id(value: int) -> void:
 	institution_function_id = value
-	# TODO: Update icon
+	$MapControl/ToggleButton.text = get_display_name()
 	
 func _set_coordinates(value: Vector3) -> void:
 	coordinates = value

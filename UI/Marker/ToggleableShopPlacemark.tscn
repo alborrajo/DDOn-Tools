@@ -1,7 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UI/Marker/ToggleablePlacemark.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/Marker/ToggleableShopPlacemark.gd" type="Script" id=2]
+[ext_resource path="res://resources/icons/mmapicon_ID.png" type="Texture" id=3]
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 3 )
+region = Rect2( 4, 58, 20, 22 )
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Tree
@@ -43,7 +49,13 @@ func _gui_input(event):
 script = ExtResource( 2 )
 
 [node name="ToggleButton" parent="MapControl" index="0"]
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 16.0
+margin_bottom = 16.0
+icon = SubResource( 2 )
 flat = false
+icon_align = 0
 
 [node name="Panel" parent="MapControl/Control" index="0"]
 margin_right = 300.0
