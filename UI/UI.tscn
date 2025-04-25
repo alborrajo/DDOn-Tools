@@ -149,7 +149,7 @@ func _ready():
 	assert(SelectedListManager.connect(\"selection_changed\", self, \"_on_selection_changed\") == OK)
 	visible = false
 
-func _on_selection_changed():
+func _on_selection_changed(added: Array, removed: Array):
 	if SelectedListManager.selected_list.size() == 0:
 		visible = false
 
@@ -256,6 +256,7 @@ __meta__ = {
 }
 
 [node name="Items" type="VBoxContainer" parent="left/tab"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
