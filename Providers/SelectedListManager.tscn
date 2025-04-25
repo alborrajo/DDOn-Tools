@@ -17,6 +17,7 @@ const FILTER_NONMATCH_COLOR = Color(0.75, 0.75, 0.75, 0.75)
 const SELECTION_TYPE_NONE := 0
 const SELECTION_TYPE_ENEMY := 1
 const SELECTION_TYPE_GATHERING_ITEM := 2
+const SELECTION_TYPE_SHOP_ITEM := 3
 
 var selected_list := []
 var selection_type := SELECTION_TYPE_NONE
@@ -36,6 +37,8 @@ func toggle_selection(selected_element: Object):
 		new_selection_type = SELECTION_TYPE_ENEMY
 	elif selected_element is GatheringItem:
 		new_selection_type = SELECTION_TYPE_GATHERING_ITEM
+	elif selected_element is ShopItem:
+		new_selection_type = SELECTION_TYPE_SHOP_ITEM
 	else:
 		push_error(\"Attempted to select an unrecognized type\")
 		return # Ignore anything else

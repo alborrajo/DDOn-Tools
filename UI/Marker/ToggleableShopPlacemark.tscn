@@ -150,6 +150,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 allow_rmb_select = true
 hide_root = true
+select_mode = 2
 script = SubResource( 1 )
 
 [connection signal="value_changed" from="MapControl/Control/Panel/ShopPlacemark/GridContainer/Unk0SpinBox" to="." method="_on_Unk0SpinBox_value_changed"]
@@ -157,4 +158,5 @@ script = SubResource( 1 )
 [connection signal="item_selected" from="MapControl/Control/Panel/ShopPlacemark/GridContainer2/WalletTypeOptionButton" to="." method="_on_WalletTypeOptionButton_item_selected"]
 [connection signal="dragged_shop_item" from="MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree" to="." method="_on_ItemList_dragged_shop_item"]
 [connection signal="dropped_shop_item" from="MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree" to="." method="_on_ItemList_dropped_shop_item"]
-[connection signal="item_rmb_selected" from="MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree" to="." method="_on_ItemList_item_rmb_selected"]
+[connection signal="item_rmb_selected" from="MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree" to="." method="_on_Tree_item_rmb_selected"]
+[connection signal="multi_selected" from="MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree" to="." method="_on_Tree_multi_selected"]
