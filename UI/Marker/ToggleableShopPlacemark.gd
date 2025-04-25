@@ -102,8 +102,12 @@ func _on_ItemList_dragged_shop_item(shop_item):
 	assert(index != -1)
 	shop.remove_goods(index)
 
-func _on_ItemList_dropped_shop_item(shop_item):
-	shop.add_goods(shop_item)
+func _on_ItemList_dropped_shop_item(shop_item, drop_section, dropped_position_shop_item):
+	var goods := shop.get_goods()
+	var index := goods.find(dropped_position_shop_item)
+	assert(index != -1)
+	index = index+clamp(drop_section, 0, 1)
+	shop.add_goods_at(index, shop_item)
 
 func _on_item_filter_changed(uppercase_filter_text: String):
 	$MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree.update() #rerender

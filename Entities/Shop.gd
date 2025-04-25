@@ -27,6 +27,10 @@ func add_goods(shop_item: ShopItem) -> void:
 	_goods_param_list.append(shop_item)
 	emit_changed()
 	
+func add_goods_at(index: int, shop_item: ShopItem) -> void:
+	_goods_param_list.insert(index, shop_item)
+	emit_changed()
+	
 func remove_goods(index: int) -> void:
 	_goods_param_list.remove(index)
 	emit_changed()

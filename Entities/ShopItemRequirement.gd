@@ -33,6 +33,21 @@ var param5: int setget _set_param5
 var sales_period_start: int setget _set_sales_period_start
 var sales_period_end: int setget _set_sales_period_end
 
+func clone() -> ShopItemRequirement:
+	var clone: ShopItemRequirement = get_script().new()
+	clone.condition = condition
+	clone.ignore_requirements = ignore_requirements
+	clone.progress = progress
+	clone.hide_requirement_details = hide_requirement_details
+	clone.param1 = param1
+	clone.param2 = param2
+	clone.param3 = param3
+	clone.param4 = param4
+	clone.param5 = param5
+	clone.sales_period_start = sales_period_start
+	clone.sales_period_end = sales_period_end
+	return clone
+
 func _set_condition(value):
   condition = value
   emit_changed()

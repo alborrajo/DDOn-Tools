@@ -6,23 +6,26 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends Tree
 
-signal dragged_shop_item(index)
-signal dropped_shop_item(shop_item)
+signal dragged_shop_item(removed_shop_item)
+signal dropped_shop_item(shop_item, drop_section, dropped_position_shop_item)
 
 var _dragging_shop_item: ShopItem = null
 
 func get_drag_data(position):
-	_dragging_shop_item = get_item_at_position(position).get_metadata(0)
-	return _dragging_shop_item
+	var tree_item := get_item_at_position(position)
+	if tree_item != null:
+		_dragging_shop_item = tree_item.get_metadata(0)
+		return _dragging_shop_item
 
 func can_drop_data(_position, data):
+	drop_mode_flags = DROP_MODE_INBETWEEN
 	return data is Item or data is ShopItem
 	
-func drop_data(_position, data):
+func drop_data(position, data):
 	if data is Item:
-		emit_signal(\"dropped_shop_item\", ShopItem.new(data))
+		emit_signal(\"dropped_shop_item\", ShopItem.new(data), get_drop_section_at_position(position), get_item_at_position(position).get_metadata(0))
 	elif data is ShopItem:
-		emit_signal(\"dropped_shop_item\", data)
+		emit_signal(\"dropped_shop_item\", data.clone(), get_drop_section_at_position(position), get_item_at_position(position).get_metadata(0))
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_DRAG_END and _dragging_shop_item != null:

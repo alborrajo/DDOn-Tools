@@ -40,6 +40,17 @@ func remove_requirement(index: int) -> void:
 	_requirements.remove(index)
 	emit_changed()
 
+func clone() -> ShopItem:
+	var clone: ShopItem = get_script().new(item)
+	clone.price = price
+	clone.is_stock_unlimited = is_stock_unlimited
+	clone.stock = stock
+	clone.hide_if_reqs_unmet = hide_if_reqs_unmet
+	clone.sales_period_start = sales_period_start
+	clone.sales_period_end = sales_period_end
+	for req in _requirements:
+		clone.add_requirement(req.clone())
+	return clone
 
 func _set_item(value):
 	item = value
