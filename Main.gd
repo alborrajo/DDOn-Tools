@@ -3,7 +3,6 @@ class_name Main
 
 const MAX_LAYERS = 10
 
-# i have to do this bs otherwise godot refuses to export the files
 const EnemyPlacemarkScene = preload("res://UI/Marker/ToggleableEnemySubgroupPlacemark.tscn")
 const GatheringPlacemarkScene = preload("res://UI/Marker/ToggleableGatheringSpotPlacemark.tscn")
 const ShopPlacemarkScene = preload("res://UI/Marker/ToggleableShopPlacemark.tscn")
@@ -326,6 +325,7 @@ func _on_tab_changed(tab):
 func _on_ui_settings_updated():
 	players_node.visible = tab_and_map_nodes[ui_node.current_tab].has(players_node) or StorageProvider.get_value(Players.STORAGE_SECTION_PLAYERS, Players.STORAGE_KEY_SHOW_IN_ALL_TABS, Players.STORAGE_KEY_SHOW_IN_ALL_TABS_DEFAULT)
 
+# i have to do this bs otherwise godot refuses to export the files
 const image_array_jorobate_flanders := [
 	"res://resources/maps/field000_m00_l0.png",
 	"res://resources/maps/field001_m00_l0.png",
