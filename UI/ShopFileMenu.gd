@@ -52,10 +52,10 @@ func _do_load_file(file: File) -> void:
 			else:
 				shop_item.is_stock_unlimited = false
 				shop_item.stock = stock
-			shop_item.hide_if_reqs_unmet = goods_data["Unk4"]
-			shop_item.sales_period_start = goods_data["Unk5"]
-			shop_item.sales_period_end = goods_data["Unk6"]
-			for requirement_data in goods_data["Unk7"]:
+			shop_item.hide_if_reqs_unmet = goods_data["HideIfReqsUnmet"]
+			shop_item.sales_period_start = goods_data["SalesPeriodStart"]
+			shop_item.sales_period_end = goods_data["SalesPeriodEnd"]
+			for requirement_data in goods_data["Requirements"]:
 				var requirement := ShopItemRequirement.new()
 				requirement.index = requirement_data["Index"]
 				requirement.condition = requirement_data["Condition"]
@@ -106,10 +106,10 @@ func _do_save_file(file: File) -> void:
 				"ItemId": good.item.id,
 				"Price": good.price,
 				"Stock": stock,
-				"Unk4": good.hide_if_reqs_unmet,
-				"Unk5": good.sales_period_start,
-				"Unk6": good.sales_period_end,
-				"Unk7": requirements_data
+				"HideIfReqsUnmet": good.hide_if_reqs_unmet,
+				"SalesPeriodStart": good.sales_period_start,
+				"SalesPeriodEnd": good.sales_period_end,
+				"Requirements": requirements_data
 			})
 			
 		var shop_data := {
