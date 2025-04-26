@@ -36,27 +36,23 @@ func _on_item_changed():
 				title_label_node.text = item.get_display_name()
 
 
-func _on_DropChanceSpinBox_value_changed(_value):
-	item.drop_chance = $GridContainer/DropChanceSpinBox.value
+func _on_DropChanceSpinBox_value_changed(value):
 	if supress_event != true:
-		SelectedListManager.apply_values_to_selection("drop_chance", item.drop_chance)
+		SelectedListManager.apply_values_to_selection("drop_chance", value)
 	
-func _on_NumSpinBox_value_changed(_value):
-	item.num = $GridContainer/NumContainer/NumSpinBox.value
+func _on_NumSpinBox_value_changed(value):
 	if supress_event != true:
-		SelectedListManager.apply_values_to_selection("num", item.num)
+		SelectedListManager.apply_values_to_selection("num", value)
 
-func _on_MaxNumSpinBox_value_changed(_value):
-	item.max_num = $GridContainer/NumContainer/MaxNumSpinBox.value
+func _on_MaxNumSpinBox_value_changed(value):
 	if supress_event != true:
-		SelectedListManager.apply_values_to_selection("max_num", item.max_num)
+		SelectedListManager.apply_values_to_selection("max_num", value)
 	
-func _on_QualitySpinBox_value_changed(_value):
-	item.quality = $GridContainer/QualitySpinBox.value
+func _on_QualitySpinBox_value_changed(value):
 	if supress_event != true:
-		SelectedListManager.apply_values_to_selection("quality", item.quality)
+		SelectedListManager.apply_values_to_selection("quality", value)
 
 func _on_IsHiddenCheckBox_pressed():
-	item.is_hidden = $GridContainer/IsHiddenCheckBox.pressed
+	var value = $GridContainer/IsHiddenCheckBox.pressed
 	if supress_event != true:
-		SelectedListManager.apply_values_to_selection("is_hidden", item.is_hidden)
+		SelectedListManager.apply_values_to_selection("is_hidden", value)

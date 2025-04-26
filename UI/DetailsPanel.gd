@@ -19,8 +19,8 @@ func show_details_of(obj):
 		$EnemyDetailsPanel.visible = true
 		emit_signal("showing_details_of", obj)
 	elif obj is GatheringItem:
-		$ItemDetailsPanel.item = obj
-		$ItemDetailsPanel.visible = true
+		$GatheringItemDetailsPanel.item = obj
+		$GatheringItemDetailsPanel.visible = true
 		emit_signal("showing_details_of", obj)
 	else:
 		push_error("Attempted to show the details of an unrecognized object")

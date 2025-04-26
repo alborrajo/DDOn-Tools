@@ -142,7 +142,7 @@ _global_script_classes=[ {
 "base": "ScrollContainer",
 "class": "ItemDetailsPanel",
 "language": "GDScript",
-"path": "res://UI/ItemDetailsPanel.gd"
+"path": "res://UI/GatheringItemDetailsPanel.gd"
 }, {
 "base": "GenericFileMenu",
 "class": "ItemFileMenu",

@@ -6,7 +6,7 @@
 [ext_resource path="res://UI/EnemyFileMenu.gd" type="Script" id=4]
 [ext_resource path="res://UI/UI Buttons/Minimize.gd" type="Script" id=5]
 [ext_resource path="res://UI/EnemyTree.gd" type="Script" id=6]
-[ext_resource path="res://UI/ItemDetailsPanel.tscn" type="PackedScene" id=7]
+[ext_resource path="res://UI/GatheringItemDetailsPanel.tscn" type="PackedScene" id=7]
 [ext_resource path="res://UI/Settings.tscn" type="PackedScene" id=8]
 [ext_resource path="res://UI/Chat.tscn" type="PackedScene" id=9]
 [ext_resource path="res://DayNightOptionButton.gd" type="Script" id=10]
@@ -480,7 +480,7 @@ script = ExtResource( 3 )
 [node name="EnemyDetailsPanel" parent="Right Panel/VBoxContainer/DetailsPanel" instance=ExtResource( 1 )]
 title_label = NodePath("../../HBoxContainer/TitleLabel")
 
-[node name="ItemDetailsPanel" parent="Right Panel/VBoxContainer/DetailsPanel" instance=ExtResource( 7 )]
+[node name="GatheringItemDetailsPanel" parent="Right Panel/VBoxContainer/DetailsPanel" instance=ExtResource( 7 )]
 title_label = NodePath("../../HBoxContainer/TitleLabel")
 
 [node name="NotificationPopup" type="PopupPanel" parent="."]
