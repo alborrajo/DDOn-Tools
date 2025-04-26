@@ -23,7 +23,6 @@ const REQUIREMENT_CONDITION_DEFEAT_ENEMIESLEVEL = 6
 
 var condition: int setget _set_condition
 var ignore_requirements: bool setget _set_ignore_requirements
-var progress: int setget _set_progress
 var hide_requirement_details: bool setget _set_hide_requirement_details
 var param1: int setget _set_param1
 var param2: int setget _set_param2
@@ -37,7 +36,6 @@ func clone() -> ShopItemRequirement:
 	var clone: ShopItemRequirement = get_script().new()
 	clone.condition = condition
 	clone.ignore_requirements = ignore_requirements
-	clone.progress = progress
 	clone.hide_requirement_details = hide_requirement_details
 	clone.param1 = param1
 	clone.param2 = param2
@@ -54,10 +52,6 @@ func _set_condition(value):
 
 func _set_ignore_requirements(value):
   ignore_requirements = value
-  emit_changed()
-
-func _set_progress(value):
-  progress = value
   emit_changed()
 
 func _set_hide_requirement_details(value):

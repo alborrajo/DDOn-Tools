@@ -60,7 +60,6 @@ func _do_load_file(file: File) -> void:
 				requirement.index = requirement_data["Index"]
 				requirement.condition = requirement_data["Condition"]
 				requirement.ignore_requirements = requirement_data["IgnoreRequirements"]
-				requirement.progress = requirement_data["Progress"]
 				requirement.hide_requirement_details = requirement_data["HideRequirementDetails"]
 				requirement.param1 = requirement_data["Param1"]
 				requirement.param2 = requirement_data["Param2"]
@@ -93,7 +92,6 @@ func _do_save_file(file: File) -> void:
 					"Index": req_index,
 					"Condition": requirement.condition,
 					"IgnoreRequirements": requirement.ignore_requirements,
-					"Progress": requirement.progress,
 					"HideRequirementDetails": requirement.hide_requirement_details,
 					"Param1": requirement.param1,
 					"Param2": requirement.param2,
