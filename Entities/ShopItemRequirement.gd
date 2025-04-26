@@ -21,7 +21,7 @@ const REQUIREMENT_CONDITION_UNLOCK_PLAY_POINTS = 5
 const REQUIREMENT_CONDITION_DEFEAT_ENEMIESLEVEL = 6
 
 
-var condition: int setget _set_condition
+var condition: int = REQUIREMENT_CONDITION_NONE setget _set_condition
 var ignore_requirements: bool setget _set_ignore_requirements
 var hide_requirement_details: bool setget _set_hide_requirement_details
 var param1: int setget _set_param1
