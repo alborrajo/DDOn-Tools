@@ -5,13 +5,15 @@ const STORAGE_SECTION_SHOPS := "Shops"
 const STORAGE_KEY_SHOP_PRICE_RATE := "ShopPriceRate"
 const STORAGE_KEY_SHOP_PRICE_RATE_DEFAULT := 1.5
 
+const DEFAULT_DATE_STRING = "1970-01-01T00:00:00"
+
 var item: Item setget _set_item
 var price: int setget _set_price
 var is_stock_unlimited: bool setget _set_is_stock_unlimited
 var stock: int setget _set_stock
 var hide_if_reqs_unmet: bool setget _set_hide_if_reqs_unmet
-var sales_period_start: int setget _set_sales_period_start
-var sales_period_end: int setget _set_sales_period_end
+var sales_period_start: String setget _set_sales_period_start
+var sales_period_end: String setget _set_sales_period_end
 
 var _requirements: Array
 
@@ -22,8 +24,8 @@ func _init(_item: Item):
 	self.is_stock_unlimited = true
 	self.stock = 0
 	self.hide_if_reqs_unmet= 0
-	self.sales_period_start = 0
-	self.sales_period_end = 0
+	self.sales_period_start = DEFAULT_DATE_STRING
+	self.sales_period_end = DEFAULT_DATE_STRING
 	self._requirements = []
 
 func clear_requirements() -> void:

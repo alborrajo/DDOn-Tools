@@ -21,6 +21,9 @@ const REQUIREMENT_CONDITION_UNLOCK_PLAY_POINTS = 5
 const REQUIREMENT_CONDITION_DEFEAT_ENEMIESLEVEL = 6
 
 
+const DEFAULT_DATE_STRING = "1970-01-01T00:00:00"
+
+
 var condition: int = REQUIREMENT_CONDITION_NONE setget _set_condition
 var ignore_requirements: bool setget _set_ignore_requirements
 var hide_requirement_details: bool setget _set_hide_requirement_details
@@ -29,8 +32,8 @@ var param2: int setget _set_param2
 var param3: int setget _set_param3
 var param4: int setget _set_param4
 var param5: int setget _set_param5
-var sales_period_start: int setget _set_sales_period_start
-var sales_period_end: int setget _set_sales_period_end
+var sales_period_start: String = DEFAULT_DATE_STRING setget _set_sales_period_start
+var sales_period_end: String = DEFAULT_DATE_STRING setget _set_sales_period_end
 
 func clone() -> ShopItemRequirement:
 	var clone: ShopItemRequirement = get_script().new()
