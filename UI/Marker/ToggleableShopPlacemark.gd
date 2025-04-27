@@ -119,13 +119,17 @@ func _on_selection_deleted(deleted: Array) -> void:
 		if deleted.has(good):
 			shop.remove_goods(index)
 
-func _on_Tree_multi_selected(item: TreeItem, column: int, selected: bool):
+func _on_Tree_multi_selected(_tree_item: TreeItem, column: int, _selected: bool):
 	assert(column == 0)
-	var shop_item: ShopItem = item.get_metadata(column)
-	if selected:
+	var shop_items := []
+	var tree_item = $MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree.get_next_selected(null)
+	while tree_item != null:
+		shop_items.append(tree_item.get_metadata(column))
+		tree_item = $MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree.get_next_selected(tree_item)
+		
+	SelectedListManager.clear_list()
+	for shop_item in shop_items:
 		SelectedListManager.add_to_selection(shop_item)
-	else:
-		SelectedListManager.remove_from_selection(shop_item)
 	
 func _on_Tree_item_rmb_selected(_position: Vector2):
 	SelectedListManager.call_deferred("delete_selected")
