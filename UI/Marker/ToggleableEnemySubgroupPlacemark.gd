@@ -10,6 +10,7 @@ var enemy_set: EnemySet
 var enemy_subgroup: EnemySubgroup
 
 func _ready():
+	assert(SelectedListManager.connect("selection_changed", self, "_on_selection_changed") == OK)
 	assert(SelectedListManager.connect("enemy_filter_changed", self, "_on_enemy_filter_changed") == OK)
 	
 	assert(enemy_subgroup.connect("changed", self, "_on_enemy_subgroup_changed") == OK)
@@ -62,12 +63,12 @@ func _on_enemy_position_placemark_mouse_exited(position_index: int, enemy_positi
 func get_position_placemarks() -> Array:
 	return $EnemyPositionPlacemarksControl.get_children()
 
-func _on_ToggleButton_subgroup_selected():
-	._on_ToggleButton_subgroup_selected()
-	for child in $EnemyPositionPlacemarksControl.get_children():
-		assert(child.get_child(0) is EnemyPositionPlacemark)
-		var position := child.get_child(0) as EnemyPositionPlacemark
-		position.select_all_placemarks()
+func _on_selection_changed(added: Array, removed: Array) -> void:
+	for position in enemy_subgroup.positions:
+		for enemy in position.enemies:
+			if added.has(enemy):
+				show()
+				return
 
 func _on_enemy_filter_changed(uppercase_filter_text: String):
 	for position in enemy_subgroup.positions:

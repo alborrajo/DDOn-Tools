@@ -13,11 +13,10 @@ func _on_enemy_position_changed() -> void:
 		$Panel/Container.remove_child(child)
 		
 	if enemy_position != null: 
-		for enemy_idx in enemy_position.enemies.size():
-			var enemy: Enemy = enemy_position.enemies[enemy_idx]
+		for enemy in enemy_position.enemies:
 			var enemy_placemark: EnemyPlacemark = enemy_placemark_packed_scene.instance()
 			enemy_placemark.enemy = enemy
-			assert(enemy_placemark.connect("placemark_removed", self, "_on_enemy_removed", [enemy_idx]) == OK)
+			assert(enemy_placemark.connect("placemark_removed", self, "_on_enemy_removed", [enemy]) == OK)
 			$Panel/Container.add_child(enemy_placemark)
 
 	_check_position_conflicts()
@@ -40,16 +39,13 @@ func _set_enemy_position(new_enemy_position: EnemyPosition) -> void:
 
 	_on_enemy_position_changed()
 
-func _on_enemy_removed(enemy_idx: int) -> void:
-	var enemy: Enemy = enemy_position.enemies[enemy_idx]
+func _on_enemy_removed(enemy: Enemy) -> void:
 	if enemy.is_connected("changed", self, "_on_enemy_changed"):
 		enemy.disconnect("changed", self, "_on_enemy_changed")
-	enemy_position.remove_enemy(enemy_idx)
+	var enemy_idx: int = enemy_position.enemies.find(enemy)
+	if enemy_idx != -1:
+		enemy_position.remove_enemy(enemy_idx)
 
-	
-func select_all_placemarks():
-	for enemy in enemy_position.get_enemies():
-		SelectedListManager.add_to_selection(enemy)
 
 # Drag and drop functions
 func can_drop_data(_position, data):

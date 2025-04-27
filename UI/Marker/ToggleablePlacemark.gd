@@ -36,7 +36,3 @@ func show() -> void:
 func hide() -> void:
 	$MapControl/ToggleButton.visible = true
 	$MapControl/Control.visible = false
-
-func _on_ToggleButton_subgroup_selected():
-	show()
-	# Subclasses must implement selection

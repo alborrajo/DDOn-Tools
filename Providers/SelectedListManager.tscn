@@ -31,36 +31,59 @@ func apply_values_to_selection(parameter_name: String, parameter_value):
 		selected_element[parameter_name] = parameter_value
 		
 # Function to check the list for type and removes if it exists already
-func toggle_selection(selected_element: Object):
-	var new_selection_type := SELECTION_TYPE_NONE
-	if selected_element is Enemy:
-		new_selection_type = SELECTION_TYPE_ENEMY
-	elif selected_element is GatheringItem:
-		new_selection_type = SELECTION_TYPE_GATHERING_ITEM
-	elif selected_element is ShopItem:
-		new_selection_type = SELECTION_TYPE_SHOP_ITEM
-	else:
-		push_error(\"Attempted to select an unrecognized type\")
-		return # Ignore anything else
-		
+func toggle_selection(element: Object):
+	var deselected_elements := []
+	var new_selection_type := _get_selection_type(element)
 	if selection_type != new_selection_type:
-		clear_list()
+		deselected_elements = selected_list.duplicate()
+		selected_list.clear()
 		selection_type = new_selection_type
-
-	var index = selected_list.find(selected_element)
+			
+	var index = selected_list.find(element)
 	if index != -1:
-		_remove_from_selection(index)
+		selected_list.remove(index)
+		deselected_elements.append(element)
+		emit_signal(\"selection_changed\", [], deselected_elements)
 	else:
-		_add_to_selection(selected_element)
+		selected_list.append(element)
+		emit_signal(\"selection_changed\", [element], deselected_elements)
 
-func _add_to_selection(selected_element):
-	selected_list.append(selected_element)
-	emit_signal(\"selection_changed\", [selected_element], [])
+func add_to_selection(selected_element):
+	var index = selected_list.find(selected_element)
+	if index == -1:
+		var deselected_elements := []
+		var new_selection_type := _get_selection_type(selected_element)
+		if selection_type != new_selection_type:
+			deselected_elements = selected_list.duplicate()
+			selected_list.clear()
+			selection_type = new_selection_type
+			
+		selected_list.append(selected_element)
+		emit_signal(\"selection_changed\", [selected_element], deselected_elements)
+
+func add_multiple_to_selection(selected_elements: Array):
+	if selected_elements.size() == 0:
+		return
+		
+	var deselected_elements := []
+	var new_selection_type := _get_selection_type(selected_elements.front())
+	if selection_type != new_selection_type:
+		deselected_elements = selected_list.duplicate()
+		selected_list.clear()
+		selection_type = new_selection_type
 	
-func _remove_from_selection(index):
-	var removed = selected_list[index]
-	selected_list.remove(index)
-	emit_signal(\"selection_changed\", [], [removed])
+	for selected_element in selected_elements:
+		var index = selected_list.find(selected_element)
+		if index == -1:
+			selected_list.append(selected_element)
+	emit_signal(\"selection_changed\", selected_elements, deselected_elements)
+	
+func remove_from_selection(deselected_element):
+	var index = selected_list.find(deselected_element)
+	if index != -1:
+		selected_list.remove(index)
+		emit_signal(\"selection_changed\", [], [deselected_element])
+	
 	
 # Function to clear the list and emit a signal to inform the placemarks.
 func clear_list():
@@ -81,19 +104,21 @@ func delete_selected():
 	
 func reveal_hidden():
 	emit_signal(\"set_revealed_hidden\")
-	
-func add_to_selection(selected_element):
-	var index = selected_list.find(selected_element)
-	if index == -1:
-		_add_to_selection(selected_element)
-	
-func remove_from_selection(selected_element):
-	var index = selected_list.find(selected_element)
-	if index != -1:
-		_remove_from_selection(index)
 
 func is_list_empty() -> bool:
 	return selected_list.size() <= 0
+	
+func _get_selection_type(selected_element: Object) -> int:
+	var new_selection_type := SELECTION_TYPE_NONE
+	if selected_element is Enemy:
+		new_selection_type = SELECTION_TYPE_ENEMY
+	elif selected_element is GatheringItem:
+		new_selection_type = SELECTION_TYPE_GATHERING_ITEM
+	elif selected_element is ShopItem:
+		new_selection_type = SELECTION_TYPE_SHOP_ITEM
+	else:
+		push_error(\"Attempted to select an unrecognized type\")
+	return new_selection_type
 
 
 func set_enemy_filter(filter_text: String) -> void:

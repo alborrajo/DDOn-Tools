@@ -103,6 +103,7 @@ const UNKNOWN_ITEM_ICON = "res://resources/items/ii000000/icon_item000000_ID.png
 export (Resource) var gathering_spot: Resource setget _set_gathering_spot
 
 func _ready():
+	assert(SelectedListManager.connect("selection_changed", self, "_on_selection_changed") == OK)
 	assert(SelectedListManager.connect("item_filter_changed", self, "_on_item_filter_changed") == OK)
 
 func _set_gathering_spot(value: GatheringSpot) -> void:
@@ -122,10 +123,11 @@ func _set_gathering_spot(value: GatheringSpot) -> void:
 	
 	$MapControl/Control/Panel/GatheringSpotPlacemark.gathering_spot = value
 
-func _on_ToggleButton_subgroup_selected():
-	._on_ToggleButton_subgroup_selected()
-	$MapControl/Control/Panel/GatheringSpotPlacemark.select_all_placemarks()
-
+func _on_selection_changed(added: Array, removed: Array) -> void:
+	for gathering_item in gathering_spot.get_gathering_items():
+		if added.has(gathering_item):
+			show()
+			return
 
 func _on_item_filter_changed(uppercase_filter_text: String):
 	for gathering_item in gathering_spot.get_gathering_items():

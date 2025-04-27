@@ -30,7 +30,7 @@ func _update_placemark_visibility(index):
 func _on_EnemyPlacemark_pressed():
 	_selection_function()
 	
-func _get_selection_entity():
+func get_selection_entity():
 	return enemy
 	
 func set_enemy(em: Enemy) -> void:

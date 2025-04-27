@@ -18,7 +18,14 @@ func _input(event):
 				dragging = false
 				if not iemm.shift:
 					SelectedListManager.clear_list()
-				_select_recursively(_get_selection_rect().abs(), self)
+				var selection_entities := []
+				for child in get_children():
+					if child.visible:
+						# Select recursively only on the visible marker nodes
+						var child_selection_entities := _select_recursively(_get_selection_rect().abs(), child)
+						for child_selection_entity in child_selection_entities:
+							selection_entities.append(child_selection_entity)
+				SelectedListManager.add_multiple_to_selection(selection_entities)
 				update()
 				get_tree().set_input_as_handled()
 
@@ -30,13 +37,20 @@ func _draw():
 	else:
 		VisualServer.canvas_item_set_custom_rect(get_canvas_item(), false)
 		
-func _select_recursively(selection_rect: Rect2, node: Node) -> void:
+func _select_recursively(selection_rect: Rect2, node: Node) -> Array:
+	var selection_entities := []
 	for child in node.get_children():
 		if child is Control:
 			var control := child as Control
-			if control.is_visible_in_tree() and selection_rect.intersects(control.get_global_rect()) and control.has_method("select_placemark"):
-				control.select_placemark()
-		_select_recursively(selection_rect, child)
+			if selection_rect.intersects(control.get_global_rect()) and control.has_method("get_selection_entity"):
+				var selection_entity = control.get_selection_entity()
+				assert(selection_entity != null)
+				selection_entities.append(selection_entity)
+
+		var child_selection_entities := _select_recursively(selection_rect, child)
+		for entity in child_selection_entities:
+			selection_entities.append(entity)
+	return selection_entities
 
 func _get_selection_rect() -> Rect2:
 	var drag_end_global_position := get_global_mouse_position()

@@ -15,18 +15,13 @@ func _on_gathering_spot_changed() -> void:
 		$"../Container".remove_child(child)
 	var gatheringItems = gathering_spot.get_gathering_items()
 
-	for index in gatheringItems.size():
-		var item: GatheringItem = gatheringItems[index]
+	for item in gatheringItems:
 		var item_placemark: GatheringItemPlacemark = item_placemark_packed_scene.instance()
-		item_placemark.item = item
-		assert(item_placemark.connect("placemark_removed", self, "_on_item_removed", [index]) == OK)
+		item_placemark.gathering_item = item
+		assert(item_placemark.connect("placemark_removed", self, "_on_item_removed", [item]) == OK)
 		$"../Container".add_child(item_placemark)
 
-
-func _on_item_removed(index: int) -> void:
-	gathering_spot.remove_item(index)
-
-
-func select_all_placemarks():
-	for gathering_item in gathering_spot.get_gathering_items():
-		SelectedListManager.add_to_selection(gathering_item)
+func _on_item_removed(item: GatheringItem) -> void:
+	var index: int = gathering_spot.get_gathering_items().find(item)
+	if index != -1:
+		gathering_spot.remove_item(index)

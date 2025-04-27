@@ -1,7 +1,7 @@
 extends GenericPlacemark
 class_name GatheringItemPlacemark
 
-export (Resource) var item: Resource setget set_item
+var gathering_item: GatheringItem setget _set_gathering_item
 
 func _ready():
 	.ready()
@@ -11,30 +11,30 @@ func _ready():
 func _on_GatheringItemPlacemark_pressed():
 	_selection_function()
 	
-func _get_selection_entity():
-	return item
+func get_selection_entity():
+	return gathering_item
 
-func set_item(i: GatheringItem) -> void:
-	if item != null and item.is_connected("changed", self, "_on_item_changed"):
-		item.disconnect("changed", self, "_on_item_changed")
+func _set_gathering_item(i: GatheringItem) -> void:
+	if gathering_item != null and gathering_item.is_connected("changed", self, "_on_item_changed"):
+		gathering_item.disconnect("changed", self, "_on_item_changed")
 		
-	item = i
+	gathering_item = i
 	
 	if i != null:
 		assert(i.connect("changed", self, "_on_item_changed") == OK)
 		_on_item_changed()
 	
 func _on_item_changed():
-	text = String(item.num)
-	icon = item.item.icon
+	text = String(gathering_item.num)
+	icon = gathering_item.item.icon
 
 func get_drag_data(position):
 	.get_drag_data(position)
-	return item as GatheringItem
+	return gathering_item
 
 
 func _on_item_filter_changed(uppercase_filter_text: String):
-	if item.item.matches_filter_text(uppercase_filter_text):
+	if gathering_item.item.matches_filter_text(uppercase_filter_text):
 		modulate = SelectedListManager.FILTER_MATCH_COLOR
 		return
 	modulate = SelectedListManager.FILTER_NONMATCH_COLOR
