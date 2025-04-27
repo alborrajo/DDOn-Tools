@@ -74,7 +74,6 @@ margin_left = 7.0
 margin_top = 7.0
 margin_right = 293.0
 margin_bottom = 389.0
-mouse_filter = 0
 
 [node name="NpcNameLabel" type="Label" parent="MapControl/Control/Panel/ShopPlacemark" index="0"]
 margin_right = 286.0
@@ -98,6 +97,7 @@ text = "Unk0"
 margin_left = 34.0
 margin_right = 141.0
 margin_bottom = 28.0
+mouse_filter = 1
 size_flags_horizontal = 3
 max_value = 4.29497e+09
 
@@ -112,6 +112,7 @@ text = "Unk1"
 margin_left = 179.0
 margin_right = 286.0
 margin_bottom = 28.0
+mouse_filter = 1
 size_flags_horizontal = 3
 max_value = 255.0
 
@@ -131,6 +132,7 @@ text = "Wallet Type"
 margin_left = 70.0
 margin_right = 286.0
 margin_bottom = 24.0
+mouse_filter = 1
 size_flags_horizontal = 3
 text = "None"
 items = [ "None", null, false, 0, null, "Gold", null, false, 1, null, "Rift Points", null, false, 2, null, "Blood Orbs", null, false, 3, null, "Silver Tickets", null, false, 4, null, "Golden Gemstones", null, false, 5, null, "Rental Points", null, false, 6, null, "Reset Job Points", null, false, 7, null, "Reset Craft Skills", null, false, 8, null, "High Orbs", null, false, 9, null, "Dominion Points", null, false, 10, null, "Adventure Pass Points", null, false, 11, null, "Custom Made Service Tickets", null, false, 12, null, "Bitterblack Maze Reset Tickets", null, false, 13, null, "Golden Dragon Marks", null, false, 14, null, "Silver Dragon Marks", null, false, 15, null, "Red Dragon Marks", null, false, 16, null ]
@@ -142,10 +144,12 @@ margin_top = 82.0
 margin_right = 286.0
 margin_bottom = 382.0
 rect_min_size = Vector2( 0, 300 )
+mouse_filter = 1
 
 [node name="Tree" type="Tree" parent="MapControl/Control/Panel/ShopPlacemark/ScrollContainer" index="0"]
 margin_right = 286.0
 margin_bottom = 300.0
+mouse_filter = 1
 size_flags_horizontal = 3
 size_flags_vertical = 3
 allow_rmb_select = true

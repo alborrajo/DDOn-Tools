@@ -5,12 +5,14 @@ signal subgroup_mouse_entered()
 signal subgroup_mouse_exited()
 
 func _on_Control_mouse_entered():
+	raise()
 	emit_signal("subgroup_mouse_entered")
 
 func _on_Control_mouse_exited():
 	emit_signal("subgroup_mouse_exited")
 
 func _on_ToggleButton_mouse_entered():
+	raise()
 	emit_signal("subgroup_mouse_entered")
 
 func _on_ToggleButton_mouse_exited():
