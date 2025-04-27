@@ -1,0 +1,132 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://UI/ShopItemDetailsPanel.gd" type="Script" id=1]
+
+[node name="ShopItemDetailsPanel" type="ScrollContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 4.0
+margin_right = -4.0
+margin_bottom = -4.0
+script = ExtResource( 1 )
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+margin_right = 1016.0
+margin_bottom = 162.0
+size_flags_horizontal = 3
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer2"]
+margin_right = 1016.0
+margin_bottom = 122.0
+size_flags_horizontal = 3
+columns = 2
+
+[node name="Label" type="Label" parent="VBoxContainer2/GridContainer"]
+margin_top = 5.0
+margin_right = 812.0
+margin_bottom = 23.0
+size_flags_horizontal = 3
+text = "Price"
+
+[node name="PriceSpinBox" type="SpinBox" parent="VBoxContainer2/GridContainer"]
+margin_left = 816.0
+margin_right = 1016.0
+margin_bottom = 28.0
+max_value = 4.29497e+09
+
+[node name="LimitedStockCheckBox" type="CheckBox" parent="VBoxContainer2/GridContainer"]
+margin_top = 32.0
+margin_right = 812.0
+margin_bottom = 60.0
+text = "Limited Stock"
+
+[node name="LimitedStockSpinBox" type="SpinBox" parent="VBoxContainer2/GridContainer"]
+margin_left = 816.0
+margin_top = 32.0
+margin_right = 1016.0
+margin_bottom = 60.0
+max_value = 254.0
+
+[node name="Label2" type="Label" parent="VBoxContainer2/GridContainer"]
+margin_top = 68.0
+margin_right = 812.0
+margin_bottom = 86.0
+text = "Hide if requirements are unmet"
+
+[node name="HideIfReqsUnmetCheckBox" type="CheckBox" parent="VBoxContainer2/GridContainer"]
+margin_left = 816.0
+margin_top = 64.0
+margin_right = 1016.0
+margin_bottom = 90.0
+
+[node name="Label3" type="Label" parent="VBoxContainer2/GridContainer"]
+margin_top = 99.0
+margin_right = 812.0
+margin_bottom = 117.0
+text = "Sales period"
+
+[node name="SalesPeriodContainer" type="HBoxContainer" parent="VBoxContainer2/GridContainer"]
+margin_left = 816.0
+margin_top = 94.0
+margin_right = 1016.0
+margin_bottom = 122.0
+
+[node name="StartLineEdit" type="LineEdit" parent="VBoxContainer2/GridContainer/SalesPeriodContainer"]
+margin_right = 90.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 90, 0 )
+
+[node name="Label" type="Label" parent="VBoxContainer2/GridContainer/SalesPeriodContainer"]
+margin_left = 94.0
+margin_top = 5.0
+margin_right = 106.0
+margin_bottom = 23.0
+text = "to"
+
+[node name="EndLineEdit" type="LineEdit" parent="VBoxContainer2/GridContainer/SalesPeriodContainer"]
+margin_left = 110.0
+margin_right = 200.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 90, 0 )
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer2"]
+margin_top = 126.0
+margin_right = 1016.0
+margin_bottom = 130.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2"]
+margin_top = 134.0
+margin_right = 1016.0
+margin_bottom = 162.0
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer2/VBoxContainer"]
+margin_right = 1016.0
+margin_bottom = 24.0
+columns = 2
+
+[node name="Label" type="Label" parent="VBoxContainer2/VBoxContainer/GridContainer"]
+margin_top = 3.0
+margin_right = 993.0
+margin_bottom = 21.0
+size_flags_horizontal = 3
+text = "Requirements"
+
+[node name="AddRequirementButtonButton" type="Button" parent="VBoxContainer2/VBoxContainer/GridContainer"]
+margin_left = 997.0
+margin_right = 1016.0
+margin_bottom = 24.0
+text = "+"
+
+[node name="RequirementsContainer" type="VBoxContainer" parent="VBoxContainer2/VBoxContainer"]
+margin_top = 28.0
+margin_right = 1016.0
+margin_bottom = 28.0
+
+[connection signal="value_changed" from="VBoxContainer2/GridContainer/PriceSpinBox" to="." method="_on_PriceSpinBox_value_changed"]
+[connection signal="toggled" from="VBoxContainer2/GridContainer/LimitedStockCheckBox" to="." method="_on_LimitedStockCheckBox_toggled"]
+[connection signal="value_changed" from="VBoxContainer2/GridContainer/LimitedStockSpinBox" to="." method="_on_LimitedStockSpinBox_value_changed"]
+[connection signal="toggled" from="VBoxContainer2/GridContainer/HideIfReqsUnmetCheckBox" to="." method="_on_HideIfReqsUnmetCheckBox_toggled"]
+[connection signal="text_changed" from="VBoxContainer2/GridContainer/SalesPeriodContainer/StartLineEdit" to="." method="_on_StartLineEdit_text_changed"]
+[connection signal="text_changed" from="VBoxContainer2/GridContainer/SalesPeriodContainer/EndLineEdit" to="." method="_on_EndLineEdit_text_changed"]
+[connection signal="pressed" from="VBoxContainer2/VBoxContainer/GridContainer/AddRequirementButtonButton" to="." method="_on_AddRequirementButtonButton_pressed"]

@@ -1,0 +1,248 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://UI/UI Buttons/Minimize.gd" type="Script" id=1]
+[ext_resource path="res://UI/ShopItemRequirementPanel.gd" type="Script" id=2]
+
+[node name="ShopItemRequirementPanel" type="PanelContainer"]
+margin_right = 396.0
+margin_bottom = 288.0
+script = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 389.0
+margin_bottom = 281.0
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 382.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+
+[node name="Minimize" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_right = 12.0
+margin_bottom = 24.0
+script = ExtResource( 1 )
+control_to_minimize = NodePath("../../DetailsContainer")
+property_to_toggle = "visible"
+minimize_text = "V"
+maximize_text = ">"
+
+[node name="ConditionOptionButton" type="OptionButton" parent="VBoxContainer/HBoxContainer"]
+margin_left = 16.0
+margin_right = 359.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "None"
+items = [ "None", null, false, 1, null, "Clear With Rank", null, false, 2, null, "Defeat Enemies", null, false, 3, null, "War Mission Points", null, false, 4, null, "Unlock Play Points", null, false, 5, null, "Defeat Enemies Of Level", null, false, 6, null ]
+selected = 0
+
+[node name="RemoveButton" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 363.0
+margin_right = 382.0
+margin_bottom = 24.0
+text = "X"
+
+[node name="DetailsContainer" type="VBoxContainer" parent="VBoxContainer"]
+margin_top = 28.0
+margin_right = 382.0
+margin_bottom = 274.0
+
+[node name="IgnoreReqsCheckBox" type="CheckBox" parent="VBoxContainer/DetailsContainer"]
+margin_right = 382.0
+margin_bottom = 26.0
+text = "Ignore Requirements"
+
+[node name="HideReqsCheckBox" type="CheckBox" parent="VBoxContainer/DetailsContainer"]
+margin_top = 30.0
+margin_right = 382.0
+margin_bottom = 56.0
+text = "Hide Requirements"
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/DetailsContainer"]
+margin_top = 60.0
+margin_right = 382.0
+margin_bottom = 88.0
+size_flags_horizontal = 3
+columns = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/DetailsContainer/GridContainer"]
+margin_top = 5.0
+margin_right = 178.0
+margin_bottom = 23.0
+size_flags_horizontal = 3
+text = "Sales Period"
+
+[node name="SalesPeriodContainer" type="HBoxContainer" parent="VBoxContainer/DetailsContainer/GridContainer"]
+margin_left = 182.0
+margin_right = 382.0
+margin_bottom = 28.0
+
+[node name="StartLineEdit" type="LineEdit" parent="VBoxContainer/DetailsContainer/GridContainer/SalesPeriodContainer"]
+margin_right = 90.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 90, 0 )
+
+[node name="Label" type="Label" parent="VBoxContainer/DetailsContainer/GridContainer/SalesPeriodContainer"]
+margin_left = 94.0
+margin_top = 5.0
+margin_right = 106.0
+margin_bottom = 23.0
+text = "to"
+
+[node name="EndLineEdit" type="LineEdit" parent="VBoxContainer/DetailsContainer/GridContainer/SalesPeriodContainer"]
+margin_left = 110.0
+margin_right = 200.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 90, 0 )
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer/DetailsContainer"]
+margin_top = 92.0
+margin_right = 382.0
+margin_bottom = 96.0
+
+[node name="ClearWithRankContainer" type="VBoxContainer" parent="VBoxContainer/DetailsContainer"]
+margin_top = 100.0
+margin_right = 382.0
+margin_bottom = 128.0
+
+[node name="HFlowContainer" type="HFlowContainer" parent="VBoxContainer/DetailsContainer/ClearWithRankContainer"]
+margin_right = 382.0
+margin_bottom = 28.0
+
+[node name="Param2SpinBox" type="SpinBox" parent="VBoxContainer/DetailsContainer/ClearWithRankContainer/HFlowContainer"]
+margin_right = 62.0
+margin_bottom = 28.0
+max_value = 4.29497e+09
+
+[node name="Label" type="Label" parent="VBoxContainer/DetailsContainer/ClearWithRankContainer/HFlowContainer"]
+margin_left = 66.0
+margin_top = 5.0
+margin_right = 211.0
+margin_bottom = 23.0
+text = "cleared with at least rank"
+
+[node name="Param1SpinBox" type="SpinBox" parent="VBoxContainer/DetailsContainer/ClearWithRankContainer/HFlowContainer"]
+margin_left = 215.0
+margin_right = 277.0
+margin_bottom = 28.0
+max_value = 4.29497e+09
+
+[node name="DefeatEnemiesContainer" type="VBoxContainer" parent="VBoxContainer/DetailsContainer"]
+margin_top = 132.0
+margin_right = 382.0
+margin_bottom = 160.0
+
+[node name="HFlowContainer" type="HFlowContainer" parent="VBoxContainer/DetailsContainer/DefeatEnemiesContainer"]
+margin_right = 382.0
+margin_bottom = 28.0
+
+[node name="Label" type="Label" parent="VBoxContainer/DetailsContainer/DefeatEnemiesContainer/HFlowContainer"]
+margin_top = 5.0
+margin_right = 38.0
+margin_bottom = 23.0
+text = "Defeat"
+
+[node name="Param3OptionButton" type="OptionButton" parent="VBoxContainer/DetailsContainer/DefeatEnemiesContainer/HFlowContainer"]
+margin_left = 42.0
+margin_right = 106.0
+margin_bottom = 28.0
+text = "Goblin"
+items = [ "Goblin", null, false, 0, null ]
+selected = 0
+
+[node name="Param1SpinBox" type="SpinBox" parent="VBoxContainer/DetailsContainer/DefeatEnemiesContainer/HFlowContainer"]
+margin_left = 110.0
+margin_right = 172.0
+margin_bottom = 28.0
+max_value = 4.29497e+09
+prefix = "x"
+
+[node name="WarMissionPointsContainer" type="VBoxContainer" parent="VBoxContainer/DetailsContainer"]
+margin_top = 164.0
+margin_right = 382.0
+margin_bottom = 192.0
+
+[node name="HFlowContainer" type="HFlowContainer" parent="VBoxContainer/DetailsContainer/WarMissionPointsContainer"]
+margin_right = 382.0
+margin_bottom = 28.0
+
+[node name="Label" type="Label" parent="VBoxContainer/DetailsContainer/WarMissionPointsContainer/HFlowContainer"]
+margin_top = 5.0
+margin_right = 210.0
+margin_bottom = 23.0
+text = "Acquire War Mission accumulated pts"
+
+[node name="Param1SpinBox" type="SpinBox" parent="VBoxContainer/DetailsContainer/WarMissionPointsContainer/HFlowContainer"]
+margin_left = 214.0
+margin_right = 276.0
+margin_bottom = 28.0
+max_value = 4.29497e+09
+
+[node name="UnlockPlayPointsContainer" type="VBoxContainer" parent="VBoxContainer/DetailsContainer"]
+margin_top = 196.0
+margin_right = 382.0
+margin_bottom = 214.0
+
+[node name="Label" type="Label" parent="VBoxContainer/DetailsContainer/UnlockPlayPointsContainer"]
+margin_right = 382.0
+margin_bottom = 18.0
+text = "The current job must have Play Points unlocked"
+
+[node name="DefeatEnemiesLevelContainer" type="VBoxContainer" parent="VBoxContainer/DetailsContainer"]
+margin_top = 218.0
+margin_right = 382.0
+margin_bottom = 246.0
+
+[node name="HFlowContainer" type="HFlowContainer" parent="VBoxContainer/DetailsContainer/DefeatEnemiesLevelContainer"]
+margin_right = 382.0
+margin_bottom = 28.0
+
+[node name="Label" type="Label" parent="VBoxContainer/DetailsContainer/DefeatEnemiesLevelContainer/HFlowContainer"]
+margin_top = 5.0
+margin_right = 58.0
+margin_bottom = 23.0
+text = "Defeat LV."
+
+[node name="Param2SpinBox" type="SpinBox" parent="VBoxContainer/DetailsContainer/DefeatEnemiesLevelContainer/HFlowContainer"]
+margin_left = 62.0
+margin_right = 124.0
+margin_bottom = 28.0
+max_value = 4.29497e+09
+
+[node name="Label2" type="Label" parent="VBoxContainer/DetailsContainer/DefeatEnemiesLevelContainer/HFlowContainer"]
+margin_left = 128.0
+margin_top = 5.0
+margin_right = 173.0
+margin_bottom = 23.0
+text = "or more"
+
+[node name="Param3OptionButton" type="OptionButton" parent="VBoxContainer/DetailsContainer/DefeatEnemiesLevelContainer/HFlowContainer"]
+margin_left = 177.0
+margin_right = 241.0
+margin_bottom = 28.0
+text = "Goblin"
+items = [ "Goblin", null, false, 0, null ]
+selected = 0
+
+[node name="Param1SpinBox" type="SpinBox" parent="VBoxContainer/DetailsContainer/DefeatEnemiesLevelContainer/HFlowContainer"]
+margin_left = 245.0
+margin_right = 307.0
+margin_bottom = 28.0
+max_value = 4.29497e+09
+prefix = "x"
+
+[connection signal="item_selected" from="VBoxContainer/HBoxContainer/ConditionOptionButton" to="." method="_on_ConditionOptionButton_item_selected"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/RemoveButton" to="." method="_on_RemoveButton_pressed"]
+[connection signal="toggled" from="VBoxContainer/DetailsContainer/IgnoreReqsCheckBox" to="." method="_on_IgnoreReqsCheckBox_toggled"]
+[connection signal="toggled" from="VBoxContainer/DetailsContainer/HideReqsCheckBox" to="." method="_on_HideReqsCheckBox_toggled"]
+[connection signal="text_changed" from="VBoxContainer/DetailsContainer/GridContainer/SalesPeriodContainer/StartLineEdit" to="." method="_on_StartLineEdit_text_changed"]
+[connection signal="text_changed" from="VBoxContainer/DetailsContainer/GridContainer/SalesPeriodContainer/EndLineEdit" to="." method="_on_EndLineEdit_text_changed"]
+[connection signal="value_changed" from="VBoxContainer/DetailsContainer/ClearWithRankContainer/HFlowContainer/Param2SpinBox" to="." method="_on_Param2SpinBox_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/DetailsContainer/ClearWithRankContainer/HFlowContainer/Param1SpinBox" to="." method="_on_Param1SpinBox_value_changed"]
+[connection signal="item_selected" from="VBoxContainer/DetailsContainer/DefeatEnemiesContainer/HFlowContainer/Param3OptionButton" to="." method="_on_Param3OptionButton_item_selected"]
+[connection signal="value_changed" from="VBoxContainer/DetailsContainer/DefeatEnemiesContainer/HFlowContainer/Param1SpinBox" to="." method="_on_Param1SpinBox_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/DetailsContainer/WarMissionPointsContainer/HFlowContainer/Param1SpinBox" to="." method="_on_Param1SpinBox_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/DetailsContainer/DefeatEnemiesLevelContainer/HFlowContainer/Param2SpinBox" to="." method="_on_Param2SpinBox_value_changed"]
+[connection signal="item_selected" from="VBoxContainer/DetailsContainer/DefeatEnemiesLevelContainer/HFlowContainer/Param3OptionButton" to="." method="_on_Param3OptionButton_item_selected"]

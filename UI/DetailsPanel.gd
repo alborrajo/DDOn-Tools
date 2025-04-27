@@ -22,6 +22,10 @@ func show_details_of(obj):
 		$GatheringItemDetailsPanel.item = obj
 		$GatheringItemDetailsPanel.visible = true
 		emit_signal("showing_details_of", obj)
+	elif obj is ShopItem:
+		$ShopItemDetailsPanel.shop_item = obj
+		$ShopItemDetailsPanel.visible = true
+		emit_signal("showing_details_of", obj)
 	else:
 		push_error("Attempted to show the details of an unrecognized object")
 

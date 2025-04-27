@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://UI/EnemyDetailsPanel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/NotificationPopup.gd" type="Script" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://resources/icons/icon_gear.png" type="Texture" id=18]
 [ext_resource path="res://StageItemList.gd" type="Script" id=19]
 [ext_resource path="res://UI/ShopFileMenu.gd" type="Script" id=20]
+[ext_resource path="res://UI/ShopItemDetailsPanel.tscn" type="PackedScene" id=21]
 
 [sub_resource type="GDScript" id=2]
 script/source = "extends CanvasLayer
@@ -481,6 +482,9 @@ script = ExtResource( 3 )
 title_label = NodePath("../../HBoxContainer/TitleLabel")
 
 [node name="GatheringItemDetailsPanel" parent="Right Panel/VBoxContainer/DetailsPanel" instance=ExtResource( 7 )]
+title_label = NodePath("../../HBoxContainer/TitleLabel")
+
+[node name="ShopItemDetailsPanel" parent="Right Panel/VBoxContainer/DetailsPanel" instance=ExtResource( 21 )]
 title_label = NodePath("../../HBoxContainer/TitleLabel")
 
 [node name="NotificationPopup" type="PopupPanel" parent="."]
