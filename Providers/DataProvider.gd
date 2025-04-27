@@ -35,7 +35,7 @@ func _ready():
 	while !file.eof_reached():
 		var csv_line := file.get_csv_line()
 		if csv_line.size() >= 3:
-			var enemy := EnemyType.new(csv_line[0].hex_to_int(), int(csv_line[2]))
+			var enemy := EnemyType.new(csv_line[0].hex_to_int(), int(csv_line[2]), int(csv_line[3]))
 			enemy_list.append(enemy)
 	file.close()
 

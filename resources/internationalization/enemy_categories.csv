@@ -1,0 +1,396 @@
+keys,en,ja
+ENEMY_CATEGORY_1,Goblin,ゴブリン
+ENEMY_CATEGORY_2,Goblin Fighter,ゴブリンファイター
+ENEMY_CATEGORY_3,Shield Goblin,シールドゴブリン
+ENEMY_CATEGORY_4,Sling Goblin,スリングゴブリン
+ENEMY_CATEGORY_5,Goblin Leader,ゴブリンリーダー
+ENEMY_CATEGORY_6,Hobgoblin,ホブゴブリン
+ENEMY_CATEGORY_7,Hobgoblin Fighter,ホブゴブリンファイター
+ENEMY_CATEGORY_8,Sling Hobgoblin,スリングホブゴブリン
+ENEMY_CATEGORY_9,Hobgoblin Leader,ホブゴブリンリーダー
+ENEMY_CATEGORY_10,Gigant Machina,ギガン・マキナ
+ENEMY_CATEGORY_11,Mogok,モゴック
+ENEMY_CATEGORY_12,General Orc,ジェネラルオーク
+ENEMY_CATEGORY_13,Captain Orc,キャプテンオーク
+ENEMY_CATEGORY_14,Orc Battler,オークバトラー
+ENEMY_CATEGORY_15,Orc Soldier,オークソルジャー
+ENEMY_CATEGORY_16,Slime,スライム
+ENEMY_CATEGORY_17,Deep Slime,ディープスライム
+ENEMY_CATEGORY_18,Blob,ブロブ
+ENEMY_CATEGORY_19,Glutton Ooze,グラトンウーズ
+ENEMY_CATEGORY_20,Ooze,ウーズ
+ENEMY_CATEGORY_21,Mist Wyrm,ミストウィルム
+ENEMY_CATEGORY_22,Mist Drake,ミストドレイク
+ENEMY_CATEGORY_23,Behemoth,ベヘモット
+ENEMY_CATEGORY_24,Angules,アングルス
+ENEMY_CATEGORY_25,Lindwurm,リンドブルム
+ENEMY_CATEGORY_26,Wyrm,ウィルム
+ENEMY_CATEGORY_27,Drake,ドレイク
+ENEMY_CATEGORY_180,Damned Wolf,ダムドウルフ
+ENEMY_CATEGORY_28,Alchemized Wolf,ウルフアルケミー
+ENEMY_CATEGORY_29,Shadow Wolf,シャドーウルフ
+ENEMY_CATEGORY_30,Grimwarg,グリムワーグ
+ENEMY_CATEGORY_31,Direwolf,ダイアウルフ
+ENEMY_CATEGORY_32,Wolf,オオカミ
+ENEMY_CATEGORY_33,Alchemized Skeleton,スケルトンアルケミー
+ENEMY_CATEGORY_34,Ghost Mail,ゴーストメイル
+ENEMY_CATEGORY_35,Death Knight,デスナイト
+ENEMY_CATEGORY_36,Skeleton Sorcerer,スケルトンソーサラー
+ENEMY_CATEGORY_37,Skeleton Mage,スケルトンメイジ
+ENEMY_CATEGORY_38,Skeleton Warrior,スケルトンウォリアー
+ENEMY_CATEGORY_39,Skeleton Knight,スケルトンナイト
+ENEMY_CATEGORY_40,Skeleton,スケルトン
+ENEMY_CATEGORY_41,Blue Newt,ブルーニュート
+ENEMY_CATEGORY_42,Rock Saurian,ロックリザード
+ENEMY_CATEGORY_43,Giant Sulfur Saurian,ラージサルファー
+ENEMY_CATEGORY_44,Sulfur Saurian,サルファーリザード
+ENEMY_CATEGORY_45,Giant Saurian,ラージリザード
+ENEMY_CATEGORY_46,Saurian,リザードマン
+ENEMY_CATEGORY_47,Frost Corpse Torturer,コープストーチャー・フロスト
+ENEMY_CATEGORY_48,Frost Corpse Punisher,コープスパニッシャー・フロスト
+ENEMY_CATEGORY_49,Sludgeman,スラッジマン
+ENEMY_CATEGORY_50,Mudman,マッドマン
+ENEMY_CATEGORY_51,Warrior Undead,ウォリアーアンデッド
+ENEMY_CATEGORY_52,Sword Undead,ソードアンデッド
+ENEMY_CATEGORY_53,Stout Undead,ファットアンデッド
+ENEMY_CATEGORY_54,Undead,アンデッド
+ENEMY_CATEGORY_55,Shadow Harpy,シャドーハーピー
+ENEMY_CATEGORY_56,Alchemized Harpy,ハーピーアルケミー
+ENEMY_CATEGORY_57,Snow Harpy,スノーハーピー
+ENEMY_CATEGORY_58,Harpy,ハーピー
+ENEMY_CATEGORY_59,Mist Alchemist,ミストアルケミスト
+ENEMY_CATEGORY_60,Mist Warrior,ミストウォリアー
+ENEMY_CATEGORY_61,Mist Sorcerer,ミストソーサラー
+ENEMY_CATEGORY_62,Mist Priest,ミストプリースト
+ENEMY_CATEGORY_63,Mist Hunter,ミストハンター
+ENEMY_CATEGORY_64,Mist Fighter,ミストファイター
+ENEMY_CATEGORY_65,Mergan Seeker,メルガンシーカー
+ENEMY_CATEGORY_66,Banded Fighter,バンデッドファイター
+ENEMY_CATEGORY_67,Rogue Fighter,ローグファイター
+ENEMY_CATEGORY_68,Leech,リーチ
+ENEMY_CATEGORY_69,Worm,ワーム
+ENEMY_CATEGORY_70,Cyclops,サイクロプス
+ENEMY_CATEGORY_71,Mole Troll,モルトロール
+ENEMY_CATEGORY_72,Troll,トロール
+ENEMY_CATEGORY_73,Ent,エント
+ENEMY_CATEGORY_74,Grand Ent,グランエント
+ENEMY_CATEGORY_75,Colossus,コロッサス
+ENEMY_CATEGORY_76,Armored Cyclops,アーマーサイクロプス
+ENEMY_CATEGORY_77,Shadow Chimera,シャドーキメラ
+ENEMY_CATEGORY_78,White Chimera,ホワイトキメラ
+ENEMY_CATEGORY_79,Chimera,キメラ
+ENEMY_CATEGORY_80,Geo Golem,ジオゴーレム
+ENEMY_CATEGORY_81,Damned Golem,ダムドゴーレム
+ENEMY_CATEGORY_82,Goliath,ゴリアテ
+ENEMY_CATEGORY_83,Golem,ゴーレム
+ENEMY_CATEGORY_84,Griffin,グリフィン
+ENEMY_CATEGORY_85,Cockatrice,コカトリス
+ENEMY_CATEGORY_86,Nightmare,ナイトメア
+ENEMY_CATEGORY_87,Alchemized Griffin,グリフィンアルケミー
+ENEMY_CATEGORY_88,Black Griffin,ブラックグリフィン
+ENEMY_CATEGORY_89,Sphinx,スフィンクス
+ENEMY_CATEGORY_90,Alchemy Eye,アルケミーアイ
+ENEMY_CATEGORY_91,Emerald Eye,エメラルドアイ
+ENEMY_CATEGORY_92,Lapis Eye,ラピスアイ
+ENEMY_CATEGORY_93,Ruby Eye,ルビーアイ
+ENEMY_CATEGORY_94,Crystal Eye,クリスタルアイ
+ENEMY_CATEGORY_95,Brute Ape,ブルトエイプ
+ENEMY_CATEGORY_96,Ghoul,グール
+ENEMY_CATEGORY_97,Dread Ape,ドレッドエイプ
+ENEMY_CATEGORY_98,Ogre,オーガ
+ENEMY_CATEGORY_99,Empress Ghost,エンプレスゴースト
+ENEMY_CATEGORY_100,Witch,ウィッチ
+ENEMY_CATEGORY_101,Wight,ワイト
+ENEMY_CATEGORY_102,Golgorran,ゴルゴラン
+ENEMY_CATEGORY_103,Elder Dragon,エルダードラゴン
+ENEMY_CATEGORY_104,The White Dragon,白竜
+ENEMY_CATEGORY_105,Diamantes,ディアマンテス
+ENEMY_CATEGORY_106,Zuhl,ズール
+ENEMY_CATEGORY_107,Spider,カブトグモ
+ENEMY_CATEGORY_108,Pig,ブタ
+ENEMY_CATEGORY_109,Boar,野ブタ
+ENEMY_CATEGORY_110,Giant Rat,オオネズミ
+ENEMY_CATEGORY_111,Ox,牛
+ENEMY_CATEGORY_112,Doe,雌ジカ
+ENEMY_CATEGORY_113,Buck,雄ジカ
+ENEMY_CATEGORY_114,Rabbit,ウサギ
+ENEMY_CATEGORY_115,Skull Lord,スカルロード
+ENEMY_CATEGORY_116,Alchemized Goblin Fighter,ゴブリンアルケミーファイター
+ENEMY_CATEGORY_117,Iris,イリス
+ENEMY_CATEGORY_118,Leo,レオ
+ENEMY_CATEGORY_119,Pawn Fighter,ポーンファイター
+ENEMY_CATEGORY_120,Pawn Seeker,ポーンシーカー
+ENEMY_CATEGORY_121,Pawn Hunter,ポーンハンター
+ENEMY_CATEGORY_122,Pawn Healer,ポーンヒーラー
+ENEMY_CATEGORY_123,Pawn Defender,ポーンガーダー
+ENEMY_CATEGORY_124,Pawn Mage,ポーンメイジ
+ENEMY_CATEGORY_125,Pawn Warrior,ポーンウォリアー
+ENEMY_CATEGORY_126,Pawn Element Archer,ポーンエレメンター
+ENEMY_CATEGORY_127,Pawn Alchemist,ポーンアルケミスト
+ENEMY_CATEGORY_128,Forest Goblin,フォレストゴブリン
+ENEMY_CATEGORY_129,Forest Goblin Fighter,フォレストゴブリンファイター
+ENEMY_CATEGORY_130,Sling Forest Goblin,スリングフォレストゴブリン
+ENEMY_CATEGORY_131,Redcap,レッドキャップ
+ENEMY_CATEGORY_132,Redcap Fighter,レッドキャップファイター
+ENEMY_CATEGORY_133,Sling Redcap,スリングレッドキャップ
+ENEMY_CATEGORY_134,Alchemized Goblin,ゴブリンアルケミー
+ENEMY_CATEGORY_135,Mergan Alchemist,メルガンアルケミスト
+ENEMY_CATEGORY_136,Rogue Seeker,ローグシーカー
+ENEMY_CATEGORY_137,Rogue Hunter,ローグハンター
+ENEMY_CATEGORY_138,Rogue Healer,ローグヒーラー
+ENEMY_CATEGORY_139,Rogue Defender,ローグガーダー
+ENEMY_CATEGORY_140,Rogue Mage,ローグメイジ
+ENEMY_CATEGORY_141,Rogue Warrior,ローグウォリアー
+ENEMY_CATEGORY_142,Banded Seeker,バンデッドシーカー
+ENEMY_CATEGORY_143,Banded Hunter,バンデッドハンター
+ENEMY_CATEGORY_144,Banded Healer,バンデッドヒーラー
+ENEMY_CATEGORY_145,Banded Defender,バンデッドガーダー
+ENEMY_CATEGORY_146,Banded Mage,バンデッドメイジ
+ENEMY_CATEGORY_147,Banded Warrior,バンデッドウォリアー
+ENEMY_CATEGORY_148,Mergan Hunter,メルガンハンター
+ENEMY_CATEGORY_149,Mergan Healer,メルガンヒーラー
+ENEMY_CATEGORY_150,Mergan Defender,メルガンガーダー
+ENEMY_CATEGORY_151,Mergan Mage,メルガンメイジ
+ENEMY_CATEGORY_152,Mergan Warrior,メルガンウォリアー
+ENEMY_CATEGORY_153,Mergan Element Archer,メルガンエレメンター
+ENEMY_CATEGORY_154,Living Armor,リビングアーマー
+ENEMY_CATEGORY_155,Orc Aimer,オークエイマー
+ENEMY_CATEGORY_156,Orc Banger,オークバンガー
+ENEMY_CATEGORY_157,Orc Bringer,オークブリンガー
+ENEMY_CATEGORY_158,Orc Trooper,オークトルーパー
+ENEMY_CATEGORY_159,Killer Bee,キラービー
+ENEMY_CATEGORY_160,Shadow Goblin Leader,シャドーゴブリンリーダー
+ENEMY_CATEGORY_161,Goblin Bomber,ゴブリンボマー
+ENEMY_CATEGORY_162,Goblin King,ゴブリンキング
+ENEMY_CATEGORY_163,Shadow Sling Goblin,スリングシャドーゴブリン
+ENEMY_CATEGORY_164,Shadow Goblin Fighter,シャドーゴブリンファイター
+ENEMY_CATEGORY_165,Shadow Goblin,シャドーゴブリン
+ENEMY_CATEGORY_166,Damned Goblin Fighter,ダムドゴブリンファイター
+ENEMY_CATEGORY_167,Damned Sling Goblin,ダムドスリングゴブリン
+ENEMY_CATEGORY_168,Damned Goblin,ダムドゴブリン
+ENEMY_CATEGORY_169,Alchemized Sling Goblin,スリングゴブリンアルケミー
+ENEMY_CATEGORY_170,Silver Roar,シルバーロア
+ENEMY_CATEGORY_171,Rock Saurian Spinel,ロックリザードスピネル
+ENEMY_CATEGORY_172,Piglet,子ブタ
+ENEMY_CATEGORY_173,Giant Unspeakable Meat,巨大な謎の肉塊
+ENEMY_CATEGORY_174,Unspeakable Meat,謎の肉塊
+ENEMY_CATEGORY_175,Mergan Fighter,メルガンファイター
+ENEMY_CATEGORY_179,???,？？？
+ENEMY_CATEGORY_292,Pixie,ピクシー
+ENEMY_CATEGORY_181,Pixie Jabber,ピクシージャバー
+ENEMY_CATEGORY_182,Infected Hobgoblin,侵食ホブゴブリン
+ENEMY_CATEGORY_184,Warg,ワーグ
+ENEMY_CATEGORY_185,Infected Direwolf,侵食ダイアウルフ
+ENEMY_CATEGORY_186,Green Guardian,グリーンガーディアン
+ENEMY_CATEGORY_187,Bolt Grimwarg,ボルトグリムワーグ
+ENEMY_CATEGORY_188,Severely Infected Warg,狂侵ワーグ
+ENEMY_CATEGORY_189,Skeleton Brute,スケルトンブルート
+ENEMY_CATEGORY_190,Flame Skeleton,スケルトン・フレイム
+ENEMY_CATEGORY_191,Frost Skeleton,スケルトン・フロスト
+ENEMY_CATEGORY_192,Bolt Skeleton,スケルトン・ボルト
+ENEMY_CATEGORY_193,Lux Skeleton,スケルトン・ルクス
+ENEMY_CATEGORY_194,Dark Skeleton,スケルトン・ダーク
+ENEMY_CATEGORY_195,Flame Skeleton Brute,スケルトンブルート・フレイム
+ENEMY_CATEGORY_196,Frost Skeleton Brute,スケルトンブルート・フロスト
+ENEMY_CATEGORY_197,Bolt Skeleton Brute,スケルトンブルート・ボルト
+ENEMY_CATEGORY_198,Lux Skeleton Brute,スケルトンブルート・ルクス
+ENEMY_CATEGORY_199,Dark Skeleton Brute,スケルトンブルート・ダーク
+ENEMY_CATEGORY_200,Large Newt,ラージニュート
+ENEMY_CATEGORY_201,Foot-Biter,フットバイター
+ENEMY_CATEGORY_202,Eliminator,エリミネーター
+ENEMY_CATEGORY_203,Flame Corpse Punisher,コープスパニッシャー・フレイム
+ENEMY_CATEGORY_204,Bolt Corpse Punisher,コープスパニッシャー・ボルト
+ENEMY_CATEGORY_205,Lux Corpse Punisher,コープスパニッシャー・ルクス
+ENEMY_CATEGORY_206,Dark Corpse Punisher,コープスパニッシャー・ダーク
+ENEMY_CATEGORY_207,Flame Corpse Torturer,コープストーチャー・フレイム
+ENEMY_CATEGORY_208,Bolt Corpse Torturer,コープストーチャー・ボルト
+ENEMY_CATEGORY_209,Lux Corpse Torturer,コープストーチャー・ルクス
+ENEMY_CATEGORY_210,Dark Corpse Torturer,コープストーチャー・ダーク
+ENEMY_CATEGORY_211,Gargoyle,ガーゴイル
+ENEMY_CATEGORY_212,Siren,セイレーン
+ENEMY_CATEGORY_213,Stymphalídes,スチュパリデス
+ENEMY_CATEGORY_214,Strix,ストリクス
+ENEMY_CATEGORY_215,Infected Snow Harpy,侵食スノーハーピー
+ENEMY_CATEGORY_216,Severely Infected Stymphalídes,狂侵スチュパリデス
+ENEMY_CATEGORY_217,Armored Insect,ヨロイムシ
+ENEMY_CATEGORY_219,Aqua Jelly,アクアジェリー
+ENEMY_CATEGORY_220,Pyro Slime,パイロスライム
+ENEMY_CATEGORY_221,Freezing Slime,フリージングスライム
+ENEMY_CATEGORY_222,Electric Slime,エレキスライム
+ENEMY_CATEGORY_223,Photon Slime,フォトンスライム
+ENEMY_CATEGORY_224,Dim Slime,ディムスライム
+ENEMY_CATEGORY_225,Phindymian Fighter,フィンドファイター
+ENEMY_CATEGORY_226,Phindymian Seeker,フィンドシーカー
+ENEMY_CATEGORY_227,Phindymian Hunter,フィンドハンター
+ENEMY_CATEGORY_228,Phindymian Priest,フィンドプリースト
+ENEMY_CATEGORY_229,Phindymian Defender,フィンドガーダー
+ENEMY_CATEGORY_230,Phindymian Warrior,フィンドウォリアー
+ENEMY_CATEGORY_231,Phindymian Sorcerer,フィンドソーサラー
+ENEMY_CATEGORY_232,Phindymian Element Archer,フィンドエレメンター
+ENEMY_CATEGORY_235,Moth,モス
+ENEMY_CATEGORY_237,Mandragora,マンドラゴラ
+ENEMY_CATEGORY_239,Gorecyclops,ゴアサイクロプス
+ENEMY_CATEGORY_240,Infected Gorecyclops,侵食ゴアサイクロプス
+ENEMY_CATEGORY_241,Severely Infected Gorecyclops,狂侵ゴアサイクロプス
+ENEMY_CATEGORY_242,Manticore,マンティコア
+ENEMY_CATEGORY_244,Gorechimera,ゴアキメラ
+ENEMY_CATEGORY_245,Severely Infected Griffin,狂侵グリフィン
+ENEMY_CATEGORY_246,Infected Griffin,侵食グリフィン
+ENEMY_CATEGORY_247,Vile Eye,バイルアイ
+ENEMY_CATEGORY_248,Evil Eye,イービルアイ
+ENEMY_CATEGORY_249,Maneater,マンイーター
+ENEMY_CATEGORY_250,Spineback,スパインバック
+ENEMY_CATEGORY_251,Medusa,メドゥーサ
+ENEMY_CATEGORY_252,Ghost,ゴースト
+ENEMY_CATEGORY_253,Cursed Dragon,カースドラゴン
+ENEMY_CATEGORY_254,Infected Behemoth,侵食ベヘモット
+ENEMY_CATEGORY_255,Severely Infected Behemoth,狂侵ベヘモット
+ENEMY_CATEGORY_257,Infected Orc Soldier,侵食オークソルジャー
+ENEMY_CATEGORY_258,Tarasque,タラスク
+ENEMY_CATEGORY_259,Frost Machina,フロスト・マキナ
+ENEMY_CATEGORY_260,Grigori,グリゴリ
+ENEMY_CATEGORY_261,Severely Infected Demon,狂侵デーモン
+ENEMY_CATEGORY_264,Chicken,ニワトリ
+ENEMY_CATEGORY_266,Goat,ヤギ
+ENEMY_CATEGORY_267,Frog,カエル
+ENEMY_CATEGORY_269,Wild Boar,ワイルド・ボア
+ENEMY_CATEGORY_271,Altered Zuhl,アルタード・ズール
+ENEMY_CATEGORY_272,Scourge,スカージ
+ENEMY_CATEGORY_274,Black Knight,黒騎士
+ENEMY_CATEGORY_275,Phantasmic Great Dragon,淀みし大竜力
+ENEMY_CATEGORY_276,Spirit Dragon Willmia,精霊竜ウィルミア
+ENEMY_CATEGORY_277,Saurian Sage,リザードマンセージ
+ENEMY_CATEGORY_278,Infected Hobgoblin Fighter,侵食ホブゴブリンファイター
+ENEMY_CATEGORY_279,Infected Sling Hobgoblin,侵食スリングホブゴブリン
+ENEMY_CATEGORY_280,Phindymian Ent,フィンダーエント
+ENEMY_CATEGORY_281,White Griffin,ホワイトグリフィン
+ENEMY_CATEGORY_282,Bifrest,ビフレスト
+ENEMY_CATEGORY_283,Tentacle,触手
+ENEMY_CATEGORY_284,Infected Orc Aimer,侵食オークエイマー
+ENEMY_CATEGORY_285,Infected Orc Banger,侵食オークバンガー
+ENEMY_CATEGORY_286,Wisened Tarasque,アドタラスク
+ENEMY_CATEGORY_287,Bearded Grigori,グリゴリベアード
+ENEMY_CATEGORY_288,Pixie Biff,ピクシービフ
+ENEMY_CATEGORY_289,Pixie Din,ピクシーディン
+ENEMY_CATEGORY_290,Pixie Pow,ピクシーポウ
+ENEMY_CATEGORY_291,Severely Infected Pixie,狂侵ピクシー
+ENEMY_CATEGORY_294,High Pixie Biff,ハイピクシービフ
+ENEMY_CATEGORY_295,High Pixie Zolda,ハイピクシーゾルダ
+ENEMY_CATEGORY_296,High Pixie Pow,ハイピクシーポウ
+ENEMY_CATEGORY_297,Pixie King,ピクシーキング
+ENEMY_CATEGORY_298,Goblin Orc,オークに進化したゴブリン
+ENEMY_CATEGORY_299,Acid Blob,アシッドブロブ
+ENEMY_CATEGORY_300,Oil Jelly,オイルジェリー
+ENEMY_CATEGORY_301,Scarlet Fighter,スカーレットファイター
+ENEMY_CATEGORY_302,Scarlet Seeker,スカーレットシーカー
+ENEMY_CATEGORY_303,Scarlet Hunter,スカーレットハンター
+ENEMY_CATEGORY_304,Scarlet Healer,スカーレットヒーラー
+ENEMY_CATEGORY_305,Scarlet Defender,スカーレットガーダー
+ENEMY_CATEGORY_306,Scarlet Mage,スカーレットメイジ
+ENEMY_CATEGORY_307,Scarlet Warrior,スカーレットウォリアー
+ENEMY_CATEGORY_308,Giant Saurian Sage,ラージリザードセージ
+ENEMY_CATEGORY_309,Little Spine,リトルスパイン
+ENEMY_CATEGORY_310,Dragon Crystal of Praying,祈りの竜晶
+ENEMY_CATEGORY_311,Dragon Crystal of Groaning,うめきの竜晶
+ENEMY_CATEGORY_312,Eliminator Slay,エリミネーター・スレイ
+ENEMY_CATEGORY_313,Black Knight Phantom,黒騎士・幻影
+ENEMY_CATEGORY_314,Grim Goblin,グリムゴブリン
+ENEMY_CATEGORY_315,Grim Goblin Fighter,グリムゴブリンファイター
+ENEMY_CATEGORY_316,Sling Grim Goblin,スリンググリムゴブリン
+ENEMY_CATEGORY_317,Greater Goblin,グレーターゴブリン
+ENEMY_CATEGORY_318,Goblin Shaman,ゴブリンシャーマン
+ENEMY_CATEGORY_319,Goblin Aid Shaman,ゴブリンエイドシャーマン
+ENEMY_CATEGORY_320,Hellhound,ヘルハウンド
+ENEMY_CATEGORY_321,Blaze Wolf,ブレイズウルフ
+ENEMY_CATEGORY_322,Skeleton Warg,スケルトンワーグ
+ENEMY_CATEGORY_323,War-Ready Grimwarg,戦甲グリムワーグ
+ENEMY_CATEGORY_324,Skeleton Lord (Abyss),スケルトンロード・アビス
+ENEMY_CATEGORY_325,Geo Saurian,ジオリザードマン
+ENEMY_CATEGORY_326,Giant Geo Saurian,ラージジオリザード
+ENEMY_CATEGORY_327,War-Ready Saurian,戦甲リザードマン
+ENEMY_CATEGORY_328,War-Ready Giant Saurian,戦甲ラージリザード
+ENEMY_CATEGORY_329,Blaze Harpy,ブレイズハーピー
+ENEMY_CATEGORY_331,Stone Blob,ストーンブロブ
+ENEMY_CATEGORY_332,Blaze Goblin,ブレイズゴブリン
+ENEMY_CATEGORY_333,Habanero,ハバネロ
+ENEMY_CATEGORY_335,Burned Ent,バーンドエント
+ENEMY_CATEGORY_336,Fodden,フォッデン
+ENEMY_CATEGORY_337,Skeleton Cyclops,スケルトンサイクロプス
+ENEMY_CATEGORY_338,War-Ready Gorecyclops,戦甲ゴアサイクロプス
+ENEMY_CATEGORY_339,Blaze Chimera,ブレイズキメラ
+ENEMY_CATEGORY_340,Goremanticore,ゴアマンティコア
+ENEMY_CATEGORY_341,War-Ready Goremanticore,戦甲ゴアマンティコア
+ENEMY_CATEGORY_342,War-Ready Nightmare,戦甲ナイトメア
+ENEMY_CATEGORY_344,Cragger,クラッガー
+ENEMY_CATEGORY_345,Little Crag,リトルクラッグ
+ENEMY_CATEGORY_346,War-Ready Ogre,戦甲オーガ
+ENEMY_CATEGORY_347,Misery Ghost,ミザリーゴースト
+ENEMY_CATEGORY_348,Grudge Ghost,グラッジゴースト
+ENEMY_CATEGORY_349,Lotus Fin,ロータスフィン
+ENEMY_CATEGORY_350,White Tarasque,ホワイトタラスク
+ENEMY_CATEGORY_351,Catoblepas,カトブレパス
+ENEMY_CATEGORY_352,Sword Soldier Dwarf Orc,斬兵ドワーフオーク
+ENEMY_CATEGORY_353,Squad Leader Dwarf Orc,隊将ドワーフオーク
+ENEMY_CATEGORY_354,Ancestor Orc,アンセスターオーク
+ENEMY_CATEGORY_355,Captain Ancestor Orc,キャプテンアンセスターオーク
+ENEMY_CATEGORY_356,War Master,戦の将
+ENEMY_CATEGORY_357,Beast Master,獣の将
+ENEMY_CATEGORY_358,Necro Master,骸の将
+ENEMY_CATEGORY_359,Shadow Master,闇の将
+ENEMY_CATEGORY_360,Ancestor Origin,アンセスターオリジン
+ENEMY_CATEGORY_361,Blaze Grigori,ブレイズグリゴリ
+ENEMY_CATEGORY_362,Baphomet,バフォメット
+ENEMY_CATEGORY_363,Ifrit,イフリート
+ENEMY_CATEGORY_364,Ushumgal,ウシュムガル
+ENEMY_CATEGORY_365,The Evil Dragon,悪しき竜
+ENEMY_CATEGORY_366,Blunt Soldier Dwarf Orc,打兵ドワーフオーク
+ENEMY_CATEGORY_367,Heavy Soldier Dwarf Orc,重兵ドワーフオーク
+ENEMY_CATEGORY_368,Ranged Soldier Dwarf Orc,投兵ドワーフオーク
+ENEMY_CATEGORY_369,Grim Goblin Leader,グリムゴブリンリーダー
+ENEMY_CATEGORY_371,Pyre Saurian,サラマンダー
+ENEMY_CATEGORY_372,Severely Infected Scourge,狂侵スカージ
+ENEMY_CATEGORY_373,Red Zuhl,レッドズール
+ENEMY_CATEGORY_380,Blaze Goblin Leader,ブレイズゴブリンリーダー
+ENEMY_CATEGORY_381,Volt Eye,ボルトアイ
+ENEMY_CATEGORY_382,Tentacle,触手
+ENEMY_CATEGORY_383,Blazing Boulder,烈火岩
+ENEMY_CATEGORY_384,,悪しき竜用OM
+ENEMY_CATEGORY_385,,怨塊
+ENEMY_CATEGORY_386,Megado Guard,メガド護衛兵
+ENEMY_CATEGORY_390,,ヘイト管理用透明敵
+ENEMY_CATEGORY_391,Dwarf Orc,ドワーフオーク
+ENEMY_CATEGORY_392,Death,デス
+ENEMY_CATEGORY_393,The Evil Dragon,悪しき竜
+ENEMY_CATEGORY_394,Abaddon,アバドーン
+ENEMY_CATEGORY_395,,蟲塚
+ENEMY_CATEGORY_396,Albe,アルベ
+ENEMY_CATEGORY_397,Frost Skeleton Cyclops,スケルトンサイクロプス・フロスト
+ENEMY_CATEGORY_398,Legion,レギオン
+ENEMY_CATEGORY_399,Legion Leader,レギオンリーダー
+ENEMY_CATEGORY_400,Shadow Grigori,シャドーグリゴリ
+ENEMY_CATEGORY_401,Merman,マーマン
+ENEMY_CATEGORY_402,Poison Merman,ポイズンマーマン
+ENEMY_CATEGORY_403,Dagon,ダゴン
+ENEMY_CATEGORY_404,Bolt Skeleton Cyclops,スケルトンサイクロプス・ボルト
+ENEMY_CATEGORY_405,Ukobach,ウコバク
+ENEMY_CATEGORY_406,Arisen of the Black Dragon,黒竜の覚者
+ENEMY_CATEGORY_407,Gorgon,ゴルゴーン
+ENEMY_CATEGORY_408,Flame Skeleton Cyclops,スケルトンサイクロプス・フレイム
+ENEMY_CATEGORY_409,Valefar,ウァレフォル
+ENEMY_CATEGORY_410,Black Dragon,黒竜
+ENEMY_CATEGORY_411,,元覚者隊統率レオ
+ENEMY_CATEGORY_412,Bolt Machina,ボルト・マキナ
+ENEMY_CATEGORY_413,Rage Ghost,レイジゴースト
+ENEMY_CATEGORY_414,Gigant Machina Trinity,ギガン・マキナトリニティ
+ENEMY_CATEGORY_415,Frost Machina Trinity,フロスト・マキナトリニティ
+ENEMY_CATEGORY_416,Bolt Machina Trinity,ボルト・マキナトリニティ
+ENEMY_CATEGORY_418,Dragon Crystal of Darkness,暗黒の竜晶
+ENEMY_CATEGORY_419,Crystal of Blessing,祝福の結晶
+ENEMY_CATEGORY_420,,強い闇を放つ暗黒竜晶
+ENEMY_CATEGORY_421,Samyaza,シェムハザ
+ENEMY_CATEGORY_422,,理を破壊する力
+ENEMY_CATEGORY_423,,黒竜イベント用
+ENEMY_CATEGORY_424,Dragon Crystal of Destruction,破滅の竜晶
+ENEMY_CATEGORY_425,Golgorran,ゴルゴラン
+ENEMY_CATEGORY_426,Black Sword,黒剣
+ENEMY_CATEGORY_427,Dragon Crystal of Binding,束縛の竜晶

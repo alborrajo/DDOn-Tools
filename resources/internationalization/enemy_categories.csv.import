@@ -1,0 +1,16 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+
+[deps]
+
+files=[ "res://resources/internationalization/enemy_categories.en.translation", "res://resources/internationalization/enemy_categories.ja.translation" ]
+
+source_file="res://resources/internationalization/enemy_categories.csv"
+dest_files=[ "res://resources/internationalization/enemy_categories.en.translation", "res://resources/internationalization/enemy_categories.ja.translation" ]
+
+[params]
+
+compress=true
+delimiter=0
