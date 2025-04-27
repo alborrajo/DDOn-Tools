@@ -36,10 +36,16 @@ func can_drop_data(_position, data):
 	return data is Item or data is ShopItem
 	
 func drop_data(position, data):
+	var drop_section := get_drop_section_at_position(position)
+	var drop_position_tree_item := get_item_at_position(position)
+	var drop_position_shop_item: ShopItem = null
+	if drop_position_tree_item != null:
+		drop_position_shop_item = drop_position_tree_item.get_metadata(0)
+
 	if data is Item:
-		emit_signal(\"dropped_shop_item\", ShopItem.new(data), get_drop_section_at_position(position), get_item_at_position(position).get_metadata(0))
+		emit_signal(\"dropped_shop_item\", ShopItem.new(data), drop_section, drop_position_shop_item)
 	elif data is ShopItem:
-		emit_signal(\"dropped_shop_item\", data.clone(), get_drop_section_at_position(position), get_item_at_position(position).get_metadata(0))
+		emit_signal(\"dropped_shop_item\", data.clone(), drop_section, drop_position_shop_item)
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_DRAG_END and _dragging_shop_item != null:
