@@ -62,7 +62,7 @@ func _set_shop(value: Shop) -> void:
 	_on_shop_changed()
 	
 func _on_shop_changed() -> void:
-	$MapControl/Control/Panel/ShopPlacemark/NpcNameLabel.text = get_display_name()
+	$MapControl/Control/Panel/ShopPlacemark/NpcNameLabel.text = "%s (Shop ID: %d)" % [get_display_name(), shop.id]
 	$MapControl/Control/Panel/ShopPlacemark/GridContainer/Unk0SpinBox.value = shop.unk0
 	$MapControl/Control/Panel/ShopPlacemark/GridContainer/Unk1SpinBox.value = shop.unk1
 	$MapControl/Control/Panel/ShopPlacemark/GridContainer2/WalletTypeOptionButton.select(shop.wallet_type)
