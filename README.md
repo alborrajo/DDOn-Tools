@@ -24,7 +24,7 @@ Alternatively, you can follow the steps in the [Development](#development) secti
     - Select multiple entries by holding shift and clicking
     - Select an area by holding ctrl and dragging your mouse. Hold shift too to add to an existing selection 
     - If any set placemarks are overlapping you can hide them by having your mouse over them and pressing H. Press Shift+H to unhide hidden placemarks.
-    - Change the suggested EXP and HOBO values curve from the Settings
+    - Change the suggested enemy EXP/HOBO drops and shop price values curve from the Settings
 - Optionally set up in the settings an address and credentials for an admin account to use the Chat and Player functionalities
     - Kick players by right clicking their names on the menu
 
