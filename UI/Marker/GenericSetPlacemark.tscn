@@ -1,12 +1,13 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://UI/Marker/GenericSetPlacemark.gd" type="Script" id=1]
+[ext_resource path="res://UI/Marker/HideableControl.gd" type="Script" id=1]
 
-[node name="MapControl" type="Control"]
+[node name="GenericSetPlacemark" type="Control"]
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 8.0
 margin_bottom = 8.0
+mouse_filter = 1
 script = ExtResource( 1 )
 
 [node name="Panel" type="PanelContainer" parent="."]

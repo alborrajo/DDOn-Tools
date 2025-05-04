@@ -1,4 +1,4 @@
-extends GenericSetPlacemark
+extends Control
 class_name GatheringSpotPlacemark
 
 export (PackedScene) var item_placemark_packed_scene: PackedScene = preload("res://UI/Marker/GatheringItemPlacemark.tscn")

@@ -1,4 +1,4 @@
-extends GenericSetPlacemark
+extends HideableControl
 class_name EnemyPositionPlacemark
 
 export (PackedScene) var enemy_placemark_packed_scene: PackedScene = preload("res://UI/Marker/EnemyPlacemark.tscn")

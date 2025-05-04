@@ -69,7 +69,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Entities/EnemyPosition.gd"
 }, {
-"base": "GenericSetPlacemark",
+"base": "HideableControl",
 "class": "EnemyPositionPlacemark",
 "language": "GDScript",
 "path": "res://UI/Marker/EnemyPositionPlacemark.gd"
@@ -109,7 +109,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Entities/GatheringSpot.gd"
 }, {
-"base": "GenericSetPlacemark",
+"base": "Control",
 "class": "GatheringSpotPlacemark",
 "language": "GDScript",
 "path": "res://UI/Marker/GatheringSpotPlacemark.gd"
@@ -125,9 +125,9 @@ _global_script_classes=[ {
 "path": "res://UI/Marker/GenericPlacemark.gd"
 }, {
 "base": "Control",
-"class": "GenericSetPlacemark",
+"class": "HideableControl",
 "language": "GDScript",
-"path": "res://UI/Marker/GenericSetPlacemark.gd"
+"path": "res://UI/Marker/HideableControl.gd"
 }, {
 "base": "OptionButton",
 "class": "HmPresetNoOptionButton",
@@ -303,7 +303,7 @@ _global_script_class_icons={
 "GatheringSpotPlacemark": "",
 "GenericFileMenu": "",
 "GenericPlacemark": "",
-"GenericSetPlacemark": "",
+"HideableControl": "",
 "HmPresetNoOptionButton": "",
 "Item": "",
 "ItemDetailsPanel": "",
