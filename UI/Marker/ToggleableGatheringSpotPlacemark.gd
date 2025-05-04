@@ -123,7 +123,7 @@ func _set_gathering_spot(value: GatheringSpot) -> void:
 	
 	$MapControl/Control/Panel/GatheringSpotPlacemark.gathering_spot = value
 
-func _on_selection_changed(added: Array, removed: Array) -> void:
+func _on_selection_changed(added: Array, _removed: Array) -> void:
 	for gathering_item in gathering_spot.get_gathering_items():
 		if added.has(gathering_item):
 			show()

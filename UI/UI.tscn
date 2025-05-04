@@ -150,7 +150,7 @@ func _ready():
 	assert(SelectedListManager.connect(\"selection_changed\", self, \"_on_selection_changed\") == OK)
 	visible = false
 
-func _on_selection_changed(added: Array, removed: Array):
+func _on_selection_changed(_added: Array, _removed: Array):
 	if SelectedListManager.selected_list.size() == 0:
 		visible = false
 

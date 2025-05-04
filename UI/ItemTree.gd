@@ -40,13 +40,13 @@ func _do_rebuild_list(args: Array) -> void:
 		if normalized_filter_text.length() == 0 or item.matches_filter_text(normalized_filter_text):
 			var text := "%s\n%s [%d]" % [item.name, "★".repeat(item.quality_stars), item.id]
 			var icon = item.icon
-			deferred_calls.append(["_add_item_to_tree_node", root, text, icon, item])
+			deferred_calls.append(["_add_item_to_tree_node", root, text, item])
 			
 	# Defer calls that modify the scene tree since they're not thread safe
 	for deferred_call in deferred_calls:
-		call_deferred(deferred_call[0], deferred_call[1], deferred_call[2], deferred_call[3], deferred_call[4])
+		call_deferred(deferred_call[0], deferred_call[1], deferred_call[2], deferred_call[3])
 
-func _add_item_to_tree_node(parent: Object, text: String, icon: Texture, metadata: Object) -> void:
+func _add_item_to_tree_node(parent: Object, text: String, metadata: Object) -> void:
 	var item_item := create_item(parent)
 	item_item.custom_minimum_height = 48
 	item_item.set_text(0, text)

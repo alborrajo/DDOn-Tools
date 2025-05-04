@@ -47,7 +47,7 @@ func _on_shop_item_changed():
 			var node: ShopItemRequirementPanel = ShopItemRequirementPanelScene.instance()
 			$VBoxContainer2/VBoxContainer/RequirementsContainer.add_child(node)
 			node.shop_item_requirement = requirement
-			node.connect("requirement_removed", self, "_on_requirement_removed", [req_idx, requirement])
+			assert(node.connect("requirement_removed", self, "_on_requirement_removed", [req_idx, requirement]) == OK)
 		
 		if title_label_node != null:
 			var list_count = SelectedListManager.selected_list

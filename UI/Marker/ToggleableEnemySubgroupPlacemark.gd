@@ -63,7 +63,7 @@ func _on_enemy_position_placemark_mouse_exited(position_index: int, enemy_positi
 func get_position_placemarks() -> Array:
 	return $EnemyPositionPlacemarksControl.get_children()
 
-func _on_selection_changed(added: Array, removed: Array) -> void:
+func _on_selection_changed(added: Array, _removed: Array) -> void:
 	for position in enemy_subgroup.positions:
 		for enemy in position.enemies:
 			if added.has(enemy):

@@ -79,7 +79,7 @@ func _on_shop_changed() -> void:
 		if not good.is_connected("changed", self, "_on_shop_item_changed"):
 			good.connect("changed", self, "_on_shop_item_changed", [good])
 		
-func _on_shop_item_changed(shop_item: ShopItem):
+func _on_shop_item_changed(_shop_item: ShopItem):
 	$MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree.update() #rerender
 
 func _draw_tree_item(tree_item: TreeItem, rect: Rect2):
