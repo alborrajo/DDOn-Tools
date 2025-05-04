@@ -8,32 +8,46 @@ const _META_LOG_ENTRY = "logentry"
 const _CHAT_TYPE_COLORS = {
 	"0": Color.white, # Say
 	"1": Color.purple, # Shout
-	"2": Color.crimson, # Tell
-	"3": Color.darkcyan, # System
+	"2": Color.palevioletred, # Tell
+	"3": Color.yellow, # System
 	"4": Color.aquamarine, # Party
 	"5": Color.purple, # ShoutAll, not sure about this one
-	"6": Color.lightgreen, # Group
-	"7": Color.limegreen, # Clan
+	"6": Color.lawngreen, # Group
+	"7": Color.springgreen, # Clan
 	"8": Color.aquamarine, # Entryboard TODO
-	"9": Color.darkcyan, # ManagementGuideC TODO
-	"10": Color.darkcyan, # ManagementGuideN TODO
-	"11": Color.darkcyan, # ManagementAlertC TODO
-	"12": Color.darkcyan, # ManagementAlertN TODO
-	"13": Color.darkgreen, # ClanNotice TODO
+	"9": Color.yellow, # ManagementGuideC
+	"10": Color.yellow, # ManagementGuideN TODO
+	"11": Color.crimson, # ManagementAlertC TODO
+	"12": Color.crimson, # ManagementAlertN TODO
+	"13": Color.springgreen, # ClanNotice TODO
 }
 
-var _rpc_client := RpcClient.new()
-
 var _last_received_chat_unix_time = null
+var _thread: Thread
 
 func _ready():
 	_on_Chat_visibility_changed()
 	$ChatLogPanel/ChatLogScrollContainer.scroll_vertical = 99999
 
 func _on_RPCTimer_timeout():
-	$RPCTimer.paused = true
+	# If there's an old thread that hasn't finished, don't start a new one
+	# if there's an old thread that has finished, join it and start a new one
+	# if there's no old thread, start a new one
+	if _thread != null and _thread.is_active():
+		if not _thread.is_alive():
+			_thread.wait_to_finish()
+		else:
+			return
+		
+	_thread = Thread.new()
+	assert(_thread.start(self, "_fetch_new_chat_messages") == OK)
+	
+func _fetch_new_chat_messages() -> void:
+	var chatlog := RpcClient.new().get_chat(_last_received_chat_unix_time)
+	call_deferred("_update_chatlog", chatlog)
+	
+func _update_chatlog(chatlog: Array) -> void:
 	var is_at_bottom = $ChatLogPanel/ChatLogScrollContainer.get_v_scrollbar().value+$ChatLogPanel/ChatLogScrollContainer.get_v_scrollbar().page == $ChatLogPanel/ChatLogScrollContainer.get_v_scrollbar().max_value
-	var chatlog := _rpc_client.get_chat(_last_received_chat_unix_time)
 	if chatlog.size() > 0:
 		print(chatlog.size(), " new chat messages")
 		for logentry in chatlog:
@@ -50,7 +64,6 @@ func _on_RPCTimer_timeout():
 			print("\t(Type ", logentry["ChatMessage"]["Type"], ") ", label.text)
 	while $ChatLogPanel/ChatLogScrollContainer/ChatLogVBoxContainer.get_child_count() > MAX_ENTRIES:
 		$ChatLogPanel/ChatLogScrollContainer/ChatLogVBoxContainer.remove_child($ChatLogPanel/ChatLogScrollContainer/ChatLogVBoxContainer.get_child(0))
-	$RPCTimer.paused = false
 	
 	if is_at_bottom:
 		$ChatLogPanel/ChatLogScrollContainer.scroll_vertical = 99999
@@ -69,7 +82,7 @@ func _on_MessageLineEdit_text_entered(message: String):
 			"Deliver": true
 		}
 	}
-	_rpc_client.post_chat(chat_message_log_entry)
+	RpcClient.new().post_chat(chat_message_log_entry)
 	$ChatBox/MessageLineEdit.clear()
 	$ChatBox/MessageLineEdit.editable = true
 	_on_RPCTimer_timeout()
