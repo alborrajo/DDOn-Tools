@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://UI/EnemyDetailsPanel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://UI/NotificationPopup.gd" type="Script" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://StageItemList.gd" type="Script" id=19]
 [ext_resource path="res://UI/ShopFileMenu.gd" type="Script" id=20]
 [ext_resource path="res://UI/ShopItemDetailsPanel.tscn" type="PackedScene" id=21]
+[ext_resource path="res://UI/DayNightTimeMigrationConfirmationDialog.gd" type="Script" id=22]
 
 [sub_resource type="GDScript" id=2]
 script/source = "extends CanvasLayer
@@ -349,6 +350,7 @@ margin_left = 10.0
 margin_top = 10.0
 margin_right = -10.0
 margin_bottom = 44.0
+mouse_filter = 1
 
 [node name="container" type="HBoxContainer" parent="status_view"]
 margin_left = 7.0
@@ -507,6 +509,22 @@ text = "Notification"
 
 [node name="SettingsWindowDialog" parent="." instance=ExtResource( 8 )]
 
+[node name="DayNightTimeMigrationConfirmationDialog" type="ConfirmationDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -269.0
+margin_top = -45.0
+margin_right = 269.0
+margin_bottom = 46.0
+popup_exclusive = true
+window_title = "Por favor, Confirma..."
+dialog_text = "It seems that the file loaded has day/night enemies starting/ending at 7:00. 
+Would you like to convert them all to the new day/night range starting/ending at 6:00?"
+dialog_autowrap = true
+script = ExtResource( 22 )
+
 [node name="EnemyFileDialog" type="FileDialog" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
@@ -558,6 +576,7 @@ show_hidden_files = true
 [connection signal="tab_changed" from="left/tab" to="." method="_on_tab_changed"]
 [connection signal="text_changed" from="left/tab/Stages/HBoxContainer/StagesLineEdit" to="left/tab/Stages/StageItemList" method="_on_StagesLineEdit_text_changed"]
 [connection signal="item_selected" from="left/tab/Stages/StageItemList" to="." method="_on_StageItemList_item_selected"]
+[connection signal="file_loaded" from="left/tab/Enemies/HBoxContainer/EnemyFileMenu" to="DayNightTimeMigrationConfirmationDialog" method="_on_EnemyFileMenu_file_loaded"]
 [connection signal="text_changed" from="left/tab/Enemies/HBoxContainer/FilterLineEdit" to="left/tab/Enemies/EnemyTree" method="_on_FilterLineEdit_text_changed"]
 [connection signal="text_changed" from="left/tab/Items/HBoxContainer/FilterLineEdit" to="left/tab/Items/ItemTree" method="_on_FilterLineEdit_text_changed"]
 [connection signal="item_activated" from="left/tab/Players" to="." method="_on_Players_item_activated"]
@@ -573,3 +592,4 @@ show_hidden_files = true
 [connection signal="pressed" from="Right Panel/VBoxContainer/HBoxContainer/Close" to="Right Panel" method="_on_Close_pressed"]
 [connection signal="showing_details_of" from="Right Panel/VBoxContainer/DetailsPanel" to="Right Panel" method="_on_DetailsPanel_showing_details_of"]
 [connection signal="settings_updated" from="SettingsWindowDialog" to="." method="_on_SettingsWindowDialog_settings_updated"]
+[connection signal="confirmed" from="DayNightTimeMigrationConfirmationDialog" to="DayNightTimeMigrationConfirmationDialog" method="_on_DayNightTimeMigrationConfirmationDialog_confirmed"]

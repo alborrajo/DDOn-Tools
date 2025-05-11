@@ -1,6 +1,10 @@
 extends MenuButton
 class_name GenericFileMenu
 
+signal file_created()
+signal file_loaded()
+signal file_saved()
+
 export (NodePath) var file_dialog: NodePath
 export (NodePath) var notification_popup: NodePath
 
@@ -56,6 +60,7 @@ func new_file() -> bool:
 	print_debug("New file. Clearing workspace")
 	_do_new_file()
 	self._file_path = ""
+	emit_signal("file_created")
 	return true
 	
 func _do_new_file():
@@ -84,6 +89,8 @@ func load_file(file_path: String):
 	
 	self._file_path = file_path
 	notification_popup_node.notify("Loaded file "+file_path)
+	
+	emit_signal("file_loaded")
 	
 func _do_load_file(_file: File) -> void:
 	pass
@@ -116,6 +123,8 @@ func save_file(file_path: String):
 	self._file_path = file_path
 	notification_popup_node.notify("Saved file "+file_path)
 	
+	emit_signal("file_saved")
+	
 func _do_save_file(_file: File) -> void:
 	pass
 	
@@ -144,7 +153,6 @@ func _set_file_path(file_path: String) -> void:
 func store_csv_line_crlf(file: File, csv_data: Array):
 	file.store_csv_line(csv_data)
 	file.seek(file.get_position()-1)
-	#file.store_string("\r\n")
 	file.store_16(0x0A0D)
 	return
 
