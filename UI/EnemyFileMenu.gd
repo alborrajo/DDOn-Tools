@@ -214,9 +214,9 @@ func _do_load_file_json(file: File) -> int:
 			var time_type = 0
 			if time_range_str == "00:00,23:59":
 				time_type = 0
-			elif time_range_str == "07:00,17:59":
+			elif time_range_str == "06:00,17:59":
 				time_type = 1
-			elif time_range_str == "18:00,06:59":
+			elif time_range_str == "18:00,05:59":
 				time_type = 2
 			else:
 				time_type = 3
@@ -379,9 +379,9 @@ func _do_save_file(file: File) -> void:
 							if selected_index == 0:
 								selected_string = "00:00,23:59"
 							if selected_index == 1:
-								selected_string = "07:00,17:59"
+								selected_string = "06:00,17:59"
 							if selected_index == 2:
-								selected_string = "18:00,06:59"	
+								selected_string = "18:00,05:59"
 							if selected_index == 3:
 								selected_string = enemy.custom_time
 							data.append(selected_string)
