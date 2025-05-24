@@ -41,7 +41,7 @@ func _do_load_file(file: File) -> void:
 			var item_id = goods_data["ItemId"]
 			var item := DataProvider.get_item_by_id(item_id)
 			if item == null:
-				push_error("Found shop goods entry with an unrecognized item "+ item_id)
+				push_error("Found shop goods entry with an unrecognized item "+String(item_id))
 				continue
 			var shop_item := ShopItem.new(item)
 			shop_item.price = goods_data["Price"]
