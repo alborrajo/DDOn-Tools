@@ -86,7 +86,12 @@ cd("out");
     6, // FUNC_ID_SHOP_MATERIAL
     8, // FUNC_ID_SHOP_WEAPON
     9, // FUNC_ID_SHOP_ARMOR
-    0x39, // FUNC_ID_PP_SHOP
+    19, 
+    20,
+    57, // FUNC_ID_PP_SHOP
+    70,
+    74, // Adventure Pass Shop
+    97
   ];
 
   echo("Looking for shop NPCs...");
@@ -143,6 +148,16 @@ cd("out");
       }
       stageNoAndShops.get(stageNo).push(...shops);
     }
+  }
+  echo("Removing duplicate shops...");
+  for (const [stageNo, shops] of stageNoAndShops) {
+    const uniqueShops = [];
+    for (const shop of shops) {
+      if (!uniqueShops.some((s) => shopEquals(s, shop))) {
+        uniqueShops.push(shop);
+      }
+    }
+    stageNoAndShops.set(stageNo, uniqueShops);
   }
   await writeFile(
     "shops.json",
@@ -203,5 +218,20 @@ async function readLayout(layoutPath) {
 async function readStageCustom(stageCustomPath) {
   return JSON5.parse(
     String(await readFile(stageCustomPath, { encoding: "utf-8" })),
+  );
+}
+
+function shopEquals(shop1, shop2) {
+  return (
+    shop1.NpcId === shop2.NpcId &&
+    shop1.InstitutionFunctionId === shop2.InstitutionFunctionId &&
+    shop1.ShopId === shop2.ShopId &&
+    positionEquals(shop1.Position, shop2.Position)
+  );
+}
+
+function positionEquals(pos1, pos2) {
+  return (
+    pos1.x === pos2.x && pos1.y === pos2.y && pos1.z === pos2.z
   );
 }
