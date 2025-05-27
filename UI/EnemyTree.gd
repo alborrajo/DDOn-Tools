@@ -21,6 +21,11 @@ func _rebuild_list(filter_text: String = ""):
 			enemy_item.set_metadata(0, enemy)
 
 func get_drag_data(position):
-	var selected_enemy_type: EnemyType =  get_item_at_position(position).get_metadata(0)
-	print_debug("Dragging %s" % [tr(selected_enemy_type.name)])
-	return selected_enemy_type
+	var selected_enemy_types = []
+	var selected_tree_item = get_next_selected(null)
+	while selected_tree_item != null:
+		var selected_enemy_type = selected_tree_item.get_metadata(0) as EnemyType
+		print_debug("Dragging %s" % [tr(selected_enemy_type.name)])
+		selected_enemy_types.append(selected_enemy_type)
+		selected_tree_item = get_next_selected(selected_tree_item)
+	return selected_enemy_types

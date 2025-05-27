@@ -9,11 +9,18 @@ script/source = "extends GridContainer
 
 
 # Drag and drop functions
-func can_drop_data(_position, data):
+func can_drop_data(position, data):
+	if data is Array:
+		for element in data:
+			if can_drop_data(position, element):
+				return true
 	return data is Item or data is GatheringItem
 	
-func drop_data(_position, data):
-	if data is GatheringItem:
+func drop_data(position, data):
+	if data is Array:
+		for element in data:
+			drop_data(position, element)
+	elif data is GatheringItem:
 		$\"../GatheringSpotPlacemark\".gathering_spot.add_item(data)
 	elif data is Item:
 		$\"../GatheringSpotPlacemark\".gathering_spot.add_item(GatheringItem.new(data))

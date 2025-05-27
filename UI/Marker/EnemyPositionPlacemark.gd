@@ -48,11 +48,18 @@ func _on_enemy_removed(enemy: Enemy) -> void:
 
 
 # Drag and drop functions
-func can_drop_data(_position, data):
+func can_drop_data(position, data):
+	if data is Array:
+		for element in data:
+			if can_drop_data(position, element):
+				return true
 	return data is EnemyType or data is Enemy
 	
-func drop_data(_position, data):
-	if data is Enemy:
+func drop_data(position, data):
+	if data is Array:
+		for element in data:
+			drop_data(position, element)
+	elif data is Enemy:
 		enemy_position.add_enemy(data)
 	elif data is EnemyType:
 		enemy_position.add_enemy(Enemy.new(data))

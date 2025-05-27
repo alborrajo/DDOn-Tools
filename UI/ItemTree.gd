@@ -63,6 +63,11 @@ func _draw_tree_item(tree_item: TreeItem, rect: Rect2):
 
 
 func get_drag_data(position):
-	var selected_item: Item =  get_item_at_position(position).get_metadata(0)
-	print_debug("Dragging %s" % [tr(selected_item.name)])
-	return selected_item
+	var selected_items = []
+	var selected_tree_item = get_next_selected(null)
+	while selected_tree_item != null:
+		var selected_item = selected_tree_item.get_metadata(0) as Item
+		print_debug("Dragging %s" % [tr(selected_item.name)])
+		selected_items.append(selected_item)
+		selected_tree_item = get_next_selected(selected_tree_item)
+	return selected_items
