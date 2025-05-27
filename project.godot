@@ -346,8 +346,10 @@ _global_script_class_icons={
 
 config/name="DDOn Tools"
 run/main_scene="res://Main.tscn"
-config/icon="res://puala.png"
-config/windows_native_icon="res://puala.ico"
+boot_splash/image="res://splash.png"
+boot_splash/bg_color=Color( 0.698039, 0.686275, 0.639216, 1 )
+config/icon="res://cyclops.png"
+config/windows_native_icon="res://icon.ico"
 
 [autoload]
 
