@@ -31,8 +31,15 @@ func get_drag_data(position):
 		_dragging_shop_item = tree_item.get_metadata(0)
 		return _dragging_shop_item
 
-func can_drop_data(_position, data):
+func can_drop_data(position, data):
 	drop_mode_flags = DROP_MODE_INBETWEEN
+	return _can_drop_data(position, data)
+
+func _can_drop_data(position, data):
+	if data is Array:
+		for element in data:
+			if _can_drop_data(position, element):
+				return true
 	return data is Item or data is ShopItem
 	
 func drop_data(position, data):
@@ -42,6 +49,13 @@ func drop_data(position, data):
 	if drop_position_tree_item != null:
 		drop_position_shop_item = drop_position_tree_item.get_metadata(0)
 
+	if data is Array:
+		for element in data:
+			_drop_data(position, element, drop_section, drop_position_shop_item)
+	else:
+		_drop_data(position, data, drop_section, drop_position_shop_item)
+
+func _drop_data(position, data, drop_section, drop_position_shop_item):
 	if data is Item:
 		emit_signal(\"dropped_shop_item\", ShopItem.new(data), drop_section, drop_position_shop_item)
 	elif data is ShopItem:
