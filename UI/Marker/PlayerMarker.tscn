@@ -4,6 +4,7 @@
 [ext_resource path="res://UI/Marker/PlayerMarker.gd" type="Script" id=2]
 
 [node name="PlayerMarker" type="Control"]
+mouse_filter = 2
 script = ExtResource( 2 )
 
 [node name="player" type="TextureRect" parent="."]
@@ -12,6 +13,7 @@ margin_top = -32.0
 margin_right = 480.0
 margin_bottom = 480.0
 rect_scale = Vector2( 0.125, 0.125 )
+mouse_filter = 2
 texture = ExtResource( 1 )
 
 [node name="PlayerNameLabel" type="Label" parent="."]
