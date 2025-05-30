@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://UI/Chat.gd" type="Script" id=1]
+[ext_resource path="res://RpcClient/RpcRequest.gd" type="Script" id=2]
 
 [node name="Chat" type="VBoxContainer"]
 margin_right = 288.0
@@ -45,6 +46,9 @@ max_length = 257
 
 [node name="RPCTimer" type="Timer" parent="."]
 autostart = true
+
+[node name="RpcRequest" type="HTTPRequest" parent="."]
+script = ExtResource( 2 )
 
 [connection signal="visibility_changed" from="." to="." method="_on_Chat_visibility_changed"]
 [connection signal="text_entered" from="ChatBox/MessageLineEdit" to="." method="_on_MessageLineEdit_text_entered"]

@@ -9,30 +9,25 @@ signal player_joined(player)
 signal player_updated(player)
 signal player_left(player)
 
-var _thread: Thread
-
 onready var servers_on_ui_root: TreeItem = create_item()
 
 func _ready():
-	# Request RPC immediately
-	update_servers()
+	_on_rpc_timer_timeout()
 
 func _on_rpc_timer_timeout():
-	# If there's an old thread that hasn't finished, don't start a new one
-	# if there's an old thread that has finished, join it and start a new one
-	# if there's no old thread, start a new one
-	if _thread != null and _thread.is_active():
-		if not _thread.is_alive():
-			_thread.wait_to_finish()
-		else:
-			return
-		
-	_thread = Thread.new()
-	assert(_thread.start(self, "update_servers") == OK)
-
-# TODO: Refactor for less code duplication when updating trees
-func update_servers():
-	var servers: Array = RpcClient.new().get_status()
+	$RpcRequest.host = null
+	$RpcRequest.port = null
+	$RpcRequest.get_status()
+	var args = yield($RpcRequest, "rpc_completed")
+	assert(args[0] == HTTPRequest.RESULT_SUCCESS) # Result
+	
+	var response_code = args[1]
+	if response_code != 200:
+		printerr("Failed to obtain server status. Response code: ", response_code)
+		return
+	
+	var servers = args[2]
+	# TODO: Refactor for less code duplication when updating trees
 	var server_item = false
 	if get_root():
 		server_item = get_root().get_children()
@@ -57,7 +52,6 @@ func update_servers():
 	for server in servers:
 		var server_host: String = server["Addr"]
 		var server_rpc_port: int = server["RpcPort"]
-		var existing_ui: TreeItem
 		server_item = null
 		if get_root():
 			server_item = get_root().get_children()
@@ -70,19 +64,29 @@ func update_servers():
 			server_item = server_item.get_next()
 		if server_item != null:
 			# update existing server
-			_update_server_tree_entry(existing_ui, server)
+			_update_server_tree_entry(server_item, server)
 		else:
 			# create new server
 			server_item = create_item(servers_on_ui_root)
 			_update_server_tree_entry(server_item, server)
 		# Update the server's player list
 		_update_server_info(server_item)
-			
+		yield(self, "_updated_player_info")
+
 func _update_server_info(server_item: TreeItem):
 	var server_item_metadata = server_item.get_metadata(0)
-	var server_item_host: String = server_item_metadata["Addr"]
-	var server_item_rpc_port: int = server_item_metadata["RpcPort"]
-	var infos : Array = RpcClient.new(server_item_host, server_item_rpc_port).get_info()
+	$RpcRequest.host = server_item_metadata["Addr"]
+	$RpcRequest.port = server_item_metadata["RpcPort"]
+	$RpcRequest.get_info()
+	var args = yield($RpcRequest, "rpc_completed")
+	
+	var result = args[0]
+	var response_code = args[1]
+	if result != HTTPRequest.RESULT_SUCCESS or response_code != 200:
+		printerr("Failed to obtain server info.\n\tError: ", result, "\n\tResponse code: ", response_code)
+		return
+	
+	var infos = args[2]
 	var item = server_item.get_children()
 	while (item):
 		var item_player = item.get_metadata(0) as PlayerMapEntity
@@ -121,6 +125,8 @@ func _update_server_info(server_item: TreeItem):
 			var entry := create_item(server_item)
 			_update_player_tree_entry(entry, player)
 			emit_signal("player_joined", player)
+	
+	emit_signal("_updated_player_info")
 
 
 func _update_server_tree_entry(item: TreeItem, server: Dictionary):
@@ -150,9 +156,14 @@ func _on_Players_item_rmb_selected(_position):
 		$KickConfirmationDialog.popup_centered()
 
 func _on_KickConfirmationDialog_confirmed(server_host: String, server_port: int, player: PlayerMapEntity):
-	RpcClient.new(server_host, server_port).delete_info(player.AccountName)
-	update_servers()
-
-func _exit_tree():
-	if _thread != null and _thread.is_active():
-		_thread.wait_to_finish()
+	$RpcRequest.host = server_host
+	$RpcRequest.port = server_port
+	$RpcRequest.delete_info(player.AccountName) == OK
+	var args = yield($RpcRequest, "rpc_completed")
+	assert(args[0] == HTTPRequest.RESULT_SUCCESS) # Result
+	var result = args[0]
+	var response_code = args[1]
+	if result != HTTPRequest.RESULT_SUCCESS or response_code != 200:
+		printerr("Failed to kick player.\n\tError: ", result, "\n\tResponse code: ", response_code)
+		return
+	_on_rpc_timer_timeout()

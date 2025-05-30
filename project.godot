@@ -224,10 +224,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Entities/Map/RoomMap.gd"
 }, {
-"base": "Reference",
-"class": "RpcClient",
+"base": "HTTPRequest",
+"class": "RpcRequest",
 "language": "GDScript",
-"path": "res://RpcClient/RpcClient.gd"
+"path": "res://RpcClient/RpcRequest.gd"
 }, {
 "base": "Resource",
 "class": "Shop",
@@ -328,7 +328,7 @@ _global_script_class_icons={
 "PlayerMarkers": "",
 "Players": "",
 "RoomMap": "",
-"RpcClient": "",
+"RpcRequest": "",
 "Shop": "",
 "ShopFileMenu": "",
 "ShopItem": "",

@@ -23,30 +23,21 @@ const _CHAT_TYPE_COLORS = {
 }
 
 var _last_received_chat_unix_time = null
-var _thread: Thread
 
 func _ready():
 	_on_Chat_visibility_changed()
 	$ChatLogPanel/ChatLogScrollContainer.scroll_vertical = 99999
 
 func _on_RPCTimer_timeout():
-	# If there's an old thread that hasn't finished, don't start a new one
-	# if there's an old thread that has finished, join it and start a new one
-	# if there's no old thread, start a new one
-	if _thread != null and _thread.is_active():
-		if not _thread.is_alive():
-			_thread.wait_to_finish()
-		else:
-			return
+	$RpcRequest.get_chat(_last_received_chat_unix_time)
+	var args = yield($RpcRequest, "rpc_completed")
+	var result = args[0]
+	var response_code = args[1]
+	if result != HTTPRequest.RESULT_SUCCESS or response_code != 200:
+		printerr("Failed to obtain chat messages.\n\tError: ", result, "\n\tResponse code: ", response_code)
+		return
 		
-	_thread = Thread.new()
-	assert(_thread.start(self, "_fetch_new_chat_messages") == OK)
-	
-func _fetch_new_chat_messages() -> void:
-	var chatlog := RpcClient.new().get_chat(_last_received_chat_unix_time)
-	call_deferred("_update_chatlog", chatlog)
-	
-func _update_chatlog(chatlog: Array) -> void:
+	var chatlog = args[2]
 	var is_at_bottom = $ChatLogPanel/ChatLogScrollContainer.get_v_scrollbar().value+$ChatLogPanel/ChatLogScrollContainer.get_v_scrollbar().page == $ChatLogPanel/ChatLogScrollContainer.get_v_scrollbar().max_value
 	if chatlog.size() > 0:
 		print(chatlog.size(), " new chat messages")
@@ -82,9 +73,18 @@ func _on_MessageLineEdit_text_entered(message: String):
 			"Deliver": true
 		}
 	}
-	RpcClient.new().post_chat(chat_message_log_entry)
+	$RpcRequest.post_chat(chat_message_log_entry)
+	var args = yield($RpcRequest, "rpc_completed")
+	
 	$ChatBox/MessageLineEdit.clear()
 	$ChatBox/MessageLineEdit.editable = true
+	
+	var result = args[0]
+	var response_code = args[1]
+	if result != HTTPRequest.RESULT_SUCCESS or response_code != 200:
+		printerr("Failed to post chat message.\n\tError: ", result, "\n\tResponse code: ", response_code)
+		return
+
 	_on_RPCTimer_timeout()
 
 func _on_Chat_visibility_changed():
