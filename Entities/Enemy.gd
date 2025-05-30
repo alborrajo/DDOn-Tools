@@ -6,6 +6,8 @@ const DEFAULT_NAMED_PARAMS_ID = 0x8FA
 # By default, you have to kill 5 bosses or 50 enemies
 # of your level to level up
 const STORAGE_SECTION_ENEMIES := "Enemies"
+const STORAGE_KEY_PLAY_POINTS_RATE := "PPRate"
+const STORAGE_KEY_PLAY_POINTS_RATE_DEFAULT := 7000
 const STORAGE_KEY_BLOOD_ORB_RATE := "BloodOrbRate"
 const STORAGE_KEY_BLOOD_ORB_RATE_DEFAULT := 1.0
 const STORAGE_KEY_HIGH_ORB_RATE := "HighOrbRate"
@@ -231,6 +233,8 @@ func _set_lv(value):
 	apply_suggested_blood_orbs()
 	apply_suggested_high_orbs()
 	apply_suggested_exp()
+	apply_suggested_play_points()
+	emit_changed()
 	
 func _set_hm_preset_no(value):
 	hm_preset_no = value
@@ -284,10 +288,12 @@ func _validate_time_format(time_str: String, regex_str: String) -> bool:
 func _set_is_boss_gauge(value):
 	is_boss_gauge = value
 	apply_suggested_exp()
+	emit_changed()
 	
 func _set_is_boss_bgm(value):
 	is_boss_bgm = value
 	apply_suggested_exp()
+	emit_changed()
 	
 func _set_is_manual_set(value):
 	is_manual_set = value
@@ -296,6 +302,7 @@ func _set_is_manual_set(value):
 func _set_is_area_boss(value):
 	is_area_boss = value
 	apply_suggested_exp()
+	emit_changed()
 
 func _set_does_drop_bo(value):
 	does_drop_bo = value
@@ -323,6 +330,7 @@ func _set_high_orbs(value):
 	
 func _set_experience(value):
 	experience = value
+	apply_suggested_play_points()
 	emit_changed()
 
 func _set_play_points(value):
@@ -346,4 +354,6 @@ func apply_suggested_exp() -> void:
 		experience = int(exp_to_level_up / StorageProvider.get_value(STORAGE_SECTION_ENEMIES, STORAGE_KEY_BOSSES_TO_LEVEL_UP, STORAGE_KEY_BOSSES_TO_LEVEL_UP_DEFAULT))
 	else:
 		experience = int(exp_to_level_up / StorageProvider.get_value(STORAGE_SECTION_ENEMIES, STORAGE_KEY_ENEMIES_TO_LEVEL_UP, STORAGE_KEY_ENEMIES_TO_LEVEL_UP_DEFAULT))
-	emit_changed()
+
+func apply_suggested_play_points() -> void:
+	play_points = experience / StorageProvider.get_value(STORAGE_SECTION_ENEMIES, STORAGE_KEY_PLAY_POINTS_RATE, STORAGE_KEY_PLAY_POINTS_RATE_DEFAULT)

@@ -7,6 +7,7 @@ func _on_SettingsWindowDialog_about_to_show():
 	
 	$VBoxContainer/ExpSuggestionsFlowContainer/EnemiesToLevelUpSpinBox.value = StorageProvider.get_value(Enemy.STORAGE_SECTION_ENEMIES, Enemy.STORAGE_KEY_ENEMIES_TO_LEVEL_UP, Enemy.STORAGE_KEY_ENEMIES_TO_LEVEL_UP_DEFAULT)
 	$VBoxContainer/ExpSuggestionsFlowContainer/BossesToLevelUpSpinBox.value = StorageProvider.get_value(Enemy.STORAGE_SECTION_ENEMIES, Enemy.STORAGE_KEY_BOSSES_TO_LEVEL_UP, Enemy.STORAGE_KEY_BOSSES_TO_LEVEL_UP_DEFAULT)
+	$VBoxContainer/HOBOSuggestionsGridContainer/PlayPointsSpinBox.value = StorageProvider.get_value(Enemy.STORAGE_SECTION_ENEMIES, Enemy.STORAGE_KEY_PLAY_POINTS_RATE, Enemy.STORAGE_KEY_PLAY_POINTS_RATE_DEFAULT)
 	$VBoxContainer/HOBOSuggestionsGridContainer/BloodOrbSpinBox.value = StorageProvider.get_value(Enemy.STORAGE_SECTION_ENEMIES, Enemy.STORAGE_KEY_BLOOD_ORB_RATE, Enemy.STORAGE_KEY_BLOOD_ORB_RATE_DEFAULT)
 	$VBoxContainer/HOBOSuggestionsGridContainer/HighOrbSpinBox.value = StorageProvider.get_value(Enemy.STORAGE_SECTION_ENEMIES, Enemy.STORAGE_KEY_HIGH_ORB_RATE, Enemy.STORAGE_KEY_HIGH_ORB_RATE_DEFAULT)
 	$VBoxContainer/ApplySuggestedValuesCheckBox.pressed = false
@@ -26,6 +27,7 @@ func _on_SettingsWindowDialog_popup_hide():
 	
 	StorageProvider.set_value(Enemy.STORAGE_SECTION_ENEMIES, Enemy.STORAGE_KEY_ENEMIES_TO_LEVEL_UP, $VBoxContainer/ExpSuggestionsFlowContainer/EnemiesToLevelUpSpinBox.value)
 	StorageProvider.set_value(Enemy.STORAGE_SECTION_ENEMIES, Enemy.STORAGE_KEY_BOSSES_TO_LEVEL_UP, $VBoxContainer/ExpSuggestionsFlowContainer/BossesToLevelUpSpinBox.value)
+	StorageProvider.set_value(Enemy.STORAGE_SECTION_ENEMIES, Enemy.STORAGE_KEY_PLAY_POINTS_RATE, $VBoxContainer/HOBOSuggestionsGridContainer/PlayPointsSpinBox.value)
 	StorageProvider.set_value(Enemy.STORAGE_SECTION_ENEMIES, Enemy.STORAGE_KEY_BLOOD_ORB_RATE, $VBoxContainer/HOBOSuggestionsGridContainer/BloodOrbSpinBox.value)
 	StorageProvider.set_value(Enemy.STORAGE_SECTION_ENEMIES, Enemy.STORAGE_KEY_HIGH_ORB_RATE, $VBoxContainer/HOBOSuggestionsGridContainer/HighOrbSpinBox.value)
 	
