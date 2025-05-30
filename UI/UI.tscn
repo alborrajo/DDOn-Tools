@@ -337,10 +337,6 @@ script = ExtResource( 11 )
 [node name="RpcRequest" type="HTTPRequest" parent="left/tab/Players"]
 script = ExtResource( 23 )
 
-[node name="RPCTimer" type="Timer" parent="left/tab/Players"]
-wait_time = 5.0
-autostart = true
-
 [node name="KickConfirmationDialog" type="ConfirmationDialog" parent="left/tab/Players"]
 margin_right = 360.0
 margin_bottom = 126.0
@@ -590,7 +586,6 @@ show_hidden_files = true
 [connection signal="player_joined" from="left/tab/Players" to="." method="_on_Players_player_joined"]
 [connection signal="player_left" from="left/tab/Players" to="." method="_on_Players_player_left"]
 [connection signal="player_updated" from="left/tab/Players" to="." method="_on_Players_player_updated"]
-[connection signal="timeout" from="left/tab/Players/RPCTimer" to="left/tab/Players" method="_on_rpc_timer_timeout"]
 [connection signal="item_selected" from="status_view/container/LayerOptionButton" to="." method="_on_LayerOptionButton_item_selected"]
 [connection signal="item_selected" from="status_view/container/DayNightOptionButton" to="status_view/container/DayNightOptionButton" method="_on_DayNightOptionButton_item_selected"]
 [connection signal="value_changed" from="status_view/container/SubGroupIdSpinBox" to="." method="_on_SubGroupIdSpinBox_value_changed"]

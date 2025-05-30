@@ -9,24 +9,14 @@ signal player_joined(player)
 signal player_updated(player)
 signal player_left(player)
 
+signal _updated_player_info()
+
 onready var servers_on_ui_root: TreeItem = create_item()
 
 func _ready():
-	_on_rpc_timer_timeout()
+	assert(ServerProvider.connect("fetched_servers", self, "_update_player_list") == OK)
 
-func _on_rpc_timer_timeout():
-	$RpcRequest.host = null
-	$RpcRequest.port = null
-	$RpcRequest.get_status()
-	var args = yield($RpcRequest, "rpc_completed")
-	assert(args[0] == HTTPRequest.RESULT_SUCCESS) # Result
-	
-	var response_code = args[1]
-	if response_code != 200:
-		printerr("Failed to obtain server status. Response code: ", response_code)
-		return
-	
-	var servers = args[2]
+func _update_player_list():
 	# TODO: Refactor for less code duplication when updating trees
 	var server_item = false
 	if get_root():
@@ -34,7 +24,7 @@ func _on_rpc_timer_timeout():
 	while (server_item):
 		var server_item_metadata = server_item.get_metadata(0)
 		var exists = false
-		for server in servers:
+		for server in ServerProvider.servers:
 			var server_item_host: String = server_item_metadata["Addr"]
 			var server_item_rpc_port: int = server_item_metadata["RpcPort"]
 			var server_host: String = server["Addr"]
@@ -49,7 +39,7 @@ func _on_rpc_timer_timeout():
 			servers_on_ui_root.remove_child(tmp)
 			tmp.free()
 			
-	for server in servers:
+	for server in ServerProvider.servers:
 		var server_host: String = server["Addr"]
 		var server_rpc_port: int = server["RpcPort"]
 		server_item = null
@@ -130,7 +120,7 @@ func _update_server_info(server_item: TreeItem):
 
 
 func _update_server_tree_entry(item: TreeItem, server: Dictionary):
-	item.set_text(0, server["Name"])
+	item.set_text(0, "%s - %s %d/%d" % [server["Name"], server["TrafficName"], server["LoginNum"], server["MaxLoginNum"]])
 	item.set_metadata(0, server)
 
 func _update_player_tree_entry(item: TreeItem, player: PlayerMapEntity):
@@ -166,4 +156,4 @@ func _on_KickConfirmationDialog_confirmed(server_host: String, server_port: int,
 	if result != HTTPRequest.RESULT_SUCCESS or response_code != 200:
 		printerr("Failed to kick player.\n\tError: ", result, "\n\tResponse code: ", response_code)
 		return
-	_on_rpc_timer_timeout()
+	_update_player_list()
