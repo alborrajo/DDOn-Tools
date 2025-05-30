@@ -25,7 +25,37 @@ const _CHAT_TYPE_COLORS = {
 var _last_received_chat_unix_time = null
 
 func _ready():
+	assert(ServerProvider.connect("fetched_servers", self, "_on_fetched_servers") == OK)
 	_on_Chat_visibility_changed()
+	$ChatLogPanel/ChatLogScrollContainer.scroll_vertical = 99999
+	
+func _on_fetched_servers() -> void:
+	var old_selected_server = $ServerOptionButton.get_selected_metadata()
+	$ServerOptionButton.clear()
+	for server in ServerProvider.servers:
+		$ServerOptionButton.add_item(server["Name"], server["Id"])
+		$ServerOptionButton.set_item_metadata($ServerOptionButton.get_item_index(server["Id"]), server)
+	if old_selected_server != null:
+		var idx = $ServerOptionButton.get_item_index(old_selected_server["Id"])
+		if idx != -1:
+			var new_selected_server = $ServerOptionButton.get_item_metadata(idx)
+			if old_selected_server["Addr"] == new_selected_server["Addr"] and old_selected_server["RpcPort"] == new_selected_server["RpcPort"]:
+				$ServerOptionButton.select(idx)
+				return
+				
+	if ServerProvider.servers.size() > 0:
+		$ServerOptionButton.select(0)
+		$ServerOptionButton.emit_signal("item_selected", 0)
+	
+	
+func _on_ServerOptionButton_item_selected(index):
+	_last_received_chat_unix_time = null
+	for child in $ChatLogPanel/ChatLogScrollContainer/ChatLogVBoxContainer.get_children():
+		child.queue_free()
+	var selected_server = $ServerOptionButton.get_selected_metadata()
+	$RpcRequest.host = selected_server["Addr"]
+	$RpcRequest.port = selected_server["RpcPort"]
+	_on_RPCTimer_timeout()
 	$ChatLogPanel/ChatLogScrollContainer.scroll_vertical = 99999
 
 func _on_RPCTimer_timeout():
@@ -86,7 +116,7 @@ func _on_MessageLineEdit_text_entered(message: String):
 		return
 
 	_on_RPCTimer_timeout()
-
+	
 func _on_Chat_visibility_changed():
 	if visible:
 		_on_RPCTimer_timeout()
