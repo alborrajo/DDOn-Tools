@@ -226,6 +226,8 @@ func _clear_markers() -> void:
 
 
 func _on_ui_player_activated(player: PlayerMapEntity):
+	$ui/left/tab/Stages/HBoxContainer/StagesLineEdit.text = ""
+	$ui/left/tab/Stages/HBoxContainer/StagesLineEdit.emit_signal("text_changed", "")
 	for stage_index in $ui/left/tab/Stages/StageItemList.get_item_count():
 		if $ui/left/tab/Stages/StageItemList.get_item_metadata(stage_index) == String(player.StageNo):
 			# TODO: Decouple, same as _ready
