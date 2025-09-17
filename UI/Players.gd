@@ -13,10 +13,16 @@ signal _updated_player_info()
 
 onready var servers_on_ui_root: TreeItem = create_item()
 
+var _update_in_progress := false
+
 func _ready():
 	assert(ServerProvider.connect("fetched_servers", self, "_update_player_list") == OK)
 
 func _update_player_list():
+	if _update_in_progress:
+		return
+	_update_in_progress = true
+	
 	# TODO: Refactor for less code duplication when updating trees
 	var server_item = false
 	if get_root():
@@ -38,7 +44,8 @@ func _update_player_list():
 			# remove servers on ui, that have no info
 			servers_on_ui_root.remove_child(tmp)
 			tmp.free()
-			
+	
+	var server_items := []
 	for server in ServerProvider.servers:
 		var server_host: String = server["Addr"]
 		var server_rpc_port: int = server["RpcPort"]
@@ -59,9 +66,16 @@ func _update_player_list():
 			# create new server
 			server_item = create_item(servers_on_ui_root)
 			_update_server_tree_entry(server_item, server)
+		server_items.append(server_item)
+	
+	# Second loop so fetching each server's player list is only done after we already are showing
+	# the full server list
+	for server_item_element in server_items:
 		# Update the server's player list
-		_update_server_info(server_item)
+		_update_server_info(server_item_element)
 		yield(self, "_updated_player_info")
+		
+	_update_in_progress = false
 
 func _update_server_info(server_item: TreeItem):
 	var server_item_metadata = server_item.get_metadata(0)
@@ -74,6 +88,7 @@ func _update_server_info(server_item: TreeItem):
 	var response_code = args[1]
 	if result != HTTPRequest.RESULT_SUCCESS or response_code != 200:
 		printerr("Failed to obtain server info.\n\tError: ", result, "\n\tResponse code: ", response_code)
+		emit_signal("_updated_player_info")
 		return
 	
 	var infos = args[2]
@@ -148,7 +163,7 @@ func _on_Players_item_rmb_selected(_position):
 func _on_KickConfirmationDialog_confirmed(server_host: String, server_port: int, player: PlayerMapEntity):
 	$RpcRequest.host = server_host
 	$RpcRequest.port = server_port
-	$RpcRequest.delete_info(player.AccountName) == OK
+	assert($RpcRequest.delete_info(player.AccountName) == OK)
 	var args = yield($RpcRequest, "rpc_completed")
 	assert(args[0] == HTTPRequest.RESULT_SUCCESS) # Result
 	var result = args[0]

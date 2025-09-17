@@ -15,7 +15,11 @@ func _fetch_servers():
 	$RpcRequest.port = null
 	$RpcRequest.get_status()
 	var args = yield($RpcRequest, "rpc_completed")
-	assert(args[0] == HTTPRequest.RESULT_SUCCESS) # Result
+	
+	var request_result = args[0]
+	if request_result != HTTPRequest.RESULT_SUCCESS:
+		printerr("Failed to connect to the server. HTTP Error: ", request_result)
+		return
 	
 	var response_code = args[1]
 	if response_code != 200:
