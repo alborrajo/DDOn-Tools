@@ -7,13 +7,13 @@ const STORAGE_KEY_SHOP_PRICE_RATE_DEFAULT := 1.5
 
 const DEFAULT_DATE_STRING = "1970-01-01T00:00:00"
 
-var item: Item setget _set_item
-var price: int setget _set_price
-var is_stock_unlimited: bool setget _set_is_stock_unlimited
-var stock: int setget _set_stock
-var hide_if_reqs_unmet: bool setget _set_hide_if_reqs_unmet
-var sales_period_start: String setget _set_sales_period_start
-var sales_period_end: String setget _set_sales_period_end
+var item: Item: set = _set_item
+var price: int: set = _set_price
+var is_stock_unlimited: bool: set = _set_is_stock_unlimited
+var stock: int: set = _set_stock
+var hide_if_reqs_unmet: bool: set = _set_hide_if_reqs_unmet
+var sales_period_start: String: set = _set_sales_period_start
+var sales_period_end: String: set = _set_sales_period_end
 
 var _requirements: Array
 
@@ -39,20 +39,23 @@ func add_requirement(requirement: ShopItemRequirement) -> void:
 	emit_changed()
 	
 func remove_requirement(index: int) -> void:
-	_requirements.remove(index)
+	# Godot 4 migration
+	# Array remove() is now remove_at(), same functionality
+	# _requirements.remove(index)
+	_requirements.remove_at(index)
 	emit_changed()
 
 func clone() -> ShopItem:
-	var clone: ShopItem = get_script().new(item)
-	clone.price = price
-	clone.is_stock_unlimited = is_stock_unlimited
-	clone.stock = stock
-	clone.hide_if_reqs_unmet = hide_if_reqs_unmet
-	clone.sales_period_start = sales_period_start
-	clone.sales_period_end = sales_period_end
+	var clone_new: ShopItem = get_script().new(item)
+	clone_new.price = price
+	clone_new.is_stock_unlimited = is_stock_unlimited
+	clone_new.stock = stock
+	clone_new.hide_if_reqs_unmet = hide_if_reqs_unmet
+	clone_new.sales_period_start = sales_period_start
+	clone_new.sales_period_end = sales_period_end
 	for req in _requirements:
-		clone.add_requirement(req.clone())
-	return clone
+		clone_new.add_requirement(req.clone())
+	return clone_new
 
 func _set_item(value):
 	item = value

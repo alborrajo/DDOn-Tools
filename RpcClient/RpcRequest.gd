@@ -40,24 +40,27 @@ func _get_effective_port():
 
 
 func get_info() -> void:
-	_get(RPC_PATH_INFO)
+	get_request(RPC_PATH_INFO)
 	
 func delete_info(account_name: String) -> void:
 	_delete_dictionary(RPC_PATH_INFO, {"accountname": account_name})
 	
 func get_chat(since) -> void:
 	if since == null:
-		_get(RPC_PATH_CHAT)
+		get_request(RPC_PATH_CHAT)
 	else:
-		_get(RPC_PATH_CHAT, {"since": since})
+		get_request(RPC_PATH_CHAT, {"since": since})
 		
 func post_chat(chat_message_log_entry: Dictionary) -> void:
 	_post_dictionary(RPC_PATH_CHAT, chat_message_log_entry)
 	
 func get_status() -> void:
-	_get(RPC_PATH_STATUS)
-	
-func _get(relative_path: String, query_params: Dictionary = {}) -> void:
+	get_request(RPC_PATH_STATUS)
+
+# Godot 4 migration
+# The _get() method is a built-in engine hook used for dynamic property access
+# renamed _get to get_request
+func get_request(relative_path: String, query_params: Dictionary = {}) -> void:
 	var base_path = StorageProvider.get_value(STORAGE_SECTION_RPC, STORAGE_KEY_RPC_PATH, STORAGE_KEY_RPC_PATH_DEFAULT)
 	var username = StorageProvider.get_value(STORAGE_SECTION_RPC, STORAGE_KEY_RPC_USERNAME, STORAGE_KEY_RPC_USERNAME_DEFAULT)
 	var password = StorageProvider.get_value(STORAGE_SECTION_RPC, STORAGE_KEY_RPC_PASSWORD, STORAGE_KEY_RPC_PASSWORD_DEFAULT)
@@ -69,7 +72,7 @@ func _post_dictionary(relative_path: String, body: Dictionary) -> void:
 	var username = StorageProvider.get_value(STORAGE_SECTION_RPC, STORAGE_KEY_RPC_USERNAME, STORAGE_KEY_RPC_USERNAME_DEFAULT)
 	var password = StorageProvider.get_value(STORAGE_SECTION_RPC, STORAGE_KEY_RPC_PASSWORD, STORAGE_KEY_RPC_PASSWORD_DEFAULT)
 	var path = str(base_path, relative_path)
-	make_request(HTTPClient.METHOD_POST, path, {}, JSON.print(body), username, password)
+	make_request(HTTPClient.METHOD_POST, path, {}, JSON.stringify(body), username, password)
 	
 func _delete_dictionary(relative_path: String, query_params: Dictionary) -> void:
 	var base_path = StorageProvider.get_value(STORAGE_SECTION_RPC, STORAGE_KEY_RPC_PATH, STORAGE_KEY_RPC_PATH_DEFAULT)
@@ -92,22 +95,27 @@ func make_request(method: int, path: String, query_params: Dictionary = {}, body
 		headers.append("Authorization: Basic "+Marshalls.utf8_to_base64(username+":"+password))
 	
 	if _processing_a_request:
-		yield(self, "_finished_processing_a_request")
+		await self._finished_processing_a_request
 	
 	_processing_a_request = true
-	var err := request(_url, headers, true, method, body)
+	# Godot 4 migration
+	# Too many arguments for "request()" call. Expected at most 4 but received 5.
+	# var err := request(_url, headers, true, method, body)
+	var err := request(_url, headers, method, body)
 	var result: int
 	var response_code: int
 	var contents
 	if err == RESULT_SUCCESS:
-		var args = yield(self, "request_completed")
+		var args = await self.request_completed
 		result = args[0] as int
 		response_code = args[1] as int
-		var _headers = args[2] as PoolStringArray
-		var response_body = args[3] as PoolByteArray
+		var _headers = args[2] as PackedStringArray
+		var response_body = args[3] as PackedByteArray
 		if result == RESULT_SUCCESS and response_code >= 200 and response_code < 300:
 			var response_body_string: String = response_body.get_string_from_utf8()
-			var json = JSON.parse(response_body_string)
+			var test_json_conv = JSON.new()
+			test_json_conv.parse(response_body_string)
+			var json = test_json_conv.get_data()
 			if json.error != OK:
 				printerr("RpcRequest: failed to parse json ", _url)
 				contents = null

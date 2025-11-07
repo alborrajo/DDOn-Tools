@@ -1,23 +1,24 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=7 format=3 uid="uid://6p08mjkoa3g8"]
 
-[ext_resource path="res://UI/Marker/ToggleablePlacemark.tscn" type="PackedScene" id=1]
-[ext_resource path="res://UI/Marker/ToggleableShopPlacemark.gd" type="Script" id=2]
-[ext_resource path="res://resources/icons/mmapicon_ID.png" type="Texture" id=3]
+[ext_resource type="PackedScene" uid="uid://ck3uhodqituuy" path="res://UI/Marker/ToggleablePlacemark.tscn" id="1"]
+[ext_resource type="Script" uid="uid://vh2w8xljvwlw" path="res://UI/Marker/ToggleableShopPlacemark.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://db6tcwte6q06u" path="res://resources/icons/mmapicon_ID.png" id="3"]
 
-[sub_resource type="AtlasTexture" id=2]
-flags = 4
-atlas = ExtResource( 3 )
-region = Rect2( 4, 58, 20, 22 )
+[sub_resource type="AtlasTexture" id="2"]
+atlas = ExtResource("3")
+region = Rect2(4, 58, 20, 22)
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id="3"]
 script/source = "extends OptionButton
 
-func _process(delta):
+# Godot 4 migration
+# be gone
+# func _process(delta):
 	# Terrible hack
-	get_popup().rect_global_position = rect_global_position + Vector2(0, 2000)
+#	get_popup().global_position = global_position + Vector2(0, 2000)
 "
 
-[sub_resource type="GDScript" id=1]
+[sub_resource type="GDScript" id="1"]
 script/source = "extends Tree
 
 signal dragged_shop_item(removed_shop_item)
@@ -25,37 +26,37 @@ signal dropped_shop_item(shop_item, drop_section, dropped_position_shop_item)
 
 var _dragging_shop_item: ShopItem = null
 
-func get_drag_data(position):
-	var tree_item := get_item_at_position(position)
+func _get_drag_data(at_position):
+	var tree_item := get_item_at_position(at_position)
 	if tree_item != null:
 		_dragging_shop_item = tree_item.get_metadata(0)
 		return _dragging_shop_item
 
-func can_drop_data(position, data):
+func _can_drop_data(at_position, data):
 	drop_mode_flags = DROP_MODE_INBETWEEN
-	return _can_drop_data(position, data)
+	return can_drop_data_sub(at_position, data)
 
-func _can_drop_data(position, data):
+func can_drop_data_sub(at_position, data):
 	if data is Array:
 		for element in data:
-			if _can_drop_data(position, element):
+			if _can_drop_data(at_position, element):
 				return true
 	return data is Item or data is ShopItem
 	
-func drop_data(position, data):
-	var drop_section := get_drop_section_at_position(position)
-	var drop_position_tree_item := get_item_at_position(position)
+func _drop_data(at_position, data):
+	var drop_section := get_drop_section_at_position(at_position)
+	var drop_position_tree_item := get_item_at_position(at_position)
 	var drop_position_shop_item: ShopItem = null
 	if drop_position_tree_item != null:
 		drop_position_shop_item = drop_position_tree_item.get_metadata(0)
 
 	if data is Array:
 		for element in data:
-			_drop_data(position, element, drop_section, drop_position_shop_item)
+			drop_data_sub(at_position, element, drop_section, drop_position_shop_item)
 	else:
-		_drop_data(position, data, drop_section, drop_position_shop_item)
+		drop_data_sub(at_position, data, drop_section, drop_position_shop_item)
 
-func _drop_data(position, data, drop_section, drop_position_shop_item):
+func drop_data_sub(at_position, data, drop_section, drop_position_shop_item):
 	if data is Item:
 		emit_signal(\"dropped_shop_item\", ShopItem.new(data), drop_section, drop_position_shop_item)
 	elif data is ShopItem:
@@ -69,118 +70,134 @@ func _notification(what: int) -> void:
 
 func _gui_input(event):
 	# Prevent scrolling events from propagating (avoid zooming in/out while the mouse is inside the shop list)
-	if event is InputEventMouseButton and event.pressed and [BUTTON_WHEEL_UP, BUTTON_WHEEL_DOWN, BUTTON_WHEEL_LEFT, BUTTON_WHEEL_RIGHT].has(event.button_index):
+	if event is InputEventMouseButton and event.pressed and [MOUSE_BUTTON_WHEEL_UP, MOUSE_BUTTON_WHEEL_DOWN, MOUSE_BUTTON_WHEEL_LEFT, MOUSE_BUTTON_WHEEL_RIGHT].has(event.button_index):
 		accept_event()
 "
 
-[node name="ToggleableShopPlacemark" instance=ExtResource( 1 )]
-script = ExtResource( 2 )
+[node name="ToggleableShopPlacemark" instance=ExtResource("1")]
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2")
 
 [node name="ToggleButton" parent="MapControl" index="0"]
-margin_left = -16.0
-margin_top = -16.0
-margin_right = 16.0
-margin_bottom = 16.0
-icon = SubResource( 2 )
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+icon = SubResource("2")
 flat = false
-icon_align = 0
+icon_alignment = 0
 
 [node name="Panel" parent="MapControl/Control" index="0"]
-margin_right = 300.0
-margin_bottom = 396.0
+offset_right = 300.0
+offset_bottom = 396.0
 
 [node name="ShopPlacemark" type="VBoxContainer" parent="MapControl/Control/Panel" index="0"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 293.0
-margin_bottom = 389.0
+layout_mode = 2
 
 [node name="NpcNameLabel" type="Label" parent="MapControl/Control/Panel/ShopPlacemark" index="0"]
-margin_right = 286.0
-margin_bottom = 18.0
+layout_mode = 2
 size_flags_horizontal = 3
-align = 1
+horizontal_alignment = 1
 
 [node name="GridContainer" type="GridContainer" parent="MapControl/Control/Panel/ShopPlacemark" index="1"]
-margin_top = 22.0
-margin_right = 286.0
-margin_bottom = 50.0
+layout_mode = 2
 columns = 4
 
 [node name="Label" type="Label" parent="MapControl/Control/Panel/ShopPlacemark/GridContainer" index="0"]
-margin_top = 5.0
-margin_right = 30.0
-margin_bottom = 23.0
+layout_mode = 2
 text = "Unk0"
 
 [node name="Unk0SpinBox" type="SpinBox" parent="MapControl/Control/Panel/ShopPlacemark/GridContainer" index="1"]
-margin_left = 34.0
-margin_right = 141.0
-margin_bottom = 28.0
-mouse_filter = 1
+layout_mode = 2
 size_flags_horizontal = 3
-max_value = 4.29497e+09
+mouse_filter = 1
+max_value = 4294970000.0
 
 [node name="Label2" type="Label" parent="MapControl/Control/Panel/ShopPlacemark/GridContainer" index="2"]
-margin_left = 145.0
-margin_top = 5.0
-margin_right = 175.0
-margin_bottom = 23.0
+layout_mode = 2
 text = "Unk1"
 
 [node name="Unk1SpinBox" type="SpinBox" parent="MapControl/Control/Panel/ShopPlacemark/GridContainer" index="3"]
-margin_left = 179.0
-margin_right = 286.0
-margin_bottom = 28.0
-mouse_filter = 1
+layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 max_value = 255.0
 
 [node name="GridContainer2" type="GridContainer" parent="MapControl/Control/Panel/ShopPlacemark" index="2"]
-margin_top = 54.0
-margin_right = 286.0
-margin_bottom = 78.0
+layout_mode = 2
 columns = 2
 
 [node name="Label" type="Label" parent="MapControl/Control/Panel/ShopPlacemark/GridContainer2" index="0"]
-margin_top = 3.0
-margin_right = 66.0
-margin_bottom = 21.0
+layout_mode = 2
 text = "Wallet Type"
 
 [node name="WalletTypeOptionButton" type="OptionButton" parent="MapControl/Control/Panel/ShopPlacemark/GridContainer2" index="1"]
-margin_left = 70.0
-margin_right = 286.0
-margin_bottom = 24.0
-mouse_filter = 1
+layout_mode = 2
 size_flags_horizontal = 3
-text = "None"
-items = [ "None", null, false, 0, null, "Gold", null, false, 1, null, "Rift Points", null, false, 2, null, "Blood Orbs", null, false, 3, null, "Silver Tickets", null, false, 4, null, "Golden Gemstones", null, false, 5, null, "Rental Points", null, false, 6, null, "Reset Job Points", null, false, 7, null, "Reset Craft Skills", null, false, 8, null, "High Orbs", null, false, 9, null, "Dominion Points", null, false, 10, null, "Adventure Pass Points", null, false, 11, null, "Custom Made Service Tickets", null, false, 12, null, "Bitterblack Maze Reset Tickets", null, false, 13, null, "Golden Dragon Marks", null, false, 14, null, "Silver Dragon Marks", null, false, 15, null, "Red Dragon Marks", null, false, 16, null ]
-selected = 0
-script = SubResource( 3 )
+mouse_filter = 1
+item_count = 17
+popup/item_0/text = "None"
+popup/item_0/id = 0
+popup/item_1/text = "Gold"
+popup/item_1/id = 1
+popup/item_2/text = "Rift Points"
+popup/item_2/id = 2
+popup/item_3/text = "Blood Orbs"
+popup/item_3/id = 3
+popup/item_4/text = "Silver Tickets"
+popup/item_4/id = 4
+popup/item_5/text = "Golden Gemstones"
+popup/item_5/id = 5
+popup/item_6/text = "Rental Points"
+popup/item_6/id = 6
+popup/item_7/text = "Reset Job Points"
+popup/item_7/id = 7
+popup/item_8/text = "Reset Craft Skills"
+popup/item_8/id = 8
+popup/item_9/text = "High Orbs"
+popup/item_9/id = 9
+popup/item_10/text = "Dominion Points"
+popup/item_10/id = 10
+popup/item_11/text = "Adventure Pass Points"
+popup/item_11/id = 11
+popup/item_12/text = "Custom Made Service Tickets"
+popup/item_12/id = 12
+popup/item_13/text = "Bitterblack Maze Reset Tickets"
+popup/item_13/id = 13
+popup/item_14/text = "Golden Dragon Marks"
+popup/item_14/id = 14
+popup/item_15/text = "Silver Dragon Marks"
+popup/item_15/id = 15
+popup/item_16/text = "Red Dragon Marks"
+popup/item_16/id = 16
+script = SubResource("3")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MapControl/Control/Panel/ShopPlacemark" index="3"]
-margin_top = 82.0
-margin_right = 286.0
-margin_bottom = 382.0
-rect_min_size = Vector2( 0, 300 )
-mouse_filter = 1
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
 
 [node name="Tree" type="Tree" parent="MapControl/Control/Panel/ShopPlacemark/ScrollContainer" index="0"]
-margin_right = 286.0
-margin_bottom = 300.0
-mouse_filter = 1
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 1
 allow_rmb_select = true
 hide_root = true
 select_mode = 2
-script = SubResource( 1 )
+script = SubResource("1")
+
+[node name="CloseButton" parent="MapControl/Control" index="1"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 24.0
+offset_bottom = 24.0
 
 [connection signal="value_changed" from="MapControl/Control/Panel/ShopPlacemark/GridContainer/Unk0SpinBox" to="." method="_on_Unk0SpinBox_value_changed"]
 [connection signal="value_changed" from="MapControl/Control/Panel/ShopPlacemark/GridContainer/Unk1SpinBox" to="." method="_on_Unk1SpinBox_value_changed"]
 [connection signal="item_selected" from="MapControl/Control/Panel/ShopPlacemark/GridContainer2/WalletTypeOptionButton" to="." method="_on_WalletTypeOptionButton_item_selected"]
-[connection signal="dragged_shop_item" from="MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree" to="." method="_on_ItemList_dragged_shop_item"]
-[connection signal="dropped_shop_item" from="MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree" to="." method="_on_ItemList_dropped_shop_item"]
-[connection signal="item_rmb_selected" from="MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree" to="." method="_on_Tree_item_rmb_selected"]
 [connection signal="multi_selected" from="MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree" to="." method="_on_Tree_multi_selected"]

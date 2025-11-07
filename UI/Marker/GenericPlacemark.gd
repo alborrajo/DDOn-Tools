@@ -6,8 +6,8 @@ signal placemark_removed()
 var _is_dragging := false
 
 func ready():
-	assert(SelectedListManager.connect("selection_changed", self, "_on_selection_changed") == OK)
-	assert(SelectedListManager.connect("selection_deleted", self, "_on_selection_deleted") == OK)
+	assert(SelectedListManager.connect("selection_changed", Callable(self, "_on_selection_changed")) == OK)
+	assert(SelectedListManager.connect("selection_deleted", Callable(self, "_on_selection_deleted")) == OK)
 
 func _on_selection_changed(added: Array, removed: Array):
 	if added.has(get_selection_entity()):
@@ -22,7 +22,7 @@ func _on_selection_deleted(deleted: Array):
 		emit_signal("placemark_removed")
 
 func _gui_input(event):
-	if event is InputEventMouseButton and (event as InputEventMouseButton).button_mask == BUTTON_RIGHT:
+	if event is InputEventMouseButton and (event as InputEventMouseButton).button_mask == MOUSE_BUTTON_RIGHT:
 		select_placemark()
 		SelectedListManager.delete_selected()
 
@@ -48,6 +48,6 @@ func _notification(what: int) -> void:
 		if get_viewport().gui_is_drag_successful():
 			emit_signal("placemark_removed")
 
-func get_drag_data(_position):
+func _get_drag_data(_position):
 	_is_dragging = true
 	return null

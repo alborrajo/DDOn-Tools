@@ -1,0 +1,12 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://cqu4xe868xwjw"]
+
+[ext_resource type="Texture2D" uid="uid://bklqkl1p3edng" path="res://Themes/Classic311/Styles/Panel/InlinePanel.png" id="1"]
+
+[resource]
+texture = ExtResource("1")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1

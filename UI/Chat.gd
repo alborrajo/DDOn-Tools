@@ -6,26 +6,26 @@ const MAX_ENTRIES := 100 # TODO: Configurable
 const _META_LOG_ENTRY = "logentry"
 
 const _CHAT_TYPE_COLORS = {
-	"0": Color.white, # Say
-	"1": Color.purple, # Shout
-	"2": Color.palevioletred, # Tell
-	"3": Color.yellow, # System
-	"4": Color.aquamarine, # Party
-	"5": Color.purple, # ShoutAll, not sure about this one
-	"6": Color.lawngreen, # Group
-	"7": Color.springgreen, # Clan
-	"8": Color.aquamarine, # Entryboard TODO
-	"9": Color.yellow, # ManagementGuideC
-	"10": Color.yellow, # ManagementGuideN TODO
-	"11": Color.crimson, # ManagementAlertC TODO
-	"12": Color.crimson, # ManagementAlertN TODO
-	"13": Color.springgreen, # ClanNotice TODO
+	"0": Color.WHITE, # Say
+	"1": Color.PURPLE, # Shout
+	"2": Color.PALE_VIOLET_RED, # Tell
+	"3": Color.YELLOW, # System
+	"4": Color.AQUAMARINE, # Party
+	"5": Color.PURPLE, # ShoutAll, not sure about this one
+	"6": Color.LAWN_GREEN, # Group
+	"7": Color.SPRING_GREEN, # Clan
+	"8": Color.AQUAMARINE, # Entryboard TODO
+	"9": Color.YELLOW, # ManagementGuideC
+	"10": Color.YELLOW, # ManagementGuideN TODO
+	"11": Color.CRIMSON, # ManagementAlertC TODO
+	"12": Color.CRIMSON, # ManagementAlertN TODO
+	"13": Color.SPRING_GREEN, # ClanNotice TODO
 }
 
 var _last_received_chat_unix_time = null
 
 func _ready():
-	assert(ServerProvider.connect("fetched_servers", self, "_on_fetched_servers") == OK)
+	assert(ServerProvider.connect("fetched_servers", Callable(self, "_on_fetched_servers")) == OK)
 	_on_Chat_visibility_changed()
 	$ChatLogPanel/ChatLogScrollContainer.scroll_vertical = 99999
 	
@@ -60,7 +60,7 @@ func _on_ServerOptionButton_item_selected(index):
 
 func _on_RPCTimer_timeout():
 	$RpcRequest.get_chat(_last_received_chat_unix_time)
-	var args = yield($RpcRequest, "rpc_completed")
+	var args = await $RpcRequest.rpc_completed
 	var result = args[0]
 	var response_code = args[1]
 	if result != HTTPRequest.RESULT_SUCCESS or response_code != 200:
@@ -68,7 +68,7 @@ func _on_RPCTimer_timeout():
 		return
 		
 	var chatlog = args[2]
-	var is_at_bottom = $ChatLogPanel/ChatLogScrollContainer.get_v_scrollbar().value+$ChatLogPanel/ChatLogScrollContainer.get_v_scrollbar().page == $ChatLogPanel/ChatLogScrollContainer.get_v_scrollbar().max_value
+	var is_at_bottom = $ChatLogPanel/ChatLogScrollContainer.get_v_scroll_bar().value+$ChatLogPanel/ChatLogScrollContainer.get_v_scroll_bar().page == $ChatLogPanel/ChatLogScrollContainer.get_v_scroll_bar().max_value
 	if chatlog.size() > 0:
 		print(chatlog.size(), " new chat messages")
 		for logentry in chatlog:
@@ -104,7 +104,7 @@ func _on_MessageLineEdit_text_entered(message: String):
 		}
 	}
 	$RpcRequest.post_chat(chat_message_log_entry)
-	var args = yield($RpcRequest, "rpc_completed")
+	var args = await $RpcRequest.rpc_completed
 	
 	$ChatBox/MessageLineEdit.clear()
 	$ChatBox/MessageLineEdit.editable = true

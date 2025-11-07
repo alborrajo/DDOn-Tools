@@ -1,25 +1,25 @@
 extends ScrollContainer
 class_name EnemyDetailsPanel
 
-const COLOR_BLOOD_ORB = Color.violet
-const COLOR_HIGH_ORB = Color.orangered
-const COLOR_DEFAULT = Color.white
+const COLOR_BLOOD_ORB = Color.VIOLET
+const COLOR_HIGH_ORB = Color.ORANGE_RED
+const COLOR_DEFAULT = Color.WHITE
 
-export (NodePath) var title_label: NodePath
+@export var title_label: NodePath
 
-var enemy: Enemy setget _set_enemy
+var enemy: Enemy: set = _set_enemy
 var supress_event = true
 
-onready var title_label_node: Label = get_node_or_null(title_label)
+@onready var title_label_node: Label = get_node_or_null(title_label)
+
 
 func _set_enemy(em: Enemy) -> void:
-	if enemy != null and enemy.is_connected("changed", self, "_on_enemy_changed"):
-		enemy.disconnect("changed", self, "_on_enemy_changed")
-	
+	if enemy != null and enemy.is_connected("changed", Callable(self, "_on_enemy_changed")):
+		enemy.disconnect("changed", Callable(self, "_on_enemy_changed"))
 	enemy = em
 	
 	if em != null:
-		assert(em.connect("changed", self, "_on_enemy_changed") == OK)
+		assert(em.connect("changed", Callable(self, "_on_enemy_changed")) == OK)
 		
 	supress_event = true
 	_on_enemy_changed()
@@ -54,21 +54,21 @@ func _on_enemy_changed():
 		$VBoxContainer/GridContainer/InfectionTypeLineEdit.select($VBoxContainer/GridContainer/InfectionTypeLineEdit.get_item_index(enemy_clone.infection_type))
 		$VBoxContainer/GridContainer/SpawnTimeTypeLineEdit.select($VBoxContainer/GridContainer/SpawnTimeTypeLineEdit.get_item_index(enemy_clone.time_type))
 		$VBoxContainer/GridContainer/CustomTimeTypeLineEdit.text = enemy_clone.custom_time
-		$VBoxContainer/GridContainer/IsBossGauge.pressed = enemy_clone.is_boss_gauge
-		$VBoxContainer/GridContainer/IsBossBGM.pressed = enemy_clone.is_boss_bgm
-		$VBoxContainer/GridContainer/IsManualSet.pressed = enemy_clone.is_manual_set
-		$VBoxContainer/GridContainer/IsAreaBoss.pressed = enemy_clone.is_area_boss
-		$VBoxContainer/GridContainer/IsBloodEnemy.pressed = enemy_clone.is_blood_enemy
-		$VBoxContainer/GridContainer/BloodOrbsContainer/DoesDropBO.pressed = enemy_clone.does_drop_bo
+		$VBoxContainer/GridContainer/IsBossGauge.button_pressed = enemy_clone.is_boss_gauge
+		$VBoxContainer/GridContainer/IsBossBGM.button_pressed = enemy_clone.is_boss_bgm
+		$VBoxContainer/GridContainer/IsManualSet.button_pressed = enemy_clone.is_manual_set
+		$VBoxContainer/GridContainer/IsAreaBoss.button_pressed = enemy_clone.is_area_boss
+		$VBoxContainer/GridContainer/IsBloodEnemy.button_pressed = enemy_clone.is_blood_enemy
+		$VBoxContainer/GridContainer/BloodOrbsContainer/DoesDropBO.button_pressed = enemy_clone.does_drop_bo
 		$VBoxContainer/GridContainer/BloodOrbsContainer/BloodOrbsSpinBox.editable = enemy_clone.does_drop_bo
 		$VBoxContainer/GridContainer/BloodOrbsContainer/BloodOrbsSpinBox.value = enemy_clone.blood_orbs
-		$VBoxContainer/GridContainer/IsHighOrbEnemy.pressed = enemy_clone.is_highorb_enemy
-		$VBoxContainer/GridContainer/HighOrbsContainer/DoesDropHO.pressed = enemy_clone.does_drop_ho
+		$VBoxContainer/GridContainer/IsHighOrbEnemy.button_pressed = enemy_clone.is_highorb_enemy
+		$VBoxContainer/GridContainer/HighOrbsContainer/DoesDropHO.button_pressed = enemy_clone.does_drop_ho
 		$VBoxContainer/GridContainer/HighOrbsContainer/HighOrbsSpinBox.editable = enemy_clone.does_drop_ho
 		$VBoxContainer/GridContainer/HighOrbsContainer/HighOrbsSpinBox.value = enemy_clone.high_orbs
-		$VBoxContainer/ExpContainer/NamedParamsExpPercentageLabel.text = String(enemy_clone.named_param.experience)
+		$VBoxContainer/ExpContainer/NamedParamsExpPercentageLabel.text = str(enemy_clone.named_param.experience)
 		$VBoxContainer/ExpContainer/ExpSpinBox.value = enemy_clone.experience
-		$VBoxContainer/PpContainer/NamedParamsPpPercentageLabel.text = String(enemy_clone.play_points)
+		$VBoxContainer/PpContainer/NamedParamsPpPercentageLabel.text = str(enemy_clone.play_points)
 		$VBoxContainer/PpContainer/PpSpinBox.value = enemy_clone.play_points
 		_refresh_selected_name()
 		if enemy_clone.drops_table == null:
@@ -224,10 +224,7 @@ func _on_CustomTimeTypeLineEdit_text_changed(text):
 	enemy.custom_time = text
 	# Verify if the new text passed validations
 	if enemy.custom_time != text:
-		$VBoxContainer/GridContainer/CustomTimeTypeLineEdit.add_color_override("font_color", Color.red)
+		$VBoxContainer/GridContainer/CustomTimeTypeLineEdit.add_theme_color_override("font_color", Color.RED)
 	elif supress_event != true:
-		$VBoxContainer/GridContainer/CustomTimeTypeLineEdit.remove_color_override("font_color")
+		$VBoxContainer/GridContainer/CustomTimeTypeLineEdit.remove_theme_color_override("font_color")
 		SelectedListManager.apply_values_to_selection("custom_time", enemy.custom_time)
-
-
-

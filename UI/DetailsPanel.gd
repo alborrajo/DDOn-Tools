@@ -1,10 +1,10 @@
 extends Panel
 class_name DetailsPanel
 
-signal showing_details_of(obj)
+signal s_showing_details_of(obj)
 	
 func _ready():
-	assert(SelectedListManager.connect("selection_changed", self, "_on_selection_changed") == OK)
+	assert(SelectedListManager.connect("selection_changed", Callable(self, "_on_selection_changed")) == OK)
 	
 func hide_details():
 	for child in self.get_children():
@@ -17,15 +17,15 @@ func show_details_of(obj):
 	elif obj is Enemy:
 		$EnemyDetailsPanel.enemy = obj
 		$EnemyDetailsPanel.visible = true
-		emit_signal("showing_details_of", obj)
+		emit_signal("s_showing_details_of", obj)
 	elif obj is GatheringItem:
 		$GatheringItemDetailsPanel.item = obj
 		$GatheringItemDetailsPanel.visible = true
-		emit_signal("showing_details_of", obj)
+		emit_signal("s_showing_details_of", obj)
 	elif obj is ShopItem:
 		$ShopItemDetailsPanel.shop_item = obj
 		$ShopItemDetailsPanel.visible = true
-		emit_signal("showing_details_of", obj)
+		emit_signal("s_showing_details_of", obj)
 	else:
 		push_error("Attempted to show the details of an unrecognized object")
 

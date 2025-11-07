@@ -10,17 +10,17 @@ var enemy_set: EnemySet
 var enemy_subgroup: EnemySubgroup
 
 func _ready():
-	assert(SelectedListManager.connect("selection_changed", self, "_on_selection_changed") == OK)
-	assert(SelectedListManager.connect("enemy_filter_changed", self, "_on_enemy_filter_changed") == OK)
+	assert(SelectedListManager.connect("selection_changed", Callable(self, "_on_selection_changed")) == OK)
+	assert(SelectedListManager.connect("enemy_filter_changed", Callable(self, "_on_enemy_filter_changed")) == OK)
 	
-	assert(enemy_subgroup.connect("changed", self, "_on_enemy_subgroup_changed") == OK)
+	assert(enemy_subgroup.connect("changed", Callable(self, "_on_enemy_subgroup_changed")) == OK)
 	_on_enemy_subgroup_changed()
 	
 	for position_index in enemy_subgroup.positions.size():
 		var enemy_position: EnemyPosition = enemy_subgroup.positions[position_index]
-		var enemy_position_placemark: EnemyPositionPlacemark = EnemyPositionPlacemarkScene.instance()
-		assert(enemy_position_placemark.connect("mouse_entered", self, "_on_enemy_position_placemark_mouse_entered", [position_index, enemy_position_placemark]) == OK)
-		assert(enemy_position_placemark.connect("mouse_exited", self, "_on_enemy_position_placemark_mouse_exited", [position_index, enemy_position_placemark]) == OK)
+		var enemy_position_placemark: EnemyPositionPlacemark = EnemyPositionPlacemarkScene.instantiate()
+		assert(enemy_position_placemark.connect("mouse_entered", Callable(self, "_on_enemy_position_placemark_mouse_entered").bind(position_index, enemy_position_placemark)) == OK)
+		assert(enemy_position_placemark.connect("mouse_exited", Callable(self, "_on_enemy_position_placemark_mouse_exited").bind(position_index, enemy_position_placemark)) == OK)
 		enemy_position_placemark.enemy_position = enemy_position
 		var map_control := MapControl.new()
 		map_control.set_ddon_world_position(DataProvider.stage_id_to_stage_no(enemy_set.stage_id), enemy_position.coordinates)
@@ -34,8 +34,11 @@ func _ready():
 func _on_enemy_subgroup_changed():
 	$MapControl/ToggleButton.text = "%d - %d/%d" % [enemy_set.group_id, enemy_subgroup.effective_enemy_count(), enemy_subgroup.positions.size()]
 	$MapControl/ToggleButton/WarningLabel.visible = false
-	for position in enemy_subgroup.positions:
-		if position.has_conflicting_enemy_times():
+	# Godot 4 migration
+	# "position" is shadowing an already-declared property in the base class
+	# for position in enemy_subgroup.positions:
+	for group_position in enemy_subgroup.positions:
+		if group_position.has_conflicting_enemy_times():
 			$MapControl/ToggleButton/WarningLabel.visible = true
 			break
 			
@@ -64,15 +67,21 @@ func get_position_placemarks() -> Array:
 	return $EnemyPositionPlacemarksControl.get_children()
 
 func _on_selection_changed(added: Array, _removed: Array) -> void:
-	for position in enemy_subgroup.positions:
-		for enemy in position.enemies:
+	# Godot 4 migration
+	# "position" is shadowing an already-declared property in the base class
+	# for position in enemy_subgroup.positions:
+	for group_position in enemy_subgroup.positions:
+		for enemy in group_position.enemies:
 			if added.has(enemy):
 				show()
 				return
 
 func _on_enemy_filter_changed(uppercase_filter_text: String):
-	for position in enemy_subgroup.positions:
-		for enemy in position.enemies:
+	# Godot 4 migration
+	# "position" is shadowing an already-declared property in the base class
+	# for position in enemy_subgroup.positions:
+	for group_position in enemy_subgroup.positions:
+		for enemy in group_position.enemies:
 			if enemy.enemy_type.matches_filter_text(uppercase_filter_text):
 				modulate = SelectedListManager.FILTER_MATCH_COLOR
 				return
@@ -80,4 +89,4 @@ func _on_enemy_filter_changed(uppercase_filter_text: String):
 
 
 func _on_EnemyPositionPlacemarksControl_gui_input(event):
-	._on_Control_gui_input(event)
+	super._on_Control_gui_input(event)

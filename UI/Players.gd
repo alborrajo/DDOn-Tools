@@ -3,7 +3,7 @@ class_name Players
 
 const STORAGE_SECTION_PLAYERS := "Players"
 const STORAGE_KEY_SHOW_IN_ALL_TABS := "ShowInAllTabs"
-const STORAGE_KEY_SHOW_IN_ALL_TABS_DEFAULT := false;
+const STORAGE_KEY_SHOW_IN_ALL_TABS_DEFAULT: bool = false;
 
 signal player_joined(player)
 signal player_updated(player)
@@ -11,12 +11,12 @@ signal player_left(player)
 
 signal _updated_player_info()
 
-onready var servers_on_ui_root: TreeItem = create_item()
+@onready var servers_on_ui_root: TreeItem = create_item()
 
 var _update_in_progress := false
 
 func _ready():
-	assert(ServerProvider.connect("fetched_servers", self, "_update_player_list") == OK)
+	assert(ServerProvider.connect("fetched_servers", Callable(self, "_update_player_list")) == OK)
 
 func _update_player_list():
 	if _update_in_progress:
@@ -73,7 +73,7 @@ func _update_player_list():
 	for server_item_element in server_items:
 		# Update the server's player list
 		_update_server_info(server_item_element)
-		yield(self, "_updated_player_info")
+		await self._updated_player_info
 		
 	_update_in_progress = false
 
@@ -82,7 +82,7 @@ func _update_server_info(server_item: TreeItem):
 	$RpcRequest.host = server_item_metadata["Addr"]
 	$RpcRequest.port = server_item_metadata["RpcPort"]
 	$RpcRequest.get_info()
-	var args = yield($RpcRequest, "rpc_completed")
+	var args = await $RpcRequest.rpc_completed
 	
 	var result = args[0]
 	var response_code = args[1]
@@ -155,16 +155,16 @@ func _on_Players_item_rmb_selected(_position):
 		
 		# TODO: Use translations
 		$KickConfirmationDialog.dialog_text = "Kick %s %s?" % [player.FirstName, player.LastName]
-		if $KickConfirmationDialog.is_connected("confirmed", self, "_on_KickConfirmationDialog_confirmed"):
-			$KickConfirmationDialog.disconnect("confirmed", self, "_on_KickConfirmationDialog_confirmed")
-		assert($KickConfirmationDialog.connect("confirmed", self, "_on_KickConfirmationDialog_confirmed", [server_item_host, server_item_rpc_port, player], CONNECT_ONESHOT) == OK)
+		if $KickConfirmationDialog.is_connected("confirmed", Callable(self, "_on_KickConfirmationDialog_confirmed")):
+			$KickConfirmationDialog.disconnect("confirmed", Callable(self, "_on_KickConfirmationDialog_confirmed"))
+		assert($KickConfirmationDialog.connect("confirmed", Callable(self, "_on_KickConfirmationDialog_confirmed").bind(server_item_host, server_item_rpc_port, player), CONNECT_ONE_SHOT) == OK)
 		$KickConfirmationDialog.popup_centered()
 
 func _on_KickConfirmationDialog_confirmed(server_host: String, server_port: int, player: PlayerMapEntity):
 	$RpcRequest.host = server_host
 	$RpcRequest.port = server_port
 	assert($RpcRequest.delete_info(player.AccountName) == OK)
-	var args = yield($RpcRequest, "rpc_completed")
+	var args = await $RpcRequest.rpc_completed
 	assert(args[0] == HTTPRequest.RESULT_SUCCESS) # Result
 	var result = args[0]
 	var response_code = args[1]

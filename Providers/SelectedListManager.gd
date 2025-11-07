@@ -1,0 +1,135 @@
+extends Node
+
+signal selection_changed(added, removed)
+signal selection_deleted(deleted)
+signal set_revealed_hidden()
+
+signal enemy_filter_changed(uppercase_filter_text)
+signal item_filter_changed(uppercase_filter_text)
+
+const FILTER_MATCH_COLOR = Color.WHITE
+const FILTER_NONMATCH_COLOR = Color(0.75, 0.75, 0.75, 0.75)
+
+const SELECTION_TYPE_NONE := 0
+const SELECTION_TYPE_ENEMY := 1
+const SELECTION_TYPE_GATHERING_ITEM := 2
+const SELECTION_TYPE_SHOP_ITEM := 3
+
+var selected_list := []
+var selection_type := SELECTION_TYPE_NONE
+
+var enemy_filter := ""
+var item_filter := ""
+
+# Function to apply values to selected enemy or item
+func apply_values_to_selection(parameter_name: String, parameter_value):
+	for selected_element in selected_list:
+		selected_element[parameter_name] = parameter_value
+		
+# Function to check the list for type and removes if it exists already
+func toggle_selection(element: Object):
+	var deselected_elements := []
+	var new_selection_type := _get_selection_type(element)
+	if selection_type != new_selection_type:
+		deselected_elements = selected_list.duplicate()
+		selected_list.clear()
+		selection_type = new_selection_type
+			
+	var index = selected_list.find(element)
+	if index != -1:
+		# Godot 4 migration
+		# Array remove() is now remove_at(), same functionality
+		# selected_list.remove(index)
+		selected_list.remove_at(index)
+		deselected_elements.append(element)
+		emit_signal("selection_changed", [], deselected_elements)
+	else:
+		selected_list.append(element)
+		emit_signal("selection_changed", [element], deselected_elements)
+
+func add_to_selection(selected_element):
+	var index = selected_list.find(selected_element)
+	if index == -1:
+		var deselected_elements := []
+		var new_selection_type := _get_selection_type(selected_element)
+		if selection_type != new_selection_type:
+			deselected_elements = selected_list.duplicate()
+			selected_list.clear()
+			selection_type = new_selection_type
+			
+		selected_list.append(selected_element)
+		emit_signal("selection_changed", [selected_element], deselected_elements)
+
+func add_multiple_to_selection(selected_elements: Array):
+	if selected_elements.size() == 0:
+		return
+		
+	var deselected_elements := []
+	var new_selection_type := _get_selection_type(selected_elements.front())
+	if selection_type != new_selection_type:
+		deselected_elements = selected_list.duplicate()
+		selected_list.clear()
+		selection_type = new_selection_type
+	
+	for selected_element in selected_elements:
+		var index = selected_list.find(selected_element)
+		if index == -1:
+			selected_list.append(selected_element)
+	emit_signal("selection_changed", selected_elements, deselected_elements)
+	
+func remove_from_selection(deselected_element):
+	var index = selected_list.find(deselected_element)
+	if index != -1:
+		# Godot 4 migration
+		# Array remove() is now remove_at(), same functionality
+		# selected_list.remove(index)
+		selected_list.remove_at(index)
+		emit_signal("selection_changed", [], [deselected_element])
+	
+	
+# Function to clear the list and emit a signal to inform the placemarks.
+func clear_list():
+	var removed_list := selected_list.duplicate()
+	selected_list.clear()
+	emit_signal("selection_changed", [], removed_list)
+	selection_type = SELECTION_TYPE_NONE
+
+# Function that handles the deletion of multiple placemarks.
+func delete_selected():
+	var deleted_list := []
+	for index in range(selected_list.size() - 1, -1, -1):
+		var selected_element = selected_list[index]
+		deleted_list.append(selected_element)
+		# Godot 4 migration
+		# Array remove() is now remove_at(), same functionality
+		# selected_list.remove(index)
+		selected_list.remove_at(index)
+	emit_signal("selection_changed", [], deleted_list)
+	emit_signal("selection_deleted", deleted_list)
+	
+func reveal_hidden():
+	emit_signal("set_revealed_hidden")
+
+func is_list_empty() -> bool:
+	return selected_list.size() <= 0
+	
+func _get_selection_type(selected_element: Object) -> int:
+	var new_selection_type := SELECTION_TYPE_NONE
+	if selected_element is Enemy:
+		new_selection_type = SELECTION_TYPE_ENEMY
+	elif selected_element is GatheringItem:
+		new_selection_type = SELECTION_TYPE_GATHERING_ITEM
+	elif selected_element is ShopItem:
+		new_selection_type = SELECTION_TYPE_SHOP_ITEM
+	else:
+		push_error("Attempted to select an unrecognized type")
+	return new_selection_type
+
+
+func set_enemy_filter(filter_text: String) -> void:
+	enemy_filter = filter_text.to_upper()
+	emit_signal("enemy_filter_changed", enemy_filter)
+
+func set_item_filter(filter_text: String) -> void:
+	item_filter = filter_text.to_upper()
+	emit_signal("item_filter_changed", item_filter)

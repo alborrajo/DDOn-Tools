@@ -8,15 +8,22 @@ func _input(event):
 	if visible:
 		if event is InputEventMouseMotion:
 			var iemm := event as InputEventMouseMotion
-			if iemm.control and iemm.button_mask == BUTTON_LEFT:
+			# Godot 4 migration
+			# if iemm.control and iemm.button_mask == MOUSE_BUTTON_LEFT:
+			if Input.is_key_pressed(KEY_CTRL) and iemm.button_mask == MOUSE_BUTTON_LEFT:
 				if not dragging:
 					dragging = true
 					drag_start_global_position = get_global_mouse_position()
-				update()
-				get_tree().set_input_as_handled()
+				# Godot 4 migration
+				# update() was renamed to queue_redraw()
+				# update()
+				queue_redraw()
+				get_viewport().set_input_as_handled()
 			elif dragging:
 				dragging = false
-				if not iemm.shift:
+				# Godot 4 migration
+				# if not iemm.shift:
+				if not Input.is_key_pressed(KEY_SHIFT):	
 					SelectedListManager.clear_list()
 				var selection_entities := []
 				for child in get_children():
@@ -26,16 +33,19 @@ func _input(event):
 						for child_selection_entity in child_selection_entities:
 							selection_entities.append(child_selection_entity)
 				SelectedListManager.add_multiple_to_selection(selection_entities)
-				update()
-				get_tree().set_input_as_handled()
+				# Godot 4 migration
+				# update() was renamed to queue_redraw()
+				# update()
+				queue_redraw()
+				get_viewport().set_input_as_handled()
 
 func _draw():
 	if dragging:
 		var rect := _get_selection_rect()
 		draw_rect(rect, Color(0.27451, 0.509804,0.705882, 0.25), true)
-		VisualServer.canvas_item_set_custom_rect(get_canvas_item(), true, rect)
+		RenderingServer.canvas_item_set_custom_rect(get_canvas_item(), true, rect)
 	else:
-		VisualServer.canvas_item_set_custom_rect(get_canvas_item(), false)
+		RenderingServer.canvas_item_set_custom_rect(get_canvas_item(), false)
 		
 func _select_recursively(selection_rect: Rect2, node: Node) -> Array:
 	var selection_entities := []
@@ -54,5 +64,5 @@ func _select_recursively(selection_rect: Rect2, node: Node) -> Array:
 
 func _get_selection_rect() -> Rect2:
 	var drag_end_global_position := get_global_mouse_position()
-	var rect_size := drag_end_global_position - drag_start_global_position
-	return Rect2(drag_start_global_position, rect_size)
+	var size := drag_end_global_position - drag_start_global_position
+	return Rect2(drag_start_global_position, size)

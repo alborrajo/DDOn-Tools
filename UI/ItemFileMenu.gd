@@ -17,7 +17,22 @@ const LEGACY_SCHEMA_INDEXES := {
 	"IsHidden": 7
 }
 
-const SCHEMA := PoolStringArray([
+# Godot 4 migration
+# PackedStringArray() is created at runtime which is not allowed for constant expressions
+# const SCHEMA := PackedStringArray([
+#const SCHEMA := PackedStringArray([
+#	"StageId",
+#	"LayerNo",
+#	"GroupId",
+#	"PosId",
+#	"ItemId",
+#	"ItemNum",
+#	"MaxItemNum",
+#	"Quality",
+#	"IsHidden",
+#	"DropChance"
+#])
+const SCHEMA := [
 	"StageId",
 	"LayerNo",
 	"GroupId",
@@ -28,12 +43,14 @@ const SCHEMA := PoolStringArray([
 	"Quality",
 	"IsHidden",
 	"DropChance"
-])
+]
 
 func _ready():
-	._ready()
+	super._ready()
 
 func _get_file_path_from_storage() -> String:
+	if not StorageProvider.has_section_key(STORAGE_SECTION_FILE_MENU, STORAGE_KEY_FILE_PATH):
+		return ""
 	return StorageProvider.get_value(STORAGE_SECTION_FILE_MENU, STORAGE_KEY_FILE_PATH)
 	
 func _set_file_path_in_storage() -> void:
@@ -41,8 +58,11 @@ func _set_file_path_in_storage() -> void:
 
 func _do_new_file() -> void:
 	SetProvider.clear_gathering_spots()
-	
-func _do_load_file(file: File) -> void:
+
+# Godot 4 migration
+# File is now FileAccess and open() is now a static method that returns such object. To then check for errors, call file_access.get_error()
+# func _do_load_file(file: File) -> void:
+func _do_load_file(file: FileAccess) -> void:
 	# Check header
 	var header := file.get_csv_line()
 	var schema_indices: Dictionary
@@ -72,7 +92,7 @@ func _do_load_file(file: File) -> void:
 		
 		var item := DataProvider.get_item_by_id(int(csv_line[schema_indices["ItemId"]].strip_edges()))
 		if item == null:
-			push_error("Found gathering spot entry with an unrecognized item "+ String(csv_line))
+			push_error("Found gathering spot entry with an unrecognized item "+ str(csv_line))
 			continue
 			
 		var gathering_item := GatheringItem.new(item)
@@ -88,8 +108,10 @@ func _do_load_file(file: File) -> void:
 		var gathering_spot = SetProvider.get_gathering_spot(stage_id, group_id, subgroup_id)
 		gathering_spot.add_item(gathering_item)
 	
-	
-func _do_save_file(file: File) -> void:
+# Godot 4 migration
+# File is now FileAccess and open() is now a static method that returns such object. To then check for errors, call file_access.get_error()
+# func _do_save_file(file: File) -> void:
+func _do_save_file(file: FileAccess) -> void:
 	# Store header
 	file.store_string("#")
 	store_csv_line_crlf(file, SCHEMA)

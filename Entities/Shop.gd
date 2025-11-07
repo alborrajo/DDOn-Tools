@@ -5,9 +5,9 @@ class_name Shop
 var id: int
 
 # Server data, loaded in ShopFileMenu.gd from user-provided Shop.json file used in the server
-export var unk0: int setget _set_unk0
-export var unk1: int setget _set_unk1
-export var wallet_type: int setget _set_wallet_type
+@export var unk0: int: set = _set_unk0
+@export var unk1: int: set = _set_unk1
+@export var wallet_type: int: set = _set_wallet_type
 
 # TODO: Move invariant client data to a different class?
 
@@ -32,7 +32,10 @@ func add_goods_at(index: int, shop_item: ShopItem) -> void:
 	emit_changed()
 	
 func remove_goods(index: int) -> void:
-	_goods_param_list.remove(index)
+	# Godot 4 migration
+	# Array remove() is now remove_at(), same functionality
+	# _goods_param_list.remove(index)
+	_goods_param_list.remove_at(index)
 	emit_changed()
 
 func _set_unk0(v: int) -> void:

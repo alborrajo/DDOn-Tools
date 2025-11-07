@@ -20,7 +20,10 @@ func _rebuild_list(filter_text: String = ""):
 			enemy_item.set_text(0, "%s [%s]" % [enemy.name, enemy.get_hex_id()]) # Displaying name and ID
 			enemy_item.set_metadata(0, enemy)
 
-func get_drag_data(position):
+# Godot 4 migration
+# "position" is shadowing an already-declared property in the base class
+# func _get_drag_data(position):
+func _get_drag_data(at_position):
 	var selected_enemy_types = []
 	var selected_tree_item = get_next_selected(null)
 	while selected_tree_item != null:

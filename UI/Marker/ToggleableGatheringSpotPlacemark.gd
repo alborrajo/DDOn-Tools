@@ -100,11 +100,11 @@ const GATHERING_TYPE_ICONS := [
 
 const UNKNOWN_ITEM_ICON = "res://resources/items/ii000000/icon_item000000_ID.png"
 
-export (Resource) var gathering_spot: Resource setget _set_gathering_spot
+@export var gathering_spot: Resource: set = _set_gathering_spot
 
 func _ready():
-	assert(SelectedListManager.connect("selection_changed", self, "_on_selection_changed") == OK)
-	assert(SelectedListManager.connect("item_filter_changed", self, "_on_item_filter_changed") == OK)
+	assert(SelectedListManager.connect("selection_changed", Callable(self, "_on_selection_changed")) == OK)
+	assert(SelectedListManager.connect("item_filter_changed", Callable(self, "_on_item_filter_changed")) == OK)
 
 func _set_gathering_spot(value: GatheringSpot) -> void:
 	if value == null:

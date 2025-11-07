@@ -14,7 +14,7 @@ func _fetch_servers():
 	$RpcRequest.host = null
 	$RpcRequest.port = null
 	$RpcRequest.get_status()
-	var args = yield($RpcRequest, "rpc_completed")
+	var args = await $RpcRequest.rpc_completed
 	
 	var request_result = args[0]
 	if request_result != HTTPRequest.RESULT_SUCCESS:

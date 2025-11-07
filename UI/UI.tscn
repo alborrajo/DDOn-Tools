@@ -1,30 +1,30 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=27 format=3 uid="uid://bddf5yj35ntu3"]
 
-[ext_resource path="res://UI/EnemyDetailsPanel.tscn" type="PackedScene" id=1]
-[ext_resource path="res://UI/NotificationPopup.gd" type="Script" id=2]
-[ext_resource path="res://UI/DetailsPanel.gd" type="Script" id=3]
-[ext_resource path="res://UI/EnemyFileMenu.gd" type="Script" id=4]
-[ext_resource path="res://UI/UI Buttons/Minimize.gd" type="Script" id=5]
-[ext_resource path="res://UI/EnemyTree.gd" type="Script" id=6]
-[ext_resource path="res://UI/GatheringItemDetailsPanel.tscn" type="PackedScene" id=7]
-[ext_resource path="res://UI/Settings.tscn" type="PackedScene" id=8]
-[ext_resource path="res://UI/Chat.tscn" type="PackedScene" id=9]
-[ext_resource path="res://DayNightOptionButton.gd" type="Script" id=10]
-[ext_resource path="res://UI/Players.gd" type="Script" id=11]
-[ext_resource path="res://UI/ItemTree.gd" type="Script" id=12]
-[ext_resource path="res://UI/ItemFileMenu.gd" type="Script" id=13]
-[ext_resource path="res://resources/icons/brightmixIconset search.png" type="Texture" id=14]
-[ext_resource path="res://resources/icons/icon_sun.png" type="Texture" id=15]
-[ext_resource path="res://resources/icons/icon_moon.png" type="Texture" id=16]
-[ext_resource path="res://resources/icons/icon_clock.png" type="Texture" id=17]
-[ext_resource path="res://resources/icons/icon_gear.png" type="Texture" id=18]
-[ext_resource path="res://StageItemList.gd" type="Script" id=19]
-[ext_resource path="res://UI/ShopFileMenu.gd" type="Script" id=20]
-[ext_resource path="res://UI/ShopItemDetailsPanel.tscn" type="PackedScene" id=21]
-[ext_resource path="res://UI/DayNightTimeMigrationConfirmationDialog.gd" type="Script" id=22]
-[ext_resource path="res://RpcClient/RpcRequest.gd" type="Script" id=23]
+[ext_resource type="PackedScene" path="res://UI/EnemyDetailsPanel.tscn" id="1"]
+[ext_resource type="Script" uid="uid://boyyoyh2cblao" path="res://UI/NotificationPopup.gd" id="2"]
+[ext_resource type="Script" uid="uid://ds4uukna23p3j" path="res://UI/DetailsPanel.gd" id="3"]
+[ext_resource type="Script" uid="uid://b2gjm1nthiewc" path="res://UI/EnemyFileMenu.gd" id="4"]
+[ext_resource type="Script" uid="uid://dwovijcar2rs7" path="res://UI/UI Buttons/Minimize.gd" id="5"]
+[ext_resource type="Script" uid="uid://bg7bmp5avj1fv" path="res://UI/EnemyTree.gd" id="6"]
+[ext_resource type="PackedScene" path="res://UI/GatheringItemDetailsPanel.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://cepovphrb0vfg" path="res://UI/Settings.tscn" id="8"]
+[ext_resource type="PackedScene" path="res://UI/Chat.tscn" id="9"]
+[ext_resource type="Script" uid="uid://c3hfglk72ik03" path="res://DayNightOptionButton.gd" id="10"]
+[ext_resource type="Script" uid="uid://bwq2tgpqcj5vu" path="res://UI/Players.gd" id="11"]
+[ext_resource type="Script" uid="uid://dmyc87o7j04nh" path="res://UI/ItemTree.gd" id="12"]
+[ext_resource type="Script" uid="uid://c8mqekb1ynwe2" path="res://UI/ItemFileMenu.gd" id="13"]
+[ext_resource type="Texture2D" uid="uid://ch888egk5tdfb" path="res://resources/icons/icon_clock.png" id="13_vh35o"]
+[ext_resource type="Texture2D" uid="uid://blm5akmxo3yu8" path="res://resources/icons/brightmixIconset search.png" id="14"]
+[ext_resource type="Texture2D" uid="uid://c8tfke878x3q3" path="res://resources/icons/icon_sun.png" id="14_2jerp"]
+[ext_resource type="Texture2D" uid="uid://emrspvsgde5e" path="res://resources/icons/icon_moon.png" id="15_nxoi0"]
+[ext_resource type="Texture2D" uid="uid://dwyhuakn2i21s" path="res://resources/icons/icon_gear.png" id="16_jf3kf"]
+[ext_resource type="Script" uid="uid://dk50he4fp2vwt" path="res://StageItemList.gd" id="19"]
+[ext_resource type="Script" uid="uid://bq8haw42l6ccr" path="res://UI/ShopFileMenu.gd" id="20"]
+[ext_resource type="PackedScene" path="res://UI/ShopItemDetailsPanel.tscn" id="21"]
+[ext_resource type="Script" uid="uid://g8vh25rtd4ub" path="res://UI/DayNightTimeMigrationConfirmationDialog.gd" id="22"]
+[ext_resource type="Script" uid="uid://cjl36ko821hr1" path="res://RpcClient/RpcRequest.gd" id="23"]
 
-[sub_resource type="GDScript" id=2]
+[sub_resource type="GDScript" id="2"]
 script/source = "extends CanvasLayer
 
 signal layer_selected(layer)
@@ -43,17 +43,20 @@ signal settings_updated()
 
 var current_stage_no
 
-onready var stage_label: Label = $status_view/container/StageLabel
-onready var coordinates_label: Label = $status_view/container/CoordinatesLabel
-onready var hovered_placemark = null
+@onready var stage_label: Label = $status_view/container/StageLabel
+@onready var coordinates_label: Label = $status_view/container/CoordinatesLabel
+@onready var hovered_placemark = null
 
-onready var current_tab = $left/tab.current_tab
-onready var current_subgroup_id = $status_view/container/SubGroupIdSpinBox.value
+@onready var current_tab = $left/tab.current_tab
+@onready var current_subgroup_id = $status_view/container/SubGroupIdSpinBox.value
 
 func _input(event):
 	if event is InputEventMouseMotion:
 		var mouse_pos : Vector2 = $\"../MapCoordinateSpace\".get_local_mouse_position();
-		coordinates_label.text = String((mouse_pos / MapControl.MAP_SCALE).round())
+		# Godot 4 migration
+		# String(int) is no more. Use str() instead
+		# coordinates_label.text = String((mouse_pos / MapControl.MAP_SCALE).round())
+		coordinates_label.text = str((mouse_pos / MapControl.MAP_SCALE).round())
 	if event is InputEventKey:
 		if Input.is_action_pressed(\"set_hide\"):
 			if hovered_placemark != null and hovered_placemark is HideableControl:
@@ -138,18 +141,18 @@ func _set_hovered_placemark(set_placemark):
 	hovered_placemark = set_placemark
 "
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id="3"]
 script/source = "extends Button
 
 func _on_SettingsButton_pressed():
 	$\"../../../SettingsWindowDialog\".popup_centered()
 "
 
-[sub_resource type="GDScript" id=1]
+[sub_resource type="GDScript" id="1"]
 script/source = "extends PanelContainer
 
 func _ready():
-	assert(SelectedListManager.connect(\"selection_changed\", self, \"_on_selection_changed\") == OK)
+	assert(SelectedListManager.connect(\"selection_changed\", Callable(self, \"_on_selection_changed\")) == OK)
 	visible = false
 
 func _on_selection_changed(_added: Array, _removed: Array):
@@ -165,424 +168,369 @@ func _on_DetailsPanel_showing_details_of(obj):
 "
 
 [node name="root" type="CanvasLayer"]
-script = SubResource( 2 )
+script = SubResource("2")
 
 [node name="left" type="PanelContainer" parent="."]
+anchors_preset = 9
 anchor_bottom = 1.0
-margin_left = 10.0
-margin_top = 45.0
-margin_right = 320.0
-margin_bottom = -4.0
+offset_left = 10.0
+offset_top = 45.0
+offset_right = 320.0
+offset_bottom = -4.0
 
 [node name="tab" type="TabContainer" parent="left"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 303.0
-margin_bottom = 544.0
-tab_align = 0
+layout_mode = 2
+current_tab = 0
 
 [node name="Stages" type="Control" parent="left/tab"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 36.0
-margin_right = -4.0
-margin_bottom = -4.0
+layout_mode = 2
+metadata/_tab_index = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="left/tab/Stages"]
-margin_right = 288.0
-margin_bottom = 28.0
+layout_mode = 0
+offset_right = 288.0
+offset_bottom = 28.0
 
 [node name="StagesLineEdit" type="LineEdit" parent="left/tab/Stages/HBoxContainer"]
-margin_right = 288.0
-margin_bottom = 28.0
+layout_mode = 2
 size_flags_horizontal = 3
-right_icon = ExtResource( 14 )
 placeholder_text = "Search..."
+right_icon = ExtResource("14")
 
 [node name="StageItemList" type="ItemList" parent="left/tab/Stages"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 32.0
-margin_bottom = -4.0
+offset_top = 32.0
+offset_bottom = -4.0
 size_flags_vertical = 3
-script = ExtResource( 19 )
+script = ExtResource("19")
 
 [node name="Enemies" type="VBoxContainer" parent="left/tab"]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 36.0
-margin_right = -4.0
-margin_bottom = -4.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 2
+metadata/_tab_index = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="left/tab/Enemies"]
-margin_right = 288.0
-margin_bottom = 28.0
+layout_mode = 2
 
 [node name="EnemyFileMenu" type="MenuButton" parent="left/tab/Enemies/HBoxContainer"]
 process_priority = 1
-margin_right = 32.0
-margin_bottom = 28.0
-focus_mode = 2
+layout_mode = 2
 size_flags_horizontal = 0
 text = "File"
-flat = false
-align = 0
-items = [ "New Enemy Sets", null, 0, false, false, 0, 0, null, "", false, "Load Enemy Sets", null, 0, false, false, 1, 0, null, "", false, "Save Enemy Sets", null, 0, false, false, 2, 0, null, "", false ]
-script = ExtResource( 4 )
+item_count = 3
+popup/item_0/text = "New Enemy Sets"
+popup/item_0/id = 0
+popup/item_1/text = "Load Enemy Sets"
+popup/item_1/id = 1
+popup/item_2/text = "Save Enemy Sets"
+popup/item_2/id = 2
+script = ExtResource("4")
 file_dialog = NodePath("../../../../../EnemyFileDialog")
 notification_popup = NodePath("../../../../../NotificationPopup")
 
 [node name="FilterLineEdit" type="LineEdit" parent="left/tab/Enemies/HBoxContainer"]
-margin_left = 36.0
-margin_right = 288.0
-margin_bottom = 28.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-right_icon = ExtResource( 14 )
+right_icon = ExtResource("14")
 
 [node name="EnemyTree" type="Tree" parent="left/tab/Enemies"]
-margin_top = 32.0
-margin_right = 288.0
-margin_bottom = 497.0
-mouse_filter = 1
+layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 1
 allow_reselect = true
 select_mode = 2
-script = ExtResource( 6 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource("6")
 
 [node name="Items" type="VBoxContainer" parent="left/tab"]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 36.0
-margin_right = -4.0
-margin_bottom = -4.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+layout_mode = 2
+metadata/_tab_index = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="left/tab/Items"]
-margin_right = 288.0
-margin_bottom = 28.0
+layout_mode = 2
 
 [node name="ItemFileMenu" type="MenuButton" parent="left/tab/Items/HBoxContainer"]
 process_priority = 1
-margin_right = 68.0
-margin_bottom = 28.0
-focus_mode = 2
+layout_mode = 2
 size_flags_horizontal = 0
+focus_mode = 2
 text = "Gathering"
 flat = false
-align = 0
-items = [ "New", null, 0, false, false, 0, 0, null, "", false, "Load", null, 0, false, false, 1, 0, null, "", false, "Save", null, 0, false, false, 2, 0, null, "", false ]
-script = ExtResource( 13 )
+item_count = 3
+popup/item_0/text = "New"
+popup/item_0/id = 0
+popup/item_1/text = "Load"
+popup/item_1/id = 1
+popup/item_2/text = "Save"
+popup/item_2/id = 2
+script = ExtResource("13")
 file_dialog = NodePath("../../../../../ItemFileDialog")
 notification_popup = NodePath("../../../../../NotificationPopup")
 
 [node name="ShopFileMenu" type="MenuButton" parent="left/tab/Items/HBoxContainer"]
-margin_left = 72.0
-margin_right = 112.0
-margin_bottom = 28.0
+layout_mode = 2
 text = "Shop"
 flat = false
-items = [ "New", null, 0, false, false, 0, 0, null, "", false, "Load", null, 0, false, false, 1, 0, null, "", false, "Save", null, 0, false, false, 2, 0, null, "", false ]
-script = ExtResource( 20 )
+item_count = 3
+popup/item_0/text = "New"
+popup/item_0/id = 0
+popup/item_1/text = "Load"
+popup/item_1/id = 1
+popup/item_2/text = "Save"
+popup/item_2/id = 2
+script = ExtResource("20")
 file_dialog = NodePath("../../../../../ShopFileDialog")
 notification_popup = NodePath("../../../../../NotificationPopup")
 
 [node name="FilterLineEdit" type="LineEdit" parent="left/tab/Items/HBoxContainer"]
-margin_left = 116.0
-margin_right = 288.0
-margin_bottom = 28.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-right_icon = ExtResource( 14 )
+right_icon = ExtResource("14")
 
 [node name="ItemTree" type="Tree" parent="left/tab/Items"]
-margin_top = 32.0
-margin_right = 288.0
-margin_bottom = 497.0
-mouse_filter = 1
+layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 1
 allow_reselect = true
 hide_root = true
 select_mode = 2
-script = ExtResource( 12 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+script = ExtResource("12")
 
 [node name="Players" type="Tree" parent="left/tab"]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 4.0
-margin_top = 32.0
-margin_right = -4.0
-margin_bottom = -4.0
+layout_mode = 2
 allow_rmb_select = true
 hide_root = true
-script = ExtResource( 11 )
+script = ExtResource("11")
+metadata/_tab_index = 3
 
 [node name="RpcRequest" type="HTTPRequest" parent="left/tab/Players"]
-script = ExtResource( 23 )
+script = ExtResource("23")
 
 [node name="KickConfirmationDialog" type="ConfirmationDialog" parent="left/tab/Players"]
-margin_right = 360.0
-margin_bottom = 126.0
-rect_min_size = Vector2( 360, 126 )
-window_title = "Kick player?"
 
-[node name="Chat" parent="left/tab" instance=ExtResource( 9 )]
+[node name="Chat" parent="left/tab" instance=ExtResource("9")]
 visible = false
+layout_mode = 2
+metadata/_tab_index = 4
 
 [node name="status_view" type="PanelContainer" parent="."]
+anchors_preset = 10
 anchor_right = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = 44.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 44.0
 mouse_filter = 1
 
 [node name="container" type="HBoxContainer" parent="status_view"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 997.0
-margin_bottom = 35.0
-rect_pivot_offset = Vector2( -163, -80 )
+layout_mode = 2
 
 [node name="minimize" type="Button" parent="status_view/container"]
-margin_right = 16.0
-margin_bottom = 28.0
+layout_mode = 2
 text = "-"
-script = ExtResource( 5 )
+script = ExtResource("5")
 control_to_minimize = NodePath("../../../left")
 property_to_toggle = "visible"
 
 [node name="LayerOptionButton" type="OptionButton" parent="status_view/container"]
-margin_left = 20.0
-margin_right = 91.0
-margin_bottom = 28.0
-text = "Layer 0"
-items = [ "Layer 0", null, false, 0, null, "Layer 1", null, false, 1, null, "Layer 2", null, false, 2, null, "Layer 3", null, false, 3, null, "Layer 4", null, false, 4, null, "Layer 5", null, false, 5, null, "Layer 6", null, false, 6, null, "Layer 7", null, false, 7, null, "Layer 8", null, false, 8, null, "Layer 9", null, false, 9, null ]
+layout_mode = 2
 selected = 0
+item_count = 10
+popup/item_0/text = "Layer 0"
+popup/item_0/id = 0
+popup/item_1/text = "Layer 1"
+popup/item_1/id = 1
+popup/item_2/text = "Layer 2"
+popup/item_2/id = 2
+popup/item_3/text = "Layer 3"
+popup/item_3/id = 3
+popup/item_4/text = "Layer 4"
+popup/item_4/id = 4
+popup/item_5/text = "Layer 5"
+popup/item_5/id = 5
+popup/item_6/text = "Layer 6"
+popup/item_6/id = 6
+popup/item_7/text = "Layer 7"
+popup/item_7/id = 7
+popup/item_8/text = "Layer 8"
+popup/item_8/id = 8
+popup/item_9/text = "Layer 9"
+popup/item_9/id = 9
 
 [node name="DayNightOptionButton" type="OptionButton" parent="status_view/container"]
-margin_left = 95.0
-margin_right = 208.0
-margin_bottom = 28.0
-text = "Day & Night"
-icon = ExtResource( 17 )
-items = [ "Day & Night", ExtResource( 17 ), false, 0, null, "Day", ExtResource( 15 ), false, 1, null, "Night", ExtResource( 16 ), false, 2, null, "Custom", ExtResource( 18 ), false, 3, null ]
+layout_mode = 2
 selected = 0
-script = ExtResource( 10 )
+item_count = 4
+popup/item_0/text = "Day & Night"
+popup/item_0/icon = ExtResource("13_vh35o")
+popup/item_0/id = 0
+popup/item_1/text = "Day"
+popup/item_1/icon = ExtResource("14_2jerp")
+popup/item_1/id = 1
+popup/item_2/text = "Night"
+popup/item_2/icon = ExtResource("15_nxoi0")
+popup/item_2/id = 2
+popup/item_3/text = "Custom"
+popup/item_3/icon = ExtResource("16_jf3kf")
+popup/item_3/id = 3
+script = ExtResource("10")
 
 [node name="StageLabel" type="Label" parent="status_view/container"]
-margin_left = 212.0
-margin_top = 5.0
-margin_right = 378.0
-margin_bottom = 23.0
+layout_mode = 2
 text = "Stage Name (ID and Number)"
 
 [node name="Spacer" type="Control" parent="status_view/container"]
-margin_left = 382.0
-margin_right = 659.0
-margin_bottom = 28.0
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="SetLabel" type="Label" parent="status_view/container"]
-margin_left = 663.0
-margin_top = 5.0
-margin_right = 730.0
-margin_bottom = 23.0
+layout_mode = 2
 text = "Set (X,X,X,X)"
 
 [node name="SubGroupIdSpinBox" type="SpinBox" parent="status_view/container"]
-margin_left = 734.0
-margin_right = 854.0
-margin_bottom = 28.0
-rect_min_size = Vector2( 120, 0 )
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
 rounded = true
 prefix = "SubGroup Id"
 
 [node name="CoordinatesLabel" type="Label" parent="status_view/container"]
-margin_left = 858.0
-margin_top = 5.0
-margin_right = 927.0
-margin_bottom = 23.0
+layout_mode = 2
 text = "Coordinates"
 
 [node name="SettingsButton" type="Button" parent="status_view/container"]
-margin_left = 931.0
-margin_right = 990.0
-margin_bottom = 28.0
+layout_mode = 2
 text = "Settings"
-script = SubResource( 3 )
+script = SubResource("3")
 
 [node name="Right Panel" type="PanelContainer" parent="."]
+anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -430.0
-margin_top = 45.0
-margin_right = -10.0
-margin_bottom = -4.0
-script = SubResource( 1 )
+offset_left = -430.0
+offset_top = 45.0
+offset_right = -10.0
+offset_bottom = -4.0
+grow_horizontal = 0
+grow_vertical = 2
+script = SubResource("1")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Right Panel"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 413.0
-margin_bottom = 544.0
+layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Right Panel/VBoxContainer"]
-margin_right = 406.0
-margin_bottom = 24.0
+layout_mode = 2
 
 [node name="TitleLabel" type="Label" parent="Right Panel/VBoxContainer/HBoxContainer"]
-margin_top = 3.0
-margin_right = 95.0
-margin_bottom = 21.0
+layout_mode = 2
 text = "Placeholder Title"
 
 [node name="Control" type="Control" parent="Right Panel/VBoxContainer/HBoxContainer"]
-margin_left = 99.0
-margin_right = 363.0
-margin_bottom = 24.0
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Minimize" type="Button" parent="Right Panel/VBoxContainer/HBoxContainer"]
-margin_left = 367.0
-margin_right = 383.0
-margin_bottom = 24.0
+layout_mode = 2
 text = "-"
-script = ExtResource( 5 )
+script = ExtResource("5")
 control_to_minimize = NodePath("../../..")
 
 [node name="Close" type="Button" parent="Right Panel/VBoxContainer/HBoxContainer"]
-margin_left = 387.0
-margin_right = 406.0
-margin_bottom = 24.0
+layout_mode = 2
 text = "X"
 
 [node name="DetailsPanel" type="Panel" parent="Right Panel/VBoxContainer" groups=["DetailsPanel"]]
-margin_top = 28.0
-margin_right = 406.0
-margin_bottom = 537.0
+layout_mode = 2
 size_flags_vertical = 3
-script = ExtResource( 3 )
+script = ExtResource("3")
 
-[node name="EnemyDetailsPanel" parent="Right Panel/VBoxContainer/DetailsPanel" instance=ExtResource( 1 )]
+[node name="EnemyDetailsPanel" parent="Right Panel/VBoxContainer/DetailsPanel" instance=ExtResource("1")]
+layout_mode = 1
+anchors_preset = 15
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
 title_label = NodePath("../../HBoxContainer/TitleLabel")
 
-[node name="GatheringItemDetailsPanel" parent="Right Panel/VBoxContainer/DetailsPanel" instance=ExtResource( 7 )]
+[node name="GatheringItemDetailsPanel" parent="Right Panel/VBoxContainer/DetailsPanel" instance=ExtResource("7")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
 title_label = NodePath("../../HBoxContainer/TitleLabel")
 
-[node name="ShopItemDetailsPanel" parent="Right Panel/VBoxContainer/DetailsPanel" instance=ExtResource( 21 )]
+[node name="ShopItemDetailsPanel" parent="Right Panel/VBoxContainer/DetailsPanel" instance=ExtResource("21")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
 title_label = NodePath("../../HBoxContainer/TitleLabel")
 
 [node name="NotificationPopup" type="PopupPanel" parent="."]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -248.0
-margin_top = -22.0
-margin_right = -4.0
-margin_bottom = -4.0
-script = ExtResource( 2 )
+oversampling_override = 1.0
+script = ExtResource("2")
 
 [node name="Label" type="Label" parent="NotificationPopup"]
-margin_left = 4.0
-margin_top = 4.0
-margin_right = 240.0
-margin_bottom = 22.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 96.0
+offset_bottom = 96.0
 text = "Notification"
 
-[node name="SettingsWindowDialog" parent="." instance=ExtResource( 8 )]
+[node name="SettingsWindowDialog" parent="." instance=ExtResource("8")]
+position = Vector2i(0, 22)
+visible = false
 
 [node name="DayNightTimeMigrationConfirmationDialog" type="ConfirmationDialog" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -269.0
-margin_top = -45.0
-margin_right = 269.0
-margin_bottom = 46.0
-popup_exclusive = true
-window_title = "Por favor, Confirma..."
+oversampling_override = 1.0
+size = Vector2i(200, 275)
 dialog_text = "It seems that the file loaded has day/night enemies starting/ending at 7:00. 
 Would you like to convert them all to the new day/night range starting/ending at 6:00?"
 dialog_autowrap = true
-script = ExtResource( 22 )
+script = ExtResource("22")
 
 [node name="EnemyFileDialog" type="FileDialog" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -312.0
-margin_top = -195.0
-margin_right = 312.0
-margin_bottom = 195.0
-rect_min_size = Vector2( 180, 63 )
-window_title = "Abrir un Archivo"
-mode = 0
+oversampling_override = 1.0
 access = 2
-filters = PoolStringArray( "*.json; JSON Files", "*.csv ; CSV Files" )
+filters = PackedStringArray("*.json; JSON Files", "*.csv ; CSV Files")
 show_hidden_files = true
 
 [node name="ItemFileDialog" type="FileDialog" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -312.0
-margin_top = -195.0
-margin_right = 312.0
-margin_bottom = 195.0
-rect_min_size = Vector2( 180, 63 )
-window_title = "Abrir un Archivo"
-mode = 0
+oversampling_override = 1.0
 access = 2
-filters = PoolStringArray( "*.csv ; CSV Files" )
+filters = PackedStringArray("*.csv ; CSV Files")
 show_hidden_files = true
 
 [node name="ShopFileDialog" type="FileDialog" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -312.0
-margin_top = -195.0
-margin_right = 312.0
-margin_bottom = 195.0
-rect_min_size = Vector2( 180, 63 )
-window_title = "Abrir un Archivo"
-mode = 0
+oversampling_override = 1.0
 access = 2
-filters = PoolStringArray( "*.json ; JSON Files" )
+filters = PackedStringArray("*.json ; JSON Files")
 show_hidden_files = true
 
 [connection signal="tab_changed" from="left/tab" to="." method="_on_tab_changed"]
 [connection signal="text_changed" from="left/tab/Stages/HBoxContainer/StagesLineEdit" to="left/tab/Stages/StageItemList" method="_on_StagesLineEdit_text_changed"]
 [connection signal="item_selected" from="left/tab/Stages/StageItemList" to="." method="_on_StageItemList_item_selected"]
-[connection signal="file_loaded" from="left/tab/Enemies/HBoxContainer/EnemyFileMenu" to="DayNightTimeMigrationConfirmationDialog" method="_on_EnemyFileMenu_file_loaded"]
 [connection signal="text_changed" from="left/tab/Enemies/HBoxContainer/FilterLineEdit" to="left/tab/Enemies/EnemyTree" method="_on_FilterLineEdit_text_changed"]
 [connection signal="text_changed" from="left/tab/Items/HBoxContainer/FilterLineEdit" to="left/tab/Items/ItemTree" method="_on_FilterLineEdit_text_changed"]
 [connection signal="item_activated" from="left/tab/Players" to="." method="_on_Players_item_activated"]
-[connection signal="item_rmb_selected" from="left/tab/Players" to="left/tab/Players" method="_on_Players_item_rmb_selected"]
 [connection signal="player_joined" from="left/tab/Players" to="." method="_on_Players_player_joined"]
 [connection signal="player_left" from="left/tab/Players" to="." method="_on_Players_player_left"]
 [connection signal="player_updated" from="left/tab/Players" to="." method="_on_Players_player_updated"]
@@ -591,6 +539,6 @@ show_hidden_files = true
 [connection signal="value_changed" from="status_view/container/SubGroupIdSpinBox" to="." method="_on_SubGroupIdSpinBox_value_changed"]
 [connection signal="pressed" from="status_view/container/SettingsButton" to="status_view/container/SettingsButton" method="_on_SettingsButton_pressed"]
 [connection signal="pressed" from="Right Panel/VBoxContainer/HBoxContainer/Close" to="Right Panel" method="_on_Close_pressed"]
-[connection signal="showing_details_of" from="Right Panel/VBoxContainer/DetailsPanel" to="Right Panel" method="_on_DetailsPanel_showing_details_of"]
+[connection signal="s_showing_details_of" from="Right Panel/VBoxContainer/DetailsPanel" to="Right Panel" method="_on_DetailsPanel_showing_details_of"]
 [connection signal="settings_updated" from="SettingsWindowDialog" to="." method="_on_SettingsWindowDialog_settings_updated"]
 [connection signal="confirmed" from="DayNightTimeMigrationConfirmationDialog" to="DayNightTimeMigrationConfirmationDialog" method="_on_DayNightTimeMigrationConfirmationDialog_confirmed"]

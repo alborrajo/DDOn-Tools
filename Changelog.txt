@@ -1,0 +1,42 @@
+Migration Log
+
+Project Settings:
+Localization - readded all localization files
+General -> Display -> Window - Stretch Mode canvas_items
+
+Main.tcsn:
+camera - zoom = {1.0, 1.0}
+
+Settings.tscn:
+SettingsWindowDialog - Changed node type from Window to PopupPanel (Godot 3 WindowDialog got removed) and set the flag Borderless to off
+
+UI.tscn
+status_view/container/LayerOptionButton - readded 10 items (Layer 0 - 9)
+left/tab/Enemies/HBoxContainer/EnemyFileMenu - readded "elements" (New Enemy Sets, Load Enemy Sets, Save Enemy Sets)
+left/tab/Items/HBoxContainer/ItemFileMenu - readded "elements" (New, Load, Save)
+left/tab/Items/HBoxContainer/ShopFileMenu - readded "elements" (New, Load, Save)
+
+Providers/StorageProvider.tscn
+- converted the embedded script to a script file StorageProvider.gd
+
+Providers/SelectedListManager.tscn
+- converted the embedded script to a script file SelectedListManager.gd
+
+Providers/SetProvider.tscn
+- converted the embedded script to a script file SetProvider.gd
+
+UI/Marker/ToggleableShopPlacemark.tscn
+MapControl/Control/Panel/ShopPlacemark/GridContainer2/WalletTypeOptionButton - readded all currency items to the OptionButton
+
+
+resources/repo.json
+Error: Unicode parsing error, some characters were replaced with � (U+FFFD): Unexpected NUL character
+- removed \u0000 from 385 magic-fields
+
+
+General:
+* Array remove() is now remove_at(), same functionality - replaced everywhere
+* Native class "DirAccess" cannot be constructed as it is abstract - replaced with static function calls
+* File is now FileAccess and open() is now a static method - replaced File with FileAccess everywhere
+* String constructor String(int) was removed - replaced String() with str() everywhere
+*

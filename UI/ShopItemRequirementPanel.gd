@@ -3,7 +3,7 @@ class_name ShopItemRequirementPanel
 
 signal requirement_removed()
 
-var shop_item_requirement: ShopItemRequirement setget _set_shop_item_requirement
+var shop_item_requirement: ShopItemRequirement: set = _set_shop_item_requirement
 
 func _ready() -> void:
 	_build_enemy_category_option_button()
@@ -15,19 +15,19 @@ func _build_enemy_category_option_button() -> void:
 		$VBoxContainer/DetailsContainer/DefeatEnemiesLevelContainer/HFlowContainer/Param3OptionButton.add_item(category_string, enemy_type.category)
 
 func _set_shop_item_requirement(value: ShopItemRequirement) -> void:
-	if shop_item_requirement != null and shop_item_requirement.is_connected("changed", self, "_on_shop_item_requirement_changed"):
-		shop_item_requirement.disconnect("changed", self, "_on_shop_item_requirement_changed")
+	if shop_item_requirement != null and shop_item_requirement.is_connected("changed", Callable(self, "_on_shop_item_requirement_changed")):
+		shop_item_requirement.disconnect("changed", Callable(self, "_on_shop_item_requirement_changed"))
 	
 	shop_item_requirement = value
 	
-	assert(shop_item_requirement.connect("changed", self, "_on_shop_item_requirement_changed") == OK)
+	assert(shop_item_requirement.connect("changed", Callable(self, "_on_shop_item_requirement_changed")) == OK)
 	_on_shop_item_requirement_changed()
 	
 func _on_shop_item_requirement_changed() -> void:
 	if shop_item_requirement != null:
 		$VBoxContainer/HBoxContainer/ConditionOptionButton.select($VBoxContainer/HBoxContainer/ConditionOptionButton.get_item_index(shop_item_requirement.condition))
-		$VBoxContainer/DetailsContainer/IgnoreReqsCheckBox.pressed = shop_item_requirement.ignore_requirements
-		$VBoxContainer/DetailsContainer/HideReqsCheckBox.pressed = shop_item_requirement.hide_requirement_details
+		$VBoxContainer/DetailsContainer/IgnoreReqsCheckBox.button_pressed = shop_item_requirement.ignore_requirements
+		$VBoxContainer/DetailsContainer/HideReqsCheckBox.button_pressed = shop_item_requirement.hide_requirement_details
 		$VBoxContainer/DetailsContainer/GridContainer/SalesPeriodContainer/StartLineEdit.text = shop_item_requirement.sales_period_start
 		$VBoxContainer/DetailsContainer/GridContainer/SalesPeriodContainer/EndLineEdit.text = shop_item_requirement.sales_period_end
 		

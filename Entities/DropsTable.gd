@@ -1,9 +1,9 @@
 extends Resource
 class_name DropsTable
 
-export var id: int setget _set_id
-export var name: String setget _set_name
-export var mdl_type: int setget _set_mdl_type
+@export var id: int: set = _set_id
+@export var name: String: set = _set_name
+@export var mdl_type: int: set = _set_mdl_type
 
 var _items: Array
 
@@ -19,7 +19,9 @@ func add_item(item: GatheringItem) -> void:
 	emit_changed()
 
 func remove_item(index: int) -> void:
-	_items.remove(index)
+	#Godot 4 migration
+	# Array remove() is now remove_at(), same functionality.
+	_items.remove_at(index)
 	emit_changed()
 
 func clear_items() -> void:

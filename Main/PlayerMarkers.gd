@@ -3,15 +3,15 @@ class_name PlayerMarkers
 
 const PlayerMarkerScene = preload("res://UI/Marker/PlayerMarker.tscn")
 
-export (NodePath) var ui_node_path: NodePath = "../../ui"
+@export var ui_node_path: NodePath = "../../ui"
 
-onready var ui_node = get_node(ui_node_path)
+@onready var ui_node = get_node(ui_node_path)
 
 func _on_Players_player_joined(player: PlayerMapEntity):
 	var node := get_player_node(player)
 	if node == null:
-		node = PlayerMarkerScene.instance()
-		ui_node.connect("stage_selected", node, "_on_ui_stage_selected")
+		node = PlayerMarkerScene.instantiate()
+		ui_node.connect("stage_selected", Callable(node, "_on_ui_stage_selected"))
 		node.set_player(player)
 		add_child(node)
 

@@ -4,7 +4,7 @@ class_name PlayerMarker
 var player: PlayerMapEntity
 var _current_map_stage_no: int = -1
 
-func set_player(var p_player : PlayerMapEntity):
+func set_player(p_player : PlayerMapEntity):
 	player = p_player
 	_update_visibility()
 	set_ddon_world_position(player.StageNo, player.pos)

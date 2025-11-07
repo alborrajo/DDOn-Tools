@@ -3,14 +3,14 @@ class_name Item
 
 const TRANSLATION_KEY_FORMAT = "ITEM_NAME_%d"
 
-export var id: int
-export var quality_stars: int
-export var icon_no: int
-export var icon_co_no: int
-export var price: int
+@export var id: int
+@export var quality_stars: int
+@export var icon_no: int
+@export var icon_co_no: int
+@export var price: int
 
-export var icon: Texture setget , _get_icon
-export var name: String setget , _get_name
+@export var icon: Texture2D: get = _get_icon
+@export var name: String: get = _get_name
 
 var _cached_icon = null
 
@@ -24,9 +24,13 @@ func _init(_id: int, _quality_stars: int, _icon_no: int, _icon_co_no: int, _pric
 func _get_icon():
 	if _cached_icon == null:
 		var arc_path = "res://resources/items/ii%06d/" % [self.icon_no]
-		var dir = Directory.new()
-		assert(dir.open(arc_path) == OK)
-		assert(dir.list_dir_begin(true) == OK)
+		# Godot 4 migration
+		# Native class "DirAccess" cannot be constructed as it is abstract.
+		#var dir = DirAccess.new()
+		# assert(dir.open(arc_path) == OK)
+		var dir = DirAccess.open(arc_path)
+		assert(DirAccess.get_open_error() == OK)
+		assert(dir.list_dir_begin()  == OK)# TODOConverter3To4 fill missing arguments https://github.com/godotengine/godot/pull/40547
 		var icon_filename = dir.get_next().replace(".import", "") # godot bs
 		assert(icon_filename != "")
 		var icon_path = arc_path+icon_filename
@@ -37,7 +41,9 @@ func _get_name():
 	return tr(TRANSLATION_KEY_FORMAT % id)
 	
 func matches_filter_text(uppercase_filter_text: String) -> bool:
-	return uppercase_filter_text == "" or uppercase_filter_text in _get_name().to_upper() or uppercase_filter_text in String(id).to_upper()
+	# Godot 4 migration
+	# return uppercase_filter_text == "" or uppercase_filter_text in _get_name().to_upper() or uppercase_filter_text in String(id).to_upper()
+	return uppercase_filter_text == "" or uppercase_filter_text in _get_name().to_upper() or uppercase_filter_text in str(id).to_upper()
 	
 
 const image_array_jorobate_flanders := [

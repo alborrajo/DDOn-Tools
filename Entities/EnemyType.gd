@@ -4,10 +4,10 @@ class_name EnemyType
 const HEX_ID_FORMAT = "0x%06X"
 const TRANSLATION_KEY_FORMAT = "NAME_" + HEX_ID_FORMAT
 
-export var id: int
-export var name: String setget , _get_name
-export var default_hm_preset_no: int
-export var category: int
+@export var id: int
+@export var name: String: get = _get_name
+@export var default_hm_preset_no: int
+@export var category: int
 
 func _init(_id: int, _default_hm_preset_no: int, _category: int):
 	self.id = _id

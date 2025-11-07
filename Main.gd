@@ -7,16 +7,18 @@ const EnemyPlacemarkScene = preload("res://UI/Marker/ToggleableEnemySubgroupPlac
 const GatheringPlacemarkScene = preload("res://UI/Marker/ToggleableGatheringSpotPlacemark.tscn")
 const ShopPlacemarkScene = preload("res://UI/Marker/ToggleableShopPlacemark.tscn")
 
-onready var camera: Camera2D = $camera
-onready var camera_tween: Tween = $CameraTween
-onready var map_layers: Node2D = $MapCoordinateSpace/MapLayers
-onready var enemy_sets_node: Control = $MapCoordinateSpace/EnemySetMarkers
-onready var gathering_spots_node: Control = $MapCoordinateSpace/GatheringSpotMarkers
-onready var shops_node: Control = $MapCoordinateSpace/ShopMarkers
-onready var players_node: Control = $MapCoordinateSpace/PlayerMarkers
-onready var ui_node = $ui
+@onready var camera: Camera2D = $camera
+# Godot 4 migration
+# Tween node was removed
+# @onready var camera_tween: Tween = $CameraTween
+@onready var map_layers: Node2D = $MapCoordinateSpace/MapLayers
+@onready var enemy_sets_node: Control = $MapCoordinateSpace/EnemySetMarkers
+@onready var gathering_spots_node: Control = $MapCoordinateSpace/GatheringSpotMarkers
+@onready var shops_node: Control = $MapCoordinateSpace/ShopMarkers
+@onready var players_node: Control = $MapCoordinateSpace/PlayerMarkers
+@onready var ui_node = $ui
 
-onready var tab_and_map_nodes = [
+@onready var tab_and_map_nodes = [
 	[],
 	[enemy_sets_node],
 	[gathering_spots_node, shops_node],
@@ -51,7 +53,7 @@ func _on_ui_stage_selected(stage_no):
 		print("Selected stage %s (ID: %s, Stage No. %s) with %s markers" % [tr(str("STAGE_NAME_",stage_id)), stage_id, stage_no, enemy_sets_node.get_child_count()])
 
 
-func _load_stage_map(stage_no) -> void:
+func _load_stage_map(stage_no: String) -> void:
 	var stage_no_as_int := int(stage_no)
 	
 	if _add_field_maps(stage_no_as_int):
@@ -71,20 +73,20 @@ func _add_field_maps(stage_no: int) -> bool:
 		print("Couldn't use a field map for this stage (Stage No. %s doesn't belong to a field)" % [stage_no])
 		return false
 
-	var map_name := "field00"+String(field_id-1) # why is it off by one? maybe it needs an additional conversion?
+	var map_name := "field00"+str(field_id-1) # why is it off by one? maybe it needs an additional conversion?
 	if not _do_add_field_maps(map_name, 0, 0):
 		# Since Mergoda Ruins uses m01_l01 instead of m00_l00 like the rest
 		return _do_add_field_maps(map_name, 1, 1)
 	return true
 
 func _do_add_field_maps(map_name: String, m: int, l: int) -> bool:
-	var stage_map_resource := "res://resources/maps/"+map_name+"_m0"+String(m)+"_l"+String(l)+".png"
+	var stage_map_resource := "res://resources/maps/"+map_name+"_m0"+str(m)+"_l"+str(l)+".png"
 	var resource := _load_map_resource(stage_map_resource)
 	if resource == null:
 		print("Couldn't find a field map for this field (%s)" % [map_name])
 		return false
 	else:
-		var map_sprite := Sprite.new()
+		var map_sprite := Sprite2D.new()
 		map_sprite.texture = load(stage_map_resource)
 		map_sprite.centered = false
 		map_sprite.scale = Vector2.ONE * MapControl.MAP_SCALE
@@ -98,13 +100,13 @@ func _add_room_maps(stage_no: int) -> bool:
 	if stage_room != null:
 		for layer_index in range(MAX_LAYERS):
 			var layer := map_layers.get_child(layer_index)
-			var stage_map_resource := "res://resources/maps/"+stage_room.map_name+"_l"+String(layer_index)+".png"
+			var stage_map_resource := "res://resources/maps/"+stage_room.map_name+"_l"+str(layer_index)+".png"
 			var resource := _load_map_resource(stage_map_resource)
 			if resource == null:
 				print("Couldn't find the map ", stage_map_resource)
 			else:
 				found_map = true
-				var map_sprite := Sprite.new()
+				var map_sprite := Sprite2D.new()
 				map_sprite.texture = load(stage_map_resource)
 				map_sprite.centered = false
 				map_sprite.global_position = stage_room.offset * MapControl.MAP_SCALE
@@ -117,33 +119,34 @@ func _add_room_maps(stage_no: int) -> bool:
 
 func _add_stage_maps(stage_no: int) -> bool:
 	var stage_map := DataProvider.stage_no_to_stage_map(stage_no)
-	var offset := Vector2(0,-512) # 512 (map tile height in px)
 	var found_map := false
-	if stage_map != null:
-		var parts_path: String = stage_map["PartsPath"].substr(7, 5)
-		for area in stage_map["ArrayArea"]:
-			var map_name := parts_path+"_m"+String(area).pad_zeros(2)
-			for layer_index in range(MAX_LAYERS):
-				var stage_map_resource := "res://resources/maps/"+map_name+"_l"+String(layer_index)+".png"
-				var resource := _load_map_resource(stage_map_resource)
-				if resource == null:
-					print("Couldn't find the map ", stage_map_resource)
+	if !stage_map.is_empty():
+		var offset := Vector2(0,-512) # 512 (map tile height in px)
+		if stage_map != null:
+			var parts_path: String = stage_map["PartsPath"].substr(7, 5)
+			for area in stage_map["ArrayArea"]:
+				var map_name := parts_path+"_m"+str(area).pad_zeros(2)
+				for layer_index in range(MAX_LAYERS):
+					var stage_map_resource := "res://resources/maps/"+map_name+"_l"+str(layer_index)+".png"
+					var resource := _load_map_resource(stage_map_resource)
+					if resource == null:
+						print("Couldn't find the map ", stage_map_resource)
+					else:
+						found_map = true
+						var map_sprite := Sprite2D.new()
+						map_sprite.texture = load(stage_map_resource)
+						map_sprite.centered = false
+						map_sprite.global_position = offset * MapControl.MAP_SCALE
+						map_sprite.scale = Vector2.ONE * MapControl.MAP_SCALE
+						var layer := map_layers.get_child(layer_index)
+						layer.add_child(map_sprite)
+						print("Loaded map ", stage_map_resource)
+				if map_name in DataProvider.map_dimensions:
+					offset.y = offset.y - DataProvider.map_dimensions[map_name].y
 				else:
-					found_map = true
-					var map_sprite := Sprite.new()
-					map_sprite.texture = load(stage_map_resource)
-					map_sprite.centered = false
-					map_sprite.global_position = offset * MapControl.MAP_SCALE
-					map_sprite.scale = Vector2.ONE * MapControl.MAP_SCALE
-					var layer := map_layers.get_child(layer_index)
-					layer.add_child(map_sprite)
-					print("Loaded map ", stage_map_resource)
-			if map_name in DataProvider.map_dimensions:
-				offset.y = offset.y - DataProvider.map_dimensions[map_name].y
-			else:
-				printerr("Failed to get dimensions of map "+map_name+". The next parts of this map will show up with a wrong offset.")
-	else:
-		print("Couldn't assemble a parts dungeon (pd) map (Stage No. %s)" % [stage_no])
+					printerr("Failed to get dimensions of map "+map_name+". The next parts of this map will show up with a wrong offset.")
+		else:
+			print("Couldn't assemble a parts dungeon (pd) map (Stage No. %s)" % [stage_no])
 	return found_map
 
 func _load_stage_markers(stage_no, subgroup_id):
@@ -154,9 +157,10 @@ func _load_stage_markers(stage_no, subgroup_id):
 		if enemy_set.stage_id == stage_id:
 			var enemy_subgroup: EnemySubgroup = enemy_set.get_subgroup(subgroup_id)
 			if enemy_subgroup.positions.size() > 0:
-				var enemy_subgroup_placemark: ToggleableEnemySubgroupPlacemark = EnemyPlacemarkScene.instance()
-				assert(enemy_subgroup_placemark.connect("enemy_subgroup_mouse_entered", ui_node, "_on_enemy_subgroup_placemark_mouse_entered", [subgroup_id, enemy_subgroup_placemark]) == OK)
-				assert(enemy_subgroup_placemark.connect("enemy_subgroup_mouse_exited", ui_node, "_on_enemy_subgroup_placemark_mouse_exited", [subgroup_id, enemy_subgroup_placemark]) == OK)
+				var enemy_subgroup_placemark: ToggleableEnemySubgroupPlacemark = EnemyPlacemarkScene.instantiate()
+				assert(enemy_subgroup_placemark.connect("enemy_subgroup_mouse_entered", Callable(ui_node, "_on_enemy_subgroup_placemark_mouse_entered").bind(subgroup_id, enemy_subgroup_placemark)) == OK)
+				assert(enemy_subgroup_placemark.connect("enemy_subgroup_mouse_exited", Callable(ui_node, "_on_enemy_subgroup_placemark_mouse_exited").bind(subgroup_id, enemy_subgroup_placemark)) == OK)
+				
 				enemy_subgroup_placemark.enemy_set = enemy_set
 				enemy_subgroup_placemark.enemy_subgroup = enemy_subgroup
 				enemy_sets_node.add_child(enemy_subgroup_placemark)
@@ -171,14 +175,14 @@ func _load_stage_markers(stage_no, subgroup_id):
 				var pos_id := int(gathering_spot["PosId"])
 				var pos := Vector3(gathering_spot["Position"]["x"], gathering_spot["Position"]["y"], gathering_spot["Position"]["z"])
 				var unit_id := int(gathering_spot["UnitId"])
-				var gathering_spot_entity := SetProvider.get_gathering_spot(stage_id, group_no, pos_id)
+				var gathering_spot_entity = SetProvider.get_gathering_spot(stage_id, group_no, pos_id)
 				gathering_spot_entity.type = type
 				gathering_spot_entity.unit_id = unit_id
 				gathering_spot_entity.coordinates = pos
 				
-				var gathering_placemark: ToggleableGatheringSpotPlacemark = GatheringPlacemarkScene.instance()
-				assert(gathering_placemark.connect("subgroup_mouse_entered", ui_node, "_on_gathering_subgroup_placemark_mouse_entered", [gathering_placemark]) == OK)
-				assert(gathering_placemark.connect("subgroup_mouse_exited", ui_node, "_on_gathering_subgroup_placemark_mouse_exited", [gathering_placemark]) == OK)
+				var gathering_placemark: ToggleableGatheringSpotPlacemark = GatheringPlacemarkScene.instantiate()
+				assert(gathering_placemark.connect("subgroup_mouse_entered", Callable(ui_node, "_on_gathering_subgroup_placemark_mouse_entered").bind(gathering_placemark)) == OK)
+				assert(gathering_placemark.connect("subgroup_mouse_exited", Callable(ui_node, "_on_gathering_subgroup_placemark_mouse_exited").bind(gathering_placemark)) == OK)
 				gathering_placemark.gathering_spot = gathering_spot_entity
 				gathering_spots_node.add_child(gathering_placemark)
 				
@@ -189,9 +193,9 @@ func _load_stage_markers(stage_no, subgroup_id):
 			var institution_function_id := int(shop["InstitutionFunctionId"])
 			var shop_id := int(shop["ShopId"])
 			var pos := Vector3(shop["Position"]["x"], shop["Position"]["y"], shop["Position"]["z"])
-			var shop_placemark: ToggleableShopPlacemark = ShopPlacemarkScene.instance()
-			assert(shop_placemark.connect("subgroup_mouse_entered", ui_node, "_on_shop_placemark_mouse_entered", [shop_placemark]) == OK)
-			assert(shop_placemark.connect("subgroup_mouse_exited", ui_node, "_on_shop_placemark_mouse_exited", [shop_placemark]) == OK)
+			var shop_placemark: ToggleableShopPlacemark = ShopPlacemarkScene.instantiate()
+			assert(shop_placemark.connect("subgroup_mouse_entered", Callable(ui_node, "_on_shop_placemark_mouse_entered").bind(shop_placemark)) == OK)
+			assert(shop_placemark.connect("subgroup_mouse_exited", Callable(ui_node, "_on_shop_placemark_mouse_exited").bind(shop_placemark)) == OK)
 			shop_placemark.stage_id = stage_id
 			shop_placemark.npc_id = npc_id
 			shop_placemark.institution_function_id = institution_function_id
@@ -201,7 +205,9 @@ func _load_stage_markers(stage_no, subgroup_id):
 			
 
 func _load_map_resource(resource_path: String) -> Resource:
-	var _directory = Directory.new();
+	# Godot 4 migration
+	# why? | DirAcces.new() was removed
+	# var _directory = DirAccess.new();
 	if image_array_jorobate_flanders.has(resource_path):
 		return load(resource_path)
 	else:
@@ -229,15 +235,17 @@ func _on_ui_player_activated(player: PlayerMapEntity):
 	$ui/left/tab/Stages/HBoxContainer/StagesLineEdit.text = ""
 	$ui/left/tab/Stages/HBoxContainer/StagesLineEdit.emit_signal("text_changed", "")
 	for stage_index in $ui/left/tab/Stages/StageItemList.get_item_count():
-		if $ui/left/tab/Stages/StageItemList.get_item_metadata(stage_index) == String(player.StageNo):
+		if $ui/left/tab/Stages/StageItemList.get_item_metadata(stage_index) == str(player.StageNo):
 			# TODO: Decouple, same as _ready
 			$ui/left/tab/Stages/StageItemList.select(stage_index)
 			$ui/left/tab/Stages/StageItemList.emit_signal("item_selected", stage_index)
 			# Move camera to player position
-			assert(camera_tween.remove_all())
+			# Godot 4 migration
+			# ToDo! as the Tween node was removed
+			# assert(camera_tween.remove_all())
 			var player_node = players_node.get_player_node(player)
 			if player_node != null:
-				_move_camera_to(player_node.rect_position)
+				_move_camera_to(player_node.position)
 				return
 	printerr("Couldnt focus map on %s %s (StageNo: %s)" % [player.FirstName, player.LastName, player.StageNo])
 
@@ -268,10 +276,13 @@ func _focus_camera_on_center() -> void:
 
 
 func _move_camera_to(new_position: Vector2) -> void:
-	assert(camera_tween.interpolate_property(camera, "position",
-		camera.position, new_position, 0.5,
-		Tween.TRANS_SINE, Tween.EASE_IN_OUT))
-	assert(camera_tween.start())
+	# Godot 4 migration
+	# ToDo! as the Tween node was removed
+	#assert(camera_tween.interpolate_property(camera, "position",
+	#	camera.position, new_position, 0.5,
+	#	Tween.TRANS_SINE, Tween.EASE_IN_OUT))
+	#assert(camera_tween.start())
+	return
 
 
 func _on_layer_selected(selected_layer_index):
@@ -292,11 +303,14 @@ func _get_enemy_groups_center() -> Vector2:
 	
 	for enemy_group in enemy_sets_node.get_children():
 		for enemy_position in enemy_group.get_position_placemarks():
-			var position: Vector2 = enemy_position.get_rect().get_center()
-			min_x = int(min(min_x, position.x))
-			max_x = int(max(max_x, position.x))
-			min_y = int(min(min_y, position.y))
-			max_y = int(max(max_y, position.y))
+			# Godot 4 migration
+# 			"position" is shadowing an already-declared property in the base class
+			# var position: Vector2 = enemy_position.get_rect().get_center()
+			var map_position: Vector2 = enemy_position.get_rect().get_center()
+			min_x = int(min(min_x, map_position.x))
+			max_x = int(max(max_x, map_position.x))
+			min_y = int(min(min_y, map_position.y))
+			max_y = int(max(max_y, map_position.y))
 		
 	return Rect2(min_x, min_y, max_x-min_x, max_y-min_y).get_center()
 
@@ -308,11 +322,14 @@ func _get_map_center() -> Vector2:
 	
 	for map_layer in map_layers.get_children():
 		for map in map_layer.get_children():
-			var position: Vector2 = map.get_rect().get_center()
-			min_x = int(min(min_x, position.x))
-			max_x = int(max(max_x, position.x))
-			min_y = int(min(min_y, position.y))
-			max_y = int(max(max_y, position.y))
+			# Godot 4 migration
+# 			"position" is shadowing an already-declared property in the base class
+			# var position: Vector2 = map.get_rect().get_center()
+			var map_position: Vector2 = map.get_rect().get_center()
+			min_x = int(min(min_x, map_position.x))
+			max_x = int(max(max_x, map_position.x))
+			min_y = int(min(min_y, map_position.y))
+			max_y = int(max(max_y, map_position.y))
 		
 	return Rect2(min_x, min_y, max_x-min_x, max_y-min_y).get_center()
 

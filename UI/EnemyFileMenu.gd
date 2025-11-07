@@ -5,7 +5,10 @@ const STORAGE_SECTION_FILE_MENU = "FileMenu"
 const STORAGE_KEY_FILE_PATH := "file_path"
 
 const LEGACY_CSV_HEADER_STAGEID_COMPAT := "StageId"
-const LEGACY_CSV_HEADER := PoolStringArray([
+# Godot 4 migration
+# constants can't be initialized with constructors
+# const LEGACY_CSV_HEADER := PackedStringArray([
+const LEGACY_CSV_HEADER := [
 	"#StageId",
 	"LayerNo",
 	"GroupId",
@@ -29,9 +32,12 @@ const LEGACY_CSV_HEADER := PoolStringArray([
 	"IsAreaBoss",
 	"IsBloodEnemy",
 	"IsHighOrbEnemy"
-])
+]
 
-const ENEMIES_SCHEMA := PoolStringArray([
+# Godot 4 migration
+# constants can't be initialized with constructors
+# const ENEMIES_SCHEMA := PackedStringArray([
+const ENEMIES_SCHEMA := [
 	"StageId",
 	"LayerNo",
 	"GroupId",
@@ -62,16 +68,19 @@ const ENEMIES_SCHEMA := PoolStringArray([
 	"DropsTableId",
 	"SpawnTime",
 	"PPDrop"
-])
+]
 
-const DROPS_TABLE_ITEMS_SCHEMA := PoolStringArray([
+# Godot 4 migration
+# constants can't be initialized with constructors
+# const DROPS_TABLE_ITEMS_SCHEMA := PackedStringArray([
+const DROPS_TABLE_ITEMS_SCHEMA := [
 	"ItemId",
 	"ItemNum",
 	"MaxItemNum",
 	"Quality",
 	"IsHidden",
 	"DropChance"
-])
+]
 
 const JSON_KEY_SCHEMAS = "schemas"
 const JSON_KEY_ENEMIES = "enemies"
@@ -83,10 +92,10 @@ const JSON_KEY_MDL_TYPE = "mdlType"
 const JSON_KEY_ITEMS = "items"
 
 func _ready():
-	._ready()
+	super._ready()
 	
 func _get_file_path_from_storage() -> String:
-	return StorageProvider.get_value(STORAGE_SECTION_FILE_MENU, STORAGE_KEY_FILE_PATH)
+	return StorageProvider.get_value(STORAGE_SECTION_FILE_MENU, STORAGE_KEY_FILE_PATH, "")
 	
 func _set_file_path_in_storage() -> void:
 	StorageProvider.set_value(STORAGE_SECTION_FILE_MENU, STORAGE_KEY_FILE_PATH, _file_path)
@@ -96,8 +105,10 @@ func _do_new_file() -> void:
 	SetProvider.clear_drops_tables()
 	SetProvider.clear_enemy_sets()
 
-
-func _do_load_file(file: File) -> void:
+# Godot 4 migration
+# File is now FileAccess
+# func _do_load_file(file: File) -> void:
+func _do_load_file(file: FileAccess) -> void:
 	if file.get_path().get_extension() == "csv":
 		_do_load_file_legacy(file)
 		return
@@ -106,10 +117,15 @@ func _do_load_file(file: File) -> void:
 		if result != OK:
 			print("[_do_load_file] Error loading JSON file '" + str(file.get_path()) + "'.")
 			print("\tError: ", result)
-		
-func _do_load_file_json(file: File) -> int:
+
+# Godot 4 migration
+# File is now FileAccess
+# func _do_load_file_json(file: File) -> int:
+func _do_load_file_json(file: FileAccess) -> int:
 	# Read file contents
-	var json_parse = JSON.parse(file.get_as_text())
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(file.get_as_text())
+	var json_parse = test_json_conv.get_data()
 	if json_parse.error != OK:
 		print("[load_json_file] Error loading JSON file '" + str(file.get_path()) + "'.")
 		print("\tError: ", json_parse.error)
@@ -231,10 +247,12 @@ func _do_load_file_json(file: File) -> int:
 			result = enemy_subgroup.add_enemy(enemy)
 		if result != OK:
 				printerr("Enemy outside of the set's possible positions: ", data)
-
 	return OK
 
-func _do_load_file_legacy(file: File) -> void:
+# Godot 4 migration
+# File is now FileAccess
+# func _do_load_file_legacy(file: File) -> void:
+func _do_load_file_legacy(file: FileAccess) -> void:
 	# Check header
 	var header := file.get_csv_line()
 	for i in min(header.size(), LEGACY_CSV_HEADER.size()):
@@ -290,8 +308,11 @@ func _do_load_file_legacy(file: File) -> void:
 		var enemy_set = SetProvider.get_enemy_set(stage_id, layer_no, group_id)
 		var enemy_subgroup = enemy_set.get_subgroup(subgroup_id)
 		enemy_subgroup.add_enemy(enemy)
-	
-func _do_save_file(file: File) -> void:
+
+# Godot 4 migration
+# File is now FileAccess
+# func _do_save_file(file: File) -> void:
+func _do_save_file(file: FileAccess) -> void:
 	if file.get_path().get_extension() == "csv":
 		_do_save_file_legacy(file)
 		return
@@ -323,18 +344,21 @@ func _do_save_file(file: File) -> void:
 			]
 			json_data_table[JSON_KEY_ITEMS].append(json_data_table_item)
 		json_data[JSON_KEY_DROPS_TABLES].append(json_data_table)
-
-	for set in SetProvider.get_all_enemy_sets():
-		for subgroup_id in set.subgroups.size():
-			var subgroup: EnemySubgroup = set.subgroups[subgroup_id]
+	
+	# Godot 4 migration
+	# set is used to declare setters
+	# for set in SetProvider.get_all_enemy_sets():
+	for enemy_set in SetProvider.get_all_enemy_sets():
+		for subgroup_id in enemy_set.subgroups.size():
+			var subgroup: EnemySubgroup = enemy_set.subgroups[subgroup_id]
 			if subgroup != null:
 				for position_index in subgroup.positions.size():
 					for enemy in subgroup.positions[position_index].enemies:
 						if enemy != null:
 							var data = []
-							data.append(set.stage_id)
-							data.append(set.layer_no)
-							data.append(set.group_id)
+							data.append(enemy_set.stage_id)
+							data.append(enemy_set.layer_no)
+							data.append(enemy_set.group_id)
 							data.append(subgroup_id)
 							data.append(position_index)
 							data.append(enemy.enemy_type.get_hex_id())
@@ -390,22 +414,25 @@ func _do_save_file(file: File) -> void:
 
 							json_data[JSON_KEY_ENEMIES].append(data)
 
-	file.store_string(JSON.print(json_data, "\t"))
+	file.store_string(JSON.stringify(json_data, "\t"))
 
 
 func _do_save_file_legacy(file) -> void:
 	store_csv_line_crlf(file, LEGACY_CSV_HEADER)
-	for set in SetProvider.get_all_enemy_sets():
-		for subgroup_id in set.subgroups.size():
-			var subgroup: EnemySubgroup = set.subgroups[subgroup_id]
+	# Godot 4 migration
+	# set is used to declare setters
+	# for set in SetProvider.get_all_enemy_sets():
+	for enemy_set in SetProvider.get_all_enemy_sets():
+		for subgroup_id in enemy_set.subgroups.size():
+			var subgroup: EnemySubgroup = enemy_set.subgroups[subgroup_id]
 			if subgroup != null:
-				for position_index in set.subgroups[subgroup_id].positions.size():
-					for enemy in set.subgroups[subgroup_id].positions[position_index].enemies:
+				for position_index in enemy_set.subgroups[subgroup_id].positions.size():
+					for enemy in enemy_set.subgroups[subgroup_id].positions[position_index].enemies:
 						if enemy != null:
 							var data := []
-							data.append(set.stage_id)
-							data.append(set.layer_no)
-							data.append(set.group_id)
+							data.append(enemy_set.stage_id)
+							data.append(enemy_set.layer_no)
+							data.append(enemy_set.group_id)
 							data.append(subgroup_id)
 							data.append(enemy.enemy_type.get_hex_id())
 							data.append("0x%X" % enemy.named_param.id)

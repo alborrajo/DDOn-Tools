@@ -1,47 +1,69 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://ddyeb7gxn7v1e"]
 
-[ext_resource path="res://UI/Marker/ToggleablePlacemark.tscn" type="PackedScene" id=1]
-[ext_resource path="res://UI/Marker/GatheringSpotPlacemark.gd" type="Script" id=2]
-[ext_resource path="res://UI/Marker/ToggleableGatheringSpotPlacemark.gd" type="Script" id=3]
+[ext_resource type="PackedScene" uid="uid://ck3uhodqituuy" path="res://UI/Marker/ToggleablePlacemark.tscn" id="1"]
+[ext_resource type="Script" uid="uid://k27u1ulh3avi" path="res://UI/Marker/GatheringSpotPlacemark.gd" id="2"]
+[ext_resource type="Script" uid="uid://cip7gg44n1kd" path="res://UI/Marker/ToggleableGatheringSpotPlacemark.gd" id="3"]
 
-[sub_resource type="GDScript" id=1]
+[sub_resource type="GDScript" id="1"]
 script/source = "extends GridContainer
 
 
 # Drag and drop functions
-func can_drop_data(position, data):
+# Godot 4 migration
+# \"position\" is shadowing an already-declared property in the base class
+# func _can_drop_data(position, data):
+func _can_drop_data(at_position, data):
 	if data is Array:
 		for element in data:
-			if can_drop_data(position, element):
+			if _can_drop_data(at_position, element):
 				return true
 	return data is Item or data is GatheringItem
-	
-func drop_data(position, data):
+
+# Godot 4 migration
+# \"position\" is shadowing an already-declared property in the base class
+# func _drop_data(position, data):
+func _drop_data(at_position, data):
 	if data is Array:
 		for element in data:
-			drop_data(position, element)
+			_drop_data(at_position, element)
 	elif data is GatheringItem:
 		$\"../GatheringSpotPlacemark\".gathering_spot.add_item(data)
 	elif data is Item:
 		$\"../GatheringSpotPlacemark\".gathering_spot.add_item(GatheringItem.new(data))
 "
 
-[node name="ToggleableGatheringSpotPlacemark" instance=ExtResource( 1 )]
-script = ExtResource( 3 )
+[node name="ToggleableGatheringSpotPlacemark" instance=ExtResource("1")]
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3")
 gathering_spot = null
+metadata/_edit_horizontal_guides_ = [-6.0]
+
+[node name="MapControl" parent="." index="0"]
+scale = Vector2(0.1, 0.1)
+
+[node name="ToggleButton" parent="MapControl" index="0"]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 64.0
+offset_bottom = 64.0
 
 [node name="Container" type="GridContainer" parent="MapControl/Control/Panel" index="0"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 54.0
-margin_bottom = 31.0
+layout_mode = 2
 columns = 6
-script = SubResource( 1 )
+script = SubResource("1")
 
 [node name="GatheringSpotPlacemark" type="Control" parent="MapControl/Control/Panel" index="1"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 54.0
-margin_bottom = 31.0
+layout_mode = 2
 mouse_filter = 2
-script = ExtResource( 2 )
+script = ExtResource("2")
+
+[node name="CloseButton" parent="MapControl/Control" index="1"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 24.0
+offset_bottom = 24.0

@@ -3,11 +3,11 @@ class_name HideableControl
 
 const HIDDEN_ALPHA_MULTIPLIER = 0.25
 
-onready var _original_mouse_filter := mouse_filter
-onready var _original_modulate := modulate
+@onready var _original_mouse_filter := mouse_filter
+@onready var _original_modulate := modulate
 
 func _ready():
-	assert(SelectedListManager.connect("set_revealed_hidden", self, "unhide_control") == OK)
+	assert(SelectedListManager.connect("set_revealed_hidden", Callable(self, "unhide_control")) == OK)
 
 func hide_control():
 	propagate_call("set_mouse_filter", [Control.MOUSE_FILTER_IGNORE])

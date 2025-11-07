@@ -1,12 +1,12 @@
 extends Resource
 class_name GatheringItem
 
-var item: Item setget _set_item
-var num: int setget _set_num
-var max_num: int setget _set_max_num
-var quality: int setget _set_quality
-var is_hidden: bool setget _set_is_hidden
-var drop_chance: float setget _set_drop_chance
+var item: Item: set = _set_item
+var num: int: set = _set_num
+var max_num: int: set = _set_max_num
+var quality: int: set = _set_quality
+var is_hidden: bool: set = _set_is_hidden
+var drop_chance: float: set = _set_drop_chance
 
 func _init(_item: Item):
 	self.item = _item
