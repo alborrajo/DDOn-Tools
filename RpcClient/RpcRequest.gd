@@ -114,13 +114,12 @@ func make_request(method: int, path: String, query_params: Dictionary = {}, body
 		if result == RESULT_SUCCESS and response_code >= 200 and response_code < 300:
 			var response_body_string: String = response_body.get_string_from_utf8()
 			var test_json_conv = JSON.new()
-			test_json_conv.parse(response_body_string)
-			var json = test_json_conv.get_data()
-			if json.error != OK:
+			var json_parse_error = test_json_conv.parse(response_body_string)
+			if json_parse_error != OK:
 				printerr("RpcRequest: failed to parse json ", _url)
 				contents = null
 			else:
-				contents = json.result
+				contents = test_json_conv.data
 		else:
 			printerr("RpcRequest: failed to perform http request ", _url, "\n\tError: ", result, "\n\tResponse code: ", response_code)
 	else:

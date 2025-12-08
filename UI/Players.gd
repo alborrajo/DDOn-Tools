@@ -24,49 +24,44 @@ func _update_player_list():
 	_update_in_progress = true
 	
 	# TODO: Refactor for less code duplication when updating trees
-	var server_item = false
 	if get_root():
-		server_item = get_root().get_children()
-	while (server_item):
-		var server_item_metadata = server_item.get_metadata(0)
-		var exists = false
-		for server in ServerProvider.servers:
-			var server_item_host: String = server_item_metadata["Addr"]
-			var server_item_rpc_port: int = server_item_metadata["RpcPort"]
-			var server_host: String = server["Addr"]
-			var server_rpc_port: int = server["RpcPort"]
-			if server_item_host == server_host and server_item_rpc_port == server_rpc_port:
-				exists = true
-				break
-		var tmp = server_item
-		server_item = server_item.get_next()
-		if !exists:
-			# remove servers on ui, that have no info
-			servers_on_ui_root.remove_child(tmp)
-			tmp.free()
+		for server_item in get_root().get_children():
+			var server_item_metadata = server_item.get_metadata(0)
+			var exists = false
+			for server in ServerProvider.servers:
+				var server_item_host: String = server_item_metadata["Addr"]
+				var server_item_rpc_port: int = server_item_metadata["RpcPort"]
+				var server_host: String = server["Addr"]
+				var server_rpc_port: int = server["RpcPort"]
+				if server_item_host == server_host and server_item_rpc_port == server_rpc_port:
+					exists = true
+					break
+			var tmp = server_item
+			if !exists:
+				# remove servers on ui, that have no info
+				servers_on_ui_root.remove_child(tmp)
+				tmp.free()
 	
 	var server_items := []
 	for server in ServerProvider.servers:
 		var server_host: String = server["Addr"]
 		var server_rpc_port: int = server["RpcPort"]
-		server_item = null
-		if get_root():
-			server_item = get_root().get_children()
-		while (server_item):
+		var matching_server_item = null
+		for server_item in get_root().get_children():
 			var server_item_metadata = server_item.get_metadata(0)
 			var server_item_host: String = server_item_metadata["Addr"]
 			var server_item_rpc_port: int = server_item_metadata["RpcPort"]
 			if server_item_host == server_host and server_item_rpc_port == server_rpc_port:
+				matching_server_item = server_item
 				break
-			server_item = server_item.get_next()
-		if server_item != null:
+		if matching_server_item != null:
 			# update existing server
-			_update_server_tree_entry(server_item, server)
+			_update_server_tree_entry(matching_server_item, server)
 		else:
 			# create new server
-			server_item = create_item(servers_on_ui_root)
-			_update_server_tree_entry(server_item, server)
-		server_items.append(server_item)
+			matching_server_item = create_item(servers_on_ui_root)
+			_update_server_tree_entry(matching_server_item, server)
+		server_items.append(matching_server_item)
 	
 	# Second loop so fetching each server's player list is only done after we already are showing
 	# the full server list
@@ -92,8 +87,7 @@ func _update_server_info(server_item: TreeItem):
 		return
 	
 	var infos = args[2]
-	var item = server_item.get_children()
-	while (item):
+	for item in server_item.get_children():
 		var item_player = item.get_metadata(0) as PlayerMapEntity
 		var exists = false
 		for info in infos:
@@ -104,23 +98,16 @@ func _update_server_info(server_item: TreeItem):
 		if !exists:
 			# remove players on ui, that have no info
 			emit_signal("player_left", item_player)
-			var tmp = item
-			item = item.get_next()
-			server_item.remove_child(tmp)
-			tmp.free()
-		else:
-			item = item.get_next()
+			server_item.remove_child(item)
+			item.free()
 			
 	for info in infos:
 		var player := PlayerMapEntity.new(info)
 		var existing_ui : TreeItem
-		item = false
 		if get_root():
-			item = server_item.get_children()
-		while (item):
-			if item.get_metadata(0).CharacterId == player.CharacterId:
-				existing_ui = item
-			item = item.get_next()
+			for item in server_item.get_children():
+				if item.get_metadata(0).CharacterId == player.CharacterId:
+					existing_ui = item
 		if existing_ui:
 			# update existing player
 			_update_player_tree_entry(existing_ui, player)
