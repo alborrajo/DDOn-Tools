@@ -24,20 +24,19 @@ func _do_new_file() -> void:
 func _do_load_file(file: FileAccess) -> void:
 	# Read file contents
 	var test_json_conv = JSON.new()
-	test_json_conv.parse(file.get_as_text())
-	var json_parse = test_json_conv.get_data()
-	if json_parse.error != OK:
+	var json_parse_error = test_json_conv.parse(file.get_as_text())
+	if json_parse_error != OK:
 		print("[load_json_file] Error loading JSON file '" + str(file.get_path()) + "'.")
-		print("\tError: ", json_parse.error)
-		print("\tError Line: ", json_parse.error_line)
-		print("\tError String: ", json_parse.error_string)
+		print("\tError: ", json_parse_error)
+		print("\tError Line: ", test_json_conv.get_error_line())
+		print("\tError String: ", test_json_conv.get_error_message())
 		return
 	
 	# Clear shop state
 	SetProvider.clear_shops()
 
 	# Then load it from the file
-	for data in json_parse.result:
+	for data in test_json_conv.data:
 		var shop_id = data["ShopId"]
 		var shop = SetProvider.get_shop(shop_id)
 		shop.unk0 = data["Data"]["Unk0"]

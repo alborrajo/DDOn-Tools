@@ -124,22 +124,21 @@ func _do_load_file(file: FileAccess) -> void:
 func _do_load_file_json(file: FileAccess) -> int:
 	# Read file contents
 	var test_json_conv = JSON.new()
-	test_json_conv.parse(file.get_as_text())
-	var json_parse = test_json_conv.get_data()
-	if json_parse.error != OK:
+	var json_parse_error = test_json_conv.parse(file.get_as_text())
+	if json_parse_error != OK:
 		print("[load_json_file] Error loading JSON file '" + str(file.get_path()) + "'.")
-		print("\tError: ", json_parse.error)
-		print("\tError Line: ", json_parse.error_line)
-		print("\tError String: ", json_parse.error_string)
-		return json_parse.error
+		print("\tError: ", json_parse_error)
+		print("\tError Line: ", test_json_conv.get_error_line())
+		print("\tError String: ", test_json_conv.get_error_message())
+		return json_parse_error
 	
 	# Clear set state
 	SetProvider.clear_drops_tables()
 	SetProvider.clear_enemy_sets()
 
 	# Load loot tables
-	var drops_table_schema_idx := find_schema_indices(json_parse.result[JSON_KEY_SCHEMAS][JSON_KEY_DROPS_TABLES+"."+JSON_KEY_ITEMS], DROPS_TABLE_ITEMS_SCHEMA)	
-	for data in json_parse.result[JSON_KEY_DROPS_TABLES]:
+	var drops_table_schema_idx := find_schema_indices(test_json_conv.data[JSON_KEY_SCHEMAS][JSON_KEY_DROPS_TABLES+"."+JSON_KEY_ITEMS], DROPS_TABLE_ITEMS_SCHEMA)	
+	for data in test_json_conv.data[JSON_KEY_DROPS_TABLES]:
 		var id: int = data[JSON_KEY_ID]
 		# Send read entries to the SetProvider
 		var drops_table = SetProvider.get_drops_table(id)
@@ -166,8 +165,8 @@ func _do_load_file_json(file: FileAccess) -> int:
 			drops_table.add_item(drop_item)
 
 	# Load enemy sets
-	var enemies_schema_idx := find_schema_indices(json_parse.result[JSON_KEY_SCHEMAS][JSON_KEY_ENEMIES], ENEMIES_SCHEMA)		
-	for data in json_parse.result[JSON_KEY_ENEMIES]:
+	var enemies_schema_idx := find_schema_indices(test_json_conv.data[JSON_KEY_SCHEMAS][JSON_KEY_ENEMIES], ENEMIES_SCHEMA)		
+	for data in test_json_conv.data[JSON_KEY_ENEMIES]:
 		# Send read entries to the SetProvider
 		var stage_id = data[enemies_schema_idx["StageId"]]
 		var layer_no = data[enemies_schema_idx["LayerNo"]]

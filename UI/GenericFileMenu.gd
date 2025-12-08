@@ -94,7 +94,12 @@ func load_file(file_path: String):
 	var file = FileAccess.open(file_path, FileAccess.READ)
 	#debug
 	print(file_path)
-	assert(FileAccess.get_open_error())
+	var open_error := FileAccess.get_open_error()
+	if open_error != OK:
+		printerr("Failed to load file. Error: ", open_error)
+		notification_popup_node.notify("Failed to load file "+file_path)
+		return
+		
 	_do_load_file(file)
 	file.close()
 	
