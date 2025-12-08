@@ -28,6 +28,9 @@ var institution_function_id: int: set = _set_institution_function_id
 var coordinates: Vector3: set = _set_coordinates
 var shop: Shop: set = _set_shop
 
+var _default_font = ThemeDB.fallback_font
+var _default_font_size = ThemeDB.fallback_font_size
+
 func _ready():
 	shop.wallet_type = 0;
 	assert(SelectedListManager.connect("selection_changed", Callable(self, "_on_selection_changed")) == OK)
@@ -102,28 +105,18 @@ func _draw_tree_item(tree_item: TreeItem, rect: Rect2):
 	var wallet_type := FALLBACK_WALLET_TYPE
 	if shop.wallet_type >= 0 and shop.wallet_type < WALLET_TYPES.size() and WALLET_TYPES[shop.wallet_type] != null:
 		wallet_type = WALLET_TYPES[shop.wallet_type]
-	# Godot 4 migration
-	# get_font got renamed to get_theme_font()
-	# $MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree.draw_string(get_font("font"), rect.position + Vector2(48, rect.size.y/2), "%s%s" % [stock_string, good.item.name], color)
-	# $MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree.draw_string(get_font("font"), rect.position + Vector2(48, rect.size.y/2 + 16), "%s[%d]" % ["★".repeat(good.item.quality_stars), good.item.id], color)
-	# $MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree.draw_string(get_font("font"), rect.position + Vector2(148, rect.size.y/2 + 16), "%d %s" % [good.price, wallet_type], color)
-	$MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree.draw_string(get_theme_font("font"), rect.position + Vector2(48, rect.size.y/2), "%s%s" % [stock_string, good.item.name], color)
-	$MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree.draw_string(get_theme_font("font"), rect.position + Vector2(48, rect.size.y/2 + 16), "%s[%d]" % ["★".repeat(good.item.quality_stars), good.item.id], color)
-	$MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree.draw_string(get_theme_font("font"), rect.position + Vector2(148, rect.size.y/2 + 16), "%d %s" % [good.price, wallet_type], color)
+	$MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree.draw_string(_default_font, rect.position + Vector2(48, rect.size.y/2), "%s%s" % [stock_string, good.item.name], HORIZONTAL_ALIGNMENT_LEFT, -1, _default_font_size, color)
+	$MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree.draw_string(_default_font, rect.position + Vector2(48, rect.size.y/2 + 16), "%s[%d]" % ["★".repeat(good.item.quality_stars), good.item.id], HORIZONTAL_ALIGNMENT_LEFT, -1, _default_font_size, color)
+	$MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree.draw_string(_default_font, rect.position + Vector2(148, rect.size.y/2 + 16), "%d %s" % [good.price, wallet_type], HORIZONTAL_ALIGNMENT_LEFT, -1, _default_font_size, color)
 func _on_selection_changed(added: Array, removed: Array) -> void:
-	var root: TreeItem =$MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree.get_root()
+	var root: TreeItem = $MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree.get_root()
 	var shop_good_tree_items := root.get_children()
-	# Godot 4 migration
-	# get_children() returns an array now
-	# while shop_good_tree_item != null:
 	for item in shop_good_tree_items:
 		var shop_good: ShopItem = item.get_metadata(0)
 		if added.has(shop_good):
 			item.select(0)
 		elif removed.has(shop_good):
 			item.deselect(0)
-	# Godot 4 migration
-	# $MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree.update() #rerender
 	$MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree.queue_redraw() #rerender
 	
 func _on_selection_deleted(deleted: Array) -> void:
