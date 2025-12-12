@@ -87,7 +87,7 @@ func _on_shop_changed() -> void:
 			good.connect("changed", Callable(self, "_on_shop_item_changed").bind(good))
 		
 func _on_shop_item_changed(_shop_item: ShopItem):
-	$MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree.update() #rerender
+	$MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree.queue_redraw() #rerender
 
 func _draw_tree_item(tree_item: TreeItem, rect: Rect2):
 	var good: ShopItem = tree_item.get_metadata(0)
@@ -139,8 +139,9 @@ func _on_Tree_multi_selected(_tree_item: TreeItem, column: int, _selected: bool)
 	for shop_item in shop_items:
 		SelectedListManager.add_to_selection(shop_item)
 	
-func _on_Tree_item_rmb_selected(_position: Vector2):
-	SelectedListManager.call_deferred("delete_selected")
+func _on_Tree_item_rmb_selected(_position: Vector2, button_index : int):
+	if (button_index == 2):
+		SelectedListManager.call_deferred("delete_selected")
 
 func _on_ItemList_dragged_shop_item(shop_item):
 	var index := shop.get_goods().find(shop_item)

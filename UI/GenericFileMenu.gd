@@ -141,7 +141,7 @@ func save_file(file_path: String):
 	#var file := File.new()
 	#assert(file.open(file_path, File.WRITE) == OK)
 	var file := FileAccess.open(file_path, FileAccess.WRITE)
-	assert(FileAccess.get_open_error())
+	assert(FileAccess.get_open_error() == OK)
 	_do_save_file(file)
 	file.close()
 	

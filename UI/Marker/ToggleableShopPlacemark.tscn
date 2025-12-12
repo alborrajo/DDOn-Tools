@@ -79,6 +79,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2")
 
+[node name="MapControl" parent="." index="0"]
+scale = Vector2(0.1, 0.1)
+
 [node name="ToggleButton" parent="MapControl" index="0"]
 offset_left = -16.0
 offset_top = -16.0
@@ -200,4 +203,7 @@ offset_bottom = 24.0
 [connection signal="value_changed" from="MapControl/Control/Panel/ShopPlacemark/GridContainer/Unk0SpinBox" to="." method="_on_Unk0SpinBox_value_changed"]
 [connection signal="value_changed" from="MapControl/Control/Panel/ShopPlacemark/GridContainer/Unk1SpinBox" to="." method="_on_Unk1SpinBox_value_changed"]
 [connection signal="item_selected" from="MapControl/Control/Panel/ShopPlacemark/GridContainer2/WalletTypeOptionButton" to="." method="_on_WalletTypeOptionButton_item_selected"]
+[connection signal="dragged_shop_item" from="MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree" to="." method="_on_ItemList_dragged_shop_item"]
+[connection signal="dropped_shop_item" from="MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree" to="." method="_on_ItemList_dropped_shop_item"]
+[connection signal="item_mouse_selected" from="MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree" to="." method="_on_Tree_item_rmb_selected"]
 [connection signal="multi_selected" from="MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree" to="." method="_on_Tree_multi_selected"]
