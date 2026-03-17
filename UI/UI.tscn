@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://bg7bmp5avj1fv" path="res://UI/EnemyTree.gd" id="6"]
 [ext_resource type="PackedScene" path="res://UI/GatheringItemDetailsPanel.tscn" id="7"]
 [ext_resource type="PackedScene" uid="uid://cepovphrb0vfg" path="res://UI/Settings.tscn" id="8"]
-[ext_resource type="PackedScene" path="res://UI/Chat.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://b3vy60r73ftr7" path="res://UI/Chat.tscn" id="9"]
 [ext_resource type="Script" uid="uid://c3hfglk72ik03" path="res://DayNightOptionButton.gd" id="10"]
 [ext_resource type="Script" uid="uid://bwq2tgpqcj5vu" path="res://UI/Players.gd" id="11"]
 [ext_resource type="Script" uid="uid://dmyc87o7j04nh" path="res://UI/ItemTree.gd" id="12"]
@@ -393,7 +393,7 @@ layout_mode = 2
 text = "Set (X,X,X,X)"
 
 [node name="SubGroupIdSpinBox" type="SpinBox" parent="status_view/container"]
-custom_minimum_size = Vector2(120, 0)
+custom_minimum_size = Vector2(140, 0)
 layout_mode = 2
 rounded = true
 prefix = "SubGroup Id"

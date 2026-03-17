@@ -5,22 +5,22 @@ const MAX_ENTRIES := 100 # TODO: Configurable
 
 const _META_LOG_ENTRY = "logentry"
 
-const _CHAT_TYPE_COLORS = {
-	"0": Color.WHITE, # Say
-	"1": Color.PURPLE, # Shout
-	"2": Color.PALE_VIOLET_RED, # Tell
-	"3": Color.YELLOW, # System
-	"4": Color.AQUAMARINE, # Party
-	"5": Color.PURPLE, # ShoutAll, not sure about this one
-	"6": Color.LAWN_GREEN, # Group
-	"7": Color.SPRING_GREEN, # Clan
-	"8": Color.AQUAMARINE, # Entryboard TODO
-	"9": Color.YELLOW, # ManagementGuideC
-	"10": Color.YELLOW, # ManagementGuideN TODO
-	"11": Color.CRIMSON, # ManagementAlertC TODO
-	"12": Color.CRIMSON, # ManagementAlertN TODO
-	"13": Color.SPRING_GREEN, # ClanNotice TODO
-}
+const _CHAT_TYPE_COLORS = [
+	Color.WHITE, # Say
+	Color.PURPLE, # Shout
+	Color.PALE_VIOLET_RED, # Tell
+	Color.YELLOW, # System
+	Color.AQUAMARINE, # Party
+	Color.PURPLE, # ShoutAll, not sure about this one
+	Color.LAWN_GREEN, # Group
+	Color.SPRING_GREEN, # Clan
+	Color.AQUAMARINE, # Entryboard TODO
+	Color.YELLOW, # ManagementGuideC
+	Color.YELLOW, # ManagementGuideN TODO
+	Color.CRIMSON, # ManagementAlertC TODO
+	Color.CRIMSON, # ManagementAlertN TODO
+	Color.SPRING_GREEN, # ClanNotice TODO
+]
 
 var _last_received_chat_unix_time = null
 
@@ -75,12 +75,12 @@ func _on_RPCTimer_timeout():
 			_last_received_chat_unix_time = int(logentry["UnixTimeMillis"])
 			var datetime_dict := Time.get_datetime_dict_from_datetime_string(logentry["DateTime"], false)
 			var label := Label.new()
-			label.autowrap = true
+			label.autowrap_mode = TextServer.AUTOWRAP_ARBITRARY
 			label.text = "[%02d:%02d] %s %s: %s" % [datetime_dict["hour"], datetime_dict["minute"], logentry["FirstName"], logentry["LastName"], logentry["ChatMessage"]["Message"]]
 			label.set_meta(_META_LOG_ENTRY, logentry)
-			var message_type := String(logentry["ChatMessage"]["Type"])
-			if _CHAT_TYPE_COLORS.has(message_type):
-				label.modulate = _CHAT_TYPE_COLORS.get(message_type)
+			var message_type := int(logentry["ChatMessage"]["Type"])
+			if message_type < _CHAT_TYPE_COLORS.size():
+				label.modulate = _CHAT_TYPE_COLORS[message_type]
 			$ChatLogPanel/ChatLogScrollContainer/ChatLogVBoxContainer.add_child(label)
 			print("\t(Type ", logentry["ChatMessage"]["Type"], ") ", label.text)
 	while $ChatLogPanel/ChatLogScrollContainer/ChatLogVBoxContainer.get_child_count() > MAX_ENTRIES:
