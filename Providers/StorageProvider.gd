@@ -5,6 +5,13 @@ const STORAGE_FILE := "user://config.ini"
 var config = ConfigFile.new()
 
 func _ready():
+	# Scale on hiDPI displays
+	var screen_scale := DisplayServer.screen_get_scale()
+	get_tree().root.content_scale_factor = screen_scale
+	var window := get_window()
+	window.size *= screen_scale
+	window.move_to_center()
+	
 	# Load data from a file.
 	var err = config.load(STORAGE_FILE)
 	print(ProjectSettings.globalize_path("user://"))

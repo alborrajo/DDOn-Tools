@@ -17,6 +17,7 @@ script = ExtResource("2")
 
 [node name="camera" type="Camera2D" parent="." groups=["camera"]]
 position = Vector2(175, 258)
+zoom = Vector2(10, 10)
 limit_enabled = false
 script = ExtResource("3")
 

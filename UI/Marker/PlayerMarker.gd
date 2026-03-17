@@ -8,7 +8,7 @@ func set_player(p_player : PlayerMapEntity):
 	player = p_player
 	_update_visibility()
 	set_ddon_world_position(player.StageNo, player.pos)
-	$PlayerNameLabel.text = "%s %s" % [player.FirstName, player.LastName]
+	$Control/PlayerNameLabel.text = "%s %s" % [player.FirstName, player.LastName]
 	
 func _update_visibility():
 	visible = _current_map_stage_no == player.StageNo

@@ -20,7 +20,7 @@ func _handle_mouse(event, multiplier: float = 1) -> bool:
 	# Mouse pan
 	if event is InputEventMouseMotion and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and not get_tree().root.gui_is_dragging():
 		# global_position -= event.relative * multiplier
-		global_position -= event.screen_relative * multiplier
+		global_position -= event.screen_relative * multiplier / zoom / DisplayServer.screen_get_scale()
 		return true
 	
 	# Mouse zoom
@@ -41,12 +41,12 @@ func _handle_mouse(event, multiplier: float = 1) -> bool:
 	
 	# Touchpad pan
 	if event is InputEventPanGesture:
-		global_position += event.delta*zoom*touchpad_pan_speed
+		global_position += event.delta*touchpad_pan_speed*DisplayServer.screen_get_scale()/zoom
 		return true
 	
 	# Touchpad zoom
 	if event is InputEventMagnifyGesture:
-		zoom /= event.factor
+		zoom *= event.factor
 		return true
 		
 	return false

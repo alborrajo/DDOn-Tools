@@ -22,11 +22,8 @@ const MAP_SCALE = 1
 
 func _process(_delta):
 	var camera_zoom: float = get_tree().get_nodes_in_group("camera")[0].zoom.x
-	# Godot 4 migration
-	# The variable type is being inferred from a Variant value, so it will be typed as Variant.
-	# var zoom := clamp(camera_zoom, 0, _original_zoom)
-	var zoom: float = clamp(camera_zoom, 0, _original_zoom)
-	scale = _original_scale * zoom
+	var zoom: float = max(camera_zoom, _original_zoom)
+	scale = _original_scale / (zoom / _original_zoom)
 	
 func set_ddon_world_position(stage_no: int, pos: Vector3):
 	position = get_control_position(stage_no, pos)
