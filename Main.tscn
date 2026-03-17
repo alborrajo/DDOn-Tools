@@ -17,11 +17,12 @@ script = ExtResource("2")
 
 [node name="camera" type="Camera2D" parent="." groups=["camera"]]
 position = Vector2(175, 258)
-zoom = Vector2(10, 10)
+zoom = Vector2(0.001, 0.001)
 limit_enabled = false
 script = ExtResource("3")
 
 [node name="MapCoordinateSpace" type="Node2D" parent="."]
+scale = Vector2(100, 100)
 script = ExtResource("5")
 
 [node name="MapLayers" type="Node2D" parent="MapCoordinateSpace"]

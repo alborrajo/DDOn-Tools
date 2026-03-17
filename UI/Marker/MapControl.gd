@@ -13,7 +13,7 @@ const FIELD_TRANSFORMS := {
 	# TODO: Bitterblack Maze
 }
 
-const MAP_SCALE = 1
+const MAP_SCALE = 100
 
 
 @onready var _original_zoom : float = get_tree().get_nodes_in_group("camera")[0].original_zoom
@@ -22,7 +22,7 @@ const MAP_SCALE = 1
 func _process(_delta):
 	var camera_zoom: float = get_tree().get_nodes_in_group("camera")[0].zoom.x
 	var zoom: float = max(camera_zoom, _original_zoom)
-	scale = _original_scale / (zoom / _original_zoom)
+	scale = MAP_SCALE * _original_scale / (zoom / _original_zoom)
 	
 func set_ddon_world_position(stage_no: int, pos: Vector3):
 	position = get_control_position(stage_no, pos)

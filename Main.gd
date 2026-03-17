@@ -271,7 +271,7 @@ func _focus_camera_on_center() -> void:
 		new_position = _get_map_center()
 	
 	if new_position != null:
-		_move_camera_to(new_position)
+		_move_camera_to(new_position * MapControl.MAP_SCALE)
 
 
 func _move_camera_to(new_position: Vector2) -> void:
