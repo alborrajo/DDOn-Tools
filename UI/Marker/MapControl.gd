@@ -12,8 +12,7 @@ const FIELD_TRANSFORMS := {
 	# TODO: Acre Selund (Past)
 	# TODO: Bitterblack Maze
 }
-# Godot 4 migration
-# const MAP_SCALE = 1000
+
 const MAP_SCALE = 1
 
 

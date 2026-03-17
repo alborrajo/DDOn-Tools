@@ -8,9 +8,6 @@ const GatheringPlacemarkScene = preload("res://UI/Marker/ToggleableGatheringSpot
 const ShopPlacemarkScene = preload("res://UI/Marker/ToggleableShopPlacemark.tscn")
 
 @onready var camera: Camera2D = $camera
-# Godot 4 migration
-# Tween node was removed
-# @onready var camera_tween: Tween = $CameraTween
 @onready var map_layers: Node2D = $MapCoordinateSpace/MapLayers
 @onready var enemy_sets_node: Control = $MapCoordinateSpace/EnemySetMarkers
 @onready var gathering_spots_node: Control = $MapCoordinateSpace/GatheringSpotMarkers
@@ -25,8 +22,12 @@ const ShopPlacemarkScene = preload("res://UI/Marker/ToggleableShopPlacemark.tscn
 	[players_node],
 	[]
 ]
+
+var camera_tween: Tween
 	
 func _ready():
+	camera_tween = get_tree().create_tween()
+	
 	# Select Lestania by default, simulating a click on its selector
 	# TODO: In a less hacky way, using a Provider. Decoupling map selection logic from the selector/ui node itself
 	$ui/left/tab/Stages/StageItemList.select(0)
@@ -239,10 +240,8 @@ func _on_ui_player_activated(player: PlayerMapEntity):
 			# TODO: Decouple, same as _ready
 			$ui/left/tab/Stages/StageItemList.select(stage_index)
 			$ui/left/tab/Stages/StageItemList.emit_signal("item_selected", stage_index)
-			# Move camera to player position
-			# Godot 4 migration
-			# ToDo! as the Tween node was removed
-			# assert(camera_tween.remove_all())
+			if camera_tween:
+				camera_tween.kill()
 			var player_node = players_node.get_player_node(player)
 			if player_node != null:
 				_move_camera_to(player_node.position)
@@ -276,12 +275,12 @@ func _focus_camera_on_center() -> void:
 
 
 func _move_camera_to(new_position: Vector2) -> void:
-	# Godot 4 migration
-	# ToDo! as the Tween node was removed
-	#assert(camera_tween.interpolate_property(camera, "position",
-	#	camera.position, new_position, 0.5,
-	#	Tween.TRANS_SINE, Tween.EASE_IN_OUT))
-	#assert(camera_tween.start())
+	if camera_tween.finished:
+		camera_tween.kill()
+		camera_tween = get_tree().create_tween()
+	camera_tween.set_trans(Tween.TRANS_SINE)
+	camera_tween.set_ease(Tween.EASE_IN_OUT)
+	camera_tween.tween_property(camera, "position", new_position, 0.5)
 	return
 
 
