@@ -28,6 +28,7 @@ ServerProvider="*res://Providers/ServerProvider.tscn"
 
 [gui]
 
+theme/custom="uid://b1gv0wfdmojbx"
 theme/custom_font="res://UI/font.tres"
 
 [input]
