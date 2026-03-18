@@ -158,7 +158,7 @@ func _on_ItemList_dropped_shop_item(shop_item, drop_section, dropped_position_sh
 		shop.add_goods_at(index, shop_item)
 
 func _on_item_filter_changed(uppercase_filter_text: String):
-	$MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree.update() #rerender
+	$MapControl/Control/Panel/ShopPlacemark/ScrollContainer/Tree.queue_redraw()
 	for good in shop.get_goods():
 		if good.item.matches_filter_text(uppercase_filter_text):
 			modulate = SelectedListManager.FILTER_MATCH_COLOR
