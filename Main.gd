@@ -30,8 +30,7 @@ func _ready():
 	
 	# Select Lestania by default, simulating a click on its selector
 	# TODO: In a less hacky way, using a Provider. Decoupling map selection logic from the selector/ui node itself
-	$ui/left/tab/Stages/StageItemList.select(0)
-	$ui/left/tab/Stages/StageItemList.emit_signal("item_selected", 0)
+	$ui/left/tab/Stages/StageItemTree.get_root().get_child(0).select(0)
 	
 	# Select Layer 0 by default, also a hacky way
 	$ui/status_view/container/LayerOptionButton.select(0)
@@ -235,11 +234,10 @@ func _clear_markers() -> void:
 func _on_ui_player_activated(player: PlayerMapEntity):
 	$ui/left/tab/Stages/HBoxContainer/StagesLineEdit.text = ""
 	$ui/left/tab/Stages/HBoxContainer/StagesLineEdit.emit_signal("text_changed", "")
-	for stage_index in $ui/left/tab/Stages/StageItemList.get_item_count():
-		if $ui/left/tab/Stages/StageItemList.get_item_metadata(stage_index) == str(player.StageNo):
+	for stage_element in $ui/left/tab/Stages/StageItemTree.get_root().get_children():
+		if stage_element.get_metadata(0) == str(player.StageNo):
 			# TODO: Decouple, same as _ready
-			$ui/left/tab/Stages/StageItemList.select(stage_index)
-			$ui/left/tab/Stages/StageItemList.emit_signal("item_selected", stage_index)
+			stage_element.select(0)
 			if camera_tween:
 				camera_tween.kill()
 			var player_node = players_node.get_player_node(player)

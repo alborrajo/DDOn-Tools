@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://c8tfke878x3q3" path="res://resources/icons/icon_sun.png" id="14_2jerp"]
 [ext_resource type="Texture2D" uid="uid://emrspvsgde5e" path="res://resources/icons/icon_moon.png" id="15_nxoi0"]
 [ext_resource type="Texture2D" uid="uid://dwyhuakn2i21s" path="res://resources/icons/icon_gear.png" id="16_jf3kf"]
-[ext_resource type="Script" uid="uid://dk50he4fp2vwt" path="res://StageItemList.gd" id="19"]
+[ext_resource type="Script" uid="uid://dk50he4fp2vwt" path="res://StageItemTree.gd" id="19"]
 [ext_resource type="Script" uid="uid://bq8haw42l6ccr" path="res://UI/ShopFileMenu.gd" id="20"]
 [ext_resource type="PackedScene" path="res://UI/ShopItemDetailsPanel.tscn" id="21"]
 [ext_resource type="Script" uid="uid://g8vh25rtd4ub" path="res://UI/DayNightTimeMigrationConfirmationDialog.gd" id="22"]
@@ -73,8 +73,8 @@ func _on_SubGroupIdSpinBox_value_changed(value):
 	current_subgroup_id = int(value)
 	emit_signal(\"subgroup_changed\", current_subgroup_id)
 
-func _on_StageItemList_item_selected(index: int) -> void:
-	var stage_no = $left/tab/Stages/StageItemList.get_item_metadata(index)
+func _on_StageItemList_item_selected() -> void:
+	var stage_no = $left/tab/Stages/StageItemTree.get_selected().get_metadata(0)
 	emit_signal(\"stage_selected\", stage_no)
 	
 	var stage_id = DataProvider.stage_no_to_stage_id(int(stage_no))
@@ -174,9 +174,10 @@ script = SubResource("2")
 anchors_preset = 9
 anchor_bottom = 1.0
 offset_left = 10.0
-offset_top = 45.0
+offset_top = 55.0
 offset_right = 320.0
-offset_bottom = -4.0
+offset_bottom = -3.0
+grow_vertical = 2
 
 [node name="tab" type="TabContainer" parent="left"]
 layout_mode = 2
@@ -197,13 +198,14 @@ size_flags_horizontal = 3
 placeholder_text = "Search..."
 right_icon = ExtResource("14")
 
-[node name="StageItemList" type="ItemList" parent="left/tab/Stages"]
+[node name="StageItemTree" type="Tree" parent="left/tab/Stages"]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 32.0
 offset_bottom = -4.0
 size_flags_vertical = 3
+hide_root = true
 script = ExtResource("19")
 
 [node name="Enemies" type="VBoxContainer" parent="left/tab"]
@@ -219,6 +221,7 @@ process_priority = 1
 layout_mode = 2
 size_flags_horizontal = 0
 text = "File"
+flat = false
 item_count = 3
 popup/item_0/text = "New Enemy Sets"
 popup/item_0/id = 0
@@ -413,9 +416,9 @@ anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -430.0
-offset_top = 45.0
+offset_top = 55.0
 offset_right = -10.0
-offset_bottom = -4.0
+offset_bottom = -3.0
 grow_horizontal = 0
 grow_vertical = 2
 script = SubResource("1")
@@ -489,10 +492,10 @@ oversampling_override = 1.0
 script = ExtResource("2")
 
 [node name="Label" type="Label" parent="NotificationPopup"]
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 96.0
-offset_bottom = 96.0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 108.0
+offset_bottom = 88.0
 text = "Notification"
 
 [node name="SettingsWindowDialog" parent="." instance=ExtResource("8")]
@@ -526,8 +529,8 @@ filters = PackedStringArray("*.json ; JSON Files")
 show_hidden_files = true
 
 [connection signal="tab_changed" from="left/tab" to="." method="_on_tab_changed"]
-[connection signal="text_changed" from="left/tab/Stages/HBoxContainer/StagesLineEdit" to="left/tab/Stages/StageItemList" method="_on_StagesLineEdit_text_changed"]
-[connection signal="item_selected" from="left/tab/Stages/StageItemList" to="." method="_on_StageItemList_item_selected"]
+[connection signal="text_changed" from="left/tab/Stages/HBoxContainer/StagesLineEdit" to="left/tab/Stages/StageItemTree" method="_on_StagesLineEdit_text_changed"]
+[connection signal="item_selected" from="left/tab/Stages/StageItemTree" to="." method="_on_StageItemList_item_selected"]
 [connection signal="text_changed" from="left/tab/Enemies/HBoxContainer/FilterLineEdit" to="left/tab/Enemies/EnemyTree" method="_on_FilterLineEdit_text_changed"]
 [connection signal="text_changed" from="left/tab/Items/HBoxContainer/FilterLineEdit" to="left/tab/Items/ItemTree" method="_on_FilterLineEdit_text_changed"]
 [connection signal="item_activated" from="left/tab/Players" to="." method="_on_Players_item_activated"]

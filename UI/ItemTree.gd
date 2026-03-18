@@ -2,47 +2,28 @@ extends Tree
 class_name ItemTree
 
 var _rebuild_list_thread = null
-var _cancel_rebuild_list_thread := false
 
 func _ready():
-	_rebuild_list()
-	
-func _on_FilterLineEdit_text_changed(new_text: String):
-	_rebuild_list(new_text)
-	SelectedListManager.set_item_filter(new_text)
-
-func _rebuild_list(filter_text: String = ""):
-	clear()
 	var root := create_item()
-	
-	# If there's an old thread that hasn't finished, cancel it
-	# if there's an old thread that has finished, join it and start a new one
-	# if there's no old thread, start a new one
-	if _rebuild_list_thread != null and _rebuild_list_thread.is_active():
-		_cancel_rebuild_list_thread = true
-		_rebuild_list_thread.wait_to_finish()
-	
-	_cancel_rebuild_list_thread = false
 	_rebuild_list_thread = Thread.new()
-	assert(_rebuild_list_thread.start(Callable(self, "_do_rebuild_list").bind([root, filter_text])) == OK)
+	assert(_rebuild_list_thread.start(Callable(self, "_do_rebuild_list").bind([root])) == OK)
+	
+func _on_FilterLineEdit_text_changed(filter_text: String):
+	var normalized_filter_text := filter_text.to_upper()
+	for item_element in get_root().get_children():
+		var item: Item = item_element.get_metadata(0)
+		var matches := normalized_filter_text.length() == 0 or item.matches_filter_text(normalized_filter_text)
+		item_element.visible = matches
+	SelectedListManager.set_item_filter(filter_text)
 
 func _do_rebuild_list(args: Array) -> void:
 	var root: Object = args[0]
-	var filter_text: String = args[1]
 	var deferred_calls = []
-	var normalized_filter_text := filter_text.to_upper()
 	
 	# Load everything first
 	for item in DataProvider.item_list:
-		if _cancel_rebuild_list_thread:
-			_cancel_rebuild_list_thread = false
-			return
-		if normalized_filter_text.length() == 0 or item.matches_filter_text(normalized_filter_text):
-			var text := "%s\n%s [%d]" % [item.name, "★".repeat(item.quality_stars), item.id]
-			# Godot 4 migration
-			# "icon" is declared but never used in the block
-			# var icon = item.icon
-			deferred_calls.append(["_add_item_to_tree_node", root, text, item])
+		var text := "%s\n%s [%d]" % [item.name, "★".repeat(item.quality_stars), item.id]
+		deferred_calls.append(["_add_item_to_tree_node", root, text, item])
 			
 	# Defer calls that modify the scene tree since they're not thread safe
 	for deferred_call in deferred_calls:
@@ -55,27 +36,15 @@ func _add_item_to_tree_node(parent: Object, text: String, metadata: Object) -> v
 	item_item.set_metadata(0, metadata)
 	item_item.set_cell_mode(0, TreeItem.CELL_MODE_CUSTOM)
 	
-	# Godot 4 migration
-	# The "set_custom_draw()" method is deprecated, use "set_custom_draw_callback()" instead.
-	# item_item.set_custom_draw(0, self, "_draw_tree_item")
 	item_item.set_custom_draw_callback(0, Callable(self, "_draw_tree_item"))
 	
 func _draw_tree_item(tree_item: TreeItem, rect: Rect2):
 	var item: Item = tree_item.get_metadata(0)
-	# Godot 4 migration
-	# var icon_position := Vector2(rect.position.x + (24 - item.icon.get_width()/2), rect.position.y + (rect.size.y/2 - item.icon.get_height()/2))
 	var icon_position := Vector2(rect.position.x + (24 - float(item.icon.get_width())/2), rect.position.y + (float(rect.size.y)/2 - float(item.icon.get_height())/2))
 	draw_texture(item.icon, icon_position)
-	# Godot 4 migration
-	# get_font() was renamed to get_theme_font()
-	# draw_string(get_font("font"), rect.position + Vector2(48, rect.size.y/2), item.name)
-	# draw_string(get_font("font"), rect.position + Vector2(48, rect.size.y/2 + 16), "%s[%d]" % ["★".repeat(item.quality_stars), item.id])
 	draw_string(get_theme_font("font"), rect.position + Vector2(48, rect.size.y/2), item.name)
 	draw_string(get_theme_font("font"), rect.position + Vector2(48, rect.size.y/2 + 16), "%s[%d]" % ["★".repeat(item.quality_stars), item.id])
 
-# Godot 4 migration
-# "position" is shadowing an already-declared property in the base class
-# func _get_drag_data(position):
 func _get_drag_data(at_position):
 	var selected_items = []
 	var selected_tree_item = get_next_selected(null)
