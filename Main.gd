@@ -23,9 +23,13 @@ const ShopPlacemarkScene = preload("res://UI/Marker/ToggleableShopPlacemark.tscn
 	[]
 ]
 
-var camera_tween: Tween
 
+var camera_tween: Tween
 var _pending_map_loads := []
+
+# Variables para la adición escalonada de marcadores
+var _pending_marker_queue := []
+var _pending_marker_subgroup_id = null
 
 func _ready():
 	camera_tween = get_tree().create_tween()
@@ -41,6 +45,41 @@ func _ready():
 	_on_ui_settings_updated()
 
 func _process(_delta):
+	if _pending_marker_queue != null and _pending_marker_queue.size() > 0:
+		var markers_per_frame = 10
+		var added = 0
+		while _pending_marker_queue.size() > 0 and added < markers_per_frame:
+			var entry = _pending_marker_queue.pop_front()
+			var t = entry.type
+			var d = entry.data
+			if t == "enemy":
+				var enemy_subgroup_placemark = EnemyPlacemarkScene.instantiate()
+				assert(enemy_subgroup_placemark.connect("enemy_subgroup_mouse_entered", Callable(ui_node, "_on_enemy_subgroup_placemark_mouse_entered").bind(_pending_marker_subgroup_id, enemy_subgroup_placemark)) == OK)
+				assert(enemy_subgroup_placemark.connect("enemy_subgroup_mouse_exited", Callable(ui_node, "_on_enemy_subgroup_placemark_mouse_exited").bind(_pending_marker_subgroup_id, enemy_subgroup_placemark)) == OK)
+				enemy_subgroup_placemark.enemy_set = d.enemy_set
+				enemy_subgroup_placemark.enemy_subgroup = d.enemy_subgroup
+				enemy_sets_node.add_child(enemy_subgroup_placemark)
+			elif t == "gathering":
+				var gathering_placemark = GatheringPlacemarkScene.instantiate()
+				assert(gathering_placemark.connect("subgroup_mouse_entered", Callable(ui_node, "_on_gathering_subgroup_placemark_mouse_entered").bind(gathering_placemark)) == OK)
+				assert(gathering_placemark.connect("subgroup_mouse_exited", Callable(ui_node, "_on_gathering_subgroup_placemark_mouse_exited").bind(gathering_placemark)) == OK)
+				gathering_placemark.gathering_spot = d.entity
+				gathering_spots_node.add_child(gathering_placemark)
+			elif t == "shop":
+				var shop_placemark = ShopPlacemarkScene.instantiate()
+				assert(shop_placemark.connect("subgroup_mouse_entered", Callable(ui_node, "_on_shop_placemark_mouse_entered").bind(shop_placemark)) == OK)
+				assert(shop_placemark.connect("subgroup_mouse_exited", Callable(ui_node, "_on_shop_placemark_mouse_exited").bind(shop_placemark)) == OK)
+				shop_placemark.stage_id = d.stage_id
+				shop_placemark.npc_id = d.npc_id
+				shop_placemark.institution_function_id = d.institution_function_id
+				shop_placemark.coordinates = d.pos
+				shop_placemark.shop = d.shop_entity
+				shops_node.add_child(shop_placemark)
+			added += 1
+			
+		if _pending_marker_queue.size() == 0:
+			_focus_camera_on_center()
+
 	if _pending_map_loads.size() > 0:
 		var finished = []
 		for i in range(_pending_map_loads.size()):
@@ -77,9 +116,9 @@ func _on_ui_stage_selected(stage_no):
 	
 	var stage_id = DataProvider.stage_no_to_stage_id(int(stage_no))
 	if stage_id == -1:
-		print("Selected stage ??? (ID: ???, Stage No. %s) with %s markers" % [stage_no, enemy_sets_node.get_child_count()])
+		print("Selected stage ??? (ID: ???, Stage No. %s)" % [stage_no])
 	else:
-		print("Selected stage %s (ID: %s, Stage No. %s) with %s markers" % [tr(str("STAGE_NAME_",stage_id)), stage_id, stage_no, enemy_sets_node.get_child_count()])
+		print("Selected stage %s (ID: %s, Stage No. %s)" % [tr(str("STAGE_NAME_",stage_id)), stage_id, stage_no])
 
 
 func _load_stage_map(stage_no: String) -> void:
@@ -167,59 +206,46 @@ func _load_and_add_map_to(map_resource_path: String, layer_index: int, offset: V
 
 
 func _load_stage_markers(stage_no, subgroup_id):
+	_pending_marker_queue.clear()
+	_pending_marker_subgroup_id = subgroup_id
 	var stage_id = DataProvider.stage_no_to_stage_id(int(stage_no))
 	
-	# Build enemy set markers for the new stage
 	for enemy_set in SetProvider.get_all_enemy_sets():
 		if enemy_set.stage_id == stage_id:
-			var enemy_subgroup: EnemySubgroup = enemy_set.get_subgroup(subgroup_id)
+			var enemy_subgroup = enemy_set.get_subgroup(subgroup_id)
 			if enemy_subgroup.positions.size() > 0:
-				var enemy_subgroup_placemark: ToggleableEnemySubgroupPlacemark = EnemyPlacemarkScene.instantiate()
-				assert(enemy_subgroup_placemark.connect("enemy_subgroup_mouse_entered", Callable(ui_node, "_on_enemy_subgroup_placemark_mouse_entered").bind(subgroup_id, enemy_subgroup_placemark)) == OK)
-				assert(enemy_subgroup_placemark.connect("enemy_subgroup_mouse_exited", Callable(ui_node, "_on_enemy_subgroup_placemark_mouse_exited").bind(subgroup_id, enemy_subgroup_placemark)) == OK)
-				
-				enemy_subgroup_placemark.enemy_set = enemy_set
-				enemy_subgroup_placemark.enemy_subgroup = enemy_subgroup
-				enemy_sets_node.add_child(enemy_subgroup_placemark)
+				_pending_marker_queue.append({"type": "enemy", "data": {"enemy_set": enemy_set, "enemy_subgroup": enemy_subgroup}})
 
-	# Build gathering spot markers for the new stage
 	if String(stage_no) in DataProvider.gathering_spots:
 		for gathering_spot in DataProvider.gathering_spots[String(stage_no)]:
-			var type := int(gathering_spot.get("GatheringType", 0))
+			var type = int(gathering_spot.get("GatheringType", 0))
 			if type != 30 and type != 36:
-				# Show marker if the type isn't Twinkle or One Off
-				var group_no := int(gathering_spot["GroupNo"])
-				var pos_id := int(gathering_spot["PosId"])
-				var pos := Vector3(gathering_spot["Position"]["x"], gathering_spot["Position"]["y"], gathering_spot["Position"]["z"])
-				var unit_id := int(gathering_spot["UnitId"])
+				var group_no = int(gathering_spot["GroupNo"])
+				var pos_id = int(gathering_spot["PosId"])
+				var pos = Vector3(gathering_spot["Position"]["x"], gathering_spot["Position"]["y"], gathering_spot["Position"]["z"])
+				var unit_id = int(gathering_spot["UnitId"])
 				var gathering_spot_entity = SetProvider.get_gathering_spot(stage_id, group_no, pos_id)
 				gathering_spot_entity.type = type
 				gathering_spot_entity.unit_id = unit_id
 				gathering_spot_entity.coordinates = pos
-				
-				var gathering_placemark: ToggleableGatheringSpotPlacemark = GatheringPlacemarkScene.instantiate()
-				assert(gathering_placemark.connect("subgroup_mouse_entered", Callable(ui_node, "_on_gathering_subgroup_placemark_mouse_entered").bind(gathering_placemark)) == OK)
-				assert(gathering_placemark.connect("subgroup_mouse_exited", Callable(ui_node, "_on_gathering_subgroup_placemark_mouse_exited").bind(gathering_placemark)) == OK)
-				gathering_placemark.gathering_spot = gathering_spot_entity
-				gathering_spots_node.add_child(gathering_placemark)
-				
-	# Build shop markers for the new stage
+				_pending_marker_queue.append({"type": "gathering", "data": {"entity": gathering_spot_entity}})
+
 	if String(stage_no) in DataProvider.shops:
 		for shop in DataProvider.shops[String(stage_no)]:
-			var npc_id := int(shop["NpcId"])
-			var institution_function_id := int(shop["InstitutionFunctionId"])
-			var shop_id := int(shop["ShopId"])
-			var pos := Vector3(shop["Position"]["x"], shop["Position"]["y"], shop["Position"]["z"])
-			var shop_placemark: ToggleableShopPlacemark = ShopPlacemarkScene.instantiate()
-			assert(shop_placemark.connect("subgroup_mouse_entered", Callable(ui_node, "_on_shop_placemark_mouse_entered").bind(shop_placemark)) == OK)
-			assert(shop_placemark.connect("subgroup_mouse_exited", Callable(ui_node, "_on_shop_placemark_mouse_exited").bind(shop_placemark)) == OK)
-			shop_placemark.stage_id = stage_id
-			shop_placemark.npc_id = npc_id
-			shop_placemark.institution_function_id = institution_function_id
-			shop_placemark.coordinates = pos
-			shop_placemark.shop = SetProvider.get_shop(shop_id)
-			shops_node.add_child(shop_placemark)
-			
+			var npc_id = int(shop["NpcId"])
+			var institution_function_id = int(shop["InstitutionFunctionId"])
+			var shop_id = int(shop["ShopId"])
+			var pos = Vector3(shop["Position"]["x"], shop["Position"]["y"], shop["Position"]["z"])
+			var shop_entity = SetProvider.get_shop(shop_id)
+			_pending_marker_queue.append({"type": "shop", "data": {
+				"stage_id": stage_id,
+				"npc_id": npc_id,
+				"institution_function_id": institution_function_id,
+				"shop_entity": shop_entity,
+				"pos": pos
+			}})
+
+
 func _map_resource_exists(resource_path: String) -> bool:
 	return image_array_jorobate_flanders.has(resource_path)
 
