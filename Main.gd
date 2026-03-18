@@ -242,7 +242,7 @@ func _on_ui_player_activated(player: PlayerMapEntity):
 				camera_tween.kill()
 			var player_node = players_node.get_player_node(player)
 			if player_node != null:
-				_move_camera_to(player_node.position)
+				_move_camera_to(player_node.global_position)
 				return
 	printerr("Couldnt focus map on %s %s (StageNo: %s)" % [player.FirstName, player.LastName, player.StageNo])
 
@@ -269,7 +269,7 @@ func _focus_camera_on_center() -> void:
 		new_position = _get_map_center()
 	
 	if new_position != null:
-		_move_camera_to(new_position * MapControl.MAP_SCALE)
+		_move_camera_to(new_position)
 
 
 func _move_camera_to(new_position: Vector2) -> void:
@@ -300,10 +300,7 @@ func _get_enemy_groups_center() -> Vector2:
 	
 	for enemy_group in enemy_sets_node.get_children():
 		for enemy_position in enemy_group.get_position_placemarks():
-			# Godot 4 migration
-# 			"position" is shadowing an already-declared property in the base class
-			# var position: Vector2 = enemy_position.get_rect().get_center()
-			var map_position: Vector2 = enemy_position.get_rect().get_center()
+			var map_position: Vector2 = enemy_position.get_global_rect().get_center()
 			min_x = int(min(min_x, map_position.x))
 			max_x = int(max(max_x, map_position.x))
 			min_y = int(min(min_y, map_position.y))
@@ -319,10 +316,7 @@ func _get_map_center() -> Vector2:
 	
 	for map_layer in map_layers.get_children():
 		for map in map_layer.get_children():
-			# Godot 4 migration
-# 			"position" is shadowing an already-declared property in the base class
-			# var position: Vector2 = map.get_rect().get_center()
-			var map_position: Vector2 = map.get_rect().get_center()
+			var map_position: Vector2 = map.to_global(map.get_rect().get_center())
 			min_x = int(min(min_x, map_position.x))
 			max_x = int(max(max_x, map_position.x))
 			min_y = int(min(min_y, map_position.y))
