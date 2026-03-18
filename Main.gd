@@ -78,6 +78,7 @@ func _process(_delta):
 			added += 1
 			
 		if _pending_marker_queue.size() == 0:
+			_update_layer_selector()
 			_focus_camera_on_center()
 
 	if _pending_map_loads.size() > 0:
@@ -111,8 +112,6 @@ func _on_ui_stage_selected(stage_no):
 	_load_stage_map(stage_no)
 	_clear_markers()
 	_load_stage_markers(stage_no, $ui.current_subgroup_id)
-	_update_layer_selector()
-	_focus_camera_on_center()
 	
 	var stage_id = DataProvider.stage_no_to_stage_id(int(stage_no))
 	if stage_id == -1:
