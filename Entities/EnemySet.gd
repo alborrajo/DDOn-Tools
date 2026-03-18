@@ -1,11 +1,11 @@
 extends Resource
 class_name EnemySet
 
-export var stage_id: int setget _set_stage_id
-export var layer_no: int setget _set_layer_no
-export var group_id: int setget _set_group_id
+@export var stage_id: int: set = _set_stage_id
+@export var layer_no: int: set = _set_layer_no
+@export var group_id: int: set = _set_group_id
 
-export var subgroup_position_template: Array # Array of Vector3
+@export var subgroup_position_template: Array # Array of Vector3
 
 var subgroups: Array # Array of nullable EnemySubgroup
 
@@ -21,7 +21,7 @@ func get_subgroup_or_create_with_positions(subgroup_id: int, positions: Array):
 		subgroups.resize(subgroup_id+1)
 	if subgroups[subgroup_id] == null:
 		var new_subgroup := EnemySubgroup.new(positions)
-		assert(new_subgroup.connect("changed", self, "emit_changed") == OK)
+		assert(new_subgroup.connect("changed", Callable(self, "emit_changed")) == OK)
 		subgroups[subgroup_id] = new_subgroup
 	return subgroups[subgroup_id]
 	

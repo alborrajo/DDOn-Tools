@@ -1,17 +1,17 @@
 extends Node
 
-export (String, FILE, "*.csv") var enemy_csv := "res://resources/enemies.csv"
-export (String, FILE, "*.csv") var items_csv := "res://resources/items.csv"
+@export var enemy_csv := "res://resources/enemies.csv" # (String, FILE, "*.csv")
+@export var items_csv := "res://resources/items.csv" # (String, FILE, "*.csv")
 
-export (String, FILE, "*.json") var named_param_json := "res://resources/named_param.ndp.json"
-export (String, FILE, "*.csv") var map_dimensions_csv := "res://resources/maps/dimensions.csv"
-export (String, FILE, "*.json") var stage_custom_json := "res://resources/StageCustom.json"
-export (String, FILE, "*.csv") var stage_room_csv := "res://resources/StageRoom.csv"
-export (String, FILE, "*.json") var stage_list_json := "res://resources/StageList.json"
-export (String, FILE, "*.json") var repo_json := "res://resources/repo.json"
-export (String, FILE, "*.json") var gathering_spots_json := "res://resources/gatheringSpots.json"
-export (String, FILE, "*.json") var enemy_positions_json := "res://resources/enemyPositions.json"
-export (String, FILE, "*.json") var shops_json := "res://resources/shops.json"
+@export var named_param_json := "res://resources/named_param.ndp.json" # (String, FILE, "*.json")
+@export var map_dimensions_csv := "res://resources/maps/dimensions.csv" # (String, FILE, "*.csv")
+@export var stage_custom_json := "res://resources/StageCustom.json" # (String, FILE, "*.json")
+@export var stage_room_csv := "res://resources/StageRoom.csv" # (String, FILE, "*.csv")
+@export var stage_list_json := "res://resources/StageList.json" # (String, FILE, "*.json")
+@export var repo_json := "res://resources/repo.json" # (String, FILE, "*.json")
+@export var gathering_spots_json := "res://resources/gatheringSpots.json" # (String, FILE, "*.json")
+@export var enemy_positions_json := "res://resources/enemyPositions.json" # (String, FILE, "*.json")
+@export var shops_json := "res://resources/shops.json" # (String, FILE, "*.json")
 
 var enemy_list: Array
 var item_list: Array
@@ -26,10 +26,13 @@ var enemy_sets: Dictionary
 var gathering_spots: Dictionary
 var shops: Dictionary
 
+var _enemy_id_lookup: Dictionary
+var _item_id_lookup: Dictionary
+
 func _ready():
 	enemy_list = []
-	var file := File.new()
-	assert(file.open(enemy_csv, File.READ) == OK)
+	var file := FileAccess.open(enemy_csv, FileAccess.READ)
+	assert(file.get_error() == OK)
 	# warning-ignore:return_value_discarded
 	file.get_csv_line() # Ignore header line
 	while !file.eof_reached():
@@ -37,11 +40,12 @@ func _ready():
 		if csv_line.size() >= 3:
 			var enemy := EnemyType.new(csv_line[0].hex_to_int(), int(csv_line[2]), int(csv_line[3]))
 			enemy_list.append(enemy)
+			_enemy_id_lookup.set(enemy.id, enemy)
 	file.close()
 
 	item_list = []
-	file = File.new()
-	assert(file.open(items_csv, File.READ) == OK)
+	file = FileAccess.open(items_csv, FileAccess.READ)
+	assert(file.get_error() == OK)
 	# warning-ignore:return_value_discarded
 	file.get_csv_line() # Ignore header line
 	while !file.eof_reached():
@@ -49,6 +53,7 @@ func _ready():
 		if csv_line.size() >= 3:
 			var item := Item.new(int(csv_line[0]), int(csv_line[1]), int(csv_line[2]), int(csv_line[3]), int(csv_line[4]))
 			item_list.append(item)
+			_item_id_lookup.set(item.id, item)
 	file.close()
 
 	named_params = []
@@ -87,8 +92,8 @@ func _ready():
 			existing_enemy_set["Positions"].append(enemy_position["Position"])
 	
 	stage_room = {}
-	file = File.new()
-	assert(file.open(stage_room_csv, File.READ) == OK)
+	file = FileAccess.open(stage_room_csv, FileAccess.READ)
+	assert(file.get_error() == OK)
 	# warning-ignore:return_value_discarded
 	file.get_csv_line() # Ignore header line
 	while !file.eof_reached():
@@ -98,8 +103,8 @@ func _ready():
 	file.close()
 
 	map_dimensions = {}
-	file = File.new()
-	assert(file.open(map_dimensions_csv, File.READ) == OK)
+	file = FileAccess.open(map_dimensions_csv, FileAccess.READ)
+	assert(file.get_error() == OK)
 	# warning-ignore:return_value_discarded
 	file.get_csv_line() # Ignore header line
 	while !file.eof_reached():
@@ -109,24 +114,20 @@ func _ready():
 	file.close()
 
 func get_enemy_by_id(id: int) -> EnemyType:
-	# Also inefficient af
-	for enemy_type in DataProvider.enemy_list:
-		if enemy_type.id == id:
-			return enemy_type
-	printerr("Couldn't find enemy with id", id)
-	return null
+	var enemy: EnemyType = _enemy_id_lookup.get(id)
+	if enemy == null:
+		printerr("Couldn't find enemy with id", id)
+	return enemy
 
 func get_item_by_id(id: int) -> Item:
-	# Also inefficient af
-	for item in DataProvider.item_list:
-		if item.id == id:
-			return item
-	printerr("Couldn't find item with id", id)
-	return null
+	var item: Item = _item_id_lookup.get(id)
+	if item == null:
+		printerr("Couldn't find item with id", id)
+	return item
 
 func stage_no_to_stage_map(stage_no: int) -> Dictionary:
-	return stage_custom.get(String(stage_no))
-
+	return stage_custom.get(str(stage_no), {}) 
+	
 func stage_no_to_stage_room(stage_no: int) -> RoomMap:
 	return stage_room.get(stage_no)
 

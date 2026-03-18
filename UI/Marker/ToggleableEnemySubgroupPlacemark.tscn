@@ -1,22 +1,27 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=9 format=3 uid="uid://dd25ok8sohlhh"]
 
-[ext_resource path="res://UI/Marker/ToggleablePlacemark.tscn" type="PackedScene" id=1]
-[ext_resource path="res://resources/fonts/NotoSansJP-Regular.otf" type="DynamicFontData" id=2]
-[ext_resource path="res://UI/Marker/ToggleableEnemySubgroupPlacemark.gd" type="Script" id=3]
+[ext_resource type="PackedScene" uid="uid://ck3uhodqituuy" path="res://UI/Marker/ToggleablePlacemark.tscn" id="1"]
+[ext_resource type="FontFile" uid="uid://ce1nim26vue1m" path="res://resources/fonts/NotoSansJP-Regular.otf" id="2"]
+[ext_resource type="Script" uid="uid://c4qoaymq8a3m" path="res://UI/Marker/ToggleableEnemySubgroupPlacemark.gd" id="3"]
 
-[sub_resource type="DynamicFont" id=1]
-size = 14
-outline_size = 1
-outline_color = Color( 0.14902, 0.14902, 0.14902, 1 )
-font_data = ExtResource( 2 )
+[sub_resource type="FontFile" id="1"]
+fallbacks = Array[Font]([ExtResource("2"), ExtResource("2"), ExtResource("2"), ExtResource("2")])
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
 
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0.556863, 0.2, 0.2, 1 )
+[sub_resource type="StyleBoxFlat" id="2"]
+bg_color = Color(1, 0.333333, 0.333333, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
-border_color = Color( 0.494118, 0.0470588, 0.25098, 1 )
+border_color = Color(0.494118, 0.0470588, 0.25098, 1)
 border_blend = true
 corner_radius_top_left = 10
 corner_radius_top_right = 10
@@ -25,13 +30,13 @@ corner_radius_bottom_left = 10
 expand_margin_left = 2.0
 expand_margin_right = 2.0
 
-[sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0.356863, 0.0980392, 0.211765, 1 )
+[sub_resource type="StyleBoxFlat" id="4"]
+bg_color = Color(0.356863, 0.0980392, 0.211765, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
-border_color = Color( 0.494118, 0.0470588, 0.25098, 1 )
+border_color = Color(0.494118, 0.0470588, 0.25098, 1)
 border_blend = true
 corner_radius_top_left = 10
 corner_radius_top_right = 10
@@ -40,13 +45,13 @@ corner_radius_bottom_left = 10
 expand_margin_left = 2.0
 expand_margin_right = 2.0
 
-[sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 1, 0.333333, 0.333333, 1 )
+[sub_resource type="StyleBoxFlat" id="3"]
+bg_color = Color(0.556863, 0.2, 0.2, 1)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
-border_color = Color( 0.494118, 0.0470588, 0.25098, 1 )
+border_color = Color(0.494118, 0.0470588, 0.25098, 1)
 border_blend = true
 corner_radius_top_left = 10
 corner_radius_top_right = 10
@@ -55,35 +60,47 @@ corner_radius_bottom_left = 10
 expand_margin_left = 2.0
 expand_margin_right = 2.0
 
-[sub_resource type="DynamicFont" id=5]
-outline_size = 2
-outline_color = Color( 0.61, 0.61, 0, 1 )
-font_data = ExtResource( 2 )
+[sub_resource type="FontFile" id="5"]
+fallbacks = Array[Font]([ExtResource("2"), ExtResource("2"), ExtResource("2"), ExtResource("2")])
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
 
-[node name="ToggleableEnemySubgroupPlacemark" instance=ExtResource( 1 )]
-script = ExtResource( 3 )
+[node name="ToggleableEnemySubgroupPlacemark" instance=ExtResource("1")]
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3")
+
+[node name="MapControl" parent="." index="0"]
+scale = Vector2(0.1, 0.1)
 
 [node name="ToggleButton" parent="MapControl" index="0"]
-margin_left = -33.0
-margin_top = -15.0
-margin_right = 34.0
-margin_bottom = 15.0
-custom_fonts/font = SubResource( 1 )
-custom_styles/hover = SubResource( 3 )
-custom_styles/pressed = SubResource( 4 )
-custom_styles/normal = SubResource( 2 )
+offset_left = -33.0
+offset_top = -15.0
+offset_right = 34.0
+offset_bottom = 15.0
+theme_override_fonts/font = SubResource("1")
+theme_override_styles/normal = SubResource("2")
+theme_override_styles/pressed = SubResource("4")
+theme_override_styles/hover = SubResource("3")
 text = "GRP - X/Y"
 flat = false
 
 [node name="WarningLabel" type="Label" parent="MapControl/ToggleButton" index="0"]
-margin_left = -22.0
-margin_top = 3.0
-margin_right = 30.0
-margin_bottom = 27.0
-rect_min_size = Vector2( 16, 24 )
+custom_minimum_size = Vector2(16, 24)
+layout_mode = 0
+offset_left = -22.0
+offset_top = 3.0
+offset_right = 30.0
+offset_bottom = 27.0
 size_flags_vertical = 0
-custom_colors/font_color = Color( 1, 1, 0, 1 )
-custom_fonts/font = SubResource( 5 )
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = SubResource("5")
 text = "⚠"
 
 [node name="Panel" parent="MapControl/Control" index="0"]
@@ -91,9 +108,18 @@ visible = false
 
 [node name="CloseButton" parent="MapControl/Control" index="1"]
 visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 24.0
+offset_bottom = 24.0
 
 [node name="EnemyPositionPlacemarksControl" type="Control" parent="." index="1"]
-margin_right = 40.0
-margin_bottom = 40.0
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="gui_input" from="EnemyPositionPlacemarksControl" to="." method="_on_EnemyPositionPlacemarksControl_gui_input"]

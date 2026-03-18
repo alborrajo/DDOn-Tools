@@ -7,7 +7,7 @@ func _init(position_template: Array):
 	self.positions = []
 	for position_template_item in position_template:
 		var position := EnemyPosition.new(position_template_item)
-		assert(position.connect("changed", self, "emit_changed") == OK)
+		assert(position.connect("changed", Callable(self, "emit_changed")) == OK)
 		self.positions.append(position)
 
 func add_enemy(enemy: Enemy) -> int:

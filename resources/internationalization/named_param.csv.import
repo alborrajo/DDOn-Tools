@@ -2,13 +2,14 @@
 
 importer="csv_translation"
 type="Translation"
+uid="uid://bibv0dwtlx007"
 
 [deps]
 
-files=[ "res://resources/internationalization/named_param.ja.translation", "res://resources/internationalization/named_param.en.translation" ]
+files=["res://resources/internationalization/named_param.ja.translation", "res://resources/internationalization/named_param.en.translation"]
 
 source_file="res://resources/internationalization/named_param.csv"
-dest_files=[ "res://resources/internationalization/named_param.ja.translation", "res://resources/internationalization/named_param.en.translation" ]
+dest_files=["res://resources/internationalization/named_param.ja.translation", "res://resources/internationalization/named_param.en.translation"]
 
 [params]
 

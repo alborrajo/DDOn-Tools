@@ -25,7 +25,7 @@ func _on_EnemyFileMenu_file_loaded():
 								enemies_with_old_day_range.append(enemy)
 							elif enemy.custom_time == "18:00,06:59":
 								enemies_with_old_night_range.append(enemy)
-	if not has_enemies_with_new_time_range and (not enemies_with_old_day_range.empty() or not enemies_with_old_night_range.empty()):
+	if not has_enemies_with_new_time_range and (not enemies_with_old_day_range.is_empty() or not enemies_with_old_night_range.is_empty()):
 		popup()
 
 func _on_DayNightTimeMigrationConfirmationDialog_confirmed():

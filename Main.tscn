@@ -1,30 +1,33 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=6 format=3 uid="uid://m4s122w2kpof"]
 
-[ext_resource path="res://Main/PlayerMarkers.gd" type="Script" id=1]
-[ext_resource path="res://Main.gd" type="Script" id=2]
-[ext_resource path="res://UI/Camera.gd" type="Script" id=3]
-[ext_resource path="res://UI/UI.tscn" type="PackedScene" id=4]
-[ext_resource path="res://MapCoordinateSpace.gd" type="Script" id=5]
+[ext_resource type="Script" uid="uid://cat6cyenudjb" path="res://Main/PlayerMarkers.gd" id="1"]
+[ext_resource type="Script" uid="uid://bexj84rgwd35y" path="res://Main.gd" id="2"]
+[ext_resource type="Script" uid="uid://bt0gmkhq2dedu" path="res://UI/Camera.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://bddf5yj35ntu3" path="res://UI/UI.tscn" id="4"]
+[ext_resource type="Script" uid="uid://u8uqbk5j1e1y" path="res://MapCoordinateSpace.gd" id="5"]
 
 [node name="root" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 2 )
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2")
 
 [node name="camera" type="Camera2D" parent="." groups=["camera"]]
-position = Vector2( 175, 258 )
-current = true
-zoom = Vector2( 100, 100 )
-script = ExtResource( 3 )
-
-[node name="CameraTween" type="Tween" parent="."]
+position = Vector2(175, 258)
+zoom = Vector2(0.001, 0.001)
+limit_enabled = false
+script = ExtResource("3")
 
 [node name="MapCoordinateSpace" type="Node2D" parent="."]
-script = ExtResource( 5 )
+scale = Vector2(100, 100)
+script = ExtResource("5")
 
 [node name="MapLayers" type="Node2D" parent="MapCoordinateSpace"]
 show_behind_parent = true
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2(0.1, 0.1)
 
 [node name="Layer 0" type="Node2D" parent="MapCoordinateSpace/MapLayers"]
 visible = false
@@ -59,25 +62,33 @@ visible = false
 [node name="EnemySetMarkers" type="Control" parent="MapCoordinateSpace"]
 visible = false
 show_behind_parent = true
+layout_mode = 3
+anchors_preset = 0
 mouse_filter = 1
 
 [node name="GatheringSpotMarkers" type="Control" parent="MapCoordinateSpace"]
 visible = false
 show_behind_parent = true
+layout_mode = 3
+anchors_preset = 0
 mouse_filter = 1
 
 [node name="PlayerMarkers" type="Control" parent="MapCoordinateSpace"]
 visible = false
 show_behind_parent = true
-script = ExtResource( 1 )
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1")
 
 [node name="ShopMarkers" type="Control" parent="MapCoordinateSpace"]
 visible = false
 show_behind_parent = true
-margin_right = 40.0
-margin_bottom = 40.0
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="ui" parent="." instance=ExtResource( 4 )]
+[node name="ui" parent="." instance=ExtResource("4")]
 
 [connection signal="gui_input" from="." to="camera" method="_on_root_gui_input"]
 [connection signal="layer_selected" from="ui" to="." method="_on_layer_selected"]

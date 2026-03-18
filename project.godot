@@ -6,348 +6,15 @@
 ;   [section] ; section goes between []
 ;   param=value ; assign values to parameters
 
-config_version=4
-
-_global_script_classes=[ {
-"base": "VBoxContainer",
-"class": "Chat",
-"language": "GDScript",
-"path": "res://UI/Chat.gd"
-}, {
-"base": "Reference",
-"class": "Common",
-"language": "GDScript",
-"path": "res://Common.gd"
-}, {
-"base": "ConfirmationDialog",
-"class": "DayNightTimeMigrationConfirmationDialog",
-"language": "GDScript",
-"path": "res://UI/DayNightTimeMigrationConfirmationDialog.gd"
-}, {
-"base": "Panel",
-"class": "DetailsPanel",
-"language": "GDScript",
-"path": "res://UI/DetailsPanel.gd"
-}, {
-"base": "VBoxContainer",
-"class": "DropItemPanel",
-"language": "GDScript",
-"path": "res://UI/DropItemPanel.gd"
-}, {
-"base": "VBoxContainer",
-"class": "DropsController",
-"language": "GDScript",
-"path": "res://UI/DropsController.gd"
-}, {
-"base": "Resource",
-"class": "DropsTable",
-"language": "GDScript",
-"path": "res://Entities/DropsTable.gd"
-}, {
-"base": "PanelContainer",
-"class": "DropsTableItemsPanel",
-"language": "GDScript",
-"path": "res://UI/DropTableItemsPanel.gd"
-}, {
-"base": "Resource",
-"class": "Enemy",
-"language": "GDScript",
-"path": "res://Entities/Enemy.gd"
-}, {
-"base": "ScrollContainer",
-"class": "EnemyDetailsPanel",
-"language": "GDScript",
-"path": "res://UI/EnemyDetailsPanel.gd"
-}, {
-"base": "GenericFileMenu",
-"class": "EnemyFileMenu",
-"language": "GDScript",
-"path": "res://UI/EnemyFileMenu.gd"
-}, {
-"base": "GenericPlacemark",
-"class": "EnemyPlacemark",
-"language": "GDScript",
-"path": "res://UI/Marker/EnemyPlacemark.gd"
-}, {
-"base": "Resource",
-"class": "EnemyPosition",
-"language": "GDScript",
-"path": "res://Entities/EnemyPosition.gd"
-}, {
-"base": "HideableControl",
-"class": "EnemyPositionPlacemark",
-"language": "GDScript",
-"path": "res://UI/Marker/EnemyPositionPlacemark.gd"
-}, {
-"base": "Resource",
-"class": "EnemySet",
-"language": "GDScript",
-"path": "res://Entities/EnemySet.gd"
-}, {
-"base": "Resource",
-"class": "EnemySubgroup",
-"language": "GDScript",
-"path": "res://Entities/EnemySubgroup.gd"
-}, {
-"base": "Tree",
-"class": "EnemyTree",
-"language": "GDScript",
-"path": "res://UI/EnemyTree.gd"
-}, {
-"base": "Resource",
-"class": "EnemyType",
-"language": "GDScript",
-"path": "res://Entities/EnemyType.gd"
-}, {
-"base": "Resource",
-"class": "GatheringItem",
-"language": "GDScript",
-"path": "res://Entities/GatheringItem.gd"
-}, {
-"base": "GenericPlacemark",
-"class": "GatheringItemPlacemark",
-"language": "GDScript",
-"path": "res://UI/Marker/GatheringItemPlacemark.gd"
-}, {
-"base": "Resource",
-"class": "GatheringSpot",
-"language": "GDScript",
-"path": "res://Entities/GatheringSpot.gd"
-}, {
-"base": "Control",
-"class": "GatheringSpotPlacemark",
-"language": "GDScript",
-"path": "res://UI/Marker/GatheringSpotPlacemark.gd"
-}, {
-"base": "MenuButton",
-"class": "GenericFileMenu",
-"language": "GDScript",
-"path": "res://UI/GenericFileMenu.gd"
-}, {
-"base": "Button",
-"class": "GenericPlacemark",
-"language": "GDScript",
-"path": "res://UI/Marker/GenericPlacemark.gd"
-}, {
-"base": "Control",
-"class": "HideableControl",
-"language": "GDScript",
-"path": "res://UI/Marker/HideableControl.gd"
-}, {
-"base": "OptionButton",
-"class": "HmPresetNoOptionButton",
-"language": "GDScript",
-"path": "res://UI/HmPresetNoOptionButton.gd"
-}, {
-"base": "Resource",
-"class": "Item",
-"language": "GDScript",
-"path": "res://Entities/Item.gd"
-}, {
-"base": "ScrollContainer",
-"class": "ItemDetailsPanel",
-"language": "GDScript",
-"path": "res://UI/GatheringItemDetailsPanel.gd"
-}, {
-"base": "GenericFileMenu",
-"class": "ItemFileMenu",
-"language": "GDScript",
-"path": "res://UI/ItemFileMenu.gd"
-}, {
-"base": "Tree",
-"class": "ItemTree",
-"language": "GDScript",
-"path": "res://UI/ItemTree.gd"
-}, {
-"base": "OptionButton",
-"class": "LanguageOptionButton",
-"language": "GDScript",
-"path": "res://UI/LanguageOptionButton.gd"
-}, {
-"base": "Control",
-"class": "Main",
-"language": "GDScript",
-"path": "res://Main.gd"
-}, {
-"base": "Control",
-"class": "MapControl",
-"language": "GDScript",
-"path": "res://UI/Marker/MapControl.gd"
-}, {
-"base": "Node2D",
-"class": "MapCoordinateSpace",
-"language": "GDScript",
-"path": "res://MapCoordinateSpace.gd"
-}, {
-"base": "Button",
-"class": "Minimize",
-"language": "GDScript",
-"path": "res://UI/UI Buttons/Minimize.gd"
-}, {
-"base": "OptionButton",
-"class": "NamedEnemyParamsIdOptionButton",
-"language": "GDScript",
-"path": "res://UI/NamedEnemyParamsIdOptionButton.gd"
-}, {
-"base": "Resource",
-"class": "NamedParam",
-"language": "GDScript",
-"path": "res://Entities/NamedParam.gd"
-}, {
-"base": "PopupPanel",
-"class": "NotificationPopup",
-"language": "GDScript",
-"path": "res://UI/NotificationPopup.gd"
-}, {
-"base": "Reference",
-"class": "PlayerMapEntity",
-"language": "GDScript",
-"path": "res://Entities/Map/PlayerMapEntity.gd"
-}, {
-"base": "MapControl",
-"class": "PlayerMarker",
-"language": "GDScript",
-"path": "res://UI/Marker/PlayerMarker.gd"
-}, {
-"base": "Control",
-"class": "PlayerMarkers",
-"language": "GDScript",
-"path": "res://Main/PlayerMarkers.gd"
-}, {
-"base": "Tree",
-"class": "Players",
-"language": "GDScript",
-"path": "res://UI/Players.gd"
-}, {
-"base": "Reference",
-"class": "RoomMap",
-"language": "GDScript",
-"path": "res://Entities/Map/RoomMap.gd"
-}, {
-"base": "HTTPRequest",
-"class": "RpcRequest",
-"language": "GDScript",
-"path": "res://RpcClient/RpcRequest.gd"
-}, {
-"base": "Resource",
-"class": "Shop",
-"language": "GDScript",
-"path": "res://Entities/Shop.gd"
-}, {
-"base": "GenericFileMenu",
-"class": "ShopFileMenu",
-"language": "GDScript",
-"path": "res://UI/ShopFileMenu.gd"
-}, {
-"base": "Resource",
-"class": "ShopItem",
-"language": "GDScript",
-"path": "res://Entities/ShopItem.gd"
-}, {
-"base": "ScrollContainer",
-"class": "ShopItemDetailsPanel",
-"language": "GDScript",
-"path": "res://UI/ShopItemDetailsPanel.gd"
-}, {
-"base": "Resource",
-"class": "ShopItemRequirement",
-"language": "GDScript",
-"path": "res://Entities/ShopItemRequirement.gd"
-}, {
-"base": "PanelContainer",
-"class": "ShopItemRequirementPanel",
-"language": "GDScript",
-"path": "res://UI/ShopItemRequirementPanel.gd"
-}, {
-"base": "ItemList",
-"class": "StagesItemList",
-"language": "GDScript",
-"path": "res://StageItemList.gd"
-}, {
-"base": "ToggleablePlacemark",
-"class": "ToggleableEnemySubgroupPlacemark",
-"language": "GDScript",
-"path": "res://UI/Marker/ToggleableEnemySubgroupPlacemark.gd"
-}, {
-"base": "ToggleablePlacemark",
-"class": "ToggleableGatheringSpotPlacemark",
-"language": "GDScript",
-"path": "res://UI/Marker/ToggleableGatheringSpotPlacemark.gd"
-}, {
-"base": "Control",
-"class": "ToggleablePlacemark",
-"language": "GDScript",
-"path": "res://UI/Marker/ToggleablePlacemark.gd"
-}, {
-"base": "ToggleablePlacemark",
-"class": "ToggleableShopPlacemark",
-"language": "GDScript",
-"path": "res://UI/Marker/ToggleableShopPlacemark.gd"
-} ]
-_global_script_class_icons={
-"Chat": "",
-"Common": "",
-"DayNightTimeMigrationConfirmationDialog": "",
-"DetailsPanel": "",
-"DropItemPanel": "",
-"DropsController": "",
-"DropsTable": "",
-"DropsTableItemsPanel": "",
-"Enemy": "",
-"EnemyDetailsPanel": "",
-"EnemyFileMenu": "",
-"EnemyPlacemark": "",
-"EnemyPosition": "",
-"EnemyPositionPlacemark": "",
-"EnemySet": "",
-"EnemySubgroup": "",
-"EnemyTree": "",
-"EnemyType": "",
-"GatheringItem": "",
-"GatheringItemPlacemark": "",
-"GatheringSpot": "",
-"GatheringSpotPlacemark": "",
-"GenericFileMenu": "",
-"GenericPlacemark": "",
-"HideableControl": "",
-"HmPresetNoOptionButton": "",
-"Item": "",
-"ItemDetailsPanel": "",
-"ItemFileMenu": "",
-"ItemTree": "",
-"LanguageOptionButton": "",
-"Main": "",
-"MapControl": "",
-"MapCoordinateSpace": "",
-"Minimize": "",
-"NamedEnemyParamsIdOptionButton": "",
-"NamedParam": "",
-"NotificationPopup": "",
-"PlayerMapEntity": "",
-"PlayerMarker": "",
-"PlayerMarkers": "",
-"Players": "",
-"RoomMap": "",
-"RpcRequest": "",
-"Shop": "",
-"ShopFileMenu": "",
-"ShopItem": "",
-"ShopItemDetailsPanel": "",
-"ShopItemRequirement": "",
-"ShopItemRequirementPanel": "",
-"StagesItemList": "",
-"ToggleableEnemySubgroupPlacemark": "",
-"ToggleableGatheringSpotPlacemark": "",
-"ToggleablePlacemark": "",
-"ToggleableShopPlacemark": ""
-}
+config_version=5
 
 [application]
 
 config/name="DDOn Tools"
 run/main_scene="res://Main.tscn"
+config/features=PackedStringArray("4.5")
+boot_splash/bg_color=Color(0.698039, 0.686275, 0.639216, 1)
 boot_splash/image="res://splash.png"
-boot_splash/bg_color=Color( 0.698039, 0.686275, 0.639216, 1 )
 config/icon="res://cyclops.png"
 config/windows_native_icon="res://icon.ico"
 
@@ -361,61 +28,66 @@ ServerProvider="*res://Providers/ServerProvider.tscn"
 
 [gui]
 
+theme/custom="uid://b1gv0wfdmojbx"
 theme/custom_font="res://UI/font.tres"
 
 [input]
 
 ui_accept={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777222,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194309,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194310,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":32,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
 }
 ui_select={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":32,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
 }
 ui_cancel={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194305,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
 }
 ui_left={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194319,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
 }
 ui_right={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194321,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
 }
 ui_up={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194320,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
 }
 ui_down={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194322,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
 }
 set_hide={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":72,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":72,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
 }
 set_unhide={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":true,"control":false,"meta":false,"command":false,"pressed":false,"scancode":72,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
- ]
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":true,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":72,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
 }
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://resources/internationalization/enemy_categories.en.translation", "res://resources/internationalization/enemy_categories.ja.translation", "res://resources/internationalization/enemy_name.en.translation", "res://resources/internationalization/enemy_name.ja.translation", "res://resources/internationalization/func_class_name.en.translation", "res://resources/internationalization/func_class_name.ja.translation", "res://resources/internationalization/HmPresetNo.en.translation", "res://resources/internationalization/HmPresetNo.ja.translation", "res://resources/internationalization/item_name.en.translation", "res://resources/internationalization/item_name.ja.translation", "res://resources/internationalization/named_param.en.translation", "res://resources/internationalization/named_param.ja.translation", "res://resources/internationalization/npc_name.en.translation", "res://resources/internationalization/npc_name.ja.translation", "res://resources/internationalization/stage_name.en.translation", "res://resources/internationalization/stage_name.ja.translation", "res://resources/internationalization/ui.en.translation", "res://resources/internationalization/ui.ja.translation")
 
 [locale]
 
-translations=PoolStringArray( "res://resources/internationalization/enemy_name.en.translation", "res://resources/internationalization/enemy_name.ja.translation", "res://resources/internationalization/named_param.en.translation", "res://resources/internationalization/named_param.ja.translation", "res://resources/internationalization/HmPresetNo.en.translation", "res://resources/internationalization/HmPresetNo.ja.translation", "res://resources/internationalization/ui.en.translation", "res://resources/internationalization/ui.ja.translation", "res://resources/internationalization/stage_name.en.translation", "res://resources/internationalization/stage_name.ja.translation", "res://resources/internationalization/item_name.en.translation", "res://resources/internationalization/item_name.ja.translation", "res://resources/internationalization/npc_name.en.translation", "res://resources/internationalization/npc_name.ja.translation", "res://resources/internationalization/func_class_name.en.translation", "res://resources/internationalization/func_class_name.ja.translation", "res://resources/internationalization/enemy_categories.en.translation", "res://resources/internationalization/enemy_categories.ja.translation" )
+translations=PackedStringArray("res://resources/internationalization/enemy_name.en.translation", "res://resources/internationalization/enemy_name.ja.translation", "res://resources/internationalization/named_param.en.translation", "res://resources/internationalization/named_param.ja.translation", "res://resources/internationalization/HmPresetNo.en.translation", "res://resources/internationalization/HmPresetNo.ja.translation", "res://resources/internationalization/ui.en.translation", "res://resources/internationalization/ui.ja.translation", "res://resources/internationalization/stage_name.en.translation", "res://resources/internationalization/stage_name.ja.translation", "res://resources/internationalization/item_name.en.translation", "res://resources/internationalization/item_name.ja.translation", "res://resources/internationalization/npc_name.en.translation", "res://resources/internationalization/npc_name.ja.translation", "res://resources/internationalization/func_class_name.en.translation", "res://resources/internationalization/func_class_name.ja.translation", "res://resources/internationalization/enemy_categories.en.translation", "res://resources/internationalization/enemy_categories.ja.translation")
 
 [physics]
 

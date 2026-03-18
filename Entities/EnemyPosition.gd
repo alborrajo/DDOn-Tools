@@ -1,8 +1,8 @@
 extends Resource
 class_name EnemyPosition
 
-export var coordinates: Vector3 setget _set_coordinates
-var enemies: Array = [] setget _set_enemies
+@export var coordinates: Vector3: set = _set_coordinates
+var enemies: Array = []: set = _set_enemies
 
 func _init(p: Vector3):
 	self.coordinates = p
@@ -23,7 +23,10 @@ func add_enemy(e: Enemy):
 	emit_changed()
 	
 func remove_enemy(index: int):
-	enemies.remove(index)
+	# Godot 4 migration
+	# Array remove() is now remove_at(), same functionality
+	# enemies.remove(index)
+	enemies.remove_at(index)
 	emit_changed()
 
 func clear_enemies():
@@ -35,10 +38,13 @@ func adding_enemy_causes_conflict(enemy: Enemy) -> bool:
 	# TODO: Check custom times too
 	var enemy_during_day := false
 	var enemy_during_night := false
-	for enemy in enemies:
-		if enemy.time_type == 1:
+	# Godot 4 migration
+	# There is already a parameter named "enemy" declared in this scope
+	# for enemy in enemies:
+	for enemy_iter in enemies:
+		if enemy_iter.time_type == 1:
 			enemy_during_day = true
-		elif enemy.time_type == 2:
+		elif enemy_iter.time_type == 2:
 			enemy_during_night = true
 		else:
 			enemy_during_day = true

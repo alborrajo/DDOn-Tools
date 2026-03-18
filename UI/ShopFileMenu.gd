@@ -5,9 +5,11 @@ const STORAGE_SECTION_FILE_MENU = "FileMenu"
 const STORAGE_KEY_FILE_PATH := "shop_file_path"
 
 func _ready():
-	._ready()
+	super._ready()
 
 func _get_file_path_from_storage() -> String:
+	if not StorageProvider.has_section_key(STORAGE_SECTION_FILE_MENU, STORAGE_KEY_FILE_PATH):
+		return ""
 	return StorageProvider.get_value(STORAGE_SECTION_FILE_MENU, STORAGE_KEY_FILE_PATH)
 
 func _set_file_path_in_storage() -> void:
@@ -16,21 +18,25 @@ func _set_file_path_in_storage() -> void:
 func _do_new_file() -> void:
 	SetProvider.clear_shops()
 
-func _do_load_file(file: File) -> void:
+# Godot 4 migration
+# File is now FileAccess and open() is now a static method that returns such object. To then check for errors, call file_access.get_error()
+# func _do_load_file(file: File) -> void:
+func _do_load_file(file: FileAccess) -> void:
 	# Read file contents
-	var json_parse = JSON.parse(file.get_as_text())
-	if json_parse.error != OK:
+	var test_json_conv = JSON.new()
+	var json_parse_error = test_json_conv.parse(file.get_as_text())
+	if json_parse_error != OK:
 		print("[load_json_file] Error loading JSON file '" + str(file.get_path()) + "'.")
-		print("\tError: ", json_parse.error)
-		print("\tError Line: ", json_parse.error_line)
-		print("\tError String: ", json_parse.error_string)
+		print("\tError: ", json_parse_error)
+		print("\tError Line: ", test_json_conv.get_error_line())
+		print("\tError String: ", test_json_conv.get_error_message())
 		return
 	
 	# Clear shop state
 	SetProvider.clear_shops()
 
 	# Then load it from the file
-	for data in json_parse.result:
+	for data in test_json_conv.data:
 		var shop_id = data["ShopId"]
 		var shop = SetProvider.get_shop(shop_id)
 		shop.unk0 = data["Data"]["Unk0"]
@@ -76,8 +82,10 @@ func _do_load_file(file: File) -> void:
 					shop_item.add_requirement(requirement)
 			shop.add_goods(shop_item)
 
-
-func _do_save_file(file: File) -> void:
+# Godot 4 migration
+# File is now FileAccess and open() is now a static method that returns such object. To then check for errors, call file_access.get_error()
+# func _do_save_file(file: File) -> void:
+func _do_save_file(file: FileAccess) -> void:
 	var json_data := []
 	# Store contents
 	for shop in SetProvider.get_all_shops():
@@ -129,4 +137,4 @@ func _do_save_file(file: File) -> void:
 			}
 			json_data.append(shop_data)
 	
-	file.store_string(JSON.print(json_data, "\t"))
+	file.store_string(JSON.stringify(json_data, "\t"))

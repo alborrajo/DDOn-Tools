@@ -140,34 +140,34 @@ const EXP_UNTIL_NEXT_LV := [
 	5000000, # Lv 11
 ]
 
-var enemy_type: EnemyType setget _set_enemy_type
-var named_param: NamedParam setget _set_named_param
-var raid_boss_id: int = 0 setget _set_raid_boss_id
-var scale: int = 100 setget _set_scale
-var lv: int = 10 setget _set_lv
-var hm_preset_no: int = 0 setget _set_hm_preset_no
-var start_think_tbl_no: int = 0 setget _set_start_think_tbl_no
-var repop_num: int = 0 setget _set_repop_num
-var repop_count: int = 0 setget _set_repop_count
-var enemy_target_types_id: int = 1 setget _set_enemy_target_types_id
-var montage_fix_no: int = 0 setget _set_montage_fix_no
-var set_type: int = 0 setget _set_set_type
-var infection_type: int = 0 setget _set_infection_type
-var time_type: int = 0 setget _set_time_type
-var custom_time: String = "00:00,23:59" setget _set_custom_time
-var is_boss_gauge: bool = false setget _set_is_boss_gauge
-var is_boss_bgm: bool = false setget _set_is_boss_bgm
-var is_manual_set: bool = false setget _set_is_manual_set
-var is_area_boss: bool = false setget _set_is_area_boss
-var does_drop_bo: bool = false setget _set_does_drop_bo
-var is_blood_enemy: bool = false setget _set_is_blood_enemy
-var blood_orbs: int = 0 setget _set_blood_orbs
-var does_drop_ho: bool = false setget _set_does_drop_ho
-var is_highorb_enemy: bool = false setget _set_is_highorb_enemy
-var high_orbs: int = 0 setget _set_high_orbs
-var experience: int = 0 setget _set_experience
-var play_points: int = 0 setget _set_play_points
-var drops_table: DropsTable = null setget _set_drops_table
+var enemy_type: EnemyType: set = _set_enemy_type
+var named_param: NamedParam: set = _set_named_param
+var raid_boss_id: int = 0: set = _set_raid_boss_id
+var scale: int = 100: set = _set_scale
+var lv: int = 10: set = _set_lv
+var hm_preset_no: int = 0: set = _set_hm_preset_no
+var start_think_tbl_no: int = 0: set = _set_start_think_tbl_no
+var repop_num: int = 0: set = _set_repop_num
+var repop_count: int = 0: set = _set_repop_count
+var enemy_target_types_id: int = 1: set = _set_enemy_target_types_id
+var montage_fix_no: int = 0: set = _set_montage_fix_no
+var set_type: int = 0: set = _set_set_type
+var infection_type: int = 0: set = _set_infection_type
+var time_type: int = 0: set = _set_time_type
+var custom_time: String = "00:00,23:59": set = _set_custom_time
+var is_boss_gauge: bool = false: set = _set_is_boss_gauge
+var is_boss_bgm: bool = false: set = _set_is_boss_bgm
+var is_manual_set: bool = false: set = _set_is_manual_set
+var is_area_boss: bool = false: set = _set_is_area_boss
+var does_drop_bo: bool = false: set = _set_does_drop_bo
+var is_blood_enemy: bool = false: set = _set_is_blood_enemy
+var blood_orbs: int = 0: set = _set_blood_orbs
+var does_drop_ho: bool = false: set = _set_does_drop_ho
+var is_highorb_enemy: bool = false: set = _set_is_highorb_enemy
+var high_orbs: int = 0: set = _set_high_orbs
+var experience: int = 0: set = _set_experience
+var play_points: int = 0: set = _set_play_points
+var drops_table: DropsTable = null: set = _set_drops_table
 
 func _init(type: EnemyType, np: NamedParam = null):
 	self.enemy_type = type
@@ -348,7 +348,10 @@ func apply_suggested_high_orbs() -> void:
 	high_orbs = lv * StorageProvider.get_value(STORAGE_SECTION_ENEMIES, STORAGE_KEY_HIGH_ORB_RATE, STORAGE_KEY_HIGH_ORB_RATE_DEFAULT)
 
 func apply_suggested_exp() -> void:
-	var next_level_idx := clamp(lv+1, 0, len(EXP_UNTIL_NEXT_LV)-1)
+	# Godot 4 migration
+	# The variable type is being inferred from a Variant value, so it will be typed as Variant.
+	# var next_level_idx := clamp(lv+1, 0, len(EXP_UNTIL_NEXT_LV)-1)
+	var next_level_idx: int = clamp(lv+1, 0, len(EXP_UNTIL_NEXT_LV)-1)
 	var exp_to_level_up: int = EXP_UNTIL_NEXT_LV[next_level_idx]
 	if is_area_boss or is_boss_bgm or is_boss_gauge:
 		experience = int(exp_to_level_up / StorageProvider.get_value(STORAGE_SECTION_ENEMIES, STORAGE_KEY_BOSSES_TO_LEVEL_UP, STORAGE_KEY_BOSSES_TO_LEVEL_UP_DEFAULT))

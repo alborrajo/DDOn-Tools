@@ -70,5 +70,8 @@ func format_name(name: String) -> String:
 		printerr("Unknown named params type ", type)
 		return name
 
-func to_string() -> String:
+# Godot 4 migration
+# The method "to_string()" overrides a method from native class "Object". This won't be called by the engine and may not work as expected. (Warning treated as error.)
+# func to_string() -> String:
+func _to_string() -> String:
 	return "Id: %d\nType: %d\nHp rate: %d%%\nExperience: %d%%\nAttack base phys: %d%%\nAttack wep phys: %d%%\nDefence base phys: %d%%\nDefence wep phys: %d%%\nAttack base magic: %d%%\nAttack wep magic: %d%%\nDefence base magic: %d%%\nDefence wep magic: %d%%\nPower: %d%%\nGuard defence base: %d%%\nGuard defence wep: %d%%\nShrink endurance main: %d%%\nBlow endurance main: %d%%\nDown endurance main: %d%%\nShake endurance main: %d%%\nHp sub: %d%%\nShrink endurance sub: %d%%\nBlow endurance sub: %d%%\nOcd endurance: %d%%\nAilment damage: %d%%\n" % [id, type, hpRate, experience, attackBasePhys, attackWepPhys, defenceBasePhys, defenceWepPhys, attackBaseMagic, attackWepMagic, defenceBaseMagic, defenceWepMagic, power, guardDefenceBase, guardDefenceWep, shrinkEnduranceMain, blowEnduranceMain, downEnduranceMain, shakeEnduranceMain, hpSub, shrinkEnduranceSub, blowEnduranceSub, ocdEndurance, ailmentDamage]

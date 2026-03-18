@@ -5,27 +5,27 @@ const MAX_ENTRIES := 100 # TODO: Configurable
 
 const _META_LOG_ENTRY = "logentry"
 
-const _CHAT_TYPE_COLORS = {
-	"0": Color.white, # Say
-	"1": Color.purple, # Shout
-	"2": Color.palevioletred, # Tell
-	"3": Color.yellow, # System
-	"4": Color.aquamarine, # Party
-	"5": Color.purple, # ShoutAll, not sure about this one
-	"6": Color.lawngreen, # Group
-	"7": Color.springgreen, # Clan
-	"8": Color.aquamarine, # Entryboard TODO
-	"9": Color.yellow, # ManagementGuideC
-	"10": Color.yellow, # ManagementGuideN TODO
-	"11": Color.crimson, # ManagementAlertC TODO
-	"12": Color.crimson, # ManagementAlertN TODO
-	"13": Color.springgreen, # ClanNotice TODO
-}
+const _CHAT_TYPE_COLORS = [
+	Color.WHITE, # Say
+	Color.PURPLE, # Shout
+	Color.PALE_VIOLET_RED, # Tell
+	Color.YELLOW, # System
+	Color.AQUAMARINE, # Party
+	Color.PURPLE, # ShoutAll, not sure about this one
+	Color.LAWN_GREEN, # Group
+	Color.SPRING_GREEN, # Clan
+	Color.AQUAMARINE, # Entryboard TODO
+	Color.YELLOW, # ManagementGuideC
+	Color.YELLOW, # ManagementGuideN TODO
+	Color.CRIMSON, # ManagementAlertC TODO
+	Color.CRIMSON, # ManagementAlertN TODO
+	Color.SPRING_GREEN, # ClanNotice TODO
+]
 
 var _last_received_chat_unix_time = null
 
 func _ready():
-	assert(ServerProvider.connect("fetched_servers", self, "_on_fetched_servers") == OK)
+	assert(ServerProvider.connect("fetched_servers", Callable(self, "_on_fetched_servers")) == OK)
 	_on_Chat_visibility_changed()
 	$ChatLogPanel/ChatLogScrollContainer.scroll_vertical = 99999
 	
@@ -60,7 +60,7 @@ func _on_ServerOptionButton_item_selected(index):
 
 func _on_RPCTimer_timeout():
 	$RpcRequest.get_chat(_last_received_chat_unix_time)
-	var args = yield($RpcRequest, "rpc_completed")
+	var args = await $RpcRequest.rpc_completed
 	var result = args[0]
 	var response_code = args[1]
 	if result != HTTPRequest.RESULT_SUCCESS or response_code != 200:
@@ -68,19 +68,19 @@ func _on_RPCTimer_timeout():
 		return
 		
 	var chatlog = args[2]
-	var is_at_bottom = $ChatLogPanel/ChatLogScrollContainer.get_v_scrollbar().value+$ChatLogPanel/ChatLogScrollContainer.get_v_scrollbar().page == $ChatLogPanel/ChatLogScrollContainer.get_v_scrollbar().max_value
+	var is_at_bottom = $ChatLogPanel/ChatLogScrollContainer.get_v_scroll_bar().value+$ChatLogPanel/ChatLogScrollContainer.get_v_scroll_bar().page == $ChatLogPanel/ChatLogScrollContainer.get_v_scroll_bar().max_value
 	if chatlog.size() > 0:
 		print(chatlog.size(), " new chat messages")
 		for logentry in chatlog:
 			_last_received_chat_unix_time = int(logentry["UnixTimeMillis"])
 			var datetime_dict := Time.get_datetime_dict_from_datetime_string(logentry["DateTime"], false)
 			var label := Label.new()
-			label.autowrap = true
+			label.autowrap_mode = TextServer.AUTOWRAP_ARBITRARY
 			label.text = "[%02d:%02d] %s %s: %s" % [datetime_dict["hour"], datetime_dict["minute"], logentry["FirstName"], logentry["LastName"], logentry["ChatMessage"]["Message"]]
 			label.set_meta(_META_LOG_ENTRY, logentry)
-			var message_type := String(logentry["ChatMessage"]["Type"])
-			if _CHAT_TYPE_COLORS.has(message_type):
-				label.modulate = _CHAT_TYPE_COLORS.get(message_type)
+			var message_type := int(logentry["ChatMessage"]["Type"])
+			if message_type < _CHAT_TYPE_COLORS.size():
+				label.modulate = _CHAT_TYPE_COLORS[message_type]
 			$ChatLogPanel/ChatLogScrollContainer/ChatLogVBoxContainer.add_child(label)
 			print("\t(Type ", logentry["ChatMessage"]["Type"], ") ", label.text)
 	while $ChatLogPanel/ChatLogScrollContainer/ChatLogVBoxContainer.get_child_count() > MAX_ENTRIES:
@@ -104,7 +104,7 @@ func _on_MessageLineEdit_text_entered(message: String):
 		}
 	}
 	$RpcRequest.post_chat(chat_message_log_entry)
-	var args = yield($RpcRequest, "rpc_completed")
+	var args = await $RpcRequest.rpc_completed
 	
 	$ChatBox/MessageLineEdit.clear()
 	$ChatBox/MessageLineEdit.editable = true

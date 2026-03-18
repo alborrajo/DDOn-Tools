@@ -13,25 +13,25 @@ const FIELD_TRANSFORMS := {
 	# TODO: Bitterblack Maze
 }
 
-const MAP_SCALE = 1000
+const MAP_SCALE = 100
 
 
-onready var _original_zoom : float = get_tree().get_nodes_in_group("camera")[0].original_zoom
-onready var _original_scale: Vector2 = rect_scale
+@onready var _original_zoom : float = get_tree().get_nodes_in_group("camera")[0].original_zoom
+@onready var _original_scale: Vector2 = scale
 
 func _process(_delta):
 	var camera_zoom: float = get_tree().get_nodes_in_group("camera")[0].zoom.x
-	var zoom := clamp(camera_zoom, 0, _original_zoom)
-	rect_scale = _original_scale * zoom
+	var zoom: float = max(camera_zoom, _original_zoom)
+	scale = MAP_SCALE * _original_scale / (zoom / _original_zoom)
 	
 func set_ddon_world_position(stage_no: int, pos: Vector3):
-	rect_position = get_control_position(stage_no, pos)
+	position = get_control_position(stage_no, pos)
 
 static func get_control_position(stage_no: int, pos: Vector3) -> Vector2:
 	return get_map_position(stage_no, pos)*MAP_SCALE
 
 static func get_map_position(stage_no: int, pos: Vector3) -> Vector2:
-	return _get_transform_for_stage_no(stage_no).xform(Vector2(pos.x, pos.z))
+	return _get_transform_for_stage_no(stage_no) * (Vector2(pos.x, pos.z))
 
 static func _get_transform_for_stage_no(stage_no: int) -> Transform2D:
-	 return FIELD_TRANSFORMS.get(DataProvider.stage_no_to_belonging_field_id(stage_no), STAGE_TRANSFORM)
+	return FIELD_TRANSFORMS.get(DataProvider.stage_no_to_belonging_field_id(stage_no), STAGE_TRANSFORM)

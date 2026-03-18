@@ -41,12 +41,12 @@ const GATHERING_TYPES := [
 	"OM_GATHER_ONE_OFF",
 ]
 
-export var stage_id: int setget _set_stage_id
-export var group_id: int setget _set_group_id
-export var subgroup_id: int setget _set_subgroup_id
-export var type: int setget _set_type
-export var unit_id: int setget _set_unit_id
-export var coordinates: Vector3 setget _set_coordinates
+@export var stage_id: int: set = _set_stage_id
+@export var group_id: int: set = _set_group_id
+@export var subgroup_id: int: set = _set_subgroup_id
+@export var type: int: set = _set_type
+@export var unit_id: int: set = _set_unit_id
+@export var coordinates: Vector3: set = _set_coordinates
 
 var _gathering_items: Array
 
@@ -64,7 +64,10 @@ func add_item(item: GatheringItem) -> void:
 	emit_changed()
 	
 func remove_item(index: int) -> void:
-	_gathering_items.remove(index)
+	# Godot 4 migration
+	# Array remove() is now remove_at(), same functionality
+	# _gathering_items.remove(index)
+	_gathering_items.remove_at(index)
 	emit_changed()
 	
 func clear_gathering_items() -> void:

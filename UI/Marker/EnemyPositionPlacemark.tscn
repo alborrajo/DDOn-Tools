@@ -1,48 +1,54 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=7 format=3 uid="uid://cgvtoonecafqn"]
 
-[ext_resource path="res://UI/Marker/EnemyPositionPlacemark.gd" type="Script" id=1]
-[ext_resource path="res://UI/Marker/GenericSetPlacemark.tscn" type="PackedScene" id=2]
-[ext_resource path="res://UI/Marker/EnemyPlacemark.tscn" type="PackedScene" id=3]
-[ext_resource path="res://resources/fonts/NotoSansJP-Regular.otf" type="DynamicFontData" id=4]
+[ext_resource type="Script" uid="uid://df66ugclac583" path="res://UI/Marker/EnemyPositionPlacemark.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://dvujbpkhfvnmp" path="res://UI/Marker/GenericSetPlacemark.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://UI/Marker/EnemyPlacemark.tscn" id="3"]
+[ext_resource type="FontFile" uid="uid://ce1nim26vue1m" path="res://resources/fonts/NotoSansJP-Regular.otf" id="4"]
 
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0.6, 0.6, 0.6, 0 )
+[sub_resource type="StyleBoxFlat" id="3"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
 
-[sub_resource type="DynamicFont" id=2]
-outline_size = 2
-outline_color = Color( 0.61, 0.61, 0, 1 )
-font_data = ExtResource( 4 )
+[sub_resource type="FontFile" id="2"]
+fallbacks = Array[Font]([ExtResource("4"), ExtResource("4"), ExtResource("4")])
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
 
-[node name="EnemyPositionPlacemark" instance=ExtResource( 2 )]
-script = ExtResource( 1 )
-enemy_placemark_packed_scene = ExtResource( 3 )
+[node name="EnemyPositionPlacemark" instance=ExtResource("2")]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 4.0
+offset_bottom = 4.0
+scale = Vector2(0.1, 0.1)
+script = ExtResource("1")
+enemy_placemark_packed_scene = ExtResource("3")
 
 [node name="Panel" parent="." index="0"]
-self_modulate = Color( 1, 0.25098, 0.25098, 1 )
-custom_styles/panel = SubResource( 3 )
-
-[node name="Container" parent="Panel" index="0"]
-margin_left = 4.0
-margin_top = 4.0
-margin_right = 8.0
-margin_bottom = 8.0
+self_modulate = Color(1, 0.25098, 0.25098, 1)
+theme_override_styles/panel = SubResource("3")
 
 [node name="WarningLabel" type="Label" parent="." index="1"]
-margin_left = -133.0
-margin_right = -5.0
-margin_bottom = 90.0
-rect_min_size = Vector2( 16, 0 )
-mouse_filter = 1
+custom_minimum_size = Vector2(16, 0)
+layout_mode = 0
+offset_left = -133.0
+offset_right = -5.0
+offset_bottom = 90.0
 size_flags_vertical = 0
-custom_colors/font_color = Color( 1, 1, 0, 1 )
-custom_fonts/font = SubResource( 2 )
+mouse_filter = 1
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_fonts/font = SubResource("2")
 text = "⚠ This set has more enemies than it can fit"
-align = 2
-autowrap = true
+horizontal_alignment = 2
+autowrap_mode = 3
 
 [connection signal="gui_input" from="WarningLabel" to="." method="_on_WarningLabel_gui_input"]
 [connection signal="mouse_entered" from="WarningLabel" to="." method="_on_WarningLabel_mouse_entered"]

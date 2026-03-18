@@ -5,23 +5,23 @@ signal file_created()
 signal file_loaded()
 signal file_saved()
 
-export (NodePath) var file_dialog: NodePath
-export (NodePath) var notification_popup: NodePath
+@export var file_dialog: NodePath
+@export var notification_popup: NodePath
 
-var _file_path: String setget _set_file_path
+var _file_path: String: set = _set_file_path
 
-onready var notification_popup_node: NotificationPopup = get_node(notification_popup)
-onready var file_dialog_node: FileDialog = get_node(file_dialog)
+@onready var notification_popup_node: NotificationPopup = get_node(notification_popup)
+@onready var file_dialog_node: FileDialog = get_node(file_dialog)
 
 func _ready():
 	var popup = get_popup()
-	if not popup.is_connected("id_pressed", self, "_on_menu_id_pressed"):
-		popup.connect("id_pressed", self, "_on_menu_id_pressed")
+	if not popup.is_connected("id_pressed", Callable(self, "_on_menu_id_pressed")):
+		popup.connect("id_pressed", Callable(self, "_on_menu_id_pressed"))
 	
 	# Load last csv file on startup
 	var file_path = _get_file_path_from_storage()
 	if file_path != null and file_path != "":
-		yield(file_dialog_node, "ready")
+		await file_dialog_node.ready
 		load_file(file_path)
 		
 func _get_file_path_from_storage():
@@ -31,17 +31,17 @@ func _set_file_path_in_storage():
 	pass
 		
 func _unhandled_input(event: InputEvent):
-	if is_visible_in_tree() and Input.is_key_pressed(KEY_CONTROL) and event.is_pressed() and event is InputEventKey:
+	if is_visible_in_tree() and Input.is_key_pressed(KEY_CTRL) and event.is_pressed() and event is InputEventKey:
 		var inputEventKey := event as InputEventKey
-		if inputEventKey.scancode == KEY_N:
+		if inputEventKey.keycode == KEY_N:
 			var _result := new_file()
-			get_tree().set_input_as_handled()
-		elif inputEventKey.scancode == KEY_S:
+			get_viewport().set_input_as_handled()
+		elif inputEventKey.keycode == KEY_S:
 			var _result := resave()
-			get_tree().set_input_as_handled()
-		elif inputEventKey.scancode == KEY_L:
+			get_viewport().set_input_as_handled()
+		elif inputEventKey.keycode == KEY_L:
 			var _result := reload()
-			get_tree().set_input_as_handled()
+			get_viewport().set_input_as_handled()
 
 func _on_menu_id_pressed(id: int) -> void:
 	match id:
@@ -67,23 +67,39 @@ func _do_new_file():
 	pass
 	
 func _on_load():
-	file_dialog_node.mode = FileDialog.MODE_OPEN_FILE
+	# Godot 4 migration
+	# .mode is now the window mode, we want .file_mode
+	# file_dialog_node.mode = FileDialog.FILE_MODE_OPEN_FILE
+	file_dialog_node.file_mode = FileDialog.FILE_MODE_OPEN_FILE
 	file_dialog_node.popup()
-	yield(file_dialog_node, "file_selected")
+	await file_dialog_node.file_selected
 	load_file(file_dialog_node.current_path)
 	
 func load_file(file_path: String):
 	print_debug("Loading file ", file_path)
 	
-	var file := File.new()
-	
-	if not file.file_exists(file_path):
+	# Godot 4 migration
+	# File is now FileAccess and open() is now a static method that returns such object. To then check for errors, call file_access.get_error()
+	# var file := File.new()
+	#if not file.file_exists(file_path):
+	#	var err_message := "File doesn't exist"
+	#	printerr(err_message, file_path)
+	#	notification_popup_node.notify(err_message+": "+file_path)
+	#	return
+	if not FileAccess.file_exists(file_path):
 		var err_message := "File doesn't exist"
 		printerr(err_message, file_path)
 		notification_popup_node.notify(err_message+": "+file_path)
 		return
-	
-	assert(file.open(file_path, File.READ) == OK)
+	var file = FileAccess.open(file_path, FileAccess.READ)
+	#debug
+	print(file_path)
+	var open_error := FileAccess.get_open_error()
+	if open_error != OK:
+		printerr("Failed to load file. Error: ", open_error)
+		notification_popup_node.notify("Failed to load file "+file_path)
+		return
+		
 	_do_load_file(file)
 	file.close()
 	
@@ -91,8 +107,11 @@ func load_file(file_path: String):
 	notification_popup_node.notify("Loaded file "+file_path)
 	
 	emit_signal("file_loaded")
-	
-func _do_load_file(_file: File) -> void:
+
+# Godot 4 migration
+# File is now FileAccess and open() is now a static method that returns such object. To then check for errors, call file_access.get_error()
+# func _do_load_file(_file: File) -> void:
+func _do_load_file(_file: FileAccess) -> void:
 	pass
 	
 func reload() -> bool:
@@ -107,16 +126,22 @@ func reload() -> bool:
 		
 	
 func _on_save():
-	file_dialog_node.mode = FileDialog.MODE_SAVE_FILE
+	# Godot 4 migration
+	# .mode is now the window mode, we want .file_mode
+	# file_dialog_node.mode = FileDialog.FILE_MODE_SAVE_FILE
+	file_dialog_node.file_mode = FileDialog.FILE_MODE_SAVE_FILE
 	file_dialog_node.popup()
-	var filename = yield(file_dialog_node, "file_selected")
+	var filename = await file_dialog_node.file_selected
 	save_file(filename)
 	
 func save_file(file_path: String):
 	print_debug("Saving file ", file_path)
-	var file := File.new()
-	
-	assert(file.open(file_path, File.WRITE) == OK)
+	# Godot 4 migration
+	# File is now FileAccess and open() is now a static method that returns such object. To then check for errors, call file_access.get_error()
+	#var file := File.new()
+	#assert(file.open(file_path, File.WRITE) == OK)
+	var file := FileAccess.open(file_path, FileAccess.WRITE)
+	assert(FileAccess.get_open_error() == OK)
 	_do_save_file(file)
 	file.close()
 	
@@ -124,8 +149,11 @@ func save_file(file_path: String):
 	notification_popup_node.notify("Saved file "+file_path)
 	
 	emit_signal("file_saved")
-	
-func _do_save_file(_file: File) -> void:
+
+# Godot 4 migration
+# File is now FileAccess and open() is now a static method that returns such object. To then check for errors, call file_access.get_error()
+# func _do_save_file(_file: File) -> void:
+func _do_save_file(_file: FileAccess) -> void:
 	pass
 	
 func resave() -> bool:
@@ -145,12 +173,14 @@ func _set_file_path(file_path: String) -> void:
 	
 	# TODO: Move this somewhere else to handle the title via signals
 	if file_path == "":
-		OS.set_window_title("DDOn Tools")
+		get_window().set_title("DDOn Tools")
 	else:
-		OS.set_window_title("DDOn Tools - "+file_path)
+		get_window().set_title("DDOn Tools - "+file_path)
 		
-
-func store_csv_line_crlf(file: File, csv_data: Array):
+# Godot 4 migration
+# File is now FileAccess and open() is now a static method that returns such object. To then check for errors, call file_access.get_error()
+# func store_csv_line_crlf(file: File, csv_data: Array):
+func store_csv_line_crlf(file: FileAccess, csv_data: Array):
 	file.store_csv_line(csv_data)
 	file.seek(file.get_position()-1)
 	file.store_16(0x0A0D)

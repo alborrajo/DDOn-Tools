@@ -3,7 +3,7 @@ class_name Players
 
 const STORAGE_SECTION_PLAYERS := "Players"
 const STORAGE_KEY_SHOW_IN_ALL_TABS := "ShowInAllTabs"
-const STORAGE_KEY_SHOW_IN_ALL_TABS_DEFAULT := false;
+const STORAGE_KEY_SHOW_IN_ALL_TABS_DEFAULT: bool = false;
 
 signal player_joined(player)
 signal player_updated(player)
@@ -11,12 +11,12 @@ signal player_left(player)
 
 signal _updated_player_info()
 
-onready var servers_on_ui_root: TreeItem = create_item()
+@onready var servers_on_ui_root: TreeItem = create_item()
 
 var _update_in_progress := false
 
 func _ready():
-	assert(ServerProvider.connect("fetched_servers", self, "_update_player_list") == OK)
+	assert(ServerProvider.connect("fetched_servers", Callable(self, "_update_player_list")) == OK)
 
 func _update_player_list():
 	if _update_in_progress:
@@ -24,56 +24,51 @@ func _update_player_list():
 	_update_in_progress = true
 	
 	# TODO: Refactor for less code duplication when updating trees
-	var server_item = false
 	if get_root():
-		server_item = get_root().get_children()
-	while (server_item):
-		var server_item_metadata = server_item.get_metadata(0)
-		var exists = false
-		for server in ServerProvider.servers:
-			var server_item_host: String = server_item_metadata["Addr"]
-			var server_item_rpc_port: int = server_item_metadata["RpcPort"]
-			var server_host: String = server["Addr"]
-			var server_rpc_port: int = server["RpcPort"]
-			if server_item_host == server_host and server_item_rpc_port == server_rpc_port:
-				exists = true
-				break
-		var tmp = server_item
-		server_item = server_item.get_next()
-		if !exists:
-			# remove servers on ui, that have no info
-			servers_on_ui_root.remove_child(tmp)
-			tmp.free()
+		for server_item in get_root().get_children():
+			var server_item_metadata = server_item.get_metadata(0)
+			var exists = false
+			for server in ServerProvider.servers:
+				var server_item_host: String = server_item_metadata["Addr"]
+				var server_item_rpc_port: int = server_item_metadata["RpcPort"]
+				var server_host: String = server["Addr"]
+				var server_rpc_port: int = server["RpcPort"]
+				if server_item_host == server_host and server_item_rpc_port == server_rpc_port:
+					exists = true
+					break
+			var tmp = server_item
+			if !exists:
+				# remove servers on ui, that have no info
+				servers_on_ui_root.remove_child(tmp)
+				tmp.free()
 	
 	var server_items := []
 	for server in ServerProvider.servers:
 		var server_host: String = server["Addr"]
 		var server_rpc_port: int = server["RpcPort"]
-		server_item = null
-		if get_root():
-			server_item = get_root().get_children()
-		while (server_item):
+		var matching_server_item = null
+		for server_item in get_root().get_children():
 			var server_item_metadata = server_item.get_metadata(0)
 			var server_item_host: String = server_item_metadata["Addr"]
 			var server_item_rpc_port: int = server_item_metadata["RpcPort"]
 			if server_item_host == server_host and server_item_rpc_port == server_rpc_port:
+				matching_server_item = server_item
 				break
-			server_item = server_item.get_next()
-		if server_item != null:
+		if matching_server_item != null:
 			# update existing server
-			_update_server_tree_entry(server_item, server)
+			_update_server_tree_entry(matching_server_item, server)
 		else:
 			# create new server
-			server_item = create_item(servers_on_ui_root)
-			_update_server_tree_entry(server_item, server)
-		server_items.append(server_item)
+			matching_server_item = create_item(servers_on_ui_root)
+			_update_server_tree_entry(matching_server_item, server)
+		server_items.append(matching_server_item)
 	
 	# Second loop so fetching each server's player list is only done after we already are showing
 	# the full server list
 	for server_item_element in server_items:
 		# Update the server's player list
 		_update_server_info(server_item_element)
-		yield(self, "_updated_player_info")
+		await self._updated_player_info
 		
 	_update_in_progress = false
 
@@ -82,7 +77,7 @@ func _update_server_info(server_item: TreeItem):
 	$RpcRequest.host = server_item_metadata["Addr"]
 	$RpcRequest.port = server_item_metadata["RpcPort"]
 	$RpcRequest.get_info()
-	var args = yield($RpcRequest, "rpc_completed")
+	var args = await $RpcRequest.rpc_completed
 	
 	var result = args[0]
 	var response_code = args[1]
@@ -92,8 +87,7 @@ func _update_server_info(server_item: TreeItem):
 		return
 	
 	var infos = args[2]
-	var item = server_item.get_children()
-	while (item):
+	for item in server_item.get_children():
 		var item_player = item.get_metadata(0) as PlayerMapEntity
 		var exists = false
 		for info in infos:
@@ -104,23 +98,16 @@ func _update_server_info(server_item: TreeItem):
 		if !exists:
 			# remove players on ui, that have no info
 			emit_signal("player_left", item_player)
-			var tmp = item
-			item = item.get_next()
-			server_item.remove_child(tmp)
-			tmp.free()
-		else:
-			item = item.get_next()
+			server_item.remove_child(item)
+			item.free()
 			
 	for info in infos:
 		var player := PlayerMapEntity.new(info)
 		var existing_ui : TreeItem
-		item = false
 		if get_root():
-			item = server_item.get_children()
-		while (item):
-			if item.get_metadata(0).CharacterId == player.CharacterId:
-				existing_ui = item
-			item = item.get_next()
+			for item in server_item.get_children():
+				if item.get_metadata(0).CharacterId == player.CharacterId:
+					existing_ui = item
 		if existing_ui:
 			# update existing player
 			_update_player_tree_entry(existing_ui, player)
@@ -155,16 +142,16 @@ func _on_Players_item_rmb_selected(_position):
 		
 		# TODO: Use translations
 		$KickConfirmationDialog.dialog_text = "Kick %s %s?" % [player.FirstName, player.LastName]
-		if $KickConfirmationDialog.is_connected("confirmed", self, "_on_KickConfirmationDialog_confirmed"):
-			$KickConfirmationDialog.disconnect("confirmed", self, "_on_KickConfirmationDialog_confirmed")
-		assert($KickConfirmationDialog.connect("confirmed", self, "_on_KickConfirmationDialog_confirmed", [server_item_host, server_item_rpc_port, player], CONNECT_ONESHOT) == OK)
+		if $KickConfirmationDialog.is_connected("confirmed", Callable(self, "_on_KickConfirmationDialog_confirmed")):
+			$KickConfirmationDialog.disconnect("confirmed", Callable(self, "_on_KickConfirmationDialog_confirmed"))
+		assert($KickConfirmationDialog.connect("confirmed", Callable(self, "_on_KickConfirmationDialog_confirmed").bind(server_item_host, server_item_rpc_port, player), CONNECT_ONE_SHOT) == OK)
 		$KickConfirmationDialog.popup_centered()
 
 func _on_KickConfirmationDialog_confirmed(server_host: String, server_port: int, player: PlayerMapEntity):
 	$RpcRequest.host = server_host
 	$RpcRequest.port = server_port
 	assert($RpcRequest.delete_info(player.AccountName) == OK)
-	var args = yield($RpcRequest, "rpc_completed")
+	var args = await $RpcRequest.rpc_completed
 	assert(args[0] == HTTPRequest.RESULT_SUCCESS) # Result
 	var result = args[0]
 	var response_code = args[1]

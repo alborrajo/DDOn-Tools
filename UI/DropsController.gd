@@ -6,14 +6,14 @@ signal drops_table_selected(drops_table)
 # Special ID used for the "No drops" option
 const NO_DROPS_OPTION_ID = 4096
 
-export (PackedScene) var drop_item_panel_packed_scene: PackedScene = preload("res://UI/DropItemPanel.tscn")
+@export var drop_item_panel_packed_scene: PackedScene = preload("res://UI/DropItemPanel.tscn")
 
 var _selected_drops_table: DropsTable = null
 var _current_filter_text: String = ("")
 var preexisting_option_id: int
 
 func _ready():
-	assert(SetProvider.connect("drops_tables_updated", self, "_update_drops_tables") == OK)
+	assert(SetProvider.connect("drops_tables_updated", Callable(self, "_update_drops_tables")) == OK)
 	_update_drops_tables()
 
 func _update_drops_tables() -> void:
@@ -29,8 +29,8 @@ func _clear_drops_tables() -> void:
 	$HFlowContainer/DropsTableOptionButton.add_item("-- No Drops --", NO_DROPS_OPTION_ID)
 			
 func select_drops_table(id: int, quiet: bool = false) -> void:
-	if _selected_drops_table != null and _selected_drops_table.is_connected("changed", self, "_on_selected_drops_table_changed"):
-		_selected_drops_table.disconnect("changed", self, "_on_selected_drops_table_changed")
+	if _selected_drops_table != null and _selected_drops_table.is_connected("changed", Callable(self, "_on_selected_drops_table_changed")):
+		_selected_drops_table.disconnect("changed", Callable(self, "_on_selected_drops_table_changed"))
 	
 	if id == null or id < 0:
 		_selected_drops_table = null
@@ -38,7 +38,7 @@ func select_drops_table(id: int, quiet: bool = false) -> void:
 		$HFlowContainer/DropsTableOptionButton.select(no_drops_option_idx)
 	else:
 		_selected_drops_table = SetProvider.get_drops_table(id)
-		assert(_selected_drops_table.connect("changed", self, "_on_selected_drops_table_changed", [_selected_drops_table]) == OK)
+		assert(_selected_drops_table.connect("changed", Callable(self, "_on_selected_drops_table_changed").bind(_selected_drops_table)) == OK)
 		_on_selected_drops_table_changed(_selected_drops_table)
 	
 	for idx in $HFlowContainer/DropsTableOptionButton.get_item_count():
@@ -70,9 +70,9 @@ func _on_selected_drops_table_changed(selected_drops_table: DropsTable):
 	# Add new item panels
 	for index in selected_drops_table.get_items().size():
 		var drop_item: GatheringItem = selected_drops_table.get_items()[index]
-		var drop_item_panel: DropItemPanel = drop_item_panel_packed_scene.instance()
+		var drop_item_panel: DropItemPanel = drop_item_panel_packed_scene.instantiate()
 		drop_item_panel.drop_item = drop_item
-		assert(drop_item_panel.connect("drop_item_removed", self, "_on_drop_item_removed", [selected_drops_table, index]) == OK)
+		assert(drop_item_panel.connect("drop_item_removed", Callable(self, "_on_drop_item_removed").bind(selected_drops_table, index)) == OK)
 		$DropsTableItemsPanel/MarginContainer/VBoxContainer/DropItemsContainer.add_child(drop_item_panel)
 		
 
@@ -98,12 +98,12 @@ func _on_AddDropsTableButton_pressed():
 func _on_RemoveDropsTableButton_pressed():
 	var selected_option_id: int = $HFlowContainer/DropsTableOptionButton.get_selected_id()
 	if selected_option_id != NO_DROPS_OPTION_ID:
-		var _removed_table := SetProvider.remove_drops_table(selected_option_id)
+		var _removed_table = SetProvider.remove_drops_table(selected_option_id)
 		select_drops_table(-1)
 
 func _on_DropsTableNameLineEdit_text_changed(new_text):
 	_selected_drops_table.name = new_text
-	$DropsTableItemsPanel/MarginContainer/VBoxContainer/DropsTableNameLineEdit.caret_position = len(new_text)
+	$DropsTableItemsPanel/MarginContainer/VBoxContainer/DropsTableNameLineEdit.caret_column = len(new_text)
 	
 func _on_DropModelSpinBox_value_changed(value):
 	_selected_drops_table.mdl_type = int(value)

@@ -2,13 +2,14 @@
 
 importer="csv_translation"
 type="Translation"
+uid="uid://bk2dfo5uykr1l"
 
 [deps]
 
-files=[ "res://resources/internationalization/enemy_name.en.translation", "res://resources/internationalization/enemy_name.ja.translation" ]
+files=["res://resources/internationalization/enemy_name.en.translation", "res://resources/internationalization/enemy_name.ja.translation"]
 
 source_file="res://resources/internationalization/enemy_name.csv"
-dest_files=[ "res://resources/internationalization/enemy_name.en.translation", "res://resources/internationalization/enemy_name.ja.translation" ]
+dest_files=["res://resources/internationalization/enemy_name.en.translation", "res://resources/internationalization/enemy_name.ja.translation"]
 
 [params]
 

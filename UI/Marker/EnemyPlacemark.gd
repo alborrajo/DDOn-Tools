@@ -1,16 +1,16 @@
 extends GenericPlacemark
 class_name EnemyPlacemark
 
-const COLOR_BLOOD_ORB = Color.violet
-const COLOR_HIGH_ORB = Color.orangered
-const COLOR_DEFAULT = Color.white
+const COLOR_BLOOD_ORB = Color.VIOLET
+const COLOR_HIGH_ORB = Color.ORANGE_RED
+const COLOR_DEFAULT = Color.WHITE
 
-export (Resource) var enemy: Resource setget set_enemy
+@export var enemy: Resource: set = set_enemy
 
 func _ready():
-	.ready()
-	assert(SelectedListManager.connect("enemy_filter_changed", self, "_on_enemy_filter_changed") == OK)
-	assert(SetProvider.connect("selected_day_night", self, "_on_day_night_selected") == OK)
+	super.ready()
+	assert(SelectedListManager.connect("enemy_filter_changed", Callable(self, "_on_enemy_filter_changed")) == OK)
+	assert(SetProvider.connect("s_selected_day_night", Callable(self, "_on_day_night_selected")) == OK)
 	_on_day_night_selected(SetProvider.selected_day_night)
 	
 func _on_day_night_selected(index):
@@ -34,13 +34,13 @@ func get_selection_entity():
 	return enemy
 	
 func set_enemy(em: Enemy) -> void:
-	if enemy != null and enemy.is_connected("changed", self, "_on_enemy_changed"):
-		enemy.disconnect("changed", self, "_on_enemy_changed")
+	if enemy != null and enemy.is_connected("changed", Callable(self, "_on_enemy_changed")):
+		enemy.disconnect("changed", Callable(self, "_on_enemy_changed"))
 		
 	enemy = em
 		
 	if em != null:
-		assert(em.connect("changed", self, "_on_enemy_changed") == OK)
+		assert(em.connect("changed", Callable(self, "_on_enemy_changed")) == OK)
 		_on_enemy_changed()
 	
 func _on_enemy_changed():
@@ -63,8 +63,11 @@ func _on_enemy_changed():
 	else: 
 		self_modulate = COLOR_DEFAULT
 
-func get_drag_data(position):
-	.get_drag_data(position)
+# Godot 4 migration
+# The local function parameter "position" is shadowing an already-declared property in the base class "Control".
+# func _get_drag_data(position):
+func _get_drag_data(at_position):
+	super._get_drag_data(at_position)
 	return enemy
 
 func _on_enemy_filter_changed(uppercase_filter_text: String):

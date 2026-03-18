@@ -3,16 +3,16 @@ class_name DropItemPanel
 
 signal drop_item_removed()
 
-var drop_item: GatheringItem = null setget set_drop_item
+var drop_item: GatheringItem = null: set = set_drop_item
 
 func set_drop_item(di: GatheringItem) -> void:
-	if drop_item != null and drop_item.is_connected("changed", self, "_on_drop_item_changed"):
-		drop_item.disconnect("changed", self, "_on_drop_item_changed")
+	if drop_item != null and drop_item.is_connected("changed", Callable(self, "_on_drop_item_changed")):
+		drop_item.disconnect("changed", Callable(self, "_on_drop_item_changed"))
 		
 	drop_item = di
 	
 	if di != null:
-		assert(di.connect("changed", self, "_on_drop_item_changed") == OK)
+		assert(di.connect("changed", Callable(self, "_on_drop_item_changed")) == OK)
 		_on_drop_item_changed()
 	
 func _on_drop_item_changed():
@@ -22,7 +22,7 @@ func _on_drop_item_changed():
 		$FirstRow/HFlowContainer/MaxItemNumSpinBox.value = drop_item.max_num
 		$SecondRow/GridContainer/DropChanceSpinBox.value = drop_item.drop_chance * 100
 		$SecondRow/GridContainer/QualitySpinBox.value = drop_item.quality
-		$SecondRow/HiddenCheckBox.pressed = drop_item.is_hidden
+		$SecondRow/HiddenCheckBox.button_pressed = drop_item.is_hidden
 
 func _on_ItemNumSpinBox_value_changed(value):
 	if drop_item != null:
