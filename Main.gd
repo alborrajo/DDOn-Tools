@@ -24,7 +24,9 @@ const ShopPlacemarkScene = preload("res://UI/Marker/ToggleableShopPlacemark.tscn
 ]
 
 var camera_tween: Tween
-	
+
+var _pending_map_loads := []
+
 func _ready():
 	camera_tween = get_tree().create_tween()
 	
@@ -37,6 +39,33 @@ func _ready():
 	$ui/status_view/container/LayerOptionButton.emit_signal("item_selected", 0)
 	
 	_on_ui_settings_updated()
+
+func _process(_delta):
+	if _pending_map_loads.size() > 0:
+		var finished = []
+		for i in range(_pending_map_loads.size()):
+			var entry = _pending_map_loads[i]
+			var status = ResourceLoader.load_threaded_get_status(entry.path)
+			if status == ResourceLoader.THREAD_LOAD_LOADED:
+				var result = ResourceLoader.load_threaded_get(entry.path)
+				if result is Texture2D:
+					var map_sprite := Sprite2D.new()
+					map_sprite.texture = result
+					map_sprite.centered = false
+					map_sprite.global_position = entry.offset * MapControl.MAP_SCALE
+					map_sprite.scale = Vector2.ONE * MapControl.MAP_SCALE
+					var layer := map_layers.get_child(entry.layer_index)
+					layer.add_child(map_sprite)
+					print("Loaded map ", entry.path)
+				else:
+					printerr("Error loading map in background: ", entry.path)
+				finished.append(i)
+			elif status == ResourceLoader.THREAD_LOAD_FAILED:
+				printerr("Error loading map in background: ", entry.path)
+				finished.append(i)
+		# Remove the processed files in reverse order to avoid breaking indexes
+		for j in range(finished.size() - 1, -1, -1):
+			_pending_map_loads.remove_at(finished[j])
 
 func _on_ui_stage_selected(stage_no):
 	_clear_map()
@@ -62,7 +91,7 @@ func _load_stage_map(stage_no: String) -> void:
 	if _add_room_maps(stage_no_as_int):
 		return
 
-	if _add_stage_maps(stage_no_as_int):
+	if _add_parts_dungeon_maps(stage_no_as_int):
 		return
 
 	printerr("Couldn't find a map of any kind for this stage (Stage No. %s)" % [stage_no])
@@ -81,17 +110,11 @@ func _add_field_maps(stage_no: int) -> bool:
 
 func _do_add_field_maps(map_name: String, m: int, l: int) -> bool:
 	var stage_map_resource := "res://resources/maps/"+map_name+"_m0"+str(m)+"_l"+str(l)+".png"
-	var resource := _load_map_resource(stage_map_resource)
-	if resource == null:
+	if not _map_resource_exists(stage_map_resource):
 		print("Couldn't find a field map for this field (%s)" % [map_name])
 		return false
 	else:
-		var map_sprite := Sprite2D.new()
-		map_sprite.texture = load(stage_map_resource)
-		map_sprite.centered = false
-		map_sprite.scale = Vector2.ONE * MapControl.MAP_SCALE
-		map_layers.get_child(l).add_child(map_sprite)
-		print("Loaded map ", stage_map_resource)
+		_load_and_add_map_to(stage_map_resource, l)
 		return true
 
 func _add_room_maps(stage_no: int) -> bool:
@@ -99,25 +122,18 @@ func _add_room_maps(stage_no: int) -> bool:
 	var found_map := false
 	if stage_room != null:
 		for layer_index in range(MAX_LAYERS):
-			var layer := map_layers.get_child(layer_index)
+			var _layer := map_layers.get_child(layer_index)
 			var stage_map_resource := "res://resources/maps/"+stage_room.map_name+"_l"+str(layer_index)+".png"
-			var resource := _load_map_resource(stage_map_resource)
-			if resource == null:
+			if not _map_resource_exists(stage_map_resource):
 				print("Couldn't find the map ", stage_map_resource)
 			else:
 				found_map = true
-				var map_sprite := Sprite2D.new()
-				map_sprite.texture = load(stage_map_resource)
-				map_sprite.centered = false
-				map_sprite.global_position = stage_room.offset * MapControl.MAP_SCALE
-				map_sprite.scale = Vector2.ONE * MapControl.MAP_SCALE
-				layer.add_child(map_sprite)
-				print("Loaded map ", stage_map_resource)
+				_load_and_add_map_to(stage_map_resource, layer_index, stage_room.offset)
 	else:
 		print("Couldn't find an associated lobby (lb) or room (rm) map for this stage (Stage No. %s)" % [stage_no])
 	return found_map
 
-func _add_stage_maps(stage_no: int) -> bool:
+func _add_parts_dungeon_maps(stage_no: int) -> bool:
 	var stage_map := DataProvider.stage_no_to_stage_map(stage_no)
 	var found_map := false
 	if !stage_map.is_empty():
@@ -125,22 +141,14 @@ func _add_stage_maps(stage_no: int) -> bool:
 		if stage_map != null:
 			var parts_path: String = stage_map["PartsPath"].substr(7, 5)
 			for area in stage_map["ArrayArea"]:
-				var map_name := parts_path+"_m"+str(area).pad_zeros(2)
+				var map_name := parts_path+"_m"+str(int(area)).pad_zeros(2)
 				for layer_index in range(MAX_LAYERS):
 					var stage_map_resource := "res://resources/maps/"+map_name+"_l"+str(layer_index)+".png"
-					var resource := _load_map_resource(stage_map_resource)
-					if resource == null:
+					if not _map_resource_exists(stage_map_resource):
 						print("Couldn't find the map ", stage_map_resource)
 					else:
 						found_map = true
-						var map_sprite := Sprite2D.new()
-						map_sprite.texture = load(stage_map_resource)
-						map_sprite.centered = false
-						map_sprite.global_position = offset * MapControl.MAP_SCALE
-						map_sprite.scale = Vector2.ONE * MapControl.MAP_SCALE
-						var layer := map_layers.get_child(layer_index)
-						layer.add_child(map_sprite)
-						print("Loaded map ", stage_map_resource)
+						_load_and_add_map_to(stage_map_resource, layer_index, offset)
 				if map_name in DataProvider.map_dimensions:
 					offset.y = offset.y - DataProvider.map_dimensions[map_name].y
 				else:
@@ -148,6 +156,15 @@ func _add_stage_maps(stage_no: int) -> bool:
 		else:
 			print("Couldn't assemble a parts dungeon (pd) map (Stage No. %s)" % [stage_no])
 	return found_map
+	
+func _load_and_add_map_to(map_resource_path: String, layer_index: int, offset: Vector2 = Vector2.ZERO) -> void:
+	ResourceLoader.load_threaded_request(map_resource_path)
+	_pending_map_loads.append({
+		"path": map_resource_path,
+		"layer_index": layer_index,
+		"offset": offset
+	})
+
 
 func _load_stage_markers(stage_no, subgroup_id):
 	var stage_id = DataProvider.stage_no_to_stage_id(int(stage_no))
@@ -203,16 +220,8 @@ func _load_stage_markers(stage_no, subgroup_id):
 			shop_placemark.shop = SetProvider.get_shop(shop_id)
 			shops_node.add_child(shop_placemark)
 			
-
-func _load_map_resource(resource_path: String) -> Resource:
-	# Godot 4 migration
-	# why? | DirAcces.new() was removed
-	# var _directory = DirAccess.new();
-	if image_array_jorobate_flanders.has(resource_path):
-		return load(resource_path)
-	else:
-		return null
-
+func _map_resource_exists(resource_path: String) -> bool:
+	return image_array_jorobate_flanders.has(resource_path)
 
 func _clear_map():
 	for layer in map_layers.get_children():
