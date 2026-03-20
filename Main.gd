@@ -176,24 +176,23 @@ func _add_parts_dungeon_maps(stage_no: int) -> bool:
 	var stage_map := DataProvider.stage_no_to_stage_map(stage_no)
 	var found_map := false
 	if !stage_map.is_empty():
-		var offset := Vector2(0,-512) # 512 (map tile height in px)
-		if stage_map != null:
-			var parts_path: String = stage_map["PartsPath"].substr(7, 5)
-			for area in stage_map["ArrayArea"]:
-				var map_name := parts_path+"_m"+str(int(area)).pad_zeros(2)
+		var offset := Vector2(0,0)
+		var parts_path: String = stage_map["PartsPath"].substr(7, 5)
+		for area in stage_map["ArrayArea"]:
+			var map_name := parts_path+"_m"+str(int(area)).pad_zeros(2)
+			if not DataProvider.map_dimensions.has(map_name):
+				printerr("Couldn't find the map ", map_name)
+			else:
+				var dimensions = DataProvider.map_dimensions.get(map_name)
+				offset.y = offset.y - dimensions.height + dimensions.last
 				for layer_index in range(MAX_LAYERS):
 					var stage_map_resource := "res://resources/maps/"+map_name+"_l"+str(layer_index)+".png"
-					if not _map_resource_exists(stage_map_resource):
-						print("Couldn't find the map ", stage_map_resource)
-					else:
+					if _map_resource_exists(stage_map_resource):
 						found_map = true
 						_load_and_add_map_to(stage_map_resource, layer_index, offset)
-				if map_name in DataProvider.map_dimensions:
-					offset.y = offset.y - DataProvider.map_dimensions[map_name].y
-				else:
-					printerr("Failed to get dimensions of map "+map_name+". The next parts of this map will show up with a wrong offset.")
-		else:
-			print("Couldn't assemble a parts dungeon (pd) map (Stage No. %s)" % [stage_no])
+				offset.y = offset.y - dimensions.last + dimensions.first
+	else:
+		print("Couldn't assemble a parts dungeon (pd) map (Stage No. %s)" % [stage_no])
 	return found_map
 	
 func _load_and_add_map_to(map_resource_path: String, layer_index: int, offset: Vector2 = Vector2.ZERO) -> void:

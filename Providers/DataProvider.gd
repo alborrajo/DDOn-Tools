@@ -110,7 +110,7 @@ func _ready():
 	while !file.eof_reached():
 		var csv_line := file.get_csv_line()
 		if csv_line.size() >= 2:
-			map_dimensions[csv_line[0]] = Vector2(int(csv_line[1]), int(csv_line[2]))
+			map_dimensions[csv_line[0]] = {"height": int(csv_line[1]), "first": int(csv_line[2]), "last": int(csv_line[3])}
 	file.close()
 
 func get_enemy_by_id(id: int) -> EnemyType:
