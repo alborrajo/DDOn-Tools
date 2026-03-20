@@ -78,7 +78,6 @@ func _process(_delta):
 			added += 1
 			
 		if _pending_marker_queue.size() == 0:
-			_update_layer_selector()
 			_focus_camera_on_center()
 
 	if _pending_map_loads.size() > 0:
@@ -106,6 +105,8 @@ func _process(_delta):
 		# Remove the processed files in reverse order to avoid breaking indexes
 		for j in range(finished.size() - 1, -1, -1):
 			_pending_map_loads.remove_at(finished[j])
+		if _pending_map_loads.size() == 0:
+			_update_layer_selector()
 
 func _on_ui_stage_selected(stage_no):
 	_clear_map()
