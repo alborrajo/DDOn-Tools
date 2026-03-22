@@ -31,6 +31,6 @@ Alternatively, you can follow the steps in the [Development](#development) secti
 ## Development
 
 1. Clone the repository
-2. Download [Godot 3.5](https://godotengine.org/)
+2. Download [Godot 4.5](https://godotengine.org/)
 3. Import and open the project in Godot's project list window
 4. Run the program (Press F5 or the play button on the top right)
