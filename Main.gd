@@ -176,7 +176,7 @@ func _add_parts_dungeon_maps(stage_no: int) -> bool:
 	var stage_map := DataProvider.stage_no_to_stage_map(stage_no)
 	var found_map := false
 	if !stage_map.is_empty():
-		var offset := Vector2(0,0)
+		var connection_y := 0.0
 		var parts_path: String = stage_map["PartsPath"].substr(7, 5)
 		for area in stage_map["ArrayArea"]:
 			var map_name := parts_path+"_m"+str(int(area)).pad_zeros(2)
@@ -184,13 +184,13 @@ func _add_parts_dungeon_maps(stage_no: int) -> bool:
 				printerr("Couldn't find the map ", map_name)
 			else:
 				var dimensions = DataProvider.map_dimensions.get(map_name)
-				offset.y = offset.y - dimensions.height + dimensions.last
+				var offset := Vector2(0, connection_y - dimensions.last)
 				for layer_index in range(MAX_LAYERS):
 					var stage_map_resource := "res://resources/maps/"+map_name+"_l"+str(layer_index)+".png"
 					if _map_resource_exists(stage_map_resource):
 						found_map = true
 						_load_and_add_map_to(stage_map_resource, layer_index, offset)
-				offset.y = offset.y - dimensions.last + dimensions.first
+				connection_y = connection_y - dimensions.last + dimensions.first
 	else:
 		print("Couldn't assemble a parts dungeon (pd) map (Stage No. %s)" % [stage_no])
 	return found_map
